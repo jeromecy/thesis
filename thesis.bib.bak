@@ -1,0 +1,84 @@
+% This file was created with JabRef 2.9.2.
+% Encoding: UTF8
+
+@ARTICLE{craven1978smoothing,
+  author = {Craven, Peter and Wahba, Grace},
+  title = {Smoothing noisy data with spline functions},
+  journal = {Numerische Mathematik},
+  year = {1978},
+  volume = {31},
+  pages = {377--403},
+  number = {4},
+  publisher = {Springer}
+}
+
+@INPROCEEDINGS{ellis2009,
+  author = {Ellis, David and Sommerlade, Eric and Reid, Ian},
+  title = {Modelling pedestrian trajectory patterns with gaussian processes},
+  booktitle = {Computer Vision Workshops (ICCV Workshops), 2009 IEEE 12th International
+	Conference on},
+  year = {2009},
+  pages = {1229--1234},
+  organization = {IEEE},
+  date-modified = {2015-12-02 10:02:32 +0000}
+}
+
+@BOOK{green1993nonparametric,
+  title = {Nonparametric regression and generalized linear models: a roughness
+	penalty approach},
+  publisher = {CRC Press},
+  year = {1993},
+  author = {Green, Peter J and Silverman, Bernard W}
+}
+
+@BOOK{gubook,
+  title = {Smoothing Spline ANOVA Models Second Edition},
+  publisher = {Springer New York Heidelberg Dordrecht London},
+  year = {2013},
+  author = {Chong Gu},
+  date-added = {2015-12-02 10:04:16 +0000},
+  date-modified = {2015-12-02 10:05:41 +0000}
+}
+
+@ARTICLE{peng1983,
+  author = {Fenguo Peng},
+  title = {A Necessary and Sufficient Condition to Judg Function Linearly Independent},
+  journal = {JOURNAL OF JISHOU UNIVERSITY(NATURAL SCIENCE EDITION)},
+  year = {1983},
+  pages = {25-28},
+  number = {0},
+  __markedentry = {}
+}
+
+@BOOK{b_gpml,
+  title = {Gaussian Processes for Machine Learning},
+  publisher = {The MIT Press},
+  year = {2006},
+  author = {C. E. Rasmussen and C. K. I. Williams},
+  owner = {zcao},
+  timestamp = {2015.11.30}
+}
+
+@BOOK{esl2009,
+  title = {The Elements of Statistical Learning: Data Mining, Inference, and
+	Prediction. Second Edition},
+  publisher = {Springer-Verlag},
+  year = {2009},
+  author = {Trevor Hastie, Robert Tibshirani, Jerome Friedman},
+  owner = {zcao},
+  timestamp = {2015.12.02}
+}
+
+@ARTICLE{wahba1975completely,
+  author = {Wahba, Grace and Wold, Svante},
+  title = {A completely automatic French curve: Fitting spline functions by
+	cross validation},
+  journal = {Communications in Statistics-Theory and Methods},
+  year = {1975},
+  volume = {4},
+  pages = {1--17},
+  number = {1},
+  publisher = {Taylor \& Francis},
+  review = {P-fold CV on page 5}
+}
+

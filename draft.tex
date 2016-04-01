@@ -1,0 +1,133 @@
+\documentclass[12pt,twoside]{report}    
+
+\usepackage[phd]{otagothesis}   %% Use Otago page layout
+\usepackage{natbib} 		%% author/year format in round brackets
+\usepackage{graphicx}           %% jpg, gif, tiff, and pdf graphics
+\usepackage{moreverb}           %% Verbatim Code Listings
+\usepackage{amsmath}		%% More math commands
+\usepackage{amssymb}		%% More math commands
+\usepackage{amsthm}		%% More math commands
+\usepackage{mathrsfs}		%% More math commands
+\usepackage{color}		%% Handling colors
+\usepackage{enumerate}          %% Fancy enumeration lists
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% New commands 
+
+\newcommand{\BigO}[1]{{\rm O}\left(#1\right)}
+\newcommand{\expo}{\,\mathrm{e}}
+\newcommand{\cvar}{\,\mathrm{i}}
+\newcommand{\besseli}{\mathrm{I}}
+\newcommand{\besselk}{\mathrm{K}}
+\newcommand{\bessely}{\mathrm{Y}}
+\newcommand{\besselj}{\mathrm{J}}
+\newcommand{\eg}{e.g.\ }
+\newcommand{\elemvec}[2]{\big[#1\big]_{#2}}
+\newcommand{\ud}[1]{\,\mathrm{d}#1}
+\newcommand{\hPhi}{\widehat{\Phi}}
+\newcommand{\diag}[1]{\text{diag}\left\{#1\right\}}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+
+\newcommand{\TODO}[1]{\textcolor{red}{\bf{[#1]}}}
+\newcommand{\EDITED}[1]{\textcolor{blue}{\bf{[#1]}}}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%% Front page info 
+
+\title{Inference and Characterization of Planar Trajectories}
+\author{Jerome}
+%\date{15 June 2012}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Extra info 
+
+%\fullname{Jerome}
+%\department{Department of Mathematics and Statistics}
+%\dob{3 January 1985} %% date-of-birth
+%\address{42A Cargill st, Dunedin, New Zealand}
+
+
+
+%% Uncomment to just print up a few chapters.
+%%
+%\includeonly{}
+
+\begin{document}
+
+
+%% Put in titlepage and contents, etc...
+\frontstuff
+
+%% Set to one-and-a-half line-spacing
+\linespread{1.3} \normalsize
+
+%% Chapters
+
+\setcounter{chapter}{1}
+\include{Chapters/1.Intro/Intro_v2}
+\clearemptydoublepage
+
+%\setcounter{chapter}{1}
+%\include{Chapters/2.Preliminaries/preliminaries_v5}
+%\clearemptydoublepage
+
+
+%\setcounter{chapter}{2}
+%\include{Chapters/3.Time-domain_analysis/time_domain_v4}
+%\clearemptydoublepage
+
+%\setcounter{chapter}{3}
+%\include{Chapters/4.Experiments/experiments_v3}
+%\clearemptydoublepage
+
+%\setcounter{chapter}{4}
+%\include{Chapters/5.Data_analysis/data_analysis_v3}
+%\clearemptydoublepage
+
+%\setcounter{chapter}{5}
+%\include{Chapters/6.Natural_modes/natural_modes_v3}
+%\clearemptydoublepage
+
+%\setcounter{chapter}{6}
+%\include{Chapters/7.Further_modelling/further_modelling_v3}
+%\clearemptydoublepage
+
+%\setcounter{chapter}{7}
+%\include{Chapters/8.Two_disks/two_disks_v3}
+%\clearemptydoublepage
+
+%\setcounter{chapter}{8}
+%\include{Chapters/9.Conclusion/concl_v2}
+%\clearemptydoublepage
+
+%% Bibliography
+
+\bibliographystyle{otago}
+\bibliography{thesis}
+\clearemptydoublepage
+
+
+%% Appendices
+
+\appendix
+%\include{Appendices/Edge_conditions/App_edge_cond}
+%\clearemptydoublepage
+
+\include{Appendices/Diffraction_Transfer_Matrix/DTM}
+\clearemptydoublepage
+
+%\include{Appendices/Fourier_inversion/fourier}
+%\clearemptydoublepage
+
+%\include{Appendices/Pointwise_comparison/comparison}
+%\clearemptydoublepage
+
+%\include{Appendices/Natural_modes_norm/norm}
+%\clearemptydoublepage
+
+%\include{Appendices/Natural_frequencies/nat_freq}
+
+\end{document}
+
+
+\end{document}  
