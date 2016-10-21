@@ -1,10 +1,21 @@
 \contentsline {section}{\numberline {1.1}Introduction}{1}
-\contentsline {section}{\numberline {1.2}Gaussian Process Regression}{2}
-\contentsline {section}{\numberline {1.3}A Reproducing Kernel in Space $\mathbb {H}$}{4}
-\contentsline {section}{\numberline {1.4}Covariance Matrix and Posterior Mean}{6}
-\contentsline {section}{\numberline {1.5}A 1-D Gaussian Process Spline Construction}{7}
-\contentsline {subsection}{\numberline {1.5.1}Tractor Spline}{7}
-\contentsline {subsection}{\numberline {1.5.2}Tractor Spline Estimated by GP}{11}
-\contentsline {section}{\numberline {1.6}Cross Validation}{13}
-\contentsline {subsection}{\numberline {1.6.1}K-Fold Cross Validation}{15}
-\contentsline {chapter}{\hbox to\@tempdima {\hfil }References}{17}
+\contentsline {section}{\numberline {1.2}Tractor Spline}{3}
+\contentsline {subsection}{\numberline {1.2.1}Objective Function}{3}
+\contentsline {subsection}{\numberline {1.2.2}Basis Functions}{3}
+\contentsline {subsection}{\numberline {1.2.3}Solution to The Objective Function}{5}
+\contentsline {subsection}{\numberline {1.2.4}Adjusted Penalty Term and Parameter Function}{7}
+\contentsline {section}{\numberline {1.3}Parameter Selection and Cross Validation}{8}
+\contentsline {section}{\numberline {1.4}Simulation}{10}
+\contentsline {subsection}{\numberline {1.4.1}Numerical Examples}{10}
+\contentsline {subsection}{\numberline {1.4.2}Evaluation}{16}
+\contentsline {section}{\numberline {1.5}Conclusion and Discussion}{16}
+\contentsline {section}{\numberline {1.6}Introduction}{19}
+\contentsline {subsection}{\numberline {1.6.1}Spline}{19}
+\contentsline {subsection}{\numberline {1.6.2}Gaussian Process Regression}{20}
+\contentsline {subsection}{\numberline {1.6.3}The Smoothing Spline as Bayes Estimates}{21}
+\contentsline {section}{\numberline {1.7}Tractor Spline}{22}
+\contentsline {section}{\numberline {1.8}A reproducing kernel on $\mathcal {C}_{p.w.}^{2}[0,1]$}{25}
+\contentsline {section}{\numberline {1.9}Computation of Polynomial Smoothing Splines}{26}
+\contentsline {section}{\numberline {1.10}Polynomial Smoothing Splines as Bayes Estimates}{27}
+\contentsline {section}{\numberline {1.11}Numeric Simulation of Smoothing Spline and GPR}{29}
+\contentsline {chapter}{\hbox to\@tempdima {\hfil }References}{31}

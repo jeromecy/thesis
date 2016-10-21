@@ -1,13 +1,15 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.5)  9 MAR 2016 09:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.4.24)  21 OCT 2016 15:51
 entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
 **draft.tex
-(C:\Users\zcao\Documents\Latex\Thesis\draft.tex
-LaTeX2e <2014/05/01>
-Babel <3.9k> and hyphenation patterns for 68 languages loaded.
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\report.cls"
-Document Class: report 2007/10/19 v1.4h Standard LaTeX document class
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\size12.clo"
-File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+(./draft.tex
+LaTeX2e <2015/01/01>
+Babel <3.9l> and hyphenation patterns for 79 languages loaded.
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/report.cls
+Document Class: report 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/size12.clo
+File: size12.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
 \c@chapter=\count80
@@ -22,41 +24,41 @@ File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-(C:\Users\zcao\Documents\Latex\Thesis\otagothesis.sty
+(./otagothesis.sty
 Package: otagothesis 1998/02/03 v0.99 Otago's A4 based page layout
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\natbib\natbib.sty"
+(/usr/local/texlive/2015/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip43
 \bibsep=\skip44
 LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count88
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
-Package: graphicx 2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
-Package: keyval 2014/05/08 v1.15 key=value parser (DPC)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks14
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
-Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2014/10/28 v1.0p Standard LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
-File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
 )
-Package graphics Info: Driver file: pdftex.def on input line 91.
+Package graphics Info: Driver file: pdftex.def on input line 94.
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+(/usr/local/texlive/2015/texmf-dist/tex/latex/pdftex-def/pdftex.def
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/infwarerr.sty
 Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count89
@@ -64,11 +66,11 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen103
 \Gin@req@width=\dimen104
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\moreverb\moreverb.sty"
+(/usr/local/texlive/2015/texmf-dist/tex/latex/moreverb/moreverb.sty
 Package: moreverb 2008/06/03 v2.3a `more' verbatim facilities
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\verbatim.sty"
-Package: verbatim 2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/verbatim.sty
+Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
 \every@verbatim=\toks15
 \verbatim@line=\toks16
 \verbatim@in@stream=\read1
@@ -77,24 +79,24 @@ Package: verbatim 2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
 \tab@size=\count91
 \listing@line=\count92
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2013/01/14 v2.14 AMS math features
 \@mathmargin=\skip45
 
 For additional information on amsmath, use the `?' option.
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2000/06/29 v2.01
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks17
 \ex@=\dimen105
 ))
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d
 \pmbraise@=\dimen106
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 1999/12/14 v2.01 operator names
 )
 \inf@bad=\count93
@@ -135,18 +137,18 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 LaTeX Info: Redefining \[ on input line 2665.
 LaTeX Info: Redefining \] on input line 2666.
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 ))
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amscls\amsthm.sty"
-Package: amsthm 2009/07/02 v2.20.1
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amscls/amsthm.sty
+Package: amsthm 2015/03/04 v2.20.2
 \thm@style=\toks22
 \thm@bodyfont=\toks23
 \thm@headfont=\toks24
@@ -157,36 +159,37 @@ Package: amsthm 2009/07/02 v2.20.1
 \thm@headsep=\skip50
 \dth@everypar=\toks27
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\jknappen\mathrsfs.sty"
+(/usr/local/texlive/2015/texmf-dist/tex/latex/jknapltx/mathrsfs.sty
 Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
 \symrsfs=\mathgroup6
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\color.sty"
-Package: color 2014/04/23 v1.1a Standard LaTeX Color (DPC)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2014/10/28 v1.1a Standard LaTeX Color (DPC)
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/color.cfg
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
-Package color Info: Driver file: pdftex.def on input line 137.
+Package color Info: Driver file: pdftex.def on input line 142.
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\enumerate.sty"
-Package: enumerate 1999/03/05 v3.00 enumerate extensions (DPC)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/enumerate.sty
+Package: enumerate 2014/10/28 v3.00 enumerate extensions (DPC)
 \@enLab=\toks28
 )
 \c@lemma=\count105
 \c@theorem=\count106
+ (./draft.aux (./Chapters/2.TractorSplineTheory/TractorSplineTheory.aux
 
-(C:\Users\zcao\Documents\Latex\Thesis\draft.aux
-(C:\Users\zcao\Documents\Latex\Thesis\Chapters/1.Intro/Intro_v2.aux
-
-LaTeX Warning: Label `etaeq' multiply defined.
+LaTeX Warning: Label `hermitebasis1' multiply defined.
 
 
-LaTeX Warning: Label `etaeq2' multiply defined.
+LaTeX Warning: Label `tractormse' multiply defined.
 
-)
-(C:\Users\zcao\Documents\Latex\Thesis\Appendices/Diffraction_Transfer_Matrix/DT
-M.aux))
+
+LaTeX Warning: Label `thetahat' multiply defined.
+
+))
+\openout1 = `draft.aux'.
+
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 55.
 LaTeX Font Info:    ... okay on input line 55.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 55.
@@ -199,7 +202,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 55.
 LaTeX Font Info:    ... okay on input line 55.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 55.
 LaTeX Font Info:    ... okay on input line 55.
- ("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+ (/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count107
 \scratchdimen=\dimen114
@@ -212,28 +215,78 @@ LaTeX Font Info:    ... okay on input line 55.
 \MPnumerator=\count111
 \makeMPintoPDFobject=\count112
 \everyMPtoPDFconversion=\toks30
+) (/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 )
+
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
 LaTeX Font Info:    Try loading font information for U+msa on input line 59.
- ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 59.
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Try loading font information for U+rsfs on input line 59.
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\jknappen\ursfs.fd"
+(/usr/local/texlive/2015/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 ) [1
 
-{C:/Users/zcao/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2
+{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2
 
-]
-(C:\Users\zcao\Documents\Latex\Thesis\draft.toc)
+] (./draft.toc)
 \tf@toc=\write3
- [3
+\openout3 = `draft.toc'.
+
+
+[3
 
 
 
@@ -242,129 +295,212 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 ] [4
 
 
-]
-(C:\Users\zcao\Documents\Latex\Thesis\draft.lot)
+] (./draft.lot)
 \tf@lot=\write4
+\openout4 = `draft.lot'.
+
  [5
 
 ] [6
 
 
-]
-(C:\Users\zcao\Documents\Latex\Thesis\draft.lof)
-\tf@lof=\write5
+] (./draft.lof
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
  [7
 
-] [8
+])
+\tf@lof=\write5
+\openout5 = `draft.lof'.
 
 
-]
-(C:\Users\zcao\Documents\Latex\Thesis\Chapters/1.Intro/Intro_v2.tex [1
+[8]
+\openout2 = `Chapters/2.TractorSplineTheory/TractorSplineTheory.aux'.
 
-]
-Overfull \hbox (10.36118pt too wide) in paragraph at lines 31--31
-[] 
- []
-
-[2] [3] [4] [5] [6]
-Overfull \hbox (13.91586pt too wide) in paragraph at lines 294--296
-\OT1/cmr/m/n/12 where $\OML/cmm/m/it/12 "$ \OT1/cmr/m/n/12 is zero-mean Gaus-si
-an noise. A Gaus-sian pro-cess prior over $\OML/cmm/m/it/12 f \OMS/cmsy/m/n/12 
- \OML/cmm/m/it/12 GP\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 m\OT1/cmr/m/n/12 (\OML/c
-mm/m/it/12 t\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; K\OT1/cmr/m/n/12 (\OML/cmm/m/it
-/12 s; t\OT1/cmr/m/n/12 ))$
- []
+ (./Chapters/2.TractorSplineTheory/TractorSplineTheory.tex [1
 
 
-Underfull \vbox (badness 5548) has occurred while \output is active []
 
- [7]
-<n2i.jpeg, id=63, 988.69376pt x 464.73625pt>
-File: n2i.jpeg Graphic file (type jpg)
- <use n2i.jpeg>
-Package pdftex.def Info: n2i.jpeg used on input line 351.
-(pdftex.def)             Requested size: 441.01584pt x 256.08084pt.
- [8]
-Overfull \hbox (4.94716pt too wide) in paragraph at lines 363--365
+] [2] [3]
+[4]
+<Chapters/2.TractorSplineTheory/plot/basistk.pdf, id=54, 844.15375pt x 597.2312
+5pt>
+File: Chapters/2.TractorSplineTheory/plot/basistk.pdf Graphic file (type pdf)
+ <use Chapters/2.TractorSplineTheory/plot/basistk.pdf>
+Package pdftex.def Info: Chapters/2.TractorSplineTheory/plot/basistk.pdf used o
+n input line 127.
+(pdftex.def)             Requested size: 227.61542pt x 113.80318pt.
+ [5 <./Chapters/2.TractorSplineTheory/plot/basistk.pdf>] [6]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 200.
+
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 200.
+ [7] [8] [9]
+[10]
+<Chapters/2.TractorSplineTheory/plot/blocks10.pdf, id=81, 597.50829pt x 845.047
+1pt>
+File: Chapters/2.TractorSplineTheory/plot/blocks10.pdf Graphic file (type pdf)
+ <use Chapters/2.TractorSplineTheory/plot/blocks10.pdf>
+Package pdftex.def Info: Chapters/2.TractorSplineTheory/plot/blocks10.pdf used 
+on input line 335.
+(pdftex.def)             Requested size: 441.01866pt x 398.33269pt.
+
+<Chapters/2.TractorSplineTheory/plot/bumps10.pdf, id=82, 597.50829pt x 845.0471
+pt>
+File: Chapters/2.TractorSplineTheory/plot/bumps10.pdf Graphic file (type pdf)
+ <use Chapters/2.TractorSplineTheory/plot/bumps10.pdf>
+Package pdftex.def Info: Chapters/2.TractorSplineTheory/plot/bumps10.pdf used o
+n input line 341.
+(pdftex.def)             Requested size: 441.01866pt x 398.33269pt.
+
+<Chapters/2.TractorSplineTheory/plot/heavi10.pdf, id=83, 597.50829pt x 845.0471
+pt>
+File: Chapters/2.TractorSplineTheory/plot/heavi10.pdf Graphic file (type pdf)
+ <use Chapters/2.TractorSplineTheory/plot/heavi10.pdf>
+Package pdftex.def Info: Chapters/2.TractorSplineTheory/plot/heavi10.pdf used o
+n input line 347.
+(pdftex.def)             Requested size: 441.01866pt x 398.33269pt.
+
+<Chapters/2.TractorSplineTheory/plot/doppler10.pdf, id=84, 597.50829pt x 845.04
+71pt>
+File: Chapters/2.TractorSplineTheory/plot/doppler10.pdf Graphic file (type pdf)
+
+ <use Chapters/2.TractorSplineTheory/plot/doppler10.pdf>
+Package pdftex.def Info: Chapters/2.TractorSplineTheory/plot/doppler10.pdf used
+ on input line 353.
+(pdftex.def)             Requested size: 441.01866pt x 398.33269pt.
+ [11] [12 <./Chapters/2.TractorSplineTheory/plot/blocks10.pdf>] [13 <./Chapters
+/2.TractorSplineTheory/plot/bumps10.pdf>] [14 <./Chapters/2.TractorSplineTheory
+/plot/heavi10.pdf>] [15 <./Chapters/2.TractorSplineTheory/plot/doppler10.pdf>]
+<Chapters/2.TractorSplineTheory/plot/penalty08.pdf, id=401, 597.50829pt x 845.0
+471pt>
+File: Chapters/2.TractorSplineTheory/plot/penalty08.pdf Graphic file (type pdf)
+
+ <use Chapters/2.TractorSplineTheory/plot/penalty08.pdf>
+Package pdftex.def Info: Chapters/2.TractorSplineTheory/plot/penalty08.pdf used
+ on input line 369.
+(pdftex.def)             Requested size: 441.01866pt x 398.33269pt.
+
+<Chapters/2.TractorSplineTheory/plot/vtractor04.pdf, id=402, 794.97pt x 614.295
+pt>
+File: Chapters/2.TractorSplineTheory/plot/vtractor04.pdf Graphic file (type pdf
+)
+ <use Chapters/2.TractorSplineTheory/plot/vtractor04.pdf>
+Package pdftex.def Info: Chapters/2.TractorSplineTheory/plot/vtractor04.pdf use
+d on input line 378.
+(pdftex.def)             Requested size: 441.03162pt x 256.07121pt.
+ [16] [17 <./Chapters/2.TractorSplineTheory/plot/penalty08.pdf>] [18 <./Chapter
+s/2.TractorSplineTheory/plot/vtractor04.pdf>] [19] [20] [21] [22] [23]
+Overfull \hbox (4.94716pt too wide) in paragraph at lines 609--611
 \OT1/cmr/m/n/12 deriva-tive of ba-sis func-tions, we get $\OML/cmm/m/it/12 N[]\
 OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t[]\OT1/cmr/m/n/12 ) = 0\OML/cmm/m/it/12 ; N[]
 \OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t[]\OT1/cmr/m/n/12 ) = 1\OML/cmm/m/it/12 ; []
   ; N[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t[]\OT1/cmr/m/n/12 ) = 0\OML/cmm/m/it/
-12 ; N[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t[]\OT1/cmr/m/n/12 ) =$
+12 ; N[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t[]\OT1/cmr/m/n/12 ) =
+ []
+
+[24]
+Overfull \hbox (15.18867pt too wide) in paragraph at lines 700--702
+\OT1/cmr/m/n/12 in the space $\OMS/cmsy/m/n/12 C[]\OT1/cmr/m/n/12 [0\OML/cmm/m/
+it/12 ; \OT1/cmr/m/n/12 1] = \OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 f \OT1/cmr/m/n/
+12 : \OML/cmm/m/it/12 f; f[][]f[][]\OT1/cmr/m/n/12 [0\OML/cmm/m/it/12 ; \OT1/cm
+r/m/n/12 1]\OMS/cmsy/m/n/12 g$
+ []
+
+Missing character: There is no Â in font cmr12!
+Missing character: There is no · in font cmr12!
+Missing character: There is no Â in font cmr12!
+Missing character: There is no · in font cmr12!
+[25] [26]
+Overfull \hbox (2.1058pt too wide) in paragraph at lines 760--762
+\OT1/cmr/m/n/12 and not-ing that $[][] \OML/cmm/m/it/12 R[]\OT1/cmr/m/n/12 (\OM
+L/cmm/m/it/12 x[]; x\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 R[]\OT1/cmr/m/n/12 (\OML/
+cmm/m/it/12 x[]; x\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 dx \OT1/cmr/m/n/12 = \OML/c
+mm/m/it/12 R[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x[]; x[]\OT1/cmr/m/n/12 )$, $[]
+[] \OML/cmm/m/it/12 R[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x[]; x\OT1/cmr/m/n/12 
+)[](\OML/cmm/m/it/12 x[]; x\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 dx \OT1/cmr/m/n/12
+ = [][](\OML/cmm/m/it/12 x[] \OMS/cmsy/m/n/12 ^^@
  []
 
 
-Underfull \vbox (badness 1859) has occurred while \output is active []
-
- [9 <C:/Users/zcao/Documents/Latex/Thesis/n2i.jpeg>] [10] [11] [12] [13] [14] [
-15])
-[16] (C:\Users\zcao\Documents\Latex\Thesis\draft.bbl) [17
-
-
-
-
-] [18
-
-
-]
-(C:\Users\zcao\Documents\Latex\Thesis\Appendices/Diffraction_Transfer_Matrix/DT
-M.tex
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [19
-
-]
-Overfull \hbox (19.47357pt too wide) in paragraph at lines 47--48
-[]\OT1/cmr/m/n/12 We have $2\OML/cmm/m/it/12 n$ \OT1/cmr/m/n/12 ba-sis func-tio
-ns and $\OML/cmm/m/it/12 n$ \OT1/cmr/m/n/12 knots. Then choose $\OML/cmm/m/it/1
-2 t[]; []; t[]; []; []  ; t[]; []$\OT1/cmr/m/n/12 ,
- []
-
-
-Overfull \hbox (38.91917pt too wide) detected at line 65
-\OML/cmm/m/it/12 D\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 c[]; c[]; []  ; c[]\OT1/cmr
-/m/n/12 ) = [] = [] \OML/cmm/m/it/12 ;
- []
-
-[20] [21]
-Overfull \hbox (18.61284pt too wide) in paragraph at lines 127--127
+Overfull \hbox (55.38551pt too wide) in paragraph at lines 768--768
 [] 
  []
 
-[22] [23]) [24] (C:\Users\zcao\Documents\Latex\Thesis\draft.aux
-(C:\Users\zcao\Documents\Latex\Thesis\Chapters/1.Intro/Intro_v2.aux)
-(C:\Users\zcao\Documents\Latex\Thesis\Appendices/Diffraction_Transfer_Matrix/DT
-M.aux))
+
+Overfull \hbox (73.38062pt too wide) in paragraph at lines 784--784
+[] 
+ []
+
+[27]
+Overfull \hbox (65.32051pt too wide) in paragraph at lines 827--827
+[] 
+ []
+
+[28]
+<Chapters/2.TractorSplineTheory/plot/simu01.pdf, id=541, 844.15375pt x 597.2312
+5pt>
+File: Chapters/2.TractorSplineTheory/plot/simu01.pdf Graphic file (type pdf)
+ <use Chapters/2.TractorSplineTheory/plot/simu01.pdf>
+Package pdftex.def Info: Chapters/2.TractorSplineTheory/plot/simu01.pdf used on
+ input line 872.
+(pdftex.def)             Requested size: 241.84863pt x 184.93929pt.
+
+<Chapters/2.TractorSplineTheory/plot/simu02.pdf, id=542, 844.15375pt x 597.2312
+5pt>
+File: Chapters/2.TractorSplineTheory/plot/simu02.pdf Graphic file (type pdf)
+ <use Chapters/2.TractorSplineTheory/plot/simu02.pdf>
+Package pdftex.def Info: Chapters/2.TractorSplineTheory/plot/simu02.pdf used on
+ input line 877.
+(pdftex.def)             Requested size: 241.84863pt x 184.93929pt.
+) [29] [30 <./Chapters/2.TractorSplineTheory/plot/simu01.pdf> <./Chapters/2.Tra
+ctorSplineTheory/plot/simu02.pdf>] (./draft.bbl [31
+
+
+
+
+] [32]) [33] [34
+
+
+] (./draft.aux
+(./Chapters/2.TractorSplineTheory/TractorSplineTheory.aux))
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 2802 strings out of 493706
- 36272 string characters out of 3142169
- 110128 words of memory out of 3000000
- 6058 multiletter control sequences out of 15000+200000
- 14763 words of font info for 57 fonts, out of 3000000 for 9000
- 1025 hyphenation exceptions out of 8191
- 27i,23n,26p,716b,261s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
-<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C
-:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/
-Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Pro
-gram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Progra
-m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program F
-iles (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program File
-s (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files (x
-86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/
-MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/Mi
-KTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files (x86)/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files (x86)/MiKTeX 2
-.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files (x86)/MiKTeX 2.9
-/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Program Files (x86)/MiKTeX 
-2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on draft.pdf (32 pages, 325732 bytes).
+ 3296 strings out of 493089
+ 46098 string characters out of 6134842
+ 128641 words of memory out of 5000000
+ 6683 multiletter control sequences out of 15000+600000
+ 16157 words of font info for 61 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 38i,21n,26p,1938b,323s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
+></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><
+/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></u
+sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr
+/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/l
+ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/loc
+al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local
+/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/te
+xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texli
+ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/
+2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2
+015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/201
+5/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2015/t
+exmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/20
+15/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on draft.pdf (42 pages, 1849466 bytes).
 PDF statistics:
- 166 PDF objects out of 1000 (max. 8388607)
+ 628 PDF objects out of 1000 (max. 8388607)
+ 446 compressed objects within 5 object streams
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 46 words of extra memory for PDF output out of 10000 (max. 10000000)
 
