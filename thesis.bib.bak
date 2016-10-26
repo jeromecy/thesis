@@ -1,84 +1,317 @@
-% This file was created with JabRef 2.9.2.
-% Encoding: UTF8
+%% This BibTeX bibliography file was created using BibDesk.
+%% http://bibdesk.sourceforge.net/
 
-@ARTICLE{craven1978smoothing,
-  author = {Craven, Peter and Wahba, Grace},
-  title = {Smoothing noisy data with spline functions},
-  journal = {Numerische Mathematik},
-  year = {1978},
-  volume = {31},
-  pages = {377--403},
-  number = {4},
-  publisher = {Springer}
-}
+%% Created for Jerome Cao at 2016-10-21 15:37:06 +1300 
 
-@INPROCEEDINGS{ellis2009,
-  author = {Ellis, David and Sommerlade, Eric and Reid, Ian},
-  title = {Modelling pedestrian trajectory patterns with gaussian processes},
-  booktitle = {Computer Vision Workshops (ICCV Workshops), 2009 IEEE 12th International
-	Conference on},
-  year = {2009},
-  pages = {1229--1234},
-  organization = {IEEE},
-  date-modified = {2015-12-02 10:02:32 +0000}
-}
 
-@BOOK{green1993nonparametric,
-  title = {Nonparametric regression and generalized linear models: a roughness
-	penalty approach},
-  publisher = {CRC Press},
-  year = {1993},
-  author = {Green, Peter J and Silverman, Bernard W}
-}
+%% Saved with string encoding Unicode (UTF-8) 
 
-@BOOK{gubook,
-  title = {Smoothing Spline ANOVA Models Second Edition},
-  publisher = {Springer New York Heidelberg Dordrecht London},
-  year = {2013},
-  author = {Chong Gu},
-  date-added = {2015-12-02 10:04:16 +0000},
-  date-modified = {2015-12-02 10:05:41 +0000}
-}
 
-@ARTICLE{peng1983,
-  author = {Fenguo Peng},
-  title = {A Necessary and Sufficient Condition to Judg Function Linearly Independent},
-  journal = {JOURNAL OF JISHOU UNIVERSITY(NATURAL SCIENCE EDITION)},
-  year = {1983},
-  pages = {25-28},
-  number = {0},
-  __markedentry = {}
-}
 
-@BOOK{b_gpml,
-  title = {Gaussian Processes for Machine Learning},
-  publisher = {The MIT Press},
-  year = {2006},
-  author = {C. E. Rasmussen and C. K. I. Williams},
-  owner = {zcao},
-  timestamp = {2015.11.30}
-}
+@inproceedings{ellis2009,
+	Author = {Ellis, David and Sommerlade, Eric and Reid, Ian},
+	Booktitle = {Computer Vision Workshops (ICCV Workshops), 2009 IEEE 12th International Conference on},
+	Date-Modified = {2015-12-02 10:02:32 +0000},
+	Organization = {IEEE},
+	Pages = {1229--1234},
+	Title = {Modelling pedestrian trajectory patterns with gaussian processes},
+	Year = {2009}}
 
-@BOOK{esl2009,
-  title = {The Elements of Statistical Learning: Data Mining, Inference, and
-	Prediction. Second Edition},
-  publisher = {Springer-Verlag},
-  year = {2009},
-  author = {Trevor Hastie, Robert Tibshirani, Jerome Friedman},
-  owner = {zcao},
-  timestamp = {2015.12.02}
-}
+@book{green1993nonparametric,
+	Author = {Green, Peter J and Silverman, Bernard W},
+	Publisher = {CRC Press},
+	Title = {Nonparametric regression and generalized linear models: a roughness penalty approach},
+	Year = {1993}}
 
-@ARTICLE{wahba1975completely,
-  author = {Wahba, Grace and Wold, Svante},
-  title = {A completely automatic French curve: Fitting spline functions by
-	cross validation},
-  journal = {Communications in Statistics-Theory and Methods},
-  year = {1975},
-  volume = {4},
-  pages = {1--17},
-  number = {1},
-  publisher = {Taylor \& Francis},
-  review = {P-fold CV on page 5}
-}
+@book{gubook,
+	Author = {Chong Gu},
+	Date-Added = {2015-12-02 10:04:16 +0000},
+	Date-Modified = {2015-12-02 10:05:41 +0000},
+	Publisher = {Springer New York Heidelberg Dordrecht London},
+	Title = {Smoothing Spline ANOVA Models Second Edition},
+	Year = {2013}}
 
+@book{b_gpml,
+	Author = {C. E. Rasmussen and C. K. I. Williams},
+	Owner = {zcao},
+	Publisher = {The MIT Press},
+	Timestamp = {2015.11.30},
+	Title = {Gaussian Processes for Machine Learning},
+	Year = {2006}}
+
+@article{wahba1975completely,
+	Author = {Wahba, Grace and Wold, Svante},
+	Journal = {Communications in Statistics-Theory and Methods},
+	Number = {1},
+	Pages = {1--17},
+	Publisher = {Taylor \& Francis},
+	Review = {P-fold CV on page 5},
+	Title = {A completely automatic French curve: Fitting spline functions by cross validation},
+	Volume = {4},
+	Year = {1975}}
+
+@article{abramovich1998wavelet,
+	Author = {Abramovich, Felix and Sapatinas, Theofanis and Silverman, Bernard W},
+	Journal = {Journal of the Royal Statistical Society: Series B (Statistical Methodology)},
+	Number = {4},
+	Pages = {725--749},
+	Publisher = {Wiley Online Library},
+	Title = {Wavelet thresholding via a Bayesian approach},
+	Volume = {60},
+	Year = {1998}}
+
+@article{agarwal2003indexing,
+	Author = {Agarwal, Pankaj K and Arge, Lars and Erickson, Jeff},
+	Journal = {Journal of Computer and System Sciences},
+	Number = {1},
+	Pages = {207--243},
+	Publisher = {Elsevier},
+	Title = {Indexing moving points},
+	Volume = {66},
+	Year = {2003}}
+
+@article{aydin2012smoothing,
+	Author = {Aydin, Dursun and Tuzemen, M Seref},
+	Journal = {Journal of Applied Sciences},
+	Number = {7},
+	Pages = {636},
+	Publisher = {Asian Network for Scientific Information (ANSINET)},
+	Title = {Smoothing parameter selection problem in nonparametric regression based on smoothing spline: A simulation study},
+	Volume = {12},
+	Year = {2012}}
+
+@article{donoho1995adapting,
+	Author = {Donoho, David L and Johnstone, Iain M},
+	Journal = {Journal of the american statistical association},
+	Number = {432},
+	Pages = {1200--1224},
+	Publisher = {Taylor \& Francis Group},
+	Title = {Adapting to unknown smoothness via wavelet shrinkage},
+	Volume = {90},
+	Year = {1995}}
+
+@article{donoho1995wavelet,
+	Author = {Donoho, David L and Johnstone, Iain M and Kerkyacharian, G{\'e}rard and Picard, Dominique},
+	Journal = {Journal of the Royal Statistical Society. Series B (Methodological)},
+	Pages = {301--369},
+	Publisher = {JSTOR},
+	Title = {Wavelet shrinkage: asymptopia?},
+	Year = {1995}}
+
+@article{donoho1994ideal,
+	Author = {Donoho, David L and Johnstone, Jain M},
+	Journal = {Biometrika},
+	Number = {3},
+	Pages = {425--455},
+	Publisher = {Biometrika Trust},
+	Title = {Ideal spatial adaptation by wavelet shrinkage},
+	Volume = {81},
+	Year = {1994}}
+
+@article{erkorkmaz2001high,
+	Author = {Erkorkmaz, Kaan and Altintas, Yusuf},
+	Journal = {International Journal of machine tools and manufacture},
+	Number = {9},
+	Pages = {1323--1345},
+	Publisher = {Elsevier},
+	Title = {High speed CNC system design. Part I: jerk limited trajectory generation and quintic spline interpolation},
+	Volume = {41},
+	Year = {2001}}
+
+@article{gu1998model,
+	Author = {Gu, Chong},
+	Journal = {Statistica Sinica},
+	Pages = {607--623},
+	Publisher = {JSTOR},
+	Title = {Model indexing and smoothing parameter selection in nonparametric function estimation},
+	Year = {1998}}
+
+@article{kim2004smoothing,
+	Author = {Kim, Young-Ju and Gu, Chong},
+	Journal = {Journal of the Royal Statistical Society: Series B (Statistical Methodology)},
+	Number = {2},
+	Pages = {337--356},
+	Publisher = {Wiley Online Library},
+	Title = {Smoothing spline Gaussian regression: more scalable computation via efficient approximation},
+	Volume = {66},
+	Year = {2004}}
+
+@article{liu2010data,
+	Author = {Liu, Ziyue and Guo, Wensheng},
+	Journal = {Statistica Sinica},
+	Pages = {1143--1163},
+	Publisher = {JSTOR},
+	Title = {Data driven adaptive spline smoothing},
+	Year = {2010}}
+
+@book{nason2010wavelet,
+	Author = {Nason, Guy},
+	Publisher = {Springer Science \& Business Media},
+	Title = {Wavelet methods in statistics with R},
+	Year = {2010}}
+
+@book{schwarz2012geodesy,
+	Author = {Schwarz, Klaus-Peter},
+	Publisher = {Springer Science \& Business Media},
+	Title = {Geodesy Beyond 2000: The Challenges of the First Decade, IAG General Assembly Birmingham, July 19--30, 1999},
+	Volume = {121},
+	Year = {2012}}
+
+@article{sealfon2005smoothing,
+	Author = {Sealfon, Carolyn and Verde, Licia and Jimenez, Raul},
+	Journal = {Physical Review D},
+	Number = {10},
+	Pages = {103520},
+	Publisher = {APS},
+	Title = {Smoothing spline primordial power spectrum reconstruction},
+	Volume = {72},
+	Year = {2005}}
+
+@article{silverman1985some,
+	Author = {Silverman, Bernhard W},
+	Journal = {Journal of the Royal Statistical Society. Series B (Methodological)},
+	Pages = {1--52},
+	Publisher = {JSTOR},
+	Title = {Some aspects of the spline smoothing approach to non-parametric regression curve fitting},
+	Year = {1985}}
+
+@article{wahba1985comparison,
+	Author = {Wahba, Grace},
+	Journal = {The Annals of Statistics},
+	Pages = {1378--1402},
+	Publisher = {JSTOR},
+	Title = {A comparison of GCV and GML for choosing the smoothing parameter in the generalized spline smoothing problem},
+	Year = {1985}}
+
+@article{yang2010analytical,
+	Author = {Yang, Kwangjin and Sukkarieh, Salah},
+	Journal = {Robotics, IEEE Transactions on},
+	Number = {3},
+	Pages = {561--568},
+	Publisher = {IEEE},
+	Title = {An analytical continuous-curvature path-smoothing algorithm},
+	Volume = {26},
+	Year = {2010}}
+
+@article{yao2005functional,
+	Author = {Yao, Fang and M{\"u}ller, Hans-Georg and Wang, Jane-Ling and others},
+	Journal = {The Annals of Statistics},
+	Number = {6},
+	Pages = {2873--2903},
+	Publisher = {Institute of Mathematical Statistics},
+	Title = {Functional linear regression analysis for longitudinal data},
+	Volume = {33},
+	Year = {2005}}
+
+@inproceedings{yu2004curve,
+	Author = {Yu, Byunggu and Kim, Seon Ho and Bailey, Thomas and Gamboa, Ruben},
+	Booktitle = {Database Engineering and Applications Symposium, 2004. IDEAS'04. Proceedings. International},
+	Organization = {IEEE},
+	Pages = {419--425},
+	Title = {Curve-based representation of moving object trajectories},
+	Year = {2004}}
+
+@article{zhang2013cubic,
+	Author = {Zhang, Ke and Guo, Jian-Xin and Gao, Xiao-Shan},
+	Journal = {International Journal of Precision Engineering and Manufacturing},
+	Number = {7},
+	Pages = {1141--1146},
+	Publisher = {Springer},
+	Title = {Cubic spline trajectory generation with axis jerk and tracking error constraints},
+	Volume = {14},
+	Year = {2013}}
+
+@book{berlinet2011reproducing,
+	Author = {Berlinet, Alain and Thomas-Agnan, Christine},
+	Publisher = {Springer Science \& Business Media},
+	Title = {Reproducing kernel Hilbert spaces in probability and statistics},
+	Year = {2011}}
+
+@book{chen2009feedback,
+	Author = {Chen, Wai-Kai},
+	Publisher = {CRC Press},
+	Title = {Feedback, nonlinear, and distributed circuits},
+	Year = {2009}}
+
+@article{craven1978smoothing,
+	Author = {Craven, Peter and Wahba, Grace},
+	Journal = {Numerische Mathematik},
+	Number = {4},
+	Pages = {377--403},
+	Publisher = {Springer},
+	Title = {Smoothing noisy data with spline functions},
+	Volume = {31},
+	Year = {1978}}
+
+@book{de1978practical,
+	Author = {De Boor, Carl and De Boor, Carl and Math{\'e}maticien, Etats-Unis and De Boor, Carl and De Boor, Carl},
+	Publisher = {Springer-Verlag New York},
+	Title = {A practical guide to splines},
+	Volume = {27},
+	Year = {1978}}
+
+@book{hastie1990generalized,
+	Author = {Hastie, Trevor J and Tibshirani, Robert J},
+	Publisher = {CRC Press},
+	Title = {Generalized additive models},
+	Volume = {43},
+	Year = {1990}}
+
+@book{judd1998numerical,
+	Author = {Judd, Kenneth L},
+	Publisher = {MIT press},
+	Title = {Numerical methods in economics},
+	Year = {1998}}
+
+@article{kimeldorf1971some,
+	Author = {Kimeldorf, George and Wahba, Grace},
+	Journal = {Journal of mathematical analysis and applications},
+	Number = {1},
+	Pages = {82--95},
+	Publisher = {Elsevier},
+	Title = {Some results on Tchebycheffian spline functions},
+	Volume = {33},
+	Year = {1971}}
+
+@article{kimeldorf1970correspondence,
+	Author = {Kimeldorf, George S and Wahba, Grace},
+	Journal = {The Annals of Mathematical Statistics},
+	Number = {2},
+	Pages = {495--502},
+	Publisher = {JSTOR},
+	Title = {A correspondence between Bayesian estimation on stochastic processes and smoothing by splines},
+	Volume = {41},
+	Year = {1970}}
+
+@article{peng1983,
+	Author = {Fenguo Peng},
+	Journal = {JOURNAL OF JISHOU UNIVERSITY(NATURAL SCIENCE EDITION)},
+	Number = {0},
+	Pages = {25-28},
+	Title = {A Necessary and Sufficient Condition to Judg Function Linearly Independent},
+	Year = {1983}}
+
+@book{esl2009,
+	Author = {Trevor Hastie, Robert Tibshirani, Jerome Friedman},
+	Owner = {zcao},
+	Publisher = {Springer-Verlag},
+	Timestamp = {2015.12.02},
+	Title = {The Elements of Statistical Learning: Data Mining, Inference, and Prediction. Second Edition},
+	Year = {2009}}
+
+@book{wahba1990spline,
+	Author = {Wahba, Grace},
+	Publisher = {Siam},
+	Title = {Spline models for observational data},
+	Volume = {59},
+	Year = {1990}}
+
+@article{wang1998smoothing,
+	Author = {Wang, Yuedong},
+	Journal = {Journal of the American Statistical Association},
+	Number = {441},
+	Pages = {341--348},
+	Publisher = {Taylor \& Francis},
+	Title = {Smoothing spline models with correlated random errors},
+	Volume = {93},
+	Year = {1998}}
