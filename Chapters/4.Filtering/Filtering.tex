@@ -1,0 +1,316 @@
+
+%\documentclass[a4paper,20pt]{article}  	% use "amsart" instead of "article" for AMSLaTeX format
+
+\section{State Space Models}
+State space models are the natural form of system models relying on the general concept of state. If we describe a system as an operator mapping from the space of inputs to the space of outputs, then we may need the entire input-output history of the system together with the planned input in order to compute the future output values \cite{hangos2006analysis}. In an alternative way, by using new information at time $t$ containing all the past information up to the current state and initial conditions to get the current output is possible, that is known as a sequential method. A genetic state space model consists of two sets of equations: state equation and output equation. The state equation describes the evolution of the true input and state variables sequentially as a function and passes the variable one after one, generally, with some noises. The output equation catches the input values and interprets it out by an algebraic equation. A general state space model looks like the following form
+\begin{align}
+\mbox{State equation } x_t &= G_t(x_{t-1})+w_t,\\
+\mbox{Output equation } y_t &=F_t(x_t)+\epsilon_t
+\end{align}
+with an initial state $x_0$, where $\epsilon_t$ and $w_t$ are noises passing through the process $G_t$ and $F_t$. $x_t$ are true status variables and $y_t$ are output values. Many researchers have been interested in this model and its application because of its good property. It can be used to model univariate or multivariate time series, also in the presence of non-stationarity, structural changes, and irregular patterns \cite{petris2009dynamic}.
+
+The most simple and important system is given by Gaussian linear state space models, also known by dynamic linear models (DLM), which defines a very general class of non-stationary time series models.  Firstly, the model is linear, which means $G_t$ and $F_t$ are linear processes and satisfying linearity property. Secondly, the it is specified by a normal prior distribution for the $p$-dimensional state vector at initial state $t=0$, 
+\begin{align*}
+x_0 \sim N_p(m_,0,C_0)
+\end{align*} 
+and two independent zero mean normal distributed noises $\epsilon_t \sim N_p(0,V_t)$ and $w_t \sim N_p(0,W_t)$ \cite{petris2009dynamic}. The well known Kalman Filter is a particular algorithm that is used to solve state space models in the linear case. This was first derived by Kalman \cite{kalman1960new}.
+
+In a nonlinear state space model, the process $G_t$ and $F_t$ are no longer linear functions and the situation becomes more complicated. Here gives a simple nonlinear example of such a model, which has been used extensively in the literature for benchmarking numerical filtering techniques \cite{kitagawa1996monte} \cite{west1993mixture} \cite{gordon1993novel} assuming the sequence is Markovian.
+\begin{align*}
+x_t &= \frac{x_{t-1}}{2} +25\frac{x_{t-1}}{1+x_{t-1}^2}+8\cos(1.2t)+u_t\\
+y_t &= \frac{x_{t}^2}{20}+v_t,
+\end{align*}
+where $u_t \sim N(0,\sigma_u^2)$, $v_t \sim N(0,\sigma_v^2)$, $\sigma_u^2=10$ and $\sigma_t^2=1$ are considered fixed and known. The initial state $x_0\sim N(0,10)$. The assumption Markovian keeps the current state $x_t$ only depending on the previous one step $x_{t-1}$ and the observed $y_t$ depending on $x_t$. A state-space is shown in the diagram below:
+\begin{align*}
+{\displaystyle {\begin{array}{cccccccccc}\cdots &\to &x_{t-1}&\to &x_{t}&\to &x_{t+1}&\to &\cdots &{\text{truth}}\\ \cdots &&\downarrow &&\downarrow &&\downarrow &&\cdots &\\ \cdots&&y_{t-1}&&y_{t}&&y_{t+1}&&\cdots &{\text{observation}}\end{array}}}
+\end{align*}
+
+In applications, the process function $G_t$ and $F_t$ contain unknown parameters to be estimated \cite{de1988likelihood} and the target is to estimate the true states on sequential observations $y_t, \cdots, y_t$. Then it becomes to estimate a joint density of $p(x_{1:t},\theta \mid y_{1:t})$, where $x_{1:t} = \{x_1, x_2, \cdots, x_t \}$ are the hidden states and $y_{1:t} = \{y_1, y_2, \cdots, y_t \}$ are the observed outcomes and $\theta$ is a set of unknown parameters. 
+
+
+\section{Sequential Monte Carlo Method}
+
+The use of Monte Carlo methods for non-linear filtering can be traced back to the pioneering contributions of Handschin and Mayne (1969) \cite{handschin1969monte} and Handschin
+(1970) \cite{handschin1970monte}. These researchers tried to use an importance sampling paradigm to approximate the target distributions. Later on, an importance sampling algorithms were implemented sequentially in the non-linear filtering context. This algorithm is called sequential importance sampling, often abbreviated SIS, and has been known since the early 1970s. Limited by the power of computers and  suffering from sample impoverishment or weight degeneracy, the SIS didn't develop very well until 1993. A particle filter algorithm was proposed to allow rejuvenation of the set of samples by duplicating the samples with high importance weights and, on the contrary, removing samples with low weights \cite{cappe2009inference}. Since then, sequential Monte Carlo (SMC) methods have been applied in many different fields including but not limited to computer vision, signal processing, control, econometrics, finance, robotics, and statistics \cite{smcmip2011}  \cite{ristic2004beyond}.
+
+
+\subsection{Filtering Problem and Estimation}
+Sequential Monte Carlo method, also known as particle filter, is a technique based on sampling and importance sampling methods to find the best state estimation given by Gordon in 1993 \cite{gordon1993novel} and was the first successful application of sequential Monte Carlo techniques to the field of non-linear filtering \cite{cappe2009inference}. In the state space model, a generic particle filter estimates the posterior distribution of the hidden states using the observation measurement process. The filtering problem is to estimate sequentially the values of the hidden states $x_k$ given the values of the observation process $y_{1:k}$ at any time step $k$. In another word, it is to find the value of $p(x_k \mid  y_{1:k})$. The process is divided into two steps: prediction and updating. In the prediction step, the assumption of Markov Chain is the current status $x_k$ only depends on the previous one $x_{k-1}$. Then we can calculate the probability of $x_k$ by 
+\begin{align*}
+p(x_k\mid y_{1:k-1})=&\int p(x_k,x_{k-1}\mid y_{1:k-1}) dx_{k-1}\\
+=&\int p(x_k\mid x_{k-1},y_{1:k-1}) p(x_{k-1}\mid y_{1:k-1})dx_{k-1}\\
+=&\int p(x_k\mid x_{k-1}) p(x_{k-1}\mid y_{1:k-1})dx_{k-1}.
+\end{align*}
+In the updating step, once $p(x_k\mid y_{1:k-1})$ is known, $p(x_k\mid y_{1:k})$ can be found by
+\begin{align*}
+p(x_k\mid y_{1:k})=&\frac{p(y_k\mid x_k,y_{1:k-1})p(x_{k}\mid y_{1:k-1})}{p(y_k\mid  y_{1:k-1})} \\
+=&\frac{p(y_k\mid x_k)p(x_{k}\mid y_{1:k-1})}{p(y_k\mid  y_{1:k-1})},
+\end{align*}
+where the normalization $p(y_k\mid  y_{1:k-1})=\int p(y_k\mid x_k)p(x_k\mid  y_{1:k-1}) dx_k$ \cite{arulampalam2002tutorial}.
+
+Imagine that the stat space is partitioned as many parts, in which the particles are filled according to some probability measure. The higher probability, the denser the particles are concentrated. Suppose the particles $x_1, \cdots, x_N$ are drawn from the target probability density function $p(x)$, then these particles are used to estimate the expectation and variance of $f(x)$ by
+\begin{align*}
+E(f(x)) &= \int_a^bf(x)p(x)dx\\
+Var(f(x)) &= E(f(x)-E(f(x)))^2p(x)dx.
+\end{align*}
+Back to our target, the posterior distribution or density is empirically represented by a weighted sum of samples $x_1, \cdots, x_N$ 
+\begin{align*}
+\hat{p}(x_n\mid y_{1:k})=\frac{1}{N}\sum_{i=1}^N\delta (x_n-x_n^{(i)})\approx p(x_n\mid y_{1:k}),
+\end{align*}
+where $f(x)=\delta (x_n-x_n^{(i)})$ is Dirac delta function. When $N$ is sufficiently large, $\hat{p}(x_n\mid y_{1:k})$ approximates the true posterior $p(x_n\mid y_{1:k})$. By this approximation, the filtering problem becomes to get the expectation of current status
+\begin{align*}
+E(f(x_n)) &\approx \int f(x_n)\hat{p}(x_n\mid y_{1:k})dx_n \\
+ & =\frac{1}{N} \sum_{i=1}^N\int f(x_n) \delta (x_n-x_n^{(i)}) dx_n\\
+ & = \frac{1}{N}\sum_{i=1}^Nf(x_n^{(i)}).
+\end{align*}
+The expectation is the mean of the status of all particles $x_1, \cdots, x_N$. 
+
+However, the posterior distribution is unknown and impossible to sample from the true posterior. So some sampling methods are introduced.
+
+\subsection{Sampling Methods}
+
+\subsubsection{Importance sampling}
+
+It is common to sample from an easy-to-implement distribution, the so-called proposal distribution $q(x\mid y)$, hence
+\begin{align*}
+E(f(x)) &= \int f(x_k)\frac{p(x_k\mid y_{1:k})}{q(x_k\mid y_{1:k})} q(x_k\mid y_{1:k})dx_x\\
+&= \int f(x_k)\frac{p(x_k)p(y_{1:k}\mid x_k)}{p(y_{1:k})q(x_k\mid y_{1:k})} q(x_k\mid y_{1:k})dx_x\\
+&= \int f(x_k)\frac{W_k(x_k)}{p(y_{1:k})} q(x_k\mid y_{1:k})dx_x,
+\end{align*}
+where $W_k(x_k)=\frac{p(x_k)p(y_{1:k}\mid x_k)}{q(x_k\mid y_{1:k})} \propto \frac{p(x_k\mid y_{1:k})}{q(x_k\mid y_{1:k})}$. Because $p(y_{1:k})=\int p(y_{1:k}\mid x_k)p(x_k)dx_k$, so the above equation can be rewritten as
+\begin{align*}
+E(f(x)) &= \frac{1}{p(y_{1:k})}\int f(x_k)W_k(x_k)q(x_k\mid y_{1:k})dx_k\\
+&= \frac{ \int f(x_k)W_k(x_k)q(x_k\mid y_{1:k})dx_k }{\int p(y_{1:k}\mid x_k)p(x_k)dx_k} \\
+&= \frac{ \int f(x_k)W_k(x_k)q(x_k\mid y_{1:k})dx_k }{\int W_k(x_k)q(x_k\mid y_{1:k})dx_k} \\
+&= \frac{E_{q(x_k\mid y_{1:k})}[W_k(x_k)f(x_k)]}{E_{q(x_k\mid y_{1:k})}[W_k(x_k)]}.
+\end{align*}
+To solve the above equation, we can use Monte Carlo method by drawing samples $\{x_k^{(i)}\}$ from $q(x_k\mid y_{1:k})$ and get their expectation, which approximate by
+\begin{align*}
+E(f(x_k)) &\approx \frac{\frac{1}{N} \sum_{i=1}^{N} W_k(x_k^{(i)})f(x_k^{(i)})} {\frac{1}{N} \sum_{i=1}^{N} W_k(x_k^{(i)})}\\
+&= \sum_{i=1}^{N} \tilde{W}_k(x_k^{(i)})f(x_k^{(i)}),
+\end{align*}
+where $\tilde{W}_k(x_k^{(i)}) = \frac{ W_k(x_k^{(i)})}{\sum_{i=1}^NW_k(x_k^{(i)})}$ is factorized weight. Each particles has its own weighted value, so the expectation is a weighted mean. However, the drawback of this method is that the computation is quite expensive. A smarter way is to update $W_k^{(i)}$ recursively. Suppose the proposal distribution 
+\begin{align*}
+q(x_{0:k}\mid y_{1:k}) = q(x_{0:k-1}\mid y_{1:k-1}) q(x_k\mid  x_{0:k-1},y_{1:k}),
+\end{align*}
+then the recursive form of the posterior distribution is 
+\begin{align*}
+p(x_{0:k}\mid y_{1:k}) &= \frac{p(y_k\mid x_{0:k},y_{1:k-1})p(x_{0:k}\mid y_{1:k-1})}{p(y_k\mid y_{1:k-1})}\\
+&= \frac{p(y_k\mid x_{0:k},y_{1:k-1}) p(x_k\mid x_{0:k-1},y_{1:k-1}) p(x_{0:k-1}\mid y_{1:k-1} ) }{p(y_k\mid y_{1:k-1})}\\
+&= \frac{p(y_k\mid x_k) p(x_k\mid x_{k-1}) p(x_{0:k-1}\mid y_{1:k-1} ) }{p(y_k\mid y_{1:k-1})}\\
+&\propto p(y_k\mid x_k) p(x_k\mid x_{k-1}) p(x_{0:k-1}\mid y_{1:k-1} ),
+\end{align*}
+the recursive form of the weights are
+\begin{align*}
+W_k^{(i)} &\propto \frac{p(x_{0:k}^{(i)}\mid y_{1:k})}{q(x_{0:k}^{(i)}\mid y_{1:k})}\\
+&= \frac{ p(y_{1:k}\mid x_{0:k}^{(i)}) p(x_{k}^{(i)}\mid x_{k-1}^{(i)})  p(x_{0:k-1}^{(i)}\mid y_{1:k-1})}   { q(x_{k}^{(i)}\mid x_{0:k-1}^{(i)},y_{k})  q(x_{0:k-1}^{(i)}\mid y_{1:k-1}) } \\
+&= W_{k-1}^{(i)} \frac{ p(y_{1:k}\mid x_{0:k}^{(i)}) p(x_{k}^{(i)}\mid x_{k-1}^{(i)}) }   {q(x_{k}^{(i)}\mid x_{0:k-1}^{(i)},y_{k})}.
+\end{align*}
+
+\subsubsection{Sequential Importance Sampling and Resampling}
+ 
+In practice, we are interested in the current filtered estimate $p(x_k\mid y_{1:k})$ instead of $p(x_{0:k}\mid y_{1:k})$. Provided 
+\begin{align*}
+q(x_k\mid  x_{0:k-1},y_{1:k})=q(x_k\mid  x_{k-1},y_k),
+\end{align*}
+the importance weights $W_k^{(i)}$ can be updated recursively
+\begin{align*}
+W_k^{(i)} &\propto W_{k-1}^{(i)} \frac{ p(y_k\mid x_k^{(i)}) p(x_{k}^{(i)}\mid x_{k-1}^{(i)}) }   {q(x_{k}^{(i)}\mid x_{k-1}^{(i)},y_{k})}.
+\end{align*}
+
+The problem of SIS filter is that the distribution of importance weights becomes more and more skewed as time increases. Hence, after some iterations, only very few particles have non-zero importance weights. This phenomenon is called \textit{weight degeneracy} or \textit{sample impoverishment} \cite{smcmip2011}.
+
+The effective sample size $N_{eff}$ is suggested to monitor how bad the degeneration is, which is
+\begin{align*}
+N_{eff}=\frac{N}{1+var(w_k^{*(i)})},
+\end{align*}
+where $w_k^{*(i)}=\frac{p(x_k^{(i)}\mid y_{1:k})}{q(x_k^{(i)}\mid x_{k-1}^{(i)},y_{1:k})}$. The more different between the biggest weight and smallest weight, the worse the degeneration is. In practice, the effective sample size is approximated by
+\begin{align*}
+\hat{N}_{eff}\approx \frac{1}{\sum_{i=1}^{N}(w_k^{(i)})^2}.
+\end{align*}
+If the value of $N_{eff}$ is less than some threshold, some procedure should be used to avoid a worse degeneration. There are two ways one can do: choose an appropriate PDF for importance sampling, or use re-sampling after SIS. 
+
+The idea of resampling is keeping the same size of particles, replacing the low weights particles with new ones. As discussed before, 
+\begin{align*}
+p(x_k\mid y_{1:k})=\sum_{i=1}^Nw_k^{(i)} \delta (x_k-x_k^{(i)}).
+\end{align*}
+After resampling, it becomes
+\begin{align*}
+\tilde{p}(x_k\mid y_{1:k})=\sum_{j=1}^N\frac{1}{N} \delta (x_k-x_k^{(j)})= \sum_{i=1}^N\frac{n_i}{N} \delta (x_k-x_k^{(i)}),
+\end{align*}
+where $n_i$ represents how many times the new particles $x_k^{(j)}$ were duplicated from$x_k^{(i)}$. 
+
+Then the process of SIS particle filter with re-sampling is:
+\begin{itemize}
+\item Initial particles when $k=0$. For $i=1, \cdots, N$, draw samples $\{x_0^{(i)}\}$ from $p(x_0)$.
+\item For $k=1,2,\cdots$, run the process recursively
+\begin{itemize}
+\item Importance sampling: draw sample $\{\tilde{x}_k^{(i)}\}_{i=1}^N$ from $q(x_k\mid y_{1:k})$, calculate their weights $\tilde{w}_k^{(i)}$ and normalize them.
+\item Re-sampling: Re-sample $\{\tilde{x}_k^{(i)}, \tilde{w}_k^{(i)}\}$ and get a new set $\{x_k^{(i)},\frac{1}{N}\}$.
+\item Output the status at time $k$: $\hat{x}_k=\sum_{i=1}^{N}\tilde{x}_k^{(i)}\tilde{w}_k^{(i)}$.
+\end{itemize}
+\end{itemize}
+
+In SIR, if we choose
+\begin{align*}
+q(x_k^{(i)}\mid x_{k-1}^{(i)},y_k) = p(x_k^{(i)}\mid x_{k-1}^{(i)}),
+\end{align*}
+the weights become
+\begin{align*}
+w_k^{(i)}&\propto w_{k-1}^{(i)}\frac{ p(y_k\mid x_{k}^{(i)}) p(x_k^{(i)}\mid x_{k-1}^{(i)}) }{q(x_k^{(i)}\mid x_{k-1}^{(i)},y_k) }\\
+&\propto w_{k-1}^{(i)}p(y_k\mid x_{k}^{(i)}).
+\end{align*}
+Because $w_{k-1}^{(i)}=\frac{1}{N}$, thus we have $w_k^{(i)} \propto p(y_k\mid x_{k}^{(i)})$ and
+\begin{align*}
+w=\frac{1}{\sqrt{2\pi\Sigma}}exp\left(-\frac{1}{2} (y_{true}-y)\Sigma^{-1}(y_{true}-y)\right).
+\end{align*}
+
+
+\subsubsection{Metropolis-Hastings Algorithm with Delayed Acceptance}
+
+Importance sampling works well only if the proposal density $Q(x)$ is similar to $P(x)$. In large and complex problems it is difficult to create a single density $Q(x)$ that has this property \cite{mackay2003information}. Here, we introduce the Metropolis-Hastings algorithm, which makes use of a proposal density $Q(x)$ depending on the current state $x_t$ instead. We assume that we can evaluate $P^*(\theta)$ for any $\theta$. A tentative new state $\theta'$ is generated from the proposal density $Q(\theta';\theta^{(t)})$. To decide whether to accept the new state, we compute the quantity
+\begin{equation*}
+\alpha=\frac{P^*(\theta')}{P^*(\theta^{(t)})}\frac{Q(\theta^{(t)};\theta')}{Q(\theta';\theta^{(t)})}.
+\end{equation*}
+If $\alpha \geq 1$, then the new state is accepted. Otherwise, the new state is accepted with probability $\alpha$.
+
+In our case, the proposal $\theta' \sim N(\theta^{(t)}, \sigma)$, and the density $Q$ is symmetric, so
+\begin{equation*}
+\alpha=\frac{P^*(\theta')}{P^*(\theta^{(t)})}=\frac{P(y_{1:t}\mid \theta')P(\theta')}{P(y_{1:t}\mid \theta^{(t)})P(\theta^{(t)})}.
+\end{equation*}
+
+
+Delayed acceptance random walk Metropolis \cite{sherlock2016adaptive}
+
+1. Standard MH acceptance formula:
+\begin{align*}
+\alpha_1=\min\left\lbrace  1,\frac{\hat{\pi}(\theta^*)q(\theta\mid \theta^*)}{\hat{\pi}(\theta)q(\theta^*\mid \theta)}  \right\rbrace ,
+\end{align*}
+where $\hat{\pi}(\cdot)=N(\cdot\mid \hat{\theta},\sigma)$, $q(\theta^*\mid \theta)=N(\theta^*\mid \theta,\epsilon^2)$ and $q(\theta\mid \theta^*)=N(\theta\mid \theta^*,\epsilon^2)$.
+
+%$\hat{\theta}=0.8233$ is found by $optim(J)$ in $\textit{R}$ and $\sigma=0.23$ is found by transforming $Z=\frac{J-\mu_J}{s_J}$ and approximating with a normal distribution with mean $\hat{\theta}$.
+
+2. The acceptance probability is
+\begin{align*}
+\alpha_2=\min \left\lbrace  1,\frac{\pi(\theta^*)\hat{\pi}(\theta) }{\pi(\theta)\hat{\pi}(\theta^*)} \right\rbrace.
+\end{align*}
+
+The overall acceptance probability $\alpha_1\alpha_2$ ensures that detailed balance is satisfied with respect to $\pi$; however if a rejection occurs at Stage 1 then the expensive evaluation of $\pi(\theta)$ at Stage 2 is unnecessary.
+
+
+
+\section{Bayesian Parameter Estimation}
+
+The state transition density and the conditional likelihood function depend not only upon the dynamic state $x_t$, but also on a static parameter vector $\theta$, which will be stressed by use of the notations $f(x_t \mid x_{t-1},\theta)$ and $g(y_t\mid x_t,\theta)$. To estimate $\theta$, we would consider a Bayesian method in the following two situations: off-line, estimating the parameters by a batch of data, and on-line, by an instant updated sequential data stream. Specifically, the advantage of Bayesian than maximum likelihood method is that the unknown parameter is considered random and assigned a suitable prior distribution, which is addressed from the experiences of researchers or a learning process and easily to be implemented in the algorithm of machine learning.
+
+Generally, in the Bayesian setting, we choose a suitable prior density $p(\theta)$ for $\theta$ and compute the joint posterior density $p(x_{0:t},\theta \mid y_{0:t})$ in the off-line case, or the sequence of posterior densities $\{ p(x_{0:n},\theta \mid y_{0:n})\}$ in the on-line setting \cite{kantas2009overview}.
+
+\subsection{Off-line Methods}
+
+In the off-line setting, the parameters can be estimated with non-sequential Monte Carlo methods, such as Markov Chain Monte Carlo \cite{robert2004monte}. However, it is recognized that the sequential MC methods have some significant advantages in some certain cases, like \cite{cappe2009inference} and \cite{del2006sequential}. Additionally, it is difficult to design an efficient MCMC sampling algorithm for a nonlinear non-Gaussian state space model. A Particle  MCMC method is proposed by \cite{andrieu2010particle}, which is a new class of MCMC techniques relying on Standard MC methods to build efficient high dimensional proposal distributions. 
+
+PMMH jointly updates $\theta$ and $x_{0:t}$ for state space models. It proposes a new $\theta^*$ from a proposal density function $q(\theta^* \mid \theta)$, and then generates $x^*_{0:t}$ by running bootstrap particle filter with $\theta^*$. The acceptance ratio of this sampler is
+\begin{align*}
+\alpha &= \min \left\lbrace 1,\frac{ p(x_{0:t}^*, \theta^* \mid y_{0:t} ) q((x_{0:t},\theta) \mid  (x_{0:t}^*,\theta^*)   ) }{  p(x_{0:t}, \theta \mid y_{0:t} ) q((x_{0:t}^*,\theta^*) \mid  (x_{0:t},\theta) ) }  \right\rbrace \\
+           &= \min \left\lbrace 1,\frac{p_{\theta^*} (y_{0:t}) p(\theta^*)q(\theta\mid\theta^*) }{  p_{\theta} (y_{0:t}) p(\theta)q(\theta^*\mid\theta)  }  \right\rbrace .
+\end{align*}
+The PMMH sampler is an approximation of the ideal MMH sampler for sampling from $p(x^t,\theta\mid y^t)$. Apparently, the higher number of particles $N$ the better the mixing properties of the algorithm, in contrast, the lower efficiency of computation.
+
+%
+%The data likelihood is
+%\begin{align*}
+%l_{1:t}(y^t\mid \theta) = \int p(y^t,x^t\mid\theta)dx^t
+%\end{align*}
+%and the prediction likelihood is 
+%\begin{align*}
+%l_{t+1}(y_{t+1}\mid y^t,\theta) &= \int p(y_{t+1},x_{t+1}\mid y^t,\theta)dx_{t+1} \propto \sum_{i=1}^N\omega_{t+1}^{(i)},
+%\end{align*}
+%where $\omega_{t+1}^{(i)} = g(y_{t+1}\mid x_t^{(i)},\theta)$ are the unnormalized importance weights of particles. 
+%
+%If the dimension of $\theta$ is small, one can directly use  the particle approximation to the likelihood $l_{t+1}(y^t\mid\theta)$ for instance evaluated on a grid of values of $\theta$. If the dimension is large, a natural option is using iterative optimization algorithms, such as EM. The most natural sequential Monte Carlo approximation equation is given by
+%\begin{align*}
+%\hat{\tau}_{t\mid 0:t}(y^t,\theta) =  \sum_{i=1}^{N}\omega_t^{(i)}\sum_{t=0}^{t-1}s_t(x_t^{(i)},x_{t+1}^{(i)}).
+%\end{align*}
+%Such approximations have been used with reasonable success either using MC versions of EM algorithm or stochastic gradient procedures. However, when the number of observations $t$ becomes large, the number $N$ of particles should be increased to ensure the convergence of the optimization procedure. 
+
+%\propto \sum_{i=1}^N\omega^{(i)}\int g(y_{t+1}\mid x_{t+1},\theta)f(x_{t+1}\mid x_t^{(i)},\theta)dx_{t+1}.
+
+
+
+\subsection{On-line Methods}
+
+Putting the algorithms on-line means to update the parameters and states instantly as new observations coming into the data stream. For Bayesian dynamic models, however, the most natural option consists in treating the unknown parameter $\theta$, using the state space representation, as a component of the state which has no dynamic evolution, also referred to as a static parameter \cite{cappe2007overview}. 
+
+The standard SMC is deficiency for on-line estimation. As a result of the successive resampling steps, after a certain time $n$, the approximation $\hat{p}(\theta\mid y^{1:t})$ will only contain a single unique value for $\theta$. In other words, SMC approximation of the marginalized parameter posterior distribution is represented by a single Dirac delta
+function. It also causes error accumulation in successive Monte Carlo (MC) steps grows exponentially or polynomially in time.
+
+The target is to estimate $p(\theta \mid y_{1:t})$ by
+\begin{equation}
+p(\theta \mid y_{1:t}) \propto p(y_{1:t} \mid \theta ) p(\theta )
+\end{equation}
+without introducing any bias or controlling the bias in states propagation. A pragmatic approach to reduce parameter sample degeneracy and error accumulation in successive MC approximations is to adding an artificial dynamic equation on $\theta$ \cite{higuchi2001self} \cite{kitagawa1998self}, which gives
+\begin{align*}
+\theta_{n+1} = \theta_n+\varepsilon_{n+1}.
+\end{align*}
+With a small artificial noise, SMC can now be applied to approximate $p(x^t,\theta\mid y^t)$. A related kernel density estimation method proposes a kernel density estimate of the target \cite{liu2001combined} \begin{align*}
+\hat{p}(\theta\mid y^t) = \frac{1}{N}\sum M(\theta-\theta_n^{(i)}). 
+\end{align*} 
+Both of these methods require a significant amount of tuning.
+
+A fixed-lag practical filtering is used to approximate
+\begin{align*}
+p(x_{0:n-L},\theta\mid y_{0:n-1})\approx p(x_{0:n-L},\theta \mid y^n)
+\end{align*}
+for $L$ large enough in reference \cite{polson2008practical}. $x_{0:n-L}$ has very little influence on observations coming after $n$. The choice of the lag $L$ is difficult and ther is a non-vanishing bias which is difficult to quantify.
+
+A MCMC kernel with invariant density $p(x^t,\theta\mid y^t)$ is used in SMC algorithm. This method was firstly used in an on-line Bayesian parameter estimation, where the author in \cite{andrieu1999sequential} were using
+\begin{align*}
+K_n(x_{1:t}',\theta'\mid x_{1:t},\theta) = \delta_{x_{1:t}}(x_{1:t} ')p(\theta'\mid x_{1:t},y_{1:t}),
+\end{align*}
+where $p(y^t\mid\theta,x^t)=p(\theta\mid s_t(x^t,y^t))$ and $s_t(x^t,y^t)$ is a fixed-dimensional vector of sufficient statistics. MCMC can be used to maintain the diversity of the samples of $\theta$. Here the stationary distribution for the MCMC will be the full joint posterior distribution of states and parameters and apply MH or Gibbs sampling separately to $p(\theta \mid x^t,y^t)$ and $p(x^t \mid \theta,y^t)$. However, this method is not feasible for large dataset. 
+
+
+\section{A Sequential Monte Carlo Algorithm for Parameter Estimation}
+Several methods can be used for parameter estimation, cross validation, EM method, Gibbs sampling and  Metropolis-Hastings algorithm. 
+
+The process is
+\begin{align*}
+y_t\mid x_t      &\sim N(x_t,\sigma^2) \\
+x_t\mid x_{t-1} &\sim N(\phi x_{t-1},\tau^2).
+\end{align*}
+The joint distribution of $x_{0:t}$ and $y_{1:t}$ is
+\begin{equation*}
+\begin{bmatrix} x\\y \end{bmatrix}
+\sim N\left(0, \Sigma  \right),
+\end{equation*}
+where $\Sigma^{-1}$ is
+\begin{equation*}
+\begin{bmatrix}
+\frac{1}{L^2}+\frac{\phi^2}{\tau^2} & \frac{-\phi}{\tau^2} & \cdots & 0 & 0 & 0& \cdots & 0\\\\
+\frac{-\phi}{\tau^2}   & \frac{1+\phi^2}{\tau^2}+\frac{1}{\sigma^2}& \cdots & 0 & -\frac{1}{\sigma^2} &0 & \cdots & 0 \\
+0 & \frac{-\phi}{\tau^2}   &  \cdots & 0 & 0& -\frac{1}{\sigma^2} & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+0 & 0   &  \cdots & \frac{1}{\tau^2}+\frac{1}{\sigma^2} & 0 & 0 & \cdots &-\frac{1}{\sigma^2}\\
+0 & -\frac{1}{\sigma^2}  & \cdots & 0 & \frac{1}{\sigma^2} & 0 & \cdots & 0 \\
+0& 0 & \cdots & 0 & 0 &  \frac{1}{\sigma^2} & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \ddots & \vdots\\
+0 & 0& \cdots &-\frac{1}{\sigma^2} & 0 & 0 & \cdots &  \frac{1}{\sigma^2}
+\end{bmatrix}.
+\end{equation*}
+The block matrix $\Sigma^{-1}=\begin{bmatrix} A(\theta) & -\frac{1}{\sigma^2}I \\ -\frac{1}{\sigma^2}I & \frac{1}{\sigma^2}I \end{bmatrix}$ and
+\begin{equation*}
+\Sigma =\begin{bmatrix} (A-B)^{-1} & (A-B)^{-1}\\(A-B)^{-1}& (I-A^{-1}B)^{-1}B^{-1} \end{bmatrix},
+\end{equation*}
+where $\theta =\{\phi,\tau,\sigma\}$ and $B=\frac{1}{\sigma^2}I$. The posterior of $\phi$ is 
+\begin{align*}
+P(\theta \mid  y_{1:t}) &= \frac{P(y_{1:t}\mid \theta)P(\theta) }{P(y_{1:t})}\propto P(y_{1:t}\mid \theta)P(\theta) \\
+&=e^{-\frac{1}{2}y^\top B(I-A^{-1}B)y} \sqrt{\det B(I-A^{-1}B)} P(\theta).
+\end{align*}
+Because $\det B(I-A^{-1}B)=\det(B)\det(A^{-1})\det(A-B)=\frac{1}{\sigma^{2n}\tau^{2n} \det A}$. Taking the Cholesky decomposition of $A=LL^\top$ and natural logarithm of the posterior will give us
+\begin{align*}
+\ln P(\theta \mid  y_{1:t}) = \frac{1}{2\sigma^4}u^\top u - \frac{1}{2\sigma^2}y^\top y - n\ln\sigma-n\ln\tau-\sum\ln tr(L)-\frac{n}{2}\ln(2\pi).
+\end{align*}
+
+
+\section{States Estimation}
+

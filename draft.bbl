@@ -14,6 +14,33 @@ Agarwal, P.~K., Arge, L., and Erickson, J. (2003).
 \newblock {\em Journal of Computer and System Sciences\/},~{\em 66\/}(1),
   207--243.
 
+\bibitem[\protect\citeauthoryear{Andrieu, De~Freitas, and Doucet}{Andrieu {\em
+  et~al.}}{1999}]{andrieu1999sequential}
+Andrieu, C., De~Freitas, N., and Doucet, A. (1999).
+\newblock Sequential MCMC for Bayesian model selection.
+\newblock In {\em Higher-Order Statistics, 1999. Proceedings of the IEEE Signal
+  Processing Workshop on},  130--134. IEEE.
+
+\bibitem[\protect\citeauthoryear{Andrieu, Doucet, and Holenstein}{Andrieu {\em
+  et~al.}}{2010}]{andrieu2010particle}
+Andrieu, C., Doucet, A., and Holenstein, R. (2010).
+\newblock Particle markov chain monte carlo methods.
+\newblock {\em Journal of the Royal Statistical Society: Series B (Statistical
+  Methodology)\/},~{\em 72\/}(3), 269--342.
+
+\bibitem[\protect\citeauthoryear{Arnaud~Doucet}{Arnaud~Doucet}{2011}]{smcmip2011}
+Arnaud~Doucet, Nando de~Freitas, N.~G. (Ed.) (2011).
+\newblock {\em Sequential Monte Carlo Methods in Practice}.
+\newblock Springer-Verlag New York.
+
+\bibitem[\protect\citeauthoryear{Arulampalam, Maskell, Gordon, and
+  Clapp}{Arulampalam {\em et~al.}}{2002}]{arulampalam2002tutorial}
+Arulampalam, M.~S., Maskell, S., Gordon, N., and Clapp, T. (2002).
+\newblock A tutorial on particle filters for online nonlinear/non-Gaussian
+  Bayesian tracking.
+\newblock {\em IEEE Transactions on signal processing\/},~{\em 50\/}(2),
+  174--188.
+
 \bibitem[\protect\citeauthoryear{Aydin and Tuzemen}{Aydin and
   Tuzemen}{2012}]{aydin2012smoothing}
 Aydin, D. and Tuzemen, M.~S. (2012).
@@ -27,6 +54,19 @@ Berlinet, A. and Thomas-Agnan, C. (2011).
 \newblock {\em Reproducing kernel Hilbert spaces in probability and
   statistics}.
 \newblock Springer Science \& Business Media.
+
+\bibitem[\protect\citeauthoryear{Capp{\'e}, Godsill, and Moulines}{Capp{\'e}
+  {\em et~al.}}{2007}]{cappe2007overview}
+Capp{\'e}, O., Godsill, S.~J., and Moulines, E. (2007).
+\newblock An overview of existing methods and recent advances in sequential
+  Monte Carlo.
+\newblock {\em Proceedings of the IEEE\/},~{\em 95\/}(5), 899--924.
+
+\bibitem[\protect\citeauthoryear{Capp{\'e}, Moulines, and Ryd{\'e}n}{Capp{\'e}
+  {\em et~al.}}{2009}]{cappe2009inference}
+Capp{\'e}, O., Moulines, E., and Ryd{\'e}n, T. (2009).
+\newblock Inference in hidden markov models.
+\newblock In {\em Proceedings of EUSFLAT Conference},  14--16.
 
 \bibitem[\protect\citeauthoryear{Chen}{Chen}{2009}]{chen2009feedback}
 Chen, W.-K. (2009).
@@ -45,6 +85,18 @@ De~Boor, C., De~Boor, C., Math{\'e}maticien, E.-U., De~Boor, C., and De~Boor,
   C. (1978).
 \newblock {\em A practical guide to splines}, Volume~27.
 \newblock Springer-Verlag New York.
+
+\bibitem[\protect\citeauthoryear{De~Jong}{De~Jong}{1988}]{de1988likelihood}
+De~Jong, P. (1988).
+\newblock The likelihood for a state space model.
+\newblock {\em Biometrika\/}, 165--169.
+
+\bibitem[\protect\citeauthoryear{Del~Moral, Doucet, and Jasra}{Del~Moral {\em
+  et~al.}}{2006}]{del2006sequential}
+Del~Moral, P., Doucet, A., and Jasra, A. (2006).
+\newblock Sequential monte carlo samplers.
+\newblock {\em Journal of the Royal Statistical Society: Series B (Statistical
+  Methodology)\/},~{\em 68\/}(3), 411--436.
 
 \bibitem[\protect\citeauthoryear{Donoho and Johnstone}{Donoho and
   Johnstone}{1995}]{donoho1995adapting}
@@ -81,6 +133,13 @@ Erkorkmaz, K. and Altintas, Y. (2001).
 \newblock {\em International Journal of machine tools and manufacture\/},~{\em
   41\/}(9), 1323--1345.
 
+\bibitem[\protect\citeauthoryear{Gordon, Salmond, and Smith}{Gordon {\em
+  et~al.}}{1993}]{gordon1993novel}
+Gordon, N.~J., Salmond, D.~J., and Smith, A.~F. (1993).
+\newblock Novel approach to nonlinear/non-Gaussian Bayesian state estimation.
+\newblock In {\em IEE Proceedings F (Radar and Signal Processing)}, Volume 140,
+   107--113. IET.
+
 \bibitem[\protect\citeauthoryear{Green and Silverman}{Green and
   Silverman}{1993}]{green1993nonparametric}
 Green, P.~J. and Silverman, B.~W. (1993).
@@ -99,16 +158,55 @@ Gu, C. (2013).
 \newblock {\em Smoothing Spline ANOVA Models Second Edition}.
 \newblock Springer New York Heidelberg Dordrecht London.
 
+\bibitem[\protect\citeauthoryear{Handschin}{Handschin}{1970}]{handschin1970monte}
+Handschin, J. (1970).
+\newblock Monte Carlo techniques for prediction and filtering of non-linear
+  stochastic processes.
+\newblock {\em Automatica\/},~{\em 6\/}(4), 555--563.
+
+\bibitem[\protect\citeauthoryear{Handschin and Mayne}{Handschin and
+  Mayne}{1969}]{handschin1969monte}
+Handschin, J.~E. and Mayne, D.~Q. (1969).
+\newblock Monte Carlo techniques to estimate the conditional expectation in
+  multi-stage non-linear filtering.
+\newblock {\em International journal of control\/},~{\em 9\/}(5), 547--559.
+
+\bibitem[\protect\citeauthoryear{Hangos, Bokor, and Szederk{\'e}nyi}{Hangos
+  {\em et~al.}}{2006}]{hangos2006analysis}
+Hangos, K.~M., Bokor, J., and Szederk{\'e}nyi, G. (2006).
+\newblock {\em Analysis and control of nonlinear process systems}.
+\newblock Springer Science \& Business Media.
+
 \bibitem[\protect\citeauthoryear{Hastie and Tibshirani}{Hastie and
   Tibshirani}{1990}]{hastie1990generalized}
 Hastie, T.~J. and Tibshirani, R.~J. (1990).
 \newblock {\em Generalized additive models}, Volume~43.
 \newblock CRC Press.
 
+\bibitem[\protect\citeauthoryear{Higuchi}{Higuchi}{2001}]{higuchi2001self}
+Higuchi, T. (2001).
+\newblock Self-organizing time series model.
+\newblock In {\em Sequential Monte Carlo Methods in Practice},  429--444.
+  Springer.
+
 \bibitem[\protect\citeauthoryear{Judd}{Judd}{1998}]{judd1998numerical}
 Judd, K.~L. (1998).
 \newblock {\em Numerical methods in economics}.
 \newblock MIT press.
+
+\bibitem[\protect\citeauthoryear{Kalman {\em et~al.}}{Kalman {\em
+  et~al.}}{1960}]{kalman1960new}
+Kalman, R.~E. {\em et~al.} (1960).
+\newblock A new approach to linear filtering and prediction problems.
+\newblock {\em Journal of basic Engineering\/},~{\em 82\/}(1), 35--45.
+
+\bibitem[\protect\citeauthoryear{Kantas, Doucet, Singh, and Maciejowski}{Kantas
+  {\em et~al.}}{2009}]{kantas2009overview}
+Kantas, N., Doucet, A., Singh, S., and Maciejowski, J. (2009).
+\newblock An overview of sequential Monte Carlo methods for parameter
+  estimation.
+\newblock In {\em in General State-Space Models,” in IFAC System
+  Identification, no. Ml}. Citeseer.
 
 \bibitem[\protect\citeauthoryear{Kim and Gu}{Kim and
   Gu}{2004}]{kim2004smoothing}
@@ -133,21 +231,78 @@ Kimeldorf, G.~S. and Wahba, G. (1970).
 \newblock {\em The Annals of Mathematical Statistics\/},~{\em 41\/}(2),
   495--502.
 
+\bibitem[\protect\citeauthoryear{Kitagawa}{Kitagawa}{1996}]{kitagawa1996monte}
+Kitagawa, G. (1996).
+\newblock Monte Carlo filter and smoother for non-Gaussian nonlinear state
+  space models.
+\newblock {\em Journal of computational and graphical statistics\/},~{\em
+  5\/}(1), 1--25.
+
+\bibitem[\protect\citeauthoryear{Kitagawa}{Kitagawa}{1998}]{kitagawa1998self}
+Kitagawa, G. (1998).
+\newblock A self-organizing state-space model.
+\newblock {\em Journal of the American Statistical Association\/}, 1203--1215.
+
+\bibitem[\protect\citeauthoryear{Liu and West}{Liu and
+  West}{2001}]{liu2001combined}
+Liu, J. and West, M. (2001).
+\newblock Combined parameter and state estimation in simulation-based
+  filtering.
+\newblock In {\em Sequential Monte Carlo methods in practice},  197--223.
+  Springer.
+
 \bibitem[\protect\citeauthoryear{Liu and Guo}{Liu and Guo}{2010}]{liu2010data}
 Liu, Z. and Guo, W. (2010).
 \newblock Data driven adaptive spline smoothing.
 \newblock {\em Statistica Sinica\/}, 1143--1163.
+
+\bibitem[\protect\citeauthoryear{MacKay}{MacKay}{2003}]{mackay2003information}
+MacKay, D.~J. (2003).
+\newblock {\em Information theory, inference and learning algorithms}.
+\newblock Cambridge university press.
 
 \bibitem[\protect\citeauthoryear{Nason}{Nason}{2010}]{nason2010wavelet}
 Nason, G. (2010).
 \newblock {\em Wavelet methods in statistics with R}.
 \newblock Springer Science \& Business Media.
 
+\bibitem[\protect\citeauthoryear{Peng}{Peng}{1983}]{peng1983}
+Peng, F. (1983).
+\newblock A Necessary and Sufficient Condition to Judg Function Linearly
+  Independent.
+\newblock {\em JOURNAL OF JISHOU UNIVERSITY(NATURAL SCIENCE EDITION)\/},~(0),
+  25--28.
+
+\bibitem[\protect\citeauthoryear{Petris, Petrone, and Campagnoli}{Petris {\em
+  et~al.}}{2009}]{petris2009dynamic}
+Petris, G., Petrone, S., and Campagnoli, P. (2009).
+\newblock Dynamic linear models.
+\newblock {\em Dynamic Linear Models with R\/}, 31--84.
+
+\bibitem[\protect\citeauthoryear{Polson, Stroud, and M{\"u}ller}{Polson {\em
+  et~al.}}{2008}]{polson2008practical}
+Polson, N.~G., Stroud, J.~R., and M{\"u}ller, P. (2008).
+\newblock Practical filtering with sequential parameter learning.
+\newblock {\em Journal of the Royal Statistical Society: Series B (Statistical
+  Methodology)\/},~{\em 70\/}(2), 413--428.
+
 \bibitem[\protect\citeauthoryear{Rasmussen and Williams}{Rasmussen and
   Williams}{2006}]{b_gpml}
 Rasmussen, C.~E. and Williams, C. K.~I. (2006).
 \newblock {\em Gaussian Processes for Machine Learning}.
 \newblock The MIT Press.
+
+\bibitem[\protect\citeauthoryear{Ristic, Arulampalam, and Gordon}{Ristic {\em
+  et~al.}}{2004}]{ristic2004beyond}
+Ristic, B., Arulampalam, S., and Gordon, N. (2004).
+\newblock Beyond the Kalman filter.
+\newblock {\em IEEE Aerospace and Electronic Systems Magazine\/},~{\em
+  19\/}(7), 37--38.
+
+\bibitem[\protect\citeauthoryear{Robert}{Robert}{2004}]{robert2004monte}
+Robert, C.~P. (2004).
+\newblock {\em Monte carlo methods}.
+\newblock Wiley Online Library.
 
 \bibitem[\protect\citeauthoryear{Schwarz}{Schwarz}{2012}]{schwarz2012geodesy}
 Schwarz, K.-P. (2012).
@@ -160,6 +315,14 @@ Schwarz, K.-P. (2012).
 Sealfon, C., Verde, L., and Jimenez, R. (2005).
 \newblock Smoothing spline primordial power spectrum reconstruction.
 \newblock {\em Physical Review D\/},~{\em 72\/}(10), 103520.
+
+\bibitem[\protect\citeauthoryear{Sherlock, Golightly, and Henderson}{Sherlock
+  {\em et~al.}}{2016}]{sherlock2016adaptive}
+Sherlock, C., Golightly, A., and Henderson, D.~A. (2016).
+\newblock Adaptive, delayed-acceptance MCMC for targets with expensive
+  likelihoods.
+\newblock {\em Journal of Computational and Graphical
+  Statistics\/},~(just-accepted).
 
 \bibitem[\protect\citeauthoryear{Silverman}{Silverman}{1985}]{silverman1985some}
 Silverman, B.~W. (1985).
@@ -185,11 +348,24 @@ Wahba, G. (1990).
 \newblock {\em Spline models for observational data}, Volume~59.
 \newblock Siam.
 
+\bibitem[\protect\citeauthoryear{Wahba and Wold}{Wahba and
+  Wold}{1975}]{wahba1975completely}
+Wahba, G. and Wold, S. (1975).
+\newblock A completely automatic French curve: Fitting spline functions by
+  cross validation.
+\newblock {\em Communications in Statistics-Theory and Methods\/},~{\em
+  4\/}(1), 1--17.
+
 \bibitem[\protect\citeauthoryear{Wang}{Wang}{1998}]{wang1998smoothing}
 Wang, Y. (1998).
 \newblock Smoothing spline models with correlated random errors.
 \newblock {\em Journal of the American Statistical Association\/},~{\em
   93\/}(441), 341--348.
+
+\bibitem[\protect\citeauthoryear{West}{West}{1993}]{west1993mixture}
+West, M. (1993).
+\newblock Mixture models, Monte Carlo, Bayesian updating, and dynamic models.
+\newblock {\em Computing Science and Statistics\/}, 325--325.
 
 \bibitem[\protect\citeauthoryear{Yang and Sukkarieh}{Yang and
   Sukkarieh}{2010}]{yang2010analytical}

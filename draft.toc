@@ -1,20 +1,46 @@
-\contentsline {section}{\numberline {1.1}Introduction}{1}
-\contentsline {section}{\numberline {1.2}Tractor Spline}{4}
-\contentsline {subsection}{\numberline {1.2.1}Objective Function}{4}
-\contentsline {subsection}{\numberline {1.2.2}Basis Functions}{4}
-\contentsline {subsection}{\numberline {1.2.3}Solution to The Objective Function}{6}
-\contentsline {subsection}{\numberline {1.2.4}Adjusted Penalty Term and Parameter Function}{8}
-\contentsline {section}{\numberline {1.3}Parameter Selection and Cross Validation}{9}
-\contentsline {section}{\numberline {1.4}Simulation}{11}
-\contentsline {subsection}{\numberline {1.4.1}Numerical Examples}{11}
-\contentsline {subsection}{\numberline {1.4.2}Evaluation}{17}
-\contentsline {section}{\numberline {1.5}Conclusion and Discussion}{17}
-\contentsline {section}{\numberline {1.6}Introduction}{20}
-\contentsline {subsection}{\numberline {1.6.1}Spline}{20}
-\contentsline {subsection}{\numberline {1.6.2}Gaussian Process Regression}{21}
-\contentsline {subsection}{\numberline {1.6.3}The Smoothing Spline as Bayes Estimates}{22}
-\contentsline {section}{\numberline {1.7}A reproducing kernel on $\mathcal {C}_{p.w.}^{2}[0,1]$}{23}
-\contentsline {section}{\numberline {1.8}Computation of Polynomial Smoothing Splines}{24}
-\contentsline {section}{\numberline {1.9}Polynomial Smoothing Splines as Bayes Estimates}{25}
-\contentsline {section}{\numberline {1.10}Numeric Simulation of Smoothing Spline and GPR}{27}
-\contentsline {chapter}{\hbox to\@tempdima {\hfil }References}{29}
+\contentsline {section}{\numberline {0.1}Introduction}{1}
+\contentsline {section}{\numberline {0.2}Gaussian Process Regression}{2}
+\contentsline {section}{\numberline {0.3}A Reproducing Kernel in Space $\mathbb {H}$}{4}
+\contentsline {section}{\numberline {0.4}Covariance Matrix and Posterior Mean}{6}
+\contentsline {section}{\numberline {0.5}A 1-D Gaussian Process Spline Construction}{7}
+\contentsline {subsection}{\numberline {0.5.1}Tractor Spline}{7}
+\contentsline {subsection}{\numberline {0.5.2}Tractor Spline Estimated by GP}{11}
+\contentsline {section}{\numberline {0.6}Cross Validation}{13}
+\contentsline {subsection}{\numberline {0.6.1}K-Fold Cross Validation}{15}
+\contentsline {section}{\numberline {1.7}Writing Something}{17}
+\contentsline {section}{\numberline {1.8}Introduction}{17}
+\contentsline {section}{\numberline {1.9}Tractor Spline}{20}
+\contentsline {subsection}{\numberline {1.9.1}Objective Function}{20}
+\contentsline {subsection}{\numberline {1.9.2}Basis Functions}{20}
+\contentsline {subsection}{\numberline {1.9.3}Solution to The Objective Function}{22}
+\contentsline {subsection}{\numberline {1.9.4}Adjusted Penalty Term and Parameter Function}{24}
+\contentsline {section}{\numberline {1.10}Parameter Selection and Cross Validation}{25}
+\contentsline {section}{\numberline {1.11}Simulation}{27}
+\contentsline {subsection}{\numberline {1.11.1}Numerical Examples}{27}
+\contentsline {subsection}{\numberline {1.11.2}Evaluation}{33}
+\contentsline {section}{\numberline {1.12}Conclusion and Discussion}{33}
+\contentsline {section}{\numberline {1.13}Introduction}{36}
+\contentsline {subsection}{\numberline {1.13.1}Spline}{36}
+\contentsline {subsection}{\numberline {1.13.2}Gaussian Process Regression}{37}
+\contentsline {subsection}{\numberline {1.13.3}The Smoothing Spline as Bayes Estimates}{38}
+\contentsline {section}{\numberline {1.14}A reproducing kernel on $\mathcal {C}_{p.w.}^{2}[0,1]$}{39}
+\contentsline {section}{\numberline {1.15}Computation of Polynomial Smoothing Splines}{40}
+\contentsline {section}{\numberline {1.16}Polynomial Smoothing Splines as Bayes Estimates}{41}
+\contentsline {section}{\numberline {1.17}Numeric Simulation of Smoothing Spline and GPR}{43}
+\contentsline {section}{\numberline {3.18}State Space Models}{45}
+\contentsline {section}{\numberline {3.19}Sequential Monte Carlo Method}{46}
+\contentsline {subsection}{\numberline {3.19.1}Filtering Problem and Estimation}{47}
+\contentsline {subsection}{\numberline {3.19.2}Sampling Methods}{48}
+\contentsline {subsubsection}{Importance sampling}{48}
+\contentsline {subsubsection}{Sequential Importance Sampling and Resampling}{50}
+\contentsline {subsubsection}{Metropolis-Hastings Algorithm with Delayed Acceptance}{52}
+\contentsline {section}{\numberline {3.20}Bayesian Parameter Estimation}{52}
+\contentsline {subsection}{\numberline {3.20.1}Off-line Methods}{53}
+\contentsline {subsection}{\numberline {3.20.2}On-line Methods}{53}
+\contentsline {section}{\numberline {3.21}A Sequential Monte Carlo Algorithm for Parameter Estimation}{55}
+\contentsline {section}{\numberline {3.22}States Estimation}{56}
+\contentsline {section}{\numberline {4.23}OU process}{57}
+\contentsline {section}{\numberline {4.24}Procedure and Covariance Matrix}{57}
+\contentsline {section}{\numberline {4.25}Log Likelihood Function}{58}
+\contentsline {section}{\numberline {4.26}$p(x\mid \theta ,y)$}{59}
+\contentsline {chapter}{\hbox to\@tempdima {\hfil }References}{63}
