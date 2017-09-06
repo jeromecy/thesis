@@ -3,7 +3,7 @@
 \contentsline {section}{\numberline {0.3}A Reproducing Kernel in Space $\mathbb {H}$}{4}
 \contentsline {section}{\numberline {0.4}Covariance Matrix and Posterior Mean}{6}
 \contentsline {section}{\numberline {0.5}A 1-D Gaussian Process Spline Construction}{7}
-\contentsline {subsection}{\numberline {0.5.1}Tractor Spline}{7}
+\contentsline {subsection}{\numberline {0.5.1}Tractor Spline}{8}
 \contentsline {subsection}{\numberline {0.5.2}Tractor Spline Estimated by GP}{11}
 \contentsline {section}{\numberline {0.6}Cross Validation}{13}
 \contentsline {subsection}{\numberline {0.6.1}K-Fold Cross Validation}{15}
@@ -39,8 +39,26 @@
 \contentsline {subsection}{\numberline {3.20.2}On-line Methods}{53}
 \contentsline {section}{\numberline {3.21}A Sequential Monte Carlo Algorithm for Parameter Estimation}{55}
 \contentsline {section}{\numberline {3.22}States Estimation}{56}
-\contentsline {section}{\numberline {4.23}OU process}{57}
-\contentsline {section}{\numberline {4.24}Procedure and Covariance Matrix}{57}
-\contentsline {section}{\numberline {4.25}Log Likelihood Function}{58}
-\contentsline {section}{\numberline {4.26}$p(x\mid \theta ,y)$}{59}
-\contentsline {chapter}{\hbox to\@tempdima {\hfil }References}{63}
+\contentsline {section}{\numberline {4.23}State Space Models}{57}
+\contentsline {section}{\numberline {4.24}Sequential Monte Carlo Method}{58}
+\contentsline {subsection}{\numberline {4.24.1}Filtering Problem and Estimation}{59}
+\contentsline {subsection}{\numberline {4.24.2}Sampling Methods}{60}
+\contentsline {subsubsection}{Importance sampling}{60}
+\contentsline {subsubsection}{Sequential Importance Sampling and Resampling}{62}
+\contentsline {subsubsection}{Delayed Acceptance Metropolis-Hastings Algorithm}{64}
+\contentsline {section}{\numberline {4.25}Bayesian Parameter Estimation}{65}
+\contentsline {subsection}{\numberline {4.25.1}Off-line Methods}{65}
+\contentsline {subsection}{\numberline {4.25.2}On-line Methods}{66}
+\contentsline {section}{\numberline {4.26}Combined State and Parameters Estimation of Sequential Monte Carlo Algorithm}{67}
+\contentsline {subsection}{\numberline {4.26.1}General Linear Space}{68}
+\contentsline {subsubsection}{The Forecast Distribution $p(y_{t+1}\mid y_{1:t},\theta )$}{69}
+\contentsline {subsubsection}{The Estimation Distribution $p(x_{t+1}\mid y_{1:t+1},\theta )$}{71}
+\contentsline {subsubsection}{Approximations of The Parameters Posterior}{72}
+\contentsline {subsection}{\numberline {4.26.2}High Dimension Parameters Space of OU-Process}{73}
+\contentsline {subsubsection}{The Forecast Distribution $p(Y_{t+1}| Y_{1:t},\theta )$}{76}
+\contentsline {subsubsection}{The Estimation Distribution $p(X_{t+1}| Y_{1:t+1},\theta )$}{80}
+\contentsline {subsubsection}{Approximations of The Parameters Posterior}{80}
+\contentsline {section}{\numberline {4.27}Prior Distribution for Variance Parameters}{81}
+\contentsline {subsection}{\numberline {4.27.1}Priors Discussion}{82}
+\contentsline {subsection}{\numberline {4.27.2}Discussion two}{83}
+\contentsline {chapter}{\hbox to\@tempdima {\hfil }References}{85}

@@ -61,7 +61,7 @@
   number = {2},
   owner = {zcao},
   publisher = {Ieee},
-  timestamp = {2017.05.23}
+  timestamp = {2017.09.06}
 }
 
 @ARTICLE{aydin2012smoothing,
@@ -76,11 +76,43 @@
   publisher = {Asian Network for Scientific Information (ANSINET)}
 }
 
+@ARTICLE{bartlett1951inverse,
+  author = {Bartlett, Maurice S},
+  title = {An inverse matrix adjustment arising in discriminant analysis},
+  journal = {The Annals of Mathematical Statistics},
+  year = {1951},
+  volume = {22},
+  pages = {107--111},
+  number = {1},
+  owner = {zcao},
+  publisher = {JSTOR},
+  timestamp = {2017.09.06}
+}
+
 @BOOK{berlinet2011reproducing,
   title = {Reproducing kernel Hilbert spaces in probability and statistics},
   publisher = {Springer Science \& Business Media},
   year = {2011},
   author = {Berlinet, Alain and Thomas-Agnan, Christine}
+}
+
+@MISC{bodewig1959matrix,
+  author = {Bodewig, E},
+  title = {Matrix Calculus, North},
+  year = {1959},
+  owner = {zcao},
+  publisher = {Holland Publishing Co., Amsterdam},
+  timestamp = {2017.09.06}
+}
+
+@BOOK{box2011bayesian,
+  title = {Bayesian inference in statistical analysis},
+  publisher = {John Wiley \& Sons},
+  year = {2011},
+  author = {Box, George EP and Tiao, George C},
+  volume = {40},
+  owner = {zcao},
+  timestamp = {2017.09.06}
 }
 
 @ARTICLE{cappe2007overview,
@@ -104,7 +136,20 @@
   year = {2009},
   pages = {14--16},
   owner = {zcao},
-  timestamp = {2017.05.23}
+  timestamp = {2017.09.06}
+}
+
+@ARTICLE{chen2000mixture,
+  author = {Chen, Rong and Liu, Jun S},
+  title = {Mixture kalman filters},
+  journal = {Journal of the Royal Statistical Society: Series B (Statistical Methodology)},
+  year = {2000},
+  volume = {62},
+  pages = {493--508},
+  number = {3},
+  owner = {zcao},
+  publisher = {Wiley Online Library},
+  timestamp = {2017.09.06}
 }
 
 @BOOK{chen2009feedback,
@@ -155,7 +200,20 @@
   number = {3},
   owner = {zcao},
   publisher = {Wiley Online Library},
-  timestamp = {2017.05.23}
+  timestamp = {2017.09.06}
+}
+
+@ARTICLE{deng2011generalization,
+  author = {Deng, Chun Yuan},
+  title = {A generalization of the Sherman--Morrison--Woodbury formula},
+  journal = {Applied Mathematics Letters},
+  year = {2011},
+  volume = {24},
+  pages = {1561--1564},
+  number = {9},
+  owner = {zcao},
+  publisher = {Elsevier},
+  timestamp = {2017.09.06}
 }
 
 @ARTICLE{donoho1995adapting,
@@ -211,6 +269,30 @@
   pages = {1323--1345},
   number = {9},
   publisher = {Elsevier}
+}
+
+@ARTICLE{gelman2006prior,
+  author = {Gelman, Andrew and others},
+  title = {Prior distributions for variance parameters in hierarchical models
+	(comment on article by Browne and Draper)},
+  journal = {Bayesian analysis},
+  year = {2006},
+  volume = {1},
+  pages = {515--534},
+  number = {3},
+  owner = {zcao},
+  publisher = {International Society for Bayesian Analysis},
+  timestamp = {2017.09.06}
+}
+
+@ARTICLE{gordon2004beyond,
+  author = {Gordon, Neil and Ristic, B and Arulampalam, S},
+  title = {Beyond the kalman filter: Particle filters for tracking applications},
+  journal = {Artech House, London},
+  year = {2004},
+  volume = {830},
+  owner = {zcao},
+  timestamp = {2017.09.06}
 }
 
 @INPROCEEDINGS{gordon1993novel,
@@ -298,6 +380,15 @@
   volume = {43}
 }
 
+@BOOK{haykin2001kalman,
+  title = {Kalman filtering and neural networks},
+  publisher = {Wiley Online Library},
+  year = {2001},
+  author = {Haykin, Simon S and others},
+  owner = {zcao},
+  timestamp = {2017.09.06}
+}
+
 @INCOLLECTION{higuchi2001self,
   author = {Higuchi, Tomoyuki},
   title = {Self-organizing time series model},
@@ -306,7 +397,33 @@
   year = {2001},
   pages = {429--444},
   owner = {zcao},
-  timestamp = {2017.05.23}
+  timestamp = {2017.09.06}
+}
+
+@INPROCEEDINGS{jhuaadaptive2013,
+  author = {Junhao Hua},
+  title = {Adaptive filters: LMS, RLS, Kalman filter},
+  year = {2013},
+  owner = {zcao},
+  timestamp = {2017.05.24}
+}
+
+@ARTICLE{jaynes1983papers,
+  author = {Jaynes, Edwin T},
+  title = {Papers On Probability},
+  journal = {Statistics and Statistical Physics},
+  year = {1983},
+  owner = {zcao},
+  timestamp = {2017.09.06}
+}
+
+@MISC{jeffries1961theory,
+  author = {Jeffries, Harold},
+  title = {Theory of probability},
+  year = {1961},
+  owner = {zcao},
+  publisher = {Clarendon Press, Oxford},
+  timestamp = {2017.09.06}
 }
 
 @BOOK{judd1998numerical,
@@ -336,7 +453,17 @@
   year = {2009},
   organization = {Citeseer},
   owner = {zcao},
-  timestamp = {2017.05.23}
+  timestamp = {2017.09.06}
+}
+
+@BOOK{kijima1997markov,
+  title = {Markov processes for stochastic modeling},
+  publisher = {CRC Press},
+  year = {1997},
+  author = {Kijima, Masaaki},
+  volume = {6},
+  owner = {zcao},
+  timestamp = {2017.09.06}
 }
 
 @ARTICLE{kim2004smoothing,
@@ -399,6 +526,17 @@
   timestamp = {2017.05.23}
 }
 
+@ARTICLE{lindley1972bayes,
+  author = {Lindley, Dennis V and Smith, Adrian FM},
+  title = {Bayes estimates for the linear model},
+  journal = {Journal of the Royal Statistical Society. Series B (Methodological)},
+  year = {1972},
+  pages = {1--41},
+  owner = {zcao},
+  publisher = {JSTOR},
+  timestamp = {2017.09.06}
+}
+
 @INCOLLECTION{liu2001combined,
   author = {Liu, Jane and West, Mike},
   title = {Combined parameter and state estimation in simulation-based filtering},
@@ -417,15 +555,6 @@
   year = {2010},
   pages = {1143--1163},
   publisher = {JSTOR}
-}
-
-@BOOK{mackay2003information,
-  title = {Information theory, inference and learning algorithms},
-  publisher = {Cambridge university press},
-  year = {2003},
-  author = {MacKay, David JC},
-  owner = {zcao},
-  timestamp = {2017.05.23}
 }
 
 @BOOK{mackay2003information,
@@ -472,7 +601,7 @@
   number = {2},
   owner = {zcao},
   publisher = {Wiley Online Library},
-  timestamp = {2017.05.23}
+  timestamp = {2017.09.06}
 }
 
 @BOOK{b_gpml,
@@ -537,6 +666,31 @@
   timestamp = {2017.05.23}
 }
 
+@ARTICLE{sherlock2016adaptive,
+  author = {Sherlock, Chris and Golightly, Andrew and Henderson, Daniel A},
+  title = {Adaptive, delayed-acceptance MCMC for targets with expensive likelihoods},
+  journal = {Journal of Computational and Graphical Statistics},
+  year = {2016},
+  number = {just-accepted},
+  owner = {zcao},
+  publisher = {Taylor \& Francis},
+  timestamp = {2017.09.06}
+}
+
+@ARTICLE{sherman1950adjustment,
+  author = {Sherman, Jack and Morrison, Winifred J},
+  title = {Adjustment of an inverse matrix corresponding to a change in one
+	element of a given matrix},
+  journal = {The Annals of Mathematical Statistics},
+  year = {1950},
+  volume = {21},
+  pages = {124--127},
+  number = {1},
+  owner = {zcao},
+  publisher = {JSTOR},
+  timestamp = {2017.09.06}
+}
+
 @ARTICLE{silverman1985some,
   author = {Silverman, Bernhard W},
   title = {Some aspects of the spline smoothing approach to non-parametric regression
@@ -547,6 +701,30 @@
   publisher = {JSTOR}
 }
 
+@ARTICLE{smith1973general,
+  author = {Smith, Adrian FM},
+  title = {A general Bayesian linear model},
+  journal = {Journal of the Royal Statistical Society. Series B (Methodological)},
+  year = {1973},
+  pages = {67--75},
+  owner = {zcao},
+  publisher = {JSTOR},
+  timestamp = {2017.09.06}
+}
+
+@ARTICLE{stroud2007sequential,
+  author = {Stroud, Jonathan R and Bengtsson, Thomas},
+  title = {Sequential state and variance estimation within the ensemble Kalman
+	filter},
+  journal = {Monthly Weather Review},
+  year = {2007},
+  volume = {135},
+  pages = {3194--3208},
+  number = {9},
+  owner = {zcao},
+  timestamp = {2017.09.06}
+}
+
 @BOOK{esl2009,
   title = {The Elements of Statistical Learning: Data Mining, Inference, and
 	Prediction. Second Edition},
@@ -555,6 +733,19 @@
   author = {Trevor Hastie, Robert Tibshirani, Jerome Friedman},
   owner = {zcao},
   timestamp = {2015.12.02}
+}
+
+@INPROCEEDINGS{van2000unscented,
+  author = {Van Der Merwe, Rudolph and Doucet, Arnaud and De Freitas, Nando and
+	Wan, Eric},
+  title = {The unscented particle filter},
+  booktitle = {Nips},
+  year = {2000},
+  volume = {2000},
+  pages = {584--590},
+  organization = {Denver, CO, USA},
+  owner = {zcao},
+  timestamp = {2017.09.06}
 }
 
 @BOOK{wahba1990spline,
@@ -610,6 +801,19 @@
   timestamp = {2017.05.23}
 }
 
+@ARTICLE{woodbury1950inverting,
+  author = {Woodbury, Max A},
+  title = {Inverting modified matrices},
+  journal = {Memorandum report},
+  year = {1950},
+  volume = {42},
+  pages = {336},
+  number = {106},
+  owner = {zcao},
+  publisher = {Statistical Research Group, Princeton University},
+  timestamp = {2017.09.06}
+}
+
 @ARTICLE{yang2010analytical,
   author = {Yang, Kwangjin and Sukkarieh, Salah},
   title = {An analytical continuous-curvature path-smoothing algorithm},
@@ -660,6 +864,6 @@
   year = {2011},
   editor = {Arnaud Doucet, Nando de Freitas, Neil Gordon},
   owner = {zcao},
-  timestamp = {2017.05.23}
+  timestamp = {2017.09.06}
 }
 

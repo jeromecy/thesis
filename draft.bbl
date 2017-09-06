@@ -48,12 +48,28 @@ Aydin, D. and Tuzemen, M.~S. (2012).
   based on smoothing spline: A simulation study.
 \newblock {\em Journal of Applied Sciences\/},~{\em 12\/}(7), 636.
 
+\bibitem[\protect\citeauthoryear{Bartlett}{Bartlett}{1951}]{bartlett1951inverse}
+Bartlett, M.~S. (1951).
+\newblock An inverse matrix adjustment arising in discriminant analysis.
+\newblock {\em The Annals of Mathematical Statistics\/},~{\em 22\/}(1),
+  107--111.
+
 \bibitem[\protect\citeauthoryear{Berlinet and Thomas-Agnan}{Berlinet and
   Thomas-Agnan}{2011}]{berlinet2011reproducing}
 Berlinet, A. and Thomas-Agnan, C. (2011).
 \newblock {\em Reproducing kernel Hilbert spaces in probability and
   statistics}.
 \newblock Springer Science \& Business Media.
+
+\bibitem[\protect\citeauthoryear{Bodewig}{Bodewig}{1959}]{bodewig1959matrix}
+Bodewig, E. (1959).
+\newblock Matrix Calculus, North.
+
+\bibitem[\protect\citeauthoryear{Box and Tiao}{Box and
+  Tiao}{2011}]{box2011bayesian}
+Box, G.~E. and Tiao, G.~C. (2011).
+\newblock {\em Bayesian inference in statistical analysis}, Volume~40.
+\newblock John Wiley \& Sons.
 
 \bibitem[\protect\citeauthoryear{Capp{\'e}, Godsill, and Moulines}{Capp{\'e}
   {\em et~al.}}{2007}]{cappe2007overview}
@@ -98,6 +114,11 @@ Del~Moral, P., Doucet, A., and Jasra, A. (2006).
 \newblock {\em Journal of the Royal Statistical Society: Series B (Statistical
   Methodology)\/},~{\em 68\/}(3), 411--436.
 
+\bibitem[\protect\citeauthoryear{Deng}{Deng}{2011}]{deng2011generalization}
+Deng, C.~Y. (2011).
+\newblock A generalization of the Sherman--Morrison--Woodbury formula.
+\newblock {\em Applied Mathematics Letters\/},~{\em 24\/}(9), 1561--1564.
+
 \bibitem[\protect\citeauthoryear{Donoho and Johnstone}{Donoho and
   Johnstone}{1995}]{donoho1995adapting}
 Donoho, D.~L. and Johnstone, I.~M. (1995).
@@ -132,6 +153,13 @@ Erkorkmaz, K. and Altintas, Y. (2001).
   generation and quintic spline interpolation.
 \newblock {\em International Journal of machine tools and manufacture\/},~{\em
   41\/}(9), 1323--1345.
+
+\bibitem[\protect\citeauthoryear{Gelman {\em et~al.}}{Gelman {\em
+  et~al.}}{2006}]{gelman2006prior}
+Gelman, A. {\em et~al.} (2006).
+\newblock Prior distributions for variance parameters in hierarchical models
+  (comment on article by Browne and Draper).
+\newblock {\em Bayesian analysis\/},~{\em 1\/}(3), 515--534.
 
 \bibitem[\protect\citeauthoryear{Gordon, Salmond, and Smith}{Gordon {\em
   et~al.}}{1993}]{gordon1993novel}
@@ -189,6 +217,15 @@ Higuchi, T. (2001).
 \newblock In {\em Sequential Monte Carlo Methods in Practice},  429--444.
   Springer.
 
+\bibitem[\protect\citeauthoryear{Jaynes}{Jaynes}{1983}]{jaynes1983papers}
+Jaynes, E.~T. (1983).
+\newblock Papers On Probability.
+\newblock {\em Statistics and Statistical Physics\/}.
+
+\bibitem[\protect\citeauthoryear{Jeffries}{Jeffries}{1961}]{jeffries1961theory}
+Jeffries, H. (1961).
+\newblock Theory of probability.
+
 \bibitem[\protect\citeauthoryear{Judd}{Judd}{1998}]{judd1998numerical}
 Judd, K.~L. (1998).
 \newblock {\em Numerical methods in economics}.
@@ -207,6 +244,11 @@ Kantas, N., Doucet, A., Singh, S., and Maciejowski, J. (2009).
   estimation.
 \newblock In {\em in General State-Space Models,” in IFAC System
   Identification, no. Ml}. Citeseer.
+
+\bibitem[\protect\citeauthoryear{Kijima}{Kijima}{1997}]{kijima1997markov}
+Kijima, M. (1997).
+\newblock {\em Markov processes for stochastic modeling}, Volume~6.
+\newblock CRC Press.
 
 \bibitem[\protect\citeauthoryear{Kim and Gu}{Kim and
   Gu}{2004}]{kim2004smoothing}
@@ -242,6 +284,13 @@ Kitagawa, G. (1996).
 Kitagawa, G. (1998).
 \newblock A self-organizing state-space model.
 \newblock {\em Journal of the American Statistical Association\/}, 1203--1215.
+
+\bibitem[\protect\citeauthoryear{Lindley and Smith}{Lindley and
+  Smith}{1972}]{lindley1972bayes}
+Lindley, D.~V. and Smith, A.~F. (1972).
+\newblock Bayes estimates for the linear model.
+\newblock {\em Journal of the Royal Statistical Society. Series B
+  (Methodological)\/}, 1--41.
 
 \bibitem[\protect\citeauthoryear{Liu and West}{Liu and
   West}{2001}]{liu2001combined}
@@ -324,12 +373,33 @@ Sherlock, C., Golightly, A., and Henderson, D.~A. (2016).
 \newblock {\em Journal of Computational and Graphical
   Statistics\/},~(just-accepted).
 
+\bibitem[\protect\citeauthoryear{Sherman and Morrison}{Sherman and
+  Morrison}{1950}]{sherman1950adjustment}
+Sherman, J. and Morrison, W.~J. (1950).
+\newblock Adjustment of an inverse matrix corresponding to a change in one
+  element of a given matrix.
+\newblock {\em The Annals of Mathematical Statistics\/},~{\em 21\/}(1),
+  124--127.
+
 \bibitem[\protect\citeauthoryear{Silverman}{Silverman}{1985}]{silverman1985some}
 Silverman, B.~W. (1985).
 \newblock Some aspects of the spline smoothing approach to non-parametric
   regression curve fitting.
 \newblock {\em Journal of the Royal Statistical Society. Series B
   (Methodological)\/}, 1--52.
+
+\bibitem[\protect\citeauthoryear{Smith}{Smith}{1973}]{smith1973general}
+Smith, A.~F. (1973).
+\newblock A general Bayesian linear model.
+\newblock {\em Journal of the Royal Statistical Society. Series B
+  (Methodological)\/}, 67--75.
+
+\bibitem[\protect\citeauthoryear{Stroud and Bengtsson}{Stroud and
+  Bengtsson}{2007}]{stroud2007sequential}
+Stroud, J.~R. and Bengtsson, T. (2007).
+\newblock Sequential state and variance estimation within the ensemble Kalman
+  filter.
+\newblock {\em Monthly Weather Review\/},~{\em 135\/}(9), 3194--3208.
 
 \bibitem[\protect\citeauthoryear{Trevor~Hastie}{Trevor~Hastie}{2009}]{esl2009}
 Trevor~Hastie, Robert~Tibshirani, J.~F. (2009).
@@ -366,6 +436,11 @@ Wang, Y. (1998).
 West, M. (1993).
 \newblock Mixture models, Monte Carlo, Bayesian updating, and dynamic models.
 \newblock {\em Computing Science and Statistics\/}, 325--325.
+
+\bibitem[\protect\citeauthoryear{Woodbury}{Woodbury}{1950}]{woodbury1950inverting}
+Woodbury, M.~A. (1950).
+\newblock Inverting modified matrices.
+\newblock {\em Memorandum report\/},~{\em 42\/}(106), 336.
 
 \bibitem[\protect\citeauthoryear{Yang and Sukkarieh}{Yang and
   Sukkarieh}{2010}]{yang2010analytical}

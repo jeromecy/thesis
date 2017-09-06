@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.5)  23 MAY 2017 14:36
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.5)  6 SEP 2017 15:32
 entering extended mode
 **draft.tex
 (C:\Users\zcao\Documents\Latex\Thesis\draft.tex
@@ -173,6 +173,9 @@ Package color Info: Driver file: pdftex.def on input line 137.
 Package: enumerate 1999/03/05 v3.00 enumerate extensions (DPC)
 \@enLab=\toks28
 )
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\lscape.sty"
+Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
+)
 \c@lemma=\count105
 \c@theorem=\count106
 
@@ -217,21 +220,30 @@ LaTeX Warning: Label `etaeq' multiply defined.
 LaTeX Warning: Label `matrixeq' multiply defined.
 
 ) (C:\Users\zcao\Documents\Latex\Thesis\Chapters/4.Filtering/Filtering.aux)
-(C:\Users\zcao\Documents\Latex\Thesis\Chapters/5.MCMCOU/MCMCOU.aux))
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
+(C:\Users\zcao\Documents\Latex\Thesis\Chapters/5.MCMCOU/MCMCOU.aux
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+LaTeX Warning: Label `sigmayy01' multiply defined.
+
+
+LaTeX Warning: Label `sigmayy02' multiply defined.
+
+
+LaTeX Warning: Label `logL' multiply defined.
+
+))
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count107
 \scratchdimen=\dimen114
@@ -245,16 +257,16 @@ LaTeX Font Info:    ... okay on input line 55.
 \makeMPintoPDFobject=\count112
 \everyMPtoPDFconversion=\toks30
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 59.
+LaTeX Font Info:    Try loading font information for U+msa on input line 61.
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 59.
+LaTeX Font Info:    Try loading font information for U+msb on input line 61.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 59.
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 61.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\jknappen\ursfs.fd"
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
@@ -296,12 +308,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 ]
-Overfull \hbox (10.36118pt too wide) in paragraph at lines 31--31
+Overfull \hbox (10.36118pt too wide) in paragraph at lines 39--39
 [] 
  []
 
 [2] [3] [4] [5] [6]
-Overfull \hbox (13.91586pt too wide) in paragraph at lines 294--296
+Overfull \hbox (13.91586pt too wide) in paragraph at lines 302--304
 \OT1/cmr/m/n/12 where $\OML/cmm/m/it/12 "$ \OT1/cmr/m/n/12 is zero-mean Gaus-si
 an noise. A Gaus-sian pro-cess prior over $\OML/cmm/m/it/12 f \OMS/cmsy/m/n/12 
  \OML/cmm/m/it/12 GP\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 m\OT1/cmr/m/n/12 (\OML/c
@@ -309,17 +321,13 @@ mm/m/it/12 t\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; K\OT1/cmr/m/n/12 (\OML/cmm/m/it
 /12 s; t\OT1/cmr/m/n/12 ))$
  []
 
-
-Underfull \vbox (badness 5548) has occurred while \output is active []
-
- [7]
-<n2i.jpeg, id=63, 988.69376pt x 464.73625pt>
+[7] [8] <n2i.jpeg, id=66, 988.69376pt x 464.73625pt>
 File: n2i.jpeg Graphic file (type jpg)
  <use n2i.jpeg>
-Package pdftex.def Info: n2i.jpeg used on input line 351.
+Package pdftex.def Info: n2i.jpeg used on input line 359.
 (pdftex.def)             Requested size: 441.01584pt x 256.08084pt.
- [8]
-Overfull \hbox (4.94716pt too wide) in paragraph at lines 363--365
+
+Overfull \hbox (4.94716pt too wide) in paragraph at lines 371--373
 \OT1/cmr/m/n/12 deriva-tive of ba-sis func-tions, we get $\OML/cmm/m/it/12 N[]\
 OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t[]\OT1/cmr/m/n/12 ) = 0\OML/cmm/m/it/12 ; N[]
 \OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t[]\OT1/cmr/m/n/12 ) = 1\OML/cmm/m/it/12 ; []
@@ -327,12 +335,8 @@ OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t[]\OT1/cmr/m/n/12 ) = 0\OML/cmm/m/it/12 ; N[]
 12 ; N[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t[]\OT1/cmr/m/n/12 ) =$
  []
 
-
-Underfull \vbox (badness 1859) has occurred while \output is active []
-
- [9 <C:/Users/zcao/Documents/Latex/Thesis/n2i.jpeg>] [10] [11] [12] [13] [14] [
-15])
-[16]
+[9 <C:/Users/zcao/Documents/Latex/Thesis/n2i.jpeg>] [10] [11] [12] [13]
+[14] [15]) [16]
 (C:\Users\zcao\Documents\Latex\Thesis\Chapters/2.TractorSplineTheory/TractorSpl
 ineTheory.tex [17
 
@@ -497,49 +501,132 @@ Underfull \vbox (badness 5288) has occurred while \output is active []
 
 ]
 [58] [59]
-<Chapters/5.MCMCOU/plots/MCMCxt.pdf, id=652, 844.15375pt x 597.23125pt>
-File: Chapters/5.MCMCOU/plots/MCMCxt.pdf Graphic file (type pdf)
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-<use Chapters/5.MCMCOU/plots/MCMCxt.pdf>
-Package pdftex.def Info: Chapters/5.MCMCOU/plots/MCMCxt.pdf used on input line 
-188.
-(pdftex.def)             Requested size: 455.2566pt x 284.52618pt.
+ [60]
+Underfull \vbox (badness 5288) has occurred while \output is active []
 
-<Chapters/5.MCMCOU/plots/MCMCut.pdf, id=653, 844.15375pt x 597.23125pt>
-File: Chapters/5.MCMCOU/plots/MCMCut.pdf Graphic file (type pdf)
+ [61]
+[62] [63] [64] [65] [66] [67] [68]
+Missing character: There is no ‚ in font cmr8!
+Missing character: There is no à in font cmr12!
+Missing character: There is no ó in font cmr12!
+Missing character: There is no ‚ in font cmr8!
+Missing character: There is no à in font cmr12!
+Missing character: There is no ó in font cmr12!
+Missing character: There is no ‚ in font cmr8!
+Missing character: There is no à in font cmr12!
+Missing character: There is no ó in font cmr12!
 
-<use Chapters/5.MCMCOU/plots/MCMCut.pdf>
-Package pdftex.def Info: Chapters/5.MCMCOU/plots/MCMCut.pdf used on input line 
-189.
-(pdftex.def)             Requested size: 455.2566pt x 284.52618pt.
-)
-Overfull \hbox (14.23889pt too wide) in paragraph at lines 188--85
- [][] 
+
+Package amsmath Warning: Foreign command \over;
+(amsmath)                \frac or \genfrac should be used instead
+(amsmath)                 on input line 349.
+
+[69]
+Overfull \hbox (82.36208pt too wide) in paragraph at lines 394--394
+[] 
+ []
+
+[70]
+Overfull \hbox (17.88736pt too wide) in paragraph at lines 424--424
+[] 
+ []
+
+[71] [72] [73] [74]
+Overfull \hbox (9.13399pt too wide) in paragraph at lines 625--627
+\OT1/cmr/m/n/12 and $[]$ can be re-ar-ranged in a time se-ries or-der, that mak
+es $\OML/cmm/m/it/12 X \OT1/cmr/m/n/12 = \OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 x[]
+; u[]; x[]; u[]; []  ; x[]; u[]\OMS/cmsy/m/n/12 g$\OT1/cmr/m/n/12 ,
  []
 
 
-Overfull \hbox (14.23889pt too wide) in paragraph at lines 188--85
- [] 
+Overfull \hbox (106.1135pt too wide) in paragraph at lines 642--642
+[] 
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [60 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/5.MCMCOU/plots/MCMCxt.pdf>]
- [61 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/5.MCMCOU/plots/MCMCut.pdf>]
- [62
+ [75]
+Overfull \hbox (66.15585pt too wide) in paragraph at lines 668--669
+\OT1/cmr/m/n/12 We are now us-ing the cap-i-tal let-ter $\OML/cmm/m/it/12 Y$ \O
+T1/cmr/m/n/12 to rep-re-sent the joint $\OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 y; v
+\OMS/cmsy/m/n/12 g$ \OT1/cmr/m/n/12 and $\OML/cmm/m/it/12 Y[] \OT1/cmr/m/n/12 =
+ \OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 y[]; v[]; y[]; v[]; []  ; y[]; v[]\OMS/cmsy
+/m/n/12 g$\OT1/cmr/m/n/12 ,
+ []
+
+
+Overfull \hbox (1.27339pt too wide) in paragraph at lines 673--675
+\OT1/cmr/m/n/12 where the co-vari-ance ma-trix of the joint dis-tri-bu-tion is 
+$[] = (\OML/cmm/m/it/12 I[] \OMS/cmsy/m/n/12   \OML/cmm/m/it/12 A[]B[]\OT1/cmr
+/m/n/12 )[]\OML/cmm/m/it/12 B[]$\OT1/cmr/m/n/12 .
+ []
+
+
+Overfull \hbox (63.41197pt too wide) in paragraph at lines 706--706
+[] 
+ []
+
+[76]
+Overfull \hbox (103.04405pt too wide) in paragraph at lines 731--740
+\OT1/cmr/m/n/12 denoted by $\OML/cmm/m/it/12 S[] \OT1/cmr/m/n/12 = [] []$, $\OM
+L/cmm/m/it/12 D[] \OT1/cmr/m/n/12 = [] []$
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [77]
+Overfull \hbox (21.28633pt too wide) in paragraph at lines 784--784
+[] 
+ []
+
+[78]
+Overfull \hbox (104.03789pt too wide) in paragraph at lines 808--808
+[] 
+ []
+
+[79] [80] [81]
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ì in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ì in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ô in font cmr12!
+ [82]
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ô in font cmr12!
+ [83]
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ô in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ô in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ô in font cmr12!
+) [84] (C:\Users\zcao\Documents\Latex\Thesis\draft.bbl
+[85
 
 
 
-]
-(C:\Users\zcao\Documents\Latex\Thesis\draft.bbl [63
 
-] [64]
+] [86] [87]
 Missing character: There is no ‚ in font cmti12!
 Missing character: There is no Ä in font cmti12!
 Missing character: There is no ù in font cmti12!
- [65] [66] [67])
-[68] (C:\Users\zcao\Documents\Latex\Thesis\draft.aux
+ [88] [89] [90]) [91] [92
+
+
+]
+(C:\Users\zcao\Documents\Latex\Thesis\draft.aux
 (C:\Users\zcao\Documents\Latex\Thesis\Chapters/1.Intro/Intro_v2.aux)
 (C:\Users\zcao\Documents\Latex\Thesis\Chapters/2.TractorSplineTheory/TractorSpl
 ineTheory.aux)
@@ -550,13 +637,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3093 strings out of 493706
- 44465 string characters out of 3142169
- 121976 words of memory out of 3000000
- 6312 multiletter control sequences out of 15000+200000
+ 3140 strings out of 493706
+ 45443 string characters out of 3142169
+ 121732 words of memory out of 3000000
+ 6359 multiletter control sequences out of 15000+200000
  16157 words of font info for 61 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 27i,23n,26p,1938b,336s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 27i,23n,26p,1938b,362s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 <C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C
 :/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmex8.pfb>
@@ -573,11 +660,12 @@ X 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX
 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files (x86)/MiKTeX 2.9
 /fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fo
 nts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
-s/type1/public/amsfonts/symbols/msam10.pfb><C:/Program Files (x86)/MiKTeX 2.9/f
-onts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on draft.pdf (76 pages, 2203022 bytes).
+s/type1/public/amsfonts/cm/cmti8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/t
+ype1/public/amsfonts/symbols/msam10.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
+s/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on draft.pdf (100 pages, 2183823 bytes).
 PDF statistics:
- 750 PDF objects out of 1000 (max. 8388607)
+ 816 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 61 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 51 words of extra memory for PDF output out of 10000 (max. 10000000)
 
