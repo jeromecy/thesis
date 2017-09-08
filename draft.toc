@@ -1,76 +1,74 @@
-\contentsline {chapter}{\hbox to\@tempdima {\hfil }Abstract}{1}
-\contentsline {chapter}{\hbox to\@tempdima {\hfil }Acknowledgments}{2}
-\contentsline {chapter}{\numberline {1}Introduction}{3}
-\contentsline {section}{\numberline {1.1}Introduction}{3}
-\contentsline {section}{\numberline {1.2}Gaussian Process Regression}{5}
-\contentsline {section}{\numberline {1.3}A Reproducing Kernel in Space $\mathbb {H}$}{6}
-\contentsline {section}{\numberline {1.4}Covariance Matrix and Posterior Mean}{8}
-\contentsline {section}{\numberline {1.5}A 1-D Gaussian Process Spline Construction}{9}
-\contentsline {subsection}{\numberline {1.5.1}Tractor Spline}{10}
-\contentsline {subsection}{\numberline {1.5.2}Tractor Spline Estimated by GP}{13}
-\contentsline {section}{\numberline {1.6}Cross Validation}{15}
-\contentsline {subsection}{\numberline {1.6.1}K-Fold Cross Validation}{17}
-\contentsline {chapter}{\numberline {2}Tractor Spline Theory}{19}
-\contentsline {section}{\numberline {2.1}Writing Something}{19}
-\contentsline {section}{\numberline {2.2}Introduction}{20}
-\contentsline {section}{\numberline {2.3}Tractor Spline}{22}
-\contentsline {subsection}{\numberline {2.3.1}Objective Function}{22}
-\contentsline {subsection}{\numberline {2.3.2}Basis Functions}{22}
-\contentsline {subsection}{\numberline {2.3.3}Solution to The Objective Function}{24}
-\contentsline {subsection}{\numberline {2.3.4}Adjusted Penalty Term and Parameter Function}{26}
-\contentsline {section}{\numberline {2.4}Parameter Selection and Cross Validation}{27}
-\contentsline {section}{\numberline {2.5}Simulation}{29}
-\contentsline {subsection}{\numberline {2.5.1}Numerical Examples}{29}
-\contentsline {subsection}{\numberline {2.5.2}Evaluation}{35}
-\contentsline {section}{\numberline {2.6}Conclusion and Discussion}{35}
-\contentsline {chapter}{\numberline {3}Gaussian Process Regression}{39}
-\contentsline {section}{\numberline {3.1}Introduction}{39}
-\contentsline {subsection}{\numberline {3.1.1}Spline}{39}
-\contentsline {subsection}{\numberline {3.1.2}Gaussian Process Regression}{40}
-\contentsline {subsection}{\numberline {3.1.3}The Smoothing Spline as Bayes Estimates}{41}
-\contentsline {section}{\numberline {3.2}A reproducing kernel on $\mathcal {C}_{p.w.}^{2}[0,1]$}{42}
-\contentsline {section}{\numberline {3.3}Computation of Polynomial Smoothing Splines}{43}
-\contentsline {section}{\numberline {3.4}Polynomial Smoothing Splines as Bayes Estimates}{44}
-\contentsline {section}{\numberline {3.5}Numeric Simulation of Smoothing Spline and GPR}{46}
-\contentsline {chapter}{\numberline {4}Filtering Problem}{49}
-\contentsline {section}{\numberline {4.1}State Space Models}{49}
-\contentsline {section}{\numberline {4.2}Sequential Monte Carlo Method}{50}
-\contentsline {subsection}{\numberline {4.2.1}Filtering Problem and Estimation}{51}
-\contentsline {subsection}{\numberline {4.2.2}Sampling Methods}{53}
-\contentsline {subsubsection}{Importance sampling}{53}
-\contentsline {subsubsection}{Sequential Importance Sampling and Resampling}{54}
-\contentsline {subsubsection}{Delayed Acceptance Metropolis-Hastings Algorithm}{56}
-\contentsline {section}{\numberline {4.3}Bayesian Parameter Estimation}{57}
-\contentsline {subsection}{\numberline {4.3.1}Off-line Methods}{57}
-\contentsline {subsection}{\numberline {4.3.2}On-line Methods}{58}
-\contentsline {chapter}{\numberline {5}Monte Carlo Markov Chain}{61}
-\contentsline {section}{\numberline {5.1}Combined State and Parameters Estimation of Sequential Monte Carlo Algorithm}{61}
-\contentsline {subsection}{\numberline {5.1.1}General Linear Space}{61}
-\contentsline {subsubsection}{The Forecast Distribution $p(y_{t+1}\mid y_{1:t},\theta )$}{63}
-\contentsline {subsubsection}{The Estimation Distribution $p(x_{t+1}\mid y_{1:t+1},\theta )$}{65}
-\contentsline {subsubsection}{Approximations of The Parameters Posterior}{66}
-\contentsline {subsection}{\numberline {5.1.2}High Dimension Parameters Space of OU-Process}{67}
-\contentsline {subsubsection}{The Forecast Distribution $p(Y_{t+1}| Y_{1:t},\theta )$}{70}
-\contentsline {subsubsection}{The Estimation Distribution $p(X_{t+1}| Y_{1:t+1},\theta )$}{74}
-\contentsline {subsubsection}{Approximations of The Parameters Posterior}{74}
-\contentsline {section}{\numberline {5.2}Prior Distribution for Variance Parameters}{75}
-\contentsline {subsection}{\numberline {5.2.1}Priors Discussion}{76}
-\contentsline {subsection}{\numberline {5.2.2}Discussion two}{77}
-\contentsline {chapter}{\numberline {6}Data Simplify}{79}
-\contentsline {section}{\numberline {6.1}Introduction}{79}
-\contentsline {section}{\numberline {6.2}Preliminary}{80}
-\contentsline {section}{\numberline {6.3}Track Simplification Algorithm}{80}
-\contentsline {section}{\numberline {6.4}Evaluation}{81}
-\contentsline {section}{\numberline {6.5}Adaptive Kalman Filter}{83}
-\contentsline {section}{\numberline {6.6}Experimental results}{83}
-\contentsline {chapter}{\hbox to\@tempdima {\hfil }References}{85}
-\contentsline {chapter}{Appendices}{93}
+\contentsline {chapter}{\numberline {1}Introduction}{7}
+\contentsline {section}{\numberline {1.1}Introduction}{7}
+\contentsline {section}{\numberline {1.2}Gaussian Process Regression}{9}
+\contentsline {section}{\numberline {1.3}A Reproducing Kernel in Space $\mathbb {H}$}{10}
+\contentsline {section}{\numberline {1.4}Covariance Matrix and Posterior Mean}{12}
+\contentsline {section}{\numberline {1.5}A 1-D Gaussian Process Spline Construction}{13}
+\contentsline {subsection}{\numberline {1.5.1}Tractor Spline}{14}
+\contentsline {subsection}{\numberline {1.5.2}Tractor Spline Estimated by GP}{17}
+\contentsline {section}{\numberline {1.6}Cross Validation}{19}
+\contentsline {subsection}{\numberline {1.6.1}K-Fold Cross Validation}{21}
+\contentsline {chapter}{\numberline {2}Tractor Spline Theory}{23}
+\contentsline {section}{\numberline {2.1}Writing Something}{23}
+\contentsline {section}{\numberline {2.2}Introduction}{24}
+\contentsline {section}{\numberline {2.3}Tractor Spline}{26}
+\contentsline {subsection}{\numberline {2.3.1}Objective Function}{26}
+\contentsline {subsection}{\numberline {2.3.2}Basis Functions}{26}
+\contentsline {subsection}{\numberline {2.3.3}Solution to The Objective Function}{28}
+\contentsline {subsection}{\numberline {2.3.4}Adjusted Penalty Term and Parameter Function}{30}
+\contentsline {section}{\numberline {2.4}Parameter Selection and Cross Validation}{31}
+\contentsline {section}{\numberline {2.5}Simulation}{33}
+\contentsline {subsection}{\numberline {2.5.1}Numerical Examples}{33}
+\contentsline {subsection}{\numberline {2.5.2}Evaluation}{39}
+\contentsline {section}{\numberline {2.6}Conclusion and Discussion}{39}
+\contentsline {chapter}{\numberline {3}Gaussian Process Regression}{43}
+\contentsline {section}{\numberline {3.1}Introduction}{43}
+\contentsline {subsection}{\numberline {3.1.1}Spline}{43}
+\contentsline {subsection}{\numberline {3.1.2}Gaussian Process Regression}{44}
+\contentsline {subsection}{\numberline {3.1.3}The Smoothing Spline as Bayes Estimates}{45}
+\contentsline {section}{\numberline {3.2}A reproducing kernel on $\mathcal {C}_{p.w.}^{2}[0,1]$}{46}
+\contentsline {section}{\numberline {3.3}Computation of Polynomial Smoothing Splines}{47}
+\contentsline {section}{\numberline {3.4}Polynomial Smoothing Splines as Bayes Estimates}{48}
+\contentsline {section}{\numberline {3.5}Numeric Simulation of Smoothing Spline and GPR}{50}
+\contentsline {chapter}{\numberline {4}Filtering Problem}{53}
+\contentsline {section}{\numberline {4.1}State Space Models}{53}
+\contentsline {section}{\numberline {4.2}Sequential Monte Carlo Method}{54}
+\contentsline {subsection}{\numberline {4.2.1}Filtering Problem and Estimation}{55}
+\contentsline {subsection}{\numberline {4.2.2}Sampling Methods}{57}
+\contentsline {subsubsection}{Importance sampling}{57}
+\contentsline {subsubsection}{Sequential Importance Sampling and Resampling}{58}
+\contentsline {subsubsection}{Delayed Acceptance Metropolis-Hastings Algorithm}{60}
+\contentsline {section}{\numberline {4.3}Bayesian Parameter Estimation}{61}
+\contentsline {subsection}{\numberline {4.3.1}Off-line Methods}{61}
+\contentsline {subsection}{\numberline {4.3.2}On-line Methods}{62}
+\contentsline {chapter}{\numberline {5}Monte Carlo Markov Chain}{65}
+\contentsline {section}{\numberline {5.1}Combined State and Parameters Estimation of Sequential Monte Carlo Algorithm}{65}
+\contentsline {subsection}{\numberline {5.1.1}General Linear Space}{65}
+\contentsline {subsubsection}{The Forecast Distribution $p(y_{t+1}\mid y_{1:t},\theta )$}{67}
+\contentsline {subsubsection}{The Estimation Distribution $p(x_{t+1}\mid y_{1:t+1},\theta )$}{69}
+\contentsline {subsubsection}{Approximations of The Parameters Posterior}{70}
+\contentsline {subsection}{\numberline {5.1.2}High Dimension Parameters Space of OU-Process}{71}
+\contentsline {subsubsection}{The Forecast Distribution $p(Y_{t+1}| Y_{1:t},\theta )$}{74}
+\contentsline {subsubsection}{The Estimation Distribution $p(X_{t+1}| Y_{1:t+1},\theta )$}{78}
+\contentsline {subsubsection}{Approximations of The Parameters Posterior}{78}
+\contentsline {section}{\numberline {5.2}Prior Distribution for Variance Parameters}{79}
+\contentsline {subsection}{\numberline {5.2.1}Priors Discussion}{80}
+\contentsline {subsection}{\numberline {5.2.2}Discussion two}{81}
+\contentsline {chapter}{\numberline {6}Data Simplify}{83}
+\contentsline {section}{\numberline {6.1}Introduction}{83}
+\contentsline {section}{\numberline {6.2}Preliminary}{84}
+\contentsline {section}{\numberline {6.3}Track Simplification Algorithm}{84}
+\contentsline {section}{\numberline {6.4}Evaluation}{85}
+\contentsline {section}{\numberline {6.5}Adaptive Kalman Filter}{87}
+\contentsline {section}{\numberline {6.6}Experimental results}{87}
+\contentsline {chapter}{\hbox to\@tempdima {\hfil }References}{89}
+\contentsline {chapter}{Appendices}{97}
 \setcounter {tocdepth}{1}
 \begingroup \let \l@chapter \l@section \let \l@section \l@subsection 
-\contentsline {chapter}{\numberline {A}Penalty}{94}
-\contentsline {section}{\numberline {A.1}Penalty Matrix in (2.15\hbox {})}{94}
-\contentsline {section}{\numberline {A.2}Proof of Theorem 4\hbox {}}{95}
-\contentsline {section}{\numberline {A.3}Proof of Lemma 5\hbox {}}{98}
-\contentsline {section}{\numberline {A.4}Proof of Theorem 5\hbox {}}{99}
-\contentsline {chapter}{\numberline {B}Matrix}{100}
-\contentsline {section}{\numberline {B.1}2D Matrix}{101}
+\contentsline {chapter}{\numberline {A}Penalty}{98}
+\contentsline {section}{\numberline {A.1}Penalty Matrix in (2.15\hbox {})}{98}
+\contentsline {section}{\numberline {A.2}Proof of Theorem 4\hbox {}}{99}
+\contentsline {section}{\numberline {A.3}Proof of Lemma 5\hbox {}}{102}
+\contentsline {section}{\numberline {A.4}Proof of Theorem 5\hbox {}}{103}
+\contentsline {chapter}{\numberline {B}Matrix}{104}
+\contentsline {section}{\numberline {B.1}2D Matrix}{105}
