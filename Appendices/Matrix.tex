@@ -1,0 +1,58 @@
+
+\begin{landscape}
+\section{2D Matrix}
+\begin{align*}
+\Sigma_t &= \begin{bmatrix}
+\sigma_t^{(x)2} & \rho_{t} \sigma_t^{(x)} \sigma_t^{(u)}\\
+ \rho_{t} \sigma_t^{(x)} \sigma_t^{(u)} & \sigma_t^{(u)2} 
+\end{bmatrix}\\
+\Sigma_t^{-1} &= \frac{1}{1-\rho_{t}^2} \begin{bmatrix} \frac{1}{\sigma_t^{(x)2}} & -\frac{\rho_{t}}{\sigma_t^{(x)} \sigma_t^{(u)} }\\
+-\frac{\rho_{t}}{\sigma_t^{(x)} \sigma_t^{(u)} } & \frac{1}{\sigma_t^{(u)2}} \end{bmatrix}\\
+M_t^\top &= \begin{bmatrix}
+1 & 0 \\
+\frac{1-e^{-\gamma \Delta_t}}{\gamma} & e^{-\gamma \Delta_t}
+\end{bmatrix} \\
+z_t &= \begin{bmatrix} x_t \\ u_t \end{bmatrix}
+\end{align*}
+\begin{align*}
+M_t^\top \Sigma_t^{-1} &= \frac{1}{1-\rho_{t}^2} 
+\begin{bmatrix}
+\frac{1}{\sigma_t^{(x)2}}  & -\frac{\rho_{t}}{\sigma_t^{(x)} \sigma_t^{(u)} }\\
+\frac{1-e^{-\gamma \Delta_t}}{\gamma\sigma_t^{(x)2}} -\frac{\rho_{t} e^{-\gamma \Delta_t}}{\sigma_t^{(x)} \sigma_t^{(u)} }  & 
+ -\frac{\rho_{t} (1-e^{-\gamma \Delta_t}) }{ \gamma \sigma_t^{(x)} \sigma_t^{(u)} } + \frac{  e^{-\gamma\Delta_t} }{   \sigma_t^{(u)2} }
+\end{bmatrix} \\
+M_t^\top \Sigma_t^{-1} M_t&= \frac{1}{1-\rho_{t}^2} 
+\begin{bmatrix}
+\frac{1}{\sigma_t^{(x)2}}  &  \frac{1-e^{-\gamma\Delta_t}}{\gamma\sigma_t^{(x)2}} -\frac{\rho_{t} e^{-\gamma\Delta_t}}{\sigma_t^{(x)}\sigma_t^{(u)}} \\
+\frac{1-e^{-\gamma \Delta_t}}{\gamma\sigma_t^{(x)2}} -\frac{\rho_{t} e^{-\gamma \Delta_t}}{\sigma_t^{(x)} \sigma_t^{(u)} }  & 
+\frac{ (1-e^{-\gamma \Delta_t})^2}{\gamma^2\sigma_t^{(x)2}} - \frac{2 \rho_{t} e^{-\gamma \Delta_t} (1-e^{-\gamma\Delta_t}) }{\gamma\sigma_t^{(x)} \sigma_t^{(u)} } +\frac{e^{-2\gamma\Delta_t}}{\sigma_t^{(u)2}}
+\end{bmatrix} 
+\end{align*}
+%where $\Delta_t = T_t-T_{t-1}$.
+
+\begin{align*}
+\Sigma_{4}^{(X)-1}&=\frac{1}{1-\rho_{t}^2}\begin{bmatrix}
+%1111111
+ \frac{1-\rho_{t}^2}{\sigma_1^{(x)2}}  + \frac{1}{\sigma_2^{(x)2}}  &  - \frac{1}{\sigma_2^{(x)2}}  &   0 &   0  &   \frac{1-e^{- \gamma\Delta_2}}{\gamma\sigma_2^{(x)2}} -\frac{\rho_{t} e^{-\gamma\Delta_2}}{\sigma_2^{(x)}\sigma_2^{(u)}} & \frac{\rho_{t}}{\sigma_2^{(x)}\sigma_2^{(u)}} & 0 & 0 \\
+ %222222
+ - \frac{1}{\sigma_2^{(x)2}}    &  \frac{1}{\sigma_2^{(x)2}}  + \frac{1}{\sigma_3^{(x)2}}  &  - \frac{1}{\sigma_3^{(x)2}}   & 0 & -\frac{1-e^{- \gamma\Delta_2}}{\gamma\sigma_2^{(x)2}} +\frac{\rho_{t} e^{-\gamma\Delta_2}}{\sigma_2^{(x)}\sigma_2^{(u)}} & \frac{1-e^{- \gamma\Delta_3}}{\gamma\sigma_3^{(x)2}} -\frac{\rho_{t} e^{-\gamma\Delta_3}}{\sigma_3^{(x)}\sigma_3^{(u)}} -\frac{\rho_{t}}{\sigma_2^{(x)}\sigma_2^{(u)}}    & \frac{\rho_{t}}{\sigma_3^{(x)}\sigma_3^{(u)}}  & 0 \\
+ %333333
+ 0 & - \frac{1}{\sigma_3^{(x)2}}   & \frac{1}{\sigma_3^{(x)2}}  + \frac{1}{\sigma_4^{(x)2}}   &  - \frac{1}{\sigma_4^{(x)2}}   & 0 & -\frac{1-e^{- \gamma\Delta_3}}{\gamma\sigma_3^{(x)2}} +\frac{\rho_{t} e^{-\gamma\Delta_3}}{\sigma_3^{(x)}\sigma_3^{(u)}} & \frac{1-e^{- \gamma\Delta_4}}{\gamma\sigma_4^{(x)2}} -\frac{\rho_{t} e^{-\gamma\Delta_4}}{\sigma_4^{(x)}\sigma_4^{(u)}} -\frac{\rho_{t}}{\sigma_3^{(x)}\sigma_3^{(u)}}  & \frac{\rho_{t}}{\sigma_4^{(x)}\sigma_4^{(u)}}  \\
+ %4444444444
+ 0 & 0 & - \frac{1}{\sigma_4^{(x)2}}   &  \frac{1}{\sigma_4^{(x)2}}   & 0 & 0 & -\frac{1-e^{- \gamma\Delta_4}}{\gamma\sigma_4^{(x)2}} +\frac{\rho_{t} e^{-\gamma\Delta_4}}{\sigma_4^{(x)}\sigma_4^{(u)}}& -\frac{\rho_{t}}{\sigma_4^{(x)}\sigma_4^{(u)}}  \\
+  %5555555
+%\frac{1-e^{- \gamma\Delta_2}}{\gamma\sigma_2^{(x)2}} - \frac{\rho_{t} e^{-\gamma\Delta_2}}{\sigma_2^{(x)}\sigma_2^{(u)}}  & -\frac{1-e^{- \gamma\Delta_2}}{\gamma\sigma_2^{(x)2}} +\frac{\rho_{t} e^{-\gamma\Delta_2}}{\sigma_2^{(x)}\sigma_2^{(u)}}& 0 & 0 & \frac{1}{\sigma_1^{(u)2}}+C_1 & -\frac{e^{-\gamma\Delta_2}}{\sigma_2^{(u)2}}+\frac{\rho_{t}(1-e^{-\gamma\Delta_2})}{\gamma\sigma_2^{(x)}\sigma_2^{(u)}} & 0 & 0 \\
+\top &  \top & 0 & 0 & \frac{1-\rho_{t}^2}{\sigma_1^{(u)2}}+C_2 & -\frac{e^{-\gamma\Delta_2}}{\sigma_2^{(u)2}}+\frac{\rho_{t}(1-e^{-\gamma\Delta_2})}{\gamma\sigma_2^{(x)}\sigma_2^{(u)}} & 0 & 0 \\
+ %66666666666
+% -\frac{\rho_{t}}{\sigma_2^{(x)}\sigma_2^{(u)}} &  \frac{1-e^{- \gamma\Delta_3}}{\gamma\sigma_3^{(x)2}} - \frac{\rho_{t} e^{-\gamma\Delta_3}}{\sigma_3^{(x)}\sigma_3^{(u)}} -\frac{\rho_{t}}{\sigma_2^{(x)}\sigma_2^{(u)}}  & -\frac{1-e^{- \gamma\Delta_3}}{\gamma\sigma_3^{(x)2}} +\frac{\rho_{t} e^{-\gamma\Delta_3}}{\sigma_3^{(x)}\sigma_3^{(u)}} & 0 & -\frac{e^{-\gamma\Delta_2}}{\sigma_2^{(u)2}}+\frac{\rho_{t}(1-e^{-\gamma\Delta_2})}{\gamma\sigma_2^{(x)}\sigma_2^{(u)}}   & \frac{1}{\sigma_2^{(u)2}}+C_2 & -\frac{e^{-\gamma\Delta_3}}{\sigma_3^{(u)2}}+\frac{\rho_{t}(1-e^{-\gamma\Delta_3})}{\gamma\sigma_3^{(x)2}\sigma_3^{(u)}} & 0 \\
+  \top &  \top & \top& 0 & -\frac{e^{-\gamma\Delta_2}}{\sigma_2^{(u)2}}+\frac{\rho_{t}(1-e^{-\gamma\Delta_2})}{\gamma\sigma_2^{(x)}\sigma_2^{(u)}}   & \frac{1}{\sigma_2^{(u)2}}+C_3 & -\frac{e^{-\gamma\Delta_3}}{\sigma_3^{(u)2}}+\frac{\rho_{t}(1-e^{-\gamma\Delta_3})}{\gamma\sigma_3^{(x)2}\sigma_3^{(u)}} & 0 \\
+%77777777
+ %0 &- \frac{\rho_{t}}{\sigma_3^{(x)}\sigma_3^{(u)}} & \frac{1-e^{- \gamma\Delta_4}}{\gamma\sigma_4^{(x)2}} - \frac{\rho_{t} e^{-\gamma\Delta_4}}{\sigma_4^{(x)}\sigma_4^{(u)}}  -\frac{\rho_{t}}{\sigma_3^{(x)}\sigma_3^{(u)}}  & -\frac{1-e^{- \gamma\Delta_4}}{\gamma\sigma_4^{(x)2}} +\frac{\rho_{t} e^{-\gamma\Delta_4}}{\sigma_4^{(x)}\sigma_4^{(u)}} & 0 & -\frac{e^{-\gamma\Delta_3}}{\sigma_3^{(u)2}}+\frac{\rho_{t}(1-e^{-\gamma\Delta_3})}{\gamma\sigma_3^{(x)}\sigma_3^{(u)}}  & \frac{1}{\sigma_3^{(u)2}}+C_3 & -\frac{e^{-\gamma\Delta_4}}{\sigma_4^{(u)2}}+\frac{\rho_{t}(1-e^{-\gamma\Delta_4})}{\gamma\sigma_4^{(x)}\sigma_4^{(u)}}  \\
+  0 &\top&\top & \top& 0 & -\frac{e^{-\gamma\Delta_3}}{\sigma_3^{(u)2}}+\frac{\rho_{t}(1-e^{-\gamma\Delta_3})}{\gamma\sigma_3^{(x)}\sigma_3^{(u)}}  & \frac{1}{\sigma_3^{(u)2}}+C_4 & -\frac{e^{-\gamma\Delta_4}}{\sigma_4^{(u)2}}+\frac{\rho_{t}(1-e^{-\gamma\Delta_4})}{\gamma\sigma_4^{(x)}\sigma_4^{(u)}}  \\
+%8888
+% 0 & 0 & - \frac{\rho_{t}}{\sigma_4^{(x)}\sigma_4^{(u)}} & -\frac{\rho_{t}}{\sigma_4^{(x)}\sigma_4^{(u)}} & 0 & 0 & -\frac{e^{-\gamma\Delta_4}}{\sigma_4^{(u)2}}+\frac{\rho_{t}(1-e^{-\gamma\Delta_4})}{\gamma\sigma_4^{(x)}\sigma_4^{(u)}}  & \frac{1}{\sigma_4^{(u)2}}+C_4
+  0 & 0 & \top&\top& 0 & 0 & -\frac{e^{-\gamma\Delta_4}}{\sigma_4^{(u)2}}+\frac{\rho_{t}(1-e^{-\gamma\Delta_4})}{\gamma\sigma_4^{(x)}\sigma_4^{(u)}}  & \frac{1}{\sigma_4^{(u)2}}
+\end{bmatrix}
+\end{align*}
+where $C_t = \frac{ (1-e^{-\gamma\Delta_t})^2 }{\gamma^2\sigma_t^{(x)2}}  + \frac{ e^{-2\gamma\Delta_t}}{\sigma_t^{(u)2}} - \frac{2\rho_{t} e^{-\gamma\Delta_t} (1-e^{-\gamma\Delta_t}) }{ \gamma \sigma_t^{(x)}\sigma_t^{(u)}}$, $\Delta_t = T_t-T_{t-1}$.
+\end{landscape}

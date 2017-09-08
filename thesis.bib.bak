@@ -159,6 +159,20 @@
   author = {Chen, Wai-Kai}
 }
 
+@INPROCEEDINGS{chen2009trajectory,
+  author = {Chen, Yukun and Jiang, Kai and Zheng, Yu and Li, Chunping and Yu,
+	Nenghai},
+  title = {Trajectory simplification method for location-based social networking
+	services},
+  booktitle = {Proceedings of the 2009 International Workshop on Location Based
+	Social Networks},
+  year = {2009},
+  pages = {33--40},
+  organization = {ACM},
+  owner = {zcao},
+  timestamp = {2017.09.08}
+}
+
 @ARTICLE{craven1978smoothing,
   author = {Craven, Peter and Wahba, Grace},
   title = {Smoothing noisy data with spline functions},
@@ -246,6 +260,21 @@
   pages = {425--455},
   number = {3},
   publisher = {Biometrika Trust}
+}
+
+@ARTICLE{douglas1973algorithms,
+  author = {Douglas, David H and Peucker, Thomas K},
+  title = {Algorithms for the reduction of the number of points required to
+	represent a digitized line or its caricature},
+  journal = {Cartographica: The International Journal for Geographic Information
+	and Geovisualization},
+  year = {1973},
+  volume = {10},
+  pages = {112--122},
+  number = {2},
+  owner = {zcao},
+  publisher = {University of Toronto Press},
+  timestamp = {2017.09.08}
 }
 
 @INPROCEEDINGS{ellis2009,
@@ -408,6 +437,20 @@
   timestamp = {2017.05.24}
 }
 
+@ARTICLE{ivanov2012real,
+  author = {Ivanov, Rosen},
+  title = {Real-time GPS track simplification algorithm for outdoor navigation
+	of visually impaired},
+  journal = {Journal of Network and Computer Applications},
+  year = {2012},
+  volume = {35},
+  pages = {1559--1567},
+  number = {5},
+  owner = {zcao},
+  publisher = {Elsevier},
+  timestamp = {2017.09.08}
+}
+
 @ARTICLE{jaynes1983papers,
   author = {Jaynes, Edwin T},
   title = {Papers On Probability},
@@ -526,6 +569,15 @@
   timestamp = {2017.05.23}
 }
 
+@TECHREPORT{lawson2011compression,
+  author = {Lawson, Catherine T and Ravi, SS and Hwang, Jeong-Hyon},
+  title = {Compression and Mining of GPS Trace Data: New Techniques and Applications},
+  institution = {Technical Report. Region II University Transportation Research Center},
+  year = {2011},
+  owner = {zcao},
+  timestamp = {2017.09.08}
+}
+
 @ARTICLE{lindley1972bayes,
   author = {Lindley, Dennis V and Smith, Adrian FM},
   title = {Bayes estimates for the linear model},
@@ -562,6 +614,17 @@
   publisher = {Cambridge university press},
   year = {2003},
   author = {MacKay, David JC}
+}
+
+@INCOLLECTION{meratnia2004spatiotemporal,
+  author = {Meratnia, Nirvana and Rolf, A},
+  title = {Spatiotemporal compression techniques for moving point objects},
+  booktitle = {Advances in Database Technology-EDBT 2004},
+  publisher = {Springer},
+  year = {2004},
+  pages = {765--782},
+  owner = {zcao},
+  timestamp = {2017.09.08}
 }
 
 @BOOK{nason2010wavelet,
@@ -655,7 +718,7 @@
   publisher = {APS}
 }
 
-@ARTICLE{sherlock2016adaptive,
+@ARTICLE{Sherlock2016,
   author = {Sherlock, Chris and Golightly, Andrew and Henderson, Daniel A},
   title = {Adaptive, delayed-acceptance MCMC for targets with expensive likelihoods},
   journal = {Journal of Computational and Graphical Statistics},
@@ -664,17 +727,6 @@
   owner = {zcao},
   publisher = {Taylor \& Francis},
   timestamp = {2017.05.23}
-}
-
-@ARTICLE{sherlock2016adaptive,
-  author = {Sherlock, Chris and Golightly, Andrew and Henderson, Daniel A},
-  title = {Adaptive, delayed-acceptance MCMC for targets with expensive likelihoods},
-  journal = {Journal of Computational and Graphical Statistics},
-  year = {2016},
-  number = {just-accepted},
-  owner = {zcao},
-  publisher = {Taylor \& Francis},
-  timestamp = {2017.09.06}
 }
 
 @ARTICLE{sherman1950adjustment,
@@ -744,6 +796,7 @@
   volume = {2000},
   pages = {584--590},
   organization = {Denver, CO, USA},
+  abstract = {The unscented particle filter},
   owner = {zcao},
   timestamp = {2017.09.06}
 }
@@ -834,6 +887,19 @@
   pages = {2873--2903},
   number = {6},
   publisher = {Institute of Mathematical Statistics}
+}
+
+@INPROCEEDINGS{ying2011semantic,
+  author = {Ying, Josh Jia-Ching and Lee, Wang-Chien and Weng, Tz-Chiao and Tseng,
+	Vincent S},
+  title = {Semantic trajectory mining for location prediction},
+  booktitle = {Proceedings of the 19th ACM SIGSPATIAL International Conference on
+	Advances in Geographic Information Systems},
+  year = {2011},
+  pages = {34--43},
+  organization = {ACM},
+  owner = {zcao},
+  timestamp = {2017.09.08}
 }
 
 @INPROCEEDINGS{yu2004curve,

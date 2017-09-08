@@ -14,7 +14,6 @@
 \usepackage{indentfirst}
 \usepackage{subfigure}
 \usepackage{siunitx}
-\usepackage[toc,page]{appendix}
 
 
 
@@ -84,26 +83,40 @@
 \input{Chapters/01Intro/Intro}
 \clearemptydoublepage
 
-\chapter{Tractor Spline Theory}
-\input{Chapters/02TractorSplineTheory/TractorSplineTheory}
+\setcounter{chapter}{2}
+%\chapter{TractorSplineTheory}
+\include{Chapters/02TractorSplineTheory/TractorSplineTheory}
 \clearemptydoublepage
 
-\chapter{Gaussian Process Regression}
-\input{Chapters/03GPR/GPR}
+\setcounter{chapter}{3}
+\include{Chapters/03GPR/GPR}
 \clearemptydoublepage
 
-\chapter{Filtering Problem}
-\input{Chapters/04Filtering/Filtering}
+\setcounter{chapter}{4}
+\include{Chapters/04Filtering/Filtering}
 \clearemptydoublepage
 
-\chapter{Monte Carlo Markov Chain}
-\input{Chapters/05MCMCOU/MCMCOU}
+\setcounter{chapter}{5}
+\include{Chapters/05MCMCOU/MCMCOU}
 \clearemptydoublepage
 
-\chapter{Data Simplify}
-\input{Chapters/06Spinoff/GPSsimp}
+\setcounter{chapter}{6}
+\include{Chapters/06Spinoff/GPSsimp}
 \clearemptydoublepage
 
+%\setcounter{chapter}{6}
+%\include{Chapters/7.Further_modelling/further_modelling_v3}
+%\clearemptydoublepage
+
+%\setcounter{chapter}{7}
+%\include{Chapters/8.Two_disks/two_disks_v3}
+%\clearemptydoublepage
+
+%\setcounter{chapter}{8}
+%\include{Chapters/9.Conclusion/concl_v2}
+%\clearemptydoublepage
+
+%% Bibliography
 
 \bibliographystyle{otago}
 \bibliography{thesis}
@@ -111,26 +124,25 @@
 
 
 %% Appendices
+\appendix
+%\include{Appendices/Edge_conditions/App_edge_cond}
+%\clearemptydoublepage
 
-% % % % \appendix
+\include{Appendices/Matrix/Matrix}
+\clearemptydoublepage
 
+%\include{Appendices/Fourier_inversion/fourier}
+%\clearemptydoublepage
 
-\begin{appendices}
-\addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
-\makeatletter
-\addtocontents{toc}{%
-  \begingroup
-  \let\protect\l@chapter\protect\l@section
-  \let\protect\l@section\protect\l@subsection
-}
-\makeatother
- \chapter{Penalty}
- \input{Appendices/Penalty}
- \chapter{Matrix}
-  \input{Appendices/Matrix}
-\addtocontents{toc}{\endgroup}
-\end{appendices}
+%\include{Appendices/Pointwise_comparison/comparison}
+%\clearemptydoublepage
 
+%\include{Appendices/Natural_modes_norm/norm}
+%\clearemptydoublepage
+
+%\include{Appendices/Natural_frequencies/nat_freq}
+
+\end{document}
 
 
 \end{document}  
