@@ -2,6 +2,19 @@
 
 \section{Introduction}
 
+From Wikipedia, the free encyclopedia.
+
+In probability theory and statistics, a Gaussian process is a particular kind of statistical model where observations occur in a continuous domain, \eg time or space. In a Gaussian process, every point in some continuous input space is associated with a normally distributed random variable. Moreover, every finite collection of those random variables has a multivariate normal distribution, i.e. every finite linear combination of them is normally distributed. The distribution of a Gaussian process is the joint distribution of all those (infinitely many) random variables, and as such, it is a distribution over functions with a continuous domain, e.g. time or space. 
+
+
+Viewed as a machine learning algorithm, a Gaussian process uses lazy learning and a measure of the similarity between points (the kernel function) to predict the value for an unseen point from training data. The prediction is not just an estimate for that point, but also has uncertainty information it is a one-dimensional Gaussian distribution (which is the marginal distribution at that point).
+
+For some kernel functions, matrix algebra can be used to calculate the predictions using the technique of Kriging. When a parameterized kernel is used, optimization software is typically used to fit a Gaussian process model.
+
+The concept of Gaussian processes is named after Carl Friedrich Gauss because it is based on the notion of the Gaussian distribution (normal distribution). Gaussian processes can be seen as an infinite-dimensional generalization of multivariate normal distributions.
+
+Gaussian processes are useful in statistical modeling, benefiting from properties inherited from the normal. For example, if a random process is modeled as a Gaussian process, the distributions of various derived quantities can be obtained explicitly. Such quantities include the average value of the process over a range of times and the error in estimating the average using sample values at a small set of times.
+
 
 \subsection{Spline}
 
@@ -48,11 +61,11 @@ K(t_*,\mathbf{T}) & K(t_*,t_*)
 \end{equation}
 The posterior distribution over the predicted value is obtained by conditioning on the observed data
 \begin{equation}
-f_* | \mathbf{y},\mathbf{T},t_* \sim N(\bar{f_*},\text{cov}(f_*))
+f_* \mid  \mathbf{y},\mathbf{T},t_* \sim N(\bar{f_*},\text{cov}(f_*))
 \end{equation}
 where 
 \begin{align}
-\bar{f_*}&=\mathbb{E}[f_* | \mathbf{y},\mathbf{T},t_* ]=K(t_*,\mathbf{T})[K(\mathbf{T},\mathbf{T})+\sigma_n^2I]^{-1}\mathbf{y},\\
+\bar{f_*}&=\mathbb{E}[f_* \mid  \mathbf{y},\mathbf{T},t_* ]=K(t_*,\mathbf{T})[K(\mathbf{T},\mathbf{T})+\sigma_n^2I]^{-1}\mathbf{y},\\
 \text{cov}(f_*)&=K(t_*,t_*)-K(t_*,\mathbf{T})[K(\mathbf{T},\mathbf{T})+\sigma_n^2I]^{-1}K(\mathbf{T},t_*).
 \end{align}
 
@@ -87,7 +100,7 @@ By denoting $M=Q+n\lambda I$, \cite{gubook} found that the coefficients will be 
 
 
 \section{A reproducing kernel on $\mathcal{C}_{p.w.}^{2}[0,1]$}
-The minimizer $\eta(x)$ of
+The minimizer $f(x)$ of
 \begin{equation}\label{maineq}
 \frac{1}{n}\sum_{i=1}^{n}(Y_i-\eta(x_i))^2+\frac{\gamma}{n}\sum_{i=1}^{n}(v_i-\eta'(x_i))^2+\lambda \int_{0}^{1}\eta''^2dx
 \end{equation}
@@ -132,9 +145,9 @@ Given the sample points $x_j, j=1, \cdots, n$ in equation $(\ref{maineq})$ and n
 \begin{equation}
 \mathcal{A}=\{f: f=\sum_{j=1}^{n}\alpha_jR_1(x_j,\cdot)+\sum_{j=1}^{n}\beta_j\dot{R}_1(x_j,\cdot)\} 
 \end{equation}
-is a closed linear subspace of $\mathcal{H}_*$. Then $\eta \in \mathcal{C}_{p.w.}^2[0,1]$ can be written as
+is a closed linear subspace of $\mathcal{H}_*$. Then $f  \in \mathcal{C}_{p.w.}^2[0,1]$ can be written as
 \begin{equation}\label{etaeq}
-\eta(x)=d_1+d_2x+\sum_{j=1}^{n}c_jR_1(x_j,x)+\sum_{i=j}^{n}b_j\dot{R}_1(x_j,\cdot) +\rho(x)
+f(x)=d_1+d_2x+\sum_{j=1}^{n}c_jR_1(x_j,x)+\sum_{i=j}^{n}b_j\dot{R}_1(x_j,\cdot) +\rho(x)
 \end{equation}
 where $\mathbf{d},\mathbf{c}$ and $\mathbf{b}$ are coefficients, and $\rho(x) \in \mathcal{H}_* \ominus \mathcal{A}$. 
 
@@ -162,31 +175,31 @@ and noting that $\int_0^1R''_1(x_i,x)R''_1(x_j,x)dx=R_1(x_i,x_j)$, $\int_0^1R''_
 Note that $\rho$ only appears in the third term in $(\ref{matrixeq})$, which is minimised at $\rho=0$. Hence, a polynomial smoothing spline resides in the space $\mathcal{H}_0\oplus \mathcal{A}$ of finite dimension. Then the solution to $(\ref{maineq})$ could be computed via minimization of the first two terms in $(\ref{matrixeq})$ with respect to $\mathbf{d}$, $\mathbf{c}$ and $\mathbf{b}$.
 
 \section{Polynomial Smoothing Splines as Bayes Estimates}
-Now in the model $Y=\eta(x)+\epsilon$ and $V=\eta'(x)+\frac{\epsilon}{\gamma}$ where $\epsilon \sim N(0,\sigma^2)$, according to equation $(\ref{etaeq})$, for $\eta(x) \in \mathcal{C}_{p.w.}^{2}[0,1]$ and $x \in X$, we have
+Now in the model $Y=f(x)+\epsilon$ and $V=f '(x)+\frac{\epsilon}{\gamma}$ where $\epsilon \sim N(0,\sigma^2)$, according to equation $(\ref{etaeq})$, for $f(x) \in \mathcal{C}_{p.w.}^{2}[0,1]$ and $x \in X$, we have
 \begin{equation}
-\eta(x)=(d_1+d_2x)+\sum_{i=1}^{n}c_iR_1(x_i,x)+\sum_{i=1}^{n}b_i\dot{R}_1(x_i,x).
+f(x)=(d_1+d_2x)+\sum_{i=1}^{n}c_iR_1(x_i,x)+\sum_{i=1}^{n}b_i\dot{R}_1(x_i,x).
 \end{equation}
-The covariance functions for $Y,V$ and $\eta, \eta'$ are
+The covariance functions for $Y,V$ and $f , f '$ are
 \begin{align*}
-\mathbb{E}(\eta(x)\eta(y))&=\tau^2R_0(x,y)+\beta R_1(x,y) & \mathbb{E}(\eta(x)\eta'(y))&=\tau^2R_0'(x,y)+\beta R_1'(x,y) \\
-\mathbb{E}(\eta'(x)\eta(y))&=\tau^2\dot{R}_0(x,y)+\beta\dot{R}_1(x,y) & \mathbb{E}(\eta'(x)\eta'(y))&=\tau^2\dot{R}'_0(x,y)+\beta\dot{R}'_1(x,y) \\
+\mathbb{E}(f(x)f (y))&=\tau^2R_0(x,y)+\beta R_1(x,y) & \mathbb{E}(f(x)f '(y))&=\tau^2R_0'(x,y)+\beta R_1'(x,y) \\
+\mathbb{E}(f '(x)f (y))&=\tau^2\dot{R}_0(x,y)+\beta\dot{R}_1(x,y) & \mathbb{E}(f '(x)f '(y))&=\tau^2\dot{R}'_0(x,y)+\beta\dot{R}'_1(x,y) \\
 \begin{split}
 \mathbb{E}(y_i,y_j)&=\tau^2R_0(x_i,x_j)+\beta R_1(x_i,x_j)\\ &+\sigma^2\delta_{ij} \end{split}  & \begin{split}
 \mathbb{E}(v_i,v_j)&=\tau^2\dot{R}'_0(x_i,x_j)+\beta\dot{R}'_1(x_i,x_j) \\&+\frac{\sigma^2}{\gamma}\delta_{ij}\end{split} \\ 
 \mathbb{E}(v_i,y_j)&=\tau^2\dot{R}_0(x_i,x_j)+\beta \dot{R}_1(x_i,x_j) &
 \mathbb{E}(y_i,v_j)&=\tau^2R_0'(x_i,x_j)+\beta R_1'(x_i,x_j)\\
-\mathbb{E}(y_i,\eta(x))&=\tau^2 R_0(x_i,x)+\beta R_1(x_i,x)  & \mathbb{E}(y_i,\eta'(x))&=\tau^2 R'_0(x_i,x)+\beta R'_1(x_i,x)  \\
-\mathbb{E}(v_i,\eta(x))&=\tau^2 \dot{R}_0(x_i,x)+\beta \dot{R}_1(x_i,x) & \mathbb{E}(v_i,\eta'(x))&=\tau^2\dot{R}'_0(x_i,x)+\beta \dot{R}'_1(x_i,x)
+\mathbb{E}(y_i,f(x))&=\tau^2 R_0(x_i,x)+\beta R_1(x_i,x)  & \mathbb{E}(y_i,f '(x))&=\tau^2 R'_0(x_i,x)+\beta R'_1(x_i,x)  \\
+\mathbb{E}(v_i,f(x))&=\tau^2 \dot{R}_0(x_i,x)+\beta \dot{R}_1(x_i,x) & \mathbb{E}(v_i,f '(x))&=\tau^2\dot{R}'_0(x_i,x)+\beta \dot{R}'_1(x_i,x)
 \end{align*}
 where $R(x,y)$ is taken from $(\ref{kerneleq})$. 
 
 
-Observing $Y_i\sim N(\eta(x_i),\sigma^2)$ and $V_i\sim N(\eta(x_i),\frac{\sigma^2}{\gamma})$, the joint distribution of $Y,V$ and $\eta(x)$ is normal with mean zero and a covariance matrix can be found. The posterior mean of $\eta(x)$ is 
+Observing $Y_i\sim N(f (x_i),\sigma^2)$ and $V_i\sim N(f (x_i),\frac{\sigma^2}{\gamma})$, the joint distribution of $Y,V$ and $f(x)$ is normal with mean zero and a covariance matrix can be found. The posterior mean of $f(x)$ is 
 \begin{align}\label{rhoeq}
 \begin{split}
-\mathbb{E}(\eta | Y,V)&=
+\mathbb{E}(f \mid  Y,V)&=
 \begin{bmatrix}
-\mbox{cov}(Y,\eta) & \mbox{cov}(\eta,V)
+\mbox{cov}(Y,f) & \mbox{cov}(f,V)
 \end{bmatrix}\begin{bmatrix}
 \mbox{var}(Y) & \mbox{cov}(Y,V)\\
 \mbox{cov}(V,Y) & \mbox{var}(V)
@@ -231,7 +244,7 @@ where $\phi$ is $2 \times 1$ matrix with entry $1$ and $x$, $\xi$ is $n\times 1$
 	\end{align*}
 \end{lemma}
 
-Setting $\rho \rightarrow \infty$ in equation $(\ref{rhoeq})$ and applying Lemma $\ref{lem}$, the posterior mean $\mathbb{E}(\eta(x)|\mathbf{Y},\mathbf{V})$ is of the form $\eta = \mathbf{\phi}^\top \mathbf{d}+\mathbf{\xi}^\top \mathbf{c}+\mathbf{\psi}^\top \mathbf{b}$, with the coefficients given by
+Setting $\rho \rightarrow \infty$ in equation $(\ref{rhoeq})$ and applying Lemma $\ref{lem}$, the posterior mean $\mathbb{E}(f(x)\mid \mathbf{Y},\mathbf{V})$ is of the form $f  = \mathbf{\phi}^\top \mathbf{d}+\mathbf{\xi}^\top \mathbf{c}+\mathbf{\psi}^\top \mathbf{b}$, with the coefficients given by
 \begin{align*}
 \mathbf{d}&=(T^\top M^{-1}T)^{-1}T^\top M^{-1}\begin{bmatrix}Y\\V \end{bmatrix},\\
 \begin{bmatrix}\mathbf{c}\\\mathbf{b}\end{bmatrix} &=
@@ -273,5 +286,5 @@ A simulated result is in figure 1.
 		\includegraphics[width=12cm,height=7cm]{Chapters/03GPR/plot/simu02} \\[\abovecaptionskip]
 		\small (b) 
 	\end{tabular}
-	\caption{(a) Comparing two methods under the same parameters $\lambda=0.01$ and $\gamma=0.1$. In this graph, the blue line is reconstruction from tractor spline, the red line is the mean of Gaussian Process, which is the posterior $\mathbb{E}(\eta(x) | \mathbf{Y}, \mathbf{V})$. (b) The differences between two methods under the same parameters.}
+	\caption{(a) Comparing two methods under the same parameters $\lambda=0.01$ and $\gamma=0.1$. In this graph, the blue line is reconstruction from tractor spline, the red line is the mean of Gaussian Process, which is the posterior $\mathbb{E}(f(x) \mid  \mathbf{Y}, \mathbf{V})$. (b) The differences between two methods under the same parameters.}
 \end{figure}

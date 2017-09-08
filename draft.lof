@@ -9,7 +9,7 @@
 \contentsline {figure}{\numberline {2.6}{\ignorespaces Estimated penalty functions. Left side shows how the value of $\lambda (t)$ changes on the interval. Right side projects $\lambda (t)$ into reconstructions. The bigger the blacks dots present, the larger the penalty values are.}}{40}
 \contentsline {figure}{\numberline {2.7}{\ignorespaces Estimated velocity functions by taking the first derivative of tractor spline. (a) Fitted $\mathit {Blocks}$. (b) Fitted $\mathit {Bumps}$. (c) Fitted $\mathit {HeaviSine}$. (d) Fitted $\mathit {Doppler}$.}}{41}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces (a) Comparing two methods under the same parameters $\lambda =0.01$ and $\gamma =0.1$. In this graph, the blue line is reconstruction from tractor spline, the red line is the mean of Gaussian Process, which is the posterior $\mathbb {E}(\eta (x) | \mathbf {Y}, \mathbf {V})$. (b) The differences between two methods under the same parameters.}}{51}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces (a) Comparing two methods under the same parameters $\lambda =0.01$ and $\gamma =0.1$. In this graph, the blue line is reconstruction from tractor spline, the red line is the mean of Gaussian Process, which is the posterior $\mathbb {E}(f(x) \mid \mathbf {Y}, \mathbf {V})$. (b) The differences between two methods under the same parameters.}}{52}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
