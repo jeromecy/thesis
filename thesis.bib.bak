@@ -173,6 +173,22 @@
   timestamp = {2017.09.08}
 }
 
+@ARTICLE{selfturningkalman,
+  author = {Chenjian RAN, Zili DENG},
+  title = {Self-tuning weighted measurement fusion Kalman filter and its convergence},
+  journal = {J Control Theory Application},
+  year = {2010},
+  volume = {4},
+  pages = {435--440},
+  month = {8},
+  bdsk-file-1 = {YnBsaXN0MDDUAQIDBAUGJCVYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKgHCBMUFRYaIVUkbnVsbNMJCgsMDxJXTlMua2V5c1pOUy5vYmplY3RzViRjbGFzc6INDoACgAOiEBGABIAFgAdccmVsYXRpdmVQYXRoWWFsaWFzRGF0YV8QbC4uLy4uL1JlZmVyZW5jZXMvS2FsbWFuIEZpbHRlci9TZWxmLXR1bmluZyB3ZWlnaHRlZCBtZWFzdXJlbWVudCBmdXNpb24gS2FsbWFuIGZpbHRlciBhbmQgaXRzIGNvbnZlcmdlbmNlLnBkZtIXCxgZV05TLmRhdGFPEQKuAAAAAAKuAAIAAAxNYWNpbnRvc2ggSEQAAAAAAAAAAAAAAAAAAADK7LMgSCsAAATAJU4fU2VsZi10dW5pbmcgd2VpZ2h0ZSM0QzAyNTU1LnBkZgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABMAlVdF2poAAAAAAAAAAAAACAAMAAAkgAAAAAAAAAAAAAAAAAAAADUthbG1hbiBGaWx0ZXIAABAACAAAyuv8UAAAABEACAAA0XX9wAAAAAEAGATAJU4EwCUPAy2r5gAFH0cABR9GAADAQwACAHBNYWNpbnRvc2ggSEQ6VXNlcnM6AEplcm9tZToARG9jdW1lbnRzOgBQcm9qZWN0IEZpbGVzOgBSZWZlcmVuY2VzOgBLYWxtYW4gRmlsdGVyOgBTZWxmLXR1bmluZyB3ZWlnaHRlIzRDMDI1NTUucGRmAA4AnABNAFMAZQBsAGYALQB0AHUAbgBpAG4AZwAgAHcAZQBpAGcAaAB0AGUAZAAgAG0AZQBhAHMAdQByAGUAbQBlAG4AdAAgAGYAdQBzAGkAbwBuACAASwBhAGwAbQBhAG4AIABmAGkAbAB0AGUAcgAgAGEAbgBkACAAaQB0AHMAIABjAG8AbgB2AGUAcgBnAGUAbgBjAGUALgBwAGQAZgAPABoADABNAGEAYwBpAG4AdABvAHMAaAAgAEgARAASAItVc2Vycy9KZXJvbWUvRG9jdW1lbnRzL1Byb2plY3QgRmlsZXMvUmVmZXJlbmNlcy9LYWxtYW4gRmlsdGVyL1NlbGYtdHVuaW5nIHdlaWdodGVkIG1lYXN1cmVtZW50IGZ1c2lvbiBLYWxtYW4gZmlsdGVyIGFuZCBpdHMgY29udmVyZ2VuY2UucGRmAAATAAEvAAAVAAIADf//AACABtIbHB0eWiRjbGFzc25hbWVYJGNsYXNzZXNdTlNNdXRhYmxlRGF0YaMdHyBWTlNEYXRhWE5TT2JqZWN00hscIiNcTlNEaWN0aW9uYXJ5oiIgXxAPTlNLZXllZEFyY2hpdmVy0SYnVHJvb3SAAQAIABEAGgAjAC0AMgA3AEAARgBNAFUAYABnAGoAbABuAHEAcwB1AHcAhACOAP0BAgEKA7wDvgPDA84D1wPlA+kD8AP5A/4ECwQOBCAEIwQoAAAAAAAAAgEAAAAAAAAAKAAAAAAAAAAAAAAAAAAABCo=},
+  date-added = {2015-05-11 08:45:53 +0000},
+  date-modified = {2015-05-11 08:46:58 +0000},
+  keywords = {Kalman Filter},
+  owner = {zcao},
+  timestamp = {2017.09.13}
+}
+
 @ARTICLE{craven1978smoothing,
   author = {Craven, Peter and Wahba, Grace},
   title = {Smoothing noisy data with spline functions},
@@ -242,13 +258,34 @@
 }
 
 @ARTICLE{donoho1995wavelet,
-  author = {Donoho, David L and Johnstone, Iain M and Kerkyacharian, G{\'e}rard
-	and Picard, Dominique},
+  author = {Donoho, David L and Johnstone, Iain M and Kerkyacharian},
   title = {Wavelet shrinkage: asymptopia?},
   journal = {Journal of the Royal Statistical Society. Series B (Methodological)},
   year = {1995},
-  pages = {301--369},
-  publisher = {JSTOR}
+  pages = {301-369},
+  abstract = {Much recentefforthas soughtasymptoticallyminimaxmethodsforrecoveringinfinite
+	dimensionaolbjects-curves,densitiess,pectraldensitiesi,mages-fromnoisydata.A
+	now richand complexbodyofworkdevelopsnearlyorexactlyminimaxestimatorsforan
+	array of interestinpgroblems.Unfortunatelyt,heresultshave rarelymovedintopractice,fora
+	varietyof reasons-among thembeingsimilarityto knownmethods,computational
+	intractabilitayndlackofspatialadaptivityW.ediscussamethodforcurveestimationbased
+	on n noisydata: translatetheempiricawl aveletcoefficientsowardstheoriginbyan
+	amount <(2 logn)au/n. Theproposaldifferfsromthoseincurrenutse,iscomputationallpyractical
+	andisspatiallyadaptive;itthusavoidsseveralofthepreviousobjectionsF.urthert,hemethod
+	isnearlyminimaxbothfora widevarietyoflossfunctions-pointwiserror,globalerror
+	measuredin LP-norms,pointwiseand global errorin estimationof derivatives-and
+	for a widerangeofsmoothnessclasses,includingstandardH6lderandSobolevclasses,and
+	bounded variation.This is a much broader near optimalitythan anythingpreviously
+	proposed:we drawloose parallelswithnearoptimalityin robustnesasnd
+	also withthebroad neareigenfunctionpropertiesofwaveletsthemselvesF.inally,thetheoryunderlyingthe
+	methodis interestinga,s it exploitsa correspondencebetweenstatisticalquestionsand
+	questionsof optimalrecoveryand information-basecdomplexity},
+  bdsk-file-1 = {YnBsaXN0MDDUAQIDBAUGJCVYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKgHCBMUFRYaIVUkbnVsbNMJCgsMDxJXTlMua2V5c1pOUy5vYmplY3RzViRjbGFzc6INDoACgAOiEBGABIAFgAdccmVsYXRpdmVQYXRoWWFsaWFzRGF0YV8QQi4uLy4uL1JlZmVyZW5jZXMvQWRhcHRpdmUgU21vb3RoL1dhdmVsZXQgc2hyaW5rYWdlLUFzeW1wdG9waWE/LnBkZtIXCxgZV05TLmRhdGFPEQIwAAAAAAIwAAIAAAxNYWNpbnRvc2ggSEQAAAAAAAAAAAAAAAAAAADK7LMgSCsAAATAJRIfV2F2ZWxldCBzaHJpbmthZ2UtQSM0QzAyNTFBLnBkZgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABMAlGtF2ploAAAAAAAAAAAACAAMAAAkgAAAAAAAAAAAAAAAAAAAAD0FkYXB0aXZlIFNtb290aAAAEAAIAADK6/xQAAAAEQAIAADRdf2aAAAAAQAYBMAlEgTAJQ8DLavmAAUfRwAFH0YAAMBDAAIAck1hY2ludG9zaCBIRDpVc2VyczoASmVyb21lOgBEb2N1bWVudHM6AFByb2plY3QgRmlsZXM6AFJlZmVyZW5jZXM6AEFkYXB0aXZlIFNtb290aDoAV2F2ZWxldCBzaHJpbmthZ2UtQSM0QzAyNTFBLnBkZgAOAEQAIQBXAGEAdgBlAGwAZQB0ACAAcwBoAHIAaQBuAGsAYQBnAGUALQBBAHMAeQBtAHAAdABvAHAAaQBhAD8ALgBwAGQAZgAPABoADABNAGEAYwBpAG4AdABvAHMAaAAgAEgARAASAGFVc2Vycy9KZXJvbWUvRG9jdW1lbnRzL1Byb2plY3QgRmlsZXMvUmVmZXJlbmNlcy9BZGFwdGl2ZSBTbW9vdGgvV2F2ZWxldCBzaHJpbmthZ2UtQXN5bXB0b3BpYT8ucGRmAAATAAEvAAAVAAIADf//AACABtIbHB0eWiRjbGFzc25hbWVYJGNsYXNzZXNdTlNNdXRhYmxlRGF0YaMdHyBWTlNEYXRhWE5TT2JqZWN00hscIiNcTlNEaWN0aW9uYXJ5oiIgXxAPTlNLZXllZEFyY2hpdmVy0SYnVHJvb3SAAQAIABEAGgAjAC0AMgA3AEAARgBNAFUAYABnAGoAbABuAHEAcwB1AHcAhACOANMA2ADgAxQDFgMbAyYDLwM9A0EDSANRA1YDYwNmA3gDewOAAAAAAAAAAgEAAAAAAAAAKAAAAAAAAAAAAAAAAAAAA4I=},
+  date-added = {2015-05-11 10:02:24 +0000},
+  date-modified = {2015-05-11 10:04:10 +0000},
+  keywords = {Adaptive Smoothing},
+  owner = {zcao},
+  timestamp = {2017.09.13}
 }
 
 @ARTICLE{donoho1994ideal,
@@ -345,6 +382,40 @@
   author = {Green, Peter J and Silverman, Bernard W}
 }
 
+@ARTICLE{introkalman,
+  author = {Greg Welch, Gary Bishop},
+  title = {An Introduction to the Kalman Filter},
+  journal = {UNC-Chapel Hill},
+  year = {2006},
+  volume = {TR 95-041},
+  abstract = {Abstract In 1960, R.E. Kalman published his famous paper describing
+	a recursive solution to the discrete-data linear filtering problem.
+	Since that time, due in large part to ad- vances in digital computing,
+	the Kalman filter has been the subject of extensive re- search and
+	application, particularly in the area of autonomous or assisted navigation.
+	The Kalman filter is a set of mathematical equations that provides
+	an efficient com- putational (recursive) means to estimate the state
+	of a process, in a way that mini- mizes the mean of the squared error.
+	The filter is very powerful in several aspects: it supports estimations
+	of past, present, and even future states, and it can do so even when
+	the precise nature of the modeled system is unknown. The purpose
+	of this paper is to provide a practical introduction to the discrete
+	Kal- man filter. This introduction includes a description and some
+	discussion of the basic discrete Kalman filter, a derivation, description
+	and some discussion of the extend- ed Kalman filter, and a relatively
+	simple (tangible) example with real numbers & results.},
+  annote = {TR 95-041 Department of Computer Science University of North Carolina
+	at Chapel Hill Chapel Hill, NC 27599-3175
+	
+	},
+  bdsk-file-1 = {YnBsaXN0MDDUAQIDBAUGJCVYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKgHCBMUFRYaIVUkbnVsbNMJCgsMDxJXTlMua2V5c1pOUy5vYmplY3RzViRjbGFzc6INDoACgAOiEBGABIAFgAdccmVsYXRpdmVQYXRoWWFsaWFzRGF0YV8QRy4uLy4uL1JlZmVyZW5jZXMvS2FsbWFuIEZpbHRlci9BbiBJbnRyb2R1Y3Rpb24gdG8gdGhlIEthbG1hbiBGaWx0ZXIucGRm0hcLGBlXTlMuZGF0YU8RAj4AAAAAAj4AAgAADE1hY2ludG9zaCBIRAAAAAAAAAAAAAAAAAAAAMrssyBIKwAABMAlTh9BbiBJbnRyb2R1Y3Rpb24gdG8gIzRDMDI1NTcucGRmAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEwCVX0XamZgAAAAAAAAAAAAIAAwAACSAAAAAAAAAAAAAAAAAAAAANS2FsbWFuIEZpbHRlcgAAEAAIAADK6/xQAAAAEQAIAADRdf2mAAAAAQAYBMAlTgTAJQ8DLavmAAUfRwAFH0YAAMBDAAIAcE1hY2ludG9zaCBIRDpVc2VyczoASmVyb21lOgBEb2N1bWVudHM6AFByb2plY3QgRmlsZXM6AFJlZmVyZW5jZXM6AEthbG1hbiBGaWx0ZXI6AEFuIEludHJvZHVjdGlvbiB0byAjNEMwMjU1Ny5wZGYADgBSACgAQQBuACAASQBuAHQAcgBvAGQAdQBjAHQAaQBvAG4AIAB0AG8AIAB0AGgAZQAgAEsAYQBsAG0AYQBuACAARgBpAGwAdABlAHIALgBwAGQAZgAPABoADABNAGEAYwBpAG4AdABvAHMAaAAgAEgARAASAGZVc2Vycy9KZXJvbWUvRG9jdW1lbnRzL1Byb2plY3QgRmlsZXMvUmVmZXJlbmNlcy9LYWxtYW4gRmlsdGVyL0FuIEludHJvZHVjdGlvbiB0byB0aGUgS2FsbWFuIEZpbHRlci5wZGYAEwABLwAAFQACAA3//wAAgAbSGxwdHlokY2xhc3NuYW1lWCRjbGFzc2VzXU5TTXV0YWJsZURhdGGjHR8gVk5TRGF0YVhOU09iamVjdNIbHCIjXE5TRGljdGlvbmFyeaIiIF8QD05TS2V5ZWRBcmNoaXZlctEmJ1Ryb290gAEACAARABoAIwAtADIANwBAAEYATQBVAGAAZwBqAGwAbgBxAHMAdQB3AIQAjgDYAN0A5QMnAykDLgM5A0IDUANUA1sDZANpA3YDeQOLA44DkwAAAAAAAAIBAAAAAAAAACgAAAAAAAAAAAAAAAAAAAOV},
+  date-added = {2015-05-11 07:37:34 +0000},
+  date-modified = {2015-05-11 07:42:13 +0000},
+  keywords = {Kalman Filter},
+  owner = {zcao},
+  timestamp = {2017.09.13}
+}
+
 @BOOK{gubook,
   title = {Smoothing Spline ANOVA Models Second Edition},
   publisher = {Springer New York Heidelberg Dordrecht London},
@@ -399,6 +470,21 @@
   author = {Hangos, Katalin M and Bokor, J{\'o}zsef and Szederk{\'e}nyi, G{\'a}bor},
   owner = {zcao},
   timestamp = {2017.05.23}
+}
+
+@BOOK{ESLII,
+  title = {The elements of statistical learning: data mining, inference and
+	prediction},
+  publisher = {￼Springer},
+  year = {2008},
+  author = {Hastie, Trevor and Tibshirani, Robert and Friedman, Jerome and Franklin,
+	James},
+  bdsk-file-1 = {YnBsaXN0MDDUAQIDBAUGJCVYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKgHCBMUFRYaIVUkbnVsbNMJCgsMDxJXTlMua2V5c1pOUy5vYmplY3RzViRjbGFzc6INDoACgAOiEBGABIAFgAdccmVsYXRpdmVQYXRoWWFsaWFzRGF0YV8QKC4uLy4uL1JlZmVyZW5jZXMvQm9va3MvRVNMSUlfcHJpbnQxMC5wZGbSFwsYGVdOUy5kYXRhTxEB1AAAAAAB1AACAAAMTWFjaW50b3NoIEhEAAAAAAAAAAAAAAAAAAAAyuyzIEgrAAAEwCU9EUVTTElJX3ByaW50MTAucGRmAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATAJWTRdqZ+AAAAAAAAAAAAAgADAAAJIAAAAAAAAAAAAAAAAAAAAAVCb29rcwAAEAAIAADK6/xQAAAAEQAIAADRdf2+AAAAAQAYBMAlPQTAJQ8DLavmAAUfRwAFH0YAAMBDAAIAWk1hY2ludG9zaCBIRDpVc2VyczoASmVyb21lOgBEb2N1bWVudHM6AFByb2plY3QgRmlsZXM6AFJlZmVyZW5jZXM6AEJvb2tzOgBFU0xJSV9wcmludDEwLnBkZgAOACQAEQBFAFMATABJAEkAXwBwAHIAaQBuAHQAMQAwAC4AcABkAGYADwAaAAwATQBhAGMAaQBuAHQAbwBzAGgAIABIAEQAEgBHVXNlcnMvSmVyb21lL0RvY3VtZW50cy9Qcm9qZWN0IEZpbGVzL1JlZmVyZW5jZXMvQm9va3MvRVNMSUlfcHJpbnQxMC5wZGYAABMAAS8AABUAAgAN//8AAIAG0hscHR5aJGNsYXNzbmFtZVgkY2xhc3Nlc11OU011dGFibGVEYXRhox0fIFZOU0RhdGFYTlNPYmplY3TSGxwiI1xOU0RpY3Rpb25hcnmiIiBfEA9OU0tleWVkQXJjaGl2ZXLRJidUcm9vdIABAAgAEQAaACMALQAyADcAQABGAE0AVQBgAGcAagBsAG4AcQBzAHUAdwCEAI4AuQC+AMYCngKgAqUCsAK5AscCywLSAtsC4ALtAvADAgMFAwoAAAAAAAACAQAAAAAAAAAoAAAAAAAAAAAAAAAAAAADDA==},
+  date-added = {2015-05-11 09:04:36 +0000},
+  date-modified = {2015-05-11 09:07:47 +0000},
+  keywords = {Books},
+  owner = {zcao},
+  timestamp = {2017.09.13}
 }
 
 @BOOK{hastie1990generalized,
@@ -516,9 +602,29 @@
   journal = {Journal of the Royal Statistical Society: Series B (Statistical Methodology)},
   year = {2004},
   volume = {66},
-  pages = {337--356},
+  pages = {337-356},
   number = {2},
-  publisher = {Wiley Online Library}
+  abstract = {Smoothing splines via the penalized least squares method provide versatile
+	and effective nonparametric models for regression with Gaussian responses.
+	The computation of smoothing splines is generally of the order O.n3/,
+	n being the sample size, which severely limits its practical applicability.
+	We study more scalable computation of smoothing spline regression
+	via certain low dimensional approximations that are asymptotically
+	as efficient. A simple algo- rithm is presented and the Bayes model
+	that is associated with the approximations is derived, with the latter
+	guiding the porting of Bayesian confidence intervals. The practical
+	choice of the dimension of the approximating space is determined
+	through simulation studies, and empirical comparisons of the approximations
+	with the exact solution are presented. Also evaluated is a simple
+	modification of the generalized cross-validation method for smoothing
+	parameter selec- tion, which to a large extent fixes the occasional
+	undersmoothing problem that is suffered by generalized cross-validation.},
+  bdsk-file-1 = {YnBsaXN0MDDUAQIDBAUGJCVYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKgHCBMUFRYaIVUkbnVsbNMJCgsMDxJXTlMua2V5c1pOUy5vYmplY3RzViRjbGFzc6INDoACgAOiEBGABIAFgAdccmVsYXRpdmVQYXRoWWFsaWFzRGF0YV8Qfi4uLy4uL1JlZmVyZW5jZXMvU21vb3RoIFNwbGluZS9TbW9vdGhpbmcgc3BsaW5lIEdhdXNzaWFuIHJlZ3Jlc3Npb24tIG1vcmUgc2NhbGFibGUgY29tcHV0YXRpb24gdmlhIGVmZmljaWVudCBhcHByb3hpbWF0aW9uLnBkZtIXCxgZV05TLmRhdGFPEQLkAAAAAALkAAIAAAxNYWNpbnRvc2ggSEQAAAAAAAAAAAAAAAAAAADK7LMgSCsAAATAJWcfU21vb3RoaW5nIHNwbGluZSBHYSM0QzAyNTc4LnBkZgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABMAleNF2pmoAAAAAAAAAAAACAAMAAAkgAAAAAAAAAAAAAAAAAAAADVNtb290aCBTcGxpbmUAABAACAAAyuv8UAAAABEACAAA0XX9qgAAAAEAGATAJWcEwCUPAy2r5gAFH0cABR9GAADAQwACAHBNYWNpbnRvc2ggSEQ6VXNlcnM6AEplcm9tZToARG9jdW1lbnRzOgBQcm9qZWN0IEZpbGVzOgBSZWZlcmVuY2VzOgBTbW9vdGggU3BsaW5lOgBTbW9vdGhpbmcgc3BsaW5lIEdhIzRDMDI1NzgucGRmAA4AwABfAFMAbQBvAG8AdABoAGkAbgBnACAAcwBwAGwAaQBuAGUAIABHAGEAdQBzAHMAaQBhAG4AIAByAGUAZwByAGUAcwBzAGkAbwBuAC0AIABtAG8AcgBlACAAcwBjAGEAbABhAGIAbABlACAAYwBvAG0AcAB1AHQAYQB0AGkAbwBuACAAdgBpAGEAIABlAGYAZgBpAGMAaQBlAG4AdAAgAGEAcABwAHIAbwB4AGkAbQBhAHQAaQBvAG4ALgBwAGQAZgAPABoADABNAGEAYwBpAG4AdABvAHMAaAAgAEgARAASAJ1Vc2Vycy9KZXJvbWUvRG9jdW1lbnRzL1Byb2plY3QgRmlsZXMvUmVmZXJlbmNlcy9TbW9vdGggU3BsaW5lL1Ntb290aGluZyBzcGxpbmUgR2F1c3NpYW4gcmVncmVzc2lvbi0gbW9yZSBzY2FsYWJsZSBjb21wdXRhdGlvbiB2aWEgZWZmaWNpZW50IGFwcHJveGltYXRpb24ucGRmAAATAAEvAAAVAAIADf//AACABtIbHB0eWiRjbGFzc25hbWVYJGNsYXNzZXNdTlNNdXRhYmxlRGF0YaMdHyBWTlNEYXRhWE5TT2JqZWN00hscIiNcTlNEaWN0aW9uYXJ5oiIgXxAPTlNLZXllZEFyY2hpdmVy0SYnVHJvb3SAAQAIABEAGgAjAC0AMgA3AEAARgBNAFUAYABnAGoAbABuAHEAcwB1AHcAhACOAQ8BFAEcBAQEBgQLBBYEHwQtBDEEOARBBEYEUwRWBGgEawRwAAAAAAAAAgEAAAAAAAAAKAAAAAAAAAAAAAAAAAAABHI=},
+  date-added = {2015-05-11 09:49:49 +0000},
+  date-modified = {2015-05-11 09:51:15 +0000},
+  keywords = {Smooth Splines},
+  owner = {zcao},
+  timestamp = {2017.09.13}
 }
 
 @ARTICLE{kimeldorf1971some,
@@ -569,6 +675,19 @@
   timestamp = {2017.05.23}
 }
 
+@BOOK{AEM,
+  title = {Advanced Engineering Mathematics},
+  publisher = {John Wiley and Sons},
+  year = {2006},
+  author = {Erwin Kreyszig},
+  edition = {9th International},
+  date-added = {2015-05-11 12:15:14 +0000},
+  date-modified = {2015-05-11 12:34:42 +0000},
+  keywords = {Hermite Spline},
+  owner = {zcao},
+  timestamp = {2017.09.13}
+}
+
 @TECHREPORT{lawson2011compression,
   author = {Lawson, Catherine T and Ravi, SS and Hwang, Jeong-Hyon},
   title = {Compression and Mining of GPS Trace Data: New Techniques and Applications},
@@ -605,8 +724,30 @@
   title = {Data driven adaptive spline smoothing},
   journal = {Statistica Sinica},
   year = {2010},
-  pages = {1143--1163},
-  publisher = {JSTOR}
+  volume = {20},
+  number = {1143-1163},
+  abstract = {In classical smoothing splines, the smoothness is controlled by a
+	single smoothing parameter that penalizes the roughness uniformly
+	across the whole do- main. Adaptive smoothing splines extend this
+	framework to allow the smoothing parameter to change in the domain,
+	adapting to the change of roughness. In this article we propose a
+	data driven method to nonparametrically model the penalty function.
+	We propose to approximate the penalty function by a step function
+	whose segmentation is data driven, and to estimate it by maximizing
+	the generalized like- lihood. A complexity penalty is added to the
+	generalized likelihood in selecting the best step function from a
+	collection of candidates. A state space representation for the adaptive
+	smoothing splines is derived to ease the computational demand. To
+	allow for fast search among the candidate models, we impose a binary
+	tree structure on the penalty function and propose an efficient search
+	algorithm. We show the consistency of the final estimate. We demonstrate
+	the effectiveness of the method through simulations and a data example.},
+  bdsk-file-1 = {YnBsaXN0MDDUAQIDBAUGJCVYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKgHCBMUFRYaIVUkbnVsbNMJCgsMDxJXTlMua2V5c1pOUy5vYmplY3RzViRjbGFzc6INDoACgAOiEBGABIAFgAdccmVsYXRpdmVQYXRoWWFsaWFzRGF0YV8QSi4uLy4uL1JlZmVyZW5jZXMvQWRhcHRpdmUgU21vb3RoL0RBVEEgRFJJVkVOIEFEQVBUSVZFIFNQTElORSBTTU9PVEhJTkcucGRm0hcLGBlXTlMuZGF0YU8RAkgAAAAAAkgAAgAADE1hY2ludG9zaCBIRAAAAAAAAAAAAAAAAAAAAMrssyBIKwAABMAlEh9EQVRBIERSSVZFTiBBREFQVElWIzRDMDI1MTgucGRmAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEwCUY0XamWAAAAAAAAAAAAAIAAwAACSAAAAAAAAAAAAAAAAAAAAAPQWRhcHRpdmUgU21vb3RoAAAQAAgAAMrr/FAAAAARAAgAANF1/ZgAAAABABgEwCUSBMAlDwMtq+YABR9HAAUfRgAAwEMAAgByTWFjaW50b3NoIEhEOlVzZXJzOgBKZXJvbWU6AERvY3VtZW50czoAUHJvamVjdCBGaWxlczoAUmVmZXJlbmNlczoAQWRhcHRpdmUgU21vb3RoOgBEQVRBIERSSVZFTiBBREFQVElWIzRDMDI1MTgucGRmAA4AVAApAEQAQQBUAEEAIABEAFIASQBWAEUATgAgAEEARABBAFAAVABJAFYARQAgAFMAUABMAEkATgBFACAAUwBNAE8ATwBUAEgASQBOAEcALgBwAGQAZgAPABoADABNAGEAYwBpAG4AdABvAHMAaAAgAEgARAASAGlVc2Vycy9KZXJvbWUvRG9jdW1lbnRzL1Byb2plY3QgRmlsZXMvUmVmZXJlbmNlcy9BZGFwdGl2ZSBTbW9vdGgvREFUQSBEUklWRU4gQURBUFRJVkUgU1BMSU5FIFNNT09USElORy5wZGYAABMAAS8AABUAAgAN//8AAIAG0hscHR5aJGNsYXNzbmFtZVgkY2xhc3Nlc11OU011dGFibGVEYXRhox0fIFZOU0RhdGFYTlNPYmplY3TSGxwiI1xOU0RpY3Rpb25hcnmiIiBfEA9OU0tleWVkQXJjaGl2ZXLRJidUcm9vdIABAAgAEQAaACMALQAyADcAQABGAE0AVQBgAGcAagBsAG4AcQBzAHUAdwCEAI4A2wDgAOgDNAM2AzsDRgNPA10DYQNoA3EDdgODA4YDmAObA6AAAAAAAAACAQAAAAAAAAAoAAAAAAAAAAAAAAAAAAADog==},
+  date-added = {2015-05-11 10:05:02 +0000},
+  date-modified = {2015-05-11 10:05:54 +0000},
+  keywords = {Adaptive Smoothing},
+  owner = {zcao},
+  timestamp = {2017.09.13}
 }
 
 @BOOK{mackay2003information,
@@ -627,11 +768,60 @@
   timestamp = {2017.09.08}
 }
 
+@ARTICLE{mitchell1972construction,
+  author = {Mitchell, AR and Phillips, GM},
+  title = {Construction of basis functions in the finite element method},
+  journal = {BIT Numerical Mathematics},
+  year = {1972},
+  volume = {12},
+  pages = {81--89},
+  number = {1},
+  bdsk-file-1 = {YnBsaXN0MDDUAQIDBAUGJCVYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKgHCBMUFRYaIVUkbnVsbNMJCgsMDxJXTlMua2V5c1pOUy5vYmplY3RzViRjbGFzc6INDoACgAOiEBGABIAFgAdccmVsYXRpdmVQYXRoWWFsaWFzRGF0YV8QYS4uLy4uL1JlZmVyZW5jZXMvQmFzaXMgRnVuY3Rpb25zL0NPTlNUUlVDVElPTiBPRiBCQVNJUyBGVU5DVElPTlMgSU4gVEhFIEZJTklURSBFTEVNRU5UIE1FVEhPRC5wZGbSFwsYGVdOUy5kYXRhTxECjAAAAAACjAACAAAMTWFjaW50b3NoIEhEAAAAAAAAAAAAAAAAAAAAyuyzIEgrAAAEwCUwH0NPTlNUUlVDVElPTiBPRiBCQVMjNEMwMjUzNC5wZGYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATAJTTRdqZeAAAAAAAAAAAAAgADAAAJIAAAAAAAAAAAAAAAAAAAAA9CYXNpcyBGdW5jdGlvbnMAABAACAAAyuv8UAAAABEACAAA0XX9ngAAAAEAGATAJTAEwCUPAy2r5gAFH0cABR9GAADAQwACAHJNYWNpbnRvc2ggSEQ6VXNlcnM6AEplcm9tZToARG9jdW1lbnRzOgBQcm9qZWN0IEZpbGVzOgBSZWZlcmVuY2VzOgBCYXNpcyBGdW5jdGlvbnM6AENPTlNUUlVDVElPTiBPRiBCQVMjNEMwMjUzNC5wZGYADgCCAEAAQwBPAE4AUwBUAFIAVQBDAFQASQBPAE4AIABPAEYAIABCAEEAUwBJAFMAIABGAFUATgBDAFQASQBPAE4AUwAgAEkATgAgAFQASABFACAARgBJAE4ASQBUAEUAIABFAEwARQBNAEUATgBUACAATQBFAFQASABPAEQALgBwAGQAZgAPABoADABNAGEAYwBpAG4AdABvAHMAaAAgAEgARAASAIBVc2Vycy9KZXJvbWUvRG9jdW1lbnRzL1Byb2plY3QgRmlsZXMvUmVmZXJlbmNlcy9CYXNpcyBGdW5jdGlvbnMvQ09OU1RSVUNUSU9OIE9GIEJBU0lTIEZVTkNUSU9OUyBJTiBUSEUgRklOSVRFIEVMRU1FTlQgTUVUSE9ELnBkZgATAAEvAAAVAAIADf//AACABtIbHB0eWiRjbGFzc25hbWVYJGNsYXNzZXNdTlNNdXRhYmxlRGF0YaMdHyBWTlNEYXRhWE5TT2JqZWN00hscIiNcTlNEaWN0aW9uYXJ5oiIgXxAPTlNLZXllZEFyY2hpdmVy0SYnVHJvb3SAAQAIABEAGgAjAC0AMgA3AEAARgBNAFUAYABnAGoAbABuAHEAcwB1AHcAhACOAPIA9wD/A48DkQOWA6EDqgO4A7wDwwPMA9ED3gPhA/MD9gP7AAAAAAAAAgEAAAAAAAAAKAAAAAAAAAAAAAAAAAAAA/0=},
+  date-added = {2015-05-11 12:06:18 +0000},
+  date-modified = {2015-05-11 12:06:37 +0000},
+  keywords = {B Spline},
+  owner = {zcao},
+  publisher = {Springer},
+  timestamp = {2017.09.13}
+}
+
 @BOOK{nason2010wavelet,
   title = {Wavelet methods in statistics with R},
   publisher = {Springer Science \& Business Media},
   year = {2010},
   author = {Nason, Guy}
+}
+
+@ARTICLE{adaptivekalman,
+  author = {Oussalah, M and De Schutter, Joris},
+  title = {Adaptive Kalman filter for noise identification},
+  journal = {PROCEEDINGS OF THE INTERNATIONAL SEMINAR ON MODAL ANALYSIS},
+  year = {2001},
+  volume = {3},
+  pages = {1225--1232},
+  abstract = {Abstract This paper deals with an on line identification of the values
+	of these entities by a suitable adjusting of the filter gain and
+	incorporating information about the quality of innovation sequence.
+	The result yields a new adaptive Kalman filter. The proposal is mainly
+	based on statistical properties of the innovation sequence of the
+	filter and improves some previous results pointed out by Bellanger
+	and Mehra. Particularly, the autocorrelation function of the innovation
+	sequence is used. Furthermore, information about the quality of the
+	autocorrelation parameter is incorporated through a weighted least
+	squares methodology. The determination of the weights is based on
+	a distance criterion, which involves the ideal probability distribution
+	and the current probability referring to the first and second order
+	statistics of autocorrelation functions. The estimation of the a
+	priori noise statistics Q and R is obtained straightforwardly from
+	the preceding and the optimal gain and the innovation covariance
+	of the filter.},
+  bdsk-file-1 = {YnBsaXN0MDDUAQIDBAUGJCVYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKgHCBMUFRYaIVUkbnVsbNMJCgsMDxJXTlMua2V5c1pOUy5vYmplY3RzViRjbGFzc6INDoACgAOiEBGABIAFgAdccmVsYXRpdmVQYXRoWWFsaWFzRGF0YV8QUy4uLy4uL1JlZmVyZW5jZXMvS2FsbWFuIEZpbHRlci9BREFQVElWRSBLQUxNQU4gRklMVEVSIEZPUiBOT0lTRSBJREVOVElGSUNBVElPTiAucGRm0hcLGBlXTlMuZGF0YU8RAmIAAAAAAmIAAgAADE1hY2ludG9zaCBIRAAAAAAAAAAAAAAAAAAAAMrssyBIKwAABMAlTh9BREFQVElWRSBLQUxNQU4gRklMIzRDMDI1NjEucGRmAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEwCVh0XamegAAAAAAAAAAAAIAAwAACSAAAAAAAAAAAAAAAAAAAAANS2FsbWFuIEZpbHRlcgAAEAAIAADK6/xQAAAAEQAIAADRdf26AAAAAQAYBMAlTgTAJQ8DLavmAAUfRwAFH0YAAMBDAAIAcE1hY2ludG9zaCBIRDpVc2VyczoASmVyb21lOgBEb2N1bWVudHM6AFByb2plY3QgRmlsZXM6AFJlZmVyZW5jZXM6AEthbG1hbiBGaWx0ZXI6AEFEQVBUSVZFIEtBTE1BTiBGSUwjNEMwMjU2MS5wZGYADgBqADQAQQBEAEEAUABUAEkAVgBFACAASwBBAEwATQBBAE4AIABGAEkATABUAEUAUgAgAEYATwBSACAATgBPAEkAUwBFACAASQBEAEUATgBUAEkARgBJAEMAQQBUAEkATwBOACAALgBwAGQAZgAPABoADABNAGEAYwBpAG4AdABvAHMAaAAgAEgARAASAHJVc2Vycy9KZXJvbWUvRG9jdW1lbnRzL1Byb2plY3QgRmlsZXMvUmVmZXJlbmNlcy9LYWxtYW4gRmlsdGVyL0FEQVBUSVZFIEtBTE1BTiBGSUxURVIgRk9SIE5PSVNFIElERU5USUZJQ0FUSU9OIC5wZGYAEwABLwAAFQACAA3//wAAgAbSGxwdHlokY2xhc3NuYW1lWCRjbGFzc2VzXU5TTXV0YWJsZURhdGGjHR8gVk5TRGF0YVhOU09iamVjdNIbHCIjXE5TRGljdGlvbmFyeaIiIF8QD05TS2V5ZWRBcmNoaXZlctEmJ1Ryb290gAEACAARABoAIwAtADIANwBAAEYATQBVAGAAZwBqAGwAbgBxAHMAdQB3AIQAjgDkAOkA8QNXA1kDXgNpA3IDgAOEA4sDlAOZA6YDqQO7A74DwwAAAAAAAAIBAAAAAAAAACgAAAAAAAAAAAAAAAAAAAPF},
+  date-added = {2015-05-11 08:22:47 +0000},
+  date-modified = {2015-05-11 08:25:50 +0000},
+  keywords = {Kalman Filter},
+  owner = {zcao},
+  read = {0},
+  timestamp = {2017.09.13}
 }
 
 @ARTICLE{peng1983,
@@ -753,6 +943,49 @@
   publisher = {JSTOR}
 }
 
+@ARTICLE{simon2004data,
+  author = {Simon, Dan},
+  title = {Data smoothing and interpolation using eighth-order algebraic splines},
+  journal = {Signal Processing, IEEE Transactions on},
+  year = {2004},
+  volume = {52},
+  pages = {1136--1144},
+  number = {4},
+  abstract = {A new type of algebraic spline is used to derive a filter for smoothing
+	or interpolating discrete data points. The spline is dependent on
+	control parameters that specify the relative importance of data fitting
+	and the derivatives of the spline. A general spline of arbitrary
+	order is first formulated using matrix equations. We then focus on
+	eighth-order splines because of the continuity of their first three
+	derivatives (desirable for motor and robotics applications). The
+	spline's matrix equations are rewritten to give a recursive filter
+	that can be implemented in real time for lengthy data sequences.
+	The filter is lowpass with a bandwidth that is dependent on the spline's
+	control parameters. Numerical results, including a simple image processing
+	application, show the tradeoffs that can be achieved using the algebraic
+	splines.},
+  bdsk-file-1 = {YnBsaXN0MDDUAQIDBAUGJCVYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKgHCBMUFRYaIVUkbnVsbNMJCgsMDxJXTlMua2V5c1pOUy5vYmplY3RzViRjbGFzc6INDoACgAOiEBGABIAFgAdccmVsYXRpdmVQYXRoWWFsaWFzRGF0YV8QYy4uLy4uL1JlZmVyZW5jZXMvQW5hbHlzaXMvRGF0YSBTbW9vdGhpbmcgYW5kIEludGVycG9sYXRpb24gVXNpbmcgRWlnaHRoLW9yZGVyIEFsZ2VicmFpYyBTcGxpbmVzLnBkZtIXCxgZV05TLmRhdGFPEQKSAAAAAAKSAAIAAAxNYWNpbnRvc2ggSEQAAAAAAAAAAAAAAAAAAADK7LMgSCsAAATAJRsfRGF0YSBTbW9vdGhpbmcgYW5kICM0QzAyNTcxLnBkZgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABMAlcdF2pmoAAAAAAAAAAAACAAMAAAkgAAAAAAAAAAAAAAAAAAAACEFuYWx5c2lzABAACAAAyuv8UAAAABEACAAA0XX9qgAAAAEAGATAJRsEwCUPAy2r5gAFH0cABR9GAADAQwACAGtNYWNpbnRvc2ggSEQ6VXNlcnM6AEplcm9tZToARG9jdW1lbnRzOgBQcm9qZWN0IEZpbGVzOgBSZWZlcmVuY2VzOgBBbmFseXNpczoARGF0YSBTbW9vdGhpbmcgYW5kICM0QzAyNTcxLnBkZgAADgCUAEkARABhAHQAYQAgAFMAbQBvAG8AdABoAGkAbgBnACAAYQBuAGQAIABJAG4AdABlAHIAcABvAGwAYQB0AGkAbwBuACAAVQBzAGkAbgBnACAARQBpAGcAaAB0AGgALQBvAHIAZABlAHIAIABBAGwAZwBlAGIAcgBhAGkAYwAgAFMAcABsAGkAbgBlAHMALgBwAGQAZgAPABoADABNAGEAYwBpAG4AdABvAHMAaAAgAEgARAASAIJVc2Vycy9KZXJvbWUvRG9jdW1lbnRzL1Byb2plY3QgRmlsZXMvUmVmZXJlbmNlcy9BbmFseXNpcy9EYXRhIFNtb290aGluZyBhbmQgSW50ZXJwb2xhdGlvbiBVc2luZyBFaWdodGgtb3JkZXIgQWxnZWJyYWljIFNwbGluZXMucGRmABMAAS8AABUAAgAN//8AAIAG0hscHR5aJGNsYXNzbmFtZVgkY2xhc3Nlc11OU011dGFibGVEYXRhox0fIFZOU0RhdGFYTlNPYmplY3TSGxwiI1xOU0RpY3Rpb25hcnmiIiBfEA9OU0tleWVkQXJjaGl2ZXLRJidUcm9vdIABAAgAEQAaACMALQAyADcAQABGAE0AVQBgAGcAagBsAG4AcQBzAHUAdwCEAI4A9AD5AQEDlwOZA54DqQOyA8ADxAPLA9QD2QPmA+kD+wP+BAMAAAAAAAACAQAAAAAAAAAoAAAAAAAAAAAAAAAAAAAEBQ==},
+  date-added = {2015-05-11 11:17:22 +0000},
+  date-modified = {2015-05-11 11:21:04 +0000},
+  keywords = {Smooth Splines},
+  owner = {zcao},
+  publisher = {IEEE},
+  timestamp = {2017.09.13}
+}
+
+@BOOKLET{shortnotebspline,
+  title = {A very short note on B-splines},
+  author = {Samiran Sinha},
+  address = {Department of Statistics, Texas AandM University, College Station,
+	Texas},
+  bdsk-file-1 = {YnBsaXN0MDDUAQIDBAUGJCVYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKgHCBMUFRYaIVUkbnVsbNMJCgsMDxJXTlMua2V5c1pOUy5vYmplY3RzViRjbGFzc6INDoACgAOiEBGABIAFgAdccmVsYXRpdmVQYXRoWWFsaWFzRGF0YV8QMy4uLy4uL1JlZmVyZW5jZXMvQSB2ZXJ5IHNob3J0IG5vdGUgb24gQi1zcGxpbmVzLnBkZtIXCxgZV05TLmRhdGFPEQIIAAAAAAIIAAIAAAxNYWNpbnRvc2ggSEQAAAAAAAAAAAAAAAAAAADK7LMgSCsAAATAJQ8fQSB2ZXJ5IHNob3J0IG5vdGUgbyM0QzAyNTZDLnBkZgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABMAlbNF2pmgAAAAAAAAAAAACAAIAAAkgAAAAAAAAAAAAAAAAAAAAClJlZmVyZW5jZXMAEAAIAADK6/xQAAAAEQAIAADRdf2oAAAAAQAUBMAlDwMtq+YABR9HAAUfRgAAwEMAAgBhTWFjaW50b3NoIEhEOlVzZXJzOgBKZXJvbWU6AERvY3VtZW50czoAUHJvamVjdCBGaWxlczoAUmVmZXJlbmNlczoAQSB2ZXJ5IHNob3J0IG5vdGUgbyM0QzAyNTZDLnBkZgAADgBGACIAQQAgAHYAZQByAHkAIABzAGgAbwByAHQAIABuAG8AdABlACAAbwBuACAAQgAtAHMAcABsAGkAbgBlAHMALgBwAGQAZgAPABoADABNAGEAYwBpAG4AdABvAHMAaAAgAEgARAASAFJVc2Vycy9KZXJvbWUvRG9jdW1lbnRzL1Byb2plY3QgRmlsZXMvUmVmZXJlbmNlcy9BIHZlcnkgc2hvcnQgbm90ZSBvbiBCLXNwbGluZXMucGRmABMAAS8AABUAAgAN//8AAIAG0hscHR5aJGNsYXNzbmFtZVgkY2xhc3Nlc11OU011dGFibGVEYXRhox0fIFZOU0RhdGFYTlNPYmplY3TSGxwiI1xOU0RpY3Rpb25hcnmiIiBfEA9OU0tleWVkQXJjaGl2ZXLRJidUcm9vdIABAAgAEQAaACMALQAyADcAQABGAE0AVQBgAGcAagBsAG4AcQBzAHUAdwCEAI4AxADJANEC3QLfAuQC7wL4AwYDCgMRAxoDHwMsAy8DQQNEA0kAAAAAAAACAQAAAAAAAAAoAAAAAAAAAAAAAAAAAAADSw==},
+  date-added = {2015-05-11 10:46:31 +0000},
+  date-modified = {2015-05-11 12:34:50 +0000},
+  keywords = {B Spline},
+  owner = {zcao},
+  timestamp = {2017.09.13}
+}
+
 @ARTICLE{smith1973general,
   author = {Smith, Adrian FM},
   title = {A general Bayesian linear model},
@@ -785,6 +1018,29 @@
   author = {Trevor Hastie, Robert Tibshirani, Jerome Friedman},
   owner = {zcao},
   timestamp = {2015.12.02}
+}
+
+@ARTICLE{kalmaninr,
+  author = {Fernando Tusell},
+  title = {Kalman Filtering in R},
+  journal = {Journal of Statistical Software},
+  year = {2011},
+  volume = {39},
+  number = {2},
+  month = {March},
+  abstract = {Support in R for state space estimation via Kalman filtering was limited
+	to one package, until fairly recently. In the last five years, the
+	situation has changed with no less than four additional packages
+	offering general implementations of the Kalman filter, including
+	in some cases smoothing, simulation smoothing and other functionality.
+	This paper reviews some of the offerings in R to help the prospective
+	user to make an informed choice.},
+  bdsk-file-1 = {YnBsaXN0MDDUAQIDBAUGJCVYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKgHCBMUFRYaIVUkbnVsbNMJCgsMDxJXTlMua2V5c1pOUy5vYmplY3RzViRjbGFzc6INDoACgAOiEBGABIAFgAdccmVsYXRpdmVQYXRoWWFsaWFzRGF0YV8QOC4uLy4uL1JlZmVyZW5jZXMvS2FsbWFuIEZpbHRlci9LYWxtYW4gRmlsdGVyaW5nIGluIFIucGRm0hcLGBlXTlMuZGF0YU8RAgwAAAAAAgwAAgAADE1hY2ludG9zaCBIRAAAAAAAAAAAAAAAAAAAAMrssyBIKwAABMAlThlLYWxtYW4gRmlsdGVyaW5nIGluIFIucGRmAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEwCVZ0XamZgAAAAAAAAAAAAIAAwAACSAAAAAAAAAAAAAAAAAAAAANS2FsbWFuIEZpbHRlcgAAEAAIAADK6/xQAAAAEQAIAADRdf2mAAAAAQAYBMAlTgTAJQ8DLavmAAUfRwAFH0YAAMBDAAIAak1hY2ludG9zaCBIRDpVc2VyczoASmVyb21lOgBEb2N1bWVudHM6AFByb2plY3QgRmlsZXM6AFJlZmVyZW5jZXM6AEthbG1hbiBGaWx0ZXI6AEthbG1hbiBGaWx0ZXJpbmcgaW4gUi5wZGYADgA0ABkASwBhAGwAbQBhAG4AIABGAGkAbAB0AGUAcgBpAG4AZwAgAGkAbgAgAFIALgBwAGQAZgAPABoADABNAGEAYwBpAG4AdABvAHMAaAAgAEgARAASAFdVc2Vycy9KZXJvbWUvRG9jdW1lbnRzL1Byb2plY3QgRmlsZXMvUmVmZXJlbmNlcy9LYWxtYW4gRmlsdGVyL0thbG1hbiBGaWx0ZXJpbmcgaW4gUi5wZGYAABMAAS8AABUAAgAN//8AAIAG0hscHR5aJGNsYXNzbmFtZVgkY2xhc3Nlc11OU011dGFibGVEYXRhox0fIFZOU0RhdGFYTlNPYmplY3TSGxwiI1xOU0RpY3Rpb25hcnmiIiBfEA9OU0tleWVkQXJjaGl2ZXLRJidUcm9vdIABAAgAEQAaACMALQAyADcAQABGAE0AVQBgAGcAagBsAG4AcQBzAHUAdwCEAI4AyQDOANYC5gLoAu0C+AMBAw8DEwMaAyMDKAM1AzgDSgNNA1IAAAAAAAACAQAAAAAAAAAoAAAAAAAAAAAAAAAAAAADVA==},
+  date-added = {2015-05-11 08:20:24 +0000},
+  date-modified = {2015-05-11 08:22:27 +0000},
+  keywords = {Kalman Filter},
+  owner = {zcao},
+  timestamp = {2017.09.13}
 }
 
 @INPROCEEDINGS{van2000unscented,
@@ -854,6 +1110,44 @@
   timestamp = {2017.05.23}
 }
 
+@ARTICLE{smoothingparameter,
+  author = {Wood, Simon N},
+  title = {Modelling and smoothing parameter estimation with multiple quadratic
+	penalties},
+  journal = {Journal of the Royal Statistical Society: Series B (Statistical Methodology)},
+  year = {2000},
+  volume = {62},
+  pages = {413--428},
+  number = {2},
+  abstract = {Summary. Penalized likelihood methods provide a range of practical
+	modelling tools, including spline smoothing, generalized additive
+	models and variants of ridge regression. Selecting the correct weights
+	for penalties is a critical part of using these methods and in the
+	single penalty case the analyst has several well founded techniques
+	to choose from. However, many mod- elling problems suggest a formulation
+	employing multiple penalties, and here general method- ology is lacking.
+	A wide family of models with multiple penalties can be fitted to
+	data by iter- a􏱂tive solution of the generalized ridge regression
+	problem: minimise ∥W1/2(Xp − y)∥2ρ + m θip′S p (p is a parameter
+	vector, X a design matrix, Si a non-negative definite coeffi- i=1
+	i cient matrix defining the ith penalty with associated smoothing
+	parameter θi, W a diagonal weight matrix, y a vector of data or pseudodata
+	and ρ an `overall' smoothing parameter in- cluded for reasons of
+	computational efficiency). This paper shows how smoothing parameter
+	selection can be performed efficiently by applying generalized cross
+	validation to this problem and how this allows non-linear, generalized
+	linear and linear models to be fitted using multiple penalties, substantially
+	increasing the scope of penalized modelling methods. Examples of
+	non-linear modelling, generalized additive modelling and anisotropic
+	smoothing are given.},
+  bdsk-file-1 = {YnBsaXN0MDDUAQIDBAUGJCVYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKgHCBMUFRYaIVUkbnVsbNMJCgsMDxJXTlMua2V5c1pOUy5vYmplY3RzViRjbGFzc6INDoACgAOiEBGABIAFgAdccmVsYXRpdmVQYXRoWWFsaWFzRGF0YV8QcS4uLy4uL1JlZmVyZW5jZXMvU21vb3RoIFNwbGluZS9Nb2RlbGxpbmcgYW5kIHNtb290aGluZyBwYXJhbWV0ZXIgZXN0aW1hdGlvbiB3aXRoIG11bHRpcGxlIHF1YWRyYXRpYyBwZW5hbHRpZXMucGRm0hcLGBlXTlMuZGF0YU8RArwAAAAAArwAAgAADE1hY2ludG9zaCBIRAAAAAAAAAAAAAAAAAAAAMrssyBIKwAABMAlZx9Nb2RlbGxpbmcgYW5kIHNtb290IzRDMDI1NzQucGRmAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEwCV00XamagAAAAAAAAAAAAIAAwAACSAAAAAAAAAAAAAAAAAAAAANU21vb3RoIFNwbGluZQAAEAAIAADK6/xQAAAAEQAIAADRdf2qAAAAAQAYBMAlZwTAJQ8DLavmAAUfRwAFH0YAAMBDAAIAcE1hY2ludG9zaCBIRDpVc2VyczoASmVyb21lOgBEb2N1bWVudHM6AFByb2plY3QgRmlsZXM6AFJlZmVyZW5jZXM6AFNtb290aCBTcGxpbmU6AE1vZGVsbGluZyBhbmQgc21vb3QjNEMwMjU3NC5wZGYADgCmAFIATQBvAGQAZQBsAGwAaQBuAGcAIABhAG4AZAAgAHMAbQBvAG8AdABoAGkAbgBnACAAcABhAHIAYQBtAGUAdABlAHIAIABlAHMAdABpAG0AYQB0AGkAbwBuACAAdwBpAHQAaAAgAG0AdQBsAHQAaQBwAGwAZQAgAHEAdQBhAGQAcgBhAHQAaQBjACAAcABlAG4AYQBsAHQAaQBlAHMALgBwAGQAZgAPABoADABNAGEAYwBpAG4AdABvAHMAaAAgAEgARAASAJBVc2Vycy9KZXJvbWUvRG9jdW1lbnRzL1Byb2plY3QgRmlsZXMvUmVmZXJlbmNlcy9TbW9vdGggU3BsaW5lL01vZGVsbGluZyBhbmQgc21vb3RoaW5nIHBhcmFtZXRlciBlc3RpbWF0aW9uIHdpdGggbXVsdGlwbGUgcXVhZHJhdGljIHBlbmFsdGllcy5wZGYAEwABLwAAFQACAA3//wAAgAbSGxwdHlokY2xhc3NuYW1lWCRjbGFzc2VzXU5TTXV0YWJsZURhdGGjHR8gVk5TRGF0YVhOU09iamVjdNIbHCIjXE5TRGljdGlvbmFyeaIiIF8QD05TS2V5ZWRBcmNoaXZlctEmJ1Ryb290gAEACAARABoAIwAtADIANwBAAEYATQBVAGAAZwBqAGwAbgBxAHMAdQB3AIQAjgECAQcBDwPPA9ED1gPhA+oD+AP8BAMEDAQRBB4EIQQzBDYEOwAAAAAAAAIBAAAAAAAAACgAAAAAAAAAAAAAAAAAAAQ9},
+  date-added = {2015-05-11 09:46:18 +0000},
+  date-modified = {2015-05-11 09:48:35 +0000},
+  keywords = {Smooth Splines},
+  owner = {zcao},
+  timestamp = {2017.09.13}
+}
+
 @ARTICLE{woodbury1950inverting,
   author = {Woodbury, Max A},
   title = {Inverting modified matrices},
@@ -902,6 +1196,23 @@
   timestamp = {2017.09.08}
 }
 
+@ARTICLE{yoshimoto2003,
+  author = {Yoshimoto, Fujiichi and Harada, Toshinobu and Yoshimoto, Yoshihide},
+  title = {Data fitting with a spline using a real-coded genetic algorithm},
+  journal = {Computer-Aided Design},
+  year = {2003},
+  volume = {35},
+  pages = {751--760},
+  number = {8},
+  bdsk-file-1 = {YnBsaXN0MDDUAQIDBAUGJCVYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKgHCBMUFRYaIVUkbnVsbNMJCgsMDxJXTlMua2V5c1pOUy5vYmplY3RzViRjbGFzc6INDoACgAOiEBGABIAFgAdccmVsYXRpdmVQYXRoWWFsaWFzRGF0YV8QXS4uLy4uL1JlZmVyZW5jZXMvQiBTcGxpbmUvRGF0YSBmaXR0aW5nIHdpdGggYSBzcGxpbmUgdXNpbmcgYSByZWFsLWNvZGVkIGdlbmV0aWMgYWxnb3JpdGhtLnBkZtIXCxgZV05TLmRhdGFPEQKAAAAAAAKAAAIAAAxNYWNpbnRvc2ggSEQAAAAAAAAAAAAAAAAAAADK7LMgSCsAAATAJSIfRGF0YSBmaXR0aW5nIHdpdGggYSM0QzAyNTI4LnBkZgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABMAlKNF2plwAAAAAAAAAAAACAAMAAAkgAAAAAAAAAAAAAAAAAAAACEIgU3BsaW5lABAACAAAyuv8UAAAABEACAAA0XX9nAAAAAEAGATAJSIEwCUPAy2r5gAFH0cABR9GAADAQwACAGtNYWNpbnRvc2ggSEQ6VXNlcnM6AEplcm9tZToARG9jdW1lbnRzOgBQcm9qZWN0IEZpbGVzOgBSZWZlcmVuY2VzOgBCIFNwbGluZToARGF0YSBmaXR0aW5nIHdpdGggYSM0QzAyNTI4LnBkZgAADgCIAEMARABhAHQAYQAgAGYAaQB0AHQAaQBuAGcAIAB3AGkAdABoACAAYQAgAHMAcABsAGkAbgBlACAAdQBzAGkAbgBnACAAYQAgAHIAZQBhAGwALQBjAG8AZABlAGQAIABnAGUAbgBlAHQAaQBjACAAYQBsAGcAbwByAGkAdABoAG0ALgBwAGQAZgAPABoADABNAGEAYwBpAG4AdABvAHMAaAAgAEgARAASAHxVc2Vycy9KZXJvbWUvRG9jdW1lbnRzL1Byb2plY3QgRmlsZXMvUmVmZXJlbmNlcy9CIFNwbGluZS9EYXRhIGZpdHRpbmcgd2l0aCBhIHNwbGluZSB1c2luZyBhIHJlYWwtY29kZWQgZ2VuZXRpYyBhbGdvcml0aG0ucGRmABMAAS8AABUAAgAN//8AAIAG0hscHR5aJGNsYXNzbmFtZVgkY2xhc3Nlc11OU011dGFibGVEYXRhox0fIFZOU0RhdGFYTlNPYmplY3TSGxwiI1xOU0RpY3Rpb25hcnmiIiBfEA9OU0tleWVkQXJjaGl2ZXLRJidUcm9vdIABAAgAEQAaACMALQAyADcAQABGAE0AVQBgAGcAagBsAG4AcQBzAHUAdwCEAI4A7gDzAPsDfwOBA4YDkQOaA6gDrAOzA7wDwQPOA9ED4wPmA+sAAAAAAAACAQAAAAAAAAAoAAAAAAAAAAAAAAAAAAAD7Q==},
+  date-added = {2015-05-11 10:41:48 +0000},
+  date-modified = {2015-05-11 11:40:32 +0000},
+  keywords = {Smooth Splines},
+  owner = {zcao},
+  publisher = {Elsevier},
+  timestamp = {2017.09.13}
+}
+
 @INPROCEEDINGS{yu2004curve,
   author = {Yu, Byunggu and Kim, Seon Ho and Bailey, Thomas and Gamboa, Ruben},
   title = {Curve-based representation of moving object trajectories},
@@ -910,6 +1221,36 @@
   year = {2004},
   pages = {419--425},
   organization = {IEEE}
+}
+
+@ARTICLE{smoothsplinein2D,
+  author = {Mehdi Zamani},
+  title = {A simple 2-D interpolation model for analysis of nonlinear data},
+  journal = {Natural Science},
+  year = {2010},
+  volume = {2},
+  pages = {641-645},
+  number = {6},
+  abstract = {To determination the volume and weight of non- uniform bodies, such
+	as in ore deposits evalua- tion for mining and rock cutting for construction,
+	the methods of interpolation are usually used. The classic curves,
+	which are frequently used to interpolate one-dimensional data are
+	cubic spl- ine, Bspline and Bezier curves. These methods have good
+	efficiency for determination of geom- etric characteristics of nonregular
+	masses. They have some limitations and problems with two- dimensional
+	interpolation analysis such as for- ming large linear systems of
+	equations with a lot of entries and difficulty encounter with their
+	solutions. In this research the two-dimensional splines are used,
+	which have the advantages of simplicity and less computational operations
+	ef- fort. The spline functions that are applied have the continuity
+	of C1 at elements boundaries. The presented model has suitable efficiency
+	for vo- lumes of large extents governing to lots of data.},
+  bdsk-file-1 = {YnBsaXN0MDDUAQIDBAUGJCVYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKgHCBMUFRYaIVUkbnVsbNMJCgsMDxJXTlMua2V5c1pOUy5vYmplY3RzViRjbGFzc6INDoACgAOiEBGABIAFgAdccmVsYXRpdmVQYXRoWWFsaWFzRGF0YV8QYi4uLy4uL1JlZmVyZW5jZXMvU21vb3RoIFNwbGluZS9BIHNpbXBsZSAyLUQgaW50ZXJwb2xhdGlvbiBtb2RlbCBmb3IgYW5hbHlzaXMgb2Ygbm9ubGluZWFyIGRhdGEucGRm0hcLGBlXTlMuZGF0YU8RApAAAAAAApAAAgAADE1hY2ludG9zaCBIRAAAAAAAAAAAAAAAAAAAAMrssyBIKwAABMAlZx9BIHNpbXBsZSAyLUQgaW50ZXJwIzRDMDI1NkEucGRmAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEwCVq0XamaAAAAAAAAAAAAAIAAwAACSAAAAAAAAAAAAAAAAAAAAANU21vb3RoIFNwbGluZQAAEAAIAADK6/xQAAAAEQAIAADRdf2oAAAAAQAYBMAlZwTAJQ8DLavmAAUfRwAFH0YAAMBDAAIAcE1hY2ludG9zaCBIRDpVc2VyczoASmVyb21lOgBEb2N1bWVudHM6AFByb2plY3QgRmlsZXM6AFJlZmVyZW5jZXM6AFNtb290aCBTcGxpbmU6AEEgc2ltcGxlIDItRCBpbnRlcnAjNEMwMjU2QS5wZGYADgCIAEMAQQAgAHMAaQBtAHAAbABlACAAMgAtAEQAIABpAG4AdABlAHIAcABvAGwAYQB0AGkAbwBuACAAbQBvAGQAZQBsACAAZgBvAHIAIABhAG4AYQBsAHkAcwBpAHMAIABvAGYAIABuAG8AbgBsAGkAbgBlAGEAcgAgAGQAYQB0AGEALgBwAGQAZgAPABoADABNAGEAYwBpAG4AdABvAHMAaAAgAEgARAASAIFVc2Vycy9KZXJvbWUvRG9jdW1lbnRzL1Byb2plY3QgRmlsZXMvUmVmZXJlbmNlcy9TbW9vdGggU3BsaW5lL0Egc2ltcGxlIDItRCBpbnRlcnBvbGF0aW9uIG1vZGVsIGZvciBhbmFseXNpcyBvZiBub25saW5lYXIgZGF0YS5wZGYAABMAAS8AABUAAgAN//8AAIAG0hscHR5aJGNsYXNzbmFtZVgkY2xhc3Nlc11OU011dGFibGVEYXRhox0fIFZOU0RhdGFYTlNPYmplY3TSGxwiI1xOU0RpY3Rpb25hcnmiIiBfEA9OU0tleWVkQXJjaGl2ZXLRJidUcm9vdIABAAgAEQAaACMALQAyADcAQABGAE0AVQBgAGcAagBsAG4AcQBzAHUAdwCEAI4A8wD4AQADlAOWA5sDpgOvA70DwQPIA9ED1gPjA+YD+AP7BAAAAAAAAAACAQAAAAAAAAAoAAAAAAAAAAAAAAAAAAAEAg==},
+  date-added = {2015-05-11 09:32:29 +0000},
+  date-modified = {2015-05-11 09:34:01 +0000},
+  keywords = {Smooth Splines},
+  owner = {zcao},
+  timestamp = {2017.09.13}
 }
 
 @ARTICLE{zhang2013cubic,
