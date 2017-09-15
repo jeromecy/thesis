@@ -1,17 +1,38 @@
 
-\section{Subject}
-
-The Global Positioning  System (abbreviated as GPS) is a space-based navigation system consisting 24 satellites running around the earth orbits at the altitude 202,00 km. These satellites cover 98\% of the earth surface and at least 4 satellites are available at anytime from anywhere on the earth or near the earth orbit. With four or more satellites, a GPS receiver can provide geographic information to them and triangulate its location on the ground, such as longitude, latitude and elevation. These receivers are using passive locating technology, by which they can receive signals without transmitting any data. Therefore, GPS is used in plenty applications in military and general public, including aircraft tracking, vehicle navigation, surveying, astronomy and so on. 
-
-Tractors, working on an orchard or vineyard, are often mounted with GPS units that provide position and velocity information to orchardist or landlords. With this  information, an orchardist is able to follow the trajectory and motion patterns of tractors and monitoring their working status. 
+\section{Problem Statement}
 
 
+% % % %第一段： 提出并介绍这个问题
+The problem in the world I explore in this paper is....... 
+The reason why it is an important problem is......
 
-However, this tracking is imprecise as errors occur in calculation. 
+% % % %第二段：找出解决问题的视角
+The lends I adopt to explore this problem is.... it is a useful lens because..........
+
+% % % %第三段：描述解决问题的场景和发现Analyzing a dataset of xxxxxxxxxxx, 
+I reach the following findings.......
+
+% % % %第四段：介绍你的贡献
+This study contributes to.........
 
 
 
-In 1960, R.E. Kalman published his famous paper describing a recursive solution to the discrete-data linear filtering problem. The Kalman filter is a set of mathematical equations that provides an efficient computational (recursive) means to estimate the state of a process, in a way that minimizes the mean of the squared error \cite{introkalman}. Fernando Tusell gave a review of some R packages, which could be used to fit data with Kalman Filter methods \cite{kalmaninr}. However, in a dynamic systems, the model parameters and the noise variances are unknown and the variances are obtained, based on the system identification algorithm, correlation method and least squares fusion criterion. A self-tuning weighted measurement fusion Kalman filter is presented in \cite{selfturningkalman}. Also, a new adaptive Kalman filter will be a good choice \cite{adaptivekalman}. 
+
+
+The Global Positioning System (abbreviated as GPS) is a space-based navigation system consisting 24 satellites running around the earth orbits at the altitude 202,00 km. These satellites cover 98\% of the earth surface and at least 4 satellites are available at a time from anywhere on the earth or near the earth orbit. With four or more satellites, a GPS receiver can provide geographic information to them and triangulate its location on the ground, such as longitude, latitude and elevation. These receivers are using passive locating technology, by which they can receive signals without transmitting any data. Therefore, GPS is used in plenty applications in military and general public, including aircraft tracking, vehicle navigation, surveying, astronomy and so on. Tractors, working on an orchard or vineyard, are often mounted with GPS units that provide position and velocity information to orchardist and landlords. With this information, an orchardist is able to follow the trajectory and motion patterns of tractors and monitor its working status. 
+
+Researchers are wondering how to get a more accurate estimation for the position of a moving vehicle and to track its moving trajectory instantly.  That is the problem, which has been confusing researchers for a few years and I am exploring in this paper. 
+
+In 1960, R.E. Kalman published his famous paper describing a recursive solution to the discrete data linear filtering problem. The Kalman filter is a set of mathematical equations that provides an efficient computational means to estimate the state of a process in a recursive way, that minimizes the mean of the squared error \cite{introkalman}. Fernando Tusell gave a review of some R packages, which could be used to fit data with Kalman Filter methods \cite{kalmaninr}. However, limited to its property, Kalman Filter is tied up for a dynamic system, where the parameters and noise variances are unknown. In some dynamic systems, the variances are obtained based on the system identification algorithm, correlation method and least squares fusion criterion. To solve this issue, a self-tuning weighted measurement fusion Kalman filter is presented in \cite{selfturningkalman}. Also, a new adaptive Kalman filter will be a good choice \cite{adaptivekalman}. 
+
+
+
+
+
+
+\section{Spline Reconstruction}
+
+
 
 Kalman Filter is a good choice. And there probably a more simple and better way to fit our data -- the splines. Hastie introduces several kinds of splines that we could use in his book \cite{ESLII}. The core idea of splines is to augment the vector of inputs $X$ with additional variables, then use linear models in this space of derived input features. Adding constraints to construct basis functions $h_i(x), i = 1, 2,\ldots, n$, a linear basis expansion in $X$ could be represented as
 \[ f(x)=\sum_{i=1}^n \theta_i h_i(x) \]
@@ -78,9 +99,6 @@ In the model $y=f(t)+\varepsilon$, it is reasonable to assume that the observed 
 
 
 Given a series of such fixes, I want to construct the most likely path taken by the tractor with some smart modelling of the movement. I then want to develop higher level characterisations of the trajectories and apply this to more general problems in curve and object recognition.
-
-
-\section{Spline Reconstruction}
 
 
 
@@ -205,9 +223,9 @@ Define $f_*$ and $f'_*$ the estimated position and velocity values at point $t_*
 A Reproducing Kernel in Space $\mathbb{H}$.
 
 
-\section{Filtering}
+\section{Filtering Methods}
 
-\section{Sequential MCMC}
+\section{Sequential Monte Carlo Markov Chain Algorithm}
 
 
 
