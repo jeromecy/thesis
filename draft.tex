@@ -12,10 +12,12 @@
 \usepackage{enumerate}          %% Fancy enumeration lists
 \usepackage{lscape}
 \usepackage{indentfirst}
-\usepackage{subfigure}
+%\usepackage{subfigure}
 \usepackage{siunitx}
+\usepackage{lscape}
+\usepackage{subcaption}
 \usepackage[toc,page]{appendix}
-
+\usepackage[linesnumbered,ruled]{algorithm2e}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%% New commands 
@@ -40,6 +42,12 @@
 
 \newtheorem{lemma}{Lemma}
 \newtheorem{theorem}{Theorem}
+
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Corr}{\mathrm{Corr}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%% Front page info 
 
 \title{Inference and Characterization of Planar Trajectories}
@@ -86,7 +94,7 @@
 \clearemptydoublepage
 
 \chapter{Monte Carlo Markov Chain}
-\input{Chapters/05MCMCOU/MCMCOU}
+\input{Chapters/05MCMCOU/MCMCEstimation}
 \clearemptydoublepage
 
 \chapter{Data Simplify}
@@ -117,9 +125,9 @@
   \let\protect\l@section\protect\l@subsection
 }
 \makeatother
- \chapter{Penalty}
+ \chapter{Spline Penalty}
  \input{Appendices/Penalty}
- \chapter{Matrix}
+ \chapter{MCMC}
   \input{Appendices/Matrix}
 \addtocontents{toc}{\endgroup}
 \end{appendices}

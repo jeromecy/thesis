@@ -28,6 +28,12 @@ Andrieu, C., Doucet, A., and Holenstein, R. (2010).
 \newblock {\em Journal of the Royal Statistical Society: Series B (Statistical
   Methodology)\/},~{\em 72\/}(3), 269--342.
 
+\bibitem[\protect\citeauthoryear{Andrieu and Thoms}{Andrieu and
+  Thoms}{2008}]{andrieu2008tutorial}
+Andrieu, C. and Thoms, J. (2008).
+\newblock A tutorial on adaptive MCMC.
+\newblock {\em Statistics and computing\/},~{\em 18\/}(4), 343--373.
+
 \bibitem[\protect\citeauthoryear{Arnaud~Doucet}{Arnaud~Doucet}{2011}]{smcmip2011}
 Arnaud~Doucet, Nando de~Freitas, N.~G. (Ed.) (2011).
 \newblock {\em Sequential Monte Carlo Methods in Practice}.
@@ -54,12 +60,25 @@ Bartlett, M.~S. (1951).
 \newblock {\em The Annals of Mathematical Statistics\/},~{\em 22\/}(1),
   107--111.
 
+\bibitem[\protect\citeauthoryear{B{\'e}dard}{B{\'e}dard}{2007}]{bedard2007weak}
+B{\'e}dard, M. (2007).
+\newblock Weak convergence of Metropolis algorithms for non-iid target
+  distributions.
+\newblock {\em The Annals of Applied Probability\/}, 1222--1244.
+
 \bibitem[\protect\citeauthoryear{Berlinet and Thomas-Agnan}{Berlinet and
   Thomas-Agnan}{2011}]{berlinet2011reproducing}
 Berlinet, A. and Thomas-Agnan, C. (2011).
 \newblock {\em Reproducing kernel Hilbert spaces in probability and
   statistics}.
 \newblock Springer Science \& Business Media.
+
+\bibitem[\protect\citeauthoryear{Beskos, Roberts, and Stuart}{Beskos {\em
+  et~al.}}{2009}]{beskos2009optimal}
+Beskos, A., Roberts, G., and Stuart, A. (2009).
+\newblock Optimal scalings for local Metropolis-Hastings chains on nonproduct
+  targets in high dimensions.
+\newblock {\em The Annals of Applied Probability\/}, 863--898.
 
 \bibitem[\protect\citeauthoryear{Bodewig}{Bodewig}{1959}]{bodewig1959matrix}
 Bodewig, E. (1959).
@@ -84,6 +103,19 @@ Capp{\'e}, O., Moulines, E., and Ryd{\'e}n, T. (2009).
 \newblock Inference in hidden markov models.
 \newblock In {\em Proceedings of EUSFLAT Conference},  14--16.
 
+\bibitem[\protect\citeauthoryear{Carvalho, Johannes, Lopes, Polson, {\em
+  et~al.}}{Carvalho {\em et~al.}}{2010}]{carvalho2010particle}
+Carvalho, C.~M., Johannes, M.~S., Lopes, H.~F., Polson, N.~G., {\em et~al.}
+  (2010).
+\newblock Particle learning and smoothing.
+\newblock {\em Statistical Science\/},~{\em 25\/}(1), 88--106.
+
+\bibitem[\protect\citeauthoryear{Casella, Robert, and Wells}{Casella {\em
+  et~al.}}{2004}]{casella2004generalized}
+Casella, G., Robert, C.~P., and Wells, M.~T. (2004).
+\newblock Generalized accept-reject sampling schemes.
+\newblock {\em Lecture Notes-Monograph Series\/}, 342--347.
+
 \bibitem[\protect\citeauthoryear{Chen}{Chen}{2009}]{chen2009feedback}
 Chen, W.-K. (2009).
 \newblock {\em Feedback, nonlinear, and distributed circuits}.
@@ -102,6 +134,13 @@ Chenjian~RAN, Z.~D. (2010).
 \newblock Self-tuning weighted measurement fusion Kalman filter and its
   convergence.
 \newblock {\em J Control Theory Application\/},~{\em 4}, 435--440.
+
+\bibitem[\protect\citeauthoryear{Christen and Fox}{Christen and
+  Fox}{2005}]{christen2005markov}
+Christen, J.~A. and Fox, C. (2005).
+\newblock Markov chain Monte Carlo using an approximation.
+\newblock {\em Journal of Computational and Graphical statistics\/},~{\em
+  14\/}(4), 795--810.
 
 \bibitem[\protect\citeauthoryear{Craven and Wahba}{Craven and
   Wahba}{1978}]{craven1978smoothing}
@@ -133,6 +172,12 @@ Deng, C.~Y. (2011).
 \newblock A generalization of the Sherman--Morrison--Woodbury formula.
 \newblock {\em Applied Mathematics Letters\/},~{\em 24\/}(9), 1561--1564.
 
+\bibitem[\protect\citeauthoryear{Dongarra and Sullivan}{Dongarra and
+  Sullivan}{2000}]{dongarra2000guest}
+Dongarra, J. and Sullivan, F. (2000).
+\newblock Guest editors’ introduction: The top 10 algorithms.
+\newblock {\em Computing in Science \& Engineering\/},~{\em 2\/}(1), 22--23.
+
 \bibitem[\protect\citeauthoryear{Donoho and Johnstone}{Donoho and
   Johnstone}{1995}]{donoho1995adapting}
 Donoho, D.~L. and Johnstone, I.~M. (1995).
@@ -161,6 +206,13 @@ Douglas, D.~H. and Peucker, T.~K. (1973).
 \newblock {\em Cartographica: The International Journal for Geographic
   Information and Geovisualization\/},~{\em 10\/}(2), 112--122.
 
+\bibitem[\protect\citeauthoryear{Einstein}{Einstein}{1956}]{einstein1956investigations}
+Einstein, A. (1956).
+\newblock Investigations on the theory of the Brownian Movement edited with
+  notes by, R. F̈urth, translated by AD Cowper Dover Publications, Reprinted
+  from (1905).
+\newblock {\em Ann. Phys\/},~{\em 17}, 549--560.
+
 \bibitem[\protect\citeauthoryear{Ellis, Sommerlade, and Reid}{Ellis {\em
   et~al.}}{2009}]{ellis2009}
 Ellis, D., Sommerlade, E., and Reid, I. (2009).
@@ -183,12 +235,63 @@ Gelman, A. {\em et~al.} (2006).
   (comment on article by Browne and Draper).
 \newblock {\em Bayesian analysis\/},~{\em 1\/}(3), 515--534.
 
+\bibitem[\protect\citeauthoryear{Gelman, Jakulin, Pittau, and Su}{Gelman {\em
+  et~al.}}{2008}]{gelman2008weakly}
+Gelman, A., Jakulin, A., Pittau, M.~G., and Su, Y.-S. (2008).
+\newblock A weakly informative default prior distribution for logistic and
+  other regression models.
+\newblock {\em The Annals of Applied Statistics\/}, 1360--1383.
+
+\bibitem[\protect\citeauthoryear{Gelman, Roberts, Gilks, {\em et~al.}}{Gelman
+  {\em et~al.}}{1996}]{gelman1996efficient}
+Gelman, A., Roberts, G.~O., Gilks, W.~R., {\em et~al.} (1996).
+\newblock Efficient Metropolis jumping rules.
+\newblock {\em Bayesian statistics\/},~{\em 5\/}(599-608), 42.
+
+\bibitem[\protect\citeauthoryear{Geman and Geman}{Geman and
+  Geman}{1984}]{geman1984stochastic}
+Geman, S. and Geman, D. (1984).
+\newblock Stochastic relaxation, Gibbs distributions, and the Bayesian
+  restoration of images.
+\newblock {\em IEEE Transactions on pattern analysis and machine
+  intelligence\/},~(6), 721--741.
+
+\bibitem[\protect\citeauthoryear{Geweke}{Geweke}{1989}]{geweke1989bayesian}
+Geweke, J. (1989).
+\newblock Bayesian inference in econometric models using Monte Carlo
+  integration.
+\newblock {\em Econometrica: Journal of the Econometric Society\/}, 1317--1339.
+
+\bibitem[\protect\citeauthoryear{Geyer}{Geyer}{1992}]{geyer1992practical}
+Geyer, C.~J. (1992).
+\newblock Practical markov chain monte carlo.
+\newblock {\em Statistical science\/}, 473--483.
+
+\bibitem[\protect\citeauthoryear{Gilks, Richardson, and Spiegelhalter}{Gilks
+  {\em et~al.}}{1995}]{gilks1995markov}
+Gilks, W.~R., Richardson, S., and Spiegelhalter, D. (1995).
+\newblock {\em Markov chain Monte Carlo in practice}.
+\newblock CRC press.
+
+\bibitem[\protect\citeauthoryear{Gong and Flegal}{Gong and
+  Flegal}{2016}]{gong2016practical}
+Gong, L. and Flegal, J.~M. (2016).
+\newblock A practical sequential stopping rule for high-dimensional Markov
+  Chain Monte Carlo.
+\newblock {\em Journal of Computational and Graphical Statistics\/},~{\em
+  25\/}(3), 684--700.
+
 \bibitem[\protect\citeauthoryear{Gordon, Salmond, and Smith}{Gordon {\em
   et~al.}}{1993}]{gordon1993novel}
 Gordon, N.~J., Salmond, D.~J., and Smith, A.~F. (1993).
 \newblock Novel approach to nonlinear/non-Gaussian Bayesian state estimation.
 \newblock In {\em IEE Proceedings F (Radar and Signal Processing)}, Volume 140,
    107--113. IET.
+
+\bibitem[\protect\citeauthoryear{Graves}{Graves}{2011}]{graves2011automatic}
+Graves, T.~L. (2011).
+\newblock Automatic step size selection in random walk Metropolis algorithms.
+\newblock {\em arXiv preprint arXiv:1103.5986\/}.
 
 \bibitem[\protect\citeauthoryear{Green and Silverman}{Green and
   Silverman}{1993}]{green1993nonparametric}
@@ -212,6 +315,18 @@ Gu, C. (1998).
 Gu, C. (2013).
 \newblock {\em Smoothing Spline ANOVA Models Second Edition}.
 \newblock Springer New York Heidelberg Dordrecht London.
+
+\bibitem[\protect\citeauthoryear{Haario, Saksman, and Tamminen}{Haario {\em
+  et~al.}}{1999}]{haario1999adaptive}
+Haario, H., Saksman, E., and Tamminen, J. (1999).
+\newblock Adaptive proposal distribution for random walk Metropolis algorithm.
+\newblock {\em Computational Statistics\/},~{\em 14\/}(3), 375--396.
+
+\bibitem[\protect\citeauthoryear{Hammersley and Handscomb}{Hammersley and
+  Handscomb}{1964}]{hammersley1964percolation}
+Hammersley, J.~M. and Handscomb, D. (1964).
+\newblock Percolation processes.
+\newblock In {\em Monte Carlo Methods},  134--141. Springer.
 
 \bibitem[\protect\citeauthoryear{Handschin}{Handschin}{1970}]{handschin1970monte}
 Handschin, J. (1970).
@@ -244,6 +359,12 @@ Hastie, T., Tibshirani, R., Friedman, J., and Franklin, J. (2008).
 Hastie, T.~J. and Tibshirani, R.~J. (1990).
 \newblock {\em Generalized additive models}, Volume~43.
 \newblock CRC Press.
+
+\bibitem[\protect\citeauthoryear{Hastings}{Hastings}{1970}]{hastings1970monte}
+Hastings, W.~K. (1970).
+\newblock Monte Carlo sampling methods using Markov chains and their
+  applications.
+\newblock {\em Biometrika\/},~{\em 57\/}(1), 97--109.
 
 \bibitem[\protect\citeauthoryear{Higuchi}{Higuchi}{2001}]{higuchi2001self}
 Higuchi, T. (2001).
@@ -285,6 +406,12 @@ Kantas, N., Doucet, A., Singh, S., and Maciejowski, J. (2009).
   estimation.
 \newblock In {\em in General State-Space Models,” in IFAC System
   Identification, no. Ml}. Citeseer.
+
+\bibitem[\protect\citeauthoryear{Kass, Carlin, Gelman, and Neal}{Kass {\em
+  et~al.}}{1998}]{kass1998markov}
+Kass, R.~E., Carlin, B.~P., Gelman, A., and Neal, R.~M. (1998).
+\newblock Markov chain Monte Carlo in practice: a roundtable discussion.
+\newblock {\em The American Statistician\/},~{\em 52\/}(2), 93--100.
 
 \bibitem[\protect\citeauthoryear{Kijima}{Kijima}{1997}]{kijima1997markov}
 Kijima, M. (1997).
@@ -354,10 +481,36 @@ Liu, Z. and Guo, W. (2010).
 \newblock Data driven adaptive spline smoothing.
 \newblock {\em Statistica Sinica\/},~{\em 20\/}(1143-1163).
 
+\bibitem[\protect\citeauthoryear{Lopes and Tsay}{Lopes and
+  Tsay}{2011}]{lopes2011particle}
+Lopes, H.~F. and Tsay, R.~S. (2011).
+\newblock Particle filters and Bayesian inference in financial econometrics.
+\newblock {\em Journal of Forecasting\/},~{\em 30\/}(1), 168--209.
+
 \bibitem[\protect\citeauthoryear{MacKay}{MacKay}{2003}]{mackay2003information}
 MacKay, D.~J. (2003).
 \newblock {\em Information theory, inference and learning algorithms}.
 \newblock Cambridge university press.
+
+\bibitem[\protect\citeauthoryear{Martino and M{\'\i}guez}{Martino and
+  M{\'\i}guez}{2010}]{martino2010generalized}
+Martino, L. and M{\'\i}guez, J. (2010).
+\newblock Generalized rejection sampling schemes and applications in signal
+  processing.
+\newblock {\em Signal Processing\/},~{\em 90\/}(11), 2981--2995.
+
+\bibitem[\protect\citeauthoryear{Mathew, Bauer, Koistinen, Reetz, L{\'e}on, and
+  Sillanp{\"a}{\"a}}{Mathew {\em et~al.}}{2012}]{mathew2012bayesian}
+Mathew, B., Bauer, A., Koistinen, P., Reetz, T., L{\'e}on, J., and
+  Sillanp{\"a}{\"a}, M. (2012).
+\newblock Bayesian adaptive Markov chain Monte Carlo estimation of genetic
+  parameters.
+\newblock {\em Heredity\/},~{\em 109\/}(4), 235.
+
+\bibitem[\protect\citeauthoryear{Medova}{Medova}{2008}]{medova2008bayesian}
+Medova, E. (2008).
+\newblock {\em Bayesian Analysis and Markov Chain Monte Carlo Simulation}.
+\newblock Wiley Online Library.
 
 \bibitem[\protect\citeauthoryear{Meratnia and Rolf}{Meratnia and
   Rolf}{2004}]{meratnia2004spatiotemporal}
@@ -365,6 +518,18 @@ Meratnia, N. and Rolf, A. (2004).
 \newblock Spatiotemporal compression techniques for moving point objects.
 \newblock In {\em Advances in Database Technology-EDBT 2004},  765--782.
   Springer.
+
+\bibitem[\protect\citeauthoryear{Metropolis, Rosenbluth, Rosenbluth, Teller,
+  and Teller}{Metropolis {\em et~al.}}{1953}]{metropolis1953equation}
+Metropolis, N., Rosenbluth, A.~W., Rosenbluth, M.~N., Teller, A.~H., and
+  Teller, E. (1953).
+\newblock Equation of state calculations by fast computing machines.
+\newblock {\em The journal of chemical physics\/},~{\em 21\/}(6), 1087--1092.
+
+\bibitem[\protect\citeauthoryear{M{\"u}ller}{M{\"u}ller}{1991}]{muller1991generic}
+M{\"u}ller, P. (1991).
+\newblock {\em A generic approach to posterior integration and Gibbs sampling}.
+\newblock Purdue University, Department of Statistics.
 
 \bibitem[\protect\citeauthoryear{Nason}{Nason}{2010}]{nason2010wavelet}
 Nason, G. (2010).
@@ -409,6 +574,19 @@ Robert, C.~P. (2004).
 \newblock {\em Monte carlo methods}.
 \newblock Wiley Online Library.
 
+\bibitem[\protect\citeauthoryear{Roberts, Gelman, Gilks, {\em et~al.}}{Roberts
+  {\em et~al.}}{1997}]{roberts1997weak}
+Roberts, G.~O., Gelman, A., Gilks, W.~R., {\em et~al.} (1997).
+\newblock Weak convergence and optimal scaling of random walk Metropolis
+  algorithms.
+\newblock {\em The annals of applied probability\/},~{\em 7\/}(1), 110--120.
+
+\bibitem[\protect\citeauthoryear{Roberts, Rosenthal, {\em et~al.}}{Roberts {\em
+  et~al.}}{2001}]{roberts2001optimal}
+Roberts, G.~O., Rosenthal, J.~S., {\em et~al.} (2001).
+\newblock Optimal scaling for various Metropolis-Hastings algorithms.
+\newblock {\em Statistical science\/},~{\em 16\/}(4), 351--367.
+
 \bibitem[\protect\citeauthoryear{Schwarz}{Schwarz}{2012}]{schwarz2012geodesy}
 Schwarz, K.-P. (2012).
 \newblock {\em Geodesy Beyond 2000: The Challenges of the First Decade, IAG
@@ -420,6 +598,32 @@ Schwarz, K.-P. (2012).
 Sealfon, C., Verde, L., and Jimenez, R. (2005).
 \newblock Smoothing spline primordial power spectrum reconstruction.
 \newblock {\em Physical Review D\/},~{\em 72\/}(10), 103520.
+
+\bibitem[\protect\citeauthoryear{Sherlock}{Sherlock}{2013}]{sherlock2013optimal}
+Sherlock, C. (2013).
+\newblock Optimal scaling of the random walk Metropolis: general criteria for
+  the 0.234 acceptance rule.
+\newblock {\em Journal of Applied Probability\/},~{\em 50\/}(1), 1--15.
+
+\bibitem[\protect\citeauthoryear{Sherlock, Fearnhead, and Roberts}{Sherlock
+  {\em et~al.}}{2010}]{sherlock2010random}
+Sherlock, C., Fearnhead, P., and Roberts, G.~O. (2010).
+\newblock The random walk Metropolis: linking theory and practice through a
+  case study.
+\newblock {\em Statistical Science\/}, 172--190.
+
+\bibitem[\protect\citeauthoryear{Sherlock, Roberts, {\em et~al.}}{Sherlock {\em
+  et~al.}}{2009}]{sherlock2009optimal}
+Sherlock, C., Roberts, G., {\em et~al.} (2009).
+\newblock Optimal scaling of the random walk Metropolis on elliptically
+  symmetric unimodal targets.
+\newblock {\em Bernoulli\/},~{\em 15\/}(3), 774--798.
+
+\bibitem[\protect\citeauthoryear{Sherlock, Thiery, and Golightly}{Sherlock {\em
+  et~al.}}{2015}]{sherlock2015efficiency}
+Sherlock, C., Thiery, A., and Golightly, A. (2015).
+\newblock Efficiency of delayed-acceptance random walk Metropolis algorithms.
+\newblock {\em arXiv preprint arXiv:1506.08155\/}.
 
 \bibitem[\protect\citeauthoryear{Sherman and Morrison}{Sherman and
   Morrison}{1950}]{sherman1950adjustment}
@@ -449,12 +653,53 @@ Smith, A.~F. (1973).
 \newblock {\em Journal of the Royal Statistical Society. Series B
   (Methodological)\/}, 67--75.
 
+\bibitem[\protect\citeauthoryear{Smith and Roberts}{Smith and
+  Roberts}{1993}]{smith1993bayesian}
+Smith, A.~F. and Roberts, G.~O. (1993).
+\newblock Bayesian computation via the Gibbs sampler and related Markov chain
+  Monte Carlo methods.
+\newblock {\em Journal of the Royal Statistical Society. Series B
+  (Methodological)\/}, 3--23.
+
+\bibitem[\protect\citeauthoryear{Sokal}{Sokal}{1997}]{sokal1997monte}
+Sokal, A. (1997).
+\newblock Monte Carlo methods in statistical mechanics: foundations and new
+  algorithms.
+\newblock In {\em Functional integration},  131--192. Springer.
+
+\bibitem[\protect\citeauthoryear{Storvik}{Storvik}{2002}]{storvik2002particle}
+Storvik, G. (2002).
+\newblock Particle filters for state-space models with the presence of unknown
+  static parameters.
+\newblock {\em IEEE Transactions on signal Processing\/},~{\em 50\/}(2),
+  281--289.
+
 \bibitem[\protect\citeauthoryear{Stroud and Bengtsson}{Stroud and
   Bengtsson}{2007}]{stroud2007sequential}
 Stroud, J.~R. and Bengtsson, T. (2007).
 \newblock Sequential state and variance estimation within the ensemble Kalman
   filter.
 \newblock {\em Monthly Weather Review\/},~{\em 135\/}(9), 3194--3208.
+
+\bibitem[\protect\citeauthoryear{Stroud, Katzfuss, and Wikle}{Stroud {\em
+  et~al.}}{2016}]{stroud2016bayesian}
+Stroud, J.~R., Katzfuss, M., and Wikle, C.~K. (2016).
+\newblock A Bayesian adaptive ensemble Kalman filter for sequential state and
+  parameter estimation.
+\newblock {\em arXiv preprint arXiv:1611.03835\/}.
+
+\bibitem[\protect\citeauthoryear{Tandeo, Ailliot, and Autret}{Tandeo {\em
+  et~al.}}{2011}]{tandeo2011linear}
+Tandeo, P., Ailliot, P., and Autret, E. (2011).
+\newblock Linear Gaussian state-space model with irregular sampling:
+  application to sea surface temperature.
+\newblock {\em Stochastic Environmental Research and Risk Assessment\/},~{\em
+  25\/}(6), 793--804.
+
+\bibitem[\protect\citeauthoryear{Tierney}{Tierney}{1994}]{tierney1994markov}
+Tierney, L. (1994).
+\newblock Markov chains for exploring posterior distributions.
+\newblock {\em the Annals of Statistics\/}, 1701--1728.
 
 \bibitem[\protect\citeauthoryear{Trevor~Hastie}{Trevor~Hastie}{2009}]{esl2009}
 Trevor~Hastie, Robert~Tibshirani, J.~F. (2009).
@@ -466,6 +711,17 @@ Trevor~Hastie, Robert~Tibshirani, J.~F. (2009).
 Tusell, F. (2011).
 \newblock Kalman Filtering in R.
 \newblock {\em Journal of Statistical Software\/},~{\em 39\/}(2).
+
+\bibitem[\protect\citeauthoryear{Vaughan}{Vaughan}{2015}]{vaughan2015goodness}
+Vaughan, A. (2015).
+\newblock Goodness of Fit Test: Ornstein-Uhlenbeck Process.
+
+\bibitem[\protect\citeauthoryear{Vieira and Wilkinson}{Vieira and
+  Wilkinson}{2016}]{vieira2016online}
+Vieira, R. and Wilkinson, D.~J. (2016).
+\newblock Online state and parameter estimation in Dynamic Generalised Linear
+  Models.
+\newblock {\em arXiv preprint arXiv:1608.08666\/}.
 
 \bibitem[\protect\citeauthoryear{Wahba}{Wahba}{1985}]{wahba1985comparison}
 Wahba, G. (1985).

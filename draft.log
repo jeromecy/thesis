@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.5)  8 OCT 2017 20:52
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.5)  23 OCT 2017 13:55
 entering extended mode
 **draft.tex
 (C:\Users\zcao\Documents\Latex\Thesis\draft.tex
@@ -182,26 +182,6 @@ Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\indentfirst.sty"
 Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\subfigure\subfigure.sty"
-Package: subfigure 2002/07/30 v2.1.4 subfigure package
-\subfigtopskip=\skip51
-\subfigcapskip=\skip52
-\subfigcaptopadj=\dimen114
-\subfigbottomskip=\skip53
-\subfigcapmargin=\dimen115
-\subfiglabelskip=\skip54
-\c@subfigure=\count105
-\c@lofdepth=\count106
-\c@subtable=\count107
-\c@lotdepth=\count108
-
-****************************************
-* Local config file subfigure.cfg used *
-****************************************
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\subfigure\subfigure.cfg")
-\subfig@top=\skip55
-\subfig@bottom=\skip56
-)
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\siunitx\siunitx.sty"
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\l3kernel\expl3.sty"
 Package: expl3 2014/07/20 v5241 L3 programming layer (loader) 
@@ -212,7 +192,7 @@ L3 Module: l3bootstrap 2014/05/26 v4889 L3 Bootstrap code
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\misc\etex.sty"
 Package: etex 1998/03/26 v2.0 eTeX basic definition package (PEB)
-\et@xins=\count109
+\et@xins=\count105
 )
 L3 Module: l3names 2014/06/02 v4993 L3 Namespace for primitives
 L3 Module: l3basics 2014/07/09 v5187 L3 Basic definitions
@@ -221,37 +201,37 @@ L3 Module: l3tl 2014/07/17 v5214 L3 Token lists
 L3 Module: l3str 2014/06/19 v5158 L3 Strings
 L3 Module: l3seq 2014/07/18 v5232 L3 Sequences and stacks
 L3 Module: l3int 2014/07/11 v5197 L3 Integers
-\c_max_int=\count110
-\l_tmpa_int=\count111
-\l_tmpb_int=\count112
-\g_tmpa_int=\count113
-\g_tmpb_int=\count114
+\c_max_int=\count106
+\l_tmpa_int=\count107
+\l_tmpb_int=\count108
+\g_tmpa_int=\count109
+\g_tmpb_int=\count110
 L3 Module: l3quark 2014/05/26 v4889 L3 Quarks
 L3 Module: l3prg 2014/05/04 v4728 L3 Control structures
-\g__prg_map_int=\count115
+\g__prg_map_int=\count111
 L3 Module: l3clist 2014/07/19 v5237 L3 Comma separated lists
 L3 Module: l3token 2014/05/26 v4889 L3 Experimental token manipulation
 L3 Module: l3prop 2014/07/17 v5215 L3 Property lists
 L3 Module: l3msg 2014/05/30 v4943 L3 Messages
 L3 Module: l3file 2014/07/09 v5188 L3 File and I/O operations
-\l_iow_line_count_int=\count116
-\l__iow_target_count_int=\count117
-\l__iow_current_line_int=\count118
-\l__iow_current_word_int=\count119
-\l__iow_current_indentation_int=\count120
+\l_iow_line_count_int=\count112
+\l__iow_target_count_int=\count113
+\l__iow_current_line_int=\count114
+\l__iow_current_word_int=\count115
+\l__iow_current_indentation_int=\count116
 L3 Module: l3skip 2014/07/17 v5211 L3 Dimensions and skips
-\c_zero_dim=\dimen116
-\c_max_dim=\dimen117
-\l_tmpa_dim=\dimen118
-\l_tmpb_dim=\dimen119
-\g_tmpa_dim=\dimen120
-\g_tmpb_dim=\dimen121
-\c_zero_skip=\skip57
-\c_max_skip=\skip58
-\l_tmpa_skip=\skip59
-\l_tmpb_skip=\skip60
-\g_tmpa_skip=\skip61
-\g_tmpb_skip=\skip62
+\c_zero_dim=\dimen114
+\c_max_dim=\dimen115
+\l_tmpa_dim=\dimen116
+\l_tmpb_dim=\dimen117
+\g_tmpa_dim=\dimen118
+\g_tmpb_dim=\dimen119
+\c_zero_skip=\skip51
+\c_max_skip=\skip52
+\l_tmpa_skip=\skip53
+\l_tmpb_skip=\skip54
+\g_tmpa_skip=\skip55
+\g_tmpb_skip=\skip56
 \c_zero_muskip=\muskip11
 \c_max_muskip=\muskip12
 \l_tmpa_muskip=\muskip13
@@ -259,18 +239,18 @@ L3 Module: l3skip 2014/07/17 v5211 L3 Dimensions and skips
 \g_tmpa_muskip=\muskip15
 \g_tmpb_muskip=\muskip16
 L3 Module: l3keys 2014/06/12 v5121 L3 Key-value interfaces
-\g__keyval_level_int=\count121
-\l_keys_choice_int=\count122
+\g__keyval_level_int=\count117
+\l_keys_choice_int=\count118
 L3 Module: l3fp 2014/07/18 v5223 L3 Floating points
-\c__fp_leading_shift_int=\count123
-\c__fp_middle_shift_int=\count124
-\c__fp_trailing_shift_int=\count125
-\c__fp_big_leading_shift_int=\count126
-\c__fp_big_middle_shift_int=\count127
-\c__fp_big_trailing_shift_int=\count128
-\c__fp_Bigg_leading_shift_int=\count129
-\c__fp_Bigg_middle_shift_int=\count130
-\c__fp_Bigg_trailing_shift_int=\count131
+\c__fp_leading_shift_int=\count119
+\c__fp_middle_shift_int=\count120
+\c__fp_trailing_shift_int=\count121
+\c__fp_big_leading_shift_int=\count122
+\c__fp_big_middle_shift_int=\count123
+\c__fp_big_trailing_shift_int=\count124
+\c__fp_Bigg_leading_shift_int=\count125
+\c__fp_Bigg_middle_shift_int=\count126
+\c__fp_Bigg_trailing_shift_int=\count127
 L3 Module: l3box 2014/05/31 v4974 L3 Experimental boxes
 \c_empty_box=\box28
 \l_tmpa_box=\box29
@@ -279,13 +259,13 @@ L3 Module: l3box 2014/05/31 v4974 L3 Experimental boxes
 \g_tmpb_box=\box32
 L3 Module: l3coffins 2014/05/28 v4899 L3 Coffin code layer
 \l__coffin_internal_box=\box33
-\l__coffin_internal_dim=\dimen122
-\l__coffin_offset_x_dim=\dimen123
-\l__coffin_offset_y_dim=\dimen124
-\l__coffin_x_dim=\dimen125
-\l__coffin_y_dim=\dimen126
-\l__coffin_x_prime_dim=\dimen127
-\l__coffin_y_prime_dim=\dimen128
+\l__coffin_internal_dim=\dimen120
+\l__coffin_offset_x_dim=\dimen121
+\l__coffin_offset_y_dim=\dimen122
+\l__coffin_x_dim=\dimen123
+\l__coffin_y_dim=\dimen124
+\l__coffin_x_prime_dim=\dimen125
+\l__coffin_y_prime_dim=\dimen126
 \c_empty_coffin=\box34
 \l__coffin_aligned_coffin=\box35
 \l__coffin_aligned_internal_coffin=\box36
@@ -294,100 +274,100 @@ L3 Module: l3coffins 2014/05/28 v4899 L3 Coffin code layer
 \l__coffin_display_coffin=\box39
 \l__coffin_display_coord_coffin=\box40
 \l__coffin_display_pole_coffin=\box41
-\l__coffin_display_offset_dim=\dimen129
-\l__coffin_display_x_dim=\dimen130
-\l__coffin_display_y_dim=\dimen131
+\l__coffin_display_offset_dim=\dimen127
+\l__coffin_display_x_dim=\dimen128
+\l__coffin_display_y_dim=\dimen129
 L3 Module: l3color 2014/04/30 v4712 L3 Experimental color support
 L3 Module: l3candidates 2014/07/18 v5232 L3 Experimental additions to l3kernel
-\l__box_top_dim=\dimen132
-\l__box_bottom_dim=\dimen133
-\l__box_left_dim=\dimen134
-\l__box_right_dim=\dimen135
-\l__box_top_new_dim=\dimen136
-\l__box_bottom_new_dim=\dimen137
-\l__box_left_new_dim=\dimen138
-\l__box_right_new_dim=\dimen139
+\l__box_top_dim=\dimen130
+\l__box_bottom_dim=\dimen131
+\l__box_left_dim=\dimen132
+\l__box_right_dim=\dimen133
+\l__box_top_new_dim=\dimen134
+\l__box_bottom_new_dim=\dimen135
+\l__box_left_new_dim=\dimen136
+\l__box_right_new_dim=\dimen137
 \l__box_internal_box=\box42
-\l__coffin_bounding_shift_dim=\dimen140
-\l__coffin_left_corner_dim=\dimen141
-\l__coffin_right_corner_dim=\dimen142
-\l__coffin_bottom_corner_dim=\dimen143
-\l__coffin_top_corner_dim=\dimen144
-\l__coffin_scaled_total_height_dim=\dimen145
-\l__coffin_scaled_width_dim=\dimen146
+\l__coffin_bounding_shift_dim=\dimen138
+\l__coffin_left_corner_dim=\dimen139
+\l__coffin_right_corner_dim=\dimen140
+\l__coffin_bottom_corner_dim=\dimen141
+\l__coffin_top_corner_dim=\dimen142
+\l__coffin_scaled_total_height_dim=\dimen143
+\l__coffin_scaled_width_dim=\dimen144
 )
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\l3kernel\l3unicode-data.def"
 File: l3unicode-data.def 2014/06/30 v5166 L3 Unicode data
 )
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\l3kernel\l3pdfmode.def"
 File: l3pdfmode.def 2014/07/18 v5232 L3 Experimental driver: PDF mode
-\l__driver_color_stack_int=\count132
+\l__driver_color_stack_int=\count128
 ))
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\l3packages\xparse\xparse.sty"
 Package: xparse 2014/07/20 v5241 L3 Experimental document command parser
-\l__xparse_current_arg_int=\count133
-\l__xparse_m_args_int=\count134
-\l__xparse_mandatory_args_int=\count135
-\l__xparse_processor_int=\count136
-\l__xparse_v_nesting_int=\count137
+\l__xparse_current_arg_int=\count129
+\l__xparse_m_args_int=\count130
+\l__xparse_mandatory_args_int=\count131
+\l__xparse_processor_int=\count132
+\l__xparse_v_nesting_int=\count133
 )
 Package: siunitx 2013/07/31 v2.5s A comprehensive (SI) units package
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\array.sty"
 Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
-\col@sep=\dimen147
-\extrarowheight=\dimen148
+\col@sep=\dimen145
+\extrarowheight=\dimen146
 \NC@list=\toks29
-\extratabsurround=\skip63
-\backup@length=\skip64
+\extratabsurround=\skip57
+\backup@length=\skip58
 )
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\l3packages\l3keys2e\l3keys2e.sty"
 Package: l3keys2e 2014/07/20 v5241 LaTeX2e option processing using LaTeX3 keys
 )
 Variant \tl_if_blank:VTF already defined; not changing it on line 50
 \l__siunitx_tmp_box=\box43
-\l__siunitx_tmp_dim=\dimen149
-\l__siunitx_tmp_int=\count138
+\l__siunitx_tmp_dim=\dimen147
+\l__siunitx_tmp_int=\count134
 Variant \prop_get:NVNT already defined; not changing it on line 371
 Variant \prop_get:NVNF already defined; not changing it on line 372
 Variant \prop_get:NVNTF already defined; not changing it on line 373
-\l__siunitx_number_mantissa_length_int=\count139
-\l__siunitx_number_uncert_length_int=\count140
-\l__siunitx_round_int=\count141
-\l__siunitx_process_decimal_int=\count142
-\l__siunitx_process_uncertainty_int=\count143
-\l__siunitx_process_fixed_int=\count144
-\l__siunitx_process_integer_min_int=\count145
-\l__siunitx_process_precision_int=\count146
-\l__siunitx_group_min_int=\count147
+\l__siunitx_number_mantissa_length_int=\count135
+\l__siunitx_number_uncert_length_int=\count136
+\l__siunitx_round_int=\count137
+\l__siunitx_process_decimal_int=\count138
+\l__siunitx_process_uncertainty_int=\count139
+\l__siunitx_process_fixed_int=\count140
+\l__siunitx_process_integer_min_int=\count141
+\l__siunitx_process_precision_int=\count142
+\l__siunitx_group_min_int=\count143
 \l__siunitx_angle_marker_box=\box44
 \l__siunitx_angle_unit_box=\box45
-\l__siunitx_angle_marker_dim=\dimen150
-\l__siunitx_angle_unit_dim=\dimen151
-\l__siunitx_unit_int=\count148
-\l__siunitx_unit_denominator_int=\count149
-\l__siunitx_unit_numerator_int=\count150
-\l__siunitx_unit_prefix_int=\count151
-\l__siunitx_unit_prefix_base_int=\count152
-\l__siunitx_unit_prefix_gram_int=\count153
-\l__siunitx_number_product_int=\count154
-\c__siunitx_one_fill_skip=\skip65
-\l__siunitx_table_unit_align_skip=\skip66
-\l__siunitx_table_exponent_dim=\dimen152
-\l__siunitx_table_integer_dim=\dimen153
-\l__siunitx_table_mantissa_dim=\dimen154
-\l__siunitx_table_marker_dim=\dimen155
-\l__siunitx_table_result_dim=\dimen156
-\l__siunitx_table_uncert_dim=\dimen157
-\l__siunitx_table_fill_pre_dim=\dimen158
-\l__siunitx_table_fill_post_dim=\dimen159
-\l__siunitx_table_fill_mid_dim=\dimen160
+\l__siunitx_angle_marker_dim=\dimen148
+\l__siunitx_angle_unit_dim=\dimen149
+\l__siunitx_unit_int=\count144
+\l__siunitx_unit_denominator_int=\count145
+\l__siunitx_unit_numerator_int=\count146
+\l__siunitx_unit_prefix_int=\count147
+\l__siunitx_unit_prefix_base_int=\count148
+\l__siunitx_unit_prefix_gram_int=\count149
+\l__siunitx_number_product_int=\count150
+\c__siunitx_one_fill_skip=\skip59
+\l__siunitx_table_unit_align_skip=\skip60
+\l__siunitx_table_exponent_dim=\dimen150
+\l__siunitx_table_integer_dim=\dimen151
+\l__siunitx_table_mantissa_dim=\dimen152
+\l__siunitx_table_marker_dim=\dimen153
+\l__siunitx_table_result_dim=\dimen154
+\l__siunitx_table_uncert_dim=\dimen155
+\l__siunitx_table_fill_pre_dim=\dimen156
+\l__siunitx_table_fill_post_dim=\dimen157
+\l__siunitx_table_fill_mid_dim=\dimen158
 \l__siunitx_table_pre_box=\box46
 \l__siunitx_table_post_box=\box47
 \l__siunitx_table_mantissa_box=\box48
 \l__siunitx_table_result_box=\box49
-\l__siunitx_table_number_align_skip=\skip67
-\l__siunitx_table_text_align_skip=\skip68
+\l__siunitx_table_number_align_skip=\skip61
+\l__siunitx_table_text_align_skip=\skip62
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
@@ -527,16 +507,101 @@ Package: translator 2010/06/12 ver 1.10
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\beamer\base\translator\translator
 -language-mappings.tex")))
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\appendix\appendix.sty"
-Package: appendix 2009/09/02 v1.2b extra appendix facilities
-\c@@pps=\count155
-\c@@ppsavesec=\count156
-\c@@ppsaveapp=\count157
-)
-\c@lemma=\count158
-\c@theorem=\count159
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\caption\subcaption.sty"
+Package: subcaption 2013/02/03 v1.1-62 Sub-captions (AR)
 
-(C:\Users\zcao\Documents\Latex\Thesis\draft.aux
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\caption\caption.sty"
+Package: caption 2013/05/02 v3.3-89 Customizing captions (AR)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\caption\caption3.sty"
+Package: caption3 2013/05/02 v1.6-88 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 57.
+\captionmargin=\dimen159
+\captionmargin@=\dimen160
+\captionwidth=\dimen161
+\caption@tempdima=\dimen162
+\caption@indent=\dimen163
+\caption@parindent=\dimen164
+\caption@hangindent=\dimen165
+Package caption Info: Unknown document class (or package),
+(caption)             standard defaults will be used.
+)
+
+Package caption Warning: Unsupported document class (or package) detected,
+(caption)                usage of the caption package is not recommended.
+See the caption package documentation for explanation.
+
+Package caption Info: \@makecaption = \long macro:#1#2->\vskip \abovecaptionski
+p \sbox \@tempboxa {#1: #2}\ifdim \wd \@tempboxa > 0.8\hsize \leftskip = 0.1\hs
+ize \rightskip = 0.1\hsize #1: #2\par \else \global \@minipagefalse \hb@xt@ \hs
+ize {\hfil \box \@tempboxa \hfil }\fi \vskip \belowcaptionskip .
+\c@ContinuedFloat=\count151
+)
+\c@subfigure=\count152
+\c@subtable=\count153
+) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\appendix\appendix.sty"
+Package: appendix 2009/09/02 v1.2b extra appendix facilities
+\c@@pps=\count154
+\c@@ppsavesec=\count155
+\c@@ppsaveapp=\count156
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\algorithm2e\algorithm2e.sty"
+Package: algorithm2e 2013/01/06 v5.00 algorithms environments
+\c@AlgoLine=\count157
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ifthen.sty"
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\xspace.sty"
+Package: xspace 2009/10/20 v1.13 Space after command names (DPC,MH)
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ltxmisc\relsize.sty"
+Package: relsize 2003/07/04 ver 3.1
+)
+********************************************************
+Package `algorithm2e' Release 5.0 -- january 06 2013 --
+- algorithm2e-announce@lirmm.fr mailing list for announcement about releases
+- algorithm2e-discussion@lirmm.fr mailing list for discussion about package
+subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
+- Author: Christophe Fiorio (cfiorio@um2.fr)
+********************************************************
+\skiptotal=\skip63
+\skiplinenumber=\skip64
+\skiprule=\skip65
+\skiphlne=\skip66
+\skiptext=\skip67
+\skiplength=\skip68
+\algomargin=\skip69
+\skipalgocfslide=\skip70
+\algowidth=\dimen166
+\inoutsize=\dimen167
+\inoutindent=\dimen168
+\interspacetitleruled=\dimen169
+\interspacealgoruled=\dimen170
+\interspacetitleboxruled=\dimen171
+\algocf@inoutbox=\box50
+\algocf@inputbox=\box51
+\AlCapSkip=\skip71
+\AlCapHSkip=\skip72
+\algoskipindent=\skip73
+\algocf@nlbox=\box52
+\algocf@hangingbox=\box53
+\algocf@untilbox=\box54
+\algocf@skipuntil=\skip74
+\algocf@capbox=\box55
+\algoheightruledefault=\skip75
+\algoheightrule=\skip76
+\algotitleheightruledefault=\skip77
+\algotitleheightrule=\skip78
+\c@algocfline=\count158
+\c@algocfproc=\count159
+\c@algocf=\count160
+\algocf@algoframe=\box56
+\algocf@algobox=\box57
+)
+\c@lemma=\count161
+\c@theorem=\count162
+ (C:\Users\zcao\Documents\Latex\Thesis\draft.aux
 
 LaTeX Warning: Label `fbasis' multiply defined.
 
@@ -546,40 +611,31 @@ LaTeX Warning: Label `mse' multiply defined.
 
 LaTeX Warning: Label `covdef' multiply defined.
 
-
-LaTeX Warning: Label `sigmayy01' multiply defined.
-
-
-LaTeX Warning: Label `sigmayy02' multiply defined.
-
-
-LaTeX Warning: Label `logL' multiply defined.
-
 )
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count160
-\scratchdimen=\dimen161
-\scratchbox=\box50
-\nofMPsegments=\count161
-\nofMParguments=\count162
+\scratchcounter=\count163
+\scratchdimen=\dimen172
+\scratchbox=\box58
+\nofMPsegments=\count164
+\nofMParguments=\count165
 \everyMPshowfont=\toks30
-\MPscratchCnt=\count163
-\MPscratchDim=\dimen162
-\MPnumerator=\count164
-\makeMPintoPDFobject=\count165
+\MPscratchCnt=\count166
+\MPscratchDim=\dimen173
+\MPnumerator=\count167
+\makeMPintoPDFobject=\count168
 \everyMPtoPDFconversion=\toks31
 )
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\beamer\base\translator\dicts\tran
@@ -590,22 +646,24 @@ Dictionary: translator-basic-dictionary, Language: English
 ons.cfg"
 File: siunitx-abbreviations.cfg 2013/07/31 v2.5s siunitx: Abbreviated units
 )
-\c__siunitx_mathsf_int=\count166
-LaTeX Font Info:    Try loading font information for U+msa on input line 62.
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
+\c__siunitx_mathsf_int=\count169
+LaTeX Font Info:    Try loading font information for U+msa on input line 70.
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 62.
+LaTeX Font Info:    Try loading font information for U+msb on input line 70.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 62.
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 70.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\jknappen\ursfs.fd"
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-\c__siunitx_mathtt_int=\count167
+\c__siunitx_mathtt_int=\count170
  [1
 
 {C:/Users/zcao/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2
@@ -624,32 +682,34 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 
 
 
-])
+] [10])
 \tf@toc=\write3
- [10]
+ [11] [12
+
+
+]
 (C:\Users\zcao\Documents\Latex\Thesis\draft.lot)
 \tf@lot=\write4
- [11
+ [13
 
-
-
-] [12
+] [14
 
 
 ]
 (C:\Users\zcao\Documents\Latex\Thesis\draft.lof
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [13
+ [15
 
-])
+]
+[16])
 \tf@lof=\write5
+ [17] [18
 
-[14]
+
+]
 Chapter 1.
 (C:\Users\zcao\Documents\Latex\Thesis\Chapters/01Intro/Intro.tex [1
-
-
 
 ] [2]
 Underfull \vbox (badness 1242) has occurred while \output is active []
@@ -673,7 +733,7 @@ Underfull \vbox (badness 7722) has occurred while \output is active []
 
 ]
 [10] [11] [12] [13]
-<Chapters/02TractorSplineTheory/plot/basistk.pdf, id=101, 844.15375pt x 597.231
+<Chapters/02TractorSplineTheory/plot/basistk.pdf, id=114, 844.15375pt x 597.231
 25pt>
 File: Chapters/02TractorSplineTheory/plot/basistk.pdf Graphic file (type pdf)
  <use Chapters/02TractorSplineTheory/plot/basistk.pdf>
@@ -695,7 +755,7 @@ File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 218.
  [16] [17] [18] [19]
-<Chapters/02TractorSplineTheory/plot/blocks10.pdf, id=128, 597.50829pt x 845.04
+<Chapters/02TractorSplineTheory/plot/blocks10.pdf, id=141, 597.50829pt x 845.04
 71pt>
 File: Chapters/02TractorSplineTheory/plot/blocks10.pdf Graphic file (type pdf)
  <use Chapters/02TractorSplineTheory/plot/blocks10.pdf>
@@ -703,7 +763,7 @@ Package pdftex.def Info: Chapters/02TractorSplineTheory/plot/blocks10.pdf used
 on input line 351.
 (pdftex.def)             Requested size: 441.01866pt x 398.33269pt.
 
-<Chapters/02TractorSplineTheory/plot/bumps10.pdf, id=129, 597.50829pt x 845.047
+<Chapters/02TractorSplineTheory/plot/bumps10.pdf, id=142, 597.50829pt x 845.047
 1pt>
 File: Chapters/02TractorSplineTheory/plot/bumps10.pdf Graphic file (type pdf)
  <use Chapters/02TractorSplineTheory/plot/bumps10.pdf>
@@ -711,7 +771,7 @@ Package pdftex.def Info: Chapters/02TractorSplineTheory/plot/bumps10.pdf used o
 n input line 357.
 (pdftex.def)             Requested size: 441.01866pt x 398.33269pt.
 
-<Chapters/02TractorSplineTheory/plot/heavi10.pdf, id=130, 597.50829pt x 845.047
+<Chapters/02TractorSplineTheory/plot/heavi10.pdf, id=143, 597.50829pt x 845.047
 1pt>
 File: Chapters/02TractorSplineTheory/plot/heavi10.pdf Graphic file (type pdf)
  <use Chapters/02TractorSplineTheory/plot/heavi10.pdf>
@@ -719,7 +779,7 @@ Package pdftex.def Info: Chapters/02TractorSplineTheory/plot/heavi10.pdf used o
 n input line 363.
 (pdftex.def)             Requested size: 441.01866pt x 398.33269pt.
 
-<Chapters/02TractorSplineTheory/plot/doppler10.pdf, id=131, 597.50829pt x 845.0
+<Chapters/02TractorSplineTheory/plot/doppler10.pdf, id=144, 597.50829pt x 845.0
 471pt>
 File: Chapters/02TractorSplineTheory/plot/doppler10.pdf Graphic file (type pdf)
 
@@ -732,7 +792,7 @@ plot/blocks10.pdf>] [22 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/02Tracto
 rSplineTheory/plot/bumps10.pdf>] [23 <C:/Users/zcao/Documents/Latex/Thesis/Chap
 ters/02TractorSplineTheory/plot/heavi10.pdf>] [24 <C:/Users/zcao/Documents/Late
 x/Thesis/Chapters/02TractorSplineTheory/plot/doppler10.pdf>]
-<Chapters/02TractorSplineTheory/plot/penalty08.pdf, id=446, 597.50829pt x 845.0
+<Chapters/02TractorSplineTheory/plot/penalty08.pdf, id=458, 597.50829pt x 845.0
 471pt>
 File: Chapters/02TractorSplineTheory/plot/penalty08.pdf Graphic file (type pdf)
 
@@ -740,8 +800,9 @@ File: Chapters/02TractorSplineTheory/plot/penalty08.pdf Graphic file (type pdf)
 Package pdftex.def Info: Chapters/02TractorSplineTheory/plot/penalty08.pdf used
  on input line 385.
 (pdftex.def)             Requested size: 441.01866pt x 398.33269pt.
-
-<Chapters/02TractorSplineTheory/plot/vtractor04.pdf, id=447, 794.97pt x 614.295
+ [25 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/02TractorSplineTheory/plot/
+penalty08.pdf>]
+<Chapters/02TractorSplineTheory/plot/vtractor04.pdf, id=524, 794.97pt x 614.295
 pt>
 File: Chapters/02TractorSplineTheory/plot/vtractor04.pdf Graphic file (type pdf
 )
@@ -749,9 +810,9 @@ File: Chapters/02TractorSplineTheory/plot/vtractor04.pdf Graphic file (type pdf
 Package pdftex.def Info: Chapters/02TractorSplineTheory/plot/vtractor04.pdf use
 d on input line 394.
 (pdftex.def)             Requested size: 441.03162pt x 256.07121pt.
- [25] [26 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/02TractorSplineTheory/
-plot/penalty08.pdf>] [27 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/02Tract
-orSplineTheory/plot/vtractor04.pdf>]) [28]
+ [26 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/02TractorSplineTheory/plot/
+vtractor04.pdf>])
+[27] [28]
 Chapter 3.
 (C:\Users\zcao\Documents\Latex\Thesis\Chapters/03GPR/GPR.tex [29
 
@@ -795,7 +856,7 @@ Overfull \hbox (72.83221pt too wide) in paragraph at lines 236--236
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [35]
-[36] <Chapters/03GPR/plot/simu01.pdf, id=582, 844.15375pt x 597.23125pt>
+[36] <Chapters/03GPR/plot/simu01.pdf, id=594, 844.15375pt x 597.23125pt>
 File: Chapters/03GPR/plot/simu01.pdf Graphic file (type pdf)
 
 <use Chapters/03GPR/plot/simu01.pdf>
@@ -803,7 +864,7 @@ Package pdftex.def Info: Chapters/03GPR/plot/simu01.pdf used on input line 281.
 
 (pdftex.def)             Requested size: 341.44244pt x 199.16467pt.
 
-<Chapters/03GPR/plot/simu02.pdf, id=583, 844.15375pt x 597.23125pt>
+<Chapters/03GPR/plot/simu02.pdf, id=595, 844.15375pt x 597.23125pt>
 File: Chapters/03GPR/plot/simu02.pdf Graphic file (type pdf)
 
 <use Chapters/03GPR/plot/simu02.pdf>
@@ -832,10 +893,177 @@ Package natbib Warning: Citation `sherlock2016adaptive' on page 46 undefined on
 
 ]
 Chapter 5.
-(C:\Users\zcao\Documents\Latex\Thesis\Chapters/05MCMCOU/MCMCOU.tex [51
+(C:\Users\zcao\Documents\Latex\Thesis\Chapters/05MCMCOU/MCMCEstimation.tex
+[51
 
-]
-[52]
+] [52] [53]
+Overfull \hbox (13.8149pt too wide) in paragraph at lines 51--53
+\OT1/cmr/m/n/12 where $\OML/cmm/m/it/12 x[]$ \OT1/cmr/m/n/12 rep-re-sents the h
+id-den states $\OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 x[]; x[]; [] ; x[]\OMS/cmsy/m
+/n/12 g$\OT1/cmr/m/n/12 , $\OML/cmm/m/it/12 y[]$ \OT1/cmr/m/n/12 rep-re-sents o
+b-served $\OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 y[]; [] ; y[]\OMS/cmsy/m/n/12 g$
+ []
+
+[54] [55] [56] [57]
+
+Package natbib Warning: Citation `sherlock2016adaptive' on page 58 undefined on
+ input line 225.
+
+<Chapters/05MCMCOU/plots/ggoneRW.pdf, id=677, 844.15375pt x 597.23125pt>
+File: Chapters/05MCMCOU/plots/ggoneRW.pdf Graphic file (type pdf)
+
+<use Chapters/05MCMCOU/plots/ggoneRW.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/ggoneRW.pdf used on input line
+ 239.
+(pdftex.def)             Requested size: 132.30666pt x 93.59966pt.
+
+Underfull \hbox (badness 4846) in paragraph at lines 240--240
+[]\OT1/cmr/m/n/10.95 (a) |One-variable-at-a-time
+ []
+
+<Chapters/05MCMCOU/plots/ggindRW.pdf, id=678, 844.15375pt x 597.23125pt>
+File: Chapters/05MCMCOU/plots/ggindRW.pdf Graphic file (type pdf)
+
+<use Chapters/05MCMCOU/plots/ggindRW.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/ggindRW.pdf used on input line
+ 244.
+(pdftex.def)             Requested size: 132.30666pt x 93.59966pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 245--245
+[]\OT1/cmr/m/n/10.95 (b) |In-de-pen-dent Multi-
+ []
+
+<Chapters/05MCMCOU/plots/ggcorRW.pdf, id=679, 844.15375pt x 597.23125pt>
+File: Chapters/05MCMCOU/plots/ggcorRW.pdf Graphic file (type pdf)
+
+<use Chapters/05MCMCOU/plots/ggcorRW.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/ggcorRW.pdf used on input line
+ 249.
+(pdftex.def)             Requested size: 132.30666pt x 93.59966pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 247--250
+[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 250--250
+[]\OT1/cmr/m/n/10.95 (c) |Cor-re-lated Multi-
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[58]
+Underfull \vbox (badness 1527) has occurred while \output is active []
+
+ [59 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/ggoneRW.pdf>
+ <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/ggindRW.pdf> <C:
+/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/ggcorRW.pdf>]
+Overfull \hbox (9.37216pt too wide) in paragraph at lines 305--306
+[]\OT1/cmr/m/n/12 The DA-MH al-go-rithm pro-posed in Chris-ten and Fox (2005) i
+s a two-stage Metropolis-
+ []
+
+[60] [61]
+<Chapters/05MCMCOU/plots/gglargechain.pdf, id=709, 844.15375pt x 597.23125pt>
+File: Chapters/05MCMCOU/plots/gglargechain.pdf Graphic file (type pdf)
+
+<use Chapters/05MCMCOU/plots/gglargechain.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/gglargechain.pdf used on input
+ line 371.
+(pdftex.def)             Requested size: 132.30666pt x 93.59966pt.
+
+<Chapters/05MCMCOU/plots/gglargeacf.pdf, id=710, 844.15375pt x 597.23125pt>
+File: Chapters/05MCMCOU/plots/gglargeacf.pdf Graphic file (type pdf)
+
+<use Chapters/05MCMCOU/plots/gglargeacf.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/gglargeacf.pdf used on input l
+ine 372.
+(pdftex.def)             Requested size: 132.30666pt x 93.59966pt.
+
+<Chapters/05MCMCOU/plots/ggsmallchain.pdf, id=711, 844.15375pt x 597.23125pt>
+File: Chapters/05MCMCOU/plots/ggsmallchain.pdf Graphic file (type pdf)
+
+<use Chapters/05MCMCOU/plots/ggsmallchain.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/ggsmallchain.pdf used on input
+ line 376.
+(pdftex.def)             Requested size: 132.30666pt x 93.59966pt.
+
+<Chapters/05MCMCOU/plots/ggsmallacf.pdf, id=712, 844.15375pt x 597.23125pt>
+File: Chapters/05MCMCOU/plots/ggsmallacf.pdf Graphic file (type pdf)
+
+<use Chapters/05MCMCOU/plots/ggsmallacf.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/ggsmallacf.pdf used on input l
+ine 377.
+(pdftex.def)             Requested size: 132.30666pt x 93.59966pt.
+
+<Chapters/05MCMCOU/plots/ggbestchain.pdf, id=713, 844.15375pt x 597.23125pt>
+File: Chapters/05MCMCOU/plots/ggbestchain.pdf Graphic file (type pdf)
+
+<use Chapters/05MCMCOU/plots/ggbestchain.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/ggbestchain.pdf used on input 
+line 381.
+(pdftex.def)             Requested size: 132.30666pt x 93.59966pt.
+
+<Chapters/05MCMCOU/plots/ggbestacf.pdf, id=714, 844.15375pt x 597.23125pt>
+File: Chapters/05MCMCOU/plots/ggbestacf.pdf Graphic file (type pdf)
+
+<use Chapters/05MCMCOU/plots/ggbestacf.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/ggbestacf.pdf used on input li
+ne 382.
+(pdftex.def)             Requested size: 132.30666pt x 93.59966pt.
+
+Underfull \hbox (badness 2662) in paragraph at lines 383--383
+[]\OT1/cmr/m/n/10.95 (c) |With an ap-pro-pri-ate
+ []
+
+[62 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/gglargechain.
+pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/gglargeacf.p
+df> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/ggsmallchain.
+pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/ggsmallacf.p
+df> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/ggbestchain.p
+df> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/ggbestacf.pdf
+>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [63]
+[64]
+Underfull \vbox (badness 4242) has occurred while \output is active []
+
+ [65]
+[66]
+<Chapters/05MCMCOU/plots/linear_phi.pdf, id=761, 844.15375pt x 597.23125pt>
+File: Chapters/05MCMCOU/plots/linear_phi.pdf Graphic file (type pdf)
+
+<use Chapters/05MCMCOU/plots/linear_phi.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/linear_phi.pdf used on input l
+ine 498.
+(pdftex.def)             Requested size: 132.30666pt x 93.59966pt.
+
+<Chapters/05MCMCOU/plots/linear_tau2.pdf, id=762, 844.15375pt x 597.23125pt>
+File: Chapters/05MCMCOU/plots/linear_tau2.pdf Graphic file (type pdf)
+
+<use Chapters/05MCMCOU/plots/linear_tau2.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/linear_tau2.pdf used on input 
+line 502.
+(pdftex.def)             Requested size: 132.30666pt x 93.59966pt.
+
+<Chapters/05MCMCOU/plots/linear_sig2.pdf, id=763, 844.15375pt x 597.23125pt>
+File: Chapters/05MCMCOU/plots/linear_sig2.pdf Graphic file (type pdf)
+
+<use Chapters/05MCMCOU/plots/linear_sig2.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/linear_sig2.pdf used on input 
+line 506.
+(pdftex.def)             Requested size: 132.30666pt x 93.59966pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 505--507
+[]
+ []
+
+[67 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/linear_phi.pd
+f> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/linear_tau2.pd
+f> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/linear_sig2.pd
+f>]
 Missing character: There is no ‚ in font cmr8!
 Missing character: There is no à in font cmr12!
 Missing character: There is no ó in font cmr12!
@@ -849,94 +1077,476 @@ Missing character: There is no ó in font cmr12!
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 78.
+(amsmath)                 on input line 545.
 
-[53]
-Overfull \hbox (80.3621pt too wide) in paragraph at lines 123--123
-[] 
+[68]
+<Chapters/05MCMCOU/plots/linearsimuXall.pdf, id=790, 844.15375pt x 597.23125pt>
+File: Chapters/05MCMCOU/plots/linearsimuXall.pdf Graphic file (type pdf)
+<use Chapters/05MCMCOU/plots/linearsimuXall.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/linearsimuXall.pdf used on inp
+ut line 601.
+(pdftex.def)             Requested size: 176.40439pt x 124.80257pt.
+
+<Chapters/05MCMCOU/plots/gglinearestXt.pdf, id=791, 844.15375pt x 597.23125pt>
+File: Chapters/05MCMCOU/plots/gglinearestXt.pdf Graphic file (type pdf)
+
+<use Chapters/05MCMCOU/plots/gglinearestXt.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/gglinearestXt.pdf used on inpu
+t line 605.
+(pdftex.def)             Requested size: 176.40439pt x 124.80257pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[69]
+Underfull \vbox (badness 1337) has occurred while \output is active []
+
+ [70 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/linearsimuXa
+ll.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/gglineare
+stXt.pdf>]
+<Chapters/05MCMCOU/plots/simudataOUdataview.pdf, id=809, 844.15375pt x 597.2312
+5pt>
+File: Chapters/05MCMCOU/plots/simudataOUdataview.pdf Graphic file (type pdf)
+ <use Chapters/05MCMCOU/plots/simudataOUdataview.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/simudataOUdataview.pdf used on
+ input line 658.
+(pdftex.def)             Requested size: 176.40163pt x 142.26309pt.
+
+<Chapters/05MCMCOU/plots/simudataOUDelThist2.pdf, id=810, 844.15375pt x 597.231
+25pt>
+File: Chapters/05MCMCOU/plots/simudataOUDelThist2.pdf Graphic file (type pdf)
+ <use Chapters/05MCMCOU/plots/simudataOUDelThist2.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/simudataOUDelThist2.pdf used o
+n input line 659.
+(pdftex.def)             Requested size: 176.40163pt x 142.26309pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[71]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [72 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/simudataOUda
+taview.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/simud
+ataOUDelThist2.pdf>]
+<Chapters/05MCMCOU/plots/simudataOUtracegam.pdf, id=827, 844.15375pt x 597.2312
+5pt>
+File: Chapters/05MCMCOU/plots/simudataOUtracegam.pdf Graphic file (type pdf)
+ <use Chapters/05MCMCOU/plots/simudataOUtracegam.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/simudataOUtracegam.pdf used on
+ input line 712.
+(pdftex.def)             Requested size: 132.30666pt x 93.59966pt.
+
+<Chapters/05MCMCOU/plots/simudataOUtracelab2.pdf, id=828, 844.15375pt x 597.231
+25pt>
+File: Chapters/05MCMCOU/plots/simudataOUtracelab2.pdf Graphic file (type pdf)
+ <use Chapters/05MCMCOU/plots/simudataOUtracelab2.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/simudataOUtracelab2.pdf used o
+n input line 716.
+(pdftex.def)             Requested size: 132.30666pt x 93.59966pt.
+
+<Chapters/05MCMCOU/plots/simudataOUtracesig2.pdf, id=829, 844.15375pt x 597.231
+25pt>
+File: Chapters/05MCMCOU/plots/simudataOUtracesig2.pdf Graphic file (type pdf)
+ <use Chapters/05MCMCOU/plots/simudataOUtracesig2.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/simudataOUtracesig2.pdf used o
+n input line 720.
+(pdftex.def)             Requested size: 132.30666pt x 93.59966pt.
+
+Overfull \hbox (5.33566pt too wide) in paragraph at lines 708--726
+[]\OT1/cmr/m/n/12 After run-ning the whole pro-cess, it gives us the best es-ti
+-ma-tion $[] = \OMS/cmsy/m/n/12 f\OML/cmm/m/it/12  \OT1/cmr/m/n/12 = 0\OML/cmm
+/m/it/12 :\OT1/cmr/m/n/12 4841\OML/cmm/m/it/12 ; [] \OT1/cmr/m/n/12 =$
  []
 
-[54]
-Overfull \hbox (17.88736pt too wide) in paragraph at lines 153--153
-[] 
+[73 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/simudataOUtra
+cegam.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/simuda
+taOUtracelab2.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plot
+s/simudataOUtracesig2.pdf>]
+Overfull \hbox (14.61885pt too wide) in paragraph at lines 753--755
+\OT1/cmr/m/n/12 The same as we did in sec-tion 5.4.1[], for any given $\OML/cmm
+/m/it/12 $\OT1/cmr/m/n/12 , we have $[] \OMS/cmsy/m/n/12 j \OML/cmm/m/it/12 y[
+];  \OMS/cmsy/m/n/12  \OML/cmm/m/it/12 N []$\OT1/cmr/m/n/12 ,
  []
 
-[55] [56] [57] [58]
-Overfull \hbox (9.13399pt too wide) in paragraph at lines 354--356
+
+<Chapters/05MCMCOU/plots/simudataOUallX.pdf, id=852, 844.15375pt x 597.23125pt>
+File: Chapters/05MCMCOU/plots/simudataOUallX.pdf Graphic file (type pdf)
+<use Chapters/05MCMCOU/plots/simudataOUallX.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/simudataOUallX.pdf used on inp
+ut line 765.
+(pdftex.def)             Requested size: 198.45662pt x 140.40404pt.
+
+<Chapters/05MCMCOU/plots/simudataOUXt.pdf, id=853, 844.15375pt x 597.23125pt>
+File: Chapters/05MCMCOU/plots/simudataOUXt.pdf Graphic file (type pdf)
+
+<use Chapters/05MCMCOU/plots/simudataOUXt.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/simudataOUXt.pdf used on input
+ line 769.
+(pdftex.def)             Requested size: 198.45662pt x 140.40404pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<Chapters/05MCMCOU/plots/realdatapath.pdf, id=854, 844.15375pt x 597.23125pt>
+File: Chapters/05MCMCOU/plots/realdatapath.pdf Graphic file (type pdf)
+
+<use Chapters/05MCMCOU/plots/realdatapath.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/realdatapath.pdf used on input
+ line 786.
+(pdftex.def)             Requested size: 198.45662pt x 140.40404pt.
+
+<Chapters/05MCMCOU/plots/realdatahistdeltaT.pdf, id=855, 844.15375pt x 597.2312
+5pt>
+File: Chapters/05MCMCOU/plots/realdatahistdeltaT.pdf Graphic file (type pdf)
+ <use Chapters/05MCMCOU/plots/realdatahistdeltaT.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/realdatahistdeltaT.pdf used on
+ input line 787.
+(pdftex.def)             Requested size: 198.45662pt x 140.40404pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[74] [75 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/simudata
+OUallX.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/simud
+ataOUXt.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/real
+datapath.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/rea
+ldatahistdeltaT.pdf>]
+Overfull \hbox (18.37128pt too wide) in paragraph at lines 861--863
 \OT1/cmr/m/n/12 and $[]$ can be re-ar-ranged in a time se-ries or-der, that mak
-es $\OML/cmm/m/it/12 X \OT1/cmr/m/n/12 = \OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 x[]
-; u[]; x[]; u[]; []  ; x[]; u[]\OMS/cmsy/m/n/12 g$\OT1/cmr/m/n/12 ,
+es $\OML/cmm/m/it/12 X[] \OT1/cmr/m/n/12 = \OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 x
+[]; u[]; x[]; u[]; []  ; x[]; u[]\OMS/cmsy/m/n/12 g$\OT1/cmr/m/n/12 ,
  []
 
 
-Overfull \hbox (102.11356pt too wide) in paragraph at lines 371--371
+Overfull \hbox (102.11356pt too wide) in paragraph at lines 878--878
 [] 
  []
+
+[76] [77] [78]
+Overfull \hbox (21.14098pt too wide) in paragraph at lines 964--973
+\OT1/cmr/m/n/12 where, in fact, $\OML/cmm/m/it/12 M[] \OT1/cmr/m/n/12 = [] = []
+$ and its in-verse is $\OML/cmm/m/it/12 M[] \OT1/cmr/m/n/12 = []$.
+ []
+
+[79] [80] [81]
+<Chapters/05MCMCOU/plots/ggIGPDF.pdf, id=902, 844.15375pt x 597.23125pt>
+File: Chapters/05MCMCOU/plots/ggIGPDF.pdf Graphic file (type pdf)
+
+<use Chapters/05MCMCOU/plots/ggIGPDF.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/ggIGPDF.pdf used on input line
+ 1084.
+(pdftex.def)             Requested size: 198.45662pt x 140.40404pt.
+
+<Chapters/05MCMCOU/plots/ggIGCDF.pdf, id=903, 844.15375pt x 597.23125pt>
+File: Chapters/05MCMCOU/plots/ggIGCDF.pdf Graphic file (type pdf)
+
+<use Chapters/05MCMCOU/plots/ggIGCDF.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/ggIGCDF.pdf used on input line
+ 1085.
+(pdftex.def)             Requested size: 198.45662pt x 140.40404pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<Chapters/05MCMCOU/plots/ggeff.pdf, id=904, 844.15375pt x 597.23125pt>
+File: Chapters/05MCMCOU/plots/ggeff.pdf Graphic file (type pdf)
+
+<use Chapters/05MCMCOU/plots/ggeff.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/ggeff.pdf used on input line 1
+137.
+(pdftex.def)             Requested size: 198.45662pt x 140.40404pt.
+
+<Chapters/05MCMCOU/plots/ggeut.pdf, id=905, 844.15375pt x 597.23125pt>
+File: Chapters/05MCMCOU/plots/ggeut.pdf Graphic file (type pdf)
+
+<use Chapters/05MCMCOU/plots/ggeut.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/ggeut.pdf used on input line 1
+138.
+(pdftex.def)             Requested size: 198.45662pt x 140.40404pt.
+
+<Chapters/05MCMCOU/plots/ggess.pdf, id=906, 844.15375pt x 597.23125pt>
+File: Chapters/05MCMCOU/plots/ggess.pdf Graphic file (type pdf)
+
+<use Chapters/05MCMCOU/plots/ggess.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/ggess.pdf used on input line 1
+139.
+(pdftex.def)             Requested size: 198.45662pt x 140.40404pt.
+
+<Chapters/05MCMCOU/plots/ggessut.pdf, id=907, 844.15375pt x 597.23125pt>
+File: Chapters/05MCMCOU/plots/ggessut.pdf Graphic file (type pdf)
+
+<use Chapters/05MCMCOU/plots/ggessut.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/ggessut.pdf used on input line
+ 1140.
+(pdftex.def)             Requested size: 198.45662pt x 140.40404pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (34.25777pt too wide) in paragraph at lines 1150--1161
+ [][] 
+ []
+
+[82 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/ggIGPDF.pdf> 
+<C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/ggIGCDF.pdf>]
+[83] [84 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/ggeff.pd
+f> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/ggeut.pdf> <C:
+/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/ggess.pdf> <C:/Users
+/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/ggessut.pdf>]
+<Chapters/05MCMCOU/plots/simudataOUlengtheff.pdf, id=950, 844.15375pt x 597.231
+25pt>
+File: Chapters/05MCMCOU/plots/simudataOUlengtheff.pdf Graphic file (type pdf)
+ <use Chapters/05MCMCOU/plots/simudataOUlengtheff.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/simudataOUlengtheff.pdf used o
+n input line 1224.
+(pdftex.def)             Requested size: 198.45662pt x 140.40404pt.
+
+<Chapters/05MCMCOU/plots/simudataOUlengthess.pdf, id=951, 844.15375pt x 597.231
+25pt>
+File: Chapters/05MCMCOU/plots/simudataOUlengthess.pdf Graphic file (type pdf)
+ <use Chapters/05MCMCOU/plots/simudataOUlengthess.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/simudataOUlengthess.pdf used o
+n input line 1225.
+(pdftex.def)             Requested size: 198.45662pt x 140.40404pt.
+
+<Chapters/05MCMCOU/plots/simudataOUlengtheffut.pdf, id=952, 844.15375pt x 597.2
+3125pt>
+File: Chapters/05MCMCOU/plots/simudataOUlengtheffut.pdf Graphic file (type pdf)
+
+ <use Chapters/05MCMCOU/plots/simudataOUlengtheffut.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/simudataOUlengtheffut.pdf used
+ on input line 1226.
+(pdftex.def)             Requested size: 198.45662pt x 140.40404pt.
+
+<Chapters/05MCMCOU/plots/simudataOUlengthessut.pdf, id=953, 844.15375pt x 597.2
+3125pt>
+File: Chapters/05MCMCOU/plots/simudataOUlengthessut.pdf Graphic file (type pdf)
+
+ <use Chapters/05MCMCOU/plots/simudataOUlengthessut.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/simudataOUlengthessut.pdf used
+ on input line 1227.
+(pdftex.def)             Requested size: 198.45662pt x 140.40404pt.
+ [85 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/simudataOUle
+ngtheff.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/simu
+dataOUlengthess.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/pl
+ots/simudataOUlengtheffut.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/0
+5MCMCOU/plots/simudataOUlengthessut.pdf>]
+<Chapters/05MCMCOU/plots/realdataestbiaslogDAnoupdate.pdf, id=978, 844.15375pt 
+x 597.23125pt>
+File: Chapters/05MCMCOU/plots/realdataestbiaslogDAnoupdate.pdf Graphic file (ty
+pe pdf)
+ <use Chapters/05MCMCOU/plots/realdataestbiaslogDAnoupdate.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/realdataestbiaslogDAnoupdate.p
+df used on input line 1242.
+(pdftex.def)             Requested size: 227.61542pt x 142.26309pt.
+
+<Chapters/05MCMCOU/plots/realdataestbiaslogDAupdate.pdf, id=979, 844.15375pt x 
+597.23125pt>
+File: Chapters/05MCMCOU/plots/realdataestbiaslogDAupdate.pdf Graphic file (type
+ pdf)
+ <use Chapters/05MCMCOU/plots/realdataestbiaslogDAupdate.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/realdataestbiaslogDAupdate.pdf
+ used on input line 1243.
+(pdftex.def)             Requested size: 227.61542pt x 142.26309pt.
+
+<Chapters/05MCMCOU/plots/realdataestbiaslogLnoupdate.pdf, id=980, 844.15375pt x
+ 597.23125pt>
+File: Chapters/05MCMCOU/plots/realdataestbiaslogLnoupdate.pdf Graphic file (typ
+e pdf)
+ <use Chapters/05MCMCOU/plots/realdataestbiaslogLnoupdate.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/realdataestbiaslogLnoupdate.pd
+f used on input line 1244.
+(pdftex.def)             Requested size: 227.61542pt x 142.26309pt.
+
+<Chapters/05MCMCOU/plots/realdataestbiaslogLupdate.pdf, id=981, 844.15375pt x 5
+97.23125pt>
+File: Chapters/05MCMCOU/plots/realdataestbiaslogLupdate.pdf Graphic file (type 
+pdf)
+ <use Chapters/05MCMCOU/plots/realdataestbiaslogLupdate.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/realdataestbiaslogLupdate.pdf 
+used on input line 1245.
+(pdftex.def)             Requested size: 227.61542pt x 142.26309pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+<Chapters/05MCMCOU/plots/realdatacomparea1notupandup.pdf, id=982, 844.15375pt x
+ 597.23125pt>
+File: Chapters/05MCMCOU/plots/realdatacomparea1notupandup.pdf Graphic file (typ
+e pdf)
+ <use Chapters/05MCMCOU/plots/realdatacomparea1notupandup.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/realdatacomparea1notupandup.pd
+f used on input line 1251.
+(pdftex.def)             Requested size: 198.45662pt x 140.40404pt.
+
+<Chapters/05MCMCOU/plots/realdatacomparea2notupandup.pdf, id=983, 844.15375pt x
+ 597.23125pt>
+File: Chapters/05MCMCOU/plots/realdatacomparea2notupandup.pdf Graphic file (typ
+e pdf)
+ <use Chapters/05MCMCOU/plots/realdatacomparea2notupandup.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/realdatacomparea2notupandup.pd
+f used on input line 1252.
+(pdftex.def)             Requested size: 198.45662pt x 140.40404pt.
+
+<Chapters/05MCMCOU/plots/realdatacompareeffutnotupandup.pdf, id=984, 844.15375p
+t x 597.23125pt>
+File: Chapters/05MCMCOU/plots/realdatacompareeffutnotupandup.pdf Graphic file (
+type pdf)
+
+<use Chapters/05MCMCOU/plots/realdatacompareeffutnotupandup.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/realdatacompareeffutnotupandup
+.pdf used on input line 1253.
+(pdftex.def)             Requested size: 198.45662pt x 140.40404pt.
+
+<Chapters/05MCMCOU/plots/realdatacompareessutnotupandup.pdf, id=985, 844.15375p
+t x 597.23125pt>
+File: Chapters/05MCMCOU/plots/realdatacompareessutnotupandup.pdf Graphic file (
+type pdf)
+
+<use Chapters/05MCMCOU/plots/realdatacompareessutnotupandup.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/realdatacompareessutnotupandup
+.pdf used on input line 1254.
+(pdftex.def)             Requested size: 198.45662pt x 140.40404pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [59]
-Overfull \hbox (1.27339pt too wide) in paragraph at lines 402--404
-\OT1/cmr/m/n/12 where the co-vari-ance ma-trix of the joint dis-tri-bu-tion is 
-$[] = (\OML/cmm/m/it/12 I[] \OMS/cmsy/m/n/12   \OML/cmm/m/it/12 A[]B[]\OT1/cmr
-/m/n/12 )[]\OML/cmm/m/it/12 B[]$\OT1/cmr/m/n/12 .
- []
+ [86]
+<Chapters/05MCMCOU/plots/realdatalearningcorMatrix.pdf, id=989, 844.15375pt x 5
+97.23125pt>
+File: Chapters/05MCMCOU/plots/realdatalearningcorMatrix.pdf Graphic file (type 
+pdf)
+ <use Chapters/05MCMCOU/plots/realdatalearningcorMatrix.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/realdatalearningcorMatrix.pdf 
+used on input line 1286.
+(pdftex.def)             Requested size: 308.71251pt x 227.62459pt.
+
+[87]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Overfull \hbox (63.41197pt too wide) in paragraph at lines 435--435
-[] 
- []
+<Chapters/05MCMCOU/plots/realdatalearninggam.pdf, id=994, 844.15375pt x 597.231
+25pt>
+File: Chapters/05MCMCOU/plots/realdatalearninggam.pdf Graphic file (type pdf)
+ <use Chapters/05MCMCOU/plots/realdatalearninggam.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/realdatalearninggam.pdf used o
+n input line 1293.
+(pdftex.def)             Requested size: 198.45662pt x 140.40404pt.
 
-[60]
-Overfull \hbox (103.04405pt too wide) in paragraph at lines 460--469
-\OT1/cmr/m/n/12 denoted by $\OML/cmm/m/it/12 S[] \OT1/cmr/m/n/12 = [] []$, $\OM
-L/cmm/m/it/12 D[] \OT1/cmr/m/n/12 = [] []$
- []
+<Chapters/05MCMCOU/plots/realdatalearningxi2.pdf, id=995, 844.15375pt x 597.231
+25pt>
+File: Chapters/05MCMCOU/plots/realdatalearningxi2.pdf Graphic file (type pdf)
+ <use Chapters/05MCMCOU/plots/realdatalearningxi2.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/realdatalearningxi2.pdf used o
+n input line 1294.
+(pdftex.def)             Requested size: 198.45662pt x 140.40404pt.
+
+<Chapters/05MCMCOU/plots/realdatalearninglab2.pdf, id=996, 844.15375pt x 597.23
+125pt>
+File: Chapters/05MCMCOU/plots/realdatalearninglab2.pdf Graphic file (type pdf)
+ <use Chapters/05MCMCOU/plots/realdatalearninglab2.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/realdatalearninglab2.pdf used 
+on input line 1295.
+(pdftex.def)             Requested size: 198.45662pt x 140.40404pt.
+
+<Chapters/05MCMCOU/plots/realdatalearningsig2.pdf, id=997, 844.15375pt x 597.23
+125pt>
+File: Chapters/05MCMCOU/plots/realdatalearningsig2.pdf Graphic file (type pdf)
+ <use Chapters/05MCMCOU/plots/realdatalearningsig2.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/realdatalearningsig2.pdf used 
+on input line 1296.
+(pdftex.def)             Requested size: 198.45662pt x 140.40404pt.
+
+<Chapters/05MCMCOU/plots/realdatalearningtau2.pdf, id=998, 844.15375pt x 597.23
+125pt>
+File: Chapters/05MCMCOU/plots/realdatalearningtau2.pdf Graphic file (type pdf)
+ <use Chapters/05MCMCOU/plots/realdatalearningtau2.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/realdatalearningtau2.pdf used 
+on input line 1297.
+(pdftex.def)             Requested size: 198.45662pt x 140.40404pt.
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+LaTeX Warning: `h' float specifier changed to `ht'.
 
- [61]
-Overfull \hbox (21.28633pt too wide) in paragraph at lines 513--513
-[] 
- []
 
-[62]
-Overfull \hbox (104.03789pt too wide) in paragraph at lines 537--537
-[] 
- []
+<Chapters/05MCMCOU/plots/realdatabatchPosition.pdf, id=999, 844.15375pt x 597.2
+3125pt>
+File: Chapters/05MCMCOU/plots/realdatabatchPosition.pdf Graphic file (type pdf)
 
-[63] [64] [65]
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ì in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ì in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ô in font cmr12!
- [66]
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ô in font cmr12!
- [67]
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ô in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ô in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ô in font cmr12!
-) [68]
+ <use Chapters/05MCMCOU/plots/realdatabatchPosition.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/realdatabatchPosition.pdf used
+ on input line 1306.
+(pdftex.def)             Requested size: 308.71104pt x 218.41135pt.
+
+<Chapters/05MCMCOU/plots/realdatabatchVelocity.pdf, id=1000, 844.15375pt x 597.
+23125pt>
+File: Chapters/05MCMCOU/plots/realdatabatchVelocity.pdf Graphic file (type pdf)
+
+ <use Chapters/05MCMCOU/plots/realdatabatchVelocity.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/realdatabatchVelocity.pdf used
+ on input line 1307.
+(pdftex.def)             Requested size: 308.71104pt x 218.41135pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+<Chapters/05MCMCOU/plots/realdataEstXYwithEr.pdf, id=1001, 844.15375pt x 597.23
+125pt>
+File: Chapters/05MCMCOU/plots/realdataEstXYwithEr.pdf Graphic file (type pdf)
+ <use Chapters/05MCMCOU/plots/realdataEstXYwithEr.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/realdataEstXYwithEr.pdf used o
+n input line 1313.
+(pdftex.def)             Requested size: 176.40439pt x 124.80257pt.
+
+<Chapters/05MCMCOU/plots/realdataestwitherror.pdf, id=1002, 844.15375pt x 597.2
+3125pt>
+File: Chapters/05MCMCOU/plots/realdataestwitherror.pdf Graphic file (type pdf)
+ <use Chapters/05MCMCOU/plots/realdataestwitherror.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/realdataestwitherror.pdf used 
+on input line 1314.
+(pdftex.def)             Requested size: 176.40439pt x 124.80257pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[88] [89 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/realdata
+estbiaslogDAnoupdate.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMC
+OU/plots/realdataestbiaslogDAupdate.pdf> <C:/Users/zcao/Documents/Latex/Thesis/
+Chapters/05MCMCOU/plots/realdataestbiaslogLnoupdate.pdf> <C:/Users/zcao/Documen
+ts/Latex/Thesis/Chapters/05MCMCOU/plots/realdataestbiaslogLupdate.pdf>]
+[90 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/realdatacompa
+rea1notupandup.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plo
+ts/realdatacomparea2notupandup.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapt
+ers/05MCMCOU/plots/realdatacompareeffutnotupandup.pdf> <C:/Users/zcao/Documents
+/Latex/Thesis/Chapters/05MCMCOU/plots/realdatacompareessutnotupandup.pdf> <C:/U
+sers/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/realdatalearningcorMat
+rix.pdf>] [91 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/rea
+ldatalearninggam.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/p
+lots/realdatalearningxi2.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05
+MCMCOU/plots/realdatalearninglab2.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Ch
+apters/05MCMCOU/plots/realdatalearningsig2.pdf> <C:/Users/zcao/Documents/Latex/
+Thesis/Chapters/05MCMCOU/plots/realdatalearningtau2.pdf>] [92 <C:/Users/zcao/Do
+cuments/Latex/Thesis/Chapters/05MCMCOU/plots/realdatabatchPosition.pdf> <C:/Use
+rs/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/realdatabatchVelocity.pd
+f>] [93 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/realdataE
+stXYwithEr.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/r
+ealdataestwitherror.pdf>] [94
+
+])
 Chapter 6.
 (C:\Users\zcao\Documents\Latex\Thesis\Chapters/06Spinoff/GPSsimp.tex
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [69
+ [95
+
 
 
 
@@ -948,7 +1558,7 @@ $\OML/cmm/m/it/12 P \OT1/cmr/m/n/12 = \OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 p[]; p
 []; []  ; p[]\OMS/cmsy/m/n/12 g$\OT1/cmr/m/n/12 .
  []
 
-[70] <Chapters/06Spinoff/plot/sed.jpg, id=705, 404.26031pt x 178.41656pt>
+[96] <Chapters/06Spinoff/plot/sed.jpg, id=1133, 404.26031pt x 178.41656pt>
 File: Chapters/06Spinoff/plot/sed.jpg Graphic file (type jpg)
 
 <use Chapters/06Spinoff/plot/sed.jpg>
@@ -963,19 +1573,19 @@ Overfull \hbox (14.23665pt too wide) in paragraph at lines 62--63
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[71] <Chapters/06Spinoff/plot/ab.JPG, id=710, 614.295pt x 170.88844pt>
+[97] <Chapters/06Spinoff/plot/ab.JPG, id=1138, 614.295pt x 170.88844pt>
 File: Chapters/06Spinoff/plot/ab.JPG Graphic file (type jpg)
 
 <use Chapters/06Spinoff/plot/ab.JPG>
 Package pdftex.def Info: Chapters/06Spinoff/plot/ab.JPG used on input line 70.
 (pdftex.def)             Requested size: 369.8921pt x 142.27281pt.
- [72 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/06Spinoff/plot/sed.jpg> <C:
+ [98 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/06Spinoff/plot/sed.jpg> <C:
 /Users/zcao/Documents/Latex/Thesis/Chapters/06Spinoff/plot/ab.JPG>]
 Overfull \hbox (9.78494pt too wide) in paragraph at lines 100--109
  [][] 
  []
 
-<Chapters/06Spinoff/plot/3p1.pdf, id=714, 647.41875pt x 664.4825pt>
+<Chapters/06Spinoff/plot/3p1.pdf, id=1142, 647.41875pt x 664.4825pt>
 File: Chapters/06Spinoff/plot/3p1.pdf Graphic file (type pdf)
 
 <use Chapters/06Spinoff/plot/3p1.pdf>
@@ -983,35 +1593,35 @@ Package pdftex.def Info: Chapters/06Spinoff/plot/3p1.pdf used on input line 115
 .
 (pdftex.def)             Requested size: 426.79387pt x 227.62444pt.
 
-<Chapters/06Spinoff/plot/km3p.pdf, id=715, 647.41875pt x 664.4825pt>
+<Chapters/06Spinoff/plot/km3p.pdf, id=1143, 647.41875pt x 664.4825pt>
 File: Chapters/06Spinoff/plot/km3p.pdf Graphic file (type pdf)
 
 <use Chapters/06Spinoff/plot/km3p.pdf>
 Package pdftex.def Info: Chapters/06Spinoff/plot/km3p.pdf used on input line 12
 1.
 (pdftex.def)             Requested size: 426.79387pt x 227.62444pt.
-) [73
+) [99
 
-] [74 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/06Spinoff/plot/3p1.pdf> <C
-:/Users/zcao/Documents/Latex/Thesis/Chapters/06Spinoff/plot/km3p.pdf>]
+] [100 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/06Spinoff/plot/3p1.pdf> <
+C:/Users/zcao/Documents/Latex/Thesis/Chapters/06Spinoff/plot/km3p.pdf>]
 Chapter 7.
 (C:\Users\zcao\Documents\Latex\Thesis\Chapters/07FutureWork/Future.tex)
-[75
+[101
 
 
 
-] [76
+] [102
 
 
 ]
 Chapter 8.
-(C:\Users\zcao\Documents\Latex\Thesis\Chapters/08Summary/Summary.tex) [77
+(C:\Users\zcao\Documents\Latex\Thesis\Chapters/08Summary/Summary.tex) [103
 
 ]
-[78
+[104
 
 
-] [79
+] [105
 
 
 ]
@@ -1019,51 +1629,792 @@ Appendix A.
 (C:\Users\zcao\Documents\Latex\Thesis\Appendices/Penalty.tex
 Underfull \vbox (badness 5302) has occurred while \output is active []
 
- [80
+ [106
 
 ]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [81]
-[82]
+ [107]
+[108]
 Underfull \hbox (badness 10000) in paragraph at lines 139--141
 
  []
 
-[83]
+[109]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [84])
-[85]
+ [110])
+[111]
 Appendix B.
-(C:\Users\zcao\Documents\Latex\Thesis\Appendices/Matrix.tex [86
+(C:\Users\zcao\Documents\Latex\Thesis\Appendices/Matrix.tex [112
 
 ]
-Overfull \hbox (189.93605pt too wide) in paragraph at lines 56--56
+Overfull \hbox (1.80396pt too wide) in paragraph at lines 125--125
+[] 
+ []
+
+[113]
+Overfull \hbox (35.70435pt too wide) in paragraph at lines 155--155
+[] 
+ []
+
+
+Overfull \hbox (19.48625pt too wide) in paragraph at lines 169--169
+[] 
+ []
+
+[114]
+Overfull \hbox (1.27339pt too wide) in paragraph at lines 205--207
+\OT1/cmr/m/n/12 where the co-vari-ance ma-trix of the joint dis-tri-bu-tion is 
+$[] = (\OML/cmm/m/it/12 I[] \OMS/cmsy/m/n/12   \OML/cmm/m/it/12 A[]B[]\OT1/cmr
+/m/n/12 )[]\OML/cmm/m/it/12 B[]$\OT1/cmr/m/n/12 .
+ []
+
+[115]
+Overfull \hbox (63.41197pt too wide) in paragraph at lines 238--238
+[] 
+ []
+
+[116]
+Overfull \hbox (21.28633pt too wide) in paragraph at lines 317--317
+[] 
+ []
+
+[117]
+Overfull \hbox (73.83595pt too wide) in paragraph at lines 342--342
+[] 
+ []
+
+[118] [119] [120]
+Overfull \hbox (50.63036pt too wide) in paragraph at lines 494--494
 [] 
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [87
+ [121
 
 ]
-[88]) (C:\Users\zcao\Documents\Latex\Thesis\draft.bbl [89
+[122]
+<Chapters/05MCMCOU/plots/gg1k1chain.pdf, id=1236, 844.15375pt x 597.23125pt>
+File: Chapters/05MCMCOU/plots/gg1k1chain.pdf Graphic file (type pdf)
+
+<use Chapters/05MCMCOU/plots/gg1k1chain.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/gg1k1chain.pdf used on input l
+ine 525.
+(pdftex.def)             Requested size: 176.40163pt x 142.26309pt.
+
+<Chapters/05MCMCOU/plots/gg1k1acf.pdf, id=1237, 844.15375pt x 597.23125pt>
+File: Chapters/05MCMCOU/plots/gg1k1acf.pdf Graphic file (type pdf)
+
+<use Chapters/05MCMCOU/plots/gg1k1acf.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/gg1k1acf.pdf used on input lin
+e 526.
+(pdftex.def)             Requested size: 176.40163pt x 142.26309pt.
+
+<Chapters/05MCMCOU/plots/gg1k13chain.pdf, id=1238, 844.15375pt x 597.23125pt>
+File: Chapters/05MCMCOU/plots/gg1k13chain.pdf Graphic file (type pdf)
+
+<use Chapters/05MCMCOU/plots/gg1k13chain.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/gg1k13chain.pdf used on input 
+line 527.
+(pdftex.def)             Requested size: 176.40163pt x 142.26309pt.
+
+<Chapters/05MCMCOU/plots/gg1k13acf.pdf, id=1239, 844.15375pt x 597.23125pt>
+File: Chapters/05MCMCOU/plots/gg1k13acf.pdf Graphic file (type pdf)
+
+<use Chapters/05MCMCOU/plots/gg1k13acf.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/gg1k13acf.pdf used on input li
+ne 528.
+(pdftex.def)             Requested size: 176.40163pt x 142.26309pt.
+
+<Chapters/05MCMCOU/plots/gg1k22chain.pdf, id=1240, 844.15375pt x 597.23125pt>
+File: Chapters/05MCMCOU/plots/gg1k22chain.pdf Graphic file (type pdf)
+
+<use Chapters/05MCMCOU/plots/gg1k22chain.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/gg1k22chain.pdf used on input 
+line 529.
+(pdftex.def)             Requested size: 176.40163pt x 142.26309pt.
+
+<Chapters/05MCMCOU/plots/gg1k22acf.pdf, id=1241, 844.15375pt x 597.23125pt>
+File: Chapters/05MCMCOU/plots/gg1k22acf.pdf Graphic file (type pdf)
+
+<use Chapters/05MCMCOU/plots/gg1k22acf.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/gg1k22acf.pdf used on input li
+ne 530.
+(pdftex.def)             Requested size: 176.40163pt x 142.26309pt.
+
+<Chapters/05MCMCOU/plots/gg1k25chain.pdf, id=1242, 844.15375pt x 597.23125pt>
+File: Chapters/05MCMCOU/plots/gg1k25chain.pdf Graphic file (type pdf)
+
+<use Chapters/05MCMCOU/plots/gg1k25chain.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/gg1k25chain.pdf used on input 
+line 531.
+(pdftex.def)             Requested size: 176.40163pt x 142.26309pt.
+
+<Chapters/05MCMCOU/plots/gg1k25acf.pdf, id=1243, 844.15375pt x 597.23125pt>
+File: Chapters/05MCMCOU/plots/gg1k25acf.pdf Graphic file (type pdf)
+
+<use Chapters/05MCMCOU/plots/gg1k25acf.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/gg1k25acf.pdf used on input li
+ne 532.
+(pdftex.def)             Requested size: 176.40163pt x 142.26309pt.
 
 
-] [90] [91]
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[123
+
+
+] [124 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/gg1k1chain
+.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/gg1k1acf.pd
+f> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/gg1k13chain.pd
+f> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/gg1k13acf.pdf>
+ <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/gg1k22chain.pdf>
+ <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/gg1k22acf.pdf> <
+C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/gg1k25chain.pdf> <
+C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/gg1k25acf.pdf>]
+<Chapters/05MCMCOU/plots/realdatalengthcompare.pdf, id=1298, 844.15375pt x 597.
+23125pt>
+File: Chapters/05MCMCOU/plots/realdatalengthcompare.pdf Graphic file (type pdf)
+
+ <use Chapters/05MCMCOU/plots/realdatalengthcompare.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/realdatalengthcompare.pdf used
+ on input line 545.
+(pdftex.def)             Requested size: 441.02339pt x 332.25098pt.
+ [125
+
+ <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/realdatalengthco
+mpare.pdf>]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[126]
+<Chapters/05MCMCOU/plots/realdatacomparea1batchwindow.pdf, id=1311, 844.15375pt
+ x 597.23125pt>
+File: Chapters/05MCMCOU/plots/realdatacomparea1batchwindow.pdf Graphic file (ty
+pe pdf)
+ <use Chapters/05MCMCOU/plots/realdatacomparea1batchwindow.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/realdatacomparea1batchwindow.p
+df used on input line 612.
+(pdftex.def)             Requested size: 176.40163pt x 132.89491pt.
+
+<Chapters/05MCMCOU/plots/realdatacomparea2batchwindow.pdf, id=1312, 844.15375pt
+ x 597.23125pt>
+File: Chapters/05MCMCOU/plots/realdatacomparea2batchwindow.pdf Graphic file (ty
+pe pdf)
+ <use Chapters/05MCMCOU/plots/realdatacomparea2batchwindow.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/realdatacomparea2batchwindow.p
+df used on input line 613.
+(pdftex.def)             Requested size: 176.40163pt x 132.89491pt.
+
+<Chapters/05MCMCOU/plots/realdatacompareeffutbatchwindow.pdf, id=1313, 844.1537
+5pt x 597.23125pt>
+File: Chapters/05MCMCOU/plots/realdatacompareeffutbatchwindow.pdf Graphic file 
+(type pdf)
+
+<use Chapters/05MCMCOU/plots/realdatacompareeffutbatchwindow.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/realdatacompareeffutbatchwindo
+w.pdf used on input line 614.
+(pdftex.def)             Requested size: 176.40163pt x 132.89491pt.
+
+<Chapters/05MCMCOU/plots/realdatacompareessutbatchwindow.pdf, id=1314, 844.1537
+5pt x 597.23125pt>
+File: Chapters/05MCMCOU/plots/realdatacompareessutbatchwindow.pdf Graphic file 
+(type pdf)
+
+<use Chapters/05MCMCOU/plots/realdatacompareessutbatchwindow.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/realdatacompareessutbatchwindo
+w.pdf used on input line 615.
+(pdftex.def)             Requested size: 176.40163pt x 132.89491pt.
+
+<Chapters/05MCMCOU/plots/realdatacomparegambatchwindow.pdf, id=1315, 844.15375p
+t x 597.23125pt>
+File: Chapters/05MCMCOU/plots/realdatacomparegambatchwindow.pdf Graphic file (t
+ype pdf)
+
+<use Chapters/05MCMCOU/plots/realdatacomparegambatchwindow.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/realdatacomparegambatchwindow.
+pdf used on input line 621.
+(pdftex.def)             Requested size: 176.40163pt x 132.89491pt.
+
+<Chapters/05MCMCOU/plots/realdatacomparexi2batchwindow.pdf, id=1316, 844.15375p
+t x 597.23125pt>
+File: Chapters/05MCMCOU/plots/realdatacomparexi2batchwindow.pdf Graphic file (t
+ype pdf)
+
+<use Chapters/05MCMCOU/plots/realdatacomparexi2batchwindow.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/realdatacomparexi2batchwindow.
+pdf used on input line 622.
+(pdftex.def)             Requested size: 176.40163pt x 132.89491pt.
+
+<Chapters/05MCMCOU/plots/realdatacomparelab2batchwindow.pdf, id=1317, 844.15375
+pt x 597.23125pt>
+File: Chapters/05MCMCOU/plots/realdatacomparelab2batchwindow.pdf Graphic file (
+type pdf)
+
+<use Chapters/05MCMCOU/plots/realdatacomparelab2batchwindow.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/realdatacomparelab2batchwindow
+.pdf used on input line 623.
+(pdftex.def)             Requested size: 176.40163pt x 132.89491pt.
+
+<Chapters/05MCMCOU/plots/realdatacomparesig2batchwindow.pdf, id=1318, 844.15375
+pt x 597.23125pt>
+File: Chapters/05MCMCOU/plots/realdatacomparesig2batchwindow.pdf Graphic file (
+type pdf)
+
+<use Chapters/05MCMCOU/plots/realdatacomparesig2batchwindow.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/realdatacomparesig2batchwindow
+.pdf used on input line 624.
+(pdftex.def)             Requested size: 176.40163pt x 132.89491pt.
+
+<Chapters/05MCMCOU/plots/realdatacomparetau2batchwindow.pdf, id=1319, 844.15375
+pt x 597.23125pt>
+File: Chapters/05MCMCOU/plots/realdatacomparetau2batchwindow.pdf Graphic file (
+type pdf)
+
+<use Chapters/05MCMCOU/plots/realdatacomparetau2batchwindow.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/realdatacomparetau2batchwindow
+.pdf used on input line 625.
+(pdftex.def)             Requested size: 176.40163pt x 132.89491pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[127
+
+
+ <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/realdatacomparea
+1batchwindow.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots
+/realdatacomparea2batchwindow.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapte
+rs/05MCMCOU/plots/realdatacompareeffutbatchwindow.pdf> <C:/Users/zcao/Documents
+/Latex/Thesis/Chapters/05MCMCOU/plots/realdatacompareessutbatchwindow.pdf>] [12
+8 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/realdatacompare
+gambatchwindow.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plo
+ts/realdatacomparexi2batchwindow.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Cha
+pters/05MCMCOU/plots/realdatacomparelab2batchwindow.pdf> <C:/Users/zcao/Documen
+ts/Latex/Thesis/Chapters/05MCMCOU/plots/realdatacomparesig2batchwindow.pdf> <C:
+/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/realdatacomparetau2b
+atchwindow.pdf>]
+<Chapters/05MCMCOU/plots/paraEvolution/corMatrix1.pdf, id=1379, 505.89pt x 505.
+89pt>
+File: Chapters/05MCMCOU/plots/paraEvolution/corMatrix1.pdf Graphic file (type p
+df)
+ <use Chapters/05MCMCOU/plots/paraEvolution/corMatrix1.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/paraEvolution/corMatrix1.pdf u
+sed on input line 637.
+(pdftex.def)             Requested size: 132.30794pt x 119.60205pt.
+
+<Chapters/05MCMCOU/plots/paraEvolution/corMatrix2.pdf, id=1380, 505.89pt x 505.
+89pt>
+File: Chapters/05MCMCOU/plots/paraEvolution/corMatrix2.pdf Graphic file (type p
+df)
+ <use Chapters/05MCMCOU/plots/paraEvolution/corMatrix2.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/paraEvolution/corMatrix2.pdf u
+sed on input line 638.
+(pdftex.def)             Requested size: 132.30794pt x 119.60205pt.
+
+<Chapters/05MCMCOU/plots/paraEvolution/corMatrix3.pdf, id=1381, 505.89pt x 505.
+89pt>
+File: Chapters/05MCMCOU/plots/paraEvolution/corMatrix3.pdf Graphic file (type p
+df)
+ <use Chapters/05MCMCOU/plots/paraEvolution/corMatrix3.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/paraEvolution/corMatrix3.pdf u
+sed on input line 639.
+(pdftex.def)             Requested size: 132.30794pt x 119.60205pt.
+
+<Chapters/05MCMCOU/plots/paraEvolution/corMatrix4.pdf, id=1382, 505.89pt x 505.
+89pt>
+File: Chapters/05MCMCOU/plots/paraEvolution/corMatrix4.pdf Graphic file (type p
+df)
+ <use Chapters/05MCMCOU/plots/paraEvolution/corMatrix4.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/paraEvolution/corMatrix4.pdf u
+sed on input line 640.
+(pdftex.def)             Requested size: 132.30794pt x 119.60205pt.
+
+<Chapters/05MCMCOU/plots/paraEvolution/corMatrix5.pdf, id=1383, 505.89pt x 505.
+89pt>
+File: Chapters/05MCMCOU/plots/paraEvolution/corMatrix5.pdf Graphic file (type p
+df)
+ <use Chapters/05MCMCOU/plots/paraEvolution/corMatrix5.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/paraEvolution/corMatrix5.pdf u
+sed on input line 641.
+(pdftex.def)             Requested size: 132.30794pt x 119.60205pt.
+
+<Chapters/05MCMCOU/plots/paraEvolution/corMatrix6.pdf, id=1384, 505.89pt x 505.
+89pt>
+File: Chapters/05MCMCOU/plots/paraEvolution/corMatrix6.pdf Graphic file (type p
+df)
+ <use Chapters/05MCMCOU/plots/paraEvolution/corMatrix6.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/paraEvolution/corMatrix6.pdf u
+sed on input line 642.
+(pdftex.def)             Requested size: 132.30794pt x 119.60205pt.
+
+<Chapters/05MCMCOU/plots/paraEvolution/corMatrix7.pdf, id=1385, 505.89pt x 505.
+89pt>
+File: Chapters/05MCMCOU/plots/paraEvolution/corMatrix7.pdf Graphic file (type p
+df)
+ <use Chapters/05MCMCOU/plots/paraEvolution/corMatrix7.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/paraEvolution/corMatrix7.pdf u
+sed on input line 643.
+(pdftex.def)             Requested size: 132.30794pt x 119.60205pt.
+
+<Chapters/05MCMCOU/plots/paraEvolution/corMatrix8.pdf, id=1386, 505.89pt x 505.
+89pt>
+File: Chapters/05MCMCOU/plots/paraEvolution/corMatrix8.pdf Graphic file (type p
+df)
+ <use Chapters/05MCMCOU/plots/paraEvolution/corMatrix8.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/paraEvolution/corMatrix8.pdf u
+sed on input line 644.
+(pdftex.def)             Requested size: 132.30794pt x 119.60205pt.
+
+<Chapters/05MCMCOU/plots/paraEvolution/corMatrix9.pdf, id=1387, 505.89pt x 505.
+89pt>
+File: Chapters/05MCMCOU/plots/paraEvolution/corMatrix9.pdf Graphic file (type p
+df)
+ <use Chapters/05MCMCOU/plots/paraEvolution/corMatrix9.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/paraEvolution/corMatrix9.pdf u
+sed on input line 645.
+(pdftex.def)             Requested size: 132.30794pt x 119.60205pt.
+
+<Chapters/05MCMCOU/plots/paraEvolution/corMatrix10.pdf, id=1388, 505.89pt x 505
+.89pt>
+File: Chapters/05MCMCOU/plots/paraEvolution/corMatrix10.pdf Graphic file (type 
+pdf)
+ <use Chapters/05MCMCOU/plots/paraEvolution/corMatrix10.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/paraEvolution/corMatrix10.pdf 
+used on input line 646.
+(pdftex.def)             Requested size: 132.30794pt x 119.60205pt.
+
+<Chapters/05MCMCOU/plots/paraEvolution/corMatrix11.pdf, id=1389, 505.89pt x 505
+.89pt>
+File: Chapters/05MCMCOU/plots/paraEvolution/corMatrix11.pdf Graphic file (type 
+pdf)
+ <use Chapters/05MCMCOU/plots/paraEvolution/corMatrix11.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/paraEvolution/corMatrix11.pdf 
+used on input line 647.
+(pdftex.def)             Requested size: 132.30794pt x 119.60205pt.
+
+<Chapters/05MCMCOU/plots/paraEvolution/corMatrix12.pdf, id=1390, 505.89pt x 505
+.89pt>
+File: Chapters/05MCMCOU/plots/paraEvolution/corMatrix12.pdf Graphic file (type 
+pdf)
+ <use Chapters/05MCMCOU/plots/paraEvolution/corMatrix12.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/paraEvolution/corMatrix12.pdf 
+used on input line 648.
+(pdftex.def)             Requested size: 132.30794pt x 119.60205pt.
+ [129
+
+ <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/paraEvolution/co
+rMatrix1.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/par
+aEvolution/corMatrix2.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCM
+COU/plots/paraEvolution/corMatrix3.pdf> <C:/Users/zcao/Documents/Latex/Thesis/C
+hapters/05MCMCOU/plots/paraEvolution/corMatrix4.pdf> <C:/Users/zcao/Documents/L
+atex/Thesis/Chapters/05MCMCOU/plots/paraEvolution/corMatrix5.pdf> <C:/Users/zca
+o/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/paraEvolution/corMatrix6.pdf> 
+<C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/paraEvolution/cor
+Matrix7.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/para
+Evolution/corMatrix8.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMC
+OU/plots/paraEvolution/corMatrix9.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Ch
+apters/05MCMCOU/plots/paraEvolution/corMatrix10.pdf> <C:/Users/zcao/Documents/L
+atex/Thesis/Chapters/05MCMCOU/plots/paraEvolution/corMatrix11.pdf> <C:/Users/zc
+ao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/paraEvolution/corMatrix12.pdf
+>]
+<Chapters/05MCMCOU/plots/paraEvolution/corMatrix13.pdf, id=1466, 505.89pt x 505
+.89pt>
+File: Chapters/05MCMCOU/plots/paraEvolution/corMatrix13.pdf Graphic file (type 
+pdf)
+ <use Chapters/05MCMCOU/plots/paraEvolution/corMatrix13.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/paraEvolution/corMatrix13.pdf 
+used on input line 655.
+(pdftex.def)             Requested size: 132.30794pt x 132.89459pt.
+
+<Chapters/05MCMCOU/plots/paraEvolution/corMatrix14.pdf, id=1467, 505.89pt x 505
+.89pt>
+File: Chapters/05MCMCOU/plots/paraEvolution/corMatrix14.pdf Graphic file (type 
+pdf)
+ <use Chapters/05MCMCOU/plots/paraEvolution/corMatrix14.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/paraEvolution/corMatrix14.pdf 
+used on input line 656.
+(pdftex.def)             Requested size: 132.30794pt x 132.89459pt.
+
+<Chapters/05MCMCOU/plots/paraEvolution/corMatrix15.pdf, id=1468, 505.89pt x 505
+.89pt>
+File: Chapters/05MCMCOU/plots/paraEvolution/corMatrix15.pdf Graphic file (type 
+pdf)
+ <use Chapters/05MCMCOU/plots/paraEvolution/corMatrix15.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/paraEvolution/corMatrix15.pdf 
+used on input line 657.
+(pdftex.def)             Requested size: 132.30794pt x 132.89459pt.
+
+<Chapters/05MCMCOU/plots/paraEvolution/corMatrix16.pdf, id=1469, 505.89pt x 505
+.89pt>
+File: Chapters/05MCMCOU/plots/paraEvolution/corMatrix16.pdf Graphic file (type 
+pdf)
+ <use Chapters/05MCMCOU/plots/paraEvolution/corMatrix16.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/paraEvolution/corMatrix16.pdf 
+used on input line 658.
+(pdftex.def)             Requested size: 132.30794pt x 132.89459pt.
+
+<Chapters/05MCMCOU/plots/paraEvolution/corMatrix17.pdf, id=1470, 505.89pt x 505
+.89pt>
+File: Chapters/05MCMCOU/plots/paraEvolution/corMatrix17.pdf Graphic file (type 
+pdf)
+ <use Chapters/05MCMCOU/plots/paraEvolution/corMatrix17.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/paraEvolution/corMatrix17.pdf 
+used on input line 659.
+(pdftex.def)             Requested size: 132.30794pt x 132.89459pt.
+
+<Chapters/05MCMCOU/plots/paraEvolution/corMatrix18.pdf, id=1471, 505.89pt x 505
+.89pt>
+File: Chapters/05MCMCOU/plots/paraEvolution/corMatrix18.pdf Graphic file (type 
+pdf)
+ <use Chapters/05MCMCOU/plots/paraEvolution/corMatrix18.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/paraEvolution/corMatrix18.pdf 
+used on input line 660.
+(pdftex.def)             Requested size: 132.30794pt x 132.89459pt.
+
+<Chapters/05MCMCOU/plots/paraEvolution/corMatrix19.pdf, id=1472, 505.89pt x 505
+.89pt>
+File: Chapters/05MCMCOU/plots/paraEvolution/corMatrix19.pdf Graphic file (type 
+pdf)
+ <use Chapters/05MCMCOU/plots/paraEvolution/corMatrix19.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/paraEvolution/corMatrix19.pdf 
+used on input line 661.
+(pdftex.def)             Requested size: 132.30794pt x 132.89459pt.
+
+<Chapters/05MCMCOU/plots/paraEvolution/corMatrix20.pdf, id=1473, 505.89pt x 505
+.89pt>
+File: Chapters/05MCMCOU/plots/paraEvolution/corMatrix20.pdf Graphic file (type 
+pdf)
+ <use Chapters/05MCMCOU/plots/paraEvolution/corMatrix20.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/paraEvolution/corMatrix20.pdf 
+used on input line 662.
+(pdftex.def)             Requested size: 132.30794pt x 132.89459pt.
+
+<Chapters/05MCMCOU/plots/paraEvolution/corMatrix21.pdf, id=1474, 505.89pt x 505
+.89pt>
+File: Chapters/05MCMCOU/plots/paraEvolution/corMatrix21.pdf Graphic file (type 
+pdf)
+ <use Chapters/05MCMCOU/plots/paraEvolution/corMatrix21.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/paraEvolution/corMatrix21.pdf 
+used on input line 663.
+(pdftex.def)             Requested size: 132.30794pt x 132.89459pt.
+
+<Chapters/05MCMCOU/plots/paraEvolution/corMatrix22.pdf, id=1475, 505.89pt x 505
+.89pt>
+File: Chapters/05MCMCOU/plots/paraEvolution/corMatrix22.pdf Graphic file (type 
+pdf)
+ <use Chapters/05MCMCOU/plots/paraEvolution/corMatrix22.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/paraEvolution/corMatrix22.pdf 
+used on input line 664.
+(pdftex.def)             Requested size: 132.30794pt x 132.89459pt.
+
+<Chapters/05MCMCOU/plots/paraEvolution/corMatrix23.pdf, id=1476, 505.89pt x 505
+.89pt>
+File: Chapters/05MCMCOU/plots/paraEvolution/corMatrix23.pdf Graphic file (type 
+pdf)
+ <use Chapters/05MCMCOU/plots/paraEvolution/corMatrix23.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/paraEvolution/corMatrix23.pdf 
+used on input line 665.
+(pdftex.def)             Requested size: 132.30794pt x 132.89459pt.
+
+<Chapters/05MCMCOU/plots/paraEvolution/corMatrix24.pdf, id=1477, 505.89pt x 505
+.89pt>
+File: Chapters/05MCMCOU/plots/paraEvolution/corMatrix24.pdf Graphic file (type 
+pdf)
+ <use Chapters/05MCMCOU/plots/paraEvolution/corMatrix24.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/paraEvolution/corMatrix24.pdf 
+used on input line 666.
+(pdftex.def)             Requested size: 132.30794pt x 132.89459pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[130 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/paraEvolutio
+n/corMatrix13.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plot
+s/paraEvolution/corMatrix14.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters
+/05MCMCOU/plots/paraEvolution/corMatrix15.pdf> <C:/Users/zcao/Documents/Latex/T
+hesis/Chapters/05MCMCOU/plots/paraEvolution/corMatrix16.pdf> <C:/Users/zcao/Doc
+uments/Latex/Thesis/Chapters/05MCMCOU/plots/paraEvolution/corMatrix17.pdf> <C:/
+Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/paraEvolution/corMatr
+ix18.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/paraEvo
+lution/corMatrix19.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU
+/plots/paraEvolution/corMatrix20.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Cha
+pters/05MCMCOU/plots/paraEvolution/corMatrix21.pdf> <C:/Users/zcao/Documents/La
+tex/Thesis/Chapters/05MCMCOU/plots/paraEvolution/corMatrix22.pdf> <C:/Users/zca
+o/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/paraEvolution/corMatrix23.pdf>
+ <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/paraEvolution/co
+rMatrix24.pdf>]
+<Chapters/05MCMCOU/plots/paraEvolution/corMatrix25.pdf, id=1553, 505.89pt x 505
+.89pt>
+File: Chapters/05MCMCOU/plots/paraEvolution/corMatrix25.pdf Graphic file (type 
+pdf)
+ <use Chapters/05MCMCOU/plots/paraEvolution/corMatrix25.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/paraEvolution/corMatrix25.pdf 
+used on input line 673.
+(pdftex.def)             Requested size: 132.30794pt x 132.89459pt.
+
+<Chapters/05MCMCOU/plots/paraEvolution/corMatrix26.pdf, id=1554, 505.89pt x 505
+.89pt>
+File: Chapters/05MCMCOU/plots/paraEvolution/corMatrix26.pdf Graphic file (type 
+pdf)
+ <use Chapters/05MCMCOU/plots/paraEvolution/corMatrix26.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/paraEvolution/corMatrix26.pdf 
+used on input line 674.
+(pdftex.def)             Requested size: 132.30794pt x 132.89459pt.
+
+<Chapters/05MCMCOU/plots/paraEvolution/corMatrix27.pdf, id=1555, 505.89pt x 505
+.89pt>
+File: Chapters/05MCMCOU/plots/paraEvolution/corMatrix27.pdf Graphic file (type 
+pdf)
+ <use Chapters/05MCMCOU/plots/paraEvolution/corMatrix27.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/paraEvolution/corMatrix27.pdf 
+used on input line 675.
+(pdftex.def)             Requested size: 132.30794pt x 132.89459pt.
+
+<Chapters/05MCMCOU/plots/paraEvolution/corMatrix28.pdf, id=1556, 505.89pt x 505
+.89pt>
+File: Chapters/05MCMCOU/plots/paraEvolution/corMatrix28.pdf Graphic file (type 
+pdf)
+ <use Chapters/05MCMCOU/plots/paraEvolution/corMatrix28.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/paraEvolution/corMatrix28.pdf 
+used on input line 676.
+(pdftex.def)             Requested size: 132.30794pt x 132.89459pt.
+
+<Chapters/05MCMCOU/plots/paraEvolution/corMatrix29.pdf, id=1557, 505.89pt x 505
+.89pt>
+File: Chapters/05MCMCOU/plots/paraEvolution/corMatrix29.pdf Graphic file (type 
+pdf)
+ <use Chapters/05MCMCOU/plots/paraEvolution/corMatrix29.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/paraEvolution/corMatrix29.pdf 
+used on input line 677.
+(pdftex.def)             Requested size: 132.30794pt x 132.89459pt.
+
+<Chapters/05MCMCOU/plots/paraEvolution/corMatrix30.pdf, id=1558, 505.89pt x 505
+.89pt>
+File: Chapters/05MCMCOU/plots/paraEvolution/corMatrix30.pdf Graphic file (type 
+pdf)
+ <use Chapters/05MCMCOU/plots/paraEvolution/corMatrix30.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/paraEvolution/corMatrix30.pdf 
+used on input line 678.
+(pdftex.def)             Requested size: 132.30794pt x 132.89459pt.
+
+<Chapters/05MCMCOU/plots/paraEvolution/corMatrix31.pdf, id=1559, 505.89pt x 505
+.89pt>
+File: Chapters/05MCMCOU/plots/paraEvolution/corMatrix31.pdf Graphic file (type 
+pdf)
+ <use Chapters/05MCMCOU/plots/paraEvolution/corMatrix31.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/paraEvolution/corMatrix31.pdf 
+used on input line 679.
+(pdftex.def)             Requested size: 132.30794pt x 132.89459pt.
+
+<Chapters/05MCMCOU/plots/paraEvolution/corMatrix32.pdf, id=1560, 505.89pt x 505
+.89pt>
+File: Chapters/05MCMCOU/plots/paraEvolution/corMatrix32.pdf Graphic file (type 
+pdf)
+ <use Chapters/05MCMCOU/plots/paraEvolution/corMatrix32.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/paraEvolution/corMatrix32.pdf 
+used on input line 680.
+(pdftex.def)             Requested size: 132.30794pt x 132.89459pt.
+
+<Chapters/05MCMCOU/plots/paraEvolution/corMatrix33.pdf, id=1561, 505.89pt x 505
+.89pt>
+File: Chapters/05MCMCOU/plots/paraEvolution/corMatrix33.pdf Graphic file (type 
+pdf)
+ <use Chapters/05MCMCOU/plots/paraEvolution/corMatrix33.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/paraEvolution/corMatrix33.pdf 
+used on input line 681.
+(pdftex.def)             Requested size: 132.30794pt x 132.89459pt.
+
+<Chapters/05MCMCOU/plots/paraEvolution/corMatrix34.pdf, id=1562, 505.89pt x 505
+.89pt>
+File: Chapters/05MCMCOU/plots/paraEvolution/corMatrix34.pdf Graphic file (type 
+pdf)
+ <use Chapters/05MCMCOU/plots/paraEvolution/corMatrix34.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/paraEvolution/corMatrix34.pdf 
+used on input line 682.
+(pdftex.def)             Requested size: 132.30794pt x 132.89459pt.
+
+<Chapters/05MCMCOU/plots/paraEvolution/corMatrix35.pdf, id=1563, 505.89pt x 505
+.89pt>
+File: Chapters/05MCMCOU/plots/paraEvolution/corMatrix35.pdf Graphic file (type 
+pdf)
+ <use Chapters/05MCMCOU/plots/paraEvolution/corMatrix35.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/paraEvolution/corMatrix35.pdf 
+used on input line 683.
+(pdftex.def)             Requested size: 132.30794pt x 132.89459pt.
+
+<Chapters/05MCMCOU/plots/paraEvolution/corMatrix36.pdf, id=1564, 505.89pt x 505
+.89pt>
+File: Chapters/05MCMCOU/plots/paraEvolution/corMatrix36.pdf Graphic file (type 
+pdf)
+ <use Chapters/05MCMCOU/plots/paraEvolution/corMatrix36.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/paraEvolution/corMatrix36.pdf 
+used on input line 684.
+(pdftex.def)             Requested size: 132.30794pt x 132.89459pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[131 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/paraEvolutio
+n/corMatrix25.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plot
+s/paraEvolution/corMatrix26.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters
+/05MCMCOU/plots/paraEvolution/corMatrix27.pdf> <C:/Users/zcao/Documents/Latex/T
+hesis/Chapters/05MCMCOU/plots/paraEvolution/corMatrix28.pdf> <C:/Users/zcao/Doc
+uments/Latex/Thesis/Chapters/05MCMCOU/plots/paraEvolution/corMatrix29.pdf> <C:/
+Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/paraEvolution/corMatr
+ix30.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/paraEvo
+lution/corMatrix31.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU
+/plots/paraEvolution/corMatrix32.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Cha
+pters/05MCMCOU/plots/paraEvolution/corMatrix33.pdf> <C:/Users/zcao/Documents/La
+tex/Thesis/Chapters/05MCMCOU/plots/paraEvolution/corMatrix34.pdf> <C:/Users/zca
+o/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/paraEvolution/corMatrix35.pdf>
+ <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/paraEvolution/co
+rMatrix36.pdf>]
+<Chapters/05MCMCOU/plots/paraEvolution/corMatrix37.pdf, id=1640, 505.89pt x 505
+.89pt>
+File: Chapters/05MCMCOU/plots/paraEvolution/corMatrix37.pdf Graphic file (type 
+pdf)
+ <use Chapters/05MCMCOU/plots/paraEvolution/corMatrix37.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/paraEvolution/corMatrix37.pdf 
+used on input line 692.
+(pdftex.def)             Requested size: 132.30794pt x 132.89459pt.
+
+<Chapters/05MCMCOU/plots/paraEvolution/corMatrix38.pdf, id=1641, 505.89pt x 505
+.89pt>
+File: Chapters/05MCMCOU/plots/paraEvolution/corMatrix38.pdf Graphic file (type 
+pdf)
+ <use Chapters/05MCMCOU/plots/paraEvolution/corMatrix38.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/paraEvolution/corMatrix38.pdf 
+used on input line 693.
+(pdftex.def)             Requested size: 132.30794pt x 132.89459pt.
+
+<Chapters/05MCMCOU/plots/paraEvolution/corMatrix39.pdf, id=1642, 505.89pt x 505
+.89pt>
+File: Chapters/05MCMCOU/plots/paraEvolution/corMatrix39.pdf Graphic file (type 
+pdf)
+ <use Chapters/05MCMCOU/plots/paraEvolution/corMatrix39.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/paraEvolution/corMatrix39.pdf 
+used on input line 694.
+(pdftex.def)             Requested size: 132.30794pt x 132.89459pt.
+
+<Chapters/05MCMCOU/plots/paraEvolution/corMatrix40.pdf, id=1643, 505.89pt x 505
+.89pt>
+File: Chapters/05MCMCOU/plots/paraEvolution/corMatrix40.pdf Graphic file (type 
+pdf)
+ <use Chapters/05MCMCOU/plots/paraEvolution/corMatrix40.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/paraEvolution/corMatrix40.pdf 
+used on input line 695.
+(pdftex.def)             Requested size: 132.30794pt x 132.89459pt.
+
+<Chapters/05MCMCOU/plots/paraEvolution/corMatrix41.pdf, id=1644, 505.89pt x 505
+.89pt>
+File: Chapters/05MCMCOU/plots/paraEvolution/corMatrix41.pdf Graphic file (type 
+pdf)
+ <use Chapters/05MCMCOU/plots/paraEvolution/corMatrix41.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/paraEvolution/corMatrix41.pdf 
+used on input line 696.
+(pdftex.def)             Requested size: 132.30794pt x 132.89459pt.
+
+<Chapters/05MCMCOU/plots/paraEvolution/corMatrix42.pdf, id=1645, 505.89pt x 505
+.89pt>
+File: Chapters/05MCMCOU/plots/paraEvolution/corMatrix42.pdf Graphic file (type 
+pdf)
+ <use Chapters/05MCMCOU/plots/paraEvolution/corMatrix42.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/paraEvolution/corMatrix42.pdf 
+used on input line 697.
+(pdftex.def)             Requested size: 132.30794pt x 132.89459pt.
+File: Chapters/05MCMCOU/plots/paraEvolution/corMatrix42.pdf Graphic file (type 
+pdf)
+
+<use Chapters/05MCMCOU/plots/paraEvolution/corMatrix42.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/paraEvolution/corMatrix42.pdf 
+used on input line 698.
+(pdftex.def)             Requested size: 132.30794pt x 132.89459pt.
+
+<Chapters/05MCMCOU/plots/paraEvolution/corMatrix44.pdf, id=1646, 505.89pt x 505
+.89pt>
+File: Chapters/05MCMCOU/plots/paraEvolution/corMatrix44.pdf Graphic file (type 
+pdf)
+ <use Chapters/05MCMCOU/plots/paraEvolution/corMatrix44.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/paraEvolution/corMatrix44.pdf 
+used on input line 699.
+(pdftex.def)             Requested size: 132.30794pt x 132.89459pt.
+
+<Chapters/05MCMCOU/plots/paraEvolution/corMatrix45.pdf, id=1647, 505.89pt x 505
+.89pt>
+File: Chapters/05MCMCOU/plots/paraEvolution/corMatrix45.pdf Graphic file (type 
+pdf)
+ <use Chapters/05MCMCOU/plots/paraEvolution/corMatrix45.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/paraEvolution/corMatrix45.pdf 
+used on input line 700.
+(pdftex.def)             Requested size: 132.30794pt x 132.89459pt.
+
+<Chapters/05MCMCOU/plots/paraEvolution/corMatrix46.pdf, id=1648, 505.89pt x 505
+.89pt>
+File: Chapters/05MCMCOU/plots/paraEvolution/corMatrix46.pdf Graphic file (type 
+pdf)
+ <use Chapters/05MCMCOU/plots/paraEvolution/corMatrix46.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/paraEvolution/corMatrix46.pdf 
+used on input line 701.
+(pdftex.def)             Requested size: 132.30794pt x 132.89459pt.
+
+<Chapters/05MCMCOU/plots/paraEvolution/corMatrix47.pdf, id=1649, 505.89pt x 505
+.89pt>
+File: Chapters/05MCMCOU/plots/paraEvolution/corMatrix47.pdf Graphic file (type 
+pdf)
+ <use Chapters/05MCMCOU/plots/paraEvolution/corMatrix47.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/paraEvolution/corMatrix47.pdf 
+used on input line 702.
+(pdftex.def)             Requested size: 132.30794pt x 132.89459pt.
+
+<Chapters/05MCMCOU/plots/paraEvolution/corMatrix48.pdf, id=1650, 505.89pt x 505
+.89pt>
+File: Chapters/05MCMCOU/plots/paraEvolution/corMatrix48.pdf Graphic file (type 
+pdf)
+ <use Chapters/05MCMCOU/plots/paraEvolution/corMatrix48.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/paraEvolution/corMatrix48.pdf 
+used on input line 703.
+(pdftex.def)             Requested size: 132.30794pt x 132.89459pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+) (C:\Users\zcao\Documents\Latex\Thesis\draft.bbl [132 <C:/Users/zcao/Documents
+/Latex/Thesis/Chapters/05MCMCOU/plots/paraEvolution/corMatrix37.pdf> <C:/Users/
+zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/paraEvolution/corMatrix38.p
+df> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/paraEvolution
+/corMatrix39.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots
+/paraEvolution/corMatrix40.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/
+05MCMCOU/plots/paraEvolution/corMatrix41.pdf> <C:/Users/zcao/Documents/Latex/Th
+esis/Chapters/05MCMCOU/plots/paraEvolution/corMatrix42.pdf> <C:/Users/zcao/Docu
+ments/Latex/Thesis/Chapters/05MCMCOU/plots/paraEvolution/corMatrix44.pdf> <C:/U
+sers/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/paraEvolution/corMatri
+x45.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/paraEvol
+ution/corMatrix46.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/
+plots/paraEvolution/corMatrix47.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chap
+ters/05MCMCOU/plots/paraEvolution/corMatrix48.pdf>] [133
+
+
+
+
+] [134]
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ô in font cmr12!
+Missing character: There is no Ã in font cmr12!
+Missing character: There is no à in font cmr12!
+ [135] [136]
 Missing character: There is no Ô in font cmr12!
 Missing character: There is no ø in font cmr12!
 Missing character: There is no º in font cmr12!
 Missing character: There is no ‚ in font cmti12!
 Missing character: There is no Ä in font cmti12!
 Missing character: There is no ù in font cmti12!
- [92]
-[93] [94]) [95] [96
 
-
-]
+[137] [138] [139] [140] [141]) [142]
 
 Package natbib Warning: There were undefined citations.
 
@@ -1073,35 +2424,44 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 11696 strings out of 493706
- 245089 string characters out of 3142169
- 267934 words of memory out of 3000000
- 14819 multiletter control sequences out of 15000+200000
- 24626 words of font info for 96 fonts, out of 3000000 for 9000
+ 14796 strings out of 493706
+ 313498 string characters out of 3142169
+ 332449 words of memory out of 3000000
+ 17786 multiletter control sequences out of 15000+200000
+ 27166 words of font info for 106 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 34i,23n,39p,10403b,502s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 42i,23n,40p,10391b,612s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
-<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C
-:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmex8.pfb>
-<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C
-:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/P
-rogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Prog
-ram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program
- Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Fi
-les (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files
- (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files (x8
-6)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/M
-iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files (x86)/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 
-2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files (x86)/MiKTeX 2.9
-/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fo
-nts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
-s/type1/public/amsfonts/cm/cmti8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/t
-ype1/public/amsfonts/symbols/msam10.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
-s/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on draft.pdf (110 pages, 2175275 bytes).
+<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:
+/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/P
+rogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmex7.pfb><C:
+/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><
+C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:
+/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/P
+rogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Prog
+ram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program
+ Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Fi
+les (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files
+ (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files (x
+86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files (x86)
+/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Program Files (x86)/MiK
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files (x86)/MiKTeX 
+2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/MiKTeX 2.9/
+fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
+s/type1/public/amsfonts/cm/cmss12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/
+type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/ty
+pe1/public/amsfonts/cm/cmsy5.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1
+/public/amsfonts/cm/cmsy6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pu
+blic/amsfonts/cm/cmsy8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/publi
+c/amsfonts/cm/cmti12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/
+amsfonts/cm/cmti8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/ams
+fonts/cm/cmtt12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfo
+nts/cm/cmtt8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts
+/symbols/msam10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfo
+nts/symbols/msbm10.pfb>
+Output written on draft.pdf (160 pages, 5147897 bytes).
 PDF statistics:
- 864 PDF objects out of 1000 (max. 8388607)
+ 1840 PDF objects out of 2073 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 66 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 646 words of extra memory for PDF output out of 10000 (max. 10000000)
 
