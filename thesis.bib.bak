@@ -57,7 +57,9 @@
   volume = {18},
   pages = {343--373},
   number = {4},
-  publisher = {Springer}
+  owner = {zcao},
+  publisher = {Springer},
+  timestamp = {2017.10.23}
 }
 
 @ARTICLE{arulampalam2002tutorial,
@@ -72,7 +74,7 @@
   number = {2},
   owner = {zcao},
   publisher = {Ieee},
-  timestamp = {2017.09.06}
+  timestamp = {2017.10.23}
 }
 
 @ARTICLE{aydin2012smoothing,
@@ -85,6 +87,17 @@
   pages = {636},
   number = {7},
   publisher = {Asian Network for Scientific Information (ANSINET)}
+}
+
+@ARTICLE{bedard2007weak,
+  author = {B{\'e}dard, Mylene},
+  title = {Weak convergence of Metropolis algorithms for non-iid target distributions},
+  journal = {The Annals of Applied Probability},
+  year = {2007},
+  pages = {1222--1244},
+  owner = {zcao},
+  publisher = {JSTOR},
+  timestamp = {2017.10.23}
 }
 
 @ARTICLE{bartlett1951inverse,
@@ -107,6 +120,18 @@
   author = {Berlinet, Alain and Thomas-Agnan, Christine}
 }
 
+@ARTICLE{beskos2009optimal,
+  author = {Beskos, Alexandros and Roberts, Gareth and Stuart, Andrew},
+  title = {Optimal scalings for local Metropolis-Hastings chains on nonproduct
+	targets in high dimensions},
+  journal = {The Annals of Applied Probability},
+  year = {2009},
+  pages = {863--898},
+  owner = {zcao},
+  publisher = {JSTOR},
+  timestamp = {2017.10.23}
+}
+
 @MISC{bodewig1959matrix,
   author = {Bodewig, E},
   title = {Matrix Calculus, North},
@@ -116,6 +141,15 @@
   timestamp = {2017.09.06}
 }
 
+@MISC{bodewig1959matrix,
+  author = {Bodewig, E},
+  title = {Matrix Calculus, North},
+  year = {1959},
+  owner = {zcao},
+  publisher = {Holland Publishing Co., Amsterdam},
+  timestamp = {2017.10.23}
+}
+
 @BOOK{box2011bayesian,
   title = {Bayesian inference in statistical analysis},
   publisher = {John Wiley \& Sons},
@@ -123,7 +157,7 @@
   author = {Box, George EP and Tiao, George C},
   volume = {40},
   owner = {zcao},
-  timestamp = {2017.09.06}
+  timestamp = {2017.10.23}
 }
 
 @ARTICLE{cappe2007overview,
@@ -148,6 +182,31 @@
   pages = {14--16},
   owner = {zcao},
   timestamp = {2017.09.06}
+}
+
+@ARTICLE{carvalho2010particle,
+  author = {Carvalho, Carlos M and Johannes, Michael S and Lopes, Hedibert F
+	and Polson, Nicholas G and others},
+  title = {Particle learning and smoothing},
+  journal = {Statistical Science},
+  year = {2010},
+  volume = {25},
+  pages = {88--106},
+  number = {1},
+  owner = {zcao},
+  publisher = {Institute of Mathematical Statistics},
+  timestamp = {2017.10.23}
+}
+
+@ARTICLE{casella2004generalized,
+  author = {Casella, George and Robert, Christian P and Wells, Martin T},
+  title = {Generalized accept-reject sampling schemes},
+  journal = {Lecture Notes-Monograph Series},
+  year = {2004},
+  pages = {342--347},
+  owner = {zcao},
+  publisher = {JSTOR},
+  timestamp = {2017.10.23}
 }
 
 @ARTICLE{chen2000mixture,
@@ -198,6 +257,19 @@
   keywords = {Kalman Filter},
   owner = {zcao},
   timestamp = {2017.09.13}
+}
+
+@ARTICLE{christen2005markov,
+  author = {Christen, J Andr{\'e}s and Fox, Colin},
+  title = {Markov chain Monte Carlo using an approximation},
+  journal = {Journal of Computational and Graphical statistics},
+  year = {2005},
+  volume = {14},
+  pages = {795--810},
+  number = {4},
+  owner = {zcao},
+  publisher = {Taylor \& Francis},
+  timestamp = {2017.10.23}
 }
 
 @ARTICLE{craven1978smoothing,
@@ -254,7 +326,20 @@
   number = {9},
   owner = {zcao},
   publisher = {Elsevier},
-  timestamp = {2017.09.06}
+  timestamp = {2017.10.23}
+}
+
+@ARTICLE{dongarra2000guest,
+  author = {Dongarra, Jack and Sullivan, Francis},
+  title = {Guest editors’ introduction: The top 10 algorithms},
+  journal = {Computing in Science \& Engineering},
+  year = {2000},
+  volume = {2},
+  pages = {22--23},
+  number = {1},
+  owner = {zcao},
+  publisher = {IEEE},
+  timestamp = {2017.10.23}
 }
 
 @ARTICLE{donoho1995adapting,
@@ -325,6 +410,19 @@
   timestamp = {2017.09.08}
 }
 
+@ARTICLE{einstein1956investigations,
+  author = {Einstein, A},
+  title = {Investigations on the theory of the Brownian Movement edited with
+	notes by, R. F̈urth, translated by AD Cowper Dover Publications,
+	Reprinted from (1905)},
+  journal = {Ann. Phys},
+  year = {1956},
+  volume = {17},
+  pages = {549--560},
+  owner = {zcao},
+  timestamp = {2017.10.23}
+}
+
 @INPROCEEDINGS{ellis2009,
   author = {Ellis, David and Sommerlade, Eric and Reid, Ian},
   title = {Modelling pedestrian trajectory patterns with gaussian processes},
@@ -348,6 +446,19 @@
   publisher = {Elsevier}
 }
 
+@ARTICLE{gelman2008weakly,
+  author = {Gelman, Andrew and Jakulin, Aleks and Pittau, Maria Grazia and Su,
+	Yu-Sung},
+  title = {A weakly informative default prior distribution for logistic and
+	other regression models},
+  journal = {The Annals of Applied Statistics},
+  year = {2008},
+  pages = {1360--1383},
+  owner = {zcao},
+  publisher = {JSTOR},
+  timestamp = {2017.10.23}
+}
+
 @ARTICLE{gelman2006prior,
   author = {Gelman, Andrew and others},
   title = {Prior distributions for variance parameters in hierarchical models
@@ -359,7 +470,77 @@
   number = {3},
   owner = {zcao},
   publisher = {International Society for Bayesian Analysis},
-  timestamp = {2017.09.06}
+  timestamp = {2017.10.23}
+}
+
+@ARTICLE{gelman1996efficient,
+  author = {Gelman, Andrew and Roberts, Gareth O and Gilks, Walter R and others},
+  title = {Efficient Metropolis jumping rules},
+  journal = {Bayesian statistics},
+  year = {1996},
+  volume = {5},
+  pages = {42},
+  number = {599-608},
+  owner = {zcao},
+  timestamp = {2017.10.23}
+}
+
+@ARTICLE{geman1984stochastic,
+  author = {Geman, Stuart and Geman, Donald},
+  title = {Stochastic relaxation, Gibbs distributions, and the Bayesian restoration
+	of images},
+  journal = {IEEE Transactions on pattern analysis and machine intelligence},
+  year = {1984},
+  pages = {721--741},
+  number = {6},
+  owner = {zcao},
+  publisher = {IEEE},
+  timestamp = {2017.10.23}
+}
+
+@ARTICLE{geweke1989bayesian,
+  author = {Geweke, John},
+  title = {Bayesian inference in econometric models using Monte Carlo integration},
+  journal = {Econometrica: Journal of the Econometric Society},
+  year = {1989},
+  pages = {1317--1339},
+  owner = {zcao},
+  publisher = {JSTOR},
+  timestamp = {2017.10.23}
+}
+
+@ARTICLE{geyer1992practical,
+  author = {Geyer, Charles J},
+  title = {Practical markov chain monte carlo},
+  journal = {Statistical science},
+  year = {1992},
+  pages = {473--483},
+  owner = {zcao},
+  publisher = {JSTOR},
+  timestamp = {2017.10.23}
+}
+
+@BOOK{gilks1995markov,
+  title = {Markov chain Monte Carlo in practice},
+  publisher = {CRC press},
+  year = {1995},
+  author = {Gilks, Walter R and Richardson, Sylvia and Spiegelhalter, David},
+  owner = {zcao},
+  timestamp = {2017.10.23}
+}
+
+@ARTICLE{gong2016practical,
+  author = {Gong, Lei and Flegal, James M},
+  title = {A practical sequential stopping rule for high-dimensional Markov
+	Chain Monte Carlo},
+  journal = {Journal of Computational and Graphical Statistics},
+  year = {2016},
+  volume = {25},
+  pages = {684--700},
+  number = {3},
+  owner = {zcao},
+  publisher = {Taylor \& Francis},
+  timestamp = {2017.10.23}
 }
 
 @ARTICLE{gordon2004beyond,
@@ -369,7 +550,7 @@
   year = {2004},
   volume = {830},
   owner = {zcao},
-  timestamp = {2017.09.06}
+  timestamp = {2017.10.23}
 }
 
 @INPROCEEDINGS{gordon1993novel,
@@ -382,7 +563,16 @@
   pages = {107--113},
   organization = {IET},
   owner = {zcao},
-  timestamp = {2017.05.23}
+  timestamp = {2017.10.23}
+}
+
+@ARTICLE{graves2011automatic,
+  author = {Graves, Todd L},
+  title = {Automatic step size selection in random walk Metropolis algorithms},
+  journal = {arXiv preprint arXiv:1103.5986},
+  year = {2011},
+  owner = {zcao},
+  timestamp = {2017.10.23}
 }
 
 @BOOK{green1993nonparametric,
@@ -446,6 +636,30 @@
   publisher = {JSTOR}
 }
 
+@ARTICLE{haario1999adaptive,
+  author = {Haario, Heikki and Saksman, Eero and Tamminen, Johanna},
+  title = {Adaptive proposal distribution for random walk Metropolis algorithm},
+  journal = {Computational Statistics},
+  year = {1999},
+  volume = {14},
+  pages = {375--396},
+  number = {3},
+  owner = {zcao},
+  publisher = {Heidelberg: Physica-Verlag,[1992-},
+  timestamp = {2017.10.23}
+}
+
+@INCOLLECTION{hammersley1964percolation,
+  author = {Hammersley, John M and Handscomb, DC},
+  title = {Percolation processes},
+  booktitle = {Monte Carlo Methods},
+  publisher = {Springer},
+  year = {1964},
+  pages = {134--141},
+  owner = {zcao},
+  timestamp = {2017.10.23}
+}
+
 @ARTICLE{handschin1970monte,
   author = {Handschin, JE},
   title = {Monte Carlo techniques for prediction and filtering of non-linear
@@ -457,7 +671,7 @@
   number = {4},
   owner = {zcao},
   publisher = {Elsevier},
-  timestamp = {2017.05.23}
+  timestamp = {2017.10.23}
 }
 
 @ARTICLE{handschin1969monte,
@@ -471,7 +685,7 @@
   number = {5},
   owner = {zcao},
   publisher = {Taylor \& Francis},
-  timestamp = {2017.05.23}
+  timestamp = {2017.10.23}
 }
 
 @BOOK{hangos2006analysis,
@@ -506,6 +720,19 @@
   volume = {43}
 }
 
+@ARTICLE{hastings1970monte,
+  author = {Hastings, W Keith},
+  title = {Monte Carlo sampling methods using Markov chains and their applications},
+  journal = {Biometrika},
+  year = {1970},
+  volume = {57},
+  pages = {97--109},
+  number = {1},
+  owner = {zcao},
+  publisher = {Biometrika Trust},
+  timestamp = {2017.10.23}
+}
+
 @BOOK{haykin2001kalman,
   title = {Kalman filtering and neural networks},
   publisher = {Wiley Online Library},
@@ -523,7 +750,7 @@
   year = {2001},
   pages = {429--444},
   owner = {zcao},
-  timestamp = {2017.09.06}
+  timestamp = {2017.10.23}
 }
 
 @INPROCEEDINGS{jhuaadaptive2013,
@@ -554,7 +781,16 @@
   journal = {Statistics and Statistical Physics},
   year = {1983},
   owner = {zcao},
-  timestamp = {2017.09.06}
+  timestamp = {2017.10.23}
+}
+
+@MISC{jeffries1961theory,
+  author = {Jeffries, Harold},
+  title = {Theory of probability},
+  year = {1961},
+  owner = {zcao},
+  publisher = {Clarendon Press, Oxford},
+  timestamp = {2017.10.23}
 }
 
 @MISC{jeffries1961theory,
@@ -594,6 +830,20 @@
   organization = {Citeseer},
   owner = {zcao},
   timestamp = {2017.09.06}
+}
+
+@ARTICLE{kass1998markov,
+  author = {Kass, Robert E and Carlin, Bradley P and Gelman, Andrew and Neal,
+	Radford M},
+  title = {Markov chain Monte Carlo in practice: a roundtable discussion},
+  journal = {The American Statistician},
+  year = {1998},
+  volume = {52},
+  pages = {93--100},
+  number = {2},
+  owner = {zcao},
+  publisher = {Taylor \& Francis Group},
+  timestamp = {2017.10.23}
 }
 
 @BOOK{kijima1997markov,
@@ -669,7 +919,7 @@
   pages = {1203--1215},
   owner = {zcao},
   publisher = {JSTOR},
-  timestamp = {2017.05.23}
+  timestamp = {2017.10.23}
 }
 
 @ARTICLE{kitagawa1996monte,
@@ -708,6 +958,18 @@
   timestamp = {2017.09.08}
 }
 
+@INPROCEEDINGS{li2004recursibility,
+  author = {Li, X Rong},
+  title = {Recursibility and optimal linear estimation and filtering},
+  booktitle = {Decision and Control, 2004. CDC. 43rd IEEE Conference on},
+  year = {2004},
+  volume = {2},
+  pages = {1761--1766},
+  organization = {IEEE},
+  owner = {zcao},
+  timestamp = {2017.10.23}
+}
+
 @ARTICLE{lindley1972bayes,
   author = {Lindley, Dennis V and Smith, Adrian FM},
   title = {Bayes estimates for the linear model},
@@ -716,7 +978,7 @@
   pages = {1--41},
   owner = {zcao},
   publisher = {JSTOR},
-  timestamp = {2017.09.06}
+  timestamp = {2017.10.23}
 }
 
 @INCOLLECTION{liu2001combined,
@@ -727,7 +989,7 @@
   year = {2001},
   pages = {197--223},
   owner = {zcao},
-  timestamp = {2017.05.23}
+  timestamp = {2017.10.23}
 }
 
 @ARTICLE{liu2010data,
@@ -761,11 +1023,71 @@
   timestamp = {2017.09.13}
 }
 
+@ARTICLE{lopes2011particle,
+  author = {Lopes, Hedibert F and Tsay, Ruey S},
+  title = {Particle filters and Bayesian inference in financial econometrics},
+  journal = {Journal of Forecasting},
+  year = {2011},
+  volume = {30},
+  pages = {168--209},
+  number = {1},
+  owner = {zcao},
+  publisher = {Wiley Online Library},
+  timestamp = {2017.10.23}
+}
+
+@BOOK{muller1991generic,
+  title = {A generic approach to posterior integration and Gibbs sampling},
+  publisher = {Purdue University, Department of Statistics},
+  year = {1991},
+  author = {M{\"u}ller, Peter},
+  owner = {zcao},
+  timestamp = {2017.10.23}
+}
+
 @BOOK{mackay2003information,
   title = {Information theory, inference and learning algorithms},
   publisher = {Cambridge university press},
   year = {2003},
   author = {MacKay, David JC}
+}
+
+@ARTICLE{martino2010generalized,
+  author = {Martino, Luca and M{\'\i}guez, Joaqu{\'\i}n},
+  title = {Generalized rejection sampling schemes and applications in signal
+	processing},
+  journal = {Signal Processing},
+  year = {2010},
+  volume = {90},
+  pages = {2981--2995},
+  number = {11},
+  owner = {zcao},
+  publisher = {Elsevier},
+  timestamp = {2017.10.23}
+}
+
+@ARTICLE{mathew2012bayesian,
+  author = {Mathew, Boby and Bauer, AM and Koistinen, P and Reetz, TC and L{\'e}on,
+	J and Sillanp{\"a}{\"a}, MJ},
+  title = {Bayesian adaptive Markov chain Monte Carlo estimation of genetic
+	parameters},
+  journal = {Heredity},
+  year = {2012},
+  volume = {109},
+  pages = {235},
+  number = {4},
+  owner = {zcao},
+  publisher = {Nature Publishing Group},
+  timestamp = {2017.10.23}
+}
+
+@BOOK{medova2008bayesian,
+  title = {Bayesian Analysis and Markov Chain Monte Carlo Simulation},
+  publisher = {Wiley Online Library},
+  year = {2008},
+  author = {Medova, Elena},
+  owner = {zcao},
+  timestamp = {2017.10.23}
 }
 
 @INCOLLECTION{meratnia2004spatiotemporal,
@@ -777,6 +1099,20 @@
   pages = {765--782},
   owner = {zcao},
   timestamp = {2017.09.08}
+}
+
+@ARTICLE{metropolis1953equation,
+  author = {Metropolis, Nicholas and Rosenbluth, Arianna W and Rosenbluth, Marshall
+	N and Teller, Augusta H and Teller, Edward},
+  title = {Equation of state calculations by fast computing machines},
+  journal = {The journal of chemical physics},
+  year = {1953},
+  volume = {21},
+  pages = {1087--1092},
+  number = {6},
+  owner = {zcao},
+  publisher = {AIP},
+  timestamp = {2017.10.23}
 }
 
 @ARTICLE{mitchell1972construction,
@@ -852,7 +1188,7 @@
   pages = {31--84},
   owner = {zcao},
   publisher = {Springer},
-  timestamp = {2017.05.23}
+  timestamp = {2017.10.23}
 }
 
 @ARTICLE{polson2008practical,
@@ -887,7 +1223,7 @@
   number = {7},
   owner = {zcao},
   publisher = {IEEE INSTITUTE OF ELECTRICAL AND ELECTRONICS},
-  timestamp = {2017.05.23}
+  timestamp = {2017.10.23}
 }
 
 @BOOK{robert2004monte,
@@ -910,6 +1246,19 @@
   publisher = {Institute of Mathematical Statistics}
 }
 
+@ARTICLE{roberts2001optimal,
+  author = {Roberts, Gareth O and Rosenthal, Jeffrey S and others},
+  title = {Optimal scaling for various Metropolis-Hastings algorithms},
+  journal = {Statistical science},
+  year = {2001},
+  volume = {16},
+  pages = {351--367},
+  number = {4},
+  owner = {zcao},
+  publisher = {Institute of Mathematical Statistics},
+  timestamp = {2017.10.23}
+}
+
 @BOOK{schwarz2012geodesy,
   title = {Geodesy Beyond 2000: The Challenges of the First Decade, IAG General
 	Assembly Birmingham, July 19--30, 1999},
@@ -930,6 +1279,32 @@
   publisher = {APS}
 }
 
+@ARTICLE{sherlock2013optimal,
+  author = {Sherlock, Chris},
+  title = {Optimal scaling of the random walk Metropolis: general criteria for
+	the 0.234 acceptance rule},
+  journal = {Journal of Applied Probability},
+  year = {2013},
+  volume = {50},
+  pages = {1--15},
+  number = {1},
+  owner = {zcao},
+  publisher = {Cambridge University Press},
+  timestamp = {2017.10.23}
+}
+
+@ARTICLE{sherlock2010random,
+  author = {Sherlock, Chris and Fearnhead, Paul and Roberts, Gareth O},
+  title = {The random walk Metropolis: linking theory and practice through a
+	case study},
+  journal = {Statistical Science},
+  year = {2010},
+  pages = {172--190},
+  owner = {zcao},
+  publisher = {JSTOR},
+  timestamp = {2017.10.23}
+}
+
 @ARTICLE{Sherlock2016,
   author = {Sherlock, Chris and Golightly, Andrew and Henderson, Daniel A},
   title = {Adaptive, delayed-acceptance MCMC for targets with expensive likelihoods},
@@ -939,6 +1314,29 @@
   owner = {zcao},
   publisher = {Taylor \& Francis},
   timestamp = {2017.05.23}
+}
+
+@ARTICLE{sherlock2009optimal,
+  author = {Sherlock, Chris and Roberts, Gareth and others},
+  title = {Optimal scaling of the random walk Metropolis on elliptically symmetric
+	unimodal targets},
+  journal = {Bernoulli},
+  year = {2009},
+  volume = {15},
+  pages = {774--798},
+  number = {3},
+  owner = {zcao},
+  publisher = {Bernoulli Society for Mathematical Statistics and Probability},
+  timestamp = {2017.10.23}
+}
+
+@ARTICLE{sherlock2015efficiency,
+  author = {Sherlock, Chris and Thiery, Alexandre and Golightly, Andrew},
+  title = {Efficiency of delayed-acceptance random walk Metropolis algorithms},
+  journal = {arXiv preprint arXiv:1506.08155},
+  year = {2015},
+  owner = {zcao},
+  timestamp = {2017.10.23}
 }
 
 @ARTICLE{sherman1950adjustment,
@@ -1019,6 +1417,44 @@
   timestamp = {2017.09.06}
 }
 
+@ARTICLE{smith1993bayesian,
+  author = {Smith, Adrian FM and Roberts, Gareth O},
+  title = {Bayesian computation via the Gibbs sampler and related Markov chain
+	Monte Carlo methods},
+  journal = {Journal of the Royal Statistical Society. Series B (Methodological)},
+  year = {1993},
+  pages = {3--23},
+  owner = {zcao},
+  publisher = {JSTOR},
+  timestamp = {2017.10.23}
+}
+
+@INCOLLECTION{sokal1997monte,
+  author = {Sokal, A},
+  title = {Monte Carlo methods in statistical mechanics: foundations and new
+	algorithms},
+  booktitle = {Functional integration},
+  publisher = {Springer},
+  year = {1997},
+  pages = {131--192},
+  owner = {zcao},
+  timestamp = {2017.10.23}
+}
+
+@ARTICLE{storvik2002particle,
+  author = {Storvik, Geir},
+  title = {Particle filters for state-space models with the presence of unknown
+	static parameters},
+  journal = {IEEE Transactions on signal Processing},
+  year = {2002},
+  volume = {50},
+  pages = {281--289},
+  number = {2},
+  owner = {zcao},
+  publisher = {IEEE},
+  timestamp = {2017.10.23}
+}
+
 @ARTICLE{stroud2007sequential,
   author = {Stroud, Jonathan R and Bengtsson, Thomas},
   title = {Sequential state and variance estimation within the ensemble Kalman
@@ -1030,6 +1466,42 @@
   number = {9},
   owner = {zcao},
   timestamp = {2017.09.06}
+}
+
+@ARTICLE{stroud2016bayesian,
+  author = {Stroud, Jonathan R and Katzfuss, Matthias and Wikle, Christopher
+	K},
+  title = {A Bayesian adaptive ensemble Kalman filter for sequential state and
+	parameter estimation},
+  journal = {arXiv preprint arXiv:1611.03835},
+  year = {2016},
+  owner = {zcao},
+  timestamp = {2017.10.23}
+}
+
+@ARTICLE{tandeo2011linear,
+  author = {Tandeo, Pierre and Ailliot, Pierre and Autret, Emmanuelle},
+  title = {Linear Gaussian state-space model with irregular sampling: application
+	to sea surface temperature},
+  journal = {Stochastic Environmental Research and Risk Assessment},
+  year = {2011},
+  volume = {25},
+  pages = {793--804},
+  number = {6},
+  owner = {zcao},
+  publisher = {Springer},
+  timestamp = {2017.10.23}
+}
+
+@ARTICLE{tierney1994markov,
+  author = {Tierney, Luke},
+  title = {Markov chains for exploring posterior distributions},
+  journal = {the Annals of Statistics},
+  year = {1994},
+  pages = {1701--1728},
+  owner = {zcao},
+  publisher = {JSTOR},
+  timestamp = {2017.10.23}
 }
 
 @BOOK{esl2009,
@@ -1077,6 +1549,24 @@
   abstract = {The unscented particle filter},
   owner = {zcao},
   timestamp = {2017.09.06}
+}
+
+@ARTICLE{vaughan2015goodness,
+  author = {Vaughan, Audrey},
+  title = {Goodness of Fit Test: Ornstein-Uhlenbeck Process},
+  year = {2015},
+  owner = {zcao},
+  timestamp = {2017.10.23}
+}
+
+@ARTICLE{vieira2016online,
+  author = {Vieira, Rui and Wilkinson, Darren J},
+  title = {Online state and parameter estimation in Dynamic Generalised Linear
+	Models},
+  journal = {arXiv preprint arXiv:1608.08666},
+  year = {2016},
+  owner = {zcao},
+  timestamp = {2017.10.23}
 }
 
 @BOOK{wahba1990spline,
