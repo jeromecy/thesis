@@ -33,7 +33,7 @@
   pages = {130--134},
   organization = {IEEE},
   owner = {zcao},
-  timestamp = {2017.05.23}
+  timestamp = {2017.10.27}
 }
 
 @ARTICLE{andrieu2010particle,
@@ -46,7 +46,7 @@
   number = {3},
   owner = {zcao},
   publisher = {Wiley Online Library},
-  timestamp = {2017.05.23}
+  timestamp = {2017.10.27}
 }
 
 @ARTICLE{andrieu2008tutorial,
@@ -97,7 +97,7 @@
   pages = {1222--1244},
   owner = {zcao},
   publisher = {JSTOR},
-  timestamp = {2017.10.23}
+  timestamp = {2017.10.27}
 }
 
 @ARTICLE{bartlett1951inverse,
@@ -120,6 +120,21 @@
   author = {Berlinet, Alain and Thomas-Agnan, Christine}
 }
 
+@ARTICLE{berzuini1997dynamic,
+  author = {Berzuini, Carlo and Best, Nicola G and Gilks, Walter R and Larizza,
+	Cristiana},
+  title = {Dynamic conditional independence models and Markov chain Monte Carlo
+	methods},
+  journal = {Journal of the American Statistical Association},
+  year = {1997},
+  volume = {92},
+  pages = {1403--1412},
+  number = {440},
+  owner = {zcao},
+  publisher = {Taylor \& Francis Group},
+  timestamp = {2017.10.27}
+}
+
 @ARTICLE{beskos2009optimal,
   author = {Beskos, Alexandros and Roberts, Gareth and Stuart, Andrew},
   title = {Optimal scalings for local Metropolis-Hastings chains on nonproduct
@@ -129,10 +144,10 @@
   pages = {863--898},
   owner = {zcao},
   publisher = {JSTOR},
-  timestamp = {2017.10.23}
+  timestamp = {2017.10.27}
 }
 
-@MISC{bodewig1959matrix,
+@MISC{Bodewig1959,
   author = {Bodewig, E},
   title = {Matrix Calculus, North},
   year = {1959},
@@ -148,6 +163,15 @@
   owner = {zcao},
   publisher = {Holland Publishing Co., Amsterdam},
   timestamp = {2017.10.23}
+}
+
+@MISC{bodewig1959matrix,
+  author = {Bodewig, E},
+  title = {Matrix Calculus, North},
+  year = {1959},
+  owner = {zcao},
+  publisher = {Holland Publishing Co., Amsterdam},
+  timestamp = {2017.10.27}
 }
 
 @BOOK{box2011bayesian,
@@ -171,7 +195,7 @@
   number = {5},
   owner = {zcao},
   publisher = {IEEE},
-  timestamp = {2017.05.23}
+  timestamp = {2017.10.27}
 }
 
 @INPROCEEDINGS{cappe2009inference,
@@ -181,7 +205,21 @@
   year = {2009},
   pages = {14--16},
   owner = {zcao},
-  timestamp = {2017.09.06}
+  timestamp = {2017.10.27}
+}
+
+@ARTICLE{cargnoni1997bayesian,
+  author = {Cargnoni, Claudia and M{\"u}ller, Peter and West, Mike},
+  title = {Bayesian forecasting of multinomial time series through conditionally
+	Gaussian dynamic models},
+  journal = {Journal of the American Statistical Association},
+  year = {1997},
+  volume = {92},
+  pages = {640--647},
+  number = {438},
+  owner = {zcao},
+  publisher = {Taylor \& Francis Group},
+  timestamp = {2017.10.27}
 }
 
 @ARTICLE{carvalho2010particle,
@@ -195,7 +233,7 @@
   number = {1},
   owner = {zcao},
   publisher = {Institute of Mathematical Statistics},
-  timestamp = {2017.10.23}
+  timestamp = {2017.10.27}
 }
 
 @ARTICLE{casella2004generalized,
@@ -206,7 +244,7 @@
   pages = {342--347},
   owner = {zcao},
   publisher = {JSTOR},
-  timestamp = {2017.10.23}
+  timestamp = {2017.10.27}
 }
 
 @ARTICLE{chen2000mixture,
@@ -219,7 +257,7 @@
   number = {3},
   owner = {zcao},
   publisher = {Wiley Online Library},
-  timestamp = {2017.09.06}
+  timestamp = {2017.10.27}
 }
 
 @BOOK{chen2009feedback,
@@ -259,6 +297,19 @@
   timestamp = {2017.09.13}
 }
 
+@ARTICLE{chopin2002sequential,
+  author = {Chopin, Nicolas},
+  title = {A sequential particle filter method for static models},
+  journal = {Biometrika},
+  year = {2002},
+  volume = {89},
+  pages = {539--552},
+  number = {3},
+  owner = {zcao},
+  publisher = {Oxford University Press},
+  timestamp = {2017.10.27}
+}
+
 @ARTICLE{christen2005markov,
   author = {Christen, J Andr{\'e}s and Fox, Colin},
   title = {Markov chain Monte Carlo using an approximation},
@@ -269,7 +320,7 @@
   number = {4},
   owner = {zcao},
   publisher = {Taylor \& Francis},
-  timestamp = {2017.10.23}
+  timestamp = {2017.10.27}
 }
 
 @ARTICLE{craven1978smoothing,
@@ -300,7 +351,7 @@
   pages = {165--169},
   owner = {zcao},
   publisher = {JSTOR},
-  timestamp = {2017.05.23}
+  timestamp = {2017.10.27}
 }
 
 @ARTICLE{del2006sequential,
@@ -313,7 +364,7 @@
   number = {3},
   owner = {zcao},
   publisher = {Wiley Online Library},
-  timestamp = {2017.09.06}
+  timestamp = {2017.10.27}
 }
 
 @ARTICLE{deng2011generalization,
@@ -446,6 +497,19 @@
   publisher = {Elsevier}
 }
 
+@ARTICLE{fearnhead2002markov,
+  author = {Fearnhead, Paul},
+  title = {Markov chain Monte Carlo, sufficient statistics, and particle filters},
+  journal = {Journal of Computational and Graphical Statistics},
+  year = {2002},
+  volume = {11},
+  pages = {848--862},
+  number = {4},
+  owner = {zcao},
+  publisher = {Taylor \& Francis},
+  timestamp = {2017.10.27}
+}
+
 @ARTICLE{gelman2008weakly,
   author = {Gelman, Andrew and Jakulin, Aleks and Pittau, Maria Grazia and Su,
 	Yu-Sung},
@@ -470,7 +534,7 @@
   number = {3},
   owner = {zcao},
   publisher = {International Society for Bayesian Analysis},
-  timestamp = {2017.10.23}
+  timestamp = {2017.10.27}
 }
 
 @ARTICLE{gelman1996efficient,
@@ -482,7 +546,7 @@
   pages = {42},
   number = {599-608},
   owner = {zcao},
-  timestamp = {2017.10.23}
+  timestamp = {2017.10.27}
 }
 
 @ARTICLE{geman1984stochastic,
@@ -495,7 +559,7 @@
   number = {6},
   owner = {zcao},
   publisher = {IEEE},
-  timestamp = {2017.10.23}
+  timestamp = {2017.10.27}
 }
 
 @ARTICLE{geweke1989bayesian,
@@ -517,7 +581,7 @@
   pages = {473--483},
   owner = {zcao},
   publisher = {JSTOR},
-  timestamp = {2017.10.23}
+  timestamp = {2017.10.27}
 }
 
 @BOOK{gilks1995markov,
@@ -527,6 +591,19 @@
   author = {Gilks, Walter R and Richardson, Sylvia and Spiegelhalter, David},
   owner = {zcao},
   timestamp = {2017.10.23}
+}
+
+@ARTICLE{golightly2006bayesian,
+  author = {Golightly, Andrew and Wilkinson, Darren J},
+  title = {Bayesian sequential inference for nonlinear multivariate diffusions},
+  journal = {Statistics and Computing},
+  year = {2006},
+  volume = {16},
+  pages = {323--338},
+  number = {4},
+  owner = {zcao},
+  publisher = {Springer},
+  timestamp = {2017.10.27}
 }
 
 @ARTICLE{gong2016practical,
@@ -657,7 +734,7 @@
   year = {1964},
   pages = {134--141},
   owner = {zcao},
-  timestamp = {2017.10.23}
+  timestamp = {2017.10.27}
 }
 
 @ARTICLE{handschin1970monte,
@@ -750,7 +827,7 @@
   year = {2001},
   pages = {429--444},
   owner = {zcao},
-  timestamp = {2017.10.23}
+  timestamp = {2017.10.27}
 }
 
 @INPROCEEDINGS{jhuaadaptive2013,
@@ -784,7 +861,7 @@
   timestamp = {2017.10.23}
 }
 
-@MISC{jeffries1961theory,
+@MISC{Jeffries1961,
   author = {Jeffries, Harold},
   title = {Theory of probability},
   year = {1961},
@@ -799,7 +876,29 @@
   year = {1961},
   owner = {zcao},
   publisher = {Clarendon Press, Oxford},
+  timestamp = {2017.10.27}
+}
+
+@MISC{jeffries1961theory,
+  author = {Jeffries, Harold},
+  title = {Theory of probability},
+  year = {1961},
+  owner = {zcao},
+  publisher = {Clarendon Press, Oxford},
   timestamp = {2017.09.06}
+}
+
+@ARTICLE{JOHANSEN20081498,
+  author = {Adam M. Johansen and Arnaud Doucet},
+  title = {A note on auxiliary particle filters},
+  journal = {Statistics \& Probability Letters},
+  year = {2008},
+  volume = {78},
+  pages = {1498 - 1504},
+  number = {12},
+  issn = {0167-7152},
+  owner = {zcao},
+  timestamp = {2017.10.25}
 }
 
 @BOOK{judd1998numerical,
@@ -844,6 +943,20 @@
   owner = {zcao},
   publisher = {Taylor \& Francis Group},
   timestamp = {2017.10.23}
+}
+
+@ARTICLE{khan2005mcmc,
+  author = {Khan, Zia and Balch, Tucker and Dellaert, Frank},
+  title = {MCMC-based particle filtering for tracking a variable number of interacting
+	targets},
+  journal = {IEEE transactions on pattern analysis and machine intelligence},
+  year = {2005},
+  volume = {27},
+  pages = {1805--1819},
+  number = {11},
+  owner = {zcao},
+  publisher = {IEEE},
+  timestamp = {2017.10.27}
 }
 
 @BOOK{kijima1997markov,
@@ -990,6 +1103,15 @@
   pages = {197--223},
   owner = {zcao},
   timestamp = {2017.10.23}
+}
+
+@BOOK{liu2008monte,
+  title = {Monte Carlo strategies in scientific computing},
+  publisher = {Springer Science \& Business Media},
+  year = {2008},
+  author = {Liu, Jun S},
+  owner = {zcao},
+  timestamp = {2017.10.27}
 }
 
 @ARTICLE{liu2010data,
@@ -1171,6 +1293,17 @@
   timestamp = {2017.09.13}
 }
 
+@INPROCEEDINGS{pang2008models,
+  author = {Pang, Sze Kim and Li, Jack and Godsill, Simon J},
+  title = {Models and algorithms for detection and tracking of coordinated groups},
+  booktitle = {Aerospace Conference, 2008 IEEE},
+  year = {2008},
+  pages = {1--17},
+  organization = {IEEE},
+  owner = {zcao},
+  timestamp = {2017.10.27}
+}
+
 @ARTICLE{peng1983,
   author = {Fenguo Peng},
   title = {A Necessary and Sufficient Condition to Judg Function Linearly Independent},
@@ -1188,7 +1321,20 @@
   pages = {31--84},
   owner = {zcao},
   publisher = {Springer},
-  timestamp = {2017.10.23}
+  timestamp = {2017.10.27}
+}
+
+@ARTICLE{pitt1999filtering,
+  author = {Pitt, Michael K and Shephard, Neil},
+  title = {Filtering via simulation: Auxiliary particle filters},
+  journal = {Journal of the American statistical association},
+  year = {1999},
+  volume = {94},
+  pages = {590--599},
+  number = {446},
+  owner = {zcao},
+  publisher = {Taylor \& Francis},
+  timestamp = {2017.10.27}
 }
 
 @ARTICLE{polson2008practical,
@@ -1201,7 +1347,7 @@
   number = {2},
   owner = {zcao},
   publisher = {Wiley Online Library},
-  timestamp = {2017.09.06}
+  timestamp = {2017.10.27}
 }
 
 @BOOK{b_gpml,
@@ -1223,7 +1369,7 @@
   number = {7},
   owner = {zcao},
   publisher = {IEEE INSTITUTE OF ELECTRICAL AND ELECTRONICS},
-  timestamp = {2017.10.23}
+  timestamp = {2017.10.27}
 }
 
 @BOOK{robert2004monte,
@@ -1232,7 +1378,19 @@
   year = {2004},
   author = {Robert, Christian P},
   owner = {zcao},
-  timestamp = {2017.05.23}
+  timestamp = {2017.10.27}
+}
+
+@BOOK{elliott1995estimation,
+  title = {Estimation and control: Estimation and Control},
+  publisher = {Springer-Verlag New York},
+  year = {1995},
+  author = {Robert J Elliott, Lakhdar Aggoun, John B. Moore},
+  volume = {29},
+  series = {0172-4568},
+  journal = {Applications of mathematics (New York)},
+  owner = {zcao},
+  timestamp = {2017.10.27}
 }
 
 @ARTICLE{roberts1997weak,
@@ -1243,7 +1401,9 @@
   volume = {7},
   pages = {110--120},
   number = {1},
-  publisher = {Institute of Mathematical Statistics}
+  owner = {zcao},
+  publisher = {Institute of Mathematical Statistics},
+  timestamp = {2017.10.27}
 }
 
 @ARTICLE{roberts2001optimal,
@@ -1256,7 +1416,7 @@
   number = {4},
   owner = {zcao},
   publisher = {Institute of Mathematical Statistics},
-  timestamp = {2017.10.23}
+  timestamp = {2017.10.27}
 }
 
 @BOOK{schwarz2012geodesy,
@@ -1279,6 +1439,32 @@
   publisher = {APS}
 }
 
+@INPROCEEDINGS{septier2009multiple,
+  author = {Septier, F and Carmi, A and Pang, SK and Godsill, SJ},
+  title = {Multiple object tracking using evolutionary and hybrid MCMC-based
+	particle algorithms},
+  booktitle = {15th IFAC Symposium on System Identification, 2009},
+  year = {2009},
+  volume = {15},
+  organization = {IFAC},
+  owner = {zcao},
+  timestamp = {2017.10.27}
+}
+
+@INPROCEEDINGS{septier2009mcmc,
+  author = {Septier, Fran{\c{c}}ois and Pang, Sze Kim and Carmi, Avishy and Godsill,
+	Simon},
+  title = {On MCMC-based particle methods for Bayesian filtering: Application
+	to multitarget tracking},
+  booktitle = {Computational Advances in Multi-Sensor Adaptive Processing (CAMSAP),
+	2009 3rd IEEE International Workshop on},
+  year = {2009},
+  pages = {360--363},
+  organization = {IEEE},
+  owner = {zcao},
+  timestamp = {2017.10.27}
+}
+
 @ARTICLE{sherlock2013optimal,
   author = {Sherlock, Chris},
   title = {Optimal scaling of the random walk Metropolis: general criteria for
@@ -1290,7 +1476,7 @@
   number = {1},
   owner = {zcao},
   publisher = {Cambridge University Press},
-  timestamp = {2017.10.23}
+  timestamp = {2017.10.27}
 }
 
 @ARTICLE{sherlock2010random,
@@ -1302,10 +1488,10 @@
   pages = {172--190},
   owner = {zcao},
   publisher = {JSTOR},
-  timestamp = {2017.10.23}
+  timestamp = {2017.10.27}
 }
 
-@ARTICLE{Sherlock2016,
+@ARTICLE{sherlock2016adaptive,
   author = {Sherlock, Chris and Golightly, Andrew and Henderson, Daniel A},
   title = {Adaptive, delayed-acceptance MCMC for targets with expensive likelihoods},
   journal = {Journal of Computational and Graphical Statistics},
@@ -1313,7 +1499,7 @@
   number = {just-accepted},
   owner = {zcao},
   publisher = {Taylor \& Francis},
-  timestamp = {2017.05.23}
+  timestamp = {2017.10.27}
 }
 
 @ARTICLE{sherlock2009optimal,
@@ -1327,7 +1513,7 @@
   number = {3},
   owner = {zcao},
   publisher = {Bernoulli Society for Mathematical Statistics and Probability},
-  timestamp = {2017.10.23}
+  timestamp = {2017.10.27}
 }
 
 @ARTICLE{sherlock2015efficiency,
@@ -1336,7 +1522,7 @@
   journal = {arXiv preprint arXiv:1506.08155},
   year = {2015},
   owner = {zcao},
-  timestamp = {2017.10.23}
+  timestamp = {2017.10.27}
 }
 
 @ARTICLE{sherman1950adjustment,
@@ -1350,7 +1536,7 @@
   number = {1},
   owner = {zcao},
   publisher = {JSTOR},
-  timestamp = {2017.09.06}
+  timestamp = {2017.10.27}
 }
 
 @ARTICLE{silverman1985some,
@@ -1414,7 +1600,7 @@
   pages = {67--75},
   owner = {zcao},
   publisher = {JSTOR},
-  timestamp = {2017.09.06}
+  timestamp = {2017.10.27}
 }
 
 @ARTICLE{smith1993bayesian,
@@ -1426,7 +1612,7 @@
   pages = {3--23},
   owner = {zcao},
   publisher = {JSTOR},
-  timestamp = {2017.10.23}
+  timestamp = {2017.10.27}
 }
 
 @INCOLLECTION{sokal1997monte,
@@ -1670,7 +1856,7 @@
   number = {106},
   owner = {zcao},
   publisher = {Statistical Research Group, Princeton University},
-  timestamp = {2017.09.06}
+  timestamp = {2017.10.27}
 }
 
 @ARTICLE{yang2010analytical,
@@ -1783,6 +1969,6 @@
   year = {2011},
   editor = {Arnaud Doucet, Nando de Freitas, Neil Gordon},
   owner = {zcao},
-  timestamp = {2017.09.06}
+  timestamp = {2017.10.27}
 }
 
