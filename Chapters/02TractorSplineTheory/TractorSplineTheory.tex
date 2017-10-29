@@ -1,39 +1,43 @@
-\section{Writing Something}
-
-I'm thinking, I should start writing from Spline method, without adaptive terms on $\lambda$. An advanced Cross Validation method is given. Then when I tried to use this method to construct trajectories (application on real data), there appears some issues. So I brought adaptive terms. 
-
-It's a batch case method. Trajectory is reconstructed from a batch of data and some issues appeared. The numeric simulations proved that this new method is better. However, some issues still exist in real data application (long-gap-curve).
-
-Then I will introduce Gaussian Process Regression and how it could estimate Smoothing Spline. Based on some references and tractor spline, I will prove some relationships between Tractor Spline and GPR. this is a spin-off results.
-
-These are all batch method. Even if researchers could do some online smoothing, the computation time cost a lot. 
-
-Why don't we do online estimation by using some efficiency method? Introduce filters and other methods (Probably Kalman filter, particle filter and other filter) and dynamic linear regression models. Then the proposed method, parameters estimation and something else. It's an online case.
-
-Parameter estimation methods: Metropolis-Hastings methods, better than MLE because the latter doesn't give the distribution of the estimates. 
-
-Moreover, I need to figure out how these different methods working and the advantages and disadvantages they have.
+%\section{Writing Something}
+%
+%I'm thinking, I should start writing from Spline method, without adaptive terms on $\lambda$. An advanced Cross Validation method is given. Then when I tried to use this method to construct trajectories (application on real data), there appears some issues. So I brought adaptive terms. 
+%
+%It's a batch case method. Trajectory is reconstructed from a batch of data and some issues appeared. The numeric simulations proved that this new method is better. However, some issues still exist in real data application (long-gap-curve).
+%
+%Then I will introduce Gaussian Process Regression and how it could estimate Smoothing Spline. Based on some references and tractor spline, I will prove some relationships between Tractor Spline and GPR. this is a spin-off results.
+%
+%These are all batch method. Even if researchers could do some online smoothing, the computation time cost a lot. 
+%
+%Why don't we do online estimation by using some efficiency method? Introduce filters and other methods (Probably Kalman filter, particle filter and other filter) and dynamic linear regression models. Then the proposed method, parameters estimation and something else. It's an online case.
+%
+%Parameter estimation methods: Metropolis-Hastings methods, better than MLE because the latter doesn't give the distribution of the estimates. 
+%
+%Moreover, I need to figure out how these different methods working and the advantages and disadvantages they have.
 
 
 
 \section{Introduction}
 
-In a vehicular system, the simplest way of getting the trajectory of a moving-object is connecting position points by a sequence of lines (line-based trajectory representation) in a 3-dimensional or 4-dimensional space-time \cite{agarwal2003indexing}. Due to the noises generated from observation units, one can use regression method to find the best fitting returning the smallest sum square errors among all the sequences. Consider a regression model $y_i=f(t_i)+\epsilon_i$, where $a \leq t_1 < \cdots < t_n \leq b$ and $f \in \mathit{C}^2[a,b]$ is an unknown smooth function, $(\epsilon_i)_{i=1}^n \sim N(0,\sigma^2)$ are random errors. In a classical parametric regression, $f$ is assumed having the form $f(x,\beta)$, which is known up to the data estimated parameters $\beta$ \cite{kim2004smoothing}. When $f(x,\beta)$ is linear in $\beta$, we will have a standard linear model. However, most of the natural moving objects return smooth trajectories without any angles. Therefore, a spline method is used to construct such trajectories. A curved-base method uses a parametric cubic function $P(t)=a_0+a_1t+a_2t^2+a_3t^3$ to obtain a spline that passes through any given sequence of joint position-velocity paired points $(x_1, v_1), (x_2, v_2), \cdots (x_n,v_n)$ \cite{yu2004curve}.  In \cite{yang2010analytical}, an efficient and analytical continuous curvature path-smoothing algorithm based on parametric cubic B\'{e}zier curves is proposed. It can fit ordered sequential points smoothly. In computer (or computerized) numerical control (CNC), Altintas and Erkorkmaz \cite{erkorkmaz2001high} presented a quintic spline trajectory generation algorithm connecting a series of reference knots that produces continuous position, velocity and acceleration profiles.
+GPS devices are widely used on tracking individuals and vehicles position. Objects move frequently and continuously with their position and moving status being reported to database server or recorded by GPS units or other devices. Use of GPS receivers for obtaining geographic information of trajectories has been carried out with different aims. The Kansas Department of Transportation has used GPS data to assist with the collection of highway attributes of the state highway system \cite{ben2004geometric}.  A specific vehicle can be used to collect data for making maps for highway navigation systems \cite{Atkinson2004}. It can be used in studying the traffic congestion as well, and combing with Geographic Information System \cite{taylor2000integration}. 
 
-However, a parametric approach only captures features contained in the preconceived class of functions \cite{yao2005functional} and increases model bias. To avoid this, an alternative approach called nonparametric model was invented. Rather than giving a specified parameter, it is desired to reconstruct $f$ from the data $y(t_i)\equiv y_i$, $i=1, \cdots, n$ \cite{craven1978smoothing}. Smoothing spline estimate of the $f$ function appears as a solution to the following minimization problem: Find $\hat{f} \in \mathit{C}^2[a,b]$ that minimizes the penalized residual sum of squares:
+
+
+Given a sequence of position vectors in trace system, the simplest way of construct the complete trajectory of a moving-object is by connecting positions with a sequence of lines (line-based trajectory representation) in a 3-dimensional or 4-dimensional space-time \cite{agarwal2003indexing}. Due to the noise generated from observation units, one can use regression methods to find the best reconstruction returning the smallest sum square errors among all the sequences. Consider a regression model $y_i=f(t_i)+\epsilon_i$, where $a \leq t_1 < \cdots < t_n \leq b$ and $f \in \mathit{C}^2[a,b]$ is an unknown smooth function, $(\epsilon_i)_{i=1}^n \sim N(0,\sigma^2)$ are random errors. In a classical parametric regression, $f$ is assumed having the form $f(x,\beta)$, which is known up to the data estimated parameters $\beta$ \cite{kim2004smoothing}. When $f(x,\beta)$ is linear in $\beta$, we will have a standard linear model. However, most natural moving objects typically return smooth trajectories. Spline methods have been developed to construct such trajectories. A curved-base method uses a parametric cubic function $P(t)=a_0+a_1t+a_2t^2+a_3t^3$ to obtain a spline that passes through any given sequence of joint position-velocity paired points $(x_1, v_1), (x_2, v_2), \dots, (x_n,v_n)$ \cite{yu2004curve}.  \cite{yang2010analytical} proposed an efficient and analytical continuous curvature path-smoothing algorithm based on parametric cubic B\'{e}zier curves is proposed. It can fit ordered sequential points smoothly. In computer (or computerized) numerical control (CNC), Altintas and Erkorkmaz \cite{erkorkmaz2001high} presented a quintic spline trajectory generation algorithm connecting a series of reference knots that produces continuous position, velocity and acceleration profiles.
+
+However, a parametric approach only captures features contained in the preconceived class of functions \cite{yao2005functional} and increases model bias. To avoid this, nonparametric methods have been developed. Rather than giving specified parameters, it is desired to reconstruct $f$ from the data $y(t_i)\equiv y_i$, $i=1, \dots, n$ \cite{craven1978smoothing}. Smoothing spline estimates of the $f$ function appear as a solution to the following minimization problem: find $\hat{f} \in \mathit{C}^2[a,b]$ that minimizes the penalized residual sum of squares:
 \begin{equation}\label{smoothingob}
-\mbox{RSS}=\sum_{j=1}^{n}(y_j-f(t_j))^2+\lambda\int_{a}^{b} f''(t)^2dt
+\mbox{RSS}=\sum_{j=1}^{n}\left(  y_j-f(t_j)\right) ^2+\lambda\int_{a}^{b} f''(t)^2dt
 \end{equation}
-for pre-specified value $\lambda>0$ \cite{aydin2012smoothing}. In equation (\ref{smoothingob}), the first part is residual sum square and it penalizes the lack of fit. The second part is roughness penalty term weighted by a smoothing parameter $\lambda$, which varies from 0 to $+\infty$ and establishes a trade-off between interpolation and a linear model. The motivation of roughness penalty term is from a formalization of a mechanical device: if a thin piece of flexible wood, called a spline, is bent to the shape of the graph g, then the leading term in the strain energy is proportional to $\int f''^2$ \cite{green1993nonparametric}. The cost of equation (\ref{smoothingob}) is determined not only by its goodness-of-fit to the data quantified by the residual sum of squares, but also by its roughness \cite{schwarz2012geodesy}. For a given $\lambda$, minimizing equation (\ref{smoothingob}) will give the best compromise between smoothness and goodness-of-fit. Notice that the first term in equation (\ref{smoothingob}) depends only on the values of $f$ at knots $t_i, i=1, \cdots, n$. In the book, the authors show that the function that minimizes the roughness penalty for fixed values of $f(t_i)$ is a cubic spline: an interpolation of points via a continuous piecewise cubic function, with continuous first and second derivatives \cite{green1993nonparametric}. The continuity requirements uniquely determine the interpolating spline, except at the boundaries\cite{sealfon2005smoothing}.
+for pre-specified value $\lambda>0$ \cite{aydin2012smoothing}. In equation (\ref{smoothingob}), the first part is residual sum square and it penalizes the lack of fit. The second part is roughness penalty term weighted by a smoothing parameter $\lambda$, which varies from 0 to $+\infty$ and establishes a trade-off between interpolation and straight line. The motivation of the roughness penalty term is from a formalization of a mechanical device: if a thin piece of flexible wood, called a spline, is bent to the shape of the curve $g$, then the leading term in the strain energy is proportional to $\int f''^2$; see \eg \cite{green1993nonparametric}. The cost of equation (\ref{smoothingob}) is determined not only by its goodness-of-fit to the data quantified by the residual sum of squares, but also by its roughness \cite{schwarz2012geodesy}. For a given $\lambda$, minimizing equation (\ref{smoothingob}) will give the best compromise between smoothness and goodness-of-fit. Notice that the first term in equation (\ref{smoothingob}) depends only on the values of $f$ at knots $t_i, i=1, \cdots, n$. In the book,  the authors \cite{green1993nonparametric} show that the function that minimizes the roughness penalty for fixed values of $f(t_i)$ is a cubic spline: an interpolation of points via a continuous piecewise cubic function, with continuous first and second derivatives. The continuity requirements uniquely determine the interpolating spline, except at the boundaries \cite{sealfon2005smoothing}.
 
 
-%%B-spline allows continuity of order two between the curve segments and goes through the points smoothly with ignoring the outliers \cite{ben2004geometric}. Zhang, Guo and Gao proposed their method using Hermite interpolation on each intervals to fit position, velocity and acceleration with kinematic constrains. Their trajectory formulation is a combination of several cubic splines on every intervals \cite{zhang2013cubic} or, in an alternative way, can be a single function found by minimizing
-%\begin{equation}
-%p\sum_{j=1}^{n}|y_j-f(x_j)|^2+(1-p)\int |D^2f(t)|^2dt,
-%\end{equation}
-%where $n$ is the number of values of $x$, $D^2$ represents the second derivative of the function f(t) and $p$ is a smoothing parameter \cite{castro2006geometric}. 
-%residual sum square error objective with penalty term\cite{castro2006geometric}.  in which a parameter $1-p$ is used to control the curvature of the splines. 
-%
+B-spline allows continuity of order two between the curve segments and goes through the points smoothly with ignoring the outliers \cite{ben2004geometric}. \cite{zhang2013cubic} proposed their method using Hermite interpolation on each intervals to fit position, velocity and acceleration with kinematic constrains. Their trajectory formulation is a combination of several cubic splines on every intervals  or, in an alternative way, can be a single function found by minimizing 
+\begin{equation}
+p\sum_{j=1}^{n}|y_j-f(x_j)|^2+(1-p)\int |D^2f(t)|^2dt,
+\end{equation}
+where $n$ is the number of values of $x$, $D^2$ represents the second derivative of the function f(t) and $p$ is a smoothing parameter \cite{castro2006geometric}. 
+residual sum square error objective with penalty term\cite{castro2006geometric}.  in which a parameter $1-p$ is used to control the curvature of the splines. 
+
 
 A conventional smoothing spline is controlled by one single parameter, which controls the smoothness of a spline on the whole domain. A natural extension is to allow the smoothing parameter to vary as a penalty function of the independent variable, adapting to the change of roughness  in different domains \cite{silverman1985some}, \cite{donoho1995wavelet}. In this way, a new objective function is formulated in the form of 
 \begin{equation}\label{objective}
@@ -41,10 +45,10 @@ A conventional smoothing spline is controlled by one single parameter, which con
 \end{equation}
 by minimizing which, the best estimation $\hat{f}$ can be found. This approach makes adaptive smoothing as a minimization problem with a new penalty term. 
 
-Similar to conventional smoothing spline problem, researchers are wondering how to choose the penalty function $\lambda(t)$. The fundamental idea of nonparametric smoothing is to let the data choose the amount of smoothness, which consequently decides the model complexity \cite{gu1998model}. Most of them focus on data driven criteria, such as cross validation (CV), generalized cross validation (GCV) \cite{craven1978smoothing} and generalized maximum likelihood (GML) \cite{wahba1985comparison}. A new challenge is posed that the smoothing parameter becomes a function and is varying in domains. The structure of this penalty function controls the complexity on each domain and the whole final model. Liu and Guo proposed to approximate the penalty function with an indicator and extended the generalized likelihood to the adaptive smoothing spline \cite{liu2010data}.
+Similar to the conventional smoothing spline problem, one have to to choose the penalty function $\lambda(t)$. The fundamental idea of nonparametric smoothing is to let the data choose the amount of smoothness, which consequently decides the model complexity \cite{gu1998model}. Most methods focus on data driven criteria, such as cross validation (CV), generalized cross validation (GCV) \cite{craven1978smoothing} and generalized maximum likelihood (GML) \cite{wahba1985comparison}. A new challenge is posed that the smoothing parameter becomes a function and is varying in domains. The structure of this penalty function controls the complexity on each domain and the whole final model. Liu and Guo proposed to approximate the penalty function with an indicator and extended the generalized likelihood to the adaptive smoothing spline \cite{liu2010data}.
 
 
-In this paper, we propose an adaptive smoothing spline method based on Hermite Spline basis functions to get reconstruction of $f$ and $f'$ from noisy data $\mathbf{y}$ and $\mathbf{v}$. Rather than only using residuals of $f(t_i)-y_i$ term in the objective function in equation (\ref{objective}), we added the residuals of $f'(t_i)-v_i$ as a new term containing a new parameter $\gamma$. In this way, the spline keeps a balance on both observed $\mathbf{y}$ and $\mathbf{v}$. Using new generated basis functions, we reconstruct a smoothing spline on the whole interval $[a,b]$. Derived from the new objective function, an advanced cross validation formula of $f(t)$ and $f'(t)$ is given. This method can be used in either getting true signal from noisy data or moving-object database. 
+In this chapter, we propose an adaptive smoothing spline method based on Hermite spline basis functions to obtain a reconstruction of $f$ and $f'$ from noisy data $\mathbf{y}$ and $\mathbf{v}$. Rather than only using residuals of the form $f(t_i)-y_i$ in the objective function in equation (\ref{objective}), we include residuals of $f'(t_i)-v_i$ in a new term containing a new parameter $\gamma$. In this way, the spline keeps a balance on both observed $\mathbf{y}$ and $\mathbf{v}$. Using the new basis functions, we reconstruct a smoothing spline on the whole interval $[a,b]$. Derived from the new objective function, an advanced cross validation formula of $f(t)$ and $f'(t)$ is given. We show that it performs very well on simulated signal data \textit{Blocks}, \textit{Bumps}, \textit{HeaviSine} and \textit{Doppler}. This method can be used in either getting true signal from noisy data or reconstructing the trajectory of a moving object. 
 
 %Errors comes from the GPS units and individuals' behaviors, which bring unreliable data and less precise results. %\cite{castro2006geometric}
 
@@ -52,16 +56,16 @@ In this paper, we propose an adaptive smoothing spline method based on Hermite S
 
 \subsection{Objective Function}
 
-In a 2D curve nonparametric regression, consider $n$  time points $t_{1:n}$, such that $a \leq t_1, \cdots, t_n \leq b$. Let $z_i=(x_i,y_i)$ and $w_i=(u_i,v_i)$ for $i=1, \cdots, n$. We define a positive piecewise constant function $\lambda(t)$ :
+In a 2D curve nonparametric regression, consider $n$  time points $t_{1:n}$, such that $a \leq t_1, \dots, t_n \leq b$. Let $z_i=(x_i,y_i)$ and $w_i=(u_i,v_i)$ for $i=1, \cdots, n$. We define a positive piecewise constant function $\lambda(t)$ :
 \begin{equation}
-\lambda(t) = \lambda_i>0,
+\lambda(t) = \lambda_i \geq 0,
 \end{equation}
-where $t_i \leq t<t_{i+1}, t_0=a, t_{n+1}=b$, that will control the curvature penalty of each interval. For a function $f:[a,b]\longrightarrow \mathbb{R}^2$ and $\gamma>0$, define the objective function 
+where $t_i \leq t<t_{i+1}, t_0=a, t_{n+1}=b$, that will control the curvature penalty in each interval. For a function $f:[a,b]\longrightarrow \mathbb{R}^2$ and $\gamma>0$, define the objective function 
 
  \begin{equation}\label{of2d}
-J[f]= \frac{1}{n} \sum_{i=1}^{n} (f(t_i)-z_i)^2 + \frac{\gamma}{n} \sum_{i=1}^{n} (f'(t_i)-w_i)^2 +\sum_{i=0}^{n} \lambda_i\int_{t_i}^{t_{i+1}} f''(t)^2 dt,
+J[f]= \frac{1}{n} \sum_{i=1}^{n} \lVert f(t_i)-z_i\rVert_2^2 + \frac{\gamma}{n} \sum_{i=1}^{n} \lVert f'(t_i)-w_i \rVert_2^2 +\sum_{i=0}^{n} \lambda_i\int_{t_i}^{t_{i+1}} \lVert f''(t)\rVert_2^2 dt,
 \end{equation}
-where $\gamma$ is a coefficient of the velocity information $\mathbf{v}$ and it weights the residuals between $\mathbf{f}'$ and $\mathbf{v}$, and $\lambda(t)$ is the smoothing parameter function.
+where $\gamma$ is the parameter that weights the residuals between $\mathbf{f}'$ and $\mathbf{v}$, and $\lambda(t)$ is the smoothing parameter function.
 
 \begin{theorem}
 For $n\geq2$, the objective function $J[f]$ is minimized by a cubic spline that is linear outside the knots.
@@ -142,9 +146,9 @@ where $\{\theta_k\}_{k=1}^{2n}$ are parameters.
 
 Figure (\ref{basisfigure}) presents two basis functions on an arbitrary interval $[t_k, t_{i+2} )$ where they are continuous and differential. At the interior joint knot $t_k$, basis functions in the previous and following interval share the same position $y_k$ and velocity $v_k$. 
 \begin{figure}[h] \centering
-\includegraphics[width=0.6\textwidth, height=5cm]{Chapters/02TractorSplineTheory/plot/basistk}
+\includegraphics[width=0.6\textwidth, height=4.5cm]{Chapters/02TractorSplineTheory/plot/ggbasistk}
 %\small 
-\caption{The two basis functions $N_{2k+1}$ and $N_{2k+2}$ on interval $[t_k, t_{k+2})$. It is apparently that these basis functions are continuous on this interval and have continuous first derivatives.}
+\caption{The two basis functions $N_{2k+1}$ and $N_{2k+2}$ on an arbitrary interval $[t_k, t_{k+2})$. It is apparently that these basis functions are continuous on this interval and have continuous first derivatives.}
 \label{basisfigure}
 \end{figure}
 
@@ -213,7 +217,7 @@ Here the linear operator $\mathbf{H}_\xi$ is a symmetric, positive semidefinite 
 it is easily to prove that $\mathbf{T}_{\lambda,\gamma}=\mathbf{B}\mathbf{R}\mathbf{R}^\top\mathbf{C}^\top$ and $\mathbf{U}_{\lambda,\gamma}=\mathbf{C}\mathbf{R}\mathbf{R}^\top\mathbf{B}^\top$, then we will have 
  $\mathbf{T}_{\lambda,\gamma}= \mathbf{U}_{\lambda,\gamma}^\top$. When $\lambda=\gamma=0$, the matrix $\mathbf{S}_{\lambda_0,\gamma_0}=\mathbf{B}(\mathbf{B}^\top\mathbf{B})^{-1}\mathbf{B}^\top$ is idempotent.  
 
-Additionally, by playing with $\lambda(t)$ and $\gamma$, tractor spline has the following property:
+For sufficient cases of $\lambda(t)$ and $\gamma$, tractor spline has the following property:
 \begin{itemize}
 \item if $\lambda(t)$ is a piecewise constant and $\gamma \neq 0$, then $f$ and $f'$ are continuous, $f''$ is piecewise linear but not continuous at knots;
 \item if $\lambda(t)$ is a piecewise constant and $\gamma = 0$, the same as above;
@@ -255,7 +259,7 @@ Now we focus on an observation $y_i$ at point $t_i$ as being a new observation b
 \end{align}
  and $\lambda$ can be quantified by cross-validation score function
 \begin{align}
-\mbox{CV}(\lambda)=\frac{1}{n}\sum_{i=1}^{n}\{y_i-\hat{f}^{(-i)}(t_i,\lambda)\}^2.
+\mbox{CV}(\lambda)=\frac{1}{n}\sum_{i=1}^{n}\left(  y_i-\hat{f}^{(-i)}(t_i,\lambda)\right) ^2.
 \end{align}
 The basis idea of cross-validation is to choose the value of $\lambda$ that minimizes $\mbox{CV}(\lambda)$. 
 
@@ -274,11 +278,11 @@ where $\hat{f}$ is the spline smoother calculated from the full data set $\{(t_i
 
 For a tractor spline and its MSE function, there are two parameters need to be estimated $\lambda$ and $\gamma$. Then the objective function (\ref{originalcv}) becomes
 \begin{align}
-\frac{1}{n}\sum_{j \neq i}(y_j-f(t_j))^2+\frac{\gamma}{n}\sum_{j \neq i}(v_j-f'(t_j))^2+ \int \lambda(t)f''^2dt,
+\frac{1}{n}\sum_{j \neq i}\lVert y_j-f(t_j) \rVert_2^2+\frac{\gamma}{n}\sum_{j \neq i} \lVert v_j-f'(t_j) \rVert_2^2+ \int \lambda(t) \lVert f''\rVert_2^2dt,
 \end{align}
 and the cross-validation score function is
 \begin{align}
-\mbox{CV}(\lambda,\gamma)=\frac{1}{n}\sum_{i=1}^{n}\{y_i-\hat{f}^{(-i)}(t_i,\lambda,\gamma)\}^2.
+\mbox{CV}(\lambda,\gamma)=\frac{1}{n}\sum_{i=1}^{n}\left( y_i-\hat{f}^{(-i)}(t_i,\lambda,\gamma) \right) ^2.
 \end{align}
 
 For a tractor spline, the parameter $\hat{\theta}=(B^\top B+\gamma C^\top C+n\Omega_\lambda)^{-1}(B^\top\mathbf{y}+\gamma C^\top\mathbf{v})$ gives us
@@ -386,7 +390,7 @@ The left column illustrates the value of penalty function on different intervals
   \caption{Estimated penalty functions. Left side shows how the value of $\lambda(t)$ changes on the interval. Right side projects $\lambda(t)$ into reconstructions. The bigger the blacks dots present, the larger the penalty values are.}\label{numpenalty}
 \end{figure}
 
-Figure \ref{numvtractor} demonstrates the estimated velocity functions. Bt taking the first derivative of fitted tractor spine, it is easily to get the original four velocity functions. The fitting of velocity is not as smooth as that in position, because we only care about the smoothness of position rather than velocity in our cross-validation formula (\ref{cvscore}). However, velocity information dose help us reconstructing trajectory.
+Figure \ref{numvtractor} demonstrates the estimated velocity functions. By taking the first derivative of fitted tractor spine, it is easily to get the original four velocity functions. The fitting of velocity is not as smooth as that in position, because we only care about the smoothness of position rather than velocity in our cross-validation formula (\ref{cvscore}). However, velocity information do help us reconstruct the trajectory.
 
 \begin{figure}
 \centering
@@ -411,18 +415,18 @@ The results are shown in table \ref{mse3200} and \ref{tmse3200}. All of these me
 %\begin{sidewaystable}
  \begin{table}
  	\centering
- 	\caption{MSE. Mean square errors of different methods. The star sign (*) marks the smallest error among these methods under the same level. The difference is not significant.}\label{mse3200}
+ 	\caption{MSE. Mean square errors of different methods. The numbers in bold indicate the smallest error among these methods under the same level. The difference is not significant.}\label{mse3200}
 	\setlength\tabcolsep{1.5pt}
-	\begin{tabular}{|c|c|r|r|r|r|r|r|}
+	\begin{tabular}{|c|c|c|c|c|c|c|c|}
 \hline	MSE ($10^{-4}$)   & SNR & TS & TS$_{\gamma=0}$ & TS$_{APT=0}$  & P-spline & Wavelet(sure)& Wavelet(Bayes)\\ \hline
-\textit{Blocks}    & 7   &  16.53& 15.99 & 16.69 & 16.14  & *15.39 & 16.68 \\ \hline
-\textit{Blocks}    & 3   &  89.79 & *87.64 & 89.94  & 88.27 & 98.35 & 90.24 \\ \hline
-\textit{Bumps}     & 7   & 4.40 & 4.19 & 4.55 & 4.33 & *4.18 & 4.59 \\ \hline
-\textit{Bumps}     & 3   & 23.93 & *23.19 & 24.10 & 23.55 & 26.23 & 23.74 \\ \hline
-\textit{HeaviSine} & 7   & 4.16 & 4.01 &4.16 & 4.02 & *3.79 & 4.19 \\ \hline
-\textit{HeaviSine} & 3   & 22.63 & *22.19 & 22.65 & 22.02 & 23.53 & 22.07 \\ \hline
-\textit{Doppler}   & 7   & 1.15 & *1.07 & 1.10 & 1.15  & *1.07 & 1.13  \\ \hline
-\textit{Doppler}   & 3   & 6.27 & *5.94 &6.28 & 6.05  & 6.85 & 6.29  \\ \hline
+\textit{Blocks}    & 7   &  16.53& 15.99 & 16.69 & 16.14  & \textbf{15.39} & 16.68 \\ \hline
+\textit{Blocks}    & 3   &  89.79 & \textbf{87.64} & 89.94  & 88.27 & 98.35 & 90.24 \\ \hline
+\textit{Bumps}     & 7   & 4.40 & 4.19 & 4.55 & 4.33 & \textbf{4.18} & 4.59 \\ \hline
+\textit{Bumps}     & 3   & 23.93 & \textbf{23.19} & 24.10 & 23.55 & 26.23 & 23.74 \\ \hline
+\textit{HeaviSine} & 7   & 4.16 & 4.01 &4.16 & 4.02 & \textbf{3.79} & 4.19 \\ \hline
+\textit{HeaviSine} & 3   & 22.63 & \textbf{22.19} & 22.65 & 22.02 & 23.53 & 22.07 \\ \hline
+\textit{Doppler}   & 7   & 1.15 & \textbf{1.07} & 1.10 & 1.15  & \textbf{1.07} & 1.13  \\ \hline
+\textit{Doppler}   & 3   & 6.27 & \textbf{5.94} &6.28 & 6.05  & 6.85 & 6.29  \\ \hline
 	\end{tabular}
 \end{table}
  %\end{sidewaystable}
@@ -430,25 +434,123 @@ The results are shown in table \ref{mse3200} and \ref{tmse3200}. All of these me
 %\begin{sidewaystable} 
 \begin{table}
 	\centering
-	\caption{TMSE. True mean square errors of different methods. The star sign (*) marks the smallest error among these methods under the same level. The proposed tractor spline returns the smallest TMSE among all the methods under the same level except for $\mathit{Doppler}$ with SNR=7. The differences are significant. }\label{tmse3200}
+	\caption{TMSE. True mean square errors of different methods. The numbers in bold indicate the smallest error among these methods under the same level. The proposed tractor spline returns the smallest TMSE among all the methods under the same level except for $\mathit{Doppler}$ with SNR=7. The differences are significant. }\label{tmse3200}
 	\setlength\tabcolsep{1.5pt}
-	\begin{tabular}{|c|c|r|r|r|r|r|r|}
+	\begin{tabular}{|c|c| c| c| c|c|c|c|}
 \hline	TMSE ($10^{-6}$)  & SNR & TS & TS$_{\gamma=0}$ & TS$_{APT=0}$  & P-spline & Wavelet(sure) & Wavelet(Bayes)\\ \hline
-		\textit{Blocks}    & 7   &*1.75 & 54.25 &  28.68   & 54.76   & 201.02   & 182.12   \\ \hline
-		\textit{Blocks}    & 3   & *16.44& 152.5 & 30.76  & 171.59   & 1138.08  & 712.36  \\ \hline
-		\textit{Bumps}     & 7   &*1.64 & 23.44  & 21.10     & 24.21 & 71.71 & 69.26 \\ \hline
-		\textit{Bumps}     & 3   &*8.51 & 77.78  &37.12     & 77.52 & 330.77 & 238.79 \\ \hline
-		\textit{HeaviSine} & 7   &*1.53& 7.80  & 1.56     & 9.54   & 55.37  &44.88  \\ \hline
-		\textit{HeaviSine} & 3   & *8.21& 33.56  & 8.49 & 34.26 & 240.72& 110.49\\ \hline
-		\textit{Doppler}   & 7   & 1.51& 6.67 &  *1.08   &  8.26   & 14.87  & 12.01  \\ \hline
-		\textit{Doppler}   & 3   & *8.10& 22.14  & 8.25   & 19.95    &81.48  &50.33   \\ \hline
+		\textit{Blocks}    & 7   & \textbf{1.75} & 54.25 &  28.68   & 54.76   & 201.02   & 182.12   \\ \hline
+		\textit{Blocks}    & 3   & \textbf{16.44} & 152.5 & 30.76  & 171.59   & 1138.08  & 712.36  \\ \hline
+		\textit{Bumps}     & 7  & \textbf{1.64} & 23.44  & 21.10     & 24.21 & 71.71 & 69.26 \\ \hline
+		\textit{Bumps}     & 3  & \textbf{8.51} & 77.78  &37.12     & 77.52 & 330.77 & 238.79 \\ \hline
+		\textit{HeaviSine} & 7 & \textbf{1.53}& 7.80  & 1.56     & 9.54   & 55.37  &44.88  \\ \hline
+		\textit{HeaviSine} & 3 & \textbf{8.21}& 33.56  & 8.49 & 34.26 & 240.72& 110.49\\ \hline
+		\textit{Doppler}   & 7   & 1.51& 6.67  & \textbf{1.08}   &  8.26   & 14.87  & 12.01  \\ \hline
+		\textit{Doppler}   & 3   & \textbf{8.10} & 22.14  & 8.25   & 19.95    &81.48  &50.33   \\ \hline
 	\end{tabular}	
 \end{table}
 %\end{sidewaystable}
 
+
+
+\section{Application on Real Dataset}\label{splineapplication}
+
+In this section, we apply the proposed method to real dataset, which are recorded by GPS units mounted on a tractor. The original dataset contains time marks, longitude, latitude, velocity, bearing (in degrees,  heading to North) and boom status. First of all, we convert the longitude and latitude information from a 3D sphere to 2D surface by Universal Transverse Mercator coordinate system (UTM). After that, we split the velocity $v$ into $v_x$ and $v_y$ by 
+\begin{align}
+v_x &=v\cdot \sin (\omega\frac{\pi}{180}),\\
+v_y &= v\cdot \cos (\omega\frac{\pi}{180}),
+\end{align}
+where $\omega$ is in degrees. Boom status is tagged as 0 if it is not working and 1 if it is. Time marks are transformed by subtract the first mark, in which way the time starts from 0. Time duplicated data, caused by errors, had been removed. In convenience of comparing with wavelet algorithm, we choose the first 512 out of 928 rows of data. The original data is plotted in figure \ref{original512}.
+
+\begin{figure}
+  \centering
+         \includegraphics[width=\textwidth,height=9cm]{Chapters/02TractorSplineTheory/plot/original04}
+  \caption{Original data points. (a) Original position recorded by GPS units. Circle points stand for the status of boom not working; cross points stand for working. (b) Original trajectory made by simply connecting GPS points sequentially. (c) Original position on $x$ axis. (d)  Original position on $y$ axis.}\label{original512}
+\end{figure}
+
+To fit the real data, we bring the parameter $\lambda_d$ back to our model. Then we have three parameters $\lambda_d$ and $\lambda_u$ regarding to boom status and $\gamma$ controlling velocity residuals. The criteria of a good fitting is that it can catch more information, recognize time gaps between two points where tractor stops and return a smaller MSE. 
+
+\subsection{1-Dimension Trajectory}
+
+We treat $x$ and $y$ position separately and compare how velocity information in objective function (\ref{of2d}) and the adjusted penalty term in equation (\ref{adjustedpenalty}) work in our model. All parameters in fitted tractor spline are automatically selected by cross validation in equation (\ref{tractorcv}). Figure \ref{1dx} and figure \ref{1dy} compare the results of fitted methods on $x$ and $y$ axis. P-spline gives over fitting on $x$ axis reconstruction and not applicable on $y$ axis due to errors. Wavelet(sure) misses some key points at corners when a tractor tries to have a turn. Tractor spline without adjusted penalty term presents less fitting at time gap knots, at which time marks keep increasing while position stays the same with velocity is 0. If we take the last knot $p_k$ before and the first knot $p_{k+1}$ after time gap, Hermite spline basis will use $y_k, v_k y_{k+1}$ and $v_{k+1}$ to build up a cubic spline, even though the velocity information is not useful. That is why we got a curve rather than a straight line. Wavelet(BayesThresh), tractor spline without velocity and proposed tractor spline give acceptable results.
+
+Table \ref{1dxymse} illustrates the MSE of all methods on both $x$ and $y$ axises. The proposed tractor spline returns the smallest errors among all methods.
+
+\begin{figure}
+  \centering
+   		\includegraphics[width=\textwidth,height=13cm]{Chapters/02TractorSplineTheory/plot/fittedx06}
+  \caption{Fitted data points on $x$ axis. (a) Fitted by P-spline, which gives over-fitting on these points and misses some information. (b) Fitted by wavelet ($\mathit{sure}$) algorithm. At some turning points, it gives over-fitting. (c) Fitted by wavelet ($\mathit{BayesThresh}$) algorithm. It fits better than ($\mathit{sure}$) and the result is close to the proposed method. (d) Fitted by tractor spline without velocity information. The reconstruction is good to get the original trajectory. (e) Fitted by tractor spline without adjusted penalty term. It gives less fitting at boom-not-working points because of a large time gap. (f) Fitted by proposed method. It fits all data points in a good way.}\label{1dx}
+\end{figure}
+
+\begin{figure}
+  \centering
+     		\includegraphics[width=\textwidth,height=13cm]{Chapters/02TractorSplineTheory/plot/fittedy06}
+  \caption{Fitted data points on $y$ axis. (a) Fitted P-spline is not applicable on $y$ axis as the matrix is not invertible. (b) Fitted by wavelet ($\mathit{sure}$) algorithm. At some turning points, it gives over-fitting. (c) Fitted by wavelet ($\mathit{BayesThresh}$) algorithm is much better than wavelet ($\mathit{sure}$). (d) Fitted by tractor spline without velocity information. The reconstruction is good to get the original trajectory. (e) Fitted by tractor spline without adjusted penalty term. It gives less fitting at boom-not-working. (f) Fitted by proposed method. It fits all data points in a good way.}\label{1dy}
+\end{figure}
+
+%\begin{sidewaystable}
+\begin{table}
+\caption{Mean square error. Tractor spline returns smallest errors among all these methods. P-spline was unable to reconstruct the $y$ trajectory as the original dataset contains some time differences equal to 0.} \label{1dxymse}
+% \centering
+	\setlength\tabcolsep{1.5pt}
+\begin{center}
+ 	\begin{tabular}{|c|c|c|c|c|c|c|}
+ 		\hline
+ 		MSE   &  TS & TS$_{\gamma=0}$ & TS$_{APT=0}$   & P-spline & Wavelet(sure) & Wavelet(Bayes)\\ \hline
+	\textit{$x$-\mbox{axis}}    &  0.204582 & 0.283044 & 0.329834     & 2860.548   & 256.0494  & 6.295914  \\ \hline
+	\textit{$y$-\mbox{axis}}    &  0.002020 & 0.306154 & 0.311513     & \textit{NA} & 1960.2220 & 19.332990  \\ \hline
+ 	\end{tabular}
+ \end{center}
+\end{table}
+%\end{sidewaystable} 
+
+The penalty function of proposed tractor spline is
+\begin{equation}\label{penaltylamb}
+\lambda(t)=b\frac{\Delta t^3}{\Delta d^2}*\lambda_d+(1-b)\frac{\Delta t^3}{\Delta d^2}*\lambda_u, \mbox{where}
+\begin{cases}
+b=1 & \mbox{if boom is working}\\
+b=0 & \mbox{if boom is not working}
+\end{cases}.
+\end{equation}
+To tell the differences more clearly, we take $\log(\lambda(t))$ in our demonstration. Figure \ref{penaltyxygg} indicates that at turning points and long time gap knots, the adjusted penalty term will lead $\lambda(t)$ to large values, which forces the spline to be a straight line between two knots. It can be seen in figure (c) and (d) clearly. Histogram plots of $\log(\lambda(t))$ show that most of the penalty values are small, which allows the tractor spline goes as closer as it can to the observed points. Only a few of penalty values are large, so that tractor spline gives a straight line at tricky points. 
+
+\begin{figure}
+  \centering
+    \includegraphics[width=\textwidth,height=13cm]{Chapters/02TractorSplineTheory/plot/penaltyxy06} 
+  \caption{Penalty function of tractor spline on $x$ and $y$ axises. The big black dots in plots (c) and (d) represent large penalty function.}\label{penaltyxygg}
+\end{figure}
+
+
+\subsection{2-Dimension Trajectory}
+
+In a 2-dimensional trajectory reconstruction, we use the same parameters $\lambda_d$, $\lambda_u$ and $\gamma$ on both $x$ and $y$ axises. The parameters will be found by cross-validation where it returns the smallest score of
+\begin{equation}
+\mbox{CV}=\mbox{CV}_x+\mbox{CV}_y.
+\end{equation}
+In 2-dimensional reconstruction, $\Delta d$ in adjusted penalty term is the Euclidean distance $d(p_1,p_2)=\sqrt{(\Delta x)^2+(\Delta y)^2}$ between two position on 2D surface.
+
+Similar results as that in 1 dimension reconstruction, the velocity information keeps trajectory in the right direction and the penalty term makes sure that the crazy curve will disappear between long time gap points. Figure \ref{2dxy} demonstrates fitted trajectory on $x$ and $y$ axises separately and compares the final 2D trajectory with the line based original one. 
+\begin{figure}
+  \centering
+    \includegraphics[width=\textwidth,height=9cm]{Chapters/02TractorSplineTheory/plot/fittedoriginal04} 
+  \caption{Fitted data points on $x$ and $y$ axises. The mean square errors (MSE) on $x$ and $y$ are 0.240734 and 0.478422 respectively. The mean distance error $\sqrt{(\hat{f}_x-x)^2+ (\hat{f}_y-y)^2}$ is 0.645830.}\label{2dxy}
+\end{figure}
+
+The penalty term of 2 dimension reconstruction will be the sum of each penalty on $x$ and $y$ axises. So the estimated penalty function is
+\begin{equation}
+\lambda(t)=\lambda(t)_x+\lambda(t)_y
+\end{equation}
+and presented in figure \ref{2dpenalty}. As the similar results in 1 dimension reconstruction, most of large penalty values appear in long time gap knots and turning points. A histogram plot of penalty function shows that most of the values are small and only a couple of them are large. 
+\begin{figure}
+  \centering
+    \includegraphics[width=\textwidth,height=9cm]{Chapters/02TractorSplineTheory/plot/penaltyoriginal04} 
+  \caption{Penalty function of 2 dimensional reconstruction. Bigger black dots present larger penalty value on $x$ and $y$ axises simultaneously.}\label{2dpenalty}
+\end{figure}
+
+
+
+
 \section{Conclusion and Discussion}
-%\section{Discussion and Summary}
-In this paper, we proposed a tractor spline model with first derivative and adaptive penalty terms to reconstruct trajectory. This method performs better when we know $\mathbf{z}$ and $\mathbf{w}$ information than other methods. Additionally, the reconstruction of a tractor spline contains $4\times (n-1)$ parameters if we have $n$ knots. By adding $2\times (n-2)$ constrains, the original function and its first derivative are continuous on each interior knots, the degrees of freedom will be $4\times (n-1)-2\times (n-2)=2n$. Because there are $n$ location and $n$ velocity data, thus we don't need to specify more parameters or add more constrains on the model. Although the mean square error of tractor spline is not the smallest comparing with other methods, the true mean square error is the smallest most of the time. It means that the reconstruction is closer to the truth. In cross validation, we only focus on the errors of $f$ ignoring that in $f'$. So the reconstruction of $f'$ is not as smooth as that in $f$, which does not affect trajectory reconstruction. A drawback of tractor spline is the cost in finding local minimal parameters, where the cross validation algorithm returns a smaller score. So we optimized our code to make it runs as faster as it can.
+In this chapter, we propose a tractor spline model including the first derivative and adaptive penalty terms to reconstruct trajectory. This method performs better when we know $\mathbf{z}$ and $\mathbf{w}$ information than other methods. Additionally, the reconstruction of a tractor spline contains $4\times (n-1)$ parameters if we have $n$ knots. By adding $2\times (n-2)$ constraints, the original function and its first derivative are continuous on each interior knots, the degrees of freedom will be $4\times (n-1)-2\times (n-2)=2n$. Because there are $n$ location and $n$ velocity data, thus we don't need to specify more parameters or add more constrains on the model. Although the mean square error of tractor spline is not the smallest comparing with other methods, the true mean square error is the smallest most of the time. It means that the reconstruction is closer to the truth. In cross validation, we only focus on the errors of $f$ ignoring that in $f'$. So the reconstruction of $f'$ is not as smooth as that in $f$, which does not affect trajectory reconstruction. A drawback of tractor spline is the cost in finding local minimal parameters, where the cross validation algorithm returns a smaller score. So we optimized our code to make it runs as faster as it can.
 
 
 
