@@ -350,30 +350,258 @@ and the adjusted penalty term in (\ref{adjustedpenalty}) was removed from anothe
 
 
 
-\begin{figure}
-  \centering
-   \includegraphics[width=\textwidth,height=14cm]{Chapters/02TractorSplineTheory/plot/blocks10} 
-  \caption{Numerical example: $\textit{Blocks}$. (a) The true velocity function. (b) Velocity with Gaussian noise at SNR=7. (c) Generated position function. (d) Position with Gaussian noise at SNR=7. (e) Reconstruction from Wavelet with sure threshold. (f) Reconstruction from Wavelet with BayesThresh approach. (g) Reconstruction by P-spline. (h) Reconstruction by tractor spline setting $\gamma=0$. (i) Reconstruction by tractor spline with normal penalty term. (j) Reconstruction by proposed tractor spline.}\label{num1}
-\end{figure}
+%\begin{figure}
+%  \centering
+%   \includegraphics[width=\textwidth,height=14cm]{Chapters/02TractorSplineTheory/plot/blocks10} 
+%  \caption{Numerical example: $\textit{Blocks}$. (a) The true velocity function. (b) Velocity with Gaussian noise at SNR=7. (c) Generated position function. (d) Position with Gaussian noise at SNR=7. (e) Reconstruction from Wavelet with sure threshold. (f) Reconstruction from Wavelet with BayesThresh approach. (g) Reconstruction by P-spline. (h) Reconstruction by tractor spline setting $\gamma=0$. (i) Reconstruction by tractor spline with normal penalty term. (j) Reconstruction by proposed tractor spline.}\label{num1}
+%\end{figure}
 
 \begin{figure}
-  \centering
-    \includegraphics[width=\textwidth,height=14cm]{Chapters/02TractorSplineTheory/plot/bumps10}
-  \caption{Numerical example: $\textit{Bumps}$. (a) The true velocity function. (b) Velocity with Gaussian noise at SNR=7. (c) Generated position function. (d) Position with Gaussian noise at SNR=7. (e) Reconstruction from Wavelet with sure threshold. (f) Reconstruction from Wavelet with BayesThresh approach. (g) Reconstruction by P-spline. (h) Reconstruction by tractor spline setting $\gamma=0$. (i) Reconstruction by tractor spline with normal penalty term. (j) Reconstruction by proposed tractor spline.}\label{num2}
-\end{figure}
+    \centering
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBlocks.pdf}
+    \caption{The \textit{Blocks} function.}
+    \end{subfigure}%
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\linewidth,,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBlocksNoise.pdf}
+    \caption{Noisy \textit{Blocks} at \textit{SNR}=7.}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBlocksPosition.pdf}
+    \caption{Generated positions.}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBlocksPositionNoise.pdf}
+    \caption{Noisy position at \textit{SNR}=7.}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBlocksSure.pdf}
+    \caption{Reconstruction from Wavelet by sure threshold.}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBlocksBayes.pdf}
+    \caption{Reconstruction from Wavelet by BayesThresh approach.}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBlocksPSpline.pdf}
+    \caption{Reconstruction by P-spline. \\\mbox{  } }
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBlocksGamma.pdf}
+    \caption{Reconstruction by tractor spline setting $\gamma=0$}
+    \end{subfigure}
+  \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBlocksPSpline.pdf}
+    \caption{Reconstruction by tractor spline with normal penalty term.}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBlocksTractor.pdf}
+    \caption{Reconstruction by proposed tractor spline.}
+    \end{subfigure}
+\caption{Numerical example: $\textit{Blocks}$. Comparison of different reconstruction methods with simulated data.}\label{num1}
+ \end{figure}
+
+%
+%\begin{figure}
+%  \centering
+%    \includegraphics[width=\textwidth,height=14cm]{Chapters/02TractorSplineTheory/plot/bumps10}
+%  \caption{Numerical example: $\textit{Bumps}$. (a) The true velocity function. (b) Velocity with Gaussian noise at SNR=7. (c) Generated position function. (d) Position with Gaussian noise at SNR=7. (e) Reconstruction from Wavelet with sure threshold. (f) Reconstruction from Wavelet with BayesThresh approach. (g) Reconstruction by P-spline. (h) Reconstruction by tractor spline setting $\gamma=0$. (i) Reconstruction by tractor spline with normal penalty term. (j) Reconstruction by proposed tractor spline.}\label{num2}
+%\end{figure}
+
 
 \begin{figure}
-  \centering
-    \includegraphics[width=\textwidth,height=14cm]{Chapters/02TractorSplineTheory/plot/heavi10} 
-  \caption{Numerical example: $\textit{HeaviSine}$. (a) The true velocity function. (b) Velocity with Gaussian noise at SNR=7. (c) Generated position function. (d) Position with Gaussian noise at SNR=7. (e) Reconstruction from Wavelet with sure threshold. (f) Reconstruction from Wavelet with BayesThresh approach. (g) Reconstruction by P-spline. (h) Reconstruction by tractor spline setting $\gamma=0$. (i) Reconstruction by tractor spline with normal penalty term. (j) Reconstruction by proposed tractor spline.}\label{num3}
-\end{figure}
+    \centering
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBumps.pdf}
+    \caption{True \textit{Bumps} function.}
+    \end{subfigure}%
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\linewidth,,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBumpsNoise.pdf}
+    \caption{Noisy \textit{Bumps} at \textit{SNR}=7.}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBumpsPosition.pdf}
+    \caption{Generated positions.}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBumpsPositionNoise.pdf}
+    \caption{Noisy position at \textit{SNR}=7.}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBumpsSure.pdf}
+    \caption{Reconstruction from Wavelet by sure threshold.}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBumpsBayes.pdf}
+    \caption{Reconstruction from Wavelet by BayesThresh approach.}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBumpsPSpline.pdf}
+    \caption{Reconstruction by P-spline. \\\mbox{  } }
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBumpsGamma.pdf}
+    \caption{Reconstruction by tractor spline setting $\gamma=0$}
+    \end{subfigure}
+  \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBumpsPSpline.pdf}
+    \caption{Reconstruction by tractor spline with normal penalty term.}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBumpsTractor.pdf}
+    \caption{Reconstruction by proposed tractor spline.}
+    \end{subfigure}
+\caption{Numerical example: $\textit{Bumps}$. Comparison of different reconstruction methods with simulated data.}\label{num2}
+ \end{figure}
+
+
+
+%\begin{figure}
+%  \centering
+%    \includegraphics[width=\textwidth,height=14cm]{Chapters/02TractorSplineTheory/plot/heavi10} 
+%  \caption{Numerical example: $\textit{HeaviSine}$. (a) The true velocity function. (b) Velocity with Gaussian noise at SNR=7. (c) Generated position function. (d) Position with Gaussian noise at SNR=7. (e) Reconstruction from Wavelet with sure threshold. (f) Reconstruction from Wavelet with BayesThresh approach. (g) Reconstruction by P-spline. (h) Reconstruction by tractor spline setting $\gamma=0$. (i) Reconstruction by tractor spline with normal penalty term. (j) Reconstruction by proposed tractor spline.}\label{num3}
+%\end{figure}
+
+
 
 \begin{figure}
-  \centering
-         \includegraphics[width=\textwidth,height=14cm]{Chapters/02TractorSplineTheory/plot/doppler10} 
-  \caption{Numerical example: $\textit{Doppler}$. (a) The true velocity function. (b) Velocity with Gaussian noise at SNR=7. (c) Generated position function. (d) Position with Gaussian noise at SNR=7. (e) Reconstruction from Wavelet with sure threshold. (f) Reconstruction from Wavelet with BayesThresh approach. (g) Reconstruction by P-spline. (h) Reconstruction by tractor spline setting $\gamma=0$. (i) Reconstruction by tractor spline with normal penalty term. (j) Reconstruction by proposed tractor spline.}\label{num4}
-\end{figure}
+    \centering
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSine.pdf}
+    \caption{True \textit{HeaviSine} function.}
+    \end{subfigure}%
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\linewidth,,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSineNoise.pdf}
+    \caption{Noisy \textit{HeaviSine} at \textit{SNR}=7.}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSinePosition.pdf}
+    \caption{Generated positions.}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSinePositionNoise.pdf}
+    \caption{Noisy position at \textit{SNR}=7.}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSineSure.pdf}
+    \caption{Reconstruction from Wavelet by sure threshold.}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSineBayes.pdf}
+    \caption{Reconstruction from Wavelet by BayesThresh approach.}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSinePSpline.pdf}
+    \caption{Reconstruction by P-spline. \\\mbox{  } }
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSineGamma.pdf}
+    \caption{Reconstruction by tractor spline setting $\gamma=0$}
+    \end{subfigure}
+  \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSinePSpline.pdf}
+    \caption{Reconstruction by tractor spline with normal penalty term.}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSineGamma.pdf}
+    \caption{Reconstruction by proposed tractor spline.}
+    \end{subfigure}
+\caption{Numerical example: $\textit{HeaviSine}$. Comparison of different reconstruction methods with simulated data.}\label{num3}
+ \end{figure}
 
+%
+%
+%\begin{figure}
+%  \centering
+%         \includegraphics[width=\textwidth,height=14cm]{Chapters/02TractorSplineTheory/plot/doppler10} 
+%  \caption{Numerical example: $\textit{Doppler}$. (a) The true velocity function. (b) Velocity with Gaussian noise at SNR=7. (c) Generated position function. (d) Position with Gaussian noise at SNR=7. (e) Reconstruction from Wavelet with sure threshold. (f) Reconstruction from Wavelet with BayesThresh approach. (g) Reconstruction by P-spline. (h) Reconstruction by tractor spline setting $\gamma=0$. (i) Reconstruction by tractor spline with normal penalty term. (j) Reconstruction by proposed tractor spline.}\label{num4}
+%\end{figure}
+
+
+\begin{figure}
+    \centering
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggDoppler.pdf}
+    \caption{True \textit{Doppler} function.}
+    \end{subfigure}%
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\linewidth,,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggDopplerNoise.pdf}
+    \caption{Noisy \textit{Doppler} at \textit{SNR}=7.}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggDopplerPosition.pdf}
+    \caption{Generated positions.}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggDopplerPositionNoise.pdf}
+    \caption{Noisy position at \textit{SNR}=7.}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggDopplerSure.pdf}
+    \caption{Reconstruction from Wavelet by sure threshold.}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggDopplerBayes.pdf}
+    \caption{Reconstruction from Wavelet by BayesThresh approach.}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggDopplerPSpline.pdf}
+    \caption{Reconstruction by P-spline. \\\mbox{  } }
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggDopplerGamma.pdf}
+    \caption{Reconstruction by tractor spline setting $\gamma=0$}
+    \end{subfigure}
+  \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggDopplerPSpline.pdf}
+    \caption{Reconstruction by tractor spline with normal penalty term.}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggDopplerGamma.pdf}
+    \caption{Reconstruction by proposed tractor spline.}
+    \end{subfigure}
+\caption{Numerical example: $\textit{Doppler}$. Comparison of different reconstruction methods with simulated data.}\label{num4}
+ \end{figure}
 
 By comparing, we can see that all these methods can rebuild up the skeleton of generated trajectory. Wavelets(sure) method have more wiggles in interior interval than Wavelet(BayesThresh), and the latter one becomes fluctuation near boundary knots. P-spline gives much smoother fitting than wavelets, but the drawback is losing more specific details. Tractor spline without velocity might give us less fitting, as can be seen from Blocks and Bumps where there should be a straight line. Tractor spline without adjusted penalty term could also get over fitting when the direction changes more frequently than normal, although it catches specific feature in HeaviSine. The proposed tractor spline performs much better than other methods and returns the near-true trajectory reconstruction.  
 
