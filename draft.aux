@@ -70,24 +70,24 @@
 \@writefile{toc}{\contentsline {section}{\numberline {2.2}Tractor Spline}{12}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2.1}Objective Function}{12}}
 \newlabel{of2d}{{2.5}{12}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.2}Basis Functions}{12}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.2}Basis Functions}{13}}
 \newlabel{hermitebasis1}{{2.6}{13}}
 \newlabel{basisindependent}{{2}{14}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2.1}{\ignorespaces The two basis functions $N_{2k+1}$ and $N_{2k+2}$ on an arbitrary interval $[t_k, t_{k+2})$. It is apparently that these basis functions are continuous on this interval and have continuous first derivatives.\relax }}{14}}
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{basisfigure}{{2.1}{14}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2.3}Solution to The Objective Function}{14}}
-\newlabel{tractormse}{{2.16}{14}}
 \citation{esl2009}
-\citation{esl2009}
+\newlabel{tractormse}{{2.16}{15}}
 \newlabel{thetahat}{{2.20}{15}}
+\citation{esl2009}
 \newlabel{fhy}{{2.24}{16}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2.4}Adjusted Penalty Term and Parameter Function}{16}}
 \citation{green1993nonparametric}
 \newlabel{adjustedpenalty}{{2.26}{17}}
 \@writefile{toc}{\contentsline {section}{\numberline {2.3}Parameter Selection and Cross Validation}{17}}
-\newlabel{originalcv}{{2.27}{17}}
 \citation{green1993nonparametric}
+\newlabel{originalcv}{{2.27}{18}}
 \newlabel{cvlema}{{1}{18}}
 \citation{donoho1994ideal}
 \citation{donoho1995adapting}
@@ -108,103 +108,103 @@
 \newlabel{num3}{{2.4}{23}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2.5}{\ignorespaces Numerical example: $\textit  {Doppler}$. Comparison of different reconstruction methods with simulated data.\relax }}{24}}
 \newlabel{num4}{{2.5}{24}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.6}{\ignorespaces Estimated penalty functions. Left side shows how the value of $\lambda (t)$ changes on the interval. Right side projects $\lambda (t)$ into reconstructions. The bigger the blacks dots present, the larger the penalty values are.\relax }}{25}}
-\newlabel{numpenalty}{{2.6}{25}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.7}{\ignorespaces Estimated velocity functions by taking the first derivative of tractor spline. (a) Fitted $\mathit  {Blocks}$. (b) Fitted $\mathit  {Bumps}$. (c) Fitted $\mathit  {HeaviSine}$. (d) Fitted $\mathit  {Doppler}$.\relax }}{26}}
-\newlabel{numvtractor}{{2.7}{26}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.2}Evaluation}{26}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.2}Evaluation}{25}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.5}Application on Real Dataset}{25}}
+\newlabel{splineapplication}{{2.5}{25}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.6}{\ignorespaces Distribution of penalty values in reconstructed Tractor Spline. Figures on left side indicate the values of $\lambda (t)$ varying in intervals. On right side, $\lambda (t)$ is projected into reconstructions. The bigger the blacks dots present, the larger the penalty values are.\relax }}{26}}
+\newlabel{numpenalty}{{2.6}{26}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.7}{\ignorespaces Estimated velocity functions (original simulation functions) by Tractor Spline.\relax }}{27}}
+\newlabel{numvtractor}{{2.7}{27}}
 \@writefile{lot}{\contentsline {table}{\numberline {2.1}{\ignorespaces MSE. Mean square errors of different methods. The numbers in bold indicate the smallest error among these methods under the same level. The difference is not significant.\relax }}{27}}
 \newlabel{mse3200}{{2.1}{27}}
-\@writefile{toc}{\contentsline {section}{\numberline {2.5}Application on Real Dataset}{27}}
-\newlabel{splineapplication}{{2.5}{27}}
-\@writefile{lot}{\contentsline {table}{\numberline {2.2}{\ignorespaces TMSE. True mean square errors of different methods. The numbers in bold indicate the smallest error among these methods under the same level. The proposed tractor spline returns the smallest TMSE among all the methods under the same level except for $\mathit  {Doppler}$ with SNR=7. The differences are significant. \relax }}{28}}
+\@writefile{lot}{\contentsline {table}{\numberline {2.2}{\ignorespaces TMSE. True mean square errors of different methods. The numbers in bold indicate the smallest error among these methods under the same level. The proposed Tractor Spline returns the smallest TMSE among all the methods under the same level except for $\mathit  {Doppler}$ with SNR=7. The differences are significant. \relax }}{28}}
 \newlabel{tmse3200}{{2.2}{28}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.8}{\ignorespaces Original data points. (a) Original position recorded by GPS units. Circle points stand for the status of boom not working; cross points stand for working. (b) Original trajectory made by simply connecting GPS points sequentially. (c) Original position on $x$ axis. (d) Original position on $y$ axis.\relax }}{28}}
-\newlabel{original512}{{2.8}{28}}
-\@writefile{lot}{\contentsline {table}{\numberline {2.3}{\ignorespaces Mean square error. Tractor spline returns smallest errors among all these methods. P-spline was unable to reconstruct the $y$ trajectory as the original dataset contains some time differences equal to 0.\relax }}{29}}
-\newlabel{1dxymse}{{2.3}{29}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.1}1-Dimension Trajectory}{29}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.1}1-Dimension Trajectory}{28}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.8}{\ignorespaces Original data points. (a) Original positions recorded by GPS units. Circle points means the boom is not working; cross points means it is working. (b) Original trajectory with line-based method: simply connect all the points sequentially with straight lines. (c) Original positions on $x$ axis. (d) Original positions on $y$ axis.\relax }}{29}}
+\newlabel{original512}{{2.8}{29}}
 \newlabel{penaltylamb}{{2.48}{29}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.9}{\ignorespaces Fitted data points on $x$ axis. (a) Fitted by P-spline, which gives over-fitting on these points and misses some information. (b) Fitted by wavelet ($\mathit  {sure}$) algorithm. At some turning points, it gives over-fitting. (c) Fitted by wavelet ($\mathit  {BayesThresh}$) algorithm. It fits better than ($\mathit  {sure}$) and the result is close to the proposed method. (d) Fitted by tractor spline without velocity information. The reconstruction is good to get the original trajectory. (e) Fitted by tractor spline without adjusted penalty term. It gives less fitting at boom-not-working points because of a large time gap. (f) Fitted by proposed method. It fits all data points in a good way.\relax }}{30}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.9}{\ignorespaces Fitted data points on $x$ axis. (a) Fitted by P-spline, which gives over-fitting on these points and misses some information. (b) Fitted by wavelet ($\mathit  {sure}$) algorithm. At some turning points, it gives over-fitting. (c) Fitted by wavelet ($\mathit  {BayesThresh}$) algorithm. It fits better than ($\mathit  {sure}$) and the result is close to the proposed method. (d) Fitted by Tractor Spline without velocity information. The reconstruction is good to get the original trajectory. (e) Fitted by Tractor Spline without adjusted penalty term. It gives less fitting at boom-not-working points because of a large time gap. (f) Fitted by proposed method. It fits all data points in a good way.\relax }}{30}}
 \newlabel{1dx}{{2.9}{30}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.10}{\ignorespaces Fitted data points on $y$ axis. (a) Fitted P-spline is not applicable on $y$ axis as the matrix is not invertible. (b) Fitted by wavelet ($\mathit  {sure}$) algorithm. At some turning points, it gives over-fitting. (c) Fitted by wavelet ($\mathit  {BayesThresh}$) algorithm is much better than wavelet ($\mathit  {sure}$). (d) Fitted by tractor spline without velocity information. The reconstruction is good to get the original trajectory. (e) Fitted by tractor spline without adjusted penalty term. It gives less fitting at boom-not-working. (f) Fitted by proposed method. It fits all data points in a good way.\relax }}{31}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.10}{\ignorespaces Fitted data points on $y$ axis. (a) Fitted P-spline is not applicable on $y$ axis as the matrix is not invertible. (b) Fitted by wavelet ($\mathit  {sure}$) algorithm. At some turning points, it gives over-fitting. (c) Fitted by wavelet ($\mathit  {BayesThresh}$) algorithm is much better than wavelet ($\mathit  {sure}$). (d) Fitted by Tractor Spline without velocity information. The reconstruction is good to get the original trajectory. (e) Fitted by Tractor Spline without adjusted penalty term. It gives less fitting at boom-not-working. (f) Fitted by proposed method. It fits all data points in a good way.\relax }}{31}}
 \newlabel{1dy}{{2.10}{31}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.11}{\ignorespaces Penalty function of tractor spline on $x$ and $y$ axises. The big black dots in plots (c) and (d) represent large penalty function.\relax }}{32}}
-\newlabel{penaltyxygg}{{2.11}{32}}
+\@writefile{lot}{\contentsline {table}{\numberline {2.3}{\ignorespaces Mean square error. Tractor Spline returns smallest errors among all these methods. P-spline was unable to reconstruct the $y$ trajectory as the original dataset contains value-$0$ time differences.\relax }}{32}}
+\newlabel{1dxymse}{{2.3}{32}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.5.2}2-Dimension Trajectory}{32}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.12}{\ignorespaces Fitted data points on $x$ and $y$ axises. The mean square errors (MSE) on $x$ and $y$ are 0.240734 and 0.478422 respectively. The mean distance error $\sqrt  {(\mathaccentV {hat}05E{f}_x-x)^2+ (\mathaccentV {hat}05E{f}_y-y)^2}$ is 0.645830.\relax }}{33}}
-\newlabel{2dxy}{{2.12}{33}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.13}{\ignorespaces Penalty function of 2 dimensional reconstruction. Bigger black dots present larger penalty value on $x$ and $y$ axises simultaneously.\relax }}{34}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.11}{\ignorespaces Penalty function of Tractor Spline on $x$ and $y$ axises. The big black dots in plots (c) indicate large penalty values. It can be seen that most of large penalty values occur at turnings, where the tractor likely slows down and takes breaks. \relax }}{33}}
+\newlabel{penaltyxygg}{{2.11}{33}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.12}{\ignorespaces 2-Dimensional reconstruction with penalty function. Larger dots indicate bigger penalty values. The mean square errors (MSE) on $x$ and $y$ are 0.240734 and 0.478422 respectively. The mean distance error $\sqrt  {(\mathaccentV {hat}05E{f}_x-x)^2+ (\mathaccentV {hat}05E{f}_y-y)^2}$ is 0.645830.\relax }}{34}}
+\newlabel{2dxy}{{2.12}{34}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.13}{\ignorespaces Penalty function of 2-Dimensional reconstruction.\relax }}{34}}
 \newlabel{2dpenalty}{{2.13}{34}}
-\@writefile{toc}{\contentsline {section}{\numberline {2.6}Conclusion and Discussion}{34}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {3}Gaussian Process Regression}{35}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.6}Conclusion and Discussion}{35}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {3}Gaussian Process Regression}{37}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {3.1}Introduction}{35}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.1}Introduction}{37}}
 \citation{de1978practical}
 \citation{judd1998numerical}
 \citation{chen2009feedback}
 \citation{ellis2009}
 \citation{green1993nonparametric}
 \citation{hastie1990generalized}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.1}Spline}{36}}
-\newlabel{fbasis}{{3.1}{36}}
-\newlabel{mse}{{3.2}{36}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.1}Spline}{38}}
+\newlabel{fbasis}{{3.1}{38}}
+\newlabel{mse}{{3.2}{38}}
 \citation{b_gpml}
 \citation{berlinet2011reproducing}
 \citation{wahba1990spline}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.2}Gaussian Process Regression}{37}}
-\newlabel{covdef}{{3.6}{37}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.2}Gaussian Process Regression}{39}}
+\newlabel{covdef}{{3.6}{39}}
 \citation{wang1998smoothing}
 \citation{kimeldorf1971some}
 \citation{kimeldorf1970correspondence}
 \citation{gubook}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.3}The Smoothing Spline as Bayes Estimates}{38}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.2}A reproducing kernel on $\mathcal  {C}_{p.w.}^{2}[0,1]$}{38}}
-\newlabel{maineq}{{3.17}{38}}
-\newlabel{kerneleq}{{3.19}{39}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.3}Computation of Polynomial Smoothing Splines}{40}}
-\newlabel{etaeq}{{3.23}{40}}
-\newlabel{matrixeq}{{3.24}{40}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.4}Polynomial Smoothing Splines as Bayes Estimates}{41}}
-\newlabel{rhoeq}{{3.26}{42}}
-\newlabel{lem}{{3}{42}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.5}Numeric Simulation of Smoothing Spline and GPR}{43}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces (a) Comparing two methods under the same parameters $\lambda =0.01$ and $\gamma =0.1$. In this graph, the blue line is reconstruction from tractor spline, the red line is the mean of Gaussian Process, which is the posterior $\mathbb  {E}(f(x) \mid \mathbf  {Y}, \mathbf  {V})$. (b) The differences between two methods under the same parameters.\relax }}{44}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Best fitting simulation by TS and GPR.\relax }}{45}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.3}The Smoothing Spline as Bayes Estimates}{40}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.2}A reproducing kernel on $\mathcal  {C}_{p.w.}^{2}[0,1]$}{40}}
+\newlabel{maineq}{{3.17}{40}}
+\newlabel{kerneleq}{{3.19}{41}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.3}Computation of Polynomial Smoothing Splines}{42}}
+\newlabel{etaeq}{{3.23}{42}}
+\newlabel{matrixeq}{{3.24}{42}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.4}Polynomial Smoothing Splines as Bayes Estimates}{43}}
+\newlabel{rhoeq}{{3.26}{44}}
+\newlabel{lem}{{3}{44}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.5}Numeric Simulation of Smoothing Spline and GPR}{45}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces (a) Comparing two methods under the same parameters $\lambda =0.01$ and $\gamma =0.1$. In this graph, the blue line is reconstruction from tractor spline, the red line is the mean of Gaussian Process, which is the posterior $\mathbb  {E}(f(x) \mid \mathbf  {Y}, \mathbf  {V})$. (b) The differences between two methods under the same parameters.\relax }}{46}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Best fitting simulation by TS and GPR.\relax }}{47}}
 \citation{cappe2009inference}
 \citation{smcmip2011}
 \citation{elliott1995estimation}
 \citation{cargnoni1997bayesian}
 \citation{vieira2016online}
 \citation{hangos2006analysis}
-\@writefile{toc}{\contentsline {chapter}{\numberline {4}Filtering Problem}{47}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Filtering Problem}{49}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {4.1}Introduction}{47}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}Introduction}{49}}
 \citation{petris2009dynamic}
 \citation{petris2009dynamic}
 \citation{kalman1960new}
 \citation{de1988likelihood}
-\newlabel{statemodel1}{{4.1}{48}}
-\newlabel{statemodel2}{{4.2}{48}}
+\newlabel{statemodel1}{{4.1}{50}}
+\newlabel{statemodel2}{{4.2}{50}}
 \citation{handschin1969monte}
 \citation{handschin1970monte}
 \citation{gordon1993novel}
 \citation{cappe2009inference}
 \citation{smcmip2011}
 \citation{ristic2004beyond}
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}Filtering Problem and Estimation}{49}}
-\newlabel{sectionFiltering}{{4.2}{49}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Sequential Monte Carlo Method}{49}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Filtering Problem and Estimation}{51}}
+\newlabel{sectionFiltering}{{4.2}{51}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Sequential Monte Carlo Method}{51}}
 \citation{arulampalam2002tutorial}
-\newlabel{rawParticleFilter}{{4.3}{50}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}Importance sampling}{51}}
-\newlabel{PFexpectation}{{4.4}{51}}
+\newlabel{rawParticleFilter}{{4.3}{52}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}Importance sampling}{53}}
+\newlabel{PFexpectation}{{4.4}{53}}
 \citation{smcmip2011}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.3}Sequential Importance Sampling and Resampling}{52}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.3}Sequential Importance Sampling and Resampling}{54}}
 \citation{andrieu2010particle}
 \citation{andrieu1999sequential}
 \citation{fearnhead2002markov}
@@ -214,17 +214,17 @@
 \citation{gordon1993novel}
 \citation{JOHANSEN20081498}
 \citation{liu2008monte}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.4}Auxiliary Particle Filter}{54}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.4}Auxiliary Particle Filter}{56}}
 \citation{chopin2002sequential}
 \citation{chopin2002sequential}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.5}Sequential Particle Filter}{55}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.5}Sequential Particle Filter}{57}}
 \citation{tierney1994markov}
 \citation{septier2009mcmc}
 \citation{berzuini1997dynamic}
 \citation{khan2005mcmc}
 \citation{golightly2006bayesian}
 \citation{pang2008models}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.6}Sequential MCMC}{56}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.6}Sequential MCMC}{58}}
 \citation{septier2009mcmc}
 \citation{pang2008models}
 \citation{septier2009multiple}
@@ -233,21 +233,21 @@
 \citation{higuchi2001self}
 \citation{kitagawa1998self}
 \citation{liu2001combined}
-\@writefile{toc}{\contentsline {section}{\numberline {4.3}On-line State and Parameter Estimation}{58}}
-\newlabel{sectionStateandPara}{{4.3}{58}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}Artificial Dynamic Noise}{58}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}On-line State and Parameter Estimation}{60}}
+\newlabel{sectionStateandPara}{{4.3}{60}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}Artificial Dynamic Noise}{60}}
 \citation{polson2008practical}
 \citation{polson2008practical}
 \citation{kantas2009overview}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.2}Practical Filtering}{59}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.3}Liu and West's Filter}{60}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.4}Storvik Filter}{60}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.5}Particle Learning}{60}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.6}Ensemble Kalman Filter}{61}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.7}On-line EM}{61}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.4}Simulation Study}{61}}
-\newlabel{sectionSimulation}{{4.4}{61}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.5}Conclusion}{61}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.2}Practical Filtering}{61}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.3}Liu and West's Filter}{62}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.4}Storvik Filter}{62}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.5}Particle Learning}{62}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.6}Ensemble Kalman Filter}{63}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.7}On-line EM}{63}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.4}Simulation Study}{63}}
+\newlabel{sectionSimulation}{{4.4}{63}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.5}Conclusion}{63}}
 \citation{vieira2016online}
 \citation{kitagawa1998self}
 \citation{liu2001combined}
@@ -257,14 +257,14 @@
 \citation{stroud2016bayesian}
 \citation{polson2008practical}
 \citation{haario1999adaptive}
-\@writefile{toc}{\contentsline {chapter}{\numberline {5}Monte Carlo Markov Chain}{63}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Monte Carlo Markov Chain}{65}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {5.1}Introduction}{63}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.2}Bayesian Inference on Combined State and Parameters}{64}}
-\newlabel{obserY}{{5.1}{64}}
-\newlabel{hiddX}{{5.2}{64}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}Introduction}{65}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.2}Bayesian Inference on Combined State and Parameters}{66}}
+\newlabel{obserY}{{5.1}{66}}
+\newlabel{hiddX}{{5.2}{66}}
 \citation{hammersley1964percolation}
 \citation{geweke1989bayesian}
 \citation{casella2004generalized}
@@ -272,22 +272,22 @@
 \citation{geman1984stochastic}
 \citation{metropolis1953equation}
 \citation{hastings1970monte}
-\newlabel{objecfun}{{5.3}{65}}
-\newlabel{M1}{{5.4}{65}}
-\newlabel{M2}{{5.5}{65}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.1}Log-likelihood Function of Parameter Posterior}{66}}
-\newlabel{sectionlogParameter}{{5.2.1}{66}}
-\newlabel{generaljointmatrix}{{5.6}{66}}
-\newlabel{sigmayy01}{{5.7}{66}}
-\newlabel{sigmayy02}{{5.8}{67}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.2}The Forecast Distribution}{67}}
-\newlabel{sectionforecast}{{5.2.2}{67}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.3}The Estimation Distribution}{68}}
-\newlabel{generalEstDistr}{{5.2.3}{68}}
-\newlabel{generalmux}{{5.13}{68}}
-\newlabel{generalSigx}{{5.14}{68}}
-\newlabel{mixtureGaussian}{{5.15}{68}}
-\newlabel{mixturemean}{{5.16}{68}}
+\newlabel{objecfun}{{5.3}{67}}
+\newlabel{M1}{{5.4}{67}}
+\newlabel{M2}{{5.5}{67}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.1}Log-likelihood Function of Parameter Posterior}{68}}
+\newlabel{sectionlogParameter}{{5.2.1}{68}}
+\newlabel{generaljointmatrix}{{5.6}{68}}
+\newlabel{sigmayy01}{{5.7}{68}}
+\newlabel{sigmayy02}{{5.8}{69}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.2}The Forecast Distribution}{69}}
+\newlabel{sectionforecast}{{5.2.2}{69}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.3}The Estimation Distribution}{70}}
+\newlabel{generalEstDistr}{{5.2.3}{70}}
+\newlabel{generalmux}{{5.13}{70}}
+\newlabel{generalSigx}{{5.14}{70}}
+\newlabel{mixtureGaussian}{{5.15}{70}}
+\newlabel{mixturemean}{{5.16}{70}}
 \citation{smith1993bayesian}
 \citation{tierney1994markov}
 \citation{gilks1995markov}
@@ -296,28 +296,28 @@
 \citation{dongarra2000guest}
 \citation{medova2008bayesian}
 \citation{metropolis1953equation}
-\newlabel{mixturevariance}{{5.17}{69}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.3}Random Walk Metropolis-Hastings algorithm}{69}}
-\newlabel{alphabalance}{{5.18}{69}}
+\newlabel{mixturevariance}{{5.17}{71}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.3}Random Walk Metropolis-Hastings algorithm}{71}}
+\newlabel{alphabalance}{{5.18}{71}}
 \citation{sherlock2016adaptive}
 \citation{sherlock2010random}
-\newlabel{stepsizeep}{{5.19}{70}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.1}Self-tuning Metropolis-Hastings Algorithm}{70}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces Examples of 2-Dimension Random Walk Metropolis-Hastings algorithm. Figure (a) is using one-variable-at-a-time proposal Random Walk. At each time, only one variable is changed and the other one stay constant. Figure (b) and (c) are using multi-variable-at-a-time Random Walk. The difference is in figure (b), every forward step are proposed independently, but in (c) are proposed according to the covariance matrix. \relax }}{71}}
-\newlabel{randomwalk}{{5.1}{71}}
-\newlabel{autostepab}{{5.22}{71}}
+\newlabel{stepsizeep}{{5.19}{72}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.1}Self-tuning Metropolis-Hastings Algorithm}{72}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces Examples of 2-Dimension Random Walk Metropolis-Hastings algorithm. Figure (a) is using one-variable-at-a-time proposal Random Walk. At each time, only one variable is changed and the other one stay constant. Figure (b) and (c) are using multi-variable-at-a-time Random Walk. The difference is in figure (b), every forward step are proposed independently, but in (c) are proposed according to the covariance matrix. \relax }}{73}}
+\newlabel{randomwalk}{{5.1}{73}}
+\newlabel{autostepab}{{5.22}{73}}
 \citation{christen2005markov}
-\newlabel{algoonevarible}{{1}{72}}
-\newlabel{stRWMHselect}{{3}{72}}
-\@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces Self-tuning Random Walk Metropolis-Hastings Algorithm.\relax }}{72}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.2}Adaptive Delayed Acceptance Metropolis-Hastings Algorithm}{72}}
-\newlabel{dahalpha2}{{5.23}{72}}
+\newlabel{algoonevarible}{{1}{74}}
+\newlabel{stRWMHselect}{{3}{74}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces Self-tuning Random Walk Metropolis-Hastings Algorithm.\relax }}{74}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.2}Adaptive Delayed Acceptance Metropolis-Hastings Algorithm}{74}}
+\newlabel{dahalpha2}{{5.23}{74}}
 \citation{sherlock2015efficiency}
 \citation{stroud2016bayesian}
 \citation{mathew2012bayesian}
 \citation{sherlock2010random}
 \citation{roberts2001optimal}
-\newlabel{dahalpha1}{{5.24}{73}}
+\newlabel{dahalpha1}{{5.24}{75}}
 \citation{gelman1996efficient}
 \citation{gilks1995markov}
 \citation{roberts2001optimal}
@@ -327,10 +327,10 @@
 \citation{sherlock2009optimal}
 \citation{sherlock2013optimal}
 \citation{sherlock2010random}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.3}Efficiency of Metropolis-Hastings Algorithm}{74}}
-\newlabel{effMHA}{{5.3.3}{74}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces Metropolis algorithm sampling for a single parameter with (a) a large step size, (b) a small step size, (c) an appropriate step size. The upper plots show the sample chain and lower plots indicate the autocorrelation for each case.\relax }}{74}}
-\newlabel{largesmallstepsize}{{5.2}{74}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.3}Efficiency of Metropolis-Hastings Algorithm}{76}}
+\newlabel{effMHA}{{5.3.3}{76}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces Metropolis algorithm sampling for a single parameter with (a) a large step size, (b) a small step size, (c) an appropriate step size. The upper plots show the sample chain and lower plots indicate the autocorrelation for each case.\relax }}{76}}
+\newlabel{largesmallstepsize}{{5.2}{76}}
 \citation{andrieu2008tutorial}
 \citation{sherlock2010random}
 \citation{graves2011automatic}
@@ -341,53 +341,53 @@
 \citation{gong2016practical}
 \citation{geyer1992practical}
 \citation{sokal1997monte}
-\@writefile{toc}{\contentsline {section}{\numberline {5.4}Simulation Studies}{77}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.1}Simulation on Regular Time Series Data}{78}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.4}Simulation Studies}{79}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.1}Simulation on Regular Time Series Data}{80}}
 \citation{lopes2011particle}
-\newlabel{linearlogL}{{5.29}{79}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.3}{\ignorespaces Linear simulation with true parameter $\theta = \{\phi =0.9,\tau ^2=0.5,\sigma ^2=1\}$. By transforming to original scale, the estimation is $\mathaccentV {hat}05E{\theta }=\{ \phi = 0.8810, \tau ^2 = 0.5247,\sigma ^2= 0.9416\}$. \relax }}{79}}
-\newlabel{linearmarginplots}{{5.3}{79}}
-\newlabel{sectionlinearRecursive}{{5.4.1}{79}}
+\newlabel{linearlogL}{{5.29}{81}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.3}{\ignorespaces Linear simulation with true parameter $\theta = \{\phi =0.9,\tau ^2=0.5,\sigma ^2=1\}$. By transforming to original scale, the estimation is $\mathaccentV {hat}05E{\theta }=\{ \phi = 0.8810, \tau ^2 = 0.5247,\sigma ^2= 0.9416\}$. \relax }}{81}}
+\newlabel{linearmarginplots}{{5.3}{81}}
+\newlabel{sectionlinearRecursive}{{5.4.1}{81}}
 \citation{sherman1950adjustment}
 \citation{woodbury1950inverting}
 \citation{bartlett1951inverse}
 \citation{bodewig1959matrix}
 \citation{deng2011generalization}
 \citation{bartlett1951inverse}
-\newlabel{beforeSMformula}{{5.30}{80}}
-\newlabel{SMWformula}{{5.31}{80}}
-\newlabel{SMformula}{{5.32}{80}}
+\newlabel{beforeSMformula}{{5.30}{82}}
+\newlabel{SMWformula}{{5.31}{82}}
+\newlabel{SMformula}{{5.32}{82}}
 \citation{tandeo2011linear}
-\newlabel{linearmu}{{5.37}{81}}
-\newlabel{linearsigma}{{5.38}{81}}
+\newlabel{linearmu}{{5.37}{83}}
+\newlabel{linearsigma}{{5.38}{83}}
 \citation{einstein1956investigations}
 \citation{vaughan2015goodness}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.4}{\ignorespaces Linear simulation of $x_{1:t}$ and sole $x_t$.In sub-figure (a), the dots is the true $x_{1:t}$ and the solid line is the estimation $\mathaccentV {hat}05E{x}_{1:t}$. In sub-figure (b), the chain in solid line is the estimation $\mathaccentV {hat}05E{x}_t$; dotted line is the true value of $x$; dot-dash line on top is the observed value of $y$; dashed lines are the estimated error. \relax }}{82}}
-\newlabel{linearmarginXt}{{5.4}{82}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.2}Simulation on Irregular Time Series Data}{82}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.4}{\ignorespaces Linear simulation of $x_{1:t}$ and sole $x_t$.In sub-figure (a), the dots is the true $x_{1:t}$ and the solid line is the estimation $\mathaccentV {hat}05E{x}_{1:t}$. In sub-figure (b), the chain in solid line is the estimation $\mathaccentV {hat}05E{x}_t$; dotted line is the true value of $x$; dot-dash line on top is the observed value of $y$; dashed lines are the estimated error. \relax }}{84}}
+\newlabel{linearmarginXt}{{5.4}{84}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.2}Simulation on Irregular Time Series Data}{84}}
 \citation{kijima1997markov}
-\newlabel{linearOUequation}{{5.41}{83}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.5}{\ignorespaces Simulated data. The circle dots are the true state $x_{1:t}$ and cross dots are observations $y_{1:t}$. Irregular time lag $\Delta _t$ are generated from \textit  {Inverse Gamma}(2,0.1) distribution.\relax }}{84}}
-\newlabel{simuOUreview}{{5.5}{84}}
-\newlabel{simuOUlogL}{{5.45}{85}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces Irregular time step OU process simulation. The estimation of $\mathaccentV {hat}05E{\theta }$ is $\{\gamma =0.4841, \lambda ^2=0.1032, \sigma ^2=0.9276\}$. In the plots, the horizontal dark lines are the true $\theta $. \relax }}{85}}
-\newlabel{simuOUmarginplots}{{5.6}{85}}
-\newlabel{linearOUK}{{5.46}{85}}
-\newlabel{linearOUmu}{{5.48}{86}}
-\newlabel{linearOUsigma}{{5.49}{86}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.5}High Dimensional OU-Process Application}{86}}
-\newlabel{OUprocess}{{5.52}{86}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.7}{\ignorespaces Irregular time step OU process simulation of $x_{1:t}$ and sole $x_t$. In sub-figure (a), the dots is the true $x_{1:t}$ and the solid line is the estimation $\mathaccentV {hat}05E{x}_{1:t}$. In sub-figure (b), the chain in solid line is the estimation $\mathaccentV {hat}05E{x}_t$; dotted line is the true value of $x$; dot-dash line on top is the observed value of $y$; dashed lines are the estimated error. \relax }}{87}}
-\newlabel{simuOUxt}{{5.7}{87}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.8}{\ignorespaces The trajectory of a moving tractor. The time lags (right side figure) obtained from GPS units are irregular.\relax }}{87}}
-\newlabel{realdatareview}{{5.8}{87}}
-\newlabel{obseq}{{5.56}{88}}
-\newlabel{obmodel}{{5.57}{88}}
-\newlabel{jointmatrix}{{5.58}{88}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.1}Approximations of The Parameters Posterior}{89}}
-\newlabel{logL}{{5.59}{90}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.2}The Forecast Distribution}{90}}
-\newlabel{OUupdatingK}{{5.61}{91}}
+\newlabel{linearOUequation}{{5.41}{85}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.5}{\ignorespaces Simulated data. The circle dots are the true state $x_{1:t}$ and cross dots are observations $y_{1:t}$. Irregular time lag $\Delta _t$ are generated from \textit  {Inverse Gamma}(2,0.1) distribution.\relax }}{86}}
+\newlabel{simuOUreview}{{5.5}{86}}
+\newlabel{simuOUlogL}{{5.45}{87}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces Irregular time step OU process simulation. The estimation of $\mathaccentV {hat}05E{\theta }$ is $\{\gamma =0.4841, \lambda ^2=0.1032, \sigma ^2=0.9276\}$. In the plots, the horizontal dark lines are the true $\theta $. \relax }}{87}}
+\newlabel{simuOUmarginplots}{{5.6}{87}}
+\newlabel{linearOUK}{{5.46}{87}}
+\newlabel{linearOUmu}{{5.48}{88}}
+\newlabel{linearOUsigma}{{5.49}{88}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.5}High Dimensional OU-Process Application}{88}}
+\newlabel{OUprocess}{{5.52}{88}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.7}{\ignorespaces Irregular time step OU process simulation of $x_{1:t}$ and sole $x_t$. In sub-figure (a), the dots is the true $x_{1:t}$ and the solid line is the estimation $\mathaccentV {hat}05E{x}_{1:t}$. In sub-figure (b), the chain in solid line is the estimation $\mathaccentV {hat}05E{x}_t$; dotted line is the true value of $x$; dot-dash line on top is the observed value of $y$; dashed lines are the estimated error. \relax }}{89}}
+\newlabel{simuOUxt}{{5.7}{89}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.8}{\ignorespaces The trajectory of a moving tractor. The time lags (right side figure) obtained from GPS units are irregular.\relax }}{89}}
+\newlabel{realdatareview}{{5.8}{89}}
+\newlabel{obseq}{{5.56}{90}}
+\newlabel{obmodel}{{5.57}{90}}
+\newlabel{jointmatrix}{{5.58}{90}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.1}Approximations of The Parameters Posterior}{91}}
+\newlabel{logL}{{5.59}{92}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.2}The Forecast Distribution}{92}}
+\newlabel{OUupdatingK}{{5.61}{93}}
 \citation{lindley1972bayes}
 \citation{smith1973general}
 \citation{gelman2006prior}
@@ -395,113 +395,113 @@
 \citation{jaynes1983papers}
 \citation{box2011bayesian}
 \citation{gelman2008weakly}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.3}The Estimation Distribution}{92}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.4}Prior Distribution for Parameters}{92}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.3}The Estimation Distribution}{94}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.4}Prior Distribution for Parameters}{94}}
 \citation{stroud2007sequential}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.9}{\ignorespaces Probability density function and cumulative distribution function of \textit  {Inverse Gamma} with two parameters $\alpha $ and $\beta $. \relax }}{94}}
-\newlabel{IGPDFCDF}{{5.9}{94}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.5}Efficiency of DA-MH}{94}}
-\@writefile{lot}{\contentsline {table}{\numberline {5.1}{\ignorespaces An example of Eff, EUT, ESS and ESSUT found by running 10\tmspace  +\thinmuskip {.1667em}000 iterations with same data. \relax }}{95}}
-\newlabel{effeutessessutexampletable}{{5.1}{95}}
-\@writefile{lot}{\contentsline {table}{\numberline {5.2}{\ignorespaces Comparing Eff, EUT, ESS and ESSUT values using different step size. The $1000^\star $ means taking 1\tmspace  +\thinmuskip {.1667em}000 samples from a longer chain, like 1\tmspace  +\thinmuskip {.1667em}000 out of 5\tmspace  +\thinmuskip {.1667em}000 sample chain. \relax }}{95}}
-\newlabel{stepsizecompare}{{5.2}{95}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.9}{\ignorespaces Probability density function and cumulative distribution function of \textit  {Inverse Gamma} with two parameters $\alpha $ and $\beta $. \relax }}{96}}
+\newlabel{IGPDFCDF}{{5.9}{96}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.5}Efficiency of DA-MH}{96}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.1}{\ignorespaces An example of Eff, EUT, ESS and ESSUT found by running 10\tmspace  +\thinmuskip {.1667em}000 iterations with same data. \relax }}{97}}
+\newlabel{effeutessessutexampletable}{{5.1}{97}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.2}{\ignorespaces Comparing Eff, EUT, ESS and ESSUT values using different step size. The $1000^\star $ means taking 1\tmspace  +\thinmuskip {.1667em}000 samples from a longer chain, like 1\tmspace  +\thinmuskip {.1667em}000 out of 5\tmspace  +\thinmuskip {.1667em}000 sample chain. \relax }}{97}}
+\newlabel{stepsizecompare}{{5.2}{97}}
 \citation{polson2008practical}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.10}{\ignorespaces An example of Eff, EUT, ESS and ESSUT found by using the same data. \relax }}{96}}
-\newlabel{effeutessessutexamplefigure}{{5.10}{96}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.6}Sliding Window State and Parameter Estimation}{96}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.11}{\ignorespaces Comparison Eff, ESS, EffUT and ESSUT of different length of data. \relax }}{97}}
-\newlabel{compareLengthData}{{5.11}{97}}
-\newlabel{algorithmslidingwindow}{{2}{99}}
-\newlabel{algorithmlearningsurface}{{2}{99}}
-\newlabel{algorithmestimaiton}{{3}{99}}
-\newlabel{algorithmDA}{{4}{99}}
-\@writefile{loa}{\contentsline {algocf}{\numberline {2}{\ignorespaces Sliding Window MCMC.\relax }}{99}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.7}Implementation}{99}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.12}{\ignorespaces Comparison $\qopname  \relax o{ln}DA$ and $\qopname  \relax o{ln}L$ between not-updating and updating mean methods. \relax }}{101}}
-\newlabel{comparenotanupDAL}{{5.12}{101}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.13}{\ignorespaces Comparison between not-updating and updating mean methods. \relax }}{102}}
-\newlabel{comparenotanupfeatures}{{5.13}{102}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.14}{\ignorespaces Visualization of correlation matrix of $\theta $, which is found in learning-surface process. \relax }}{102}}
-\newlabel{realdatacorMatrix}{{5.14}{102}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.15}{\ignorespaces Trace plots of $\theta $ from learning surface process after taking 1\tmspace  +\thinmuskip {.1667em}000 samples from 5\tmspace  +\thinmuskip {.1667em}000. \relax }}{103}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.16}{\ignorespaces Position and velocity for $X$ and $Y$ found by combined batch and sequential methods. \relax }}{104}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.17}{\ignorespaces Zoom in on estimations. For each estimation $\mathaccentV {hat}05E{X}_i (i=1,\dots  ,t)$, there is a error circle around it. \relax }}{105}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.6}Discussion and Future Work}{106}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.10}{\ignorespaces An example of Eff, EUT, ESS and ESSUT found by using the same data. \relax }}{98}}
+\newlabel{effeutessessutexamplefigure}{{5.10}{98}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.6}Sliding Window State and Parameter Estimation}{98}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.11}{\ignorespaces Comparison Eff, ESS, EffUT and ESSUT of different length of data. \relax }}{99}}
+\newlabel{compareLengthData}{{5.11}{99}}
+\newlabel{algorithmslidingwindow}{{2}{101}}
+\newlabel{algorithmlearningsurface}{{2}{101}}
+\newlabel{algorithmestimaiton}{{3}{101}}
+\newlabel{algorithmDA}{{4}{101}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {2}{\ignorespaces Sliding Window MCMC.\relax }}{101}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.7}Implementation}{101}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.12}{\ignorespaces Comparison $\qopname  \relax o{ln}DA$ and $\qopname  \relax o{ln}L$ between not-updating and updating mean methods. \relax }}{103}}
+\newlabel{comparenotanupDAL}{{5.12}{103}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.13}{\ignorespaces Comparison between not-updating and updating mean methods. \relax }}{104}}
+\newlabel{comparenotanupfeatures}{{5.13}{104}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.14}{\ignorespaces Visualization of correlation matrix of $\theta $, which is found in learning-surface process. \relax }}{104}}
+\newlabel{realdatacorMatrix}{{5.14}{104}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.15}{\ignorespaces Trace plots of $\theta $ from learning surface process after taking 1\tmspace  +\thinmuskip {.1667em}000 samples from 5\tmspace  +\thinmuskip {.1667em}000. \relax }}{105}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.16}{\ignorespaces Position and velocity for $X$ and $Y$ found by combined batch and sequential methods. \relax }}{106}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.17}{\ignorespaces Zoom in on estimations. For each estimation $\mathaccentV {hat}05E{X}_i (i=1,\dots  ,t)$, there is a error circle around it. \relax }}{107}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.6}Discussion and Future Work}{108}}
 \citation{ivanov2012real}
 \citation{douglas1973algorithms}
-\@writefile{toc}{\contentsline {chapter}{\numberline {6}Data Simplify}{107}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {6}Data Simplify}{109}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {6.1}Introduction}{107}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.1}Introduction}{109}}
 \citation{ying2011semantic}
 \citation{chen2009trajectory}
-\@writefile{toc}{\contentsline {section}{\numberline {6.2}Preliminary}{108}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.3}Track Simplification Algorithm}{108}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.2}Preliminary}{110}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.3}Track Simplification Algorithm}{110}}
 \citation{lawson2011compression}
 \citation{lawson2011compression}
 \citation{meratnia2004spatiotemporal}
-\@writefile{toc}{\contentsline {section}{\numberline {6.4}Evaluation}{109}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.1}{\ignorespaces Synchronized Euclidean Distance\relax }}{110}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.2}{\ignorespaces (a) error measured at fixed sampling rate as sum of perpendicular distance chords; (b) error measured at fixed sampling rates as sum of time-synchronous distance chords.\relax }}{110}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.5}Adaptive Kalman Filter}{111}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.6}Experimental results}{111}}
-\@writefile{lot}{\contentsline {table}{\numberline {6.1}{\ignorespaces Error Comparing\relax }}{111}}
-\newlabel{tabledist}{{6.1}{111}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.3}{\ignorespaces A segment start from time 2000 to 3000, recorded by GPS units. On the left side, it's the trajectory connected by raw data with 27 points. In the middle, it's the trajectory connected by simplified data with Douglas-Peucker Algorithm with 24 points. On the right side, it's the trajectory connected by simplified data with Tractor Simplification Algorithm with 23 points.\relax }}{112}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.4}{\ignorespaces Trajectory fitted by Adaptive Kalman Filter. The errors of raw data, DP and tractor algorithm caused by AKF is 26.89217, 23.97877 and 23.97097 respectively.\relax }}{112}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {7}Future Work}{113}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.4}Evaluation}{111}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.1}{\ignorespaces Synchronized Euclidean Distance\relax }}{112}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.2}{\ignorespaces (a) error measured at fixed sampling rate as sum of perpendicular distance chords; (b) error measured at fixed sampling rates as sum of time-synchronous distance chords.\relax }}{112}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.5}Adaptive Kalman Filter}{113}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.6}Experimental results}{113}}
+\@writefile{lot}{\contentsline {table}{\numberline {6.1}{\ignorespaces Error Comparing\relax }}{113}}
+\newlabel{tabledist}{{6.1}{113}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.3}{\ignorespaces A segment start from time 2000 to 3000, recorded by GPS units. On the left side, it's the trajectory connected by raw data with 27 points. In the middle, it's the trajectory connected by simplified data with Douglas-Peucker Algorithm with 24 points. On the right side, it's the trajectory connected by simplified data with Tractor Simplification Algorithm with 23 points.\relax }}{114}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.4}{\ignorespaces Trajectory fitted by Adaptive Kalman Filter. The errors of raw data, DP and tractor algorithm caused by AKF is 26.89217, 23.97877 and 23.97097 respectively.\relax }}{114}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {7}Future Work}{115}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {chapter}{\numberline {8}Summary}{115}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {8}Summary}{117}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {chapter}{Appendices}{117}}
+\@writefile{toc}{\contentsline {chapter}{Appendices}{119}}
 \@writefile{toc}{\setcounter {tocdepth}{1}}
 \@writefile{toc}{\begingroup \let \l@chapter \l@section \let \l@section \l@subsection }
-\@writefile{toc}{\contentsline {chapter}{\numberline {A}Spline Penalty}{118}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {A}Spline Penalty}{120}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {A.1}Penalty Matrix in (2.16\hbox {})}{118}}
-\@writefile{toc}{\contentsline {section}{\numberline {A.2}Proof of Theorem 2\hbox {}}{119}}
-\newlabel{matrixD}{{A.1}{119}}
-\@writefile{toc}{\contentsline {section}{\numberline {A.3}Proof of Lemma 2\hbox {}}{122}}
-\@writefile{toc}{\contentsline {section}{\numberline {A.4}Proof of Theorem 3\hbox {}}{123}}
-\newlabel{th3proofeq1}{{A.6}{123}}
-\newlabel{th3proofeq2}{{A.8}{123}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {B}MCMC}{124}}
+\@writefile{toc}{\contentsline {section}{\numberline {A.1}Penalty Matrix in (2.16\hbox {})}{120}}
+\@writefile{toc}{\contentsline {section}{\numberline {A.2}Proof of Theorem 2\hbox {}}{121}}
+\newlabel{matrixD}{{A.1}{121}}
+\@writefile{toc}{\contentsline {section}{\numberline {A.3}Proof of Lemma 2\hbox {}}{124}}
+\@writefile{toc}{\contentsline {section}{\numberline {A.4}Proof of Theorem 3\hbox {}}{125}}
+\newlabel{th3proofeq1}{{A.6}{125}}
+\newlabel{th3proofeq2}{{A.8}{125}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {B}MCMC}{126}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {B.1}Appendices}{124}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {B.1.1}Linear Simulation Calculations}{124}}
-\newlabel{linearcalculation}{{B.1.1}{124}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {B.1.2}OU process calculation}{127}}
-\newlabel{OUcalculation}{{B.1.2}{127}}
-\newlabel{OUKtp1}{{B.13}{129}}
-\newlabel{recursiveKp1}{{B.15}{130}}
-\newlabel{covMatrixdetails}{{B.1.2}{133}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {B.1.3}Real Data Implementation}{135}}
-\@writefile{lof}{\contentsline {figure}{\numberline {B.1}{\ignorespaces Running the same amount of time and taking the same length of data, the step size $\epsilon =2.5$ returns the highest ESSUT value and generates more effective samples with a lower correlation. \relax }}{136}}
-\newlabel{1koutof8kfigures}{{B.1}{136}}
-\@writefile{lof}{\contentsline {figure}{\numberline {B.2}{\ignorespaces Impacts of data length on optimal parameter. \relax }}{137}}
-\@writefile{lot}{\contentsline {table}{\numberline {B.1}{\ignorespaces Parameter estimation by running the whole surface learning and DA-MH processes with different length of data\relax }}{138}}
-\newlabel{lengthofdatacompare}{{B.1.3}{139}}
-\@writefile{toc}{\contentsline {subsubsection}{Comparison Between Batch and Sliding Window Methods}{139}}
-\@writefile{lof}{\contentsline {figure}{\numberline {B.3}{\ignorespaces Key features comparison. \relax }}{139}}
-\newlabel{batchwindowkeyfeature}{{B.3}{139}}
-\@writefile{lof}{\contentsline {figure}{\numberline {B.4}{\ignorespaces Parameter Comparison. \relax }}{140}}
-\newlabel{batchwindowparameter}{{B.4}{140}}
-\@writefile{toc}{\contentsline {subsubsection}{Parameter Evolution Visualization}{141}}
-\@writefile{lof}{\contentsline {figure}{\numberline {B.5}{\ignorespaces Parameter Evolution Visualization. \relax }}{141}}
-\@writefile{lof}{\contentsline {figure}{\numberline {B.6}{\ignorespaces Parameter Evolution Visualization. \relax }}{142}}
-\@writefile{lof}{\contentsline {figure}{\numberline {B.7}{\ignorespaces Parameter Evolution Visualization. \relax }}{143}}
+\@writefile{toc}{\contentsline {section}{\numberline {B.1}Appendices}{126}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.1.1}Linear Simulation Calculations}{126}}
+\newlabel{linearcalculation}{{B.1.1}{126}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.1.2}OU process calculation}{129}}
+\newlabel{OUcalculation}{{B.1.2}{129}}
+\newlabel{OUKtp1}{{B.13}{131}}
+\newlabel{recursiveKp1}{{B.15}{132}}
+\newlabel{covMatrixdetails}{{B.1.2}{135}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.1.3}Real Data Implementation}{137}}
+\@writefile{lof}{\contentsline {figure}{\numberline {B.1}{\ignorespaces Running the same amount of time and taking the same length of data, the step size $\epsilon =2.5$ returns the highest ESSUT value and generates more effective samples with a lower correlation. \relax }}{138}}
+\newlabel{1koutof8kfigures}{{B.1}{138}}
+\@writefile{lof}{\contentsline {figure}{\numberline {B.2}{\ignorespaces Impacts of data length on optimal parameter. \relax }}{139}}
+\@writefile{lot}{\contentsline {table}{\numberline {B.1}{\ignorespaces Parameter estimation by running the whole surface learning and DA-MH processes with different length of data\relax }}{140}}
+\newlabel{lengthofdatacompare}{{B.1.3}{141}}
+\@writefile{toc}{\contentsline {subsubsection}{Comparison Between Batch and Sliding Window Methods}{141}}
+\@writefile{lof}{\contentsline {figure}{\numberline {B.3}{\ignorespaces Key features comparison. \relax }}{141}}
+\newlabel{batchwindowkeyfeature}{{B.3}{141}}
+\@writefile{lof}{\contentsline {figure}{\numberline {B.4}{\ignorespaces Parameter Comparison. \relax }}{142}}
+\newlabel{batchwindowparameter}{{B.4}{142}}
+\@writefile{toc}{\contentsline {subsubsection}{Parameter Evolution Visualization}{143}}
+\@writefile{lof}{\contentsline {figure}{\numberline {B.5}{\ignorespaces Parameter Evolution Visualization. \relax }}{143}}
+\@writefile{lof}{\contentsline {figure}{\numberline {B.6}{\ignorespaces Parameter Evolution Visualization. \relax }}{144}}
+\@writefile{lof}{\contentsline {figure}{\numberline {B.7}{\ignorespaces Parameter Evolution Visualization. \relax }}{145}}
 \bibstyle{otago}
 \bibdata{thesis}
-\@writefile{lof}{\contentsline {figure}{\numberline {B.8}{\ignorespaces Parameter Evolution Visualization. \relax }}{144}}
+\@writefile{lof}{\contentsline {figure}{\numberline {B.8}{\ignorespaces Parameter Evolution Visualization. \relax }}{146}}
 \bibcite{abramovich1998wavelet}{{1}{1998}{{Abramovich {\em  et~al.}}}{{Abramovich, Sapatinas, and Silverman}}}
 \bibcite{agarwal2003indexing}{{2}{2003}{{Agarwal {\em  et~al.}}}{{Agarwal, Arge, and Erickson}}}
 \bibcite{andrieu1999sequential}{{3}{1999}{{Andrieu {\em  et~al.}}}{{Andrieu, De~Freitas, and Doucet}}}
@@ -513,7 +513,7 @@
 \bibcite{aydin2012smoothing}{{9}{2012}{{Aydin and Tuzemen}}{{Aydin and Tuzemen}}}
 \bibcite{bartlett1951inverse}{{10}{1951}{{Bartlett}}{{Bartlett}}}
 \@writefile{toc}{\endgroup }
-\@writefile{toc}{\contentsline {chapter}{\hbox to\@tempdima {\hfil }References}{145}}
+\@writefile{toc}{\contentsline {chapter}{\hbox to\@tempdima {\hfil }References}{147}}
 \bibcite{bedard2007weak}{{11}{2007}{{B{\'e}dard}}{{B{\'e}dard}}}
 \bibcite{ben2004geometric}{{12}{2004}{{Ben-Arieh {\em  et~al.}}}{{Ben-Arieh, Chang, Rys, and Zhang}}}
 \bibcite{berlinet2011reproducing}{{13}{2011}{{Berlinet and Thomas-Agnan}}{{Berlinet and Thomas-Agnan}}}
@@ -625,21 +625,22 @@
 \bibcite{stroud2007sequential}{{119}{2007}{{Stroud and Bengtsson}}{{Stroud and Bengtsson}}}
 \bibcite{stroud2016bayesian}{{120}{2016}{{Stroud {\em  et~al.}}}{{Stroud, Katzfuss, and Wikle}}}
 \bibcite{tandeo2011linear}{{121}{2011}{{Tandeo {\em  et~al.}}}{{Tandeo, Ailliot, and Autret}}}
-\bibcite{tierney1994markov}{{122}{1994}{{Tierney}}{{Tierney}}}
-\bibcite{esl2009}{{123}{2009}{{Trevor~Hastie}}{{Trevor~Hastie}}}
-\bibcite{kalmaninr}{{124}{2011}{{Tusell}}{{Tusell}}}
-\bibcite{vaughan2015goodness}{{125}{2015}{{Vaughan}}{{Vaughan}}}
-\bibcite{vieira2016online}{{126}{2016}{{Vieira and Wilkinson}}{{Vieira and Wilkinson}}}
-\bibcite{wahba1985comparison}{{127}{1985}{{Wahba}}{{Wahba}}}
-\bibcite{wahba1990spline}{{128}{1990}{{Wahba}}{{Wahba}}}
-\bibcite{wahba1975completely}{{129}{1975}{{Wahba and Wold}}{{Wahba and Wold}}}
-\bibcite{wang1998smoothing}{{130}{1998}{{Wang}}{{Wang}}}
-\bibcite{smoothingparameter}{{131}{2000}{{Wood}}{{Wood}}}
-\bibcite{woodbury1950inverting}{{132}{1950}{{Woodbury}}{{Woodbury}}}
-\bibcite{yang2010analytical}{{133}{2010}{{Yang and Sukkarieh}}{{Yang and Sukkarieh}}}
-\bibcite{yao2005functional}{{134}{2005}{{Yao {\em  et~al.}}}{{Yao, M{\"u}ller, Wang, {\em  et~al.}}}}
-\bibcite{ying2011semantic}{{135}{2011}{{Ying {\em  et~al.}}}{{Ying, Lee, Weng, and Tseng}}}
-\bibcite{yoshimoto2003}{{136}{2003}{{Yoshimoto {\em  et~al.}}}{{Yoshimoto, Harada, and Yoshimoto}}}
-\bibcite{yu2004curve}{{137}{2004}{{Yu {\em  et~al.}}}{{Yu, Kim, Bailey, and Gamboa}}}
-\bibcite{smoothsplinein2D}{{138}{2010}{{Zamani}}{{Zamani}}}
-\bibcite{zhang2013cubic}{{139}{2013}{{Zhang {\em  et~al.}}}{{Zhang, Guo, and Gao}}}
+\bibcite{taylor2000integration}{{122}{2000}{{Taylor {\em  et~al.}}}{{Taylor, Woolley, and Zito}}}
+\bibcite{tierney1994markov}{{123}{1994}{{Tierney}}{{Tierney}}}
+\bibcite{esl2009}{{124}{2009}{{Trevor~Hastie}}{{Trevor~Hastie}}}
+\bibcite{kalmaninr}{{125}{2011}{{Tusell}}{{Tusell}}}
+\bibcite{vaughan2015goodness}{{126}{2015}{{Vaughan}}{{Vaughan}}}
+\bibcite{vieira2016online}{{127}{2016}{{Vieira and Wilkinson}}{{Vieira and Wilkinson}}}
+\bibcite{wahba1985comparison}{{128}{1985}{{Wahba}}{{Wahba}}}
+\bibcite{wahba1990spline}{{129}{1990}{{Wahba}}{{Wahba}}}
+\bibcite{wahba1975completely}{{130}{1975}{{Wahba and Wold}}{{Wahba and Wold}}}
+\bibcite{wang1998smoothing}{{131}{1998}{{Wang}}{{Wang}}}
+\bibcite{smoothingparameter}{{132}{2000}{{Wood}}{{Wood}}}
+\bibcite{woodbury1950inverting}{{133}{1950}{{Woodbury}}{{Woodbury}}}
+\bibcite{yang2010analytical}{{134}{2010}{{Yang and Sukkarieh}}{{Yang and Sukkarieh}}}
+\bibcite{yao2005functional}{{135}{2005}{{Yao {\em  et~al.}}}{{Yao, M{\"u}ller, Wang, {\em  et~al.}}}}
+\bibcite{ying2011semantic}{{136}{2011}{{Ying {\em  et~al.}}}{{Ying, Lee, Weng, and Tseng}}}
+\bibcite{yoshimoto2003}{{137}{2003}{{Yoshimoto {\em  et~al.}}}{{Yoshimoto, Harada, and Yoshimoto}}}
+\bibcite{yu2004curve}{{138}{2004}{{Yu {\em  et~al.}}}{{Yu, Kim, Bailey, and Gamboa}}}
+\bibcite{smoothsplinein2D}{{139}{2010}{{Zamani}}{{Zamani}}}
+\bibcite{zhang2013cubic}{{140}{2013}{{Zhang {\em  et~al.}}}{{Zhang, Guo, and Gao}}}

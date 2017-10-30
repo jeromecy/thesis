@@ -1,17 +1,17 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsline {table}{\numberline {2.1}{\ignorespaces MSE. Mean square errors of different methods. The numbers in bold indicate the smallest error among these methods under the same level. The difference is not significant.\relax }}{27}
-\contentsline {table}{\numberline {2.2}{\ignorespaces TMSE. True mean square errors of different methods. The numbers in bold indicate the smallest error among these methods under the same level. The proposed tractor spline returns the smallest TMSE among all the methods under the same level except for $\mathit {Doppler}$ with SNR=7. The differences are significant. \relax }}{28}
-\contentsline {table}{\numberline {2.3}{\ignorespaces Mean square error. Tractor spline returns smallest errors among all these methods. P-spline was unable to reconstruct the $y$ trajectory as the original dataset contains some time differences equal to 0.\relax }}{29}
+\contentsline {table}{\numberline {2.2}{\ignorespaces TMSE. True mean square errors of different methods. The numbers in bold indicate the smallest error among these methods under the same level. The proposed Tractor Spline returns the smallest TMSE among all the methods under the same level except for $\mathit {Doppler}$ with SNR=7. The differences are significant. \relax }}{28}
+\contentsline {table}{\numberline {2.3}{\ignorespaces Mean square error. Tractor Spline returns smallest errors among all these methods. P-spline was unable to reconstruct the $y$ trajectory as the original dataset contains value-$0$ time differences.\relax }}{32}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces An example of Eff, EUT, ESS and ESSUT found by running 10\tmspace +\thinmuskip {.1667em}000 iterations with same data. \relax }}{95}
-\contentsline {table}{\numberline {5.2}{\ignorespaces Comparing Eff, EUT, ESS and ESSUT values using different step size. The $1000^\star $ means taking 1\tmspace +\thinmuskip {.1667em}000 samples from a longer chain, like 1\tmspace +\thinmuskip {.1667em}000 out of 5\tmspace +\thinmuskip {.1667em}000 sample chain. \relax }}{95}
+\contentsline {table}{\numberline {5.1}{\ignorespaces An example of Eff, EUT, ESS and ESSUT found by running 10\tmspace +\thinmuskip {.1667em}000 iterations with same data. \relax }}{97}
+\contentsline {table}{\numberline {5.2}{\ignorespaces Comparing Eff, EUT, ESS and ESSUT values using different step size. The $1000^\star $ means taking 1\tmspace +\thinmuskip {.1667em}000 samples from a longer chain, like 1\tmspace +\thinmuskip {.1667em}000 out of 5\tmspace +\thinmuskip {.1667em}000 sample chain. \relax }}{97}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {6.1}{\ignorespaces Error Comparing\relax }}{111}
-\addvspace {10\p@ }
-\addvspace {10\p@ }
+\contentsline {table}{\numberline {6.1}{\ignorespaces Error Comparing\relax }}{113}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {B.1}{\ignorespaces Parameter estimation by running the whole surface learning and DA-MH processes with different length of data\relax }}{138}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {B.1}{\ignorespaces Parameter estimation by running the whole surface learning and DA-MH processes with different length of data\relax }}{140}
