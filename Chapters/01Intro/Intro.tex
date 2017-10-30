@@ -59,6 +59,18 @@ The observed position data set $y_i$ always comes with some errors $\varepsilon_
 
 In regression problem, linear regression, linear discriminant analysis, logistic regression and separating hyperplanes all rely on a linear model. With the good property of linear model, easy to be interpreted and first order Taylor approximation to $f(t)$, it is more convenient to represent $f(t)$ by linear model. However, the true function $f(t)$ is unlikely to be an actual linear function in space $\mathbb{R}$. Researchers found some methods for moving beyond linearity. One of them is replacing the vector of inputs $\mathbf{T}$ with its transformations as new variables, and then use linear models in this new space of derived input features.
 
+
+\textbf{Temporally put here }Due to the noise generated from observation units, one can use regression methods to find the best reconstruction returning the smallest sum square errors among all the sequences. Consider a regression model $y_i=f(t_i)+\epsilon_i$, where $a \leq t_1 < \cdots < t_n \leq b$ and $f \in \mathit{C}^2[a,b]$ is an unknown smooth function, $(\epsilon_i)_{i=1}^n \sim N(0,\sigma^2)$ are random errors. In a classical parametric regression, $f$ is assumed having the form $f(x,\beta)$, which is known up to the data estimated parameters $\beta$ \cite{kim2004smoothing}. When $f(x,\beta)$ is linear in $\beta$, we will have a standard linear model. 
+
+Almost every technique found in the scientific literature on the trajectory planning problem is based on the optimization of some parameter or some objective function \cite{gasparetto2007new}. The most significant optimality criteria are: 
+\begin{itemize}
+\item (1) minimum execution time,
+\item (2) minimum energy (or actuator effort),
+\item (3) minimum jerk.
+\end{itemize}
+Besides the aforementioned approaches, some hybrid optimality criteria have also been proposed (e.g. time energy optimal trajectory planning).
+
+
 Denote by $h_m(t):\mathbb{R} \mapsto \mathbb{R}$ the $m$th transformation of $t$, $m =1, \cdots ,M$. We then model
 \begin{equation}\label{fbasis}
 f(t) =\sum_{m=1}^{M}\beta_mh_m(t).

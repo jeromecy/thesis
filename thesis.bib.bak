@@ -13,6 +13,18 @@
   publisher = {Wiley Online Library}
 }
 
+@ARTICLE{abramovich1998wavelet,
+  author = {Abramovich, Felix and Sapatinas, Theofanis and Silverman, Bernard
+	W},
+  title = {Wavelet thresholding via a Bayesian approach},
+  journal = {Journal of the Royal Statistical Society: Series B (Statistical Methodology)},
+  year = {1998},
+  volume = {60},
+  pages = {725--749},
+  number = {4},
+  publisher = {Wiley Online Library}
+}
+
 @ARTICLE{agarwal2003indexing,
   author = {Agarwal, Pankaj K and Arge, Lars and Erickson, Jeff},
   title = {Indexing moving points},
@@ -421,6 +433,17 @@
   publisher = {Taylor \& Francis Group}
 }
 
+@ARTICLE{donoho1995adapting,
+  author = {Donoho, David L and Johnstone, Iain M},
+  title = {Adapting to unknown smoothness via wavelet shrinkage},
+  journal = {Journal of the american statistical association},
+  year = {1995},
+  volume = {90},
+  pages = {1200--1224},
+  number = {432},
+  publisher = {Taylor \& Francis Group}
+}
+
 @ARTICLE{donoho1995wavelet,
   author = {Donoho, David L and Johnstone, Iain M and Kerkyacharian},
   title = {Wavelet shrinkage: asymptopia?},
@@ -455,6 +478,17 @@
 @ARTICLE{donoho1994ideal,
   author = {Donoho, David L and Johnstone, Jain M},
   title = {Ideal spatial adaptation by wavelet shrinkage},
+  journal = {biometrika},
+  year = {1994},
+  volume = {81},
+  pages = {425--455},
+  number = {3},
+  publisher = {Oxford University Press}
+}
+
+@ARTICLE{donoho1994ideal,
+  author = {Donoho, David L and Johnstone, Jain M},
+  title = {Ideal spatial adaptation by wavelet shrinkage},
   journal = {Biometrika},
   year = {1994},
   volume = {81},
@@ -476,6 +510,18 @@
   owner = {zcao},
   publisher = {University of Toronto Press},
   timestamp = {2017.09.08}
+}
+
+@ARTICLE{dubins1957curves,
+  author = {Dubins, Lester E},
+  title = {On curves of minimal length with a constraint on average curvature,
+	and with prescribed initial and terminal positions and tangents},
+  journal = {American Journal of mathematics},
+  year = {1957},
+  volume = {79},
+  pages = {497--516},
+  number = {3},
+  publisher = {JSTOR}
 }
 
 @ARTICLE{einstein1956investigations,
@@ -1064,6 +1110,18 @@
   timestamp = {2017.05.23}
 }
 
+@INPROCEEDINGS{komoriya1989trajectory,
+  author = {Komoriya, Kiyoshi and Tanie, Kazuo},
+  title = {Trajectory design and control of a wheel-type mobile robot using
+	B-spline curve},
+  booktitle = {Intelligent Robots and Systems' 89. The Autonomous Mobile Robots
+	and Its Applications. IROS'89. Proceedings., IEEE/RSJ International
+	Workshop on},
+  year = {1989},
+  pages = {398--405},
+  organization = {IEEE}
+}
+
 @BOOK{AEM,
   title = {Advanced Engineering Mathematics},
   publisher = {John Wiley and Sons},
@@ -1075,6 +1133,17 @@
   keywords = {Hermite Spline},
   owner = {zcao},
   timestamp = {2017.09.13}
+}
+
+@ARTICLE{krivobokova2008fast,
+  author = {Krivobokova, Tatyana and Crainiceanu, Ciprian M and Kauermann, G{\"o}ran},
+  title = {Fast adaptive penalized splines},
+  journal = {Journal of Computational and Graphical Statistics},
+  year = {2008},
+  volume = {17},
+  pages = {1--20},
+  number = {1},
+  publisher = {Taylor \& Francis}
 }
 
 @TECHREPORT{lawson2011compression,
@@ -1442,6 +1511,14 @@
   owner = {zcao},
   publisher = {Institute of Mathematical Statistics},
   timestamp = {2017.10.27}
+}
+
+@BOOK{ruppert2003semiparametric,
+  title = {Semiparametric regression},
+  publisher = {Cambridge university press},
+  year = {2003},
+  author = {Ruppert, David and Wand, Matt P and Carroll, Raymond J},
+  number = {12}
 }
 
 @BOOK{schwarz2012geodesy,

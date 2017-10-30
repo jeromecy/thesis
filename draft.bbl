@@ -229,7 +229,7 @@ Donoho, D.~L., Johnstone, I.~M., and Kerkyacharian (1995).
   Johnstone}{1994}]{donoho1994ideal}
 Donoho, D.~L. and Johnstone, J.~M. (1994).
 \newblock Ideal spatial adaptation by wavelet shrinkage.
-\newblock {\em Biometrika\/},~{\em 81\/}(3), 425--455.
+\newblock {\em biometrika\/},~{\em 81\/}(3), 425--455.
 
 \bibitem[\protect\citeauthoryear{Douglas and Peucker}{Douglas and
   Peucker}{1973}]{douglas1973algorithms}
@@ -238,6 +238,12 @@ Douglas, D.~H. and Peucker, T.~K. (1973).
   represent a digitized line or its caricature.
 \newblock {\em Cartographica: The International Journal for Geographic
   Information and Geovisualization\/},~{\em 10\/}(2), 112--122.
+
+\bibitem[\protect\citeauthoryear{Dubins}{Dubins}{1957}]{dubins1957curves}
+Dubins, L.~E. (1957).
+\newblock On curves of minimal length with a constraint on average curvature,
+  and with prescribed initial and terminal positions and tangents.
+\newblock {\em American Journal of mathematics\/},~{\em 79\/}(3), 497--516.
 
 \bibitem[\protect\citeauthoryear{Einstein}{Einstein}{1956}]{einstein1956investigations}
 Einstein, A. (1956).
@@ -529,6 +535,13 @@ Komoriya, K. and Tanie, K. (1989).
   Robots and Its Applications. IROS'89. Proceedings., IEEE/RSJ International
   Workshop on},  398--405. IEEE.
 
+\bibitem[\protect\citeauthoryear{Krivobokova, Crainiceanu, and
+  Kauermann}{Krivobokova {\em et~al.}}{2008}]{krivobokova2008fast}
+Krivobokova, T., Crainiceanu, C.~M., and Kauermann, G. (2008).
+\newblock Fast adaptive penalized splines.
+\newblock {\em Journal of Computational and Graphical Statistics\/},~{\em
+  17\/}(1), 1--20.
+
 \bibitem[\protect\citeauthoryear{Lawson, Ravi, and Hwang}{Lawson {\em
   et~al.}}{2011}]{lawson2011compression}
 Lawson, C.~T., Ravi, S., and Hwang, J.-H. (2011).
@@ -619,6 +632,12 @@ Nason, G. (2010).
 \newblock {\em Wavelet methods in statistics with R}.
 \newblock Springer Science \& Business Media.
 
+\bibitem[\protect\citeauthoryear{Nelder and Mead}{Nelder and
+  Mead}{1965}]{nelder1965simplex}
+Nelder, J.~A. and Mead, R. (1965).
+\newblock A simplex method for function minimization.
+\newblock {\em The computer journal\/},~{\em 7\/}(4), 308--313.
+
 \bibitem[\protect\citeauthoryear{Oussalah and De~Schutter}{Oussalah and
   De~Schutter}{2001}]{adaptivekalman}
 Oussalah, M. and De~Schutter, J. (2001).
@@ -690,6 +709,12 @@ Roberts, G.~O., Gelman, A., Gilks, W.~R., {\em et~al.} (1997).
 Roberts, G.~O., Rosenthal, J.~S., {\em et~al.} (2001).
 \newblock Optimal scaling for various Metropolis-Hastings algorithms.
 \newblock {\em Statistical science\/},~{\em 16\/}(4), 351--367.
+
+\bibitem[\protect\citeauthoryear{Ruppert, Wand, and Carroll}{Ruppert {\em
+  et~al.}}{2003}]{ruppert2003semiparametric}
+Ruppert, D., Wand, M.~P., and Carroll, R.~J. (2003).
+\newblock {\em Semiparametric regression}.
+\newblock Number~12. Cambridge university press.
 
 \bibitem[\protect\citeauthoryear{Schwarz}{Schwarz}{2012}]{schwarz2012geodesy}
 Schwarz, K.-P. (2012).
