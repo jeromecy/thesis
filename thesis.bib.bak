@@ -527,6 +527,17 @@
   timestamp = {2017.10.27}
 }
 
+@ARTICLE{gasparetto2007new,
+  author = {Gasparetto, A and Zanotto, V},
+  title = {A new method for smooth trajectory planning of robot manipulators},
+  journal = {Mechanism and machine theory},
+  year = {2007},
+  volume = {42},
+  pages = {455--471},
+  number = {4},
+  publisher = {Elsevier}
+}
+
 @ARTICLE{gelman2008weakly,
   author = {Gelman, Andrew and Jakulin, Aleks and Pittau, Maria Grazia and Su,
 	Yu-Sung},
@@ -608,6 +619,13 @@
   author = {Gilks, Walter R and Richardson, Sylvia and Spiegelhalter, David},
   owner = {zcao},
   timestamp = {2017.10.23}
+}
+
+@ARTICLE{gloderer2010spline,
+  author = {Gloderer, Martin and Hertle, Andreas},
+  title = {Spline-based Trajectory Optimization for Autonomous Vehicles with
+	Ackerman drive},
+  year = {2010}
 }
 
 @ARTICLE{golightly2006bayesian,
@@ -1171,6 +1189,16 @@
   author = {MacKay, David JC}
 }
 
+@INPROCEEDINGS{magid2006spline,
+  author = {Magid, Evgeni and Keren, Daniel and Rivlin, Ehud and Yavneh, Irad},
+  title = {Spline-based robot navigation},
+  booktitle = {Intelligent Robots and Systems, 2006 IEEE/RSJ International Conference
+	on},
+  year = {2006},
+  pages = {2296--2301},
+  organization = {IEEE}
+}
+
 @ARTICLE{martino2010generalized,
   author = {Martino, Luca and M{\'\i}guez, Joaqu{\'\i}n},
   title = {Generalized rejection sampling schemes and applications in signal
@@ -1666,6 +1694,18 @@
   owner = {zcao},
   publisher = {Springer},
   timestamp = {2017.10.23}
+}
+
+@ARTICLE{taylor2000integration,
+  author = {Taylor, Michael AP and Woolley, Jeremy E and Zito, Rocco},
+  title = {Integration of the global positioning system and geographical information
+	systems for traffic congestion studies},
+  journal = {Transportation Research Part C: Emerging Technologies},
+  year = {2000},
+  volume = {8},
+  pages = {257--285},
+  number = {1},
+  publisher = {Elsevier}
 }
 
 @ARTICLE{tierney1994markov,
