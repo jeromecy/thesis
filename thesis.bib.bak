@@ -13,18 +13,6 @@
   publisher = {Wiley Online Library}
 }
 
-@ARTICLE{abramovich1998wavelet,
-  author = {Abramovich, Felix and Sapatinas, Theofanis and Silverman, Bernard
-	W},
-  title = {Wavelet thresholding via a Bayesian approach},
-  journal = {Journal of the Royal Statistical Society: Series B (Statistical Methodology)},
-  year = {1998},
-  volume = {60},
-  pages = {725--749},
-  number = {4},
-  publisher = {Wiley Online Library}
-}
-
 @ARTICLE{agarwal2003indexing,
   author = {Agarwal, Pankaj K and Arge, Lars and Erickson, Jeff},
   title = {Indexing moving points},
@@ -284,9 +272,7 @@
   volume = {62},
   pages = {493--508},
   number = {3},
-  owner = {zcao},
-  publisher = {Wiley Online Library},
-  timestamp = {2017.10.27}
+  publisher = {Wiley Online Library}
 }
 
 @BOOK{chen2009feedback,
@@ -337,6 +323,17 @@
   owner = {zcao},
   publisher = {Oxford University Press},
   timestamp = {2017.10.27}
+}
+
+@ARTICLE{chopin2010particle,
+  author = {Chopin, Nicolas and Iacobucci, Alessandra and Marin, Jean-Michel
+	and Mengersen, Kerrie and Robert, Christian P and Ryder, Robin and
+	Sch{\"a}fer, Christian},
+  title = {On particle learning},
+  journal = {arXiv preprint arXiv:1006.0554},
+  year = {2010},
+  owner = {zcao},
+  timestamp = {2017.10.31}
 }
 
 @ARTICLE{christen2005markov,
@@ -396,6 +393,15 @@
   timestamp = {2017.10.27}
 }
 
+@ARTICLE{dempster1977maximum,
+  author = {Dempster, Arthur P and Laird, Nan M and Rubin, Donald B},
+  title = {Maximum likelihood from incomplete data via the EM algorithm},
+  journal = {Journal of the royal statistical society. Series B (methodological)},
+  year = {1977},
+  pages = {1--38},
+  publisher = {JSTOR}
+}
+
 @ARTICLE{deng2011generalization,
   author = {Deng, Chun Yuan},
   title = {A generalization of the Sherman--Morrison--Woodbury formula},
@@ -420,17 +426,6 @@
   owner = {zcao},
   publisher = {IEEE},
   timestamp = {2017.10.23}
-}
-
-@ARTICLE{donoho1995adapting,
-  author = {Donoho, David L and Johnstone, Iain M},
-  title = {Adapting to unknown smoothness via wavelet shrinkage},
-  journal = {Journal of the american statistical association},
-  year = {1995},
-  volume = {90},
-  pages = {1200--1224},
-  number = {432},
-  publisher = {Taylor \& Francis Group}
 }
 
 @ARTICLE{donoho1995adapting,
@@ -484,17 +479,6 @@
   pages = {425--455},
   number = {3},
   publisher = {Oxford University Press}
-}
-
-@ARTICLE{donoho1994ideal,
-  author = {Donoho, David L and Johnstone, Jain M},
-  title = {Ideal spatial adaptation by wavelet shrinkage},
-  journal = {Biometrika},
-  year = {1994},
-  volume = {81},
-  pages = {425--455},
-  number = {3},
-  publisher = {Biometrika Trust}
 }
 
 @ARTICLE{douglas1973algorithms,
@@ -1348,11 +1332,32 @@
   timestamp = {2017.09.13}
 }
 
+@ARTICLE{mitchell2000adaptive,
+  author = {Mitchell, Herschel L and Houtekamer, PL},
+  title = {An adaptive ensemble Kalman filter},
+  journal = {Monthly Weather Review},
+  year = {2000},
+  volume = {128},
+  pages = {416--433},
+  number = {2}
+}
+
 @BOOK{nason2010wavelet,
   title = {Wavelet methods in statistics with R},
   publisher = {Springer Science \& Business Media},
   year = {2010},
   author = {Nason, Guy}
+}
+
+@ARTICLE{nelder1965simplex,
+  author = {Nelder, John A and Mead, Roger},
+  title = {A simplex method for function minimization},
+  journal = {The computer journal},
+  year = {1965},
+  volume = {7},
+  pages = {308--313},
+  number = {4},
+  publisher = {Oxford University Press}
 }
 
 @ARTICLE{adaptivekalman,
@@ -1912,6 +1917,17 @@
   owner = {zcao},
   publisher = {PROCEEDINGS PUBLISHED BY VARIOUS PUBLISHERS},
   timestamp = {2017.05.23}
+}
+
+@ARTICLE{west1993mixture,
+  author = {West, Mike},
+  title = {Mixture models, Monte Carlo, Bayesian updating, and dynamic models},
+  journal = {Computing Science and Statistics},
+  year = {1993},
+  pages = {325--325},
+  owner = {zcao},
+  publisher = {PROCEEDINGS PUBLISHED BY VARIOUS PUBLISHERS},
+  timestamp = {2017.10.31}
 }
 
 @ARTICLE{smoothingparameter,
