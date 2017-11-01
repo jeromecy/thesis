@@ -1,5 +1,4 @@
 
-
 \section{Introduction}
 
 As the development of technology of science and real life, the "big data" challenge becomes ubiquitous. Classical methods, such as Markov Chain Monte Carlo (MCMC), are normally suitable and good at handling a batch of data forecasting and analyzing. However, for big data and instant updating data stream, more robust and efficient methods are required. 
@@ -232,11 +231,11 @@ w_{k,l}(\theta) &\propto \frac{\pi(\theta\mid y_{1:k+l}) }{\pi(\theta\mid y_{1:k
 
 Sequentially, the iterated batch importance sampling algorithm is in the following 
 \begin{itemize}
-\item Initialization. General particles of $\theta_i$ and $w_i$, $i=1,\dots,N$. 
-\item Reweighting. Update the weights by $w_i^*=w_i \times w_{k,l}$, where $w_{k,l}(\theta_i)\propto p(y_{k+1:k+l}\mid y_{1:k},\theta_i)$, $i=1,\dots,N$. 
-\item Resampling. Normalize $\theta_i$ and $w^*_i$ to $\theta_i^*$ and $\frac{1}{N}$ according to $p(\theta_i^*=\theta_i)=\frac{w_i^*}{\sum w_i^*}$,  $i=1,\dots,N$. 
-\item Move. Draw $\theta_i^m$ from $K_{k+l}(\theta_i^*)$, where $K_{k+l}$ is a predefined transition kernel function with stationary distribution $\pi_{k+l}$.
-\item Set $(\theta_i^m,\frac{1}{N})$ to $(\theta_i,w_i)$, $k+l$ to $k$ and return to reweighting step. 
+\item{Step 1.} Initialization. General particles of $\theta_i$ and $w_i$, $i=1,\dots,N$. 
+\item{Step 2.} Re-weighting. Update the weights by $w_i^*=w_i \times w_{k,l}$, where $w_{k,l}(\theta_i)\propto p(y_{k+1:k+l}\mid y_{1:k},\theta_i)$, $i=1,\dots,N$. 
+\item{Step 3.} Resampling. Normalize $\theta_i$ and $w^*_i$ to $\theta_i^*$ and $\frac{1}{N}$ according to $p(\theta_i^*=\theta_i)=\frac{w_i^*}{\sum w_i^*}$,  $i=1,\dots,N$. 
+\item{Step 4.} Propagating. Draw $\theta_i^m$ from $K_{k+l}(\theta_i^*)$, where $K_{k+l}$ is a predefined transition kernel function with stationary distribution $\pi_{k+l}$.
+\item{Step 5.} Set $(\theta_i^m,\frac{1}{N})$ to $(\theta_i,w_i)$, $k+l$ to $k$ and return to reweighting step. 
 \end{itemize}
 The algorithm stops when $k=t$, that is when the particle system targets the distribution of interest $\pi(\theta\mid y_{1:t})$. 
 
@@ -275,11 +274,14 @@ In \cite{septier2009multiple}, the authors discussed some attractive features of
 
 
 
+
 \section{On-line State and Parameter Estimation}\label{sectionStateandPara}
 
 The state transition density and the conditional likelihood function depend not only upon the dynamic state $x_t$, but also on a static parameter vector $\theta$, which will be stressed by use of the notations $f(x_t \mid x_{t-1},\theta)$ and $g(y_t\mid x_t,\theta)$. Putting the algorithms on-line means to update the parameters and states instantly as new observations coming into the data stream. For Bayesian dynamic models, however, the most natural option consists in treating the unknown parameter $\theta$, using the state space representation, as a component of the state which has no dynamic evolution, also referred to as a static parameter \cite{cappe2007overview}. The standard SMC is deficiency for on-line parameter estimation. As a result of the successive resampling steps, after a certain time $t$, the approximation $\hat{p}(\theta\mid y_{1:t})$ will only contain a single unique value for $\theta$. In other words, SMC approximation of the marginalized parameter posterior distribution is represented by a single Dirac delta function. It also causes error accumulation in successive Monte Carlo (MC) steps grows exponentially or polynomially in time \cite{kantas2009overview}. 
 
 Therefore, in this section, we are introducing some methods that will estimate combined state and parameter by either jointly estimating of state and parameter or by marginalizing the parameter using sufficient statistics. 
+
+
 
 
 
@@ -329,6 +331,19 @@ with two-step Gibbs sampler. The algorithm is summarized below:
 
 The speed and accuracy of this algorithm depends on the choice of sample size $M$ and the lag $l$, which is difficult, and there is a non-vanishing bias which is difficult to quantify \cite{polson2008practical} \cite{kantas2009overview}.
 
+
+
+
+%A MCMC kernel with invariant density $p(x_{1:t},\theta\mid y_{1:t})$ is used in SMC algorithm. This method was firstly used in an on-line Bayesian parameter estimation, where the author in \cite{andrieu1999sequential} were using
+%\begin{align*}
+%K_n(x_{1:t}',\theta'\mid x_{1:t},\theta) = \delta_{x_{1:t}}(x_{1:t} ')p(\theta'\mid x_{1:t},y_{1:t}),
+%\end{align*}
+%where $p(y_{1:t}\mid\theta,x_{1:t})=p(\theta\mid s_t(x_{1:t},y_{1:t}))$ and $s_t(x_{1:t},y_{1:t})$ is a fixed-dimensional vector of sufficient statistics. MCMC can be used to maintain the diversity of the samples of $\theta$. Here the stationary distribution for the MCMC will be the full joint posterior distribution of states and parameters and apply MH or Gibbs sampling separately to $p(\theta \mid x_{1:t},y_{1:t})$ and $p(x_{1:t} \mid \theta,y_{1:t})$. However, this method is not feasible for large dataset. 
+
+
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % %
 
 
 
@@ -407,11 +422,11 @@ Recall that an on-line combined parameters and state estimation relies on the de
 \begin{equation*}\label{jointposterior}
 p(x_{t+1},\theta \mid y_{1:t+1}) \propto p(x_{t+1}\mid y_{1:t+1},\theta)p(\theta\mid y_{1:t+1}).
 \end{equation*}
-To implement on-line sequential estimation, the first term on the right side of the above formula should be written in the following recursive form 
+To implement on-line sequential estimation, the first term on the right side of the above formula should be written in the following recursive form as 
 \begin{equation}\label{jointposteriorterm1}
 p(x_{t+1}\mid \theta, y_{1:t+1}) \propto p(y_{t+1}\mid x_{t+1},\theta) \int p(x_{t+1}\mid x_{t},\theta) p(x_{t}\mid \theta, y_{1:t})dx_{t},
 \end{equation}
-and the second term is in the recursive form of
+and the second term in the recursive form is 
 \begin{align}\label{jointposteriorterm2}
 \begin{split}
 p(\theta\mid y_{1:t+1}) & \propto p( y_{1:t+1}\mid\theta)p(\theta) \\
@@ -422,34 +437,36 @@ p(\theta\mid y_{1:t+1}) & \propto p( y_{1:t+1}\mid\theta)p(\theta) \\
 
 The ensemble Kalman filter is used to find (\ref{jointposteriorterm1}), which is the state inference. The estimated Kalman gain is 
 \begin{equation*}
-\hat{K}_{t+1}(\theta) = H_{t+1}(\theta)\hat{P}_{t+1}^f(\theta)H_{t+1}(\theta)^\top \hat{\Sigma}_{t+1}(\theta)^{-1}.
+\hat{K}_{t+1}(\theta) = F_{t+1}(\theta)\hat{P}_{t+1}^f(\theta)F_{t+1}(\theta)^\top \hat{\Sigma}_{t+1}(\theta)^{-1},
 \end{equation*}
-The posterior ensemble at time $t+1$ based on parameter $\theta$ is
+where $F_{t+1}$ is the observation map. The posterior ensemble at time $t+1$ based on parameter $\theta$ is
 \begin{equation}\label{ensembleKalmanForecast}
-x_{t+1}^i = x_{t+1}^{fi}+\hat{K}_{t+1}(\theta)(y_{t+1}+v_{t+1}^i+H_{t+1}(\theta)x_{t+1}^{fi}).
+x_{t+1}^{(i)} = x_{t+1}^{f(i)}+\hat{K}_{t+1}(\theta)(y_{t+1}+v_{t+1}^{(i)}+F_{t+1}(\theta)x_{t+1}^{f(i)}), 
 \end{equation}
-For the second term (\ref{jointposteriorterm2}), the author \cite{stroud2016bayesian} proposed a feasible likelihood approximation by a multivariate Gaussian distribution \cite{mitchell2000adaptive} for high-dimensional states: 
+where $\{x_{t}^{(i)}\}_1^N$ is an ensemble of states representing the filtering distribution at time $t$. $x_{t+1}^{f(i)}$ is the forecast ensemble from the forward map by $x_{t+1}^{f(i)} = x_{t+1}^{p(i)} +w_{t+1}^{(i)}= G(x_{t}^{(i)})+w_{t+1}^{(i)}$. For the second term (\ref{jointposteriorterm2}), the author \cite{stroud2016bayesian} proposed a feasible likelihood approximation by a multivariate Gaussian distribution \cite{mitchell2000adaptive} for high-dimensional states: 
 \begin{equation}\label{esembleKalmanLikeli}
-p(y_{t+1}\mid\theta,y_{1:t})\propto \left| \hat{\Sigma}_t(\theta)  \right|^{-\frac{1}{2}} \exp \left( -\frac{1}{2} \hat{e}_{t+1}(\theta)^\top \hat{\Sigma}_t(\theta)^{-1} \hat{e}_{t+1}(\theta) \right).
+p(y_{t+1}\mid\theta,y_{1:t})\propto \left| \hat{\Sigma}_t(\theta)  \right|^{-\frac{1}{2}} \exp \left( -\frac{1}{2} \hat{e}_{t+1}(\theta)^\top \hat{\Sigma}_t(\theta)^{-1} \hat{e}_{t+1}(\theta) \right),
 \end{equation}
+where $\hat{e}_{t+1}(\theta) = y_{t+1}-F_{t+1}(\theta)\hat{a}_{t+1}$, and $\hat{a}_{t+1}=\frac{1}{N}x_{t+1}^{p(i)}$
 
 To find $p(\theta\mid Y_{1:t})$, a generic way is using normal approximation, where the posterior density  is given by 
 \begin{equation*}
 p(\theta\mid y_{1:t}) \propto \exp \left(  -\frac{1}{2}(\theta-m_t)^\top C_t^{-1}(\theta-m_t  \right).
 \end{equation*}
-A grid-based representation is writing the posterior in $p(\theta\mid y_{1:t}) \propto p(y_t\mid\theta,y_{1:t-1})p(\theta\mid y_{1:t-1})$ and update the recursion weights by $\pi_{t,k}\propto p(y_{t}\mid\theta,y_{1:t-1})\pi_{t,k-1}$. 
+A grid-based representation is writing the posterior in the way that $p(\theta\mid y_{1:t}) \propto p(y_t\mid\theta,y_{1:t-1})p(\theta\mid y_{1:t-1})$ and update the recursion weights by $\pi_{t,k}\propto p(y_{t}\mid\theta,y_{1:t-1})\pi_{t,k-1}$. 
 
-This algorithm is summarized as 
+To summarize it up, the complete algorithm is in the following 
 \begin{itemize}
 \item{Step 1.} Initialize samples $\theta^{(i)}\sim p(\theta)$ and $x_1^{(i)}\sim N(x_0,P_0)$.
-\item{Step 2.} Propagate. $x_t^{(i)} = G(x_{t-1}^{(i)},\theta)$.
+\item{Step 2.} Propagate. $x_t^{p(i)} = G(x_{t-1}^{(i)})$.
 \item{Step 3.} Approximate likelihood function by (\ref{esembleKalmanLikeli}). 
 \item{Step 4.} Update. Draw $\theta$ either use normal approximation or grid-based approximation to find (\ref{jointposteriorterm2}). 
 \item{Step 5.} Draw $\theta^{(i)}\sim p(\theta\mid y_{1:t})$.
-\item{Step 6.} Generate forecast ensemble by $x_t^{fi} = x_t^{pi}+w_t$.
+\item{Step 6.} Generate forecast ensemble by $x_t^{f(i)} = x_t^{p(i)}+w_t$.
 \item{Step 7.} Draw posterior ensemble using (\ref{ensembleKalmanForecast})
 \end{itemize}
 
+This algorithm works well when $\theta$ is small and the parameter in the forward map $G(\cdot)$ is known. If the forward map parameter is not known and has a high correlation with the state, the author suggests that it can be combined with the state augmentation \cite{anderson2001ensemble} and this algorithm is still working. 
 
 
 
@@ -483,8 +500,17 @@ The advantage of this algorithm is that it only requires an approximation of the
 
 \section{Simulation Study}\label{sectionFilterreviewSimulation}
 
+%In this section, we are comparing the performance of Liu and West's filter, Storvik filter, particle learning and adaptive ensemble Kalman filter by a first-order dynamic linear model, see example 4 of \cite{lopes2011particle}. 
 
-In this section, we are comparing the performance of Liu and West's filter, Storvik filter, particle learning and adaptive ensemble Kalman filter by a simple dynamic linear model, see example \cite{liu2001combined}. Explicitly, the model is 
+%Explicitly, the model is in the following form of 
+%\begin{align*}
+%x_t &= x_{t-1} + \epsilon, \\
+%y_t & = \alpha + \beta x_t + \omega, 
+%\end{align*}
+%where $\epsilon\sim N(0,\tau)$ and $\omega\sim N(0,\sigma)$. Particularly, the initial value $x_0\sim N(m_0,C_0)$ is supposed to be known. $\sigma^2$ and $\tau^2$ are supposed to be \textit{Inverse Gamma} distributed with two parameters $(a_0,A_0)$ and $(b_0,B_0)$ respectively. Therefore, the unknown parameter $\theta$ is a set of $\{\alpha,\beta,\sigma^2,\tau^2\}$. 
+
+In this section, we are comparing the performance of Liu and West's filter, Storvik filter and particle learning %and adaptive ensemble Kalman filter 
+by a simple dynamic linear model, see example \cite{liu2001combined}. Explicitly, the model is 
 \begin{align*}
 y_t&=F x_t+\epsilon_t,\\
 x_t&=\phi x_{t-1}+w_t,\\
@@ -492,7 +518,7 @@ x_0&\sim N(m_0,C_0),
 \end{align*}
 where $\epsilon_t\sim N(0,\sigma^2)$ and $w_t\sim N(0,\tau^2)$, $x_t$ are hidden status and $y_t$ are observations. Assuming that $F=1$, $\sigma^2=1$ and $\tau^2=1$. The initial value $x_0=0$. $\theta = \phi$ a single static parameter without unobserved state variable. 
 
-A length 897 simulated data set was generated from this $\mathit{AR}(1)$ model at $\phi=0.8$. First of all, we should find the sufficient statistics for Storvik filter and Particle Learning. For Particle Learning, the sufficient statistics $s_t$ and $s_t^x$ are satisfying the updating rules $s_t=S(s_{t-1},x_t,y_t)$ and $s_t^x=K(s_{t-1}^x,\phi ,y_t)$. Because of the assumption, the Kalman observation map is $H_k=1$ and the variances are normal distributed. Thus, the Kalman gain $K=1$. For details, the Particle Learning algorithm runs as : 
+A length 897 simulated data set was generated from this $\mathit{AR}(1)$ model at $\phi=0.8$. First of all, we should find the sufficient statistics for Storvik filter and Particle Learning. For Particle Learning, the sufficient statistics $s_t$ and $s_t^x$ are satisfying the updating rules $s_t=S(s_{t-1},x_t,y_t)$ and $s_t^x=K(s_{t-1}^x,\phi ,y_t)$. Because of the assumption, the Kalman observation map is $H_k=1$ and the variances are normal distributed. Thus, the Kalman gain is $K=1$. For details, the Particle Learning algorithm runs as : 
 \begin{itemize}
 \item Step 1. Resample $\{\tilde{z}_t^{(i)}\}_{i=1}^N=(\tilde{s}_t^{x(i)},\tilde{s}_t^{(i)},\tilde{\phi }^{(i)})$ from $p(z_t\mid s_t^x,s_t,\phi )$ with weight $w\propto p(y_{t+1}\mid s_{t}^x,\phi )$. It is found that \begin{equation*}
 p(y_{t+1}\mid s_{t}^x,\phi ) \propto \exp \left(-\frac{1}{2}\frac{(y_{t+1}-\phi  x_{t})^2}{\sigma^2} \right).
@@ -502,7 +528,7 @@ p(y_{t+1}\mid s_{t}^x,\phi ) \propto \exp \left(-\frac{1}{2}\frac{(y_{t+1}-\phi 
 p(x_{t+1}\mid \tilde{z}_t^{(i)},y_{1:t+1}) &= p(x_{t+1}\mid s_t^x,\phi,y_{1:t+1}) \propto p(x_{t+1},y_{1:t+1}\mid s_t^x,\phi)\\
 &\propto p(x_{t+1}\mid s_t^x,\phi)p(y_{t+1}\mid x_{t+1},s_t^x,\phi) \\
 &=N(x_{t+1}\mid \phi x_t,1)N(y_{t+1}\mid x_{t+1},1)\\
-&\sim N(\frac{1}{2}(y_{t+1}+\phi x_t),\frac{1}{\sqrt{2}})
+&\sim N\left(\frac{1}{2}(y_{t+1}+\phi x_t),\frac{1}{\sqrt{2}}\right)
 \end{align*}
 \item Step 3. Update sufficient statistics  $s_{t+1}=S(\tilde{s}_{t}, x_{t+1},y_{t+1})$.
 \begin{align*}
@@ -519,6 +545,19 @@ p(\phi  \mid  x_{1:t+1},y_{1:t+1}) & \propto p(x_{1:t+1},y_{1:t+1}\mid \phi )p(\
 \end{itemize}
 
 
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.5\textwidth,height=6cm]{Chapters/04Filtering/plot/ggFilterCompPhi.pdf}
+\includegraphics[width=0.8\textwidth,height=8cm]{Chapters/04Filtering/plot/plotlyFilterCompX.png}
+\caption{A simulation study shows that the three algorithms converge to the true $\phi$ at similar speed. The filtering for $x$ is very competitive. However, Particle Learning returns the smallest MSE at  0.5824, which is better than the other two algorithms: Liu and West's Filter returns 0.5852 and Storvik Filter returns 0.5836. }
+\end{figure}
+
+
+
+
+
 \section{Conclusion}
 
-
+To be continued...
