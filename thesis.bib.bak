@@ -49,6 +49,16 @@
   timestamp = {2017.10.27}
 }
 
+@INPROCEEDINGS{andrieu2005line,
+  author = {Andrieu, Christophe and Doucet, Arnaud and Tadic, Vladislav B},
+  title = {On-line parameter estimation in general state-space models},
+  booktitle = {Decision and Control, 2005 and 2005 European Control Conference.
+	CDC-ECC'05. 44th IEEE Conference on},
+  year = {2005},
+  pages = {332--337},
+  organization = {IEEE}
+}
+
 @ARTICLE{andrieu2008tutorial,
   author = {Andrieu, Christophe and Thoms, Johannes},
   title = {A tutorial on adaptive MCMC},
@@ -542,6 +552,18 @@
   pages = {1323--1345},
   number = {9},
   publisher = {Elsevier}
+}
+
+@ARTICLE{evensen1994sequential,
+  author = {Evensen, Geir},
+  title = {Sequential data assimilation with a nonlinear quasi-geostrophic model
+	using Monte Carlo methods to forecast error statistics},
+  journal = {Journal of Geophysical Research: Oceans},
+  year = {1994},
+  volume = {99},
+  pages = {10143--10162},
+  number = {C5},
+  publisher = {Wiley Online Library}
 }
 
 @ARTICLE{fearnhead2002markov,

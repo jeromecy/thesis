@@ -275,14 +275,11 @@ In \cite{septier2009multiple}, the authors discussed some attractive features of
 
 
 
-
 \section{On-line State and Parameter Estimation}\label{sectionStateandPara}
 
 The state transition density and the conditional likelihood function depend not only upon the dynamic state $x_t$, but also on a static parameter vector $\theta$, which will be stressed by use of the notations $f(x_t \mid x_{t-1},\theta)$ and $g(y_t\mid x_t,\theta)$. Putting the algorithms on-line means to update the parameters and states instantly as new observations coming into the data stream. For Bayesian dynamic models, however, the most natural option consists in treating the unknown parameter $\theta$, using the state space representation, as a component of the state which has no dynamic evolution, also referred to as a static parameter \cite{cappe2007overview}. The standard SMC is deficiency for on-line parameter estimation. As a result of the successive resampling steps, after a certain time $t$, the approximation $\hat{p}(\theta\mid y_{1:t})$ will only contain a single unique value for $\theta$. In other words, SMC approximation of the marginalized parameter posterior distribution is represented by a single Dirac delta function. It also causes error accumulation in successive Monte Carlo (MC) steps grows exponentially or polynomially in time \cite{kantas2009overview}. 
 
 Therefore, in this section, we are introducing some methods that will estimate combined state and parameter by either jointly estimating of state and parameter or by marginalizing the parameter using sufficient statistics. 
-
-
 
 
 
@@ -323,28 +320,15 @@ x_{t-l+1} &\sim p(x_{t-l+1}\mid x_{0:t-l}^{(i)},\theta,y_{t-l+1:t}),\\
 with two-step Gibbs sampler. The algorithm is summarized below:
 
 \begin{itemize}
-\item Initialization. Set $\theta^{(i)}=\theta_0$ as initial values, $i=1,\dots,N$. 
-\item Burn in: For $k=1,\dots,l$, initialize $\theta = \theta^{(i)}$. Generate $x_{0:k}\sim p(x_{0:k}\mid \theta,y_{1:k})$ and $\theta \sim p(\theta\mid x_{0:k},y_{1:k})$.
-\item Achieve a set of $\left( x_{0:k}^{(i)},\theta^{(i)}\right)$.
-\item Sequential updating: For $k=l+1,\dots,t$: initialize $\theta = \theta^{(i)}$. Generate $x_{k-l+1:k}\sim p(x_{k-l+1:k}\mid x_{k-l}^{(i)},\theta,y_{k-l+1,k})$ and $\theta \sim p(\theta\mid x_{0:k-l}^{(i)},x_{k-l+1:k},y_{1:k})$. 
-\item Achieve a set of $\left( x_{k-l+1}^{(i)},\theta^{(i)}\right)$ and leave $x_{0:k-l}^{(i)}$ unchanged. 
+\item{Step 1.} Initialization. Set $\theta^{(i)}=\theta_0$ as initial values, $i=1,\dots,N$. 
+\item{Step 2.} Burn in: For $k=1,\dots,l$, initialize $\theta = \theta^{(i)}$. Generate $x_{0:k}\sim p(x_{0:k}\mid \theta,y_{1:k})$ and $\theta \sim p(\theta\mid x_{0:k},y_{1:k})$.
+\item{Step 3.} Achieve a set of $\left( x_{0:k}^{(i)},\theta^{(i)}\right)$.
+\item{Step 4.} Sequential updating: For $k=l+1,\dots,t$: initialize $\theta = \theta^{(i)}$. Generate $x_{k-l+1:k}\sim p(x_{k-l+1:k}\mid x_{k-l}^{(i)},\theta,y_{k-l+1,k})$ and $\theta \sim p(\theta\mid x_{0:k-l}^{(i)},x_{k-l+1:k},y_{1:k})$. 
+\item{Step 5.} Achieve a set of $\left( x_{k-l+1}^{(i)},\theta^{(i)}\right)$ and leave $x_{0:k-l}^{(i)}$ unchanged. 
 \end{itemize}
 
 The speed and accuracy of this algorithm depends on the choice of sample size $M$ and the lag $l$, which is difficult, and there is a non-vanishing bias which is difficult to quantify \cite{polson2008practical} \cite{kantas2009overview}.
 
-
-
-
-%A MCMC kernel with invariant density $p(x_{1:t},\theta\mid y_{1:t})$ is used in SMC algorithm. This method was firstly used in an on-line Bayesian parameter estimation, where the author in \cite{andrieu1999sequential} were using
-%\begin{align*}
-%K_n(x_{1:t}',\theta'\mid x_{1:t},\theta) = \delta_{x_{1:t}}(x_{1:t} ')p(\theta'\mid x_{1:t},y_{1:t}),
-%\end{align*}
-%where $p(y_{1:t}\mid\theta,x_{1:t})=p(\theta\mid s_t(x_{1:t},y_{1:t}))$ and $s_t(x_{1:t},y_{1:t})$ is a fixed-dimensional vector of sufficient statistics. MCMC can be used to maintain the diversity of the samples of $\theta$. Here the stationary distribution for the MCMC will be the full joint posterior distribution of states and parameters and apply MH or Gibbs sampling separately to $p(\theta \mid x_{1:t},y_{1:t})$ and $p(x_{1:t} \mid \theta,y_{1:t})$. However, this method is not feasible for large dataset. 
-
-
-
-% % % % % % % % % % % % % % % % % % % % % % % % % % % %
-% % % % % % % % % % % % % % % % % % % % % % % % % % % %
 
 
 
@@ -370,13 +354,13 @@ where $\alpha=\sqrt{1-h^2}$ and $h>0$ is the smoothing parameter and the covaria
 
 A general algorithm is summarized bellow: 
 \begin{itemize}
-\item Identify the prior estimation of $(x_t,\theta)$ by $(\mu_{t+1}^{(i)},m_t^{(i)})$, where
+\item{Step 1.} Identify the prior estimation of $(x_t,\theta)$ by $(\mu_{t+1}^{(i)},m_t^{(i)})$, where
 $\mu_{t+1}^{(i)}=\E (x_{t+1}\mid x_t^{(i)},\theta_t^{(i)})$, and $m_t^{(i)}=\alpha \theta_t^{(i)} + (1-\alpha)\bar{\theta}_t$.
-\item Sample an auxiliary integer index $k$ from $\{1,\dots,N\}$ with probability proportional to $g_{t+1}^{(i)}\propto w_t^{(i)}p(y_{t+1}\mid \mu_{t+1}^{(i)},m_t^{(i)})$.
-\item Sample a new parameter vector $\theta_{t+1}^{(k)}$ from $\theta_{t+1}^{(k)}\sim N(\cdot\mid m_t^{(k)},h^2V_t)$.
-\item Sample current state vector $x_{t+1}^{(k)}$ from $p(\cdot\mid x_t^{(k)},\theta_{t+1}^{(k)})$.
-\item Evaluate weight $w_{t+1}^{(k)}\propto \frac{ p(y_{t+1}\mid x_{t+1}^{(k)},\theta_{t+1}^{(k)}) }{ p(y_{t+1}\mid \mu_{t+1}^{(k)},m_t^{(k)})   }$ and normalize it. 
-\item Repeat until $M$ iterations. 
+\item{Step 2.} Sample an auxiliary integer index $k$ from $\{1,\dots,N\}$ with probability proportional to $g_{t+1}^{(i)}\propto w_t^{(i)}p(y_{t+1}\mid \mu_{t+1}^{(i)},m_t^{(i)})$.
+\item{Step 3.} Sample a new parameter vector $\theta_{t+1}^{(k)}$ from $N(\theta_{t+1}\mid m_t^{(k)},h^2V_t)$.
+\item{Step 4.} Sample current state vector $x_{t+1}^{(k)}$ from $p(x_{t+1}\mid x_t^{(k)},\theta_{t+1}^{(k)})$.
+\item{Step 5.} Evaluate weight $w_{t+1}^{(k)}\propto \frac{ p(y_{t+1}\mid x_{t+1}^{(k)},\theta_{t+1}^{(k)}) }{ p(y_{t+1}\mid \mu_{t+1}^{(k)},m_t^{(k)})   }$ and normalize it. 
+%\item Repeat until $M$ iterations. 
 \end{itemize}
 
 
@@ -388,72 +372,36 @@ Storvik Filter, presented in \cite{storvik2002particle}, is assuming that the po
 
 The Storvik filter is summarized bellow:
 \begin{itemize}
-\item sample $\theta^{(i)}$ from $p(\theta\mid s_t^{(i)})$
-\item sample $x_t^{(i)}$ from $p(x_t\mid x_{t-1}^{(i)},y_{t},\theta^{(i)} )$
-\item calculate weights $w_t \propto p(y_{t}\mid x_t^{(i)}, \theta^{(i)})$ and normalize it by $w_t^{(i)}=\frac{ w_t^{(i)} }{ \sum w_t^{()}}$
-\item re-sample $\{ \theta_t^{(i)},x_t^{(i)},s_t^{(i)}  \}$ according to $w_t$
-\item update sufficient statistics $s_t^{(i)}=S(s_{t-1}^{(i)},x_t,y_t)$ 
+\item{Step 1.} Sample $x_{t+1}^{(i)}$ from $p(x_{t+1}\mid x_{t}^{(i)},y_{1:t+1},\theta^{(i)} )$
+\item{Step 2.} Calculate weights $w_{t+1} \propto p(y_{t+1}\mid x_{t+1}^{(i)}, \theta^{(i)})$ and normalize it by $w_{t+1}^{(i)}=\frac{ w_{t+1}^{(i)} }{ \sum w_{t+1}^{(i)}}$
+\item{Step 3.} Re-sample $\{ \theta_{t+1}^{(i)},x_{t+1}^{(i)},s_{t+1}^{(i)}  \}$ according to $w_{t+1}$
+\item{Step 4.} Update sufficient statistics $s_{t+1}^{(i)}=S(s_{t}^{(i)},x_{t+1},y_{t+1})$ 
+\item{Step 5.} Sample $\theta^{(i)}$ from $p(\theta\mid s_{t+1}^{(i)})$
 \end{itemize}
 
 
 
 \subsection{Particle Learning}
 
-Particle Learning, proposed by \cite{carvalho2010particle}, uses the similar sufficient statistics as Storvik filter does. It is an extension to the mixture Kalman Filter \cite{chen2000mixture} by allowing parameter learning and utilize a re-sample propagate framework together with a set of particles that includes state-sufficient statistics, that is the difference from Storvik filter using sufficient statistics for parameters estimation only. In other words, in Particle learning, the prior to sampling from the proposal distribution uses a predictive likelihood and takes $y_{t+1}$ into account \cite{vieira2016online}. This algorithm is summarized as following: 
+Particle Learning, proposed by \cite{carvalho2010particle}, uses the similar sufficient statistics as Storvik filter does, in which the set of sufficient statistics is used for parameters estimation only. As an extension to the mixture Kalman Filter \cite{chen2000mixture}, Particle Learning allows parameters learning through out the process and utilize a re-sample propagate framework together with a set of particles that includes a set of sufficient statistics (if it is available) for the states. 
+
+By denoting $s_t$ and $s_t^x$ the sufficient statistics for the parameter and state respectively, the updating rules are satisfied: $s_t=S(s_{t-1},x_t,y_t)$ and $s_t^x=K(s_{t-1}^x,\theta,y_t)$, where $K(\cdot)$ is the Kalman filter recursions. In Particle Learning, the prior to sampling from the proposal distribution uses a predictive likelihood and takes $y_{t+1}$ into account \cite{vieira2016online}. This algorithm is summarized as following: 
 
 \begin{itemize}
-\item Resample. $z_t^{(i)}$ from $p(z_t\mid x_t,s_t,\theta)$ with weights $w_t\propto p(Y_{t+1}\mid z_t^{(i)})$. 
-\item Propagate. Draw $x_{t+1}^{(i)}$ from $p(x_{t+1}\mid z_t^{(i)},y_{t+1})$.
-\item Propagate. Update sufficient statistics $s_{t+1}^{(i)}=S(s_{t}^{(i)},x_{t+1}^{(i)},y_{t+1})$.
-\item Sample. Draw $\theta^{(i)}$ from $p(\theta\mid s_{t+1}^{(i)})$.
+\item{Step 1.} Resample $\{\tilde{z}_t^{(i)}\}_{i=1}^N=(\tilde{s}_t^{x(i)},\tilde{s}_t^{(i)},\tilde{\theta}^{(i)})$ from $p(z_t\mid s_t^x,s_t,\theta)$ with weight $w\propto p(y_{t+1}\mid s_{t}^x,\theta)$.
+\item{Step 2.} Draw $x_{t+1}^{(i)}$ from $p(x_{t+1}\mid \tilde{s}_t^x,\tilde{\theta},y_{1:t+1})$. 
+\item{Step 3.} Update sufficient statistics  $s_{t+1}=S(\tilde{s}_{t}, x_{t+1},y_{t+1})$.
+\item{Step 4.} Sample $\theta^{(i)}$ from $p(\theta \mid  s_{t+1})$.
+\item{Step 5.} Update $s_{t+1}^x = K(s_{t}^x,\theta,y_{t+1})$.
 \end{itemize}
 
-For example, in a simple dynamic linear model 
-\begin{align*}
-y_t&=F_tx_t+\epsilon_t,\\
-x_t&=\phi_tx_{t-1}+w_t,\\
-x_0&\sim N(m_0,c_0),
-\end{align*}
-where $\epsilon_t\sim N(0,\sigma)$ and $w_t\sim N(0,W)$, $x_t$ are hidden status and $y_t$ are observations. Assuming that $V=W=1$, $F_t=1$, the initial value $x_0=0$. $\phi_t$ is the  parameter to be estimated. In this model, there are two different sets of sufficient statistics $s_t$ and $s_t^x$, denoting the parameter and state-sufficient statistics. By the updating rules $s_t=S(s_{t-1},x_t,y_t)$ as in the Storvik filter and $s_t^x=K(s_{t-1}^x,\theta,y_t)$ for Kalman filter recursions, the two sets of sufficient statistics can be updated recursively. 
-
-Therefore, the Particle Learning algorithm runs as follows:
-\begin{itemize}
-\item Step 1. Resample $\{\tilde{z}_t^{(i)}\}_{i=1}^N=(\tilde{x}_t^{(i)},\tilde{s}_t^{(i)},\tilde{\theta}^{(i)})$ from $z_t^{(i)}=(x_t,s_t,\theta)^{(i)}$ with weight $w\propto p(y_{t+1}\mid s_{t}^x,\theta)$. It is found that \begin{equation*}
-p(y_{t+1}\mid s_{t}^x,\theta) \propto \exp \left(-\frac{1}{2}\frac{(y_{t+1}-\theta x_{t})^2}{\sigma^2} \right).
-\end{equation*}
-\item Step 2. Propagate $\tilde{x}_t^{(i)}$ to $x_{t+1}^{(i)}$ via $p(x_{t+1}\mid \tilde{z}_t^{(i)},y^{t+1})$. 
-\begin{align*}
-p(x_{t+1}\mid \tilde{z}_t^{(i)},y^{t+1}) &= p(x_{t+1}\mid s_t^x,\phi,y^{t+1}) \propto p(x_{t+1},y^{t+1}\mid s_t^x,\phi)\\
-&\propto p(x_{t+1}\mid s_t^x,\phi)p(y_{t+1}\mid x_{t+1},s_t^x,\phi) \\
-&=N(x_{t+1}\mid \phi x_t,1)N(y_{t+1}\mid x_{t+1},1)\\
-&\sim N(\frac{1}{2}(y_{t+1}+\phi x_t),\frac{1}{\sqrt{2}})
-\end{align*}
-\item Step 3. Update sufficient statistics $s_t$.
-\begin{align*}
-s_{t+1,1} &= x_{t+1} \\
-s_{t+1,2} &= x_tx_{t+1}+s_{t,2} = x_ts_{t,1}+s_{t,2} \\
-s_{t+1,3} &= x_{t}^2 + s_{t,3} = s_{t,1}^2 + s_{t,3} .
-\end{align*}
-\item Step 4. Sample $\theta$ from $p(\theta \mid  s_t)$.
-\begin{align*}
-p(\theta \mid  x^{t+1},y^{t+1}) & \propto p(x^{t+1},y^{t+1}\mid \theta)p(\theta)\propto p(x^{t+1}\mid \theta)p(\theta)\\
-&\sim N\left( \phi \mid  \frac{s_{t+1,2}}{s_{t+1,3}},\frac{1}{s_{t+1,3}} \right).
-\end{align*}
-\item Step 5. Update $s_{t+1}^x = x_{t+1}$.
-\end{itemize}
-
-%Particle learning is used to estimate one parameter $\phi$.
-%\begin{figure}[h]
-%\centering
-%\includegraphics[width=14cm,height=9cm]{PFforphi}
-%\end{figure}
-
-
-
-
-\subsection{Ensemble Kalman Filter}
+\subsection{Adaptive Ensemble Kalman Filter}
 
 Storvik filter and Particle learning algorithms are efficient in some ways,  however, the drawbacks are obvious. One of them is that the sufficient statistics are not always available, or hard to find, for complex models. They are trying to reduce the problem of particle impoverishment, although in practice they didn't solve the problem completely \cite{chopin2010particle}. An ensemble Kalman filter method was proposed for sequential state and parameter estimation \cite{stroud2016bayesian}. It is fully Bayesian and propagates the joint posterior density of states and parameters through over the process. 
+
+
+The ensemble Kalman filter, which is an extension to the standard Kalman filter \cite{kalman1960new}, is an approximate filtering method introduced in the geophysics literature by \cite{evensen1994sequential}. Instead of working with the entire distribution, the ensemble Kalman filter stores, propagates, and updates an ensemble of vectors that approximates the state distribution \cite{katzfuss2016understanding}. 
+
 
 Recall that an on-line combined parameters and state estimation relies on the decomposition of the joint posterior distribution 
 \begin{equation*}\label{jointposterior}
@@ -493,13 +441,13 @@ A grid-based representation is writing the posterior in $p(\theta\mid y_{1:t}) \
 
 This algorithm is summarized as 
 \begin{itemize}
-\item Initialize samples $\theta^{(i)}\sim p(\theta)$ and $x_1^{(i)}\sim N(x_0,P_0)$.
-\item Propagate. $x_t^{(i)} = M(x_{t-1}^{(i)})$.
-\item Approximate likelihood function by (\ref{esembleKalmanLikeli}). 
-\item Update. Draw $\theta$ either use normal approximation or grid-based approximation to find (\ref{jointposteriorterm2}). 
-\item Draw $\theta^{(i)}\sim p(\theta\mid y_{1:t})$.
-\item Generate forecast ensemble by $x_t^{fi} = x_t^{pi}+w_t$.
-\item Draw posterior ensemble using (\ref{ensembleKalmanForecast})
+\item{Step 1.} Initialize samples $\theta^{(i)}\sim p(\theta)$ and $x_1^{(i)}\sim N(x_0,P_0)$.
+\item{Step 2.} Propagate. $x_t^{(i)} = G(x_{t-1}^{(i)},\theta)$.
+\item{Step 3.} Approximate likelihood function by (\ref{esembleKalmanLikeli}). 
+\item{Step 4.} Update. Draw $\theta$ either use normal approximation or grid-based approximation to find (\ref{jointposteriorterm2}). 
+\item{Step 5.} Draw $\theta^{(i)}\sim p(\theta\mid y_{1:t})$.
+\item{Step 6.} Generate forecast ensemble by $x_t^{fi} = x_t^{pi}+w_t$.
+\item{Step 7.} Draw posterior ensemble using (\ref{ensembleKalmanForecast})
 \end{itemize}
 
 
@@ -534,6 +482,41 @@ The advantage of this algorithm is that it only requires an approximation of the
 
 
 \section{Simulation Study}\label{sectionFilterreviewSimulation}
+
+
+In this section, we are comparing the performance of Liu and West's filter, Storvik filter, particle learning and adaptive ensemble Kalman filter by a simple dynamic linear model, see example \cite{liu2001combined}. Explicitly, the model is 
+\begin{align*}
+y_t&=F x_t+\epsilon_t,\\
+x_t&=\phi x_{t-1}+w_t,\\
+x_0&\sim N(m_0,C_0),
+\end{align*}
+where $\epsilon_t\sim N(0,\sigma^2)$ and $w_t\sim N(0,\tau^2)$, $x_t$ are hidden status and $y_t$ are observations. Assuming that $F=1$, $\sigma^2=1$ and $\tau^2=1$. The initial value $x_0=0$. $\theta = \phi$ a single static parameter without unobserved state variable. 
+
+A length 897 simulated data set was generated from this $\mathit{AR}(1)$ model at $\phi=0.8$. First of all, we should find the sufficient statistics for Storvik filter and Particle Learning. For Particle Learning, the sufficient statistics $s_t$ and $s_t^x$ are satisfying the updating rules $s_t=S(s_{t-1},x_t,y_t)$ and $s_t^x=K(s_{t-1}^x,\phi ,y_t)$. Because of the assumption, the Kalman observation map is $H_k=1$ and the variances are normal distributed. Thus, the Kalman gain $K=1$. For details, the Particle Learning algorithm runs as : 
+\begin{itemize}
+\item Step 1. Resample $\{\tilde{z}_t^{(i)}\}_{i=1}^N=(\tilde{s}_t^{x(i)},\tilde{s}_t^{(i)},\tilde{\phi }^{(i)})$ from $p(z_t\mid s_t^x,s_t,\phi )$ with weight $w\propto p(y_{t+1}\mid s_{t}^x,\phi )$. It is found that \begin{equation*}
+p(y_{t+1}\mid s_{t}^x,\phi ) \propto \exp \left(-\frac{1}{2}\frac{(y_{t+1}-\phi  x_{t})^2}{\sigma^2} \right).
+\end{equation*}
+\item Step 2. Draw $x_{t+1}^{(i)}$ from $p(x_{t+1}\mid \tilde{s}_t^x,\tilde{\phi },y_{1:t+1})$. 
+\begin{align*}
+p(x_{t+1}\mid \tilde{z}_t^{(i)},y_{1:t+1}) &= p(x_{t+1}\mid s_t^x,\phi,y_{1:t+1}) \propto p(x_{t+1},y_{1:t+1}\mid s_t^x,\phi)\\
+&\propto p(x_{t+1}\mid s_t^x,\phi)p(y_{t+1}\mid x_{t+1},s_t^x,\phi) \\
+&=N(x_{t+1}\mid \phi x_t,1)N(y_{t+1}\mid x_{t+1},1)\\
+&\sim N(\frac{1}{2}(y_{t+1}+\phi x_t),\frac{1}{\sqrt{2}})
+\end{align*}
+\item Step 3. Update sufficient statistics  $s_{t+1}=S(\tilde{s}_{t}, x_{t+1},y_{t+1})$.
+\begin{align*}
+s_{t+1,1} &= x_{t+1} \\
+s_{t+1,2} &= x_tx_{t+1}+s_{t,2} = x_ts_{t,1}+s_{t,2} \\
+s_{t+1,3} &= x_{t}^2 + s_{t,3} = s_{t,1}^2 + s_{t,3} .
+\end{align*}
+\item Step 4. Sample $\phi $ from $p(\phi  \mid  s_{t+1})$.
+\begin{align*}
+p(\phi  \mid  x_{1:t+1},y_{1:t+1}) & \propto p(x_{1:t+1},y_{1:t+1}\mid \phi )p(\phi )\propto p(x_{1:t+1}\mid \phi )p(\phi )\\
+&\sim N\left( \phi \mid  \frac{s_{t+1,2}}{s_{t+1,3}},\frac{1}{s_{t+1,3}} \right).
+\end{align*}
+\item Step 5. Update $s_{t+1}^x = K(s_{t}^x,\phi ,y_{t+1})$.
+\end{itemize}
 
 
 \section{Conclusion}
