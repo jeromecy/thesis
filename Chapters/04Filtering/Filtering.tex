@@ -498,6 +498,7 @@ The advantage of this algorithm is that it only requires an approximation of the
 
 
 
+
 \section{Simulation Study}\label{sectionFilterreviewSimulation}
 
 %In this section, we are comparing the performance of Liu and West's filter, Storvik filter, particle learning and adaptive ensemble Kalman filter by a first-order dynamic linear model, see example 4 of \cite{lopes2011particle}. 
@@ -545,19 +546,41 @@ p(\phi  \mid  x_{1:t+1},y_{1:t+1}) & \propto p(x_{1:t+1},y_{1:t+1}\mid \phi )p(\
 \end{itemize}
 
 
-
-
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.5\textwidth,height=6cm]{Chapters/04Filtering/plot/ggFilterCompPhi.pdf}
 \includegraphics[width=0.8\textwidth,height=8cm]{Chapters/04Filtering/plot/plotlyFilterCompX.png}
-\caption{A simulation study shows that the three algorithms converge to the true $\phi$ at similar speed. The filtering for $x$ is very competitive. However, Particle Learning returns the smallest MSE at  0.5824, which is better than the other two algorithms: Liu and West's Filter returns 0.5852 and Storvik Filter returns 0.5836. }
+\caption{A simulation study shows that the three algorithms converge to the true $\phi$ at similar speed. The filtering for $x$ is very competitive.} \label{FilterRiewComparesion}
 \end{figure}
 
+\begin{table}[]
+\centering
+\caption{Comparing MSE and computation time of the three algorithms by running 100 iterations with $N=5\,000$ particles. }
+\label{FilterRiewComparesionTable}
+\begin{tabular}{|c|c|c|c|}
+\hline
+     & Liu and West's & Storvik Filter & Particle Learning  \\ \hline
+MSE  &  0.5843 &  0.5842 &  0.5823   \\ \hline
+Time (seconds) &  213.27   &  296.70  & 272.62     \\ \hline
+Variance ($\times 10^{-4}$) &  7.3595   & 12.5294   & 11.7947     \\ \hline
+\end{tabular}
+\end{table}
 
-
+From figure (\ref{FilterRiewComparesion}) it can be seen that the three algorithms converge to the true parameter $\phi$ with similar speed along time $t$. It is hard to tell which one is better visually. The filtering estimations for $x$ are competitive. However, from table (\ref{FilterRiewComparesionTable}), we can see that the Particle Learning returns the smallest mean squared error (MSE) at 0.5823, which is better than the other two algorithms. Liu and West's filter runs faster than others and has a smaller variance on parameter estimation. 
 
 
 \section{Conclusion}
 
-To be continued...
+In this chapter, we take a brief review on existing sequential state estimation and combined state and parameter estimation. Particle filter is an efficient method for state estimation, although the particles impoverishment is inevitable. Extended to this method, researchers are working on killing particles degeneracy and several accomplishments have been achieved. A new challenge is estimating the unknown parameters. In no doubt, for complex stochastic processes and dynamics, both  Bayesian and Frequentist methods are working well. 
+
+In summary, most of research issues for filtering and parameter estimation focused on 
+\begin{itemize}
+\item Choices of resampling scheme to kill particles degeneracy, such as Liu and West's filter.
+\item Exploration of an efficient sampling algorithm, such as Metropolis-Hastings sampler. 
+\item Exploration of accurate estimation with low variances in higher dimensional space. 
+\end{itemize}
+
+Subject to pages and time, some algorithms are not included. For instance, readers can refer to unscented Kalman filter \cite{wan2000unscented} for non-linear estimation, particle MCMC \cite{andrieu2010particle} for off-line Bayesian estimation, on-line gradient approach \cite{poyiadjis2005maximum} for parameter estimation. 
+
+
+

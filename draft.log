@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.5)  2 NOV 2017 11:50
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.5)  2 NOV 2017 16:03
 entering extended mode
 **draft.tex
 (C:\Users\zcao\Documents\Latex\Thesis\draft.tex
@@ -709,10 +709,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [15
 
 ]
-Underfull \vbox (badness 3930) has occurred while \output is active []
-
- [16]
-[17])
+[16] [17])
 \tf@lof=\write5
  [18]
 Chapter 1.
@@ -724,15 +721,15 @@ Chapter 1.
 Underfull \vbox (badness 2435) has occurred while \output is active []
 
  [3]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 67.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 68.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 67.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 68.
 
-Overfull \hbox (10.3612pt too wide) in paragraph at lines 97--97
+Overfull \hbox (10.3612pt too wide) in paragraph at lines 98--98
 [] 
  []
 
@@ -1758,7 +1755,7 @@ pt>
 File: Chapters/04Filtering/plot/ggFilterCompPhi.pdf Graphic file (type pdf)
  <use Chapters/04Filtering/plot/ggFilterCompPhi.pdf>
 Package pdftex.def Info: Chapters/04Filtering/plot/ggFilterCompPhi.pdf used on 
-input line 552.
+input line 551.
 (pdftex.def)             Requested size: 220.50525pt x 170.71388pt.
 
 <Chapters/04Filtering/plot/plotlyFilterCompX.png, id=787, 679.03688pt x 404.260
@@ -1766,21 +1763,24 @@ input line 552.
 File: Chapters/04Filtering/plot/plotlyFilterCompX.png Graphic file (type png)
  <use Chapters/04Filtering/plot/plotlyFilterCompX.png>
 Package pdftex.def Info: Chapters/04Filtering/plot/plotlyFilterCompX.png used o
-n input line 553.
+n input line 552.
 (pdftex.def)             Requested size: 352.8111pt x 227.6241pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) [70] [71 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/04Filtering/plot/ggFi
-lterCompPhi.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/04Filtering/plo
-t/plotlyFilterCompX.png (PNG copy)>] [72
 
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 556.
 
-]
+[70] [71 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/04Filtering/plot/ggFilt
+erCompPhi.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/04Filtering/plot/
+plotlyFilterCompX.png (PNG copy)>]) [72]
 Chapter 5.
 (C:\Users\zcao\Documents\Latex\Thesis\Chapters/05MCMCOU/MCMCEstimation.tex
 [73
+
+
 
 ]
 Underfull \vbox (badness 6775) has occurred while \output is active []
@@ -3319,10 +3319,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 15280 strings out of 493706
- 338377 string characters out of 3142169
- 337562 words of memory out of 3000000
- 18194 multiletter control sequences out of 15000+200000
+ 15288 strings out of 493706
+ 338584 string characters out of 3142169
+ 337715 words of memory out of 3000000
+ 18202 multiletter control sequences out of 15000+200000
  27166 words of font info for 106 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  42i,23n,40p,10391b,612s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -3354,7 +3354,7 @@ msfonts/cm/cmtt12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/ams
 fonts/cm/cmtt8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfon
 ts/symbols/msam10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/ams
 fonts/symbols/msbm10.pfb>
-Output written on draft.pdf (186 pages, 7203905 bytes).
+Output written on draft.pdf (186 pages, 7206640 bytes).
 PDF statistics:
  2003 PDF objects out of 2073 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
