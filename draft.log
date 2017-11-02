@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.5)  2 NOV 2017 16:03
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.5)  2 NOV 2017 23:56
 entering extended mode
 **draft.tex
 (C:\Users\zcao\Documents\Latex\Thesis\draft.tex
@@ -603,12 +603,6 @@ subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
 \c@theorem=\count162
  (C:\Users\zcao\Documents\Latex\Thesis\draft.aux
 
-LaTeX Warning: Label `fbasis' multiply defined.
-
-
-LaTeX Warning: Label `mse' multiply defined.
-
-
 LaTeX Warning: Label `covdef' multiply defined.
 
 )
@@ -718,22 +712,22 @@ Chapter 1.
 
 
 ] [2]
-Underfull \vbox (badness 2435) has occurred while \output is active []
+Underfull \vbox (badness 1242) has occurred while \output is active []
 
  [3]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 68.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 66.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 68.
-
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 66.
+ [4]
 Overfull \hbox (10.3612pt too wide) in paragraph at lines 98--98
 [] 
  []
 
-[4] [5] [6] [7]) [8]
+[5] [6] [7]) [8]
 Chapter 2.
 
 (C:\Users\zcao\Documents\Latex\Thesis\Chapters/02TractorSplineTheory/TractorSpl
@@ -3287,7 +3281,7 @@ Missing character: There is no ³ in font cmr12!
 
 
 ] [156]
-Underfull \hbox (badness 2460) in paragraph at lines 193--196
+Underfull \hbox (badness 2460) in paragraph at lines 208--211
 []\OT1/cmr/m/n/12 Chopin, N. (2002).  A se-quen-tial par-ti-cle fil-ter method 
 for static mod-els.
  []
@@ -3298,18 +3292,11 @@ Missing character: There is no € in font cmr12!
 Missing character: There is no ™ in font cmr12!
 Missing character: There is no Ì in font cmr12!
 Missing character: There is no ˆ in font cmr12!
- [158] [159]
-Missing character: There is no ï in font cmr12!
-Missing character: There is no ¿ in font cmr12!
-Missing character: There is no ¼ in font cmr12!
- [160]
+ [158] [159] [160]
 Missing character: There is no â in font cmti12!
 Missing character: There is no € in font cmti12!
 Missing character: There is no  in font cmti12!
- [161] [162] [163] [164] [165] [166]) [167] [168
-
-
-]
+ [161] [162] [163] [164] [165] [166] [167]) [168]
 
 Package natbib Warning: There were undefined citations.
 
@@ -3319,10 +3306,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 15288 strings out of 493706
- 338584 string characters out of 3142169
- 337715 words of memory out of 3000000
- 18202 multiletter control sequences out of 15000+200000
+ 15308 strings out of 493706
+ 339198 string characters out of 3142169
+ 338125 words of memory out of 3000000
+ 18222 multiletter control sequences out of 15000+200000
  27166 words of font info for 106 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  42i,23n,40p,10391b,612s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -3354,7 +3341,7 @@ msfonts/cm/cmtt12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/ams
 fonts/cm/cmtt8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfon
 ts/symbols/msam10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/ams
 fonts/symbols/msbm10.pfb>
-Output written on draft.pdf (186 pages, 7206640 bytes).
+Output written on draft.pdf (186 pages, 7208240 bytes).
 PDF statistics:
  2003 PDF objects out of 2073 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

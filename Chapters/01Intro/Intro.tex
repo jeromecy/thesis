@@ -1,7 +1,4 @@
 
-\section{Problem Statement}
-
-
 %% % % %第一段： 提出并介绍这个问题
 %The problem in the world I explore in this paper is....... 
 %The reason why it is an important problem is......
@@ -20,34 +17,35 @@
 %Inference and Characterization of Planar Trajectories
 
 
-The Global Positioning System (abbreviated as GPS) is a space-based navigation system consisting 24 satellites running around the earth orbits at the altitude 202,00 km. These satellites cover 98\% of the earth surface and at least 4 satellites are available at anytime from anywhere on the earth or near the earth orbit. With four or more satellites, a GPS receiver can provide geographic information to them and triangulate its location on the ground, such as longitude, latitude and elevation. These receivers are using passive locating technology, by which they can receive signals without transmitting any data. Therefore, GPS is used in plenty applications in military and general public, including aircraft tracking, vehicle navigation, surveying, astronomy and so on. Tractors, working on an orchard or vineyard, are often mounted with GPS units that provide position and velocity information to orchardist and landlords. With this information, an orchardist is able to follow the trajectory and motion patterns of tractors and monitor its working status. 
-
-Researchers are wondering how to get a more accurate estimation for the position of a moving vehicle and to track its moving trajectory instantly.  That is the problem, which has been confusing researchers for a few years and I am exploring in this paper. 
-
-In 1960, R.E. Kalman published his famous paper describing a recursive solution to the discrete data linear filtering problem. The Kalman filter is a set of mathematical equations that provides an efficient computational means to estimate the state of a process in a recursive way, that minimizes the mean of the squared error \cite{introkalman}. Fernando Tusell gave a review of some R packages, which could be used to fit data with Kalman Filter methods \cite{kalmaninr}. However, limited to its property, Kalman Filter is tied up for a dynamic system, where the parameters and noise variances are unknown. In some dynamic systems, the variances are obtained based on the system identification algorithm, correlation method and least squares fusion criterion. To solve this issue, a self-tuning weighted measurement fusion Kalman filter is presented in \cite{selfturningkalman}. Also, a new adaptive Kalman filter will be a good choice \cite{adaptivekalman}. 
+\section{Problem Statement}
 
 
+The Global Positioning System (abbreviated as GPS) is a space-based navigation system consisting of a network of 24 satellites in six different 12-hour orbital paths spaced. So that at least five of them are in view from every point on the globe \cite{kaplan2005understanding} \cite{bajaj2002gps}. With these satellites, a GPS receiver provides geographic information to them and triangulate its location on the ground, such as longitude, latitude and elevation. These receivers are using passive locating technology, by which they can receive signals without transmitting any data. It is perhaps the most widely publicized location-sensing system providing an excellent lateration framework for determining geographic positions \cite{hightower2001location}. Offered free of charge and accessible worldwide, GPS is used in plenty applications in military and general public, including aircraft tracking, vehicle navigation, robot localization, surveying, astronomy and so on. 
+
+For a moving vehicle, it is often mounted with a GPS unit that communicates with the satellites and records position, average speed and direction of traveling information. With this kind of information, a maneuvering target tracking system becomes available and useful. This tracking system can be used to reduce the cost by knowing in real-time the current location of a vehicle, such as a truck or a bus \cite{chadil2008real}, and also be very useful for Intelligent Transportation System (ITS) \cite{mcdonald2006intelligent}. For instance, it can be used in probe cars to measure real-time traffic data to identify the congesting area. In particular, an orchardist is able to follow the trajectory and motion patterns of tractors, which are working on an orchard or vineyard, and monitor their working status with tracking system. 
+
+No doubt that in conventional target tracking, the most common method is the standard Kalman filter \cite{kalman1960new}, which is a recursive solution to the discrete data linear filtering problem. The Kalman filter is a set of mathematical equations that provides an efficient computational means to estimate the state of a process in a recursive way, that minimizes the mean of the squared error \cite{bishop2001introduction}. Fernando Tusell gave a review of some \textit{R} packages, which could be used to fit data with Kalman Filter methods \cite{tusell2011kalman}. Limited to its property, Kalman Filter is tied up for a dynamic system, where the parameters and noise variances are unknown. In some dynamic systems, the variances are obtained based on the system identification algorithm, correlation method and least squares fusion criterion. To solve this issue, a self-tuning weighted measurement fusion Kalman filter is presented in \cite{ran2010self}. Likewise, a new adaptive Kalman filter will be a good choice \cite{oussalah2001adaptive}. 
+
+When the target maneuver occurs, Kalman filtering accuracy will be reduced or even diverged due to the model mismatch and noise characteristics that cannot be known exactly \cite{liu2014filtering}. It is suggested that the smoothing spline fitting through the measured values reflecting the movements as an alternative approach. 
 
 
+\section{Smoothing Spline Based Reconstruction}
 
-
-\section{Spline Reconstruction}
-
-
-
-Kalman Filter is a good choice. And there probably a more simple and better way to fit our data -- the splines. Hastie introduces several kinds of splines that we could use in his book \cite{ESLII}. The core idea of splines is to augment the vector of inputs $X$ with additional variables, then use linear models in this space of derived input features. Adding constraints to construct basis functions $h_i(x), i = 1, 2,\ldots, n$, a linear basis expansion in $X$ could be represented as
-\[ f(x)=\sum_{i=1}^n \theta_i h_i(x) \]
+Several kinds of splines were introduced by \cite{esl2009}. The core idea of splines is to augment the vector of inputs $X$ with additional variables, then use linear models in this space of derived input features. Adding constraints to construct basis functions $h_i(x), i = 1, 2,\ldots, n$, a linear basis expansion in $X$ could be represented as
+\begin{equation*}
+f(x)=\sum_{i=1}^n \theta_i h_i(x) 
+\end{equation*}
 Once the basis functions $h_i(x)$ have been determined, the models are linear in the variables space. 
 
-Smoothing spline is a basic spline and could be used in two-dimensions. Mehdi Zamani proved that in two-dimensional spaces, splines have the advantages of simplicity and less computational operations \cite{smoothsplinein2D}. The most important part of this method is to find the parameter $\lambda$. We have a process (function)  to calculate the $RSS$ (Residual Sum of Square), where the smallest $RSS$ is, the best $\lambda$ would be
+Smoothing spline is a basic spline and could be used in two-dimensions. Mehdi Zamani proved that in two-dimensional spaces, splines have the advantages of simplicity and less computational operations \cite{zamani2010simple}. The most important part of this method is to find the parameter $\lambda$. We have a process (function)  to calculate the $RSS$ (Residual Sum of Square), where the smallest $RSS$ is, the best $\lambda$ would be
 \begin{align*}
 RSS(f,\lambda)=\sum_{n=1}^{n}\{(y_i)-g(x_i)\}^2+\lambda\int g''(x_i)^2
 \end{align*}
-The function $g(x)$ that minimizes $RSS$ is a natural cubic spline with knots at $x_1,...,x_n$ \cite{ESLII}. 
+The function $g(x)$ that minimizes $RSS$ is a natural cubic spline with knots at $x_1,...,x_n$ \cite{esl2009}. 
 
-Some ways are give to estimate the parameter \cite{smoothingparameter}, \cite{kim2004smoothing}. However, we hope that $\lambda$ could be a piecewise parameter, rather than a constant number, then we will have piecewise penalty functions. Grace Wahba introduced adaptive splines and a method to calculate piecewise parameters \cite{donoho1995wavelet} and Ziyue Liu and Wensheng Guo improved the method \cite{liu2010data}. But to get these parameters, we have to compromise to use adaptive smoothing splines. 
+Some ways are give to estimate the parameter \cite{wood2000modelling}, \cite{kim2004smoothing}. However, we hope that $\lambda$ could be a piecewise parameter, rather than a constant number, then we will have piecewise penalty functions. Grace Wahba introduced adaptive splines and a method to calculate piecewise parameters \cite{donoho1995wavelet} and Ziyue Liu and Wensheng Guo improved the method \cite{liu2010data}. But to get these parameters, we have to compromise to use adaptive smoothing splines. 
 
-Using splines to fit data has been studies by many researchers. Some simple examples are given in the book \cite{ESLII}. Moreover, Fujiichi Yoshimoto offers a method can treat not only data with a smooth underlying function, but also data with an underlying function having discontinuous points and/or cusps \cite{yoshimoto2003}. Dan Simon discussed a new type of algebraic spline, which is used to derive a filter for smoothing or interpolating discrete data points in eighth-order \cite{simon2004data}.
+Using splines to fit data has been studies by many researchers. Some simple examples are given in the book \cite{esl2009}. Moreover, Fujiichi Yoshimoto offers a method can treat not only data with a smooth underlying function, but also data with an underlying function having discontinuous points and/or cusps \cite{yoshimoto2003data}. Dan Simon discussed a new type of algebraic spline, which is used to derive a filter for smoothing or interpolating discrete data points in eighth-order \cite{simon2004data}.
 
 Based on these methods, Matthew decided to create a new spline. Temporarily, we name the new spline "Tractor Spline". This spline has some properties. This spline has two linear segments outside the knots and $n-1$ internal cubics. The  spline needs $4n = 4(n -1)+ 2\times 2$ constraints per component. These are provided by specifying the values and first derivatives at the knots. This means $2n$ constraints per component but they count twice since they constrain the spline on both sides of the knot. After that, once we know the functions of tractor spline, the position of tractor at time $t$ will be known. Moreover, we hope to integrate the details of orchard to improve predictions and begin to characterise the type of tractor trajectories at a higher level.
 
@@ -72,8 +70,10 @@ Almost every technique found in the scientific literature on the trajectory plan
 Besides the aforementioned approaches, some hybrid optimality criteria have also been proposed (e.g. time energy optimal trajectory planning).
 
 
+\cite{mitchell1972construction} \textit{Construction of basis functions in the finite element method}
+
 Denote by $h_m(t):\mathbb{R} \mapsto \mathbb{R}$ the $m$th transformation of $t$, $m =1, \cdots ,M$. We then model
-\begin{equation}\label{fbasis}
+\begin{equation}\label{introfbasis}
 f(t) =\sum_{m=1}^{M}\beta_mh_m(t).
 \end{equation}
 a linear basis expansion of $\mathbf{t}$ in $\mathbb{R}$, where $h_m(t)$ are named basis functions, $\beta_m$ are coefficients. Once the basis functions $h_m$ have been determined, the models are linear in these new variables, and the fitting proceeds as before.
@@ -86,10 +86,10 @@ f(t)=d_i(t-t_i)^3+c_i(t-t_i)^2+b_i(t-t_i)+a_i,
 for given coefficients $d_i, c_i, b_i$ and $a_i$, where $t_i\leq t\leq t_{i+1}$, $i=1,2,\cdots,n$. $f$ is a cubic spline on $[0,1]$ if (1) on each intervals $f$ is a polynomial; (2) the polynomial pieces fit together at knots $t_i$ in such a way that $f$ itself and its first and second derivatives are continuous at each $t_i$. If the second and third derivatives of $f$ are zero at 0 and 1, $f$ is said to be a natural cubic spline. These conditions are called natural boundary conditions.
 
 Over all spline functions $f(t)$ with two continuous derivatives fitting these observed data, the curve estimate  $\hat{f}(t)$ will be defined to be the minimizer the following penalized residual sum of squares, \EDITED{edited expressions}
-\begin{equation}\label{mse}
+\begin{equation}\label{intromse}
 \text{MSE}(f,\lambda)=\frac{1}{n}\sum_{i=1}^n(f(t_i)-y_i)^2+\lambda \int_{0}^{1}(f''(t))^2dt
 \end{equation}
-where $\lambda$ is a fixed smoothing parameter, $(t_i,y_i)$, $i=1, \cdots, n$ are observed data and $0 \leq t_1< t_2 < \cdots <t_n \leq 1$. In equation (\ref{mse}),  the smoothing parameter $\lambda$ controls the trade-off between over-fitting and bias,
+where $\lambda$ is a fixed smoothing parameter, $(t_i,y_i)$, $i=1, \cdots, n$ are observed data and $0 \leq t_1< t_2 < \cdots <t_n \leq 1$. In equation (\ref{intromse}),  the smoothing parameter $\lambda$ controls the trade-off between over-fitting and bias,
 \begin{align}
 \begin{cases}
 \lambda = 0 : & \mbox{$f$ can be any function that interpolates the data,}\\
@@ -97,12 +97,12 @@ where $\lambda$ is a fixed smoothing parameter, $(t_i,y_i)$, $i=1, \cdots, n$ ar
 \end{cases}
 \end{align}
 
-In our case, the velocity data set $v_i$ with some independent Gaussian distributed errors $\varepsilon_i \sim N(0, \frac{\sigma_n^2}{\gamma})$ are used to estimate $f(t)$ simultaneously. $f$ is a linear combination of basis functions, as shown in equation (\ref{fbasis}), in the meantime, $f'$ is a linear combination of the first derivative of these basis functions
+In our case, the velocity data set $v_i$ with some independent Gaussian distributed errors $\varepsilon_i \sim N(0, \frac{\sigma_n^2}{\gamma})$ are used to estimate $f(t)$ simultaneously. $f$ is a linear combination of basis functions, as shown in equation (\ref{introfbasis}), in the meantime, $f'$ is a linear combination of the first derivative of these basis functions
 \begin{equation}
 f'(t) =\sum_{m=1}^{M}\alpha_mh'_m(t).
 \end{equation}
 
-The velocity information  is incorporated into MSE  equation (\ref{mse}) by the addition of velocity term $(f'(t_i)-v_i)^2$. Then it becomes 
+The velocity information  is incorporated into MSE  equation (\ref{intromse}) by the addition of velocity term $(f'(t_i)-v_i)^2$. Then it becomes 
 \begin{equation}\label{mse2}
 \text{MSE}(f,\lambda,\gamma)=\frac{1}{n}\sum_{i=1}^n(f(t_i)-y_i)^2+\frac{\gamma}{n} \sum_{i=1}^n(f'(t_i)-v_i)^2+\lambda \int_{0}^{1}(f''(t))^2dt,
 \end{equation}
@@ -239,6 +239,10 @@ A Reproducing Kernel in Space $\mathbb{H}$.
 \section{Filtering Methods}
 
 \section{Sequential Monte Carlo Markov Chain Algorithm}
+
+
+\section{Summary}
+
 
 
 
