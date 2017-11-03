@@ -1,9 +1,12 @@
 
-\section{Penalty Matrix in (\ref{tractormse})}
+
+\numberwithin{equation}{section}
+
+\section{Penalty Matrix in (\ref{tractormse})}\label{PenaltyTermDetails}
 
 
 The $k$-th $\Omega^{(k)}$ is a $2n \times 2n$ matrix in the form of
-\begin{align*}
+\begin{align}
 \Omega_{2k-1,2k-1}^{(k)} & =\int_{t_{k}}^{t_{k+1}} \frac{d^2 h_{00}^{(k)}(t)}{dt^2}  \frac{d^2 h_{00}^{(k)}(t)}{dt^2} dt=\frac{12}{\Delta_k^3}\\
 \Omega_{2k-1,2k}^{(k)} &=\int_{t_{k}}^{t_{k+1}} \frac{d^2 h_{00}^{(k)}(t)}{dt^2}  \frac{d^2 h_{10}^{(k)}(t)}{dt^2} dt=\frac{6}{\Delta_k^2}\\
 \Omega_{2k-1,2k+1}^{(k)} &=\int_{t_{k}}^{t_{k+1}} \frac{d^2 h_{00}^{(k)}(t)}{dt^2}  \frac{d^2 h_{01}^{(k+1)}(t)}{dt^2} dt=\frac{-12}{\Delta_k^3}\\
@@ -14,8 +17,8 @@ The $k$-th $\Omega^{(k)}$ is a $2n \times 2n$ matrix in the form of
 \Omega_{2k+1,2k+1}^{(k)} &=\int_{t_{k}}^{t_{k+1}} \frac{d^2 h_{01}^{(k+1)}(t)}{dt^2}  \frac{d^2 h_{01}^{(k+1)}(t)}{dt^2} dt=\frac{12}{\Delta_k^3}\\
 \Omega_{2k+1,2k+2}^{(k)} &=\int_{t_{k}}^{t_{k+1}} \frac{d^2 h_{01}^{(k+1)}(t)}{dt^2}  \frac{d^2 h_{11}^{(k+1)}(t)}{dt^2} dt=\frac{-6}{\Delta_k^2}\\
 \Omega_{2k+2,2k+2}^{(k)} &=\int_{t_{k}}^{t_{k+1}} \frac{d^2 h_{11}^{(k+1)}(t)}{dt^2}  \frac{d^2 h_{11}^{(k+1)}(t)}{dt^2} dt=\frac{4}{\Delta_k}
-\end{align*}
-$k=1,2,\cdots,n-1$. It's a bandwidth four matrix. Then
+\end{align}
+$k=1,2,\ldots,n-1$. It's a bandwidth four matrix. Then
 \begin{equation*}
 \mathbf{\Omega}=\sum_{k=1}^{n-1}\Omega^{(k)}
 \end{equation*}
@@ -146,7 +149,7 @@ Finally, we will prove basis functions are continuous on $[t_1, t_n]$. For any k
 \end{align*}
 So
 \begin{align*}
-\lim\limits_{t\rightarrow t_k+} f(t) =\lim\limits_{t\rightarrow t_k-} f(t) =f(t),
+\lim\limits_{t\rightarrow t_k^+} f(t) =\lim\limits_{t\rightarrow t_k^-} f(t) =f(t),
 \end{align*}
 $f(t)$ is continuous at knots, and then continuous on whole interval $[t_1,t_n]$.
 $f(t)$ is a continuous cubic spline on interval $[t_1,t_n]$, then $f(t)$ has continuous first and second derivatives.

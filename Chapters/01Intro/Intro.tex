@@ -17,7 +17,7 @@
 %Inference and Characterization of Planar Trajectories
 
 
-\section{Problem Statement}
+\section{Background}
 
 
 The Global Positioning System (abbreviated as GPS) is a space-based navigation system consisting of a network of 24 satellites in six different 12-hour orbital paths spaced. So that at least five of them are in view from every point on the globe \cite{kaplan2005understanding} \cite{bajaj2002gps}. With these satellites, a GPS receiver provides geographic information to them and triangulate its location on the ground, such as longitude, latitude and elevation. These receivers are using passive locating technology, by which they can receive signals without transmitting any data. It is perhaps the most widely publicized location-sensing system providing an excellent lateration framework for determining geographic positions \cite{hightower2001location}. Offered free of charge and accessible worldwide, GPS is used in plenty applications in military and general public, including aircraft tracking, vehicle navigation, robot localization, surveying, astronomy and so on. 
@@ -26,10 +26,16 @@ For a moving vehicle, it is often mounted with a GPS unit that communicates with
 
 No doubt that in conventional target tracking, the most common method is the standard Kalman filter \cite{kalman1960new}, which is a recursive solution to the discrete data linear filtering problem. The Kalman filter is a set of mathematical equations that provides an efficient computational means to estimate the state of a process in a recursive way, that minimizes the mean of the squared error \cite{bishop2001introduction}. Fernando Tusell gave a review of some \textit{R} packages, which could be used to fit data with Kalman Filter methods \cite{tusell2011kalman}. Limited to its property, Kalman Filter is tied up for a dynamic system, where the parameters and noise variances are unknown. In some dynamic systems, the variances are obtained based on the system identification algorithm, correlation method and least squares fusion criterion. To solve this issue, a self-tuning weighted measurement fusion Kalman filter is presented in \cite{ran2010self}. Likewise, a new adaptive Kalman filter will be a good choice \cite{oussalah2001adaptive}. 
 
-When the target maneuver occurs, Kalman filtering accuracy will be reduced or even diverged due to the model mismatch and noise characteristics that cannot be known exactly \cite{liu2014filtering}. It is suggested that the smoothing spline fitting through the measured values reflecting the movements as an alternative approach. 
+When the target maneuver occurs, Kalman filtering accuracy will be reduced or even diverged due to the model mismatch and noise characteristics that cannot be known exactly \cite{liu2014filtering}. Moreover, Kalman filter based methods require the state vector contains pre-specified coefficients during the whole approximation procedure and are within the bounded definition range determined at the beginning \cite{jauch2017recursive}. It is suggested that the smoothing spline fitting through the measured values reflecting the movements is an alternative approach. Even though fitting a univariate local linear trend model using a Kalman filter is equivalent to fitting a cubic spline, see \cite{eubank2004simple}, \cite{durbin2012time}, the latter algorithm overcomes the current limitation and can approximate data points throughout the whole process. 
+
+
 
 
 \section{Smoothing Spline Based Reconstruction}
+
+Starting from interpolation, the simplest way of connecting a set of sequences $(t_1,y_t),\ldots, (t_n,y_n)$ is by straight line segments. Known as piecewise
+linear interpolation. Apparently, sharp turnings occur at joint knots. A smooth path is expected and quite common in real life application. The polynomial spline $f(t) = f_n^m(t)$ is a real-valued function on $[a,b]$ defined with the aid of $n$ knots: $-\infty \leq a <t_1 <\cdots <t_n<b\leq +\infty$. 
+
 
 Several kinds of splines were introduced by \cite{esl2009}. The core idea of splines is to augment the vector of inputs $X$ with additional variables, then use linear models in this space of derived input features. Adding constraints to construct basis functions $h_i(x), i = 1, 2,\ldots, n$, a linear basis expansion in $X$ could be represented as
 \begin{equation*}
@@ -41,7 +47,7 @@ Smoothing spline is a basic spline and could be used in two-dimensions. Mehdi Za
 \begin{align*}
 RSS(f,\lambda)=\sum_{n=1}^{n}\{(y_i)-g(x_i)\}^2+\lambda\int g''(x_i)^2
 \end{align*}
-The function $g(x)$ that minimizes $RSS$ is a natural cubic spline with knots at $x_1,...,x_n$ \cite{esl2009}. 
+The function $g(x)$ that minimizes $RSS$ is a natural cubic spline with knots at $x_1,\ldots ,x_n$ \cite{esl2009}. 
 
 Some ways are give to estimate the parameter \cite{wood2000modelling}, \cite{kim2004smoothing}. However, we hope that $\lambda$ could be a piecewise parameter, rather than a constant number, then we will have piecewise penalty functions. Grace Wahba introduced adaptive splines and a method to calculate piecewise parameters \cite{donoho1995wavelet} and Ziyue Liu and Wensheng Guo improved the method \cite{liu2010data}. But to get these parameters, we have to compromise to use adaptive smoothing splines. 
 
@@ -78,12 +84,12 @@ f(t) =\sum_{m=1}^{M}\beta_mh_m(t).
 \end{equation}
 a linear basis expansion of $\mathbf{t}$ in $\mathbb{R}$, where $h_m(t)$ are named basis functions, $\beta_m$ are coefficients. Once the basis functions $h_m$ have been determined, the models are linear in these new variables, and the fitting proceeds as before.
 
-Suppose we are given observed data $t_1,t_2, \cdots, t_n$ on interval $[0,1]$, satisfying $0\leq t_1< t_2 < \cdots <t_n \leq 1$. A piecewise polynomial function $f(t)$ can be obtained by dividing the interval into contiguous
-intervals $(t_1,t_2),\cdots,(t_{n-1},t_n)$, and representing $f$ by a separate polynomial in each interval. The points $t_i$ are called knots. For example,
+Suppose we are given observed data $t_1,t_2, \ldots, t_n$ on interval $[0,1]$, satisfying $0\leq t_1< t_2 < \cdots <t_n \leq 1$. A piecewise polynomial function $f(t)$ can be obtained by dividing the interval into contiguous
+intervals $(t_1,t_2),\ldots,(t_{n-1},t_n)$, and representing $f$ by a separate polynomial in each interval. The points $t_i$ are called knots. For example,
 \begin{equation}
 f(t)=d_i(t-t_i)^3+c_i(t-t_i)^2+b_i(t-t_i)+a_i,
 \end{equation}
-for given coefficients $d_i, c_i, b_i$ and $a_i$, where $t_i\leq t\leq t_{i+1}$, $i=1,2,\cdots,n$. $f$ is a cubic spline on $[0,1]$ if (1) on each intervals $f$ is a polynomial; (2) the polynomial pieces fit together at knots $t_i$ in such a way that $f$ itself and its first and second derivatives are continuous at each $t_i$. If the second and third derivatives of $f$ are zero at 0 and 1, $f$ is said to be a natural cubic spline. These conditions are called natural boundary conditions.
+for given coefficients $d_i, c_i, b_i$ and $a_i$, where $t_i\leq t\leq t_{i+1}$, $i=1,2,\ldots,n$. $f$ is a cubic spline on $[0,1]$ if (1) on each intervals $f$ is a polynomial; (2) the polynomial pieces fit together at knots $t_i$ in such a way that $f$ itself and its first and second derivatives are continuous at each $t_i$. If the second and third derivatives of $f$ are zero at 0 and 1, $f$ is said to be a natural cubic spline. These conditions are called natural boundary conditions.
 
 Over all spline functions $f(t)$ with two continuous derivatives fitting these observed data, the curve estimate  $\hat{f}(t)$ will be defined to be the minimizer the following penalized residual sum of squares, \EDITED{edited expressions}
 \begin{equation}\label{intromse}
@@ -111,7 +117,7 @@ and $\hat{f}$ is the minimizer of the MSE equation (\ref{mse2}).
 In the model $y=f(t)+\varepsilon$, it is reasonable to assume that the observed data $y_i$ is Gaussian distribution with mean $f(t_i)$ and variance $\sigma_n^2$. In a similar way, the velocity is estimated as  $v=f'(t)+\frac{\varepsilon}{\gamma}$, where $v_i$ is Gaussian distribution with mean $f'(t_i)$ and variance $\frac{\sigma_n^2}{\gamma}$. Then the joint distribution of $\mathbf{y},\mathbf{v},f(t)$ and $f'(t)$ is normal with zero mean and a covariance matrix, which can be estimated through Gaussian Process Regression.
 
 
-Given a series of such fixes, I want to construct the most likely path taken by the tractor with some smart modelling of the movement. I then want to develop higher level characterisations of the trajectories and apply this to more general problems in curve and object recognition.
+Given a series of such fixes, I want to construct the most likely path taken by the tractor with some smart modeling of the movement. I then want to develop higher level characterizations of the trajectories and apply this to more general problems in curve and object recognition.
 
 
 

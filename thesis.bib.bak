@@ -524,6 +524,14 @@
   publisher = {JSTOR}
 }
 
+@BOOK{durbin2012time,
+  title = {Time series analysis by state space methods},
+  publisher = {OUP Oxford},
+  year = {2012},
+  author = {Durbin, James and Koopman, Siem Jan},
+  volume = {38}
+}
+
 @ARTICLE{einstein1956investigations,
   author = {Einstein, A},
   title = {Investigations on the theory of the Brownian Movement edited with
@@ -558,6 +566,17 @@
   pages = {1323--1345},
   number = {9},
   publisher = {Elsevier}
+}
+
+@ARTICLE{eubank2004simple,
+  author = {Eubank, RL},
+  title = {A simple smoothing spline, III},
+  journal = {Computational Statistics},
+  year = {2004},
+  volume = {19},
+  pages = {227--241},
+  number = {2},
+  publisher = {Springer}
 }
 
 @ARTICLE{evensen1994sequential,
@@ -905,6 +924,18 @@
   owner = {zcao},
   publisher = {Elsevier},
   timestamp = {2017.09.08}
+}
+
+@ARTICLE{jauch2017recursive,
+  author = {Jauch, Jens and Bleimund, Felix and Rhode, Stephan and Gauterin,
+	Frank},
+  title = {Recursive B-spline approximation using the Kalman filter},
+  journal = {Engineering Science and Technology, an International Journal},
+  year = {2017},
+  volume = {20},
+  pages = {28--34},
+  number = {1},
+  publisher = {Elsevier}
 }
 
 @ARTICLE{jaynes1983papers,
