@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.5)  3 NOV 2017 14:53
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.5)  5 NOV 2017 18:06
 entering extended mode
 **draft.tex
 (C:\Users\zcao\Documents\Latex\Thesis\draft.tex
@@ -601,11 +601,7 @@ subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
 )
 \c@lemma=\count161
 \c@theorem=\count162
- (C:\Users\zcao\Documents\Latex\Thesis\draft.aux
-
-LaTeX Warning: Label `covdef' multiply defined.
-
-)
+ (C:\Users\zcao\Documents\Latex\Thesis\draft.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 70.
 LaTeX Font Info:    ... okay on input line 70.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 70.
@@ -618,7 +614,8 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 70.
 LaTeX Font Info:    ... okay on input line 70.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 70.
 LaTeX Font Info:    ... okay on input line 70.
- ("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count163
 \scratchdimen=\dimen172
@@ -703,7 +700,10 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [15
 
 ]
-[16] [17])
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [16]
+[17])
 \tf@lof=\write5
  [18]
 Chapter 1.
@@ -711,7 +711,10 @@ Chapter 1.
 
 
 
-] [2]
+]
+Underfull \vbox (badness 2158) has occurred while \output is active []
+
+ [2]
 [3]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 72.
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
@@ -1666,20 +1669,20 @@ Chapter 3.
 (C:\Users\zcao\Documents\Latex\Thesis\Chapters/03GPR/GPR.tex [39
 
 ] [40] [41]
-[42]
-Overfull \hbox (15.18867pt too wide) in paragraph at lines 106--108
+Overfull \hbox (15.18867pt too wide) in paragraph at lines 123--125
 \OT1/cmr/m/n/12 in the space $\OMS/cmsy/m/n/12 C[]\OT1/cmr/m/n/12 [0\OML/cmm/m/
 it/12 ; \OT1/cmr/m/n/12 1] = \OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 f \OT1/cmr/m/n/
 12 : \OML/cmm/m/it/12 f; f[][]f[][]\OT1/cmr/m/n/12 [0\OML/cmm/m/it/12 ; \OT1/cm
 r/m/n/12 1]\OMS/cmsy/m/n/12 g$
  []
 
+[42]
 Missing character: There is no ¬ in font cmr12!
 Missing character: There is no ∑ in font cmr12!
 Missing character: There is no ¬ in font cmr12!
 Missing character: There is no ∑ in font cmr12!
-[43]
-Overfull \hbox (2.1058pt too wide) in paragraph at lines 166--168
+ [43]
+Overfull \hbox (2.1058pt too wide) in paragraph at lines 182--184
 \OT1/cmr/m/n/12 and not-ing that $[][] \OML/cmm/m/it/12 R[]\OT1/cmr/m/n/12 (\OM
 L/cmm/m/it/12 x[]; x\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 R[]\OT1/cmr/m/n/12 (\OML/
 cmm/m/it/12 x[]; x\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 dx \OT1/cmr/m/n/12 = \OML/c
@@ -1690,41 +1693,61 @@ mm/m/it/12 R[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x[]; x[]\OT1/cmr/m/n/12 )$, $[]
  []
 
 [44]
-Overfull \hbox (55.38551pt too wide) in paragraph at lines 174--174
+Overfull \hbox (72.82657pt too wide) in paragraph at lines 252--252
 [] 
  []
 
-
-Overfull \hbox (72.83221pt too wide) in paragraph at lines 236--236
-[] 
+[45]
+Overfull \hbox (48.61108pt too wide) in paragraph at lines 295--300
+[]\OT1/cmr/m/n/12 In Gaus-sian Pro-cess Re-gres-sion, the co-vari-ance ma-trix 
+be-comes $\OML/cmm/m/it/12 M \OT1/cmr/m/n/12 = []$
  []
 
-[45] [46] <Chapters/03GPR/plot/simu01.pdf, id=691, 844.15375pt x 597.23125pt>
-File: Chapters/03GPR/plot/simu01.pdf Graphic file (type pdf)
-
-<use Chapters/03GPR/plot/simu01.pdf>
-Package pdftex.def Info: Chapters/03GPR/plot/simu01.pdf used on input line 281.
-
-(pdftex.def)             Requested size: 341.44244pt x 199.16467pt.
-
-<Chapters/03GPR/plot/simu02.pdf, id=692, 844.15375pt x 597.23125pt>
-File: Chapters/03GPR/plot/simu02.pdf Graphic file (type pdf)
-
-<use Chapters/03GPR/plot/simu02.pdf>
-Package pdftex.def Info: Chapters/03GPR/plot/simu02.pdf used on input line 286.
-
-(pdftex.def)             Requested size: 341.44244pt x 199.16467pt.
-
-<Chapters/03GPR/plot/sim_cov.pdf, id=693, 844.15375pt x 597.23125pt>
+<Chapters/03GPR/plot/sim_cov.pdf, id=688, 844.15375pt x 597.23125pt>
 File: Chapters/03GPR/plot/sim_cov.pdf Graphic file (type pdf)
 
 <use Chapters/03GPR/plot/sim_cov.pdf>
-Package pdftex.def Info: Chapters/03GPR/plot/sim_cov.pdf used on input line 296
+Package pdftex.def Info: Chapters/03GPR/plot/sim_cov.pdf used on input line 303
 .
 (pdftex.def)             Requested size: 341.44244pt x 199.16467pt.
-) [47] [48 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/03GPR/plot/simu01.pdf
-> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/03GPR/plot/simu02.pdf>] [49 <C
-:/Users/zcao/Documents/Latex/Thesis/Chapters/03GPR/plot/sim_cov.pdf>] [50
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[46]
+Overfull \hbox (15.09993pt too wide) detected at line 319
+[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 ) = []\OML/cmm/m/it/12 
+:
+ []
+
+
+Overfull \hbox (92.12831pt too wide) detected at line 323
+[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 ) = []\OML/cmm/m/it/12 
+:
+ []
+
+<Chapters/03GPR/plot/simu01.pdf, id=692, 844.15375pt x 597.23125pt>
+File: Chapters/03GPR/plot/simu01.pdf Graphic file (type pdf)
+
+<use Chapters/03GPR/plot/simu01.pdf>
+Package pdftex.def Info: Chapters/03GPR/plot/simu01.pdf used on input line 341.
+
+(pdftex.def)             Requested size: 341.44244pt x 199.16467pt.
+
+<Chapters/03GPR/plot/simu02.pdf, id=693, 844.15375pt x 597.23125pt>
+File: Chapters/03GPR/plot/simu02.pdf Graphic file (type pdf)
+
+<use Chapters/03GPR/plot/simu02.pdf>
+Package pdftex.def Info: Chapters/03GPR/plot/simu02.pdf used on input line 346.
+
+(pdftex.def)             Requested size: 341.44244pt x 199.16467pt.
+ [47 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/03GPR/plot/sim_cov.pdf>]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+) [48] [49 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/03GPR/plot/simu01.pdf
+> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/03GPR/plot/simu02.pdf>]
+[50
 
 
 ]
@@ -3297,48 +3320,44 @@ Missing character: There is no ù in font cmti12!
 
 Package natbib Warning: There were undefined citations.
 
-(C:\Users\zcao\Documents\Latex\Thesis\draft.aux)
-
-LaTeX Warning: There were multiply-defined labels.
-
- ) 
+(C:\Users\zcao\Documents\Latex\Thesis\draft.aux) ) 
 Here is how much of TeX's memory you used:
- 15318 strings out of 493706
- 339449 string characters out of 3142169
- 338309 words of memory out of 3000000
- 18232 multiletter control sequences out of 15000+200000
+ 15319 strings out of 493706
+ 339528 string characters out of 3142169
+ 334281 words of memory out of 3000000
+ 18233 multiletter control sequences out of 15000+200000
  27166 words of font info for 106 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  42i,23n,40p,10391b,612s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
-<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:
-/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/P
-rogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmex7.pfb><C:
-/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><
-C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:
-/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/P
-rogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Prog
-ram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program
- Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Fi
-les (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files
- (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files (x
-86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files (x86)
-/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Program Files (x86)/MiK
-TeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files (x86)/MiKTeX 
-2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/MiKTeX 2.9/
-fonts/type1/public/amsfonts/cm/cmss12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fo
-nts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
-s/type1/public/amsfonts/cm/cmsy5.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/t
-ype1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type
-1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/p
-ublic/amsfonts/cm/cmti10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pub
-lic/amsfonts/cm/cmti12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/publi
-c/amsfonts/cm/cmti8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/a
-msfonts/cm/cmtt12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/ams
-fonts/cm/cmtt8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfon
-ts/symbols/msam10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/ams
-fonts/symbols/msbm10.pfb>
-Output written on draft.pdf (186 pages, 7250398 bytes).
+<C:/Program Files (x86)/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files (x86)/MiKTeX 
+2.9/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Program Files (x86)/MiKTeX 2.9
+/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files (x86)/MiKTeX 2.9/f
+onts/type1/public/amsfonts/cmextra/cmex7.pfb><C:/Program Files (x86)/MiKTeX 2.9
+/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><C:/Program Files (x86)/MiKTeX 2
+.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files (x86)/MiKTeX 2.9
+/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files (x86)/MiKTeX 2.9/f
+onts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
+s/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/t
+ype1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/p
+ublic/amsfonts/cm/cmr12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/publ
+ic/amsfonts/cm/cmr17.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/
+amsfonts/cm/cmr5.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsf
+onts/cm/cmr6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts
+/cm/cmr8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
+cmss12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
+sy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy
+5.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.p
+fb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C
+:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/
+Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Pro
+gram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt12.pfb><C:/Progr
+am Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt8.pfb><C:/Program 
+Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Progr
+am Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on draft.pdf (186 pages, 7254734 bytes).
 PDF statistics:
  2002 PDF objects out of 2073 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

@@ -34,7 +34,7 @@ When the target maneuver occurs, Kalman filtering accuracy will be reduced or ev
 \section{Smoothing Spline Based Reconstruction}
 
 Starting from interpolation, the simplest way of connecting a set of sequences $(t_1,y_t),\ldots, (t_n,y_n)$ is by straight line segments. Known as piecewise
-linear interpolation. Apparently, sharp turnings occur at joint knots. A smooth path is expected and quite common in real life application. The polynomial spline $f(t) = f_n^m(t)$ is a real-valued function on $[a,b]$ defined with the aid of $n$ knots: $-\infty \leq a <t_1 <\cdots <t_n<b\leq +\infty$. 
+linear interpolation. Apparently, sharp turnings occur at joint knots. A smooth path is expected and more common in real life application. A piecewise polynomial is a function $p(t) = p_n^m(t)$ on $[a,b]$ defined with the aid of $n$ knots: $-\infty \leq a <t_1 <\cdots <t_n<b\leq +\infty$. 
 
 
 Several kinds of splines were introduced by \cite{esl2009}. The core idea of splines is to augment the vector of inputs $X$ with additional variables, then use linear models in this space of derived input features. Adding constraints to construct basis functions $h_i(x), i = 1, 2,\ldots, n$, a linear basis expansion in $X$ could be represented as

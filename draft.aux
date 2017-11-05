@@ -163,42 +163,46 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {2.13}{\ignorespaces Penalty function of 2-Dimensional reconstruction.\relax }}{36}}
 \newlabel{2dpenalty}{{2.13}{36}}
 \@writefile{toc}{\contentsline {section}{\numberline {2.6}Conclusion and Discussion}{37}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {3}Tractor Spline and Gaussian Process Regression}{39}}
+\citation{kim2004smoothing}
+\citation{hastie1990generalized}
+\citation{de1978practical}
+\citation{judd1998numerical}
+\citation{chen2009feedback}
+\@writefile{toc}{\contentsline {chapter}{\numberline {3}Tractor Spline Gaussian Regression}{39}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
 \@writefile{toc}{\contentsline {section}{\numberline {3.1}Introduction}{39}}
-\citation{de1978practical}
-\citation{judd1998numerical}
-\citation{chen2009feedback}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.1}Spline}{39}}
 \citation{ellis2009}
 \citation{green1993nonparametric}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.1}Spline}{40}}
-\newlabel{fbasis}{{3.1}{40}}
 \citation{hastie1990generalized}
 \citation{b_gpml}
-\newlabel{mse}{{3.2}{41}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.2}Gaussian Process Regression}{41}}
-\newlabel{covdef}{{3.6}{41}}
+\newlabel{fbasis}{{3.2}{40}}
+\newlabel{GaussianProcessMSEFunction}{{3.3}{40}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.2}Gaussian Process Regression}{40}}
 \citation{berlinet2011reproducing}
 \citation{wahba1990spline}
 \citation{wang1998smoothing}
+\newlabel{GaussianProcessCovDef}{{3.7}{41}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.3}Reproducing Kernel Hilbert Space}{41}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.4}The Smoothing Spline as Bayes Estimates}{41}}
 \citation{kimeldorf1971some}
 \citation{kimeldorf1970correspondence}
-\citation{gubook}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.3}The Smoothing Spline as Bayes Estimates}{42}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.2}A reproducing kernel on $\mathcal  {C}_{p.w.}^{2}[0,1]$}{43}}
-\newlabel{maineq}{{3.17}{43}}
-\newlabel{kerneleq}{{3.19}{43}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.3}Computation of Polynomial Smoothing Splines}{44}}
-\newlabel{etaeq}{{3.23}{44}}
-\newlabel{matrixeq}{{3.24}{45}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.4}Polynomial Smoothing Splines as Bayes Estimates}{45}}
-\newlabel{rhoeq}{{3.26}{46}}
-\newlabel{lem}{{3}{46}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.5}Numeric Simulation of Smoothing Spline and GPR}{47}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces (a) Comparing two methods under the same parameters $\lambda =0.01$ and $\gamma =0.1$. In this graph, the blue line is reconstruction from tractor spline, the red line is the mean of Gaussian Process, which is the posterior $\mathbb  {E}(f(x) \mid \mathbf  {Y}, \mathbf  {V})$. (b) The differences between two methods under the same parameters.\relax }}{48}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Best fitting simulation by TS and GPR.\relax }}{49}}
+\citation{gu2013smoothing}
+\@writefile{toc}{\contentsline {section}{\numberline {3.2}Tractor Spline}{42}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.3}Reproducing Kernel Hilbert Space on $\mathcal  {C}_{p.w.}^{2}[0,1]$}{42}}
+\newlabel{maineq}{{3.18}{42}}
+\newlabel{kerneleq}{{3.20}{42}}
+\newlabel{etaeq}{{3.24}{44}}
+\newlabel{matrixeq}{{3.25}{44}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.4}Tractor Splines as Bayes Estimates}{44}}
+\newlabel{GPrhoeq}{{3.27}{45}}
+\newlabel{GPLemma}{{3}{45}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.5}Correlated Errors}{46}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Comparing two methods. In this graph, the blue line is reconstruction from tractor spline, the red line is the mean of Gaussian Process, which is the posterior $\mathbb  {E}(\eta (x) | \mathbf  {Y}, \mathbf  {V})$.\relax }}{47}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.6}Numeric Simulation of Smoothing Spline and GPR}{47}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces (a) Comparing two methods under the same parameters $\lambda =0.01$ and $\gamma =0.1$. In this graph, the blue line is reconstruction from tractor spline, the red line is the mean of Gaussian Process, which is the posterior $\mathrm  {E}(f(x) \mid \mathbf  {Y}, \mathbf  {V})$. (b) The differences between two methods under the same parameters.\relax }}{49}}
 \citation{cappe2009inference}
 \citation{smcmip2011}
 \citation{elliott1995estimation}
@@ -635,7 +639,7 @@
 \bibcite{graves2011automatic}{{64}{2011}{{Graves}}{{Graves}}}
 \bibcite{green1993nonparametric}{{65}{1993}{{Green and Silverman}}{{Green and Silverman}}}
 \bibcite{gu1998model}{{66}{1998}{{Gu}}{{Gu}}}
-\bibcite{gubook}{{67}{2013}{{Gu}}{{Gu}}}
+\bibcite{gu2013smoothing}{{67}{2013}{{Gu}}{{Gu}}}
 \bibcite{haario1999adaptive}{{68}{1999}{{Haario {\em  et~al.}}}{{Haario, Saksman, and Tamminen}}}
 \bibcite{hammersley1964percolation}{{69}{1964}{{Hammersley and Handscomb}}{{Hammersley and Handscomb}}}
 \bibcite{handschin1970monte}{{70}{1970}{{Handschin}}{{Handschin}}}
