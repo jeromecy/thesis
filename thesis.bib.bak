@@ -80,6 +80,16 @@
   timestamp = {2017.10.23}
 }
 
+@BOOK{smcmip2011,
+  title = {Sequential Monte Carlo Methods in Practice},
+  publisher = {Springer-Verlag New York},
+  year = {2011},
+  editor = {Arnaud Doucet, Nando de Freitas, Neil Gordon},
+  author = {Arnaud Doucet, Nando de Freitas, Neil Gordon},
+  owner = {zcao},
+  timestamp = {2017.10.27}
+}
+
 @ARTICLE{arulampalam2002tutorial,
   author = {Arulampalam, M Sanjeev and Maskell, Simon and Gordon, Neil and Clapp,
 	Tim},
@@ -226,6 +236,15 @@
   volume = {40},
   owner = {zcao},
   timestamp = {2017.10.23}
+}
+
+@ARTICLE{branson2017nonparametric,
+  author = {Branson, Zach and Rischard, Maxime and Bornn, Luke and Miratrix,
+	Luke},
+  title = {A Nonparametric Bayesian Methodology for Regression Discontinuity
+	Designs},
+  journal = {arXiv preprint arXiv:1704.04858},
+  year = {2017}
 }
 
 @ARTICLE{cappe2007overview,
@@ -450,6 +469,13 @@
   owner = {zcao},
   publisher = {Elsevier},
   timestamp = {2017.10.23}
+}
+
+@BOOK{dieudonne2013foundations,
+  title = {Foundations of modern analysis},
+  publisher = {Read Books Ltd},
+  year = {2013},
+  author = {Dieudonn{\'e}, Jean}
 }
 
 @ARTICLE{dongarra2000guest,
@@ -1533,6 +1559,17 @@
   number = {12}
 }
 
+@ARTICLE{schoenberg1964spline,
+  author = {Schoenberg, Isaac Jacob},
+  title = {Spline functions and the problem of graduation},
+  journal = {Proceedings of the National Academy of Sciences},
+  year = {1964},
+  volume = {52},
+  pages = {947--950},
+  number = {4},
+  publisher = {National Acad Sciences}
+}
+
 @BOOK{schwarz2012geodesy,
   title = {Geodesy Beyond 2000: The Challenges of the First Decade, IAG General
 	Assembly Birmingham, July 19--30, 1999},
@@ -1714,6 +1751,17 @@
   timestamp = {2017.10.23}
 }
 
+@ARTICLE{speckman2003fully,
+  author = {Speckman, Paul L and Sun, Dongchu},
+  title = {Fully Bayesian spline smoothing and intrinsic autoregressive priors},
+  journal = {Biometrika},
+  year = {2003},
+  volume = {90},
+  pages = {289--302},
+  number = {2},
+  publisher = {Oxford University Press}
+}
+
 @ARTICLE{storvik2002particle,
   author = {Storvik, Geir},
   title = {Particle filters for state-space models with the presence of unknown
@@ -1856,6 +1904,16 @@
   journal = {The Annals of Statistics},
   year = {1985},
   pages = {1378--1402},
+  publisher = {JSTOR}
+}
+
+@ARTICLE{wahba1978improper,
+  author = {Wahba, Grace},
+  title = {Improper priors, spline smoothing and the problem of guarding against
+	model errors in regression},
+  journal = {Journal of the Royal Statistical Society. Series B (Methodological)},
+  year = {1978},
+  pages = {364--372},
   publisher = {JSTOR}
 }
 
@@ -2006,14 +2064,5 @@
   pages = {1141--1146},
   number = {7},
   publisher = {Springer}
-}
-
-@BOOK{smcmip2011,
-  title = {Sequential Monte Carlo Methods in Practice},
-  publisher = {Springer-Verlag New York},
-  year = {2011},
-  editor = {Arnaud Doucet, Nando de Freitas, Neil Gordon},
-  owner = {zcao},
-  timestamp = {2017.10.27}
 }
 

@@ -8,7 +8,6 @@ Too many commas in name 1 of "Atkinson, A.D. , Sanjoé, J.J." for entry Atkinson
 while executing---line 1587 of file otago.bst
 Too many commas in name 1 of "Atkinson, A.D. , Sanjoé, J.J." for entry Atkinson2004
 while executing---line 1587 of file otago.bst
-Warning--missing author in smcmip2011
 Too many commas in name 1 of "Atkinson, A.D. , Sanjoé, J.J." for entry Atkinson2004
 while executing---line 1632 of file otago.bst
 Too many commas in name 1 of "Atkinson, A.D. , Sanjoé, J.J." for entry Atkinson2004
@@ -17,6 +16,7 @@ Too many commas in name 1 of "Atkinson, A.D. , Sanjoé, J.J." for entry Atkinson
 while executing---line 1632 of file otago.bst
 Too many commas in name 1 of "Atkinson, A.D. , Sanjoé, J.J." for entry Atkinson2004
 while executing---line 1632 of file otago.bst
+Warning--can't use both author and editor fields in smcmip2011
 Too many commas in name 1 of "Atkinson, A.D. , Sanjoé, J.J." for entry Atkinson2004
 while executing---line 1669 of file otago.bst
 Too many commas in name 1 of "Atkinson, A.D. , Sanjoé, J.J." for entry Atkinson2004
@@ -25,6 +25,8 @@ Too many commas in name 1 of "Atkinson, A.D. , Sanjoé, J.J." for entry Atkinson
 while executing---line 1669 of file otago.bst
 Warning--no number and no volume in bedard2007weak
 Warning--no number and no volume in beskos2009optimal
+Warning--no number and no volume in branson2017nonparametric
+Warning--page numbers missing in branson2017nonparametric
 Warning--no number and no volume in casella2004generalized
 Warning--no number and no volume in chopin2010particle
 Warning--page numbers missing in chopin2010particle
@@ -65,6 +67,7 @@ Warning--no number and no volume in vaughan2015goodness
 Warning--page numbers missing in vaughan2015goodness
 Warning--no number and no volume in vieira2016online
 Warning--page numbers missing in vieira2016online
+Warning--no number and no volume in wahba1978improper
 Warning--no number and no volume in wahba1985comparison
 Warning--no number and no volume in west1993mixture
 (There were 10 error messages)

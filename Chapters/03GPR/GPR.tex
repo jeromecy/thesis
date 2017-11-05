@@ -15,12 +15,28 @@
 %
 %Gaussian processes are useful in statistical modeling, benefiting from properties inherited from the normal. For example, if a random process is modeled as a Gaussian process, the distributions of various derived quantities can be obtained explicitly. Such quantities include the average value of the process over a range of times and the error in estimating the average using sample values at a small set of times.
 
+A Hilbert space is a real or complex inner product space with respect to the distance function induced by the inner product \cite{dieudonne2013foundations}. Particularly, the Hilbert space $\mathcal{L}_2[0,1]$ is a set of square integrable functions $f(t):[0,1]\rightarrow\mathbb{R}$, where all functions satisfy 
+\begin{equation*}
+\mathcal{L}_2[0,1] =\lbrace f:\int_0^1f^2dt <\infty \rbrace
+\end{equation*}
+with an inner product $\langle f,g\rangle=\int_0^1fgdt$. 
 
-Consider a regression problem with observations $y_i = f(t_i)+\epsilon_i$, $i=1,\ldots,n$, containing i.i.d normal noises $\epsilon_i\sim N(0,\sigma^2)$, a classic nonparametric or semi-parametric regression is a function that minimizes the following penalized least square function 
+Consider a regression problem with observations $y_i = f(t_i)+\epsilon_i$, $i=1,\ldots,n$, containing i.i.d normal noises $\epsilon_i\sim N(0,\sigma^2)$ in the space $C^{(m)}[0,1]=\{ f:f^{(m)}\in \mathit{L}_2[0,1] \}$. The classic nonparametric or semi-parametric regression is a function that minimizes the following penalized least square functional 
 \begin{equation}
-\frac{1}{n}\sum_{i=1}^{n}\left( y_i-f(t_i) \right)^2 + \lambda J(f),
+\frac{1}{n}\sum_{i=1}^{n}\left( y_i-f(t_i) \right)^2 + \lambda \int_{0}^{1} \left( f^{(m)}\right)^2dt, 
 \end{equation}
-where $J(f)$ is a quadratic functional measuring the roughness of $f$ \cite{kim2004smoothing}. The first term is the lack of fit of $f$ to the data. In the second term, generally, $\lambda$ is a fixed smoothing parameter controlling the trade-off between over-fitting and bias. For instance, cubic smoothing spline provides a powerful tool to estimate the above nonparametric functions with penalty term $J(f) = \int f''^2dt$ \cite{hastie1990generalized}. 
+where the first term is the lack of fit of $f$ to the data. In the second term, generally, $\lambda$ is a fixed smoothing parameter controlling the trade-off between over-fitting and bias \cite{esl2009}. The minimizer $f_\lambda$ of the above equation resides in an $n$-dimensional space and the computation in multivariate settings is generally of the order $O(n^3)$ \cite{kim2004smoothing}. It is shown that a piecewise polynomial smoothing spline of degree $2m-1$ is well known to provide an aesthetically satisfying method for estimating $f$ if $\mathbf{y}$ cannot be interpolated exactly by some polynomial of degree less than $m$ \cite{schoenberg1964spline}. For instance, when $m=2$, a piecewise cubic smoothing spline provides a powerful tool to estimate the above nonparametric function, in which the penalty term is $\int f''^2dt$ \cite{hastie1990generalized}. 
+
+Further, \cite{wahba1978improper} showed that a Bayesian version of this problem is to take a Gaussian process prior on $f$ as 
+\begin{equation*}
+f(t_i) = a_0+a_1t_i+\cdots + a_{m-1}t_i^{m-1} + x_i,
+\end{equation*}
+with $x_i=X(t_i)$ is a zero mean Gaussian process whose $m$th derivative is scaled white noise and $i=1,\ldots,n$ \cite{speckman2003fully}. The extended Bayes estimate $f_\lambda$ with a "partially diffuse" prior is as exactly the same as spline solution. Other researches have been done on discovering the relationship between nonparametric regression and Bayesian estimation. 
+
+
+
+
+\cite{branson2017nonparametric} propose a Gaussian process regression method that acts as a Bayesian analog to local linear regression for sharp regression discontinuity designs. 
 
 
 
