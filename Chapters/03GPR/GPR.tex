@@ -51,11 +51,11 @@ In this chapter, we propose that the Tractor spline can be estimated by Bayesian
 
 \section{Polynomial Smoothing Splines on $[0, 1]$ as Bayes Estimates}
 
-A polynomial smoothing spline of degree $2m-1$ is a piecewise polynomial of the same degree in each intervals $[t_i,t_{i+1}]$, $i=1, \ldots, n-1$, and the first $2m-2$ derivatives are continuous at joint knots. For instance, when $m=2$,  a piecewise cubic smoothing spline is a special case of the polynomial smoothing spline providing a powerful tool to estimate the above nonparametric function (\ref{GaussianProcessGeneralObjective}) in the space  $\mathcal{C}^{(2)}[0,1]$, where the penalty term is $\int f''^2dt$ \cite{hastie1990generalized}. If a general space $\mathcal{C}^{(m)}[0,1]$ is equipped with an appropriate inner product, it can be made a reproducing kernel Hilbert space. 
+A polynomial smoothing spline of degree $2m-1$ is a piecewise polynomial of the same degree in each intervals $[t_i,t_{i+1}]$, $i=1, \ldots, n-1$, and the first $2m-2$ derivatives are continuous at joint knots. For instance, when $m=2$,  a piecewise cubic smoothing spline is a special case of the polynomial smoothing spline providing a powerful tool to estimate the above nonparametric function (\ref{GaussianProcessGeneralObjective}) in the space  $\mathcal{C}^{(2)}[0,1]$, where the penalty term is $\int f''^2dt$ \cite{hastie1990generalized}  \cite{wang1998smoothing}. If a general space $\mathcal{C}^{(m)}[0,1]$ is equipped with an appropriate inner product, it can be made a reproducing kernel Hilbert space. 
 
 \subsection{Polynomial Smoothing Spline}
 
-A spline is a numeric function that is piecewise-defined by polynomial functions, and which possesses a high degree of smoothness at the places where the polynomial pieces connect (known as knots) \cite{judd1998numerical} \cite{chen2009feedback}. Suppose we are given observed data $t_1,t_2, \ldots, t_n$ in interval $[0,1]$, satisfying $0\leq t_1< t_2 < \cdots <t_n \leq 1$. A piecewise polynomial function $f(t)$ can be obtained by dividing the interval into contiguous intervals $(t_1,t_2),\ldots,(t_{n-1},t_n)$ and represented by a separate polynomial in each interval. For any continuous $f\in \mathcal{C}^{(m)}[0,1]$, it can be represented in a linear combination of basis functions $h_m(t)$ as $f(t) =\sum_{m=1}^{M}\beta_mh_m(t)$, where $\beta_m$ are coefficients \cite{ellis2009}. It is just like every vector in a vector space can be represented as a linear combination of basis vectors. 
+A spline is a numeric function that is piecewise-defined by polynomial functions, and which possesses a high degree of smoothness at the places where the polynomial pieces connect (known as knots) \cite{judd1998numerical} \cite{chen2009feedback}. Suppose we are given observed data $(t_1,y_1),(t_2,y_2), \ldots, (t_n,y_n)$ in interval $[0,1]$, satisfying $0\leq t_1< t_2 < \cdots <t_n \leq 1$, a piecewise polynomial function $f(t)$ can be obtained by dividing the interval into contiguous intervals $(t_1,t_2),\ldots,(t_{n-1},t_n)$ and represented by a separate polynomial in each interval. For any continuous $f\in \mathcal{C}^{(m)}[0,1]$, it can be represented in a linear combination of basis functions $h_m(t)$ as $f(t) =\sum_{m=1}^{M}\beta_mh_m(t)$, where $\beta_m$ are coefficients \cite{ellis2009}. It is just like every vector in a vector space can be represented as a linear combination of basis vectors. 
 
 
 
@@ -87,39 +87,101 @@ If the reproducing kernel $R$ of a space $\mathcal{H}$ on domain $X$ can
 be decomposed into $R = R_0 + R_1$, where $R_0$ and $R_1$ are both non-negative definite, $R_0(x, \cdot),R1(x,\cdot) \in \mathcal{H}$, for $ \forall x \in X$, and $\langle R_0(x, \cdot),R_1(y, \cdot) \rangle= 0$, for $\forall x, y \in X$, then the spaces $\mathcal{H}_0$ and $\mathcal{H}_1$ corresponding respectively to $R_0$ and $R_1$ form a tensor sum decomposition of $\mathcal{H}$. Conversely, if $R_0$ and $R_1$ are both  nonnegative definite and $\mathcal{H}_0 \cap \mathcal{H}_1 =\{0\}$, then $\mathcal{H} =\mathcal{H}_0 \bigoplus \mathcal{H}_1$ has a reproducing kernel $R = R_0 + R_1$.
 \end{theorem}
 
-According to Theorems \ref{theoremRKHS} and \ref{theoremKernel}, it is easy to verify that $R_0$ corresponds to the space of polynomials $\mathcal{H}_0 =\{f:f^{(m)}=0\}$ with an inner product $\langle f, g \rangle_0 = \sum_{\nu=0}^{m-1} f^{(\nu)}(0)g^{(\nu)}(0)$ and $R_1$ corresponds to the orthogonal complement of $\mathcal{H}_0$, which is $\mathcal{H}_1 =\{  f:f^{(\nu)}(0)=0,\nu = 0, \ldots,m-1, \int_{0}^{1}(f^{(m)})^2dt <\infty  \}$ with an inner product $\langle f, g\rangle_1 = \int_{0}^{1}f^{(m)}g^{(m)}dt $. 
+According to theorem \ref{theoremRKHS}, the Hilbert space associated with $R$ can be constructed as containing all finite linear combinations of the form $\sum a_iR(t_i,\cdot)$, and their limits under the norm induced by the inner product $\langle R(s,\cdot),R(t,\cdot) \rangle = R(s,t)$. As for theorem \ref{theoremKernel}, it is easy to verify that $R_0$ corresponds to the space of polynomials $\mathcal{H}_0 =\{f:f^{(m)}=0\}$ with an inner product $\langle f, g \rangle_0 = \sum_{\nu=0}^{m-1} f^{(\nu)}(0)g^{(\nu)}(0)$ and $R_1$ corresponds to the orthogonal complement of $\mathcal{H}_0$, which is $\mathcal{H}_1 =\{  f:f^{(\nu)}(0)=0,\nu = 0, \ldots,m-1, \int_{0}^{1}(f^{(m)})^2dt <\infty  \}$ with an inner product $\langle f, g\rangle_1 = \int_{0}^{1}f^{(m)}g^{(m)}dt $. 
 
 
-\subsection{The Smoothing Spline as Bayes Estimates}
-It is possible to interpret the smoothing spline regression estimator as a Bayesian estimate when the mean function $r( .)$ is given an improper prior distribution. \cite{berlinet2011reproducing}
-\cite{wahba1990spline}
-
-
-Consider the model
+In fact, \cite{kimeldorf1971some} and \cite{kimeldorf1970correspondence}  prove that the minimizer of $f_\lambda$ to function (\ref{GaussianProcessGeneralObjective}) has the form 
 \begin{equation}
-y_i=f(t_i)+\varepsilon_i, 
+f(t)=\sum_{\nu=1}^m d_\nu \phi_\nu(t)+\sum_{i=1}^n c_iR_1(t,t_i).
 \end{equation}
-where $i=1, \ldots, n$, $\varepsilon_i$ are i.i.d. Gaussian distributed noise with variance $\sigma^2$. Assume $f\in \mathbb{H}^{(m)}[0,1]$, where
-\begin{equation}
-\mathbb{H}^{(m)}[0,1]=\{f:f^{(\nu)} \mbox{absolutely continuous}, \nu=0,\ldots,m-1, \int_{0}^{1} (f^{(m)}(t)^2dt<\infty \}.
-\end{equation}
-A smoothing spline $\hat{f}_\lambda$ is the minimizer of objective function (\ref{GaussianProcessGeneralObjective}) \cite{wang1998smoothing}. Equipped with an appropriate inner product
-\begin{equation}
-\langle f,g\rangle=\sum_{\nu=0}^{m-1}f^{(\nu)}(0)g^{(\nu)}(0)+\int_{0}^{1}f^{(m)}g^{(m)}dt,
-\end{equation}
-the space $\mathbb{H}^{(m)}[0,1]$ becomes a reproducing kernel Hilbert space.
+where $\phi_\nu (t)=\frac{t^{\nu-1}}{(\nu-1)!}$, $\nu=1, \ldots, m$. 
 
-Let $\phi_\nu (t)=\frac{t^{\nu-1}}{(\nu-1)!}$ where $\nu=1, \ldots, m$ and $R_1(s,t)=\int_0^1\frac{ (s-u)_+^{m-1}}{(m-1)!} \frac{ (t-u)_+^{m-1}}{(m-1)!} du$. Denote $S=\{\phi_\nu (t_i) \}_{n\times m}$ where $i=1, \ldots, n$, $\nu=1, \ldots, m$ and $Q=\{ R_1(t_i,t_j)\}_{n\times n}$ where $i=1, \ldots, n$, $j=1, \ldots, n$. \cite{kimeldorf1971some} and \cite{kimeldorf1970correspondence}  proved that $\hat{f}_\lambda$ has the form
-\begin{equation}
-\hat{f}(t)=\sum_{\nu=1}^m d_\nu \phi_\nu(t)+\sum_{i=1}^n c_iR_1(t,t_i).
-\end{equation}
+
+
+
+
+\subsection{Polynomial Smoothing Spline as Bayes Estimates}
+
+Because it is possible to interpret the smoothing spline regression estimator as a Bayesian estimate when the mean function $r(\cdot)$ is given an improper prior distribution \cite{berlinet2011reproducing} \cite{wahba1990spline}, therefore, we will find that the posterior mean of $f=f_0+f_1$ on $[0,1]$ with proper priors is the polynomial smoothing  spline of (\ref{GaussianProcessGeneralObjective}). 
+
+%
+%Eη0(x)η0(y) = τ2R0(x, y) = τ2
+%m−1
+%
+%ν=0
+%xν
+%ν!
+%yν
+%ν!
+%,
+%Eη1(x)η1(y) = bR1(x, y) = b
+% 1
+%0
+%(x − u)m−1
+%+
+%(m − 1)!
+%(y − u)m−1
+%+
+%(m− 1)!
+%du,
+%where R0 and R1 are taken from (2.9) and (2.10) of §2.3.1. Observing
+%Yi ∼ Nη(xi), σ2, the joint distribution of Y and η(x) is normal with
+%mean zero and a covariance matrix
+%bQ + τ2SST + σ2I bξ + τ2Sφ
+%bξT + τ2φT ST bR1(x, x) + τ2φTφ
+%
+%, (2.35)
+%where Q is n × n with the (i, j)th entry R1(xi, xj ), S is n × m with the
+%(i, ν)th entry xν−1
+%i /(ν − 1)!, ξ is n × 1 with the ith entry R1(xi, x), and
+%φ is m × 1 with the νth entry xν−1/(ν − 1)!. Using a standard result on
+%multivariate normal distribution (see, e.g., Johnson and Wichern (1992,
+%Result 4.6)), the posterior mean of η(x) is seen to be
+%
+%Eη(x)|Y = (bξT + τ2φT ST )(bQ + τ2SST + σ2I)
+%−1Y
+%= ξT (Q + ρSST + nλI)
+%−1Y
+%+ φT ρST (Q + ρSST + nλI)
+%−1Y, (2.36)
+%where ρ = τ2/b and nλ = σ2/b.
+%
+%Setting ρ → ∞ in (2.36) and applying Lemma 2.7, the posterior mean
+%Eη(x)|Y is of the form ξT c + φTd, with the coefficients given by
+%c = (M
+%−1 −M
+%−1S(STM
+%−1S)
+%−1STM
+%−1)Y,
+%d = (STM
+%−1S)
+%−1STM
+%−1Y,
+%(2.40)
+%where M = Q + nλI.
+
 By denoting $M=Q+n\lambda I$, \cite{gu2013smoothing} found that the coefficients will be given by
 \begin{align}
 \mathbf{c}&=(M^{-1}-M^{-1}S(S^\top M^{-1}S)^{-1}S^\top M^{-1})\mathbf{Y},\\
 \mathbf{d}&=(S^\top M^{-1}S)^{-1}S^\top M^{-1}\mathbf{Y}.
 \end{align}
 
-
+\begin{theorem}\cite{gu2013smoothing}
+The polynomial smoothing spline of (\ref{GaussianProcessGeneralObjective}) is the posterior mean of $f = f_0 +f_1$, where $f_0$ diffuses in span {xν−1, ν = 1, . . .,m} and η1
+has a Gaussian process prior with mean zero and a covariance function
+%bR1(x, y) = b
+% 1
+%0
+%(x − u)m−1
+%+
+%(m − 1)!
+%(y − u)m−1
+%+
+%(m − 1)!
+%du,
+%for b = σ2/nλ.
+\end{theorem}
 
 
 
