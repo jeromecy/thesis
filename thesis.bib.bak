@@ -405,6 +405,15 @@
   timestamp = {2017.10.27}
 }
 
+@ARTICLE{cox1993analysis,
+  author = {Cox, Dennis D},
+  title = {An analysis of Bayesian inference for nonparametric regression},
+  journal = {The Annals of Statistics},
+  year = {1993},
+  pages = {903--923},
+  publisher = {JSTOR}
+}
+
 @ARTICLE{craven1978smoothing,
   author = {Craven, Peter and Wahba, Grace},
   title = {Smoothing noisy data with spline functions},
@@ -816,6 +825,18 @@
   publisher = {JSTOR}
 }
 
+@ARTICLE{gu1991minimizing,
+  author = {Gu, Chong and Wahba, Grace},
+  title = {Minimizing GCV/GML scores with multiple smoothing parameters via
+	the Newton method},
+  journal = {SIAM Journal on Scientific and Statistical Computing},
+  year = {1991},
+  volume = {12},
+  pages = {383--398},
+  number = {2},
+  publisher = {SIAM}
+}
+
 @ARTICLE{haario1999adaptive,
   author = {Haario, Heikki and Saksman, Eero and Tamminen, Johanna},
   title = {Adaptive proposal distribution for random walk Metropolis algorithm},
@@ -905,6 +926,15 @@
   author = {Haykin, Simon S and others},
   owner = {zcao},
   timestamp = {2017.09.06}
+}
+
+@ARTICLE{heckman1991minimax,
+  author = {Heckman, Nancy E and Woodroofe, Michael},
+  title = {Minimax Bayes estimation in nonparametric regression},
+  journal = {The Annals of Statistics},
+  year = {1991},
+  pages = {2003--2014},
+  publisher = {JSTOR}
 }
 
 @ARTICLE{hightower2001location,
@@ -1917,6 +1947,18 @@
   publisher = {JSTOR}
 }
 
+@ARTICLE{wahba1990optimal,
+  author = {Wahba, Grace and Wang, Yonghua},
+  title = {When is the optimal regularization parameter insensitive to the choice
+	of the loss function?},
+  journal = {Communications in Statistics-Theory and Methods},
+  year = {1990},
+  volume = {19},
+  pages = {1685--1700},
+  number = {5},
+  publisher = {Taylor \& Francis}
+}
+
 @ARTICLE{wahba1975completely,
   author = {Wahba, Grace and Wold, Svante},
   title = {A completely automatic French curve: Fitting spline functions by
@@ -1951,6 +1993,18 @@
   publisher = {Taylor \& Francis}
 }
 
+@ARTICLE{wecker1983signal,
+  author = {Wecker, William E and Ansley, Craig F},
+  title = {The signal extraction approach to nonlinear regression and spline
+	smoothing},
+  journal = {Journal of the American Statistical Association},
+  year = {1983},
+  volume = {78},
+  pages = {81--89},
+  number = {381},
+  publisher = {Taylor \& Francis Group}
+}
+
 @ARTICLE{west1993mixture,
   author = {West, Mike},
   title = {Mixture models, Monte Carlo, Bayesian updating, and dynamic models},
@@ -1960,6 +2014,16 @@
   owner = {zcao},
   publisher = {PROCEEDINGS PUBLISHED BY VARIOUS PUBLISHERS},
   timestamp = {2017.10.31}
+}
+
+@ARTICLE{whittaker1922new,
+  author = {Whittaker, Edmund T},
+  title = {On a new method of graduation},
+  journal = {Proceedings of the Edinburgh Mathematical Society},
+  year = {1922},
+  volume = {41},
+  pages = {63--75},
+  publisher = {Cambridge University Press}
 }
 
 @ARTICLE{wood2000modelling,

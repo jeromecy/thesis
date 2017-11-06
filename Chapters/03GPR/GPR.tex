@@ -22,37 +22,106 @@ A Hilbert space is a real or complex inner product space with respect to the dis
 with an inner product $\langle f,g\rangle=\int_0^1fgdt$. 
 
 Consider a regression problem with observations $y_i = f(t_i)+\epsilon_i$, $i=1,\ldots,n$, containing i.i.d normal noises $\epsilon_i\sim N(0,\sigma^2)$ in the space $C^{(m)}[0,1]=\{ f:f^{(m)}\in \mathit{L}_2[0,1] \}$. The classic nonparametric or semi-parametric regression is a function that minimizes the following penalized least square functional 
-\begin{equation}
+\begin{equation}\label{GaussianProcessGeneralObjective}
 \frac{1}{n}\sum_{i=1}^{n}\left( y_i-f(t_i) \right)^2 + \lambda \int_{0}^{1} \left( f^{(m)}\right)^2dt, 
 \end{equation}
 where the first term is the lack of fit of $f$ to the data. In the second term, generally, $\lambda$ is a fixed smoothing parameter controlling the trade-off between over-fitting and bias \cite{esl2009}. The minimizer $f_\lambda$ of the above equation resides in an $n$-dimensional space and the computation in multivariate settings is generally of the order $O(n^3)$ \cite{kim2004smoothing}. It is shown that a piecewise polynomial smoothing spline of degree $2m-1$ is well known to provide an aesthetically satisfying method for estimating $f$ if $\mathbf{y}$ cannot be interpolated exactly by some polynomial of degree less than $m$ \cite{schoenberg1964spline}. For instance, when $m=2$, a piecewise cubic smoothing spline provides a powerful tool to estimate the above nonparametric function, in which the penalty term is $\int f''^2dt$ \cite{hastie1990generalized}. 
 
-Further, \cite{wahba1978improper} showed that a Bayesian version of this problem is to take a Gaussian process prior on $f$ as 
+
+
+Further, \cite{wahba1978improper} showed that a Bayesian version of this problem is to take a Gaussian process prior 
 \begin{equation*}
 f(t_i) = a_0+a_1t_i+\cdots + a_{m-1}t_i^{m-1} + x_i,
 \end{equation*}
-with $x_i=X(t_i)$ is a zero mean Gaussian process whose $m$th derivative is scaled white noise and $i=1,\ldots,n$ \cite{speckman2003fully}. The extended Bayes estimate $f_\lambda$ with a "partially diffuse" prior is as exactly the same as spline solution. Other researches have been done on discovering the relationship between nonparametric regression and Bayesian estimation. 
+on $f$ with $x_i=X(t_i)$ being a zero mean Gaussian process whose $m$th derivative is scaled white noise, $i=1,\ldots,n$ \cite{speckman2003fully}. The extended Bayes estimate $f_\lambda$ with a "partially diffuse" prior is as exactly the same as spline solution. Some works have been done on discovering the relationship between nonparametric regression and Bayesian estimation. \cite{heckman1991minimax} shows that if $f$ the regression function $\E(y\mid f)$ has unknown prior distribution  $\mathbf{f}=(f(t_1),\ldots,f(t_n))^\top$ lying in a known class of $\Omega$, then the maximum is taken over all priors in $\Omega$ and the minimum is taken over linear estimator of $\mathbf{f}$. \cite{branson2017nonparametric} propose a Gaussian process regression method that acts as a Bayesian analog to local linear regression for sharp regression discontinuity designs. It is no doubt that one of the attractive features of the Bayesian approach is that, in principle, one can solve virtually any statistical decision or inference problem. Particularly, one can provide an accuracy assessment for $\hat{f}=\E (f\mid \mathbf{y})$ using posterior probability regions \cite{cox1993analysis}. 
+
+
+Based on the correspondence, \cite{craven1978smoothing} proposed an generalized cross-validation estimate for the minimizer $f_\lambda$. The estimate $\hat{\lambda}$ is the minimizer of the function where the trace of matrix $A(\lambda)$ is incorporated. It is also able to establish an optimal convergence property for their estimator when the number of observations in a fixed interval tends to infinity \cite{wecker1983signal}. A high efficient  algorithm to optimize generalized cross validation and generalized maximum likelihood scores with multiple smoothing parameters via the newton method was proposed by \cite{gu1991minimizing}. This algorithm can also be applied to the maximum likelihood and the restricted maximum  likelihood estimation. The behavior of the optimal regularization parameter in the method of regularization was investigated by \cite{wahba1990optimal}. 
+
+
+%Generalized Maximum Likelihood (GML)(aka REML),
+%Unbiassed risk (UBR), others (google ”methods”
+%(see Wahba:1990). ”choose” ”smoothing parameter”
+%gave 2850 hits)
+
+
+In this chapter, we propose that the Tractor spline can be estimated by Bayesian approach in second-derivative-piecewise-continuous Reproducing Kernel Hilbert Space. The GCV is used to find the optimal parameters for Tractor spline. 
 
 
 
+\section{Polynomial Smoothing Splines on $[0, 1]$ as Bayes Estimates}
 
-\cite{branson2017nonparametric} propose a Gaussian process regression method that acts as a Bayesian analog to local linear regression for sharp regression discontinuity designs. 
+A polynomial smoothing spline of degree $2m-1$ is piecewise polynomial of degree $2m-1$ in each intervals $[t_i,t_{i+1}]$, $i=1, \ldots, n-1$, and the first $2m-2$ derivatives are continuous at joint knots. For instance, when $m=2$,  a piecewise cubic smoothing spline is a special case of the polynomial smoothing spline providing a powerful tool to estimate the above nonparametric function (\ref{GaussianProcessGeneralObjective}) in the space  $\mathcal{C}^{(2)}[0,1]$, where the penalty term is $\int f''^2dt$ \cite{hastie1990generalized}. If a general space $\mathcal{C}^{(m)}[0,1]$ is equipped with an appropriate inner product, it can be made a reproducing kernel Hilbert space. 
+
+\subsection{Polynomial Smoothing Spline}
+
+A spline is a numeric function that is piecewise-defined by polynomial functions, and which possesses a high degree of smoothness at the places where the polynomial pieces connect (known as knots) \cite{judd1998numerical} \cite{chen2009feedback}. Suppose we are given observed data $t_1,t_2, \ldots, t_n$ in interval $[0,1]$, satisfying $0\leq t_1< t_2 < \cdots <t_n \leq 1$. A piecewise polynomial function $f(t)$ can be obtained by dividing the interval into contiguous intervals $(t_1,t_2),\ldots,(t_{n-1},t_n)$ and represented by a separate polynomial in each interval. For any continuous $f\in \mathcal{C}^{(m)}[0,1]$, it can be represented in a linear combination of basis functions $h_m(t)$ as $f(t) =\sum_{m=1}^{M}\beta_mh_m(t)$, where $\beta_m$ are coefficients \cite{ellis2009}. It is just like every vector in a vector space can be represented as a linear combination of basis vectors. 
 
 
 
-\subsection{Spline}
+A smoothing polynomial spline is uniquely the smoothest function that achieves a given degree of fidelity to a particular data set \cite{whittaker1922new}. In deed, the minimizer of function (\ref{GaussianProcessGeneralObjective}) is the curve estimate $\hat{f}(t)$ over all spline functions $f(t)$ with $m-1$ continuous derivatives fitting observed data in the space $\mathcal{C}^{(m)}[0,1]$. 
 
-In interpolation and curve fitting, piecewise linear approximation may not have the practical significance of cubic spline, or even higher order, approximation. These "broken lines" are neither very smooth nor very efficient approximation. Researchers can go to piecewise polynomial approximation with higher order pieces \cite{de1978practical}, which is called spline method. A spline is a numeric function that is piecewise-defined by polynomial functions, and which possesses a high degree of smoothness at the places where the polynomial pieces connect (known as knots) \cite{judd1998numerical}\cite{chen2009feedback}. Suppose we are given observed data $t_1,t_2, \ldots, t_n$ on interval $[0,1]$, satisfying $0\leq t_1< t_2 < \cdots <t_n \leq 1$. A piecewise polynomial function $f(t)$ can be obtained by dividing the interval into contiguous intervals $(t_1,t_2),\ldots,(t_{n-1},t_n)$ and represented by a separate polynomial in each interval. For any continuous $f\in \mathbb{C}^{(m)}[0,1]$, it can be represented in a linear combination of basis functions $h_m(t)$, just as every vector in a vector space can be represented as a linear combination of basis vectors. So we have
-\begin{equation}\label{fbasis}
-f(t) =\sum_{m=1}^{M}\beta_mh_m(t),
+
+\subsection{Reproducing Kernel Hilbert Space $\mathcal{H}^{(m)}[0,1]$}
+
+For any $f\in \mathcal{C}^{(m)}[0,1]$, the standard Taylor expansion is  
+\begin{equation}
+f(t) = \sum_{\nu=0}^{m-1}\frac{t^\nu}{\nu!}f^{(\nu)}(0) + \int_{0}^{1}\frac{(t-u)_+^{m-1}}{(m-1)!}f^{(m)}(t)dt,
 \end{equation}
-where $\beta_m$ are coefficients \cite{ellis2009}. 
-
-Suppose we were attempt to fit a model of $f(t)$ by least squares without any restrictions, the best fitting $\hat{f}(t)$ would go through every given data to reduce sum of squares to zero. Most of the time, the results are unsatisfactory as explanations of the given data. The roughness penalty approach is introduced to quantify the notion of a rapidly fluctuating curve and then to pose the estimation problem in a way that makes explicit the necessary compromise between varying rapidly fluctuation and slowly trend in curve estimation \cite{green1993nonparametric}. By adding a penalty term $\int_{0}^{1}(f^{(m)}(t))^2dt$, the curve estimate $\hat{f}(t)$ exists and is unique over all spline functions $f(t)$ with $m-1$ continuous derivatives fitting observed data in the space $\mathbb{C}^{(m)}[0,1]$, and it can be found by minimizing the following penalized mean residual sum  squares
-\begin{equation}\label{GaussianProcessMSEFunction}
-\text{MSE}(f,\lambda)=\frac{1}{n}\sum_{i=1}^n(f(t_i)-y_i)^2+\lambda \int_{0}^{1}(f^{(m)}(t))^2dt,
+where $(\cdot)_+ =\max(0, \cdot)$. With an inner product 
+\begin{equation}
+\langle f,g \rangle = \sum_{\nu=0}^{m-1}f^{(\nu)}(0)g^{(\nu)}(0) +  \int_{0}^{1}f^{(m)} g^{(m)}dt,
 \end{equation}
-where $\lambda$ is a fixed smoothing parameter, $(t_i,y_i)$, $i=1, \ldots, n$ are observed data and $0 \leq t_1< t_2 < \cdots <t_n \leq 1$. In equation (\ref{GaussianProcessMSEFunction}),  the smoothing parameter $\lambda$ controls the trade-off between over-fitting and bias. Smoothing spline provides a powerful tool to estimate nonparametric functions \cite{hastie1990generalized}. 
+the representer is 
+\begin{equation}
+R_s(t) =\sum_{\nu=0}^{m-1} \frac{s^{\nu}}{(\nu)!} \frac{t^{\nu}}{(\nu)!} +\int_0^1\frac{ (s-u)_+^{m-1}}{(m-1)!} \frac{ (t-u)_+^{m-1}}{(m-1)!} du. 
+\end{equation}
+It is easily to prove that $R(s,t)\triangleq R_0(s,t)+R_1(s,t)$ is non-negative and is reproducing kernel, by which $\langle R_s,f \rangle=f(s)$. 
+
+\begin{theorem}\cite{aronszajn1950theory}\label{theoremRKHS}
+Suppose $R$ is a symmetric, positive definite kernel on a set $X$. Then there is a unique Hilbert space of functions on $X$ for which $R$ is a reproducing kernel. 
+\end{theorem}
+
+\begin{theorem}\cite{gu2013smoothing}\label{theoremKernel}
+If the reproducing kernel $R$ of a space $\mathcal{H}$ on domain $X$ can
+be decomposed into $R = R_0 + R_1$, where $R_0$ and $R_1$ are both non-negative definite, $R_0(x, \cdot),R1(x,\cdot) \in \mathcal{H}$, for $ \forall x \in X$, and $\langle R_0(x, \cdot),R_1(y, \cdot) \rangle= 0$, for $\forall x, y \in X$, then the spaces $\mathcal{H}_0$ and $\mathcal{H}_1$ corresponding respectively to $R_0$ and $R_1$ form a tensor sum decomposition of $\mathcal{H}$. Conversely, if $R_0$ and $R_1$ are both  nonnegative definite and $\mathcal{H}_0 \cap \mathcal{H}_1 =\{0\}$, then $\mathcal{H} =\mathcal{H}_0 \bigoplus \mathcal{H}_1$ has a reproducing kernel $R = R_0 + R_1$.
+\end{theorem}
+
+According to Theorems \ref{theoremRKHS} and \ref{theoremKernel}, it is easy to verify that $R_0$ corresponding to the space of polynomials $\mathcal{H}_0 =\{f:f^{(m)}=0\}$ with an inner product $\langle f, g \rangle_0 = \sum_{\nu=0}^{m-1} f^{(\nu)}(0)g^{(\nu)}(0)$ and $R_1$  corresponding to the orthogonal complement of $\mathcal{H}_0$, which is $\mathcal{H}_1 =\{  f:f^{(\nu)}(0)=0,\nu = 0, \ldots,m-1, \int_{0}^{1}(f^{(m)})^2dt <\infty  \}$ with an inner product $\langle f, g\rangle_1 = \int_{0}^{1}f^{(m)}g^{(m)}dt $. 
+
+
+\subsection{The Smoothing Spline as Bayes Estimates}
+It is possible to interpret the smoothing spline regression estimator as a Bayesian estimate when the mean function $r( .)$ is given an improper prior distribution. \cite{berlinet2011reproducing}
+\cite{wahba1990spline}
+
+
+Consider the model
+\begin{equation}
+y_i=f(t_i)+\varepsilon_i, 
+\end{equation}
+where $i=1, \ldots, n$, $\varepsilon_i$ are i.i.d. Gaussian distributed noise with variance $\sigma^2$. Assume $f\in \mathbb{H}^{(m)}[0,1]$, where
+\begin{equation}
+\mathbb{H}^{(m)}[0,1]=\{f:f^{(\nu)} \mbox{absolutely continuous}, \nu=0,\ldots,m-1, \int_{0}^{1} (f^{(m)}(t)^2dt<\infty \}.
+\end{equation}
+A smoothing spline $\hat{f}_\lambda$ is the minimizer of objective function (\ref{GaussianProcessGeneralObjective}) \cite{wang1998smoothing}. Equipped with an appropriate inner product
+\begin{equation}
+\langle f,g\rangle=\sum_{\nu=0}^{m-1}f^{(\nu)}(0)g^{(\nu)}(0)+\int_{0}^{1}f^{(m)}g^{(m)}dt,
+\end{equation}
+the space $\mathbb{H}^{(m)}[0,1]$ becomes a reproducing kernel Hilbert space.
+
+Let $\phi_\nu (t)=\frac{t^{\nu-1}}{(\nu-1)!}$ where $\nu=1, \ldots, m$ and $R_1(s,t)=\int_0^1\frac{ (s-u)_+^{m-1}}{(m-1)!} \frac{ (t-u)_+^{m-1}}{(m-1)!} du$. Denote $S=\{\phi_\nu (t_i) \}_{n\times m}$ where $i=1, \ldots, n$, $\nu=1, \ldots, m$ and $Q=\{ R_1(t_i,t_j)\}_{n\times n}$ where $i=1, \ldots, n$, $j=1, \ldots, n$. \cite{kimeldorf1971some} and \cite{kimeldorf1970correspondence}  proved that $\hat{f}_\lambda$ has the form
+\begin{equation}
+\hat{f}(t)=\sum_{\nu=1}^m d_\nu \phi_\nu(t)+\sum_{i=1}^n c_iR_1(t,t_i).
+\end{equation}
+By denoting $M=Q+n\lambda I$, \cite{gu2013smoothing} found that the coefficients will be given by
+\begin{align}
+\mathbf{c}&=(M^{-1}-M^{-1}S(S^\top M^{-1}S)^{-1}S^\top M^{-1})\mathbf{Y},\\
+\mathbf{d}&=(S^\top M^{-1}S)^{-1}S^\top M^{-1}\mathbf{Y}.
+\end{align}
+
+
+
+
 
 \subsection{Gaussian Process Regression}
 
@@ -94,38 +163,11 @@ where
 \end{align}
 
 
-\subsection{Reproducing Kernel Hilbert Space}
 
 
 
-\subsection{The Smoothing Spline as Bayes Estimates}
-It is possible to interpret the smoothing spline regression estimator as a Bayesian estimate when the mean function $r( .)$ is given an improper prior distribution. \cite{berlinet2011reproducing}
-\cite{wahba1990spline}
 
 
-Consider the model
-\begin{equation}
-y_i=f(t_i)+\varepsilon_i, 
-\end{equation}
-where $i=1, \ldots, n$, $\varepsilon_i$ are i.i.d. Gaussian distributed noise with variance $\sigma^2$. Assume $f\in \mathbb{H}^{(m)}[0,1]$, where
-\begin{equation}
-\mathbb{H}^{(m)}[0,1]=\{f:f^{(\nu)} \mbox{absolutely continuous}, \nu=0,\ldots,m-1, \int_{0}^{1} (f^{(m)}(t)^2dt<\infty \}.
-\end{equation}
-A smoothing spline $\hat{f}_\lambda$ is the minimizer of objective function (\ref{GaussianProcessMSEFunction}) \cite{wang1998smoothing}. Equipped with an appropriate inner product
-\begin{equation}
-\langle f,g\rangle=\sum_{\nu=0}^{m-1}f^{(\nu)}(0)g^{(\nu)}(0)+\int_{0}^{1}f^{(m)}g^{(m)}dt,
-\end{equation}
-the space $\mathbb{H}^{(m)}[0,1]$ becomes a reproducing kernel Hilbert space.
-
-Let $\phi_\nu (t)=\frac{t^{\nu-1}}{(\nu-1)!}$ where $\nu=1, \ldots, m$ and $R_1(s,t)=\int_0^1\frac{ (s-u)_+^{m-1}}{(m-1)!} \frac{ (t-u)_+^{m-1}}{(m-1)!} du$. Denote $S=\{\phi_\nu (t_i) \}_{n\times m}$ where $i=1, \ldots, n$, $\nu=1, \ldots, m$ and $Q=\{ R_1(t_i,t_j)\}_{n\times n}$ where $i=1, \ldots, n$, $j=1, \ldots, n$. \cite{kimeldorf1971some} and \cite{kimeldorf1970correspondence}  proved that $\hat{f}_\lambda$ has the form
-\begin{equation}
-\hat{f}(t)=\sum_{\nu=1}^m d_\nu \phi_\nu(t)+\sum_{i=1}^n c_iR_1(t,t_i).
-\end{equation}
-By denoting $M=Q+n\lambda I$, \cite{gu2013smoothing} found that the coefficients will be given by
-\begin{align}
-\mathbf{c}&=(M^{-1}-M^{-1}S(S^\top M^{-1}S)^{-1}S^\top M^{-1})\mathbf{Y},\\
-\mathbf{d}&=(S^\top M^{-1}S)^{-1}S^\top M^{-1}\mathbf{Y}.
-\end{align}
 
 
 

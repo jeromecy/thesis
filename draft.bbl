@@ -51,6 +51,12 @@ Arnaud~Doucet, Nando de~Freitas, N.~G. (2011).
 \newblock {\em Sequential Monte Carlo Methods in Practice}.
 \newblock Springer-Verlag New York.
 
+\bibitem[\protect\citeauthoryear{Aronszajn}{Aronszajn}{1950}]{aronszajn1950theory}
+Aronszajn, N. (1950).
+\newblock Theory of reproducing kernels.
+\newblock {\em Transactions of the American mathematical society\/},~{\em
+  68\/}(3), 337--404.
+
 \bibitem[\protect\citeauthoryear{Arulampalam, Maskell, Gordon, and
   Clapp}{Arulampalam {\em et~al.}}{2002}]{arulampalam2002tutorial}
 Arulampalam, M.~S., Maskell, S., Gordon, N., and Clapp, T. (2002).
@@ -230,18 +236,16 @@ Christen, J.~A. and Fox, C. (2005).
 \newblock {\em Journal of Computational and Graphical statistics\/},~{\em
   14\/}(4), 795--810.
 
+\bibitem[\protect\citeauthoryear{Cox}{Cox}{1993}]{cox1993analysis}
+Cox, D.~D. (1993).
+\newblock An analysis of Bayesian inference for nonparametric regression.
+\newblock {\em The Annals of Statistics\/}, 903--923.
+
 \bibitem[\protect\citeauthoryear{Craven and Wahba}{Craven and
   Wahba}{1978}]{craven1978smoothing}
 Craven, P. and Wahba, G. (1978).
 \newblock Smoothing noisy data with spline functions.
 \newblock {\em Numerische Mathematik\/},~{\em 31\/}(4), 377--403.
-
-\bibitem[\protect\citeauthoryear{De~Boor, De~Boor, Math{\'e}maticien, De~Boor,
-  and De~Boor}{De~Boor {\em et~al.}}{1978}]{de1978practical}
-De~Boor, C., De~Boor, C., Math{\'e}maticien, E.-U., De~Boor, C., and De~Boor,
-  C. (1978).
-\newblock {\em A practical guide to splines}, Volume~27.
-\newblock Springer-Verlag New York.
 
 \bibitem[\protect\citeauthoryear{De~Jong}{De~Jong}{1988}]{de1988likelihood}
 De~Jong, P. (1988).
@@ -453,6 +457,14 @@ Gu, C. (2013).
 \newblock {\em Smoothing spline ANOVA models}, Volume 297.
 \newblock Springer Science \& Business Media.
 
+\bibitem[\protect\citeauthoryear{Gu and Wahba}{Gu and
+  Wahba}{1991}]{gu1991minimizing}
+Gu, C. and Wahba, G. (1991).
+\newblock Minimizing GCV/GML scores with multiple smoothing parameters via the
+  Newton method.
+\newblock {\em SIAM Journal on Scientific and Statistical Computing\/},~{\em
+  12\/}(2), 383--398.
+
 \bibitem[\protect\citeauthoryear{Haario, Saksman, and Tamminen}{Haario {\em
   et~al.}}{1999}]{haario1999adaptive}
 Haario, H., Saksman, E., and Tamminen, J. (1999).
@@ -495,6 +507,12 @@ Hastings, W.~K. (1970).
 \newblock Monte Carlo sampling methods using Markov chains and their
   applications.
 \newblock {\em Biometrika\/},~{\em 57\/}(1), 97--109.
+
+\bibitem[\protect\citeauthoryear{Heckman and Woodroofe}{Heckman and
+  Woodroofe}{1991}]{heckman1991minimax}
+Heckman, N.~E. and Woodroofe, M. (1991).
+\newblock Minimax Bayes estimation in nonparametric regression.
+\newblock {\em The Annals of Statistics\/}, 2003--2014.
 
 \bibitem[\protect\citeauthoryear{Hightower and Borriello}{Hightower and
   Borriello}{2001}]{hightower2001location}
@@ -1047,6 +1065,14 @@ Wahba, G. (1990).
 \newblock {\em Spline models for observational data}, Volume~59.
 \newblock Siam.
 
+\bibitem[\protect\citeauthoryear{Wahba and Wang}{Wahba and
+  Wang}{1990}]{wahba1990optimal}
+Wahba, G. and Wang, Y. (1990).
+\newblock When is the optimal regularization parameter insensitive to the
+  choice of the loss function?
+\newblock {\em Communications in Statistics-Theory and Methods\/},~{\em
+  19\/}(5), 1685--1700.
+
 \bibitem[\protect\citeauthoryear{Wahba and Wold}{Wahba and
   Wold}{1975}]{wahba1975completely}
 Wahba, G. and Wold, S. (1975).
@@ -1068,10 +1094,24 @@ Wang, Y. (1998).
 \newblock {\em Journal of the American Statistical Association\/},~{\em
   93\/}(441), 341--348.
 
+\bibitem[\protect\citeauthoryear{Wecker and Ansley}{Wecker and
+  Ansley}{1983}]{wecker1983signal}
+Wecker, W.~E. and Ansley, C.~F. (1983).
+\newblock The signal extraction approach to nonlinear regression and spline
+  smoothing.
+\newblock {\em Journal of the American Statistical Association\/},~{\em
+  78\/}(381), 81--89.
+
 \bibitem[\protect\citeauthoryear{West}{West}{1993}]{west1993mixture}
 West, M. (1993).
 \newblock Mixture models, Monte Carlo, Bayesian updating, and dynamic models.
 \newblock {\em Computing Science and Statistics\/}, 325--325.
+
+\bibitem[\protect\citeauthoryear{Whittaker}{Whittaker}{1922}]{whittaker1922new}
+Whittaker, E.~T. (1922).
+\newblock On a new method of graduation.
+\newblock {\em Proceedings of the Edinburgh Mathematical Society\/},~{\em 41},
+  63--75.
 
 \bibitem[\protect\citeauthoryear{Wood}{Wood}{2000}]{wood2000modelling}
 Wood, S.~N. (2000).
