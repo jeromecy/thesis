@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.5)  6 NOV 2017 17:49
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.5)  6 NOV 2017 21:39
 entering extended mode
 **draft.tex
 (C:\Users\zcao\Documents\Latex\Thesis\draft.tex
@@ -1672,7 +1672,16 @@ Chapter 3.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [40]
-[41] [42] [43]
+[41]
+Overfull \hbox (0.69124pt too wide) in paragraph at lines 90--91
+\OT1/cmr/m/n/12 of poly-no-mi-als $\OMS/cmsy/m/n/12 H[] \OT1/cmr/m/n/12 = \OMS/
+cmsy/m/n/12 f\OML/cmm/m/it/12 f \OT1/cmr/m/n/12 : \OML/cmm/m/it/12 f[] \OT1/cmr
+/m/n/12 = 0\OMS/cmsy/m/n/12 g$ \OT1/cmr/m/n/12 with an in-ner prod-uct $\OMS/cm
+sy/m/n/12 h\OML/cmm/m/it/12 f; g\OMS/cmsy/m/n/12 i[] \OT1/cmr/m/n/12 = [][] \OM
+L/cmm/m/it/12 f[]\OT1/cmr/m/n/12 (0)\OML/cmm/m/it/12 g[]\OT1/cmr/m/n/12 (0)$
+ []
+
+[42] [43]
 Overfull \hbox (15.18867pt too wide) in paragraph at lines 181--183
 \OT1/cmr/m/n/12 in the space $\OMS/cmsy/m/n/12 C[]\OT1/cmr/m/n/12 [0\OML/cmm/m/
 it/12 ; \OT1/cmr/m/n/12 1] = \OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 f \OT1/cmr/m/n/
@@ -1680,11 +1689,12 @@ it/12 ; \OT1/cmr/m/n/12 1] = \OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 f \OT1/cmr/m/n/
 r/m/n/12 1]\OMS/cmsy/m/n/12 g$
  []
 
+[44]
 Missing character: There is no Â in font cmr12!
 Missing character: There is no · in font cmr12!
 Missing character: There is no Â in font cmr12!
 Missing character: There is no · in font cmr12!
-[44] [45]
+ [45]
 Overfull \hbox (2.1058pt too wide) in paragraph at lines 240--242
 \OT1/cmr/m/n/12 and not-ing that $[][] \OML/cmm/m/it/12 R[]\OT1/cmr/m/n/12 (\OM
 L/cmm/m/it/12 x[]; x\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 R[]\OT1/cmr/m/n/12 (\OML/
@@ -3365,7 +3375,7 @@ gram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt12.pfb><C:/Progr
 am Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt8.pfb><C:/Program 
 Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Progr
 am Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on draft.pdf (190 pages, 7265707 bytes).
+Output written on draft.pdf (190 pages, 7265826 bytes).
 PDF statistics:
  2015 PDF objects out of 2073 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

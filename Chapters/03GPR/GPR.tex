@@ -51,7 +51,7 @@ In this chapter, we propose that the Tractor spline can be estimated by Bayesian
 
 \section{Polynomial Smoothing Splines on $[0, 1]$ as Bayes Estimates}
 
-A polynomial smoothing spline of degree $2m-1$ is piecewise polynomial of degree $2m-1$ in each intervals $[t_i,t_{i+1}]$, $i=1, \ldots, n-1$, and the first $2m-2$ derivatives are continuous at joint knots. For instance, when $m=2$,  a piecewise cubic smoothing spline is a special case of the polynomial smoothing spline providing a powerful tool to estimate the above nonparametric function (\ref{GaussianProcessGeneralObjective}) in the space  $\mathcal{C}^{(2)}[0,1]$, where the penalty term is $\int f''^2dt$ \cite{hastie1990generalized}. If a general space $\mathcal{C}^{(m)}[0,1]$ is equipped with an appropriate inner product, it can be made a reproducing kernel Hilbert space. 
+A polynomial smoothing spline of degree $2m-1$ is a piecewise polynomial of the same degree in each intervals $[t_i,t_{i+1}]$, $i=1, \ldots, n-1$, and the first $2m-2$ derivatives are continuous at joint knots. For instance, when $m=2$,  a piecewise cubic smoothing spline is a special case of the polynomial smoothing spline providing a powerful tool to estimate the above nonparametric function (\ref{GaussianProcessGeneralObjective}) in the space  $\mathcal{C}^{(2)}[0,1]$, where the penalty term is $\int f''^2dt$ \cite{hastie1990generalized}. If a general space $\mathcal{C}^{(m)}[0,1]$ is equipped with an appropriate inner product, it can be made a reproducing kernel Hilbert space. 
 
 \subsection{Polynomial Smoothing Spline}
 
@@ -64,7 +64,7 @@ A smoothing polynomial spline is uniquely the smoothest function that achieves a
 
 \subsection{Reproducing Kernel Hilbert Space $\mathcal{H}^{(m)}[0,1]$}
 
-For any $f\in \mathcal{C}^{(m)}[0,1]$, the standard Taylor expansion is  
+For any $f\in \mathcal{C}^{(m)}[0,1]$, its standard Taylor expansion is  
 \begin{equation}
 f(t) = \sum_{\nu=0}^{m-1}\frac{t^\nu}{\nu!}f^{(\nu)}(0) + \int_{0}^{1}\frac{(t-u)_+^{m-1}}{(m-1)!}f^{(m)}(t)dt,
 \end{equation}
@@ -74,20 +74,20 @@ where $(\cdot)_+ =\max(0, \cdot)$. With an inner product
 \end{equation}
 the representer is 
 \begin{equation}
-R_s(t) =\sum_{\nu=0}^{m-1} \frac{s^{\nu}}{(\nu)!} \frac{t^{\nu}}{(\nu)!} +\int_0^1\frac{ (s-u)_+^{m-1}}{(m-1)!} \frac{ (t-u)_+^{m-1}}{(m-1)!} du. 
+R_s(t) =\sum_{\nu=0}^{m-1} \frac{s^{\nu}}{\nu!} \frac{t^{\nu}}{\nu!} +\int_0^1\frac{ (s-u)_+^{m-1}}{(m-1)!} \frac{ (t-u)_+^{m-1}}{(m-1)!} du. 
 \end{equation}
-It is easily to prove that $R(s,t)\triangleq R_0(s,t)+R_1(s,t)$ is non-negative and is reproducing kernel, by which $\langle R_s,f \rangle=f(s)$. 
+It is easily to prove that $R(s,t)\triangleq R_0(s,t)+R_1(s,t)$ is non-negative and is reproducing kernel, by which $\langle R(s,t),f(t) \rangle = \langle R_s(t),f(t) \rangle=f(s)$. Additionally, $R_s^{(\nu)}(0) = s^\nu/\nu!$ for $\nu = 0,\ldots, m-1$.
 
+Before moving on to further steps, we are now introducing the following two theorems. 
 \begin{theorem}\cite{aronszajn1950theory}\label{theoremRKHS}
 Suppose $R$ is a symmetric, positive definite kernel on a set $X$. Then there is a unique Hilbert space of functions on $X$ for which $R$ is a reproducing kernel. 
 \end{theorem}
-
 \begin{theorem}\cite{gu2013smoothing}\label{theoremKernel}
 If the reproducing kernel $R$ of a space $\mathcal{H}$ on domain $X$ can
 be decomposed into $R = R_0 + R_1$, where $R_0$ and $R_1$ are both non-negative definite, $R_0(x, \cdot),R1(x,\cdot) \in \mathcal{H}$, for $ \forall x \in X$, and $\langle R_0(x, \cdot),R_1(y, \cdot) \rangle= 0$, for $\forall x, y \in X$, then the spaces $\mathcal{H}_0$ and $\mathcal{H}_1$ corresponding respectively to $R_0$ and $R_1$ form a tensor sum decomposition of $\mathcal{H}$. Conversely, if $R_0$ and $R_1$ are both  nonnegative definite and $\mathcal{H}_0 \cap \mathcal{H}_1 =\{0\}$, then $\mathcal{H} =\mathcal{H}_0 \bigoplus \mathcal{H}_1$ has a reproducing kernel $R = R_0 + R_1$.
 \end{theorem}
 
-According to Theorems \ref{theoremRKHS} and \ref{theoremKernel}, it is easy to verify that $R_0$ corresponding to the space of polynomials $\mathcal{H}_0 =\{f:f^{(m)}=0\}$ with an inner product $\langle f, g \rangle_0 = \sum_{\nu=0}^{m-1} f^{(\nu)}(0)g^{(\nu)}(0)$ and $R_1$  corresponding to the orthogonal complement of $\mathcal{H}_0$, which is $\mathcal{H}_1 =\{  f:f^{(\nu)}(0)=0,\nu = 0, \ldots,m-1, \int_{0}^{1}(f^{(m)})^2dt <\infty  \}$ with an inner product $\langle f, g\rangle_1 = \int_{0}^{1}f^{(m)}g^{(m)}dt $. 
+According to Theorems \ref{theoremRKHS} and \ref{theoremKernel}, it is easy to verify that $R_0$ corresponds to the space of polynomials $\mathcal{H}_0 =\{f:f^{(m)}=0\}$ with an inner product $\langle f, g \rangle_0 = \sum_{\nu=0}^{m-1} f^{(\nu)}(0)g^{(\nu)}(0)$ and $R_1$ corresponds to the orthogonal complement of $\mathcal{H}_0$, which is $\mathcal{H}_1 =\{  f:f^{(\nu)}(0)=0,\nu = 0, \ldots,m-1, \int_{0}^{1}(f^{(m)})^2dt <\infty  \}$ with an inner product $\langle f, g\rangle_1 = \int_{0}^{1}f^{(m)}g^{(m)}dt $. 
 
 
 \subsection{The Smoothing Spline as Bayes Estimates}
