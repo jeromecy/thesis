@@ -179,7 +179,7 @@ w_t ^{(i)}&\propto w_{t-1}^{(i)}\frac{ p(y_t \mid x_{t}^{(i)}) p(x_t ^{(i)}\mid 
 \end{align*}
 Because $w_{t-1}^{(i)}=\frac{1}{N}$, thus we have $w_t ^{(i)} \propto p(y_t \mid x_{t}^{(i)})$ and
 \begin{align*}
-w=\frac{1}{\sqrt{2\pi\Sigma}}\exp\left(-\frac{1}{2} (y_{\mbox{true}}-y)\Sigma^{-1}(y_{\mbox{true}}-y)\right).
+w=\frac{1}{\sqrt{2\pi\Sigma}}\exp\left(-\frac{1}{2} (y_{\mbox{\tiny true}}-y)\Sigma^{-1}(y_{\mbox{\tiny true}}-y)\right).
 \end{align*}
 
 However, SMC methods are suffering some drawbacks. At any time point $k (k<t)$, if $t-k$ is too large, the approximation to marginal $p(x_k\mid y_{1:t})$ is likely to be rather poor as the successive resampling steps deplete the number of distinct particle co-ordinates $x_k$ \cite{andrieu2010particle}, which is also the difficulty of approximating $p(\theta,x_{1:t}\mid y_{1:t})$ with SMC algorithms 
@@ -208,7 +208,7 @@ This auxiliary variable based SIR requires only the ability to propagate and eva
 
 The main idea behind the APF, that is modifying the original sequence of target distributions to guide particles in promising regions, can be extended outside the filtering framework \cite{JOHANSEN20081498}. It is also recommended in the literature \cite{liu2008monte} that the particles can be re-sampled not according to the normalized weights $w_t^{\mbox{SISR}}(x_{1:t})=\frac{p(x_{1:t})}{ p(x_{1:t-1}q(x_t\mid x_{1:t-1})  }$  but according to a generic score function $w_t(x_{1:t})>0$ at time t
 \begin{equation*}
-w_t(x_{1:t}) = g(w_t^{\mbox{SISR}}(x_{1:t})),
+w_t(x_{1:t}) = g(w_t^{\mbox{\tiny SISR}}(x_{1:t})),
 \end{equation*}
 where $g: \mathbb{R}^+\rightarrow \mathbb{R}^+$ is a monotonously increasing function, such as $g(x)=x^\alpha$, where $0<\alpha\leq 1$. 
 

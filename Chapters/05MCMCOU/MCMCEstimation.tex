@@ -860,7 +860,7 @@ Q_{ux} & Q_{uu} & 0 &-\frac{1}{\tau^2}I \\
 \end{bmatrix}.
 \end{align*}
 To make the covariance matrix a more beautiful form and convenient computing, $\tilde{X}$, $\tilde{Y}$ and $\tilde{\Sigma}$ can be rearranged in a time series order, that makes $X_{1:t} = \{x_1,u_1,x_2,u_2,\cdots, x_t, u_t \}$, $Y_{1:t} = \{y_1,v_1,y_2,v_2,\cdots, y_t, v_t \}$ and the new procedure matrix $\Sigma^{-1}$ looks like 
-\begin{align*} \Sigma^{-1}=
+\begin{align*} \Sigma^{-1} &=
 \begin{bmatrix}
 \sigma_{11}^{(x)2}+\frac{1}{\sigma^2} & \sigma_{11}^{(xu)2} & \cdots & \sigma_{1t}^{(x)2} & \sigma_{1t}^{(xu)2}  &  -\frac{1}{\sigma^2} & 0 & \cdots & 0 & 0\\
 \sigma_{11}^{(ux)2}   & \sigma_{11}^{(u)2} +\frac{1}{\tau^2} & \cdots & \sigma_{1t}^{(ux)2} & \sigma_{1t}^{(x)2}  &  0 & -\frac{1}{\tau^2} & \cdots & 0 & 0 \\
@@ -872,7 +872,8 @@ To make the covariance matrix a more beautiful form and convenient computing, $\
 \vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \vdots &\ddots & \vdots & \vdots \\
 0 & 0& \cdots & -\frac{1}{\sigma^2}  &0&  0 & 0 & \cdots & \frac{1}{\sigma^2} & 0 \\
 0 & 0 & \cdots & 0 & -\frac{1}{\tau^2}   &  0 & 0 & \cdots & 0 & \frac{1}{\tau^2}
-\end{bmatrix} \triangleq \begin{bmatrix}
+\end{bmatrix} \\ 
+& \triangleq \begin{bmatrix}
 A_t& -B_t \\ -B_t^\top & B_t
 \end{bmatrix},
 \end{align*}
@@ -1239,10 +1240,10 @@ To avoid estimation bias in the algorithm, we are introducing \textit{threshold}
  
 \begin{figure}[h]
 \centering
-\includegraphics[width=8cm,height=5cm]{Chapters/05MCMCOU/plots/realdataestbiaslogDAnoupdate.pdf}
-\includegraphics[width=8cm,height=5cm]{Chapters/05MCMCOU/plots/realdataestbiaslogDAupdate.pdf}
-\includegraphics[width=8cm,height=5cm]{Chapters/05MCMCOU/plots/realdataestbiaslogLnoupdate.pdf}
-\includegraphics[width=8cm,height=5cm]{Chapters/05MCMCOU/plots/realdataestbiaslogLupdate.pdf}
+\includegraphics[width=0.45\textwidth]{Chapters/05MCMCOU/plots/realdataestbiaslogDAnoupdate.pdf}
+\includegraphics[width=0.45\textwidth]{Chapters/05MCMCOU/plots/realdataestbiaslogDAupdate.pdf}
+\includegraphics[width=0.45\textwidth]{Chapters/05MCMCOU/plots/realdataestbiaslogLnoupdate.pdf}
+\includegraphics[width=0.45\textwidth]{Chapters/05MCMCOU/plots/realdataestbiaslogLupdate.pdf}
 \caption{Comparison $\ln DA$ and $\ln L$ between not-updating and updating mean methods. }\label{comparenotanupDAL}
 \end{figure}
 
@@ -1258,7 +1259,7 @@ To avoid estimation bias in the algorithm, we are introducing \textit{threshold}
 
 So far, the complete algorithm is summarized as follows: 
 
-\begin{algorithm}[H]\label{algorithmslidingwindow}
+\begin{algorithm}[h]\label{algorithmslidingwindow}
 \SetAlgoLined
 %\KwResutt{Write here the resutt }
 Initialization: Set up $L$, \textit{threshold} and  \textit{cut off} criteria. \\
@@ -1310,8 +1311,8 @@ Since a cheap surrogate $\hat{\pi}(\cdot)$ for the true $\pi(\cdot)$ is found in
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.4\textwidth]{Chapters/05MCMCOU/plots/realdataEstXYwithEr.pdf}
-\includegraphics[width=0.4\textwidth]{Chapters/05MCMCOU/plots/realdataestwitherror.pdf}
+\includegraphics[width=0.45\textwidth]{Chapters/05MCMCOU/plots/realdataEstXYwithEr.pdf}
+\includegraphics[width=0.45\textwidth]{Chapters/05MCMCOU/plots/realdataestwitherror.pdf}
 \caption{Zoom in on estimations. For each estimation $\hat{X}_i (i=1,\dots,t)$, there is a error circle around it. }
 \end{figure}
 

@@ -61,7 +61,7 @@ In this chapter, we propose an adaptive smoothing spline method based on Hermite
 
 %Errors comes from the GPS units and individuals' behaviors, which bring unreliable data and less precise results. %\cite{castro2006geometric}
 
-\section{Tractor Spline}
+\section{Tractor Spline}\label{ChapterTractorSpline}
 
 \subsection{Objective Function}
 
@@ -71,7 +71,7 @@ In a 2D curve nonparametric regression, consider $n$  time points $t_{1:n}$, suc
 \end{equation}
 where $t_i \leq t<t_{i+1}, t_0=a, t_{n+1}=b$, that will control the curvature penalty in each interval. For a function $f:[a,b]\longrightarrow \mathbb{R}^2$ and $\gamma>0$, define the objective function 
 
- \begin{equation}\label{of2d}
+ \begin{equation}\label{tractorsplineObjective}
 J[f]= \frac{1}{n} \sum_{i=1}^{n} \lVert f(t_i)-z_i\rVert_2^2 + \frac{\gamma}{n} \sum_{i=1}^{n} \lVert f'(t_i)-w_i \rVert_2^2 +\sum_{i=0}^{n} \lambda_i\int_{t_i}^{t_{i+1}} \lVert f''(t)\rVert_2^2 dt,
 \end{equation}
 where $\gamma$ is the parameter that weights the residuals between $\mathbf{f}'$ and $\mathbf{v}$, and $\lambda(t)$ is the smoothing parameter function.
@@ -79,12 +79,12 @@ where $\gamma$ is the parameter that weights the residuals between $\mathbf{f}'$
 \begin{theorem}
 For $n\geq2$, the objective function $J[f]$ is minimized by a cubic spline that is linear outside the knots.
 \end{theorem}
-The solution to the objective function (\ref{of2d}) is called Tractor Spline.
+The solution to the objective function (\ref{tractorsplineObjective}) is called Tractor Spline.
 
 In the following, we split the 2D function $f(x,y)$ into two sub functions $f_x(t)$ on $x$-axis and $f_y(t)$ on $y$-axis with respect to time $t$. Compared with other parameters, choosing time $t$ to be the parameter has some advantages: 1. The expressions of all the constraints are simpler \cite{zhang2013cubic}; 2. It can be simply applied from 2-dimension to 3-dimension by adding an extra $z$-axis.  
 
 \subsection{Basis Functions}
-Suppose we have a time series sequence of observed dataset $a=t_1<t_2<\cdots<t_n=b$. The function $f(t)$ (stands for $f_y(t)$) defined on this interval $[t_1,t_n]$ is called Tractor Spline, if it is the solution to the objective function (\ref{of2d}). Then it has the following property: on each interior interval $(t_i,t_{i+1})$, $i=2,\ldots,n-2$, $f(t)$ is a cubic polynomial, but on interval $(t_1,t_2)$ and $(t_{n-1},t_n)$ can be linear; $f(t)$ fits together at each point $t_i$ in such a way that $f(t)$ itself and its first derivatives are continuous at each $t_i$,  $i=2,\ldots,n-2$. 
+Suppose we have a time series sequence of observed dataset $a=t_1<t_2<\cdots<t_n=b$. The function $f(t)$ (stands for $f_y(t)$) defined on this interval $[t_1,t_n]$ is called Tractor Spline, if it is the solution to the objective function (\ref{tractorsplineObjective}). Then it has the following property: on each interior interval $(t_i,t_{i+1})$, $i=2,\ldots,n-2$, $f(t)$ is a cubic polynomial, but on interval $(t_1,t_2)$ and $(t_{n-1},t_n)$ can be linear; $f(t)$ fits together at each point $t_i$ in such a way that $f(t)$ itself and its first derivatives are continuous at each $t_i$,  $i=2,\ldots,n-2$. 
 
 Using Hermite interpolation on an arbitrary interval $[t_i,t_{i+1}]$, the cubic spline basis functions can be constructed as follows
 \begin{align}\label{hermitebasis1}
@@ -169,7 +169,7 @@ From the definition of basis functions, it can be seen that at a joint knot of t
 
 \subsection{Solution to The Objective Function}
 
-Basis functions have been defined in the previous subsection, therefore the Tractor Spline $f(t)$ on $[a,b]$, where $a \leq t_1 < t_2< \cdots < t_{n-1}<t_n \leq b$, can be found by minimizing  objective function (\ref{of2d}), which reduces to
+Basis functions have been defined in the previous subsection, therefore the Tractor Spline $f(t)$ on $[a,b]$, where $a \leq t_1 < t_2< \cdots < t_{n-1}<t_n \leq b$, can be found by minimizing  objective function (\ref{tractorsplineObjective}), which reduces to
 \begin{equation}\label{tractormse}
 \text{MSE}(\theta, \lambda,\gamma) = (\mathbf{y}-\mathbf{B}\theta)^\top (\mathbf{y}-\mathbf{B}\theta) +\gamma (\mathbf{v}-\mathbf{C}\theta)^\top (\mathbf{v}-\mathbf{C}\theta)+n \theta^\top\mathbf{\Omega}_{\lambda}\theta,
 \end{equation}
@@ -246,7 +246,7 @@ For sufficient cases of $\lambda(t)$ and $\gamma$, Tractor Spline has the follow
  %That means no matter how many times we reconstruct Tractor Spline, once the matrices are fixed and observed knots are given, it will always return the same results when $\lambda=\gamma=0$.
 
 %\begin{theorem}
-%For $n\geq 2$, the objective function $J[f]$ in equation (\ref{of2d}) is minimized by a Tractor Spline.
+%For $n\geq 2$, the objective function $J[f]$ in equation (\ref{tractorsplineObjective}) is minimized by a Tractor Spline.
 %\end{theorem}
 
 
@@ -360,7 +360,7 @@ y_{i+1}=y_i+(v_i+v_{i+1})\frac{t_{i+1}-ti}{2}
 \end{equation}
 to calculate position information, we can easily generate simulated data. Then we add some i.i.d. $\epsilon \sim N(0,1)$ with SNR 7 noises on it. For wavelet transform reconstructions, we use the threshold policy of \textit{sure} and \textit{BayesThresh} with levels $j=4, \ldots, 9$, see  \cite{donoho1995adapting} and \cite{abramovich1998wavelet}. A semi-parametric regression model with spatially adaptive penalized splines (P-spline) is added in comparison, see \cite{krivobokova2008fast} \cite{ruppert2003semiparametric}.
 
-For Tractor Spline, we have two parameters $\lambda$ and $\gamma$ to optimize. To evaluate the performance of the velocity term in objective function (\ref{of2d}) and the adjusted penalty term in (\ref{adjustedpenalty}), the parameter $\gamma$ is set as 0 in one reconstruction of Tractor Spline, whose objective function and solution become
+For Tractor Spline, we have two parameters $\lambda$ and $\gamma$ to optimize. To evaluate the performance of the velocity term in objective function (\ref{tractorsplineObjective}) and the adjusted penalty term in (\ref{adjustedpenalty}), the parameter $\gamma$ is set as 0 in one reconstruction of Tractor Spline, whose objective function and solution become
 \begin{equation}\label{ofgamma0}
 J[f]_{\gamma=0}= \frac{1}{n} \sum_{i=1}^{n} (f(t_i)-y_i)^2 +\sum_{i=1}^{n-1} \lambda_i\int_{t_i}^{t_{i+1}} f''(t)^2 dt,
 \end{equation}
@@ -814,7 +814,7 @@ To fit the real data, we bring the parameter $\lambda_d$ back to our model. Then
 
 \subsection{1-Dimension Trajectory}
 
-We treat $x$ and $y$ position separately and compare how velocity information in objective function (\ref{of2d}) and the adjusted penalty term in equation (\ref{adjustedpenalty}) work in our model. All parameters in fitted Tractor Spline are automatically selected by cross validation in equation (\ref{tractorcv}). Figure \ref{1dx} and figure \ref{1dy} compare the results of fitted methods on $x$ and $y$ axis. P-spline gives over fitting on $x$ axis reconstruction and not applicable on $y$ axis due to errors. Wavelet(sure) misses some key points at corners when a tractor tries to have a turn. Tractor Spline without adjusted penalty term presents less fitting at time gap knots, at which time marks keep increasing while position stays the same with velocity is 0. If we take the last knot $p_k$ before and the first knot $p_{k+1}$ after time gap, Hermite spline basis will use $y_k, v_k y_{k+1}$ and $v_{k+1}$ to build up a cubic spline, even though the velocity information is not useful. That is why we got a curve rather than a straight line. Wavelet(BayesThresh), Tractor Spline without velocity and proposed Tractor Spline give acceptable results.
+We treat $x$ and $y$ position separately and compare how velocity information in objective function (\ref{tractorsplineObjective}) and the adjusted penalty term in equation (\ref{adjustedpenalty}) work in our model. All parameters in fitted Tractor Spline are automatically selected by cross validation in equation (\ref{tractorcv}). Figure \ref{1dx} and figure \ref{1dy} compare the results of fitted methods on $x$ and $y$ axis. P-spline gives over fitting on $x$ axis reconstruction and not applicable on $y$ axis due to errors. Wavelet(sure) misses some key points at corners when a tractor tries to have a turn. Tractor Spline without adjusted penalty term presents less fitting at time gap knots, at which time marks keep increasing while position stays the same with velocity is 0. If we take the last knot $p_k$ before and the first knot $p_{k+1}$ after time gap, Hermite spline basis will use $y_k, v_k y_{k+1}$ and $v_{k+1}$ to build up a cubic spline, even though the velocity information is not useful. That is why we got a curve rather than a straight line. Wavelet(BayesThresh), Tractor Spline without velocity and proposed Tractor Spline give acceptable results.
 
 Table \ref{1dxymse} illustrates the MSE of all methods on both $x$ and $y$ axises. The proposed Tractor Spline returns the smallest errors among all methods.
 

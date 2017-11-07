@@ -14,8 +14,8 @@
 \contentsline {figure}{\numberline {2.12}{\ignorespaces 2-Dimensional reconstruction with penalty function. Larger dots indicate bigger penalty values. The mean square errors (MSE) on $x$ and $y$ are 0.240734 and 0.478422 respectively. The mean distance error $\sqrt {(\mathaccentV {hat}05E{f}_x-x)^2+ (\mathaccentV {hat}05E{f}_y-y)^2}$ is 0.645830.\relax }}{36}
 \contentsline {figure}{\numberline {2.13}{\ignorespaces Penalty function of 2-Dimensional reconstruction.\relax }}{36}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Comparing two methods. In this graph, the blue line is reconstruction from tractor spline, the red line is the mean of Gaussian Process, which is the posterior $\mathbb {E}(\eta (x) | \mathbf {Y}, \mathbf {V})$.\relax }}{49}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces (a) Comparing two methods under the same parameters $\lambda =0.01$ and $\gamma =0.1$. In this graph, the blue line is reconstruction from tractor spline, the red line is the mean of Gaussian Process, which is the posterior $\mathrm {E}(f(x) \mid \mathbf {Y}, \mathbf {V})$. (b) The differences between two methods under the same parameters.\relax }}{51}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Comparing two methods. In this graph, the blue line is reconstruction from tractor spline, the red line is the mean of Gaussian Process, which is the posterior $\mathbb {E}(f(t) \mid \mathbf {y}, \mathbf {v})$.\relax }}{49}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces (a) Comparing two methods under the same parameters $\lambda =0.01$ and $\gamma =0.1$. In this graph, the blue line is reconstruction from tractor spline, the red line is the mean of Gaussian Process, which is the posterior $\mathrm {E}(f(t) \mid \mathbf {y}, \mathbf {v})$. (b) The differences between two methods under the same parameters.\relax }}{51}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces A simulation study shows that the three algorithms converge to the true $\phi $ at similar speed. The filtering for $x$ is very competitive.\relax }}{73}
 \addvspace {10\p@ }
@@ -30,9 +30,9 @@
 \contentsline {figure}{\numberline {5.9}{\ignorespaces Probability density function and cumulative distribution function of \textit {Inverse Gamma} with two parameters $\alpha $ and $\beta $. \relax }}{106}
 \contentsline {figure}{\numberline {5.10}{\ignorespaces An example of Eff, EUT, ESS and ESSUT found by using the same data. \relax }}{108}
 \contentsline {figure}{\numberline {5.11}{\ignorespaces Comparison Eff, ESS, EffUT and ESSUT of different length of data. \relax }}{110}
-\contentsline {figure}{\numberline {5.12}{\ignorespaces Comparison $\qopname \relax o{ln}DA$ and $\qopname \relax o{ln}L$ between not-updating and updating mean methods. \relax }}{113}
-\contentsline {figure}{\numberline {5.13}{\ignorespaces Comparison between not-updating and updating mean methods. \relax }}{114}
-\contentsline {figure}{\numberline {5.14}{\ignorespaces Visualization of correlation matrix of $\theta $, which is found in learning-surface process. \relax }}{114}
+\contentsline {figure}{\numberline {5.12}{\ignorespaces Comparison $\qopname \relax o{ln}DA$ and $\qopname \relax o{ln}L$ between not-updating and updating mean methods. \relax }}{111}
+\contentsline {figure}{\numberline {5.13}{\ignorespaces Comparison between not-updating and updating mean methods. \relax }}{112}
+\contentsline {figure}{\numberline {5.14}{\ignorespaces Visualization of correlation matrix of $\theta $, which is found in learning-surface process. \relax }}{113}
 \contentsline {figure}{\numberline {5.15}{\ignorespaces Trace plots of $\theta $ from learning surface process after taking 1\tmspace +\thinmuskip {.1667em}000 samples from 5\tmspace +\thinmuskip {.1667em}000. \relax }}{115}
 \contentsline {figure}{\numberline {5.16}{\ignorespaces Position and velocity for $X$ and $Y$ found by combined batch and sequential methods. \relax }}{116}
 \contentsline {figure}{\numberline {5.17}{\ignorespaces Zoom in on estimations. For each estimation $\mathaccentV {hat}05E{X}_i (i=1,\dots ,t)$, there is a error circle around it. \relax }}{117}
