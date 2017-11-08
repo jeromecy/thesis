@@ -14,8 +14,7 @@
 \contentsline {figure}{\numberline {2.12}{\ignorespaces 2-Dimensional reconstruction with penalty function. Larger dots indicate bigger penalty values. The mean square errors (MSE) on $x$ and $y$ are 0.240734 and 0.478422 respectively. The mean distance error $\sqrt {(\mathaccentV {hat}05E{f}_x-x)^2+ (\mathaccentV {hat}05E{f}_y-y)^2}$ is 0.645830.\relax }}{36}
 \contentsline {figure}{\numberline {2.13}{\ignorespaces Penalty function of 2-Dimensional reconstruction.\relax }}{36}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Comparing two methods. In this graph, the blue line is reconstruction from tractor spline, the red line is the mean of Gaussian Process, which is the posterior $\mathbb {E}(f(t) \mid \mathbf {y}, \mathbf {v})$.\relax }}{49}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces (a) Comparing two methods under the same parameters $\lambda =0.01$ and $\gamma =0.1$. In this graph, the blue line is reconstruction from tractor spline, the red line is the mean of Gaussian Process, which is the posterior $\mathrm {E}(f(t) \mid \mathbf {y}, \mathbf {v})$. (b) The differences between two methods under the same parameters.\relax }}{51}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Comparing Tractor spline and its Bayesian estimates. Two methods are corresponding to each other. In this figure, black dots indicate observations and dark line stands for the reconstruction. The Tractor spline and its posterior $\mathrm {E}(f(t) \mid \mathbf {y}, \mathbf {v})$ of Gaussian process regression give the same results. \relax }}{51}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces A simulation study shows that the three algorithms converge to the true $\phi $ at similar speed. The filtering for $x$ is very competitive.\relax }}{73}
 \addvspace {10\p@ }

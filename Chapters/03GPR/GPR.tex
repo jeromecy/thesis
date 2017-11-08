@@ -86,7 +86,7 @@ Suppose $R$ is a symmetric, positive definite kernel on a set $X$. Then there is
 \end{theorem}
 \begin{theorem}\cite{gu2013smoothing}\label{theoremKernel}
 If the reproducing kernel $R$ of a space $\mathcal{H}$ on domain $X$ can
-be decomposed into $R = R_0 + R_1$, where $R_0$ and $R_1$ are both non-negative definite, $R_0(x, \cdot),R1(x,\cdot) \in \mathcal{H}$, for $ \forall x \in X$, and $\langle R_0(x, \cdot),R_1(y, \cdot) \rangle= 0$, for $\forall x, y \in X$, then the spaces $\mathcal{H}_0$ and $\mathcal{H}_1$ corresponding respectively to $R_0$ and $R_1$ form a tensor sum decomposition of $\mathcal{H}$. Conversely, if $R_0$ and $R_1$ are both  nonnegative definite and $\mathcal{H}_0 \cap \mathcal{H}_1 =\{0\}$, then $\mathcal{H} =\mathcal{H}_0 \bigoplus \mathcal{H}_1$ has a reproducing kernel $R = R_0 + R_1$.
+be decomposed into $R = R_0 + R_1$, where $R_0$ and $R_1$ are both non-negative definite, $R_0(x, \cdot),R1(x,\cdot) \in \mathcal{H}$, for $ \forall x \in X$, and $\langle R_0(x, \cdot),R_1(y, \cdot) \rangle= 0$, for $\forall x, y \in X$, then the spaces $\mathcal{H}_0$ and $\mathcal{H}_1$ corresponding respectively to $R_0$ and $R_1$ form a tensor sum decomposition of $\mathcal{H}$. Conversely, if $R_0$ and $R_1$ are both  nonnegative definite and $\mathcal{H}_0 \cap \mathcal{H}_1 =\{0\}$, then $\mathcal{H} =\mathcal{H}_0 \oplus \mathcal{H}_1$ has a reproducing kernel $R = R_0 + R_1$.
 \end{theorem}
 
 According to theorem \ref{theoremRKHS}, the Hilbert space associated with $R$ can be constructed as containing all finite linear combinations of the form $\sum a_iR(t_i,\cdot)$, and their limits under the norm induced by the inner product $\langle R(s,\cdot),R(t,\cdot) \rangle = R(s,t)$. As for theorem \ref{theoremKernel}, it is easy to verify that $R_0$ corresponds to the space of polynomials $\mathcal{H}_0 =\{f:f^{(m)}=0\}$ with an inner product $\langle f, g \rangle_0 = \sum_{\nu=0}^{m-1} f^{(\nu)}(0)g^{(\nu)}(0)$ and $R_1$ corresponds to the orthogonal complement of $\mathcal{H}_0$, which is $\mathcal{H}_1 =\{  f:f^{(\nu)}(0)=0,\nu = 0, \ldots,m-1, \int_{0}^{1}(f^{(m)})^2dt <\infty  \}$ with an inner product $\langle f, g\rangle_1 = \int_{0}^{1}f^{(m)}g^{(m)}dt $. 
@@ -138,7 +138,7 @@ for $b=\sigma^2/n\lambda$.
 
 \subsection{Gaussian Process Regression}
 
-A Gaussian process is a collection of random variables, any finite number of which have a joint Gaussian distribution \cite{b_gpml}. Gaussian process regression is a probability distributions over functions. It is fully defined by its mean $m(t)$ and covariance $K(s,t)$ functions as
+Gaussian processes are the extension of multivariate Gaussian to infinite-sized collections of real value variables, any finite number of which have a joint Gaussian distribution \cite{rasmussen2006gaussian}. Gaussian process regression is a probability distribution over functions. It is fully defined by its mean $m(t)$ and covariance $K(s,t)$ functions as 
 \begin{align*}
 m(t)&=\E [f(t)] \\
 K(s,t)&=\E \lbrack (f(s)-m(s)) (f(t)-m(t))\rbrack,
@@ -180,22 +180,19 @@ Therefore, we can see that the Bayesian estimation of smoothing spline is a spec
 
 
 
-
-
-
-
 \section{Tractor Spline as Bayes Estimation}
 
 
-Recall the definition of Tractor spline introduced in Chapter \ref{ChapterTractorSpline}. It is the solution to the objective function (\ref{tractorsplineObjective}), where an extra term for $f'(t)-v$ and extra parameter $\gamma$ are incorporated. 
+Recall the definition of Tractor spline introduced in Chapter \ref{ChapterTractorSpline}. It is the solution to the objective function (\ref{tractorsplineObjective}), where an extra term for $f'(t)-v$ and an extra parameter $\gamma$ are incorporated. 
 
-In this section, we are going to prove that the Tractor spline is corresponding to Bayesian estimation in a reproducing Hilbert space. 
+In this section, we are going to prove that the Tractor spline is corresponding to Bayesian estimation in a particular reproducing kernel Hilbert space. 
 
-\subsection{Reproducing Kernel Hilbert Space on $\mathcal{C}_{p.w.}^{2}[0,1]$}
 
-The space $C^{(m)}[0,1]=\{ f:f^{(m)}\in \mathit{L}_2[0,1] \}$ is a set of functions $f$ whose $m$th derivatives are continuous on the domain $[0,1]$. For a tractor spline, it only requires $m=2$. In fact, its second derivative is piecewise continuous. Then we introduce the space
+\subsection{Reproducing Kernel Hilbert Space $\mathcal{C}_{p.w.}^{2}[0,1]$}
+
+The space $C^{(m)}[0,1]=\{ f:f^{(m)}\in \mathit{L}_2[0,1] \}$ is a set of functions $f$ whose $m$th derivatives are square integrable on the domain $[0,1]$. For a tractor spline, it only requires $m=2$. In fact, its second derivative is piecewise linear. Besides, only if $\gamma$ is constant, the second derivative is continuous at joint knots. Then we introduce the space 
 \begin{equation*}
-\mathcal{C}_{p.w.}^{2}[0,1]=\{f:f,f' \mbox{ are continuous and } f'' \mbox{ is piecewise continuous on } [0,1] \}.
+\mathcal{C}_{p.w.}^{2}[0,1]=\{f: f''\in \mathit{L}_2[0,1], f,f' \mbox{ are continuous and } f'' \mbox{ is piecewise linear}\}.
 \end{equation*}
 
 Given a sequence of paired data $\{(t_1,y_1,v_1),\ldots, (t_n,y_n,v_n) \}$, the the minimizer of 
@@ -206,11 +203,11 @@ in the space $\mathcal{C}_{p.w.}^{2}[0,1]$ is a tractor spline. Equipped with an
 \begin{equation}
 \langle f,g \rangle=f(0) g(0)+f'(0) g'(0)+\int_{0}^{1}f''g''dx,
 \end{equation}
-the space $\mathcal{C}_{p.w.}^{2}[0,1]$ is made a reproducing kernel Hilbert space. In fact, the representer $R_x(\cdot)$ is 
+the space $\mathcal{C}_{p.w.}^{2}[0,1]$ is made a reproducing kernel Hilbert space. In fact, the representer $R_s(\cdot)$ is 
 \begin{equation}\label{kerneleq}
 R_s(t)=1+st+\int_{0}^{1} (s-u)_+(t-u)_+du.
 \end{equation}
-It can be seen that $R_s(0)=1, R'_s(0)=x$, and $R''_s(t)=(s-t)_+$.
+It can be seen that $R_s(0)=1, R'_s(0)=s$, and $R''_s(t)=(s-t)_+$.
 
 The two terms of the reproducing kernel $R(s,t)=R_s(t)=R_0(s,t)+R_1(s,t)$, where
 \begin{align}
@@ -220,47 +217,60 @@ R_1(s,t)&=\int_{0}^{1} (s-u)_+(t-u)_+du
 are both non-negative definite themselves.
 
 
-According to Theorem \ref{theoremKernel}, $R_0$ can correspond the space of polynomials $\mathcal{H}_0=\{f:f''=0\}$ with an inner product $(f,g)_0= f(0)g(0)+f'(0)g'(0)$, and $R_1$ corresponds the orthogonal complement of $\mathcal{H}_0$
+According to Theorem \ref{theoremKernel}, $R_0$ can correspond the space of polynomials $\mathcal{H}_0=\{f:f''=0\}$ with an inner product $\langle f,g \rangle_0= f(0)g(0)+f'(0)g'(0)$, and $R_1$ corresponds the orthogonal complement of $\mathcal{H}_0$
 \begin{equation*}
 \mathcal{H}_1=\{f:f(0)=0, f'(0)=0, \int_{0}^{1}f''^2dt<\infty\}
 \end{equation*}
-with inner product $(f,g)_1=\int_{0}^{1}f''g''dt$. Thus, $\mathcal{H}_0$ and $\mathcal{H}_1$ are two subspaces of the $\mathcal{C}_{p.w.}^{2}[0,1]$, and the reproducing kernel is $R_s(\cdot) = R_0(s,\cdot)+R_1(s,\cdot)$.
+with inner product $\langle f,g \rangle_1=\int_{0}^{1}f''g''dt$. Thus, $\mathcal{H}_0$ and $\mathcal{H}_1$ are two subspaces of the $\mathcal{C}_{p.w.}^{2}[0,1]$, and the reproducing kernel is $R_s(\cdot) = R_0(s,\cdot)+R_1(s,\cdot)$.
 
 
 Define a new notation $\dot{R}(s,t)=\frac{\partial R}{\partial s}(s,t)=\frac{\partial R_0}{\partial s}(s,t)+\frac{\partial R_1}{\partial s}(s,t)=t+\int_0^s(t-u)_+du$. Obviously $\dot{R}_s(t) \in \mathcal{C}_{p.w.}^{2}[0,1]$. Additionally, we have $\dot{R}_s(0)=0, \dot{R}'_s(0)=\frac{\partial \dot{R}_s}{\partial t}(0)=1$, and $ \dot{R}''_s(t)=\begin{cases}
-0 & s\leq t \\ 1 & s>t \end{cases}$. Then, for ant $f\in \mathcal{C}_{p.w.}^{2}[0,1]$, it gives us 
-\begin{align*}
-(\dot{R}_s,f) &=\dot{R}_s(0)f(0)+\dot{R}'_s(0)f'(0)+\int_0^1\dot{R}''_s f''	 du=f'(0)+\int_0^t f''du=f'(t).
-\end{align*}
-It can be seen that the first term $\dot{R}_0=t\in \mathcal{H}_0$, and the space spanned bt the second term  $\dot{R}_1=\int_0^s(t-u)_+du$, denoted as $\mathcal{\dot{H}}$, is not in $\mathcal{H}_1$, but $\mathcal{\dot{H}} \cap \mathcal{H}_1\neq \emptyset$. Then we have a new space $\mathcal{H}_*=\mathcal{\dot{H}} \cup \mathcal{H}_1$. Thus the two new sub spaces in $\mathcal{C}_{p.w.}^2[0,1]$ are $\mathcal{H}_0$ and $\mathcal{H}_*$.
+0 & s\leq t \\ 1 & s>t \end{cases}$. Then, for any $f\in \mathcal{C}_{p.w.}^{2}[0,1]$, we have 
+\begin{equation*}
+\langle \dot{R}_s,f\rangle =\dot{R}_s(0)f(0)+\dot{R}'_s(0)f'(0)+\int_0^1\dot{R}''_s f''	 du=f'(0)+\int_0^t f''du=f'(t).
+\end{equation*}
+% % % % % % % % % % % % % % % %  Old version, space H* might be wrong % % % % %
+% % % % % % % % % % % % % % % %
+%It can be seen that the first term $\dot{R}_0=t\in \mathcal{H}_0$, and the space spanned by the second term $\dot{R}_1=\int_0^s(t-u)_+du$, denoted as $\mathcal{\dot{H}}$, is not in $\mathcal{H}_1$, but $\mathcal{\dot{H}} \cap \mathcal{H}_1\neq \emptyset$. Then we have a new space $\mathcal{H}_*=\mathcal{\dot{H}} \cup \mathcal{H}_1$. Thus the two new sub spaces in $\mathcal{C}_{p.w.}^2[0,1]$ are $\mathcal{H}_0$ and $\mathcal{H}_*$.
+%
+%Given the sample points $t_j, j=1, \ldots, n$ in equation $(\ref{maineq})$ and noting that the space
+%\begin{equation}
+%\mathcal{A}=\{f: f=\sum_{j=1}^{n}\alpha_jR_1(t_j,\cdot)+\sum_{j=1}^{n}\beta_j\dot{R}_1(t_j,\cdot)\} 
+%\end{equation}
+%is a closed linear subspace of $\mathcal{H}_*$. Then $f  \in \mathcal{C}_{p.w.}^2[0,1]$ can be written as
+%\begin{equation}\label{GaussianProcessFunctionF}
+%f(t)=d_1+d_2t+\sum_{j=1}^{n}c_jR_1(t_j,t)+\sum_{i=j}^{n}b_j\dot{R}_1(t_j,\cdot) +\rho(t)
+%\end{equation}
+%where $\mathbf{d},\mathbf{c}$ and $\mathbf{b}$ are coefficients, and $\rho(t) \in \mathcal{H}_* \ominus \mathcal{A}$. 
 
 
-
-Given the sample points $t_j, j=1, \ldots, n$ in equation $(\ref{maineq})$ and noting that the space
-\begin{equation}
+It can be seen that the first term $\dot{R}_0=t\in \mathcal{H}_0$, and the space spanned by the second term $\dot{R}_1=\int_0^s(t-u)_+du$, denoted as $\mathcal{\dot{H}}$, is a subspace of $\mathcal{H}_1$, and $\mathcal{\dot{H}} \ominus \mathcal{H}_1\neq \emptyset$. Given the sample points $t_j, j=1, \ldots, n$, in equation $(\ref{maineq})$ and noting that the space
+\begin{equation*}
 \mathcal{A}=\{f: f=\sum_{j=1}^{n}\alpha_jR_1(t_j,\cdot)+\sum_{j=1}^{n}\beta_j\dot{R}_1(t_j,\cdot)\} 
-\end{equation}
-is a closed linear subspace of $\mathcal{H}_*$. Then $f  \in \mathcal{C}_{p.w.}^2[0,1]$ can be written as
-\begin{equation}\label{etaeq}
+\end{equation*}
+is a closed linear subspace of $\mathcal{H}_1$. Then we have a new space $\mathcal{H}_*=\mathcal{\dot{H}} \cup \mathcal{A}$. Thus the two new sub spaces in $\mathcal{C}_{p.w.}^2[0,1]$ are $\mathcal{H}_0$ and $\mathcal{H}_*$.
+
+For any $f  \in \mathcal{C}_{p.w.}^2[0,1]$, it can be written as 
+\begin{equation}\label{GaussianProcessFunctionF}
 f(t)=d_1+d_2t+\sum_{j=1}^{n}c_jR_1(t_j,t)+\sum_{i=j}^{n}b_j\dot{R}_1(t_j,\cdot) +\rho(t)
 \end{equation}
-where $\mathbf{d},\mathbf{c}$ and $\mathbf{b}$ are coefficients, and $\rho(t) \in \mathcal{H}_* \ominus \mathcal{A}$. 
+where $\mathbf{d},\mathbf{c}$ and $\mathbf{b}$ are coefficients, and $\rho(t) \in \mathcal{H}_1 \ominus \mathcal{H}_*$. 
 
 
 The equation $(\ref{maineq})$ can be written as
-\begin{align*}
+\begin{equation}\label{GassianProcessRawequation}
 \begin{split}
 &\frac{1}{n}\sum_{i=1}^n \left( y_i - d_1-d_2t-\sum_{j=1}^{n}c_jR_1(t_j,t_i)-\sum_{j=1}^{n}b_j\dot{R}_1(t_j,t_i)-\rho(t_i) \right) ^2\\
 &\frac{\gamma}{n}\sum_{i=1}^n \left( v_i - d_2-\sum_{j=1}^{n}c_jR'_1(t_j,t_i)-\sum_{j=1}^{n}b_j\dot{R}'_1(t_j,t_i)-\rho'(t_i) \right) ^2\\
 +&\lambda \int_0^1 \left( \sum_{j=1}^{n}c_jR''_1(t_j,t)+\sum_{j=1}^{n}c_j\dot{R}''_1(t_j,t)+\rho''(t)\right)^2dt
 \end{split}
-\end{align*}
-By orthogonality, $\rho(t_i) = (R_1(t_i,\cdot),\rho)=0$, $\rho'(t_i) = (\dot{R}_1(t_i,\cdot),\rho')=0$, $i=1,\ldots,n$. Denoting by
+\end{equation}
+By orthogonality, $\rho(t_i) = (R_1(t_i,\cdot),\rho)=0$, $\rho'(t_i) = (\dot{R}_1(t_i,\cdot),\rho')=0$, $i=1,\ldots,n$. By denoting that 
 \begin{align*}
 S&=\{S_{ij} \}_{n\times 2}=\begin{bmatrix}1 & t_i \end{bmatrix} ,& Q&=\{Q_{ij} \}_{n\times n}= R_1(t_j,t_i), & P&=\{P_{ij} \}_{n\times n}= \dot{R}_1(t_j,t_i), \\
 S'&=\{S'_{ij} \}_{n\times 2}=\begin{bmatrix} 0 & 1 \end{bmatrix} ,& Q'&=\{Q'_{ij} \}_{n\times n}= R_1'(t_j,t_i), & P'&=\{P'_{ij} \}_{n\times n}= \dot{R}_1'(t_j,t_i). 
 \end{align*}
-and noting that $\int_0^1R''_1(t_i,t)R''_1(t_j,t)dt=R_1(t_i,t_j)$, $\int_0^1R''_1(t_i,t)\dot{R}''_1(t_j,t)dt=\int_0^{v}(t_i-t)dt=\dot{R}_1(t_j,t_i)$, and $\int_0^1\dot{R}''_1(t_i,t)\dot{R}''_1(t_j,t)dt=\int_0^{v}1dt=\dot{R}'_1(t_i,t_j)$, where $v=\mbox{min}(t_i,t_j)$, the above equation can be written as
+and noting that $\int_0^1R''_1(t_i,t)R''_1(t_j,t)dt=R_1(t_i,t_j)$, $\int_0^1R''_1(t_i,t)\dot{R}''_1(t_j,t)dt=\int_0^{v}(t_i-t)dt=\dot{R}_1(t_j,t_i)$, and $\int_0^1\dot{R}''_1(t_i,t)\dot{R}''_1(t_j,t)dt=\int_0^{v}1dt=\dot{R}'_1(t_i,t_j)$, where $v=\mbox{min}(t_i,t_j)$, the above equation (\ref{GassianProcessRawequation}) can be written as 
 \begin{equation}\label{matriteq}
 \begin{split}
 (\mathbf{y}-S\mathbf{d}-Q\mathbf{c}-P\mathbf{b})^\top (\mathbf{y}-S\mathbf{d}-Q\mathbf{c}-P\mathbf{b})+\\
@@ -268,14 +278,14 @@ and noting that $\int_0^1R''_1(t_i,t)R''_1(t_j,t)dt=R_1(t_i,t_j)$, $\int_0^1R''_
 +n\lambda (\mathbf{c}^\top Q\mathbf{c} + 2\mathbf{c}^\top P\mathbf{b}+ \mathbf{b}^\top P'\mathbf{b})+n\lambda(\rho,\rho).
 \end{split}
 \end{equation}
-Note that $\rho$ only appears in the third term in $(\ref{matriteq})$, which is minimized at $\rho=0$. Hence, a polynomial smoothing spline resides in the space $\mathcal{H}_0\oplus \mathcal{A}$ of finite dimension. Then the solution to $(\ref{maineq})$ could be computed via minimization of the first two terms in $(\ref{matriteq})$ with respect to $\mathbf{d}$, $\mathbf{c}$ and $\mathbf{b}$.
+Note that $\rho$ only appears in the third term and is minimized at $\rho=0$. Hence, a tractor spline resides in the space $\mathcal{H}_0\oplus \mathcal{H}_*$ of finite dimension. Then the solution to $(\ref{maineq})$ is computed via the minimization of the first three terms in $(\ref{matriteq})$ with respect to $\mathbf{d}$, $\mathbf{c}$ and $\mathbf{b}$.
 
 
 
-\section{Tractor Splines as Bayes Estimates}
+\subsection{Posterior of Bayes Estimates}
 
 
-Now in the model $y=f(t)+\varepsilon$ and $v=f '(t)+\frac{\varepsilon}{\gamma}$ where $\varepsilon \sim N(0,\sigma^2)$, according to equation $(\ref{etaeq})$, for $f(t) \in \mathcal{C}_{p.w.}^{2}[0,1]$ and $t \in T$, we have
+Now in the model $y=f(t)+\varepsilon$ and $v=f '(t)+\frac{\varepsilon}{\gamma}$ where $\varepsilon \sim N(0,\sigma^2)$, according to equation $(\ref{GaussianProcessFunctionF})$, for $f(t) \in \mathcal{C}_{p.w.}^{2}[0,1]$, we have
 \begin{equation}
 f(t)=(d_1+d_2t)+\sum_{i=1}^{n}c_iR_1(t_i,t)+\sum_{i=1}^{n}b_i\dot{R}_1(t_i,t).
 \end{equation}
@@ -294,7 +304,7 @@ The covariance functions for $y,v$ and $f , f '$ are
 where $R(s,t)$ is taken from $(\ref{kerneleq})$. 
 
 
-Observing $y_i\sim N(f (t_i),\sigma^2)$ and $\mathbf{v}_i\sim N(f (t_i),\frac{\sigma^2}{\gamma})$, the joint distribution of $\mathbf{y},\mathbf{v}$ and $f(t)$ is normal with mean zero and a covariance matrix can be found. The posterior mean of $f(t)$ is 
+Observing $y_i\sim N(f (t_i),\sigma^2)$ and $v_i\sim N(f (t_i),\frac{\sigma^2}{\gamma})$, the joint distribution of $\mathbf{y},\mathbf{v}$ and $f(t)$ is normal with mean zero and a covariance matrix can be found. The posterior mean of $f(t)$ is 
 \begin{align}\label{GPrhoeq}
 \begin{split}
 \E (f \mid  \mathbf{\mathbf{y}},\mathbf{v}) & =
@@ -324,27 +334,27 @@ Observing $y_i\sim N(f (t_i),\sigma^2)$ and $\mathbf{v}_i\sim N(f (t_i),\frac{\s
 \end{bmatrix}^{-1}\begin{bmatrix}
 \mathbf{y}\\\mathbf{v}
 \end{bmatrix}\\
-&=(\phi\top \rho 
+&=(\phi^\top \rho 
 \begin{bmatrix} S\\ S' \end{bmatrix}^\top + \begin{bmatrix} \xi^\top & \psi^\top\end{bmatrix})
 \left(\rho\begin{bmatrix} S \\ S' \end{bmatrix}^\top \begin{bmatrix} S \\ S' \end{bmatrix}+
 \begin{bmatrix} Q+n\lambda I& P\\
 Q'& P'+\frac{n\lambda}{\gamma}I\end{bmatrix}\right) ^{-1}
 \begin{bmatrix}\mathbf{y}\\ \mathbf{v} \end{bmatrix}\\
-&\triangleq\phi\top \rho T^\top \left(\rho T^\top T+M\right) ^{-1} \begin{bmatrix}\mathbf{y}\\ \mathbf{v} \end{bmatrix}
+&\triangleq\phi^\top \rho T^\top \left(\rho T^\top T+M\right) ^{-1} \begin{bmatrix}\mathbf{y}\\ \mathbf{v} \end{bmatrix}
 + \begin{bmatrix} \xi^\top & \psi^\top\end{bmatrix}\left(\rho T^\top T+M\right) ^{-1} \begin{bmatrix}\mathbf{y}\\ \mathbf{v} \end{bmatrix}
 \end{split}
 \end{align}
-where $\phi$ is $2 \times 1$ matrix with entry $1$ and $t$, $\xi$ is $n\times 1$ matrix with $i$th entry $R(t_i,t)$ and $\psi$ is $n\times 1$ matrix with $i$th entry  $\dot{R}(t_i,t)$, $\rho=\tau^2/\beta$ and $n\lambda =\sigma^2/\beta$. 
+where $\phi$ is $2 \times 1$ matrix with entry $1$ and $t$, $\xi$ is $n\times 1$ matrix with $i$th entry $R(t_i,t)$, $T^\top =\begin{bmatrix} S & S' \end{bmatrix}$ and $\psi$ is $n\times 1$ matrix with $i$th entry  $\dot{R}(t_i,t)$, $\rho=\tau^2/\beta$ and $n\lambda =\sigma^2/\beta$. 
 
 \begin{lemma}\label{GPLemma}
-	Suppose $M$ is symmetric and nonsingular and $S$ is of full column rank. 
+	Suppose $M$ is symmetric and nonsingular and $T$ is of full column rank. 
 	\begin{align*}
 	&\lim\limits_{\rho \rightarrow \infty}(\rho TT^\top+M)^{-1}=M^{-1}-M^{-1}T(T^\top M^{-1}T)^{-1}T^\top M^{-1},\\
 	&\lim\limits_{\rho \rightarrow \infty}\rho T^\top(\rho TT^\top+M)^{-1}=(T^\top M^{-1}T)^{-1}T^\top M^{-1}.
 	\end{align*}
 \end{lemma}
 
-Setting $\rho \rightarrow \infty$ in equation $(\ref{GPrhoeq})$ and applying Lemma $\ref{GPLemma}$, the posterior mean $\E (f(x)\mid \mathbf{y},\mathbf{v})$ is of the form $f  = \mathbf{\phi}^\top \mathbf{d}+\mathbf{\xi}^\top \mathbf{c}+\mathbf{\psi}^\top \mathbf{b}$, with the coefficients given by
+Setting $\rho \rightarrow \infty$ in equation $(\ref{GPrhoeq})$ and applying Lemma $\ref{GPLemma}$, the posterior mean $\E (f(x)\mid \mathbf{y},\mathbf{v})$ is in the form $f  = \mathbf{\phi}^\top \mathbf{d}+\mathbf{\xi}^\top \mathbf{c}+\mathbf{\psi}^\top \mathbf{b}$, with the coefficients given by
 \begin{align*} 
 \mathbf{d}&=(T^\top M^{-1}T)^{-1}T^\top M^{-1}\begin{bmatrix}\mathbf{y} \\ \mathbf{v} \end{bmatrix},\\
 \begin{bmatrix}\mathbf{c}\\\mathbf{b}\end{bmatrix} &=
@@ -367,74 +377,85 @@ P^\top (S\mathbf{d}+(Q+n\lambda I) \mathbf{c} +P\mathbf{b}-\mathbf{y})+P'(\gamma
 
 
 
-\section{Correlated Errors}
+\section{Tractor Spline with Correlated Random Errors}
 
 
-Now in the model $y=f(t)+\varepsilon_1$ and $v=f'(t)+\varepsilon_2$ where $\varepsilon_1\sim N(0,\sigma^2W^{-1})$, $\varepsilon_2\sim N(0,\frac{\sigma^2}{\gamma}U^{-1})$, and $\sigma^2$ is unknown. A tractor spline $\hat{f}$ in space $\mathcal{C}_{p.w}^2[0,1]$ is the minimizer of
+In most of the studies on polynomial smoothing splines, the random errors are assumed being independent. On contrast, in applications, observations are often correlated, such as time series data and spatial data. It is known that the correlation greatly affects the selection of smoothing parameters, which are critical to the performance of smoothing spline estimates \cite{wang1998smoothing}.  The parameter selection methods, such as generalized maximum likelihood (GML), generalized cross validation (GCV), underestimate smoothing parameters when data are correlated. 
+
+
+\cite{diggle1989spline} extended GCV for choosing the degree of smoothing spline to accommodate an autocorrelated error sequence, by which the smoothing parameter and autocorrelation parameters are estimated simultaneously.  \cite{kohn1992nonparametric} proposed an algorithm to evaluate the cross validation functions, whose autocorrelated errors are modeled by an autoregressive moving average. \cite{wang1998smoothing} extend GML and unbiased risk (UBR), other than GCV, to estimate the smoothing parameters and correlation parameters simultaneously. In this section, we are exploring the extended GCV for tractor spline with correlated errors. 
+
+
+First of all, consider observations $y=f(t)+\varepsilon_1$ and $v=f'(t)+\varepsilon_2$, where $\varepsilon_1\sim N(0,\sigma^2W^{-1})$, $\varepsilon_2\sim N(0,\frac{\sigma^2}{\gamma}U^{-1})$ with unknown variance parameter $\sigma^2$. A tractor spline $\hat{f}$ with correlated errors in space $\mathcal{C}_{p.w}^2[0,1]$ is the minimizer of 
 \begin{equation}
 \frac{1}{n}(\mathbf{y}-\mathbf{f})^\top W(\mathbf{y}-\mathbf{f})+\frac{\gamma}{n}(\mathbf{v}-\mathbf{f}')^\top U(\mathbf{v}-\mathbf{f}')+\lambda\int_0^1f''^2dt.
 \end{equation}
 Because $f=\sum_{i=1}^{2n}\theta_iN_i(t)$ is a linear combination of basis functions, then
 \begin{equation}
-\hat{\theta}=(B^\top W B+ \gamma C^\top UC+n\Omega_\lambda)^{-1}(B^\top W \mathbf{y}+\gamma C^\top U\mathbf{v})
+\hat{\theta}=(B^\top W B+ \gamma C^\top UC+n\Omega_\lambda)^{-1}(B^\top W \mathbf{y}+\gamma C^\top U\mathbf{v}).
 \end{equation}
-
-In Gaussian Process Regression, the covariance matrix becomes
+Further more, in Gaussian process regression, the covariance matrix with correlated variances becomes 
 $M=\begin{bmatrix}
 Q+n\lambda W& P\\
 Q'& P'+\frac{n\lambda}{\gamma}U
-\end{bmatrix}$ and the rest remains the same.
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=12cm,height=7cm]{Chapters/03GPR/plot/sim_cov} \\
- \caption{Comparing two methods. In this graph, the blue line is reconstruction from tractor spline, the red line is the mean of Gaussian Process, which is the posterior $\mathbb{E}(f(t) \mid \mathbf{y}, \mathbf{v})$.}
-\end{figure}
+\end{bmatrix}$ and the rest remains the same. 
 
 
-The leave-one-out cross validation score of a tractor spline is
-\begin{equation}
+Recall the leave-one-out cross validation score of a tractor spline is 
+\begin{equation*}
 \mbox{LOOCV}(\lambda,\gamma)=\frac{1}{n}\sum_{i=1}^{n}\left( \frac{\hat{f}(t_i)-y_i+\frac{\gamma T_{ii}}{1-\gamma V_{ii}}(\hat{f}'(t_i)-v_i)}{1-S_{ii}-\frac{\gamma T_{ii}}{1-\gamma V_{ii}}U_{ii}} \right)^2.
-\end{equation}
-Followed by the approximation $S_{ii}\approx\frac{1}{n}\mbox{tr}(S)$, $T_{ii}\approx\frac{1}{n}\mbox{tr}(T)$, $U_{ii}\approx\frac{1}{n}\mbox{tr}(U)$ and $V_{ii}\approx\frac{1}{n}\mbox{tr}(V)$ (Ali R. Syed 2011), the generalized cross validation criterion (GCV) (Wahba, 1990) is
-\begin{equation}
+\end{equation*}
+Followed by the approximation $S_{ii}\approx\frac{1}{n}\mbox{tr}(S)$, $T_{ii}\approx\frac{1}{n}\mbox{tr}(T)$, $U_{ii}\approx\frac{1}{n}\mbox{tr}(U)$ and $V_{ii}\approx\frac{1}{n}\mbox{tr}(V)$ \cite{syed2011review}, the tractor spline GCV will be 
+\begin{equation*}
 \mbox{GCV}(\lambda,\gamma)=\frac{1}{n}\sum_{i=1}^{n}\left( \frac{\hat{f}(t_i)-y_i+ \frac{\gamma\mbox{tr}(T)/n}{1-\gamma \mbox{tr}(V)/n}(\hat{f}'(t_i)-v_i)}{1-\mbox{tr}(S)/n-\frac{\gamma\mbox{tr}(T)/n}{1-\gamma \mbox{tr}(V)/n} \mbox{tr}(U)/n} \right)^2,
-\end{equation}
+\end{equation*}
 which may provide further computational savings since it requires finding the trace rather than the individual diagonal entries of the hat matrix. It can be written in the form of
-\begin{equation}
+\begin{equation*}
 \mbox{GCV}(\lambda,\gamma)=\frac{(\mathbf{\hat{f}}-\mathbf{y})^\top (\mathbf{\hat{f}}-\mathbf{y})+\frac{2\mbox{tr}(\gamma T)}{\mbox{tr}(I-\gamma V)}(\mathbf{\hat{f}}-\mathbf{y})^\top (\mathbf{\hat{f}}'-\mathbf{v}) + \left( \frac{\mbox{tr}(\gamma T)}{\mbox{tr}(I-\gamma V)} \right)^2 (\mathbf{\hat{f}}'-\mathbf{v})^\top (\mathbf{\hat{f}}'-\mathbf{v})}{\left( \mbox{tr}(I-S-\frac{\mbox{tr}(\gamma T)}{\mbox{tr}(I-\gamma V)}U) \right)^2}.
-\end{equation}
-A natural extension of the above GCV for tractor spine with correlated errors is
+\end{equation*}
+A natural extension to the above GCV for tractor spine with correlated errors is
 \begin{equation}
+\footnotesize
 \mbox{GCV}(\lambda,\gamma)=\frac{(\mathbf{\hat{f}}-\mathbf{y})^\top W(\mathbf{\hat{f}}-\mathbf{y})+\frac{2\mbox{tr}(\gamma T)}{\mbox{tr}(I-\gamma V)}(\mathbf{\hat{f}}-\mathbf{y})^\top W^{1/2}U^{\top 1/2}(\mathbf{\hat{f}}'-\mathbf{v}) + \left( \frac{\mbox{tr}(\gamma T)}{\mbox{tr}(I-\gamma V)} \right)^2 (\mathbf{\hat{f}}'-\mathbf{v})^\top U(\mathbf{\hat{f}}'-\mathbf{v})}{\left( \mbox{tr}(I-S-\frac{\mbox{tr}(\gamma T)}{\mbox{tr}(I-\gamma V)}U) \right)^2}.
 \end{equation}
+\normalsize
+
+The GCV is used for finding the unknown constant parameter $\lambda$, instead of a piecewise $\lambda(t)$ on different intervals, and $\gamma$. The structure of covariance matrices $W$ and $U$ is supposed to be known. If the errors are independent, in which way $W$ and $U$ become identity matrices, the solution $\hat{f}$ degenerate to a conventional tractor spline with constant $\lambda$ through over the entire interval $[0,1]$.  
 
 
+\section{A Numeric Simulation}
 
+Consider a 100-length even spaced simulation data on $[0,1]$ and the model $f(t)=\sin(2\pi t)$, $f'(t)=\cos(2\pi t)$. Given parameters $\sigma^2=0.01$, $\gamma=0.02$ and covariance matrices $W$, $U$, then the simulated observation is 
+\begin{align}
+\begin{cases}
+y_i =f(t_i)+\varepsilon_{i}^{(1)}, \\
+v_i =f'(t_i)+\varepsilon_{i}^{(2)}, 
+\end{cases}
+\end{align}
+where $\varepsilon^{(1)}\sim N(0,\sigma^2W^{-1})$, $\varepsilon^{(2)}\sim N(0,\frac{\sigma^2}{\gamma}U^{-1})$ , $0\leq t_1 < \cdots < t_n \leq 1$. 
 
-\section{Numeric Simulation of Smoothing Spline and GPR}
-Given $\mathbf{t}$ a length-10 sequence from 0 to 1, 
-\begin{align*}
-\mathbf{y}&=\left[1,3,4,7,10,18,25,39,48,59 \right],
-\end{align*}
-$v_i=\begin{cases}
-\frac{y_{i+1}-y_i}{x_{i+1}-x_i}&\mbox{if } 1\leq i \leq 9\\
-0 & \mbox{if } i=10
-\end{cases}$. 
-A simulated result is in figure 1.
-\begin{figure}[h]  
-	\centering
-	\begin{tabular}{c}
-		\includegraphics[width=12cm,height=7cm]{Chapters/03GPR/plot/simu01} \\[\abovecaptionskip]
-		\small (a) 
-	\end{tabular}
-	%    \vspace{\floatsep}
-	\begin{tabular}{c}
-		\includegraphics[width=12cm,height=7cm]{Chapters/03GPR/plot/simu02} \\[\abovecaptionskip]
-		\small (b) 
-	\end{tabular}
-	\caption{(a) Comparing two methods under the same parameters $\lambda=0.01$ and $\gamma=0.1$. In this graph, the blue line is reconstruction from tractor spline, the red line is the mean of Gaussian Process, which is the posterior $\E (f(t) \mid  \mathbf{y}, \mathbf{v})$. (b) The differences between two methods under the same parameters.}
+With the same parameter found by GCV, Tractor spline and its Bayesian estimates return the same reconstruction. However, because we are using constant $\lambda$ rather than a piecewise $\lambda(t)$, the Tractor spline might not be the optimal solution compared with the one containing an adaptive penalty term in section \ref{ChapterTractorSpline}. 
+
+\begin{figure}[h]
+\centering
+%\includegraphics[width=0.8\textwidth]{Chapters/03GPR/plot/sim_cov} 
+\includegraphics[width=0.8\textwidth,height=8cm]{Chapters/03GPR/plot/ggsim_cov} 
+ \caption{Comparing Tractor spline and its Bayesian estimates. Two methods are corresponding to each other. In this figure, black dots indicate observations and dark line stands for the reconstruction. The Tractor spline and its posterior $\E(f(t) \mid \mathbf{y}, \mathbf{v})$ of Gaussian process regression give the same results. }
 \end{figure}
+
+
+
+\section{Conclusion}
+
+In this Chapter, we take a review on the relationship between smoothing spline and the Bayesian estimates of the work have been done in the last few years. With improper priors, the two methods are corresponding to each other. By following the work that has been done by \cite{gu2013smoothing}, we find the Bayesian estimate for Tractor spline with a constant penalty parameter $\lambda$.  However, it is a particular scenario of Tractor spline with $\lambda(t)$ varying on domains and might not be an optimal solution. Additionally, we give the formula of GCV for Tractor spline with correlated errors on $y$ and $v$. 
+
+
+
+
+
+
+
+
 
 
 
