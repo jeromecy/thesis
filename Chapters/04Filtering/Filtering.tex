@@ -9,13 +9,13 @@ Alternative approaches, such as Sequential Monte Carlo, for on-line updating and
 
 \subsection*{State Space Model}
 
-State space models are the natural form of system models relying on the general concept of state. If we describe a system as an operator mapping from the space of inputs to the space of outputs, then we may need the entire input-output history of the system together with the planned input in order to compute the future output values \cite{hangos2006analysis}. In an alternative way, by using new information at time $t$ containing all the past information up to the current state and initial conditions to get the current output is possible, that is known as a sequential method. A genetic state space model consists of two sets of equations: state equation and output equation. The state equation describes the evolution of the true input and state variables sequentially as a function and passes the variable one after one, generally, with some noises. The output equation catches the input values and interprets it out by an algebraic equation. A general state space model looks like the following form
+State space models are models that rely on the concept of state variables. If we describe a system as an operator mapping from the space of inputs to the space of outputs, then we may need the entire input-output history of the system together with the planned input in order to compute the future output values \cite{hangos2006analysis}. In an alternative way, by using new information at time $t$ containing all the past information up to the current state and initial conditions to get the current output is possible, that is known as a sequential method. A genetic state space model consists of two sets of equations: state equation and output equation. The state equation describes the evolution of the true input and state variables sequentially as a function and passes the variable one after one, generally, with some noises. The output equation catches the input values and interprets it out by an algebraic equation. A general state space model has the form form
 \begin{align}\label{statemodel1}
 \mbox{State equation } x_t &= G_t(x_{t-1})+w_t,\\
 \label{statemodel2}
 \mbox{Output equation } y_t &=F_t(x_t)+\epsilon_t
 \end{align}
-with an initial state $x_0$, where $\epsilon_t$ and $w_t$ are noises passing through the process $G_t$ and $F_t$. $x_t$ are true status variables and $y_t$ are output values. Many researchers have been interested in this model and its application because of its good property. It can be used to model univariate or multivariate time series, also in the presence of non-stationarity, structural changes, and irregular patterns \cite{petris2009dynamic}.
+with an initial state $x_0$, where $\epsilon_t$ and $w_t$ are noise terms. $x_t$ are true status variables and $y_t$ are output values. Many researchers have been interested in this model and its application because of its good property. It can be used to model univariate or multivariate time series, and can be applied to system that exhibits non-stationarity, structural changes, and irregular patterns \cite{petris2009dynamic}.
 
 The most simple and important system is given by Gaussian linear state space models, also known by dynamic linear models (DLM), which defines a very general class of non-stationary time series models.  Firstly, the model is linear, which means $G_t$ and $F_t$ are linear processes and satisfying linearity property. Secondly, the it is specified by a normal prior distribution for the $p$-dimensional state vector at initial state $t=0$, 
 \begin{align*}
@@ -34,7 +34,7 @@ The assumption Markovian keeps the current state $x_t$ only depending on the pre
 {\displaystyle {\begin{array}{cccccccccc}\cdots &\to &x_{t-1}&\to &x_{t}&\to &x_{t+1}&\to &\cdots &{\text{truth}}\\ \cdots &&\downarrow &&\downarrow &&\downarrow &&\cdots &\\ \cdots&&y_{t-1}&&y_{t}&&y_{t+1}&&\cdots &{\text{observation}}\end{array}}}
 \end{align*}
 
-In applications, the process function $G_t$ and $F_t$ contain unknown parameters to be estimated \cite{de1988likelihood} and the target is to estimate the true states on sequential observations $y_t, \cdots, y_t$. Then it becomes to estimate a joint density of $p(x_{1:t},\theta \mid y_{1:t})$, where $x_{1:t} = \{x_1, x_2, \cdots, x_t \}$ are the hidden states and $y_{1:t} = \{y_1, y_2, \cdots, y_t \}$ are the observed outcomes and $\theta$ is a set of unknown parameters. 
+In applications, the process function $G_t$ and $F_t$ contain unknown parameters to be estimated \cite{de1988likelihood} and the goal is to estimate the true states on sequential observations $y_t, \cdots, y_t$. Then it becomes to estimate a joint density of $p(x_{1:t},\theta \mid y_{1:t})$, where $x_{1:t} = \{x_1, x_2, \cdots, x_t \}$ are the hidden states and $y_{1:t} = \{y_1, y_2, \cdots, y_t \}$ are the observed outcomes and $\theta$ is a set of unknown parameters. 
 
 
 \subsection*{Contents}
@@ -49,9 +49,9 @@ In this chapter, I will give a brief review on existing methods for sequential s
 
 \subsection{Sequential Monte Carlo Method}
 
-The use of Monte Carlo methods for filtering can be traced back to the pioneering contributions of Handschin and Mayne (1969) \cite{handschin1969monte} and Handschin(1970) \cite{handschin1970monte}. These researchers tried to use an importance sampling paradigm to approximate the target distributions and. Later on, an importance sampling algorithms were implemented sequentially in the filtering context. This algorithm is called sequential importance sampling, often abbreviated SIS, and has been known since the early 1970s. Limited by the power of computers and  suffering from sample impoverishment or weight degeneracy, the SIS didn't develop very well until 1993. Gordon used this a technique based on sampling and importance sampling methods to find the best state estimation  \cite{gordon1993novel}. A particle filter algorithm was proposed to allow rejuvenation of the set of samples by duplicating the samples with high importance weights and, on the contrary, removing samples with low weights \cite{cappe2009inference}. Since then, sequential Monte Carlo (SMC) methods have been applied in many different fields including but not limited to computer vision, signal processing, control, econometrics, finance, robotics, and statistics \cite{smcmip2011}  \cite{ristic2004beyond}.
+The use of Monte Carlo methods for filtering can be traced back to the pioneering contributions of  \cite{handschin1969monte} and  \cite{handschin1970monte}. These researchers tried to use an importance sampling paradigm to approximate the target distributions and. Later on, an importance sampling algorithms were implemented sequentially in the filtering context. This algorithm is called sequential importance sampling, often abbreviated SIS, and has been known since the early 1970s. Limited by the power of computers and  suffering from sample impoverishment or weight degeneracy, the SIS didn't develop very well until 1993. Gordon used this a technique based on sampling and importance sampling methods to find the best state estimation  \cite{gordon1993novel}. A particle filter algorithm was proposed to allow rejuvenation of the set of samples by duplicating the samples with high importance weights and, on the contrary, removing samples with low weights \cite{cappe2009inference}. Since then, sequential Monte Carlo (SMC) methods have been applied in many different fields including but not limited to computer vision, signal processing, control, econometrics, finance, robotics, and statistics \cite{smcmip2011}  \cite{ristic2004beyond}.
 
-In the state space model, a generic particle filter estimates the posterior distribution of the hidden states using the observation measurement process. The filtering problem is to estimate sequentially the values of the hidden states $x_t $ given the values of the observation process $y_{1:t}$ at any time $t$. In another word, it is to find the value of $p(x_t  \mid  y_{1:t})$. The process is divided into two steps: prediction and updating. In the prediction step, the assumption of Markov Chain is the current status $x_t $ only depends on the previous one $x_{t-1}$. Then we can calculate the probability of $x_t $ by 
+In the state space model, a generic particle filter estimates the posterior distribution of the hidden states using the observation measurement process. The filtering problem is to estimate sequentially the values of the hidden states $x_t$ given the values of the observation process $y_{1:t}$ at any time $t$. In another word, it is to find the value of $p(x_t  \mid  y_{1:t})$. The process is divided into two steps: prediction and updating. In the prediction step, the assumption of Markov Chain is the current status $x_t $ only depends on the previous one $x_{t-1}$. Then we can calculate the probability of $x_t$ by 
 \begin{align*}
 p(x_t \mid y_{1:t-1})=&\int p(x_t ,x_{k-1}\mid y_{1:t-1}) dx_{t-1}\\
 =&\int p(x_t \mid x_{t-1},y_{1:t-1}) p(x_{t-1}\mid y_{1:t-1})dx_{t-1}\\
@@ -206,7 +206,7 @@ w_t^{(i)}\propto \frac{ p(y_t\mid x_t^{(i)})  }{  p(y_t\mid\mu_t^{k(i)})   }.
 \end{equation*}
 This auxiliary variable based SIR requires only the ability to propagate and evaluate the likelihood, just as the original SIR suggestion of \cite{gordon1993novel}.  
 
-The main idea behind the APF, that is modifying the original sequence of target distributions to guide particles in promising regions, can be extended outside the filtering framework \cite{JOHANSEN20081498}. It is also recommended in the literature \cite{liu2008monte} that the particles can be re-sampled not according to the normalized weights $w_t^{\mbox{SISR}}(x_{1:t})=\frac{p(x_{1:t})}{ p(x_{1:t-1}q(x_t\mid x_{1:t-1})  }$  but according to a generic score function $w_t(x_{1:t})>0$ at time t
+The main idea behind the APF, that is modifying the original sequence of target distributions to guide particles in promising regions, can be extended outside the filtering framework \cite{JOHANSEN20081498}. It is also recommended in the literature \cite{liu2008monte} that the particles can be re-sampled not according to the normalized weights $w_t^{\mbox{\tiny SISR}}(x_{1:t})=\frac{p(x_{1:t})}{ p(x_{1:t-1}q(x_t\mid x_{1:t-1})  }$  but according to a generic score function $w_t(x_{1:t})>0$ at time t
 \begin{equation*}
 w_t(x_{1:t}) = g(w_t^{\mbox{\tiny SISR}}(x_{1:t})),
 \end{equation*}
@@ -522,14 +522,14 @@ where $\epsilon_t\sim N(0,\sigma^2)$ and $w_t\sim N(0,\tau^2)$, $x_t$ are hidden
 A length 897 simulated data set was generated from this $\mathit{AR}(1)$ model at $\phi=0.8$. First of all, we should find the sufficient statistics for Storvik filter and Particle Learning. For Particle Learning, the sufficient statistics $s_t$ and $s_t^x$ are satisfying the updating rules $s_t=S(s_{t-1},x_t,y_t)$ and $s_t^x=K(s_{t-1}^x,\phi ,y_t)$. Because of the assumption, the Kalman observation map is $H_k=1$ and the variances are normal distributed. Thus, the Kalman gain is $K=1$. For details, the Particle Learning algorithm runs as : 
 \begin{itemize}
 \item Step 1. Resample $\{\tilde{z}_t^{(i)}\}_{i=1}^N=(\tilde{s}_t^{x(i)},\tilde{s}_t^{(i)},\tilde{\phi }^{(i)})$ from $p(z_t\mid s_t^x,s_t,\phi )$ with weight $w\propto p(y_{t+1}\mid s_{t}^x,\phi )$. It is found that \begin{equation*}
-p(y_{t+1}\mid s_{t}^x,\phi ) \propto \exp \left(-\frac{1}{2}\frac{(y_{t+1}-\phi  x_{t})^2}{\sigma^2} \right).
+p(y_{t+1}\mid s_{t}^x,\phi ) \propto \exp \left(-\frac{1}{2}(y_{t+1}-\phi  x_{t})^2 \right).
 \end{equation*}
 \item Step 2. Draw $x_{t+1}^{(i)}$ from $p(x_{t+1}\mid \tilde{s}_t^x,\tilde{\phi },y_{1:t+1})$. 
 \begin{align*}
 p(x_{t+1}\mid \tilde{z}_t^{(i)},y_{1:t+1}) &= p(x_{t+1}\mid s_t^x,\phi,y_{1:t+1}) \propto p(x_{t+1},y_{1:t+1}\mid s_t^x,\phi)\\
-&\propto p(x_{t+1}\mid s_t^x,\phi)p(y_{t+1}\mid x_{t+1},s_t^x,\phi) \\
-&=N(x_{t+1}\mid \phi x_t,1)N(y_{t+1}\mid x_{t+1},1)\\
-&\sim N\left(\frac{1}{2}(y_{t+1}+\phi x_t),\frac{1}{\sqrt{2}}\right)
+& \propto p(x_{t+1}\mid s_t^x,\phi)p(y_{t+1}\mid x_{t+1},s_t^x,\phi) \\
+&= N(x_{t+1}\mid \phi x_t,1)N(y_{t+1}\mid x_{t+1},1)\\
+&= N\left(\frac{1}{2}(y_{t+1}+\phi x_t),\frac{1}{\sqrt{2}}\right)
 \end{align*}
 \item Step 3. Update sufficient statistics  $s_{t+1}=S(\tilde{s}_{t}, x_{t+1},y_{t+1})$.
 \begin{align*}
@@ -540,7 +540,7 @@ s_{t+1,3} &= x_{t}^2 + s_{t,3} = s_{t,1}^2 + s_{t,3} .
 \item Step 4. Sample $\phi $ from $p(\phi  \mid  s_{t+1})$.
 \begin{align*}
 p(\phi  \mid  x_{1:t+1},y_{1:t+1}) & \propto p(x_{1:t+1},y_{1:t+1}\mid \phi )p(\phi )\propto p(x_{1:t+1}\mid \phi )p(\phi )\\
-&\sim N\left( \phi \mid  \frac{s_{t+1,2}}{s_{t+1,3}},\frac{1}{s_{t+1,3}} \right).
+&= N\left( \phi \mid  \frac{s_{t+1,2}}{s_{t+1,3}},\frac{1}{s_{t+1,3}} \right).
 \end{align*}
 \item Step 5. Update $s_{t+1}^x = K(s_{t}^x,\phi ,y_{t+1})$.
 \end{itemize}
@@ -549,7 +549,7 @@ p(\phi  \mid  x_{1:t+1},y_{1:t+1}) & \propto p(x_{1:t+1},y_{1:t+1}\mid \phi )p(\
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.5\textwidth,height=6cm]{Chapters/04Filtering/plot/ggFilterCompPhi.pdf}
-\includegraphics[width=0.8\textwidth,height=8cm]{Chapters/04Filtering/plot/plotlyFilterCompX.png}
+\includegraphics[width=0.9\textwidth,height=9cm]{Chapters/04Filtering/plot/plotlyFilterCompX.png}
 \caption{A simulation study shows that the three algorithms converge to the true $\phi$ at similar speed. The filtering for $x$ is very competitive.} \label{FilterRiewComparesion}
 \end{figure}
 

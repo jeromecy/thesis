@@ -87,7 +87,7 @@
 \citation{liu2010data}
 \newlabel{objective}{{2.3}{11}}
 \citation{donoho1994ideal}
-\@writefile{toc}{\contentsline {section}{\numberline {2.2}Tractor Spline}{12}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.2}Tractor spline}{12}}
 \newlabel{ChapterTractorSpline}{{2.2}{12}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2.1}Objective Function}{12}}
 \newlabel{tractorsplineObjective}{{2.5}{12}}
@@ -110,6 +110,7 @@
 \newlabel{adjustedpenalty}{{2.26}{18}}
 \@writefile{toc}{\contentsline {section}{\numberline {2.3}Parameter Selection and Cross Validation}{18}}
 \newlabel{originalcv}{{2.27}{18}}
+\newlabel{crossvalidationmatrixA}{{2.29}{18}}
 \newlabel{cvlema}{{1}{19}}
 \newlabel{cvscore}{{3}{19}}
 \newlabel{tractorcv}{{2.35}{19}}
@@ -135,29 +136,29 @@
 \newlabel{num3}{{2.4}{24}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2.5}{\ignorespaces Numerical example: $\textit  {Doppler}$. Comparison of different reconstruction methods with simulated data.\relax }}{25}}
 \newlabel{num4}{{2.5}{25}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.6}{\ignorespaces Distribution of penalty values in reconstructed Tractor Spline. Figures on left side indicate the values of $\lambda (t)$ varying in intervals. On right side, $\lambda (t)$ is projected into reconstructions. The bigger the blacks dots present, the larger the penalty values are.\relax }}{26}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.6}{\ignorespaces Distribution of penalty values in reconstructed Tractor spline. Figures on left side indicate the values of $\lambda (t)$ varying in intervals. On right side, $\lambda (t)$ is projected into reconstructions. The bigger the blacks dots present, the larger the penalty values are.\relax }}{26}}
 \newlabel{numpenalty}{{2.6}{26}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.7}{\ignorespaces Estimated velocity functions (original simulation functions) by Tractor Spline.\relax }}{27}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.7}{\ignorespaces Estimated velocity functions (original simulation functions) by Tractor spline.\relax }}{27}}
 \newlabel{numvtractor}{{2.7}{27}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.4.2}Evaluation}{27}}
 \@writefile{lot}{\contentsline {table}{\numberline {2.1}{\ignorespaces MSE. Mean square errors of different methods. The numbers in bold indicate the smallest error among these methods under the same level. The difference is not significant.\relax }}{28}}
 \newlabel{mse3200}{{2.1}{28}}
-\@writefile{lot}{\contentsline {table}{\numberline {2.2}{\ignorespaces TMSE. True mean square errors of different methods. The numbers in bold indicate the smallest error among these methods under the same level. The proposed Tractor Spline returns the smallest TMSE among all the methods under the same level except for $\textit  {Doppler}$ with SNR=7. The differences are significant. \relax }}{29}}
+\@writefile{lot}{\contentsline {table}{\numberline {2.2}{\ignorespaces TMSE. True mean square errors of different methods. The numbers in bold indicate the smallest error among these methods under the same level. The proposed Tractor spline returns the smallest TMSE among all the methods under the same level except for $\textit  {Doppler}$ with SNR=7. The differences are significant. \relax }}{29}}
 \newlabel{tmse3200}{{2.2}{29}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2.8}{\ignorespaces Original data points. (a) Original positions recorded by GPS units. Circle points means the boom is not working; cross points means it is working. (b) Original trajectory with line-based method: simply connect all the points sequentially with straight lines. (c) Original positions on $x$ axis. (d) Original positions on $y$ axis.\relax }}{30}}
 \newlabel{original512}{{2.8}{30}}
 \@writefile{toc}{\contentsline {section}{\numberline {2.5}Application on Real Dataset}{30}}
 \newlabel{splineapplication}{{2.5}{30}}
-\@writefile{lot}{\contentsline {table}{\numberline {2.3}{\ignorespaces Mean square error. Tractor Spline returns smallest errors among all these methods. P-spline was unable to reconstruct the $y$ trajectory as the original dataset contains value-$0$ time differences.\relax }}{31}}
+\@writefile{lot}{\contentsline {table}{\numberline {2.3}{\ignorespaces Mean square error. Tractor spline returns smallest errors among all these methods. P-spline was unable to reconstruct the $y$ trajectory as the original dataset contains value-$0$ time differences.\relax }}{31}}
 \newlabel{1dxymse}{{2.3}{31}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.5.1}1-Dimension Trajectory}{31}}
 \newlabel{penaltylamb}{{2.48}{31}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.9}{\ignorespaces Fitted data points on $x$ axis. (a) Fitted by P-spline, which gives over-fitting on these points and misses some information. (b) Fitted by wavelet ($\textit  {sure}$) algorithm. At some turning points, it gives over-fitting. (c) Fitted by wavelet ($\textit  {BayesThresh}$) algorithm. It fits better than ($\textit  {sure}$) and the result is close to the proposed method. (d) Fitted by Tractor Spline without velocity information. The reconstruction is good to get the original trajectory. (e) Fitted by Tractor Spline without adjusted penalty term. It gives less fitting at boom-not-working points because of a large time gap. (f) Fitted by proposed method. It fits all data points in a good way.\relax }}{32}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.9}{\ignorespaces Fitted data points on $x$ axis. (a) Fitted by P-spline, which gives over-fitting on these points and misses some information. (b) Fitted by wavelet ($\textit  {sure}$) algorithm. At some turning points, it gives over-fitting. (c) Fitted by wavelet ($\textit  {BayesThresh}$) algorithm. It fits better than ($\textit  {sure}$) and the result is close to the proposed method. (d) Fitted by Tractor spline without velocity information. The reconstruction is good to get the original trajectory. (e) Fitted by Tractor spline without adjusted penalty term. It gives less fitting at boom-not-working points because of a large time gap. (f) Fitted by proposed method. It fits all data points in a good way.\relax }}{32}}
 \newlabel{1dx}{{2.9}{32}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.10}{\ignorespaces Fitted data points on $y$ axis. (a) Fitted P-spline is not applicable on $y$ axis as the matrix is not invertible. (b) Fitted by wavelet ($\textit  {sure}$) algorithm. At some turning points, it gives over-fitting. (c) Fitted by wavelet ($\textit  {BayesThresh}$) algorithm is much better than wavelet ($\textit  {sure}$). (d) Fitted by Tractor Spline without velocity information. The reconstruction is good to get the original trajectory. (e) Fitted by Tractor Spline without adjusted penalty term. It gives less fitting at boom-not-working. (f) Fitted by proposed method. It fits all data points in a good way.\relax }}{33}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.10}{\ignorespaces Fitted data points on $y$ axis. (a) Fitted P-spline is not applicable on $y$ axis as the matrix is not invertible. (b) Fitted by wavelet ($\textit  {sure}$) algorithm. At some turning points, it gives over-fitting. (c) Fitted by wavelet ($\textit  {BayesThresh}$) algorithm is much better than wavelet ($\textit  {sure}$). (d) Fitted by Tractor spline without velocity information. The reconstruction is good to get the original trajectory. (e) Fitted by Tractor spline without adjusted penalty term. It gives less fitting at boom-not-working. (f) Fitted by proposed method. It fits all data points in a good way.\relax }}{33}}
 \newlabel{1dy}{{2.10}{33}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.5.2}2-Dimension Trajectory}{34}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.11}{\ignorespaces Penalty function of Tractor Spline on $x$ and $y$ axises. The big black dots in plots (c) indicate large penalty values. It can be seen that most of large penalty values occur at turnings, where the tractor likely slows down and takes breaks. \relax }}{35}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.11}{\ignorespaces Penalty function of Tractor spline on $x$ and $y$ axises. The big black dots in plots (c) indicate large penalty values. It can be seen that most of large penalty values occur at turnings, where the tractor likely slows down and takes breaks. \relax }}{35}}
 \newlabel{penaltyxygg}{{2.11}{35}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2.12}{\ignorespaces 2-Dimensional reconstruction with penalty function. Larger dots indicate bigger penalty values. The mean square errors (MSE) on $x$ and $y$ are 0.240734 and 0.478422 respectively. The mean distance error $\sqrt  {(\mathaccentV {hat}05E{f}_x-x)^2+ (\mathaccentV {hat}05E{f}_y-y)^2}$ is 0.645830.\relax }}{36}}
 \newlabel{2dxy}{{2.12}{36}}
@@ -196,8 +197,8 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2.1}Polynomial Smoothing Spline}{41}}
 \citation{aronszajn1950theory}
 \citation{gu2013smoothing}
-\citation{berlinet2011reproducing}
 \citation{wahba1990spline}
+\citation{berlinet2011reproducing}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2.2}Reproducing Kernel Hilbert Space $\mathcal  {H}^{(m)}[0,1]$}{42}}
 \newlabel{GaussianProcessKernelR}{{3.5}{42}}
 \newlabel{theoremRKHS}{{4}{42}}
@@ -207,15 +208,15 @@
 \citation{rasmussen2006gaussian}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2.3}Polynomial Smoothing Spline as Bayes Estimates}{43}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2.4}Gaussian Process Regression}{44}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.3}Tractor Spline as Bayes Estimation}{45}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.3}Tractor Spline as Bayes Estimate}{45}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}Reproducing Kernel Hilbert Space $\mathcal  {C}_{p.w.}^{2}[0,1]$}{45}}
 \newlabel{maineq}{{3.12}{45}}
-\newlabel{kerneleq}{{3.14}{45}}
-\newlabel{GaussianProcessFunctionF}{{3.17}{46}}
-\newlabel{GassianProcessRawequation}{{3.18}{46}}
-\newlabel{matriteq}{{3.19}{47}}
+\newlabel{kerneleq}{{3.13}{45}}
+\newlabel{GaussianProcessFunctionF}{{3.14}{46}}
+\newlabel{GassianProcessRawequation}{{3.15}{47}}
+\newlabel{matriteq}{{3.16}{47}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}Posterior of Bayes Estimates}{47}}
-\newlabel{GPrhoeq}{{3.21}{48}}
+\newlabel{GPrhoeq}{{3.18}{48}}
 \newlabel{GPLemma}{{3}{48}}
 \citation{wang1998smoothing}
 \citation{diggle1989spline}
@@ -223,17 +224,17 @@
 \citation{wang1998smoothing}
 \@writefile{toc}{\contentsline {section}{\numberline {3.4}Tractor Spline with Correlated Random Errors}{49}}
 \citation{syed2011review}
-\@writefile{toc}{\contentsline {section}{\numberline {3.5}A Numeric Simulation}{50}}
 \citation{gu2013smoothing}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Comparing Tractor spline and its Bayesian estimates. Two methods are corresponding to each other. In this figure, black dots indicate observations and dark line stands for the reconstruction. The Tractor spline and its posterior $\mathrm  {E}(f(t) \mid \mathbf  {y}, \mathbf  {v})$ of Gaussian process regression give the same results. \relax }}{51}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.5}A Numeric Simulation}{51}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.6}Conclusion}{51}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Comparing (trivial) Tractor spline and its Bayes estimate. Two methods are corresponding to each other. In this figure, black dots indicate observations and solid line stands for the reconstruction. The Tractor spline and its posterior $\mathrm  {E}(f(t) \mid \mathbf  {y}, \mathbf  {v})$ of Bayes estimate give the same results. \relax }}{52}}
 \citation{cappe2009inference}
 \citation{smcmip2011}
 \citation{elliott1995estimation}
 \citation{cargnoni1997bayesian}
 \citation{vieira2016online}
 \citation{hangos2006analysis}
-\@writefile{toc}{\contentsline {chapter}{\numberline {4}A Brief Overview of On-line State and Parameter Estimation}{53}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}A Brief Overview of On-line State and Parameters Estimation}{53}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
@@ -332,14 +333,14 @@
 \citation{liu2001combined}
 \@writefile{toc}{\contentsline {section}{\numberline {4.4}Simulation Study}{71}}
 \newlabel{sectionFilterreviewSimulation}{{4.4}{71}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces A simulation study shows that the three algorithms converge to the true $\phi $ at similar speed. The filtering for $x$ is very competitive.\relax }}{73}}
-\newlabel{FilterRiewComparesion}{{4.1}{73}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.5}Conclusion}{73}}
 \citation{wan2000unscented}
 \citation{andrieu2010particle}
 \citation{poyiadjis2005maximum}
-\@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces Comparing MSE and computation time of the three algorithms by running 100 iterations with $N=5\tmspace  +\thinmuskip {.1667em}000$ particles. \relax }}{74}}
-\newlabel{FilterRiewComparesionTable}{{4.1}{74}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces Comparing MSE and computation time of the three algorithms by running 100 iterations with $N=5\tmspace  +\thinmuskip {.1667em}000$ particles. \relax }}{73}}
+\newlabel{FilterRiewComparesionTable}{{4.1}{73}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.5}Conclusion}{73}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces A simulation study shows that the three algorithms converge to the true $\phi $ at similar speed. The filtering for $x$ is very competitive.\relax }}{74}}
+\newlabel{FilterRiewComparesion}{{4.1}{74}}
 \citation{vieira2016online}
 \citation{kitagawa1998self}
 \citation{liu2001combined}
@@ -349,7 +350,7 @@
 \citation{stroud2016bayesian}
 \citation{polson2008practical}
 \citation{haario1999adaptive}
-\@writefile{toc}{\contentsline {chapter}{\numberline {5}Adaptive Sequential MCMC for On-line State and Parameter Estimation}{75}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Adaptive Sequential MCMC for On-line State and Parameters Estimation}{75}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
