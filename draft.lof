@@ -16,39 +16,39 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Comparing (trivial) Tractor spline and its Bayes estimate. Two methods are corresponding to each other. In this figure, black dots indicate observations and solid line stands for the reconstruction. The Tractor spline and its posterior $\mathrm {E}(f(t) \mid \mathbf {y}, \mathbf {v})$ of Bayes estimate give the same results. \relax }}{52}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces A simulation study shows that the three algorithms converge to the true $\phi $ at similar speed. The filtering for $x$ is very competitive.\relax }}{74}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces A comparison study using simulated time series data shows that LW, St and PL algorithms converge to the true $\phi $ at similar speed. The proposed MCMC algorithm has a higher variability. The filtering for $x_{300:897}$ is very competitive. These four algorithms return very close estimations. \relax }}{74}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Examples of 2-Dimension Random Walk Metropolis-Hastings algorithm. Figure (a) is using one-variable-at-a-time proposal Random Walk. At each time, only one variable is changed and the other one stay constant. Figure (b) and (c) are using multi-variable-at-a-time Random Walk. The difference is in figure (b), every forward step are proposed independently, but in (c) are proposed according to the covariance matrix. \relax }}{83}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Metropolis algorithm sampling for a single parameter with (a) a large step size, (b) a small step size, (c) an appropriate step size. The upper plots show the sample chain and lower plots indicate the autocorrelation for each case.\relax }}{87}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Linear simulation with true parameter $\theta = \{\phi =0.9,\tau ^2=0.5,\sigma ^2=1\}$. By transforming to original scale, the estimation is $\mathaccentV {hat}05E{\theta }=\{ \phi = 0.8810, \tau ^2 = 0.5247,\sigma ^2= 0.9416\}$. \relax }}{92}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Linear simulation of $x_{1:t}$ and sole $x_t$.In sub-figure (a), the dots is the true $x_{1:t}$ and the solid line is the estimation $\mathaccentV {hat}05E{x}_{1:t}$. In sub-figure (b), the chain in solid line is the estimation $\mathaccentV {hat}05E{x}_t$; dotted line is the true value of $x$; dot-dash line on top is the observed value of $y$; dashed lines are the estimated error. \relax }}{94}
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Simulated data. The circle dots are the true state $x_{1:t}$ and cross dots are observations $y_{1:t}$. Irregular time lag $\Delta _t$ are generated from \textit {Inverse Gamma}(2,0.1) distribution.\relax }}{96}
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Irregular time step OU process simulation. The estimation of $\mathaccentV {hat}05E{\theta }$ is $\{\gamma =0.4841, \lambda ^2=0.1032, \sigma ^2=0.9276\}$. In the plots, the horizontal dark lines are the true $\theta $. \relax }}{98}
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Irregular time step OU process simulation of $x_{1:t}$ and sole $x_t$. In sub-figure (a), the dots is the true $x_{1:t}$ and the solid line is the estimation $\mathaccentV {hat}05E{x}_{1:t}$. In sub-figure (b), the chain in solid line is the estimation $\mathaccentV {hat}05E{x}_t$; dotted line is the true value of $x$; dot-dash line on top is the observed value of $y$; dashed lines are the estimated error. \relax }}{99}
-\contentsline {figure}{\numberline {5.8}{\ignorespaces The trajectory of a moving tractor. The time lags (right side figure) obtained from GPS units are irregular.\relax }}{99}
-\contentsline {figure}{\numberline {5.9}{\ignorespaces Probability density function and cumulative distribution function of \textit {Inverse Gamma} with two parameters $\alpha $ and $\beta $. \relax }}{106}
-\contentsline {figure}{\numberline {5.10}{\ignorespaces An example of Eff, EUT, ESS and ESSUT found by using the same data. \relax }}{108}
-\contentsline {figure}{\numberline {5.11}{\ignorespaces Comparison Eff, ESS, EffUT and ESSUT of different length of data. \relax }}{110}
-\contentsline {figure}{\numberline {5.12}{\ignorespaces Comparison $\qopname \relax o{ln}DA$ and $\qopname \relax o{ln}L$ between not-updating and updating mean methods. \relax }}{111}
-\contentsline {figure}{\numberline {5.13}{\ignorespaces Comparison between not-updating and updating mean methods. \relax }}{112}
-\contentsline {figure}{\numberline {5.14}{\ignorespaces Visualization of correlation matrix of $\theta $, which is found in learning-surface process. \relax }}{113}
-\contentsline {figure}{\numberline {5.15}{\ignorespaces Trace plots of $\theta $ from learning surface process after taking 1\tmspace +\thinmuskip {.1667em}000 samples from 5\tmspace +\thinmuskip {.1667em}000. \relax }}{115}
-\contentsline {figure}{\numberline {5.16}{\ignorespaces Position and velocity for $X$ and $Y$ found by combined batch and sequential methods. \relax }}{116}
-\contentsline {figure}{\numberline {5.17}{\ignorespaces Zoom in on estimations. For each estimation $\mathaccentV {hat}05E{X}_i (i=1,\dots ,t)$, there is a error circle around it. \relax }}{117}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Examples of 2-Dimension Random Walk Metropolis-Hastings algorithm. Figure (a) is using one-variable-at-a-time proposal Random Walk. At each time, only one variable is changed and the other one stay constant. Figure (b) and (c) are using multi-variable-at-a-time Random Walk. The difference is in figure (b), every forward step are proposed independently, but in (c) are proposed according to the covariance matrix. \relax }}{85}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Metropolis algorithm sampling for a single parameter with (a) a large step size, (b) a small step size, (c) an appropriate step size. The upper plots show the sample chain and lower plots indicate the autocorrelation for each case.\relax }}{89}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Linear simulation with true parameter $\theta = \{\phi =0.9,\tau ^2=0.5,\sigma ^2=1\}$. By transforming to original scale, the estimation is $\mathaccentV {hat}05E{\theta }=\{ \phi = 0.8810, \tau ^2 = 0.5247,\sigma ^2= 0.9416\}$. \relax }}{94}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Linear simulation of $x_{1:t}$ and sole $x_t$.In sub-figure (a), the dots is the true $x_{1:t}$ and the solid line is the estimation $\mathaccentV {hat}05E{x}_{1:t}$. In sub-figure (b), the chain in solid line is the estimation $\mathaccentV {hat}05E{x}_t$; dotted line is the true value of $x$; dot-dash line on top is the observed value of $y$; dashed lines are the estimated error. \relax }}{96}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Simulated data. The circle dots are the true state $x_{1:t}$ and cross dots are observations $y_{1:t}$. Irregular time lag $\Delta _t$ are generated from \textit {Inverse Gamma}(2,0.1) distribution.\relax }}{98}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Irregular time step OU process simulation. The estimation of $\mathaccentV {hat}05E{\theta }$ is $\{\gamma =0.4841, \lambda ^2=0.1032, \sigma ^2=0.9276\}$. In the plots, the horizontal dark lines are the true $\theta $. \relax }}{100}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Irregular time step OU process simulation of $x_{1:t}$ and sole $x_t$. In sub-figure (a), the dots is the true $x_{1:t}$ and the solid line is the estimation $\mathaccentV {hat}05E{x}_{1:t}$. In sub-figure (b), the chain in solid line is the estimation $\mathaccentV {hat}05E{x}_t$; dotted line is the true value of $x$; dot-dash line on top is the observed value of $y$; dashed lines are the estimated error. \relax }}{101}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces The trajectory of a moving tractor. The time lags (right side figure) obtained from GPS units are irregular.\relax }}{101}
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Probability density function and cumulative distribution function of \textit {Inverse Gamma} with two parameters $\alpha $ and $\beta $. \relax }}{108}
+\contentsline {figure}{\numberline {5.10}{\ignorespaces An example of Eff, EUT, ESS and ESSUT found by using the same data. \relax }}{110}
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Comparison Eff, ESS, EffUT and ESSUT of different length of data. \relax }}{112}
+\contentsline {figure}{\numberline {5.12}{\ignorespaces Comparison $\qopname \relax o{ln}DA$ and $\qopname \relax o{ln}L$ between not-updating and updating mean methods. \relax }}{113}
+\contentsline {figure}{\numberline {5.13}{\ignorespaces Comparison between not-updating and updating mean methods. \relax }}{114}
+\contentsline {figure}{\numberline {5.14}{\ignorespaces Visualization of correlation matrix of $\theta $, which is found in learning-surface process. \relax }}{115}
+\contentsline {figure}{\numberline {5.15}{\ignorespaces Trace plots of $\theta $ from learning surface process after taking 1\tmspace +\thinmuskip {.1667em}000 samples from 5\tmspace +\thinmuskip {.1667em}000. \relax }}{117}
+\contentsline {figure}{\numberline {5.16}{\ignorespaces Position and velocity for $X$ and $Y$ found by combined batch and sequential methods. \relax }}{118}
+\contentsline {figure}{\numberline {5.17}{\ignorespaces Zoom in on estimations. For each estimation $\mathaccentV {hat}05E{X}_i (i=1,\dots ,t)$, there is a error circle around it. \relax }}{119}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Synchronized Euclidean Distance\relax }}{122}
-\contentsline {figure}{\numberline {6.2}{\ignorespaces (a) error measured at fixed sampling rate as sum of perpendicular distance chords; (b) error measured at fixed sampling rates as sum of time-synchronous distance chords.\relax }}{122}
-\contentsline {figure}{\numberline {6.3}{\ignorespaces A segment start from time 2000 to 3000, recorded by GPS units. On the left side, it's the trajectory connected by raw data with 27 points. In the middle, it's the trajectory connected by simplified data with Douglas-Peucker Algorithm with 24 points. On the right side, it's the trajectory connected by simplified data with Tractor Simplification Algorithm with 23 points.\relax }}{124}
-\contentsline {figure}{\numberline {6.4}{\ignorespaces Trajectory fitted by Adaptive Kalman Filter. The errors of raw data, DP and tractor algorithm caused by AKF is 26.89217, 23.97877 and 23.97097 respectively.\relax }}{124}
-\addvspace {10\p@ }
-\addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Synchronized Euclidean Distance\relax }}{124}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces (a) error measured at fixed sampling rate as sum of perpendicular distance chords; (b) error measured at fixed sampling rates as sum of time-synchronous distance chords.\relax }}{124}
+\contentsline {figure}{\numberline {6.3}{\ignorespaces A segment start from time 2000 to 3000, recorded by GPS units. On the left side, it's the trajectory connected by raw data with 27 points. In the middle, it's the trajectory connected by simplified data with Douglas-Peucker Algorithm with 24 points. On the right side, it's the trajectory connected by simplified data with Tractor Simplification Algorithm with 23 points.\relax }}{126}
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Trajectory fitted by Adaptive Kalman Filter. The errors of raw data, DP and tractor algorithm caused by AKF is 26.89217, 23.97877 and 23.97097 respectively.\relax }}{126}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {B.1}{\ignorespaces Running the same amount of time and taking the same length of data, the step size $\epsilon =2.5$ returns the highest ESSUT value and generates more effective samples with a lower correlation. \relax }}{148}
-\contentsline {figure}{\numberline {B.2}{\ignorespaces Impacts of data length on optimal parameter. \relax }}{149}
-\contentsline {figure}{\numberline {B.3}{\ignorespaces Key features comparison. \relax }}{151}
-\contentsline {figure}{\numberline {B.4}{\ignorespaces Parameter Comparison. \relax }}{152}
-\contentsline {figure}{\numberline {B.5}{\ignorespaces Parameter Evolution Visualization. \relax }}{153}
-\contentsline {figure}{\numberline {B.6}{\ignorespaces Parameter Evolution Visualization. \relax }}{154}
-\contentsline {figure}{\numberline {B.7}{\ignorespaces Parameter Evolution Visualization. \relax }}{155}
-\contentsline {figure}{\numberline {B.8}{\ignorespaces Parameter Evolution Visualization. \relax }}{156}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {B.1}{\ignorespaces Running the same amount of time and taking the same length of data, the step size $\epsilon =2.5$ returns the highest ESSUT value and generates more effective samples with a lower correlation. \relax }}{150}
+\contentsline {figure}{\numberline {B.2}{\ignorespaces Impacts of data length on optimal parameter. \relax }}{151}
+\contentsline {figure}{\numberline {B.3}{\ignorespaces Key features comparison. \relax }}{153}
+\contentsline {figure}{\numberline {B.4}{\ignorespaces Parameter Comparison. \relax }}{154}
+\contentsline {figure}{\numberline {B.5}{\ignorespaces Parameter Evolution Visualization. \relax }}{155}
+\contentsline {figure}{\numberline {B.6}{\ignorespaces Parameter Evolution Visualization. \relax }}{156}
+\contentsline {figure}{\numberline {B.7}{\ignorespaces Parameter Evolution Visualization. \relax }}{157}
+\contentsline {figure}{\numberline {B.8}{\ignorespaces Parameter Evolution Visualization. \relax }}{158}

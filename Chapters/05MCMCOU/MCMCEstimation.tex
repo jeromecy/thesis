@@ -597,11 +597,11 @@ By substituting them into the equation (\ref{linearmu}) and (\ref{linearsigma}),
 
 \begin{figure}[h]
 \centering
-\begin{subfigure}[b]{0.4\textwidth}
+\begin{subfigure}[b]{0.45\textwidth}
     \includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/linearsimuXall.pdf}
      \caption{Batch method of estimation $x_{1:t}$.}
 \end{subfigure}
-\begin{subfigure}[b]{0.4\textwidth}
+\begin{subfigure}[b]{0.45\textwidth}
     \includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/gglinearestXt.pdf}
      \caption{Sequential method of estimation $x_t$.}
 \end{subfigure}
@@ -777,7 +777,7 @@ By substituting them into the equation (\ref{linearmu}) and (\ref{linearsigma}),
 
 
 
-\section{High Dimensional OU-Process Application}
+\section{High Dimensional OU-Process Application}\label{SectionHighDimensionalOU}
 
 Tractors moving on an orchard are mounted with GPS units, which are recording data and transfer to remote server. This data infers longitude, latitude, bearing, etc, with uneven spaced time mark. However, one dimensional OU process containing either only position or velocity is not enough to infer a complex movement. 
 
@@ -1259,8 +1259,8 @@ To avoid estimation bias in the algorithm, we are introducing \textit{threshold}
 
 So far, the complete algorithm is summarized as follows: 
 
-\begin{algorithm}[h]\label{algorithmslidingwindow}
-\SetAlgoLined
+\begin{algorithm}[h]
+\SetAlgoLined 
 %\KwResutt{Write here the resutt }
 Initialization: Set up $L$, \textit{threshold} and  \textit{cut off} criteria. \\
 Learning process: Estimate $\theta$ with $p(\theta\mid Y_{1:\min \{t,L\} } ) \propto p(Y_{1:\min \{t,L\} } \mid \theta )p(\theta )$ by one-variable-at-a-time Random Walk Metropolis-Hastings algorithm gaining the target acceptance rates and find out the structure of $\theta\sim N(\mu,\Sigma)$ and the approximation $\hat{\pi}(\cdot)$. \label{algorithmlearningsurface}\\
@@ -1273,14 +1273,14 @@ Calculate $\mu_X^{(t)} = \frac{1}{N} \sum_i \mu_i^{(t)}$, $\texttt{Var}(X^{(t)})
 Check \textit{threshold} and  \textit{cut off} criteria. \uIf{\textit{threshold} is TRUE}{Update $\theta\sim N(\mu,\Sigma)$}\uElseIf{ \textit{cut off} is TRUE}{Stop process. }
 \Else{ Go to next step.\\}
 Shift the window by setting $t = t+1$ and go back to step \ref{algorithmestimaiton}.
- \caption{Sliding Window MCMC.}
+ \caption{Sliding Window MCMC.}\label{algorithmslidingwindow}
 \end{algorithm}
 
 
 
 \subsection{Implementation}
 
-To implement the algorithm (\ref{algorithmslidingwindow}), firstly we should get an idea of how the hyper parameter space looks like by running step \ref{algorithmlearningsurface} of the algorithm with some observed data. By setting $L=100$ and running 5\,000 iterations, we can find the whole $\theta$ samples in 59 seconds. For each parameter of $\theta$, we take 1\,000 sub-samples out of 5\,000 as new sequences. The new $\theta^*$ is representative for the hyper parameter space. Then the traces and correlation is derived from $\theta^*$. Meanwhile, the acceptance rates for each parameter are $\alpha_\gamma = 0.453,\alpha_{\xi^2}=0.433, \alpha_{\lambda^2}=0.435, \alpha_{\sigma^2}=0.414, \alpha_{\tau^2}=0.4490$ respectively. Hence, the structure of  $\hat{\theta}\sim N\left( m_t,C_t\right)$ is achieved. That can be seen in figure (\ref{realdatacorMatrix}). 
+To implement the algorithm \ref{algorithmslidingwindow}, firstly we should get an idea of how the hyper parameter space looks like by running step \ref{algorithmlearningsurface} of the algorithm with some observed data. By setting $L=100$ and running 5\,000 iterations, we can find the whole $\theta$ samples in 59 seconds. For each parameter of $\theta$, we take 1\,000 sub-samples out of 5\,000 as new sequences. The new $\theta^*$ is representative for the hyper parameter space. Then the traces and correlation is derived from $\theta^*$. Meanwhile, the acceptance rates for each parameter are $\alpha_\gamma = 0.453,\alpha_{\xi^2}=0.433, \alpha_{\lambda^2}=0.435, \alpha_{\sigma^2}=0.414, \alpha_{\tau^2}=0.4490$ respectively. Hence, the structure of  $\hat{\theta}\sim N\left( m_t,C_t\right)$ is achieved. That can be seen in figure (\ref{realdatacorMatrix}). 
 %In fact, as assuming the parameter doesn't vary too much through out the process, the correlation changes a little.  
 \begin{figure}[h]
 \centering
@@ -1300,7 +1300,7 @@ To implement the algorithm (\ref{algorithmslidingwindow}), firstly we should get
 \end{figure}
 
 
-Since a cheap surrogate $\hat{\pi}(\cdot)$ for the true $\pi(\cdot)$ is found in step \ref{algorithmlearningsurface}, it is time to move to the next step. Algorithm (\ref{algorithmslidingwindow}) takes fixed $L$ length data from $Y_{1:L}$ to $Y_{t-L+1:t}$ until an irregular large time lag meets the \textit{cut off} criterion. In the implementation, the first \textit{cut off} occurs at $t = 648$th data point. The first estimated $\hat{X}_{1:L}$ was found by the batch method and $\hat{X}_{L+1}$ to $\hat{X}_{t}$ were found sequentially around 9 seconds with 10\,000 iterations each time. 
+Since a cheap surrogate $\hat{\pi}(\cdot)$ for the true $\pi(\cdot)$ is found in step \ref{algorithmlearningsurface}, it is time to move to the next step. Algorithm \ref{algorithmslidingwindow} takes fixed $L$ length data from $Y_{1:L}$ to $Y_{t-L+1:t}$ until an irregular large time lag meets the \textit{cut off} criterion. In the implementation, the first \textit{cut off} occurs at $t = 648$th data point. The first estimated $\hat{X}_{1:L}$ was found by the batch method and $\hat{X}_{L+1}$ to $\hat{X}_{t}$ were found sequentially around 9 seconds with 10\,000 iterations each time. 
 
 \begin{figure}[h]
 \centering

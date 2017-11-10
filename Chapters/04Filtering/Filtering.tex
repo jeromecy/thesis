@@ -39,7 +39,7 @@ In applications, the process function $G_t$ and $F_t$ contain unknown parameters
 
 \subsection*{Contents}
 
-In this chapter, I will give a brief review on existing methods for sequential state and parameter inference. In section \ref{sectionFiltering}, I'm introducing some concepts and popular algorithms on estimating states sequentially. These algorithms are the fundamental of advanced methods. In section \ref{sectionStateandPara}, we will have a look at on-line algorithms that can estimate both unknown parameters and states simultaneously. In section \ref{sectionFilterreviewSimulation}, finally I will analyze these methods numerically with simulated data. 
+In this chapter, I will give a brief review on existing methods for sequential state and parameter inference. In section \ref{sectionFiltering}, I'm introducing some concepts and popular algorithms on estimating states sequentially. These algorithms are the fundamental of advanced methods. In section \ref{sectionStateandPara}, we will have a look at on-line algorithms that can estimate both unknown parameters and states simultaneously. In section \ref{sectionFilterreviewSimulation}, finally I will analyze these methods numerically and compare them with a proposed algorithm \ref{algorithmslidingwindow} in section \ref{SectionHighDimensionalOU}  with simulated data. 
 
 
 
@@ -158,15 +158,25 @@ After resampling, it becomes
 where $n_i$ represents how many times the new particles $x_t ^{(j)}$ were duplicated from$x_t ^{(i)}$. 
 
 Then the process of SIS particle filter with resampling is:
-\begin{itemize}
-\item Initial particles when $t=0$. For $i=1, \dots, N$, draw samples $\{x_0^{(i)}\}$ from $p(x_0)$.
-\item For $t=1,2,\dots$, run the process recursively
-\begin{itemize}
-\item Importance sampling: draw sample $\{\tilde{x}_t ^{(i)}\}_{i=1}^N$ from $q(x_t \mid y_{1:t})$, calculate their weights $\tilde{w}_t ^{(i)}$ and normalize them.
-\item Resampling: Resample $\{\tilde{x}_t ^{(i)}, \tilde{w}_t ^{(i)}\}$ and get a new set $\{x_t ^{(i)},\frac{1}{N}\}$.
-\item Output the status at time $t$: $\hat{x}_t =\sum_{i=1}^{N}\tilde{x}_t ^{(i)}\tilde{w}_t ^{(i)}$.
-\end{itemize}
-\end{itemize}
+%\begin{itemize}
+%\item Initial particles when $t=0$. For $i=1, \dots, N$, draw samples $\{x_0^{(i)}\}$ from $p(x_0)$.
+%\item For $t=1,2,\dots$, run the process recursively
+%\begin{itemize}
+%\item Importance sampling: draw sample $\{\tilde{x}_t ^{(i)}\}_{i=1}^N$ from $q(x_t \mid y_{1:t})$, calculate their weights $\tilde{w}_t ^{(i)}$ and normalize them.
+%\item Resampling: Resample $\{\tilde{x}_t ^{(i)}, \tilde{w}_t ^{(i)}\}$ and get a new set $\{x_t ^{(i)},\frac{1}{N}\}$.
+%\item Output the status at time $t$: $\hat{x}_t =\sum_{i=1}^{N}\tilde{x}_t ^{(i)}\tilde{w}_t ^{(i)}$.
+%\end{itemize}
+%\end{itemize}
+\begin{algorithm}[h]
+\SetAlgoLined 
+%\KwResutt{Write here the resutt }
+Initialization: Initial particles when $t=0$. For $i=1, \ldots, N$, draw samples $\{x_0^{(i)}\}$ from $p(x_0)$.\\
+\For{$t=1,2,\ldots, n$} {Importance sampling: draw sample $\{\tilde{x}_t ^{(i)}\}_{i=1}^N$ from $q(x_t \mid y_{1:t})$, calculate their weights $\tilde{w}_t ^{(i)}$ and normalize them. \\
+Resampling: Resample $\{\tilde{x}_t ^{(i)}, \tilde{w}_t ^{(i)}\}$ and get a new set $\{x_t ^{(i)},\frac{1}{N}\}$.\\
+Output the status at time $t$: $\hat{x}_t =\sum_{i=1}^{N}\tilde{x}_t ^{(i)}\tilde{w}_t ^{(i)}$.}
+ \caption{Sampling and Importance Sampling.}\label{algorithmSIS}
+\end{algorithm}
+
 
 In SIR, if we choose
 \begin{align*}
@@ -230,17 +240,28 @@ w_{k,l}(\theta) &\propto \frac{\pi(\theta\mid y_{1:k+l}) }{\pi(\theta\mid y_{1:k
 \end{align*}
 
 Sequentially, the iterated batch importance sampling algorithm is in the following 
-\begin{itemize}
-\item{Step 1.} Initialization. General particles of $\theta_i$ and $w_i$, $i=1,\dots,N$. 
-\item{Step 2.} Re-weighting. Update the weights by $w_i^*=w_i \times w_{k,l}$, where $w_{k,l}(\theta_i)\propto p(y_{k+1:k+l}\mid y_{1:k},\theta_i)$, $i=1,\dots,N$. 
-\item{Step 3.} Resampling. Normalize $\theta_i$ and $w^*_i$ to $\theta_i^*$ and $\frac{1}{N}$ according to $p(\theta_i^*=\theta_i)=\frac{w_i^*}{\sum w_i^*}$,  $i=1,\dots,N$. 
-\item{Step 4.} Propagating. Draw $\theta_i^m$ from $K_{k+l}(\theta_i^*)$, where $K_{k+l}$ is a predefined transition kernel function with stationary distribution $\pi_{k+l}$.
-\item{Step 5.} Set $(\theta_i^m,\frac{1}{N})$ to $(\theta_i,w_i)$, $k+l$ to $k$ and return to reweighting step. 
-\end{itemize}
+%\begin{itemize}
+%\item{Step 1.} Initialization. General particles of $\theta_i$ and $w_i$, $i=1,\dots,N$. 
+%\item{Step 2.} Re-weighting. Update the weights by $w_i^*=w_i \times w_{k,l}$, where $w_{k,l}(\theta_i)\propto p(y_{k+1:k+l}\mid y_{1:k},\theta_i)$, $i=1,\dots,N$. 
+%\item{Step 3.} Resampling. Normalize $\theta_i$ and $w^*_i$ to $\theta_i^*$ and $\frac{1}{N}$ according to $p(\theta_i^*=\theta_i)=\frac{w_i^*}{\sum w_i^*}$,  $i=1,\dots,N$. 
+%\item{Step 4.} Propagating. Draw $\theta_i^m$ from $K_{k+l}(\theta_i^*)$, where $K_{k+l}$ is a predefined transition kernel function with stationary distribution $\pi_{k+l}$.
+%\item{Step 5.} Set $(\theta_i^m,\frac{1}{N})$ to $(\theta_i,w_i)$, $k+l$ to $k$ and return to reweighting step. 
+%\end{itemize}
+%The algorithm stops when $k=t$, that is when the particle system targets the distribution of interest $\pi(\theta\mid y_{1:t})$. 
+\begin{algorithm}[h]
+\SetAlgoLined 
+%\KwResutt{Write here the resutt }
+Initialization:  General particles of $\theta_i$ and $w_i$, $i=1,\dots,N$.\\
+\While{$k<t$} {Re-weighting. Update the weights by $w_i^*=w_i \times w_{k,l}$, where $w_{k,l}(\theta_i)\propto p(y_{k+1:k+l}\mid y_{1:k},\theta_i)$, $i=1,\dots,N$. \\
+Resampling. Normalize $\theta_i$ and $w^*_i$ to $\theta_i^*$ and $\frac{1}{N}$ according to $p(\theta_i^*=\theta_i)=\frac{w_i^*}{\sum w_i^*}$,  $i=1,\dots,N$. \\
+Propagating. Draw $\theta_i^m$ from $K_{k+l}(\theta_i^*)$, where $K_{k+l}$ is a predefined transition kernel function with stationary distribution $\pi_{k+l}$.\\
+Set $(\theta_i^m,\frac{1}{N})$ to $(\theta_i,w_i)$, $k+l$ to $k$.}
+ \caption{Sequential Particle Filter.}\label{algorithmSequentialPF}
+\end{algorithm}
 The algorithm stops when $k=t$, that is when the particle system targets the distribution of interest $\pi(\theta\mid y_{1:t})$. 
 
 
-\subsection{Sequential MCMC}
+\subsection{MCMC-Based Particle Algorithm}
 
 Markov Chain Monte Carlo (MCMC) methods are a set of powerful stochastic algorithms that allow us to solve most of these Bayesian computational problems when the data are available in batches \cite{tierney1994markov}. However, as data set becomes larger and larger, it requires numerous computing in the process. Sequential Monte Carlo approaches have become a powerful methodology to cope with large data set recursively. However, it is inefficient when applied to high dimensional problems \cite{septier2009mcmc}. A nature extension is whether there exists a sequential MCMC method to diversify the degenerate particle population thus improving the empirical approximation for multi-target tracking or high dimensional space. Luckily, sequential approaches using MCMC were proposed in \cite{berzuini1997dynamic}, in which the author combine MCMC with importance resampling to sequentially update the posterior distribution. 
 Other discussions, such as \cite{khan2005mcmc}, \cite{golightly2006bayesian} and \cite{pang2008models}, are using either resampling nor importance sampling. 
@@ -251,31 +272,49 @@ p(x_t\mid y_{1:t}) \propto \int p(y_t\mid x_t)p(x_t\mid x_{t-1})p(x_{t-1}\mid y_
 \end{equation} 
 In particle filter, the posterior is approximated by particles $x_t^{(1)},\dots,x_t^{(N)}$ in equation (\ref{rawParticleFilter}). A MCMC procedure is designed using (\ref{rawParticleFilter}) as the target distribution with a proposal distribution of $q(x_t\mid x_t^{(i)})$. Therefore, like MCMC, the desired approximation $\hat{p}(x_t\mid y_{1:t})$ is obtained by storing every accepted samples after the initial burn-in iterations \cite{septier2009mcmc}. The drawback is excessive computation occurs as the number of particles increases at each iteration. 
 
-To avoid it, a MCMC-based particle algorithm in \cite{pang2008models} considers the joint posterior distribution of $x_t$ and $x_{t-1}$:
+To avoid this issue, a MCMC-based particle algorithm in \cite{pang2008models} considers the joint posterior distribution of $x_t$ and $x_{t-1}$:
 \begin{equation}
 p(x_t,x_{t-1}\mid y_{1:t})\propto p(y_t\mid x_t)p(x_t\mid x_{t-1})p(x_{t-1}\mid y_{1:t-1}),
 \end{equation}
-which becomes the new target distribution. Hence, the algorithm is summarized bellow:
-\begin{itemize}
-\item Initialize particles $x_0^{(1)},\dots,x_0^{(N)}$.
-\item Propose $\{x_k^*,x_{k-1}^*\}\sim q_1(x_k,x_{k-1}\mid x_{k}^{(i-1)},x_{k-1}^{(i-1)})$.
-\item Accept $\{x_k^*,x_{k-1}^*\}$ with probability $\alpha_1=\min\lbrace 1, \frac{ p(x_k^*,x_{k-1}^*\mid y_{1:t} )  }{ p(x_k^{(i-1)},x_{k-1}^{(i-1)}\mid y_{1:t} )  }  \frac{ q_1(x_k^{(i-1)},x_{k-1}^{(i-1)}\mid x_k^*,x_{k-1}^*)  }{ q_1(x_k^*,x_{k-1}^* \mid x_k^{(i-1)},x_{k-1}^{(i-1)})  }   \rbrace$
-\item Propose $x_{k-1}^*\sim q_2(x_{k-1}\mid  x_k^{(i)},x_{k-1}^{(i)}  )$
-\item Accept $x_{k-1}^*$ with probability $\alpha_2 = \min \lbrace 1, \frac{ p(x_{k-1}^*\mid x_k^{(i)},y_{1:t}) }{  p(x_{k-1}^{(i)}\mid x_{k}^{(i)},y_{1:t})  }  \frac{ q_2(x_{k-1}^{(i)} \mid x_{k-1}^*, x_k^{(i)} ) }{ q_2(x_{k-1}^*\mid x_{k}^{(i)},x_{k-1}^{(i)})    } \rbrace$
-\item Propose $x_k^* \sim q_3(x_k\mid x_k^{(i)}, x_{k-1}^{(i)})$
-\item Accept $x_k^*$ with probability $\alpha_3 =\min \lbrace 1,
-\frac{ p(x_{k}^*\mid x_{k-1}^{(i)},y_{1:t}) }{  p(x_{k}^{(i)}\mid x_{k-1}^{(i)},y_{1:t})  }  \frac{ q_3(x_{k}^{(i)} \mid x_{k}^*, x_{k-1}^{(i)} ) }{ q_3(x_{k}^*\mid x_{k}^{(i)},x_{k-1}^{(i)}) }  \rbrace  $
-\item After burn-in points, keep $x_k^{(j)}$ as new particles for approximating.
-\item Move to next particle $i+1$
-\item Move to next state $k+1$
-\end{itemize}
+which becomes the new target distribution. At the $i$th sampling iteration, the joint $x_k$ and $x_{k-1}$ was proposed in a Metropolis-Hastings sampling step. After that, a refinement Metropolis-within-Gibbs step update $x_k$ and $x_{k-1}$ individually. Hence, the algorithm is summarized in algorithm \ref{algorithmMCMCParticle}:
+%\begin{itemize}
+%\item Initialize particles $x_0^{(1)},\dots,x_0^{(N)}$.
+%\item Propose $\{x_k^*,x_{k-1}^*\}\sim q_1(x_k,x_{k-1}\mid x_{k}^{(i-1)},x_{k-1}^{(i-1)})$.
+%\item Accept $\{x_k^*,x_{k-1}^*\}$ with probability $\alpha_1=\min\lbrace 1, \frac{ p(x_k^*,x_{k-1}^*\mid y_{1:t} )  }{ p(x_k^{(i-1)},x_{k-1}^{(i-1)}\mid y_{1:t} )  }  \frac{ q_1(x_k^{(i-1)},x_{k-1}^{(i-1)}\mid x_k^*,x_{k-1}^*)  }{ q_1(x_k^*,x_{k-1}^* \mid x_k^{(i-1)},x_{k-1}^{(i-1)})  }   \rbrace$
+%\item Propose $x_{k-1}^*\sim q_2(x_{k-1}\mid  x_k^{(i)},x_{k-1}^{(i)}  )$
+%\item Accept $x_{k-1}^*$ with probability $\alpha_2 = \min \lbrace 1, \frac{ p(x_{k-1}^*\mid x_k^{(i)},y_{1:t}) }{  p(x_{k-1}^{(i)}\mid x_{k}^{(i)},y_{1:t})  }  \frac{ q_2(x_{k-1}^{(i)} \mid x_{k-1}^*, x_k^{(i)} ) }{ q_2(x_{k-1}^*\mid x_{k}^{(i)},x_{k-1}^{(i)})    } \rbrace$
+%\item Propose $x_k^* \sim q_3(x_k\mid x_k^{(i)}, x_{k-1}^{(i)})$
+%\item Accept $x_k^*$ with probability $\alpha_3 =\min \lbrace 1,
+%\frac{ p(x_{k}^*\mid x_{k-1}^{(i)},y_{1:t}) }{  p(x_{k}^{(i)}\mid x_{k-1}^{(i)},y_{1:t})  }  \frac{ q_3(x_{k}^{(i)} \mid x_{k}^*, x_{k-1}^{(i)} ) }{ q_3(x_{k}^*\mid x_{k}^{(i)},x_{k-1}^{(i)}) }  \rbrace  $
+%\item After burn-in points, keep $x_k^{(j)}$ as new particles for approximating.
+%\item Move to next particle $i+1$
+%\item Move to next state $k+1$
+%\end{itemize}
+\begin{algorithm}[h]
+\SetAlgoLined 
+%\KwResutt{Write here the resutt }
+Initialization: Initialize particles $x_0^{(j)}, j =1, \ldots,N$. \\
+\For{$k = 1,\ldots,t$}{
+\For{$i = 1,\ldots,M$}{
+Propose $\{x_k^*,x_{k-1}^*\}\sim q_1(x_k,x_{k-1}\mid x_{k}^{(i-1)},x_{k-1}^{(i-1)})$. \\
+Accept $\{x_k^*,x_{k-1}^*\}$ with probability $\alpha_1=\min\lbrace 1, \frac{ p(x_k^*,x_{k-1}^*\mid y_{1:t} )  }{ p(x_k^{(i-1)},x_{k-1}^{(i-1)}\mid y_{1:t} )  }  \frac{ q_1(x_k^{(i-1)},x_{k-1}^{(i-1)}\mid x_k^*,x_{k-1}^*)  }{ q_1(x_k^*,x_{k-1}^* \mid x_k^{(i-1)},x_{k-1}^{(i-1)})  }   \rbrace$\\
+Propose $x_{k-1}^*\sim q_2(x_{k-1}\mid  x_k^{(i)},x_{k-1}^{(i)}  )$ \\
+Accept $x_{k-1}^{(i)} = x_{k-1}^*$ with probability $\alpha_2 = \min \lbrace 1, \frac{ p(x_{k-1}^*\mid x_k^{(i)},y_{1:t}) }{  p(x_{k-1}^{(i)}\mid x_{k}^{(i)},y_{1:t})  }  \frac{ q_2(x_{k-1}^{(i)} \mid x_{k-1}^*, x_k^{(i)} ) }{ q_2(x_{k-1}^*\mid x_{k}^{(i)},x_{k-1}^{(i)})    } \rbrace$. \\
+Propose $x_k^* \sim q_3(x_k\mid x_k^{(i)}, x_{k-1}^{(i)})$. \\
+Accept $x_{k}^{(i)} =x_k^*$ with probability $\alpha_3 =\min \lbrace 1,
+\frac{ p(x_{k}^*\mid x_{k-1}^{(i)},y_{1:t}) }{  p(x_{k}^{(i)}\mid x_{k-1}^{(i)},y_{1:t})  }  \frac{ q_3(x_{k}^{(i)} \mid x_{k}^*, x_{k-1}^{(i)} ) }{ q_3(x_{k}^*\mid x_{k}^{(i)},x_{k-1}^{(i)}) }  \rbrace$.\\
+After burn-in points, keep $x_k^{(j)}= x_k^{(i)}$ as new particles for approximating $p(x_k\mid y_{1:k})$.\\
+}
+}
+ \caption{MCMC-Based Particle Algorithm.}\label{algorithmMCMCParticle}
+\end{algorithm}
 
-In \cite{septier2009multiple}, the authors discussed some attractive features of genetic algorithms and simulated annealing into the framework of MCMC based particle scheme. 
+In \cite{septier2009multiple}, the authors discussed some attractive features of genetic algorithms and simulated annealing into the framework of MCMC based particle scheme. One may refer to the paper for details. 
 
 
 
 
-\section{On-line State and Parameter Estimation}\label{sectionStateandPara}
+\section{On-line State and Parameters Estimation}\label{sectionStateandPara}
 
 The state transition density and the conditional likelihood function depend not only upon the dynamic state $x_t$, but also on a static parameter vector $\theta$, which will be stressed by use of the notations $f(x_t \mid x_{t-1},\theta)$ and $g(y_t\mid x_t,\theta)$. Putting the algorithms on-line means to update the parameters and states instantly as new observations coming into the data stream. For Bayesian dynamic models, however, the most natural option consists in treating the unknown parameter $\theta$, using the state space representation, as a component of the state which has no dynamic evolution, also referred to as a static parameter \cite{cappe2007overview}. The standard SMC is deficiency for on-line parameter estimation. As a result of the successive resampling steps, after a certain time $t$, the approximation $\hat{p}(\theta\mid y_{1:t})$ will only contain a single unique value for $\theta$. In other words, SMC approximation of the marginalized parameter posterior distribution is represented by a single Dirac delta function. It also causes error accumulation in successive Monte Carlo (MC) steps grows exponentially or polynomially in time \cite{kantas2009overview}. 
 
@@ -321,13 +360,31 @@ x_{t-l+1} &\sim p(x_{t-l+1}\mid x_{0:t-l}^{(i)},\theta,y_{t-l+1:t}),\\
 \end{align*}
 with two-step Gibbs sampler. The algorithm is summarized below:
 
-\begin{itemize}
-\item{Step 1.} Initialization. Set $\theta^{(i)}=\theta_0$ as initial values, $i=1,\dots,N$. 
-\item{Step 2.} Burn in: For $k=1,\dots,l$, initialize $\theta = \theta^{(i)}$. Generate $x_{0:k}\sim p(x_{0:k}\mid \theta,y_{1:k})$ and $\theta \sim p(\theta\mid x_{0:k},y_{1:k})$.
-\item{Step 3.} Achieve a set of $\left( x_{0:k}^{(i)},\theta^{(i)}\right)$.
-\item{Step 4.} Sequential updating: For $k=l+1,\dots,t$: initialize $\theta = \theta^{(i)}$. Generate $x_{k-l+1:k}\sim p(x_{k-l+1:k}\mid x_{k-l}^{(i)},\theta,y_{k-l+1,k})$ and $\theta \sim p(\theta\mid x_{0:k-l}^{(i)},x_{k-l+1:k},y_{1:k})$. 
-\item{Step 5.} Achieve a set of $\left( x_{k-l+1}^{(i)},\theta^{(i)}\right)$ and leave $x_{0:k-l}^{(i)}$ unchanged. 
-\end{itemize}
+%\begin{itemize}
+%\item{Step 1.} Initialization. Set $\theta^{(i)}=\theta_0$ as initial values, $i=1,\dots,N$. 
+%\item{Step 2.} Burn in: For $k=1,\dots,l$, initialize $\theta = \theta^{(i)}$. Generate $x_{0:k}\sim p(x_{0:k}\mid \theta,y_{1:k})$ and $\theta \sim p(\theta\mid x_{0:k},y_{1:k})$.
+%\item{Step 3.} Achieve a set of $\left( x_{0:k}^{(i)},\theta^{(i)}\right)$.
+%\item{Step 4.} Sequential updating: For $k=l+1,\dots,t$: initialize $\theta = \theta^{(i)}$. Generate $x_{k-l+1:k}\sim p(x_{k-l+1:k}\mid x_{k-l}^{(i)},\theta,y_{k-l+1,k})$ and $\theta \sim p(\theta\mid x_{0:k-l}^{(i)},x_{k-l+1:k},y_{1:k})$. 
+%\item{Step 5.} Achieve a set of $\left( x_{k-l+1}^{(i)},\theta^{(i)}\right)$ and leave $x_{0:k-l}^{(i)}$ unchanged. 
+%\end{itemize}
+\begin{algorithm}[h]
+\SetAlgoLined 
+%\KwResutt{Write here the resutt }
+Initialization: Set $\theta^{(i)}=\theta_0$ as initial values, $i=1,\ldots,N$.  \\
+Burn-In: \For{$k = 1,\ldots, l$}{
+\For{$i=1,\ldots,N$}{Initialize $\theta = \theta^{(i)}$. \\
+Generate $x_{0:k}\sim p(x_{0:k}\mid \theta,y_{1:k})$ and $\theta \sim p(\theta\mid x_{0:k},y_{1:k})$.\\
+After a few iterations, achieve a set of $\{ \tilde{x}_{0:k}^{(i)},\theta^{(i)}\}$. 
+}
+}
+Sequential Updating: \For{$k=l+1,\ldots,t$}{
+\For{$i=1,\ldots,N$}{initialize $\theta = \theta^{(i)}$.\\
+Generate $x_{k-l+1:k}\sim p(x_{k-l+1:k}\mid \tilde{x}_{k-l}^{(i)},\theta,y_{k-l+1,k})$ and $\theta \sim p(\theta\mid \tilde{x}_{0:k-l}^{(i)},x_{k-l+1:k},y_{1:k})$. \\
+Achieve a set of $\{ \tilde{x}_{k-l+1}^{(i)},\theta^{(i)}\}$ and leave $\tilde{x}_{0:k-l}^{(i)}$ unchanged.
+}
+}
+ \caption{Practical Filtering Algorithm.}\label{algorithmPraticalFilter}
+\end{algorithm}
 
 The speed and accuracy of this algorithm depends on the choice of sample size $M$ and the lag $l$, which is difficult, and there is a non-vanishing bias which is difficult to quantify \cite{polson2008practical} \cite{kantas2009overview}.
 
@@ -368,16 +425,30 @@ m_t^{(i)}=\alpha \theta_t^{(i)} + (1-\alpha)\bar{\theta}_t,
 where $\alpha=\sqrt{1-h^2}$ and $h>0$ is the smoothing parameter and the covariance is $V_t=\sum_{i=1}^{N}\frac{ (\theta_t^{(i)}-\bar{\theta}_t )(\theta_t^{(i)}-\bar{\theta}_t  )^\top}{N}$. Consequently, the resulting normal mixture retains the mean $\bar{\theta}_t$ and now has the correct covariance $V_t$, hence the over dispersion is trivially corrected \cite{liu2001combined}. 
 
 A general algorithm is summarized bellow: 
-\begin{itemize}
-\item{Step 1.} Identify the prior estimation of $(x_t,\theta)$ by $(\mu_{t+1}^{(i)},m_t^{(i)})$, where
-$\mu_{t+1}^{(i)}=\E (x_{t+1}\mid x_t^{(i)},\theta_t^{(i)})$, and $m_t^{(i)}=\alpha \theta_t^{(i)} + (1-\alpha)\bar{\theta}_t$.
-\item{Step 2.} Sample an auxiliary integer index $k$ from $\{1,\dots,N\}$ with probability proportional to $g_{t+1}^{(i)}\propto w_t^{(i)}p(y_{t+1}\mid \mu_{t+1}^{(i)},m_t^{(i)})$.
-\item{Step 3.} Sample a new parameter vector $\theta_{t+1}^{(k)}$ from $N(\theta_{t+1}\mid m_t^{(k)},h^2V_t)$.
-\item{Step 4.} Sample current state vector $x_{t+1}^{(k)}$ from $p(x_{t+1}\mid x_t^{(k)},\theta_{t+1}^{(k)})$.
-\item{Step 5.} Evaluate weight $w_{t+1}^{(k)}\propto \frac{ p(y_{t+1}\mid x_{t+1}^{(k)},\theta_{t+1}^{(k)}) }{ p(y_{t+1}\mid \mu_{t+1}^{(k)},m_t^{(k)})   }$ and normalize it. 
-%\item Repeat until $M$ iterations. 
-\end{itemize}
-
+%\begin{itemize}
+%\item{Step 1.} Identify the prior estimation of $(x_t,\theta)$ by $(\mu_{t+1}^{(i)},m_t^{(i)})$, where
+%$\mu_{t+1}^{(i)}=\E (x_{t+1}\mid x_t^{(i)},\theta_t^{(i)})$, and $m_t^{(i)}=\alpha \theta_t^{(i)} + (1-\alpha)\bar{\theta}_t$.
+%\item{Step 2.} Sample an auxiliary integer index $k$ from $\{1,\dots,N\}$ with probability proportional to $g_{t+1}^{(i)}\propto w_t^{(i)}p(y_{t+1}\mid \mu_{t+1}^{(i)},m_t^{(i)})$.
+%\item{Step 3.} Sample a new parameter vector $\theta_{t+1}^{(k)}$ from $N(\theta_{t+1}\mid m_t^{(k)},h^2V_t)$.
+%\item{Step 4.} Sample current state vector $x_{t+1}^{(k)}$ from $p(x_{t+1}\mid x_t^{(k)},\theta_{t+1}^{(k)})$.
+%\item{Step 5.} Evaluate weight $w_{t+1}^{(k)}\propto \frac{ p(y_{t+1}\mid x_{t+1}^{(k)},\theta_{t+1}^{(k)}) }{ p(y_{t+1}\mid \mu_{t+1}^{(k)},m_t^{(k)})   }$ and normalize it. 
+%%\item Repeat until $M$ iterations. 
+%\end{itemize}
+\begin{algorithm}[h]
+\SetAlgoLined 
+%\KwResutt{Write here the resutt }
+\For{$k=1,\ldots,t$}{
+\For{$i=1,\ldots,N$}{Identify the prior estimation of $(x_k,\theta)$ by $(\mu_{k+1}^{(i)},m_k^{(i)})$, where
+$\mu_{k+1}^{(i)}=\E (x_{k+1}\mid x_k^{(i)},\theta_k^{(i)})$, and $m_k^{(i)}=\alpha \theta_k^{(i)} + (1-\alpha)\bar{\theta}_k$. \\
+Sample an auxiliary integer index $I$ from $\{1,\dots,N\}$ with probability proportional to $g_{k+1}^{(i)}\propto w_k^{(i)}p(y_{k+1}\mid \mu_{k+1}^{(i)},m_k^{(i)})$.\\
+Sample a new parameter vector $\theta_{k+1}^{(I)}$ from $N(\theta_{k+1}\mid m_k^{(I)},h^2V_k)$.\\
+Sample current state vector $x_{k+1}^{(I)}$ from $p(x_{k+1}\mid x_k^{(I)},\theta_{k+1}^{(I)})$.\\
+Evaluate weights $\tilde{w}_{k+1}^{(i)}\propto \frac{ p(y_{k+1}\mid x_{k+1}^{(I)},\theta_{k+1}^{(I)}) }{ p(y_{k+1}\mid \mu_{k+1}^{(I)},m_k^{(I)})   }$
+}
+Normalize weights: $w_{k+1}^{(i)} = \frac{\tilde{w}_{k+1}^{(i)}}{\sum \tilde{w}_{k+1}^{(i)}}$.
+}
+\caption{Liu and West's Filter.}\label{algorithmLWFilter}
+\end{algorithm}
 
 
 \subsection{Storvik Filter}
@@ -386,14 +457,27 @@ $\mu_{t+1}^{(i)}=\E (x_{t+1}\mid x_t^{(i)},\theta_t^{(i)})$, and $m_t^{(i)}=\alp
 Storvik Filter, presented in \cite{storvik2002particle}, is assuming that the posterior $p(\theta\mid x_{0:t},y_{1:t})$ depends on a low dimensional set of sufficient statistics $s_t$ with an associated recursive update via $s_t=S(s_{t-1},x_t,y_t)$. This approach is based on marginalizing the static parameters out of the posterior distribution, in which only the state vector needs to be considered, and aiming at reducing the particle impoverishment. It can be thought of as an extension of particle filters with additional steps of updating sufficient statistics and sampling parameters sequentially \cite{lopes2011particle}. In particular, models for which the underlying process is Gaussian and linear in the parameters can be handled by this approach \cite{storvik2002particle}. Furthermore, some other many observational distributions with unknown parameters can be handled by this approach but subject to unavailable sufficient statistics. 
 
 The Storvik filter is summarized bellow:
-\begin{itemize}
-\item{Step 1.} Sample $x_{t+1}^{(i)}$ from $p(x_{t+1}\mid x_{t}^{(i)},y_{1:t+1},\theta^{(i)} )$
-\item{Step 2.} Calculate weights $w_{t+1} \propto p(y_{t+1}\mid x_{t+1}^{(i)}, \theta^{(i)})$ and normalize it by $w_{t+1}^{(i)}=\frac{ w_{t+1}^{(i)} }{ \sum w_{t+1}^{(i)}}$
-\item{Step 3.} Re-sample $\{ \theta_{t+1}^{(i)},x_{t+1}^{(i)},s_{t+1}^{(i)}  \}$ according to $w_{t+1}$
-\item{Step 4.} Update sufficient statistics $s_{t+1}^{(i)}=S(s_{t}^{(i)},x_{t+1},y_{t+1})$ 
-\item{Step 5.} Sample $\theta^{(i)}$ from $p(\theta\mid s_{t+1}^{(i)})$
-\end{itemize}
-
+%\begin{itemize}
+%\item{Step 1.} Sample $x_{t+1}^{(i)}$ from $p(x_{t+1}\mid x_{t}^{(i)},y_{1:t+1},\theta^{(i)} )$
+%\item{Step 2.} Calculate weights $w_{t+1} \propto p(y_{t+1}\mid x_{t+1}^{(i)}, \theta^{(i)})$ and normalize it by $w_{t+1}^{(i)}=\frac{ w_{t+1}^{(i)} }{ \sum w_{t+1}^{(i)}}$
+%\item{Step 3.} Re-sample $\{ \theta_{t+1}^{(i)},x_{t+1}^{(i)},s_{t+1}^{(i)}  \}$ according to $w_{t+1}$
+%\item{Step 4.} Update sufficient statistics $s_{t+1}^{(i)}=S(s_{t}^{(i)},x_{t+1},y_{t+1})$ 
+%\item{Step 5.} Sample $\theta^{(i)}$ from $p(\theta\mid s_{t+1}^{(i)})$
+%\end{itemize}
+\begin{algorithm}[h]
+\SetAlgoLined 
+%\KwResutt{Write here the resutt }
+\For{$k=1,\ldots,t$}{
+\For{$i=1,\ldots,N$}{
+Sample $x_{k}^{(i)}$ from $p(x_{k}\mid x_{k-1}^{(i)},y_{1:k},\theta^{(i)} )$. \\
+Calculate weights $\tilde{w}_{k} \propto p(y_{k}\mid x_{k}^{(i)}, \theta^{(i)})$ and normalize it by $w_{k}^{(i)}=\frac{ \tilde{w}_{k}^{(i)} }{ \sum \tilde{w}_{k}^{(i)}}$.\\
+Re-sample $\{ \theta_{k}^{(i)},x_{k}^{(i)},s_{k}^{(i)}  \}$ according to $w_{k}$.\\
+Update sufficient statistics $s_{k}^{(i)}=S(s_{k-1}^{(i)},x_{k},y_{k})$.\\
+Sample $\theta^{(i)}$ from $p(\theta\mid s_{k}^{(i)})$.
+}
+}
+\caption{Storvik Filter.}\label{algorithmStFilter}
+\end{algorithm}
 
 
 \subsection{Particle Learning}
@@ -402,13 +486,27 @@ Particle Learning, proposed by \cite{carvalho2010particle}, uses the similar suf
 
 By denoting $s_t$ and $s_t^x$ the sufficient statistics for the parameter and state respectively, the updating rules are satisfied: $s_t=S(s_{t-1},x_t,y_t)$ and $s_t^x=K(s_{t-1}^x,\theta,y_t)$, where $K(\cdot)$ is the Kalman filter recursions. In Particle Learning, the prior to sampling from the proposal distribution uses a predictive likelihood and takes $y_{t+1}$ into account \cite{vieira2016online}. This algorithm is summarized as following: 
 
-\begin{itemize}
-\item{Step 1.} Resample $\{\tilde{z}_t^{(i)}\}_{i=1}^N=(\tilde{s}_t^{x(i)},\tilde{s}_t^{(i)},\tilde{\theta}^{(i)})$ from $p(z_t\mid s_t^x,s_t,\theta)$ with weight $w\propto p(y_{t+1}\mid s_{t}^x,\theta)$.
-\item{Step 2.} Draw $x_{t+1}^{(i)}$ from $p(x_{t+1}\mid \tilde{s}_t^x,\tilde{\theta},y_{1:t+1})$. 
-\item{Step 3.} Update sufficient statistics  $s_{t+1}=S(\tilde{s}_{t}, x_{t+1},y_{t+1})$.
-\item{Step 4.} Sample $\theta^{(i)}$ from $p(\theta \mid  s_{t+1})$.
-\item{Step 5.} Update $s_{t+1}^x = K(s_{t}^x,\theta,y_{t+1})$.
-\end{itemize}
+%\begin{itemize}
+%\item{Step 1.} Resample $\{\tilde{z}_t^{(i)}\}_{i=1}^N=(\tilde{s}_t^{x(i)},\tilde{s}_t^{(i)},\tilde{\theta}^{(i)})$ from $p(z_t\mid s_t^x,s_t,\theta)$ with weight $w\propto p(y_{t+1}\mid s_{t}^x,\theta)$.
+%\item{Step 2.} Draw $x_{t+1}^{(i)}$ from $p(x_{t+1}\mid \tilde{s}_t^x,\tilde{\theta},y_{1:t+1})$. 
+%\item{Step 3.} Update sufficient statistics  $s_{t+1}=S(\tilde{s}_{t}, x_{t+1},y_{t+1})$.
+%\item{Step 4.} Sample $\theta^{(i)}$ from $p(\theta \mid  s_{t+1})$.
+%\item{Step 5.} Update $s_{t+1}^x = K(s_{t}^x,\theta,y_{t+1})$.
+%\end{itemize}
+\begin{algorithm}[h]
+\SetAlgoLined 
+%\KwResutt{Write here the resutt }
+\For{$k=1,\ldots,t$}{
+\For{$i=1,\ldots,N$}{
+Resample $\tilde{z}_k^{(i)}=(\tilde{s}_k^{x(i)},\tilde{s}_k^{(i)},\tilde{\theta}^{(i)})$ from $p(z_k\mid s_k^x,s_k,\theta)$ with weight $w\propto p(y_{k+1}\mid s_{k}^x,\theta)$.\\
+Draw $x_{k+1}^{(i)}$ from $p(x_{k+1}\mid \tilde{s}_k^x,\tilde{\theta},y_{1:k+1})$. \\
+Update sufficient statistics  $s_{k+1}=S(\tilde{s}_{k}, x_{k+1},y_{k+1})$. \\
+Sample $\theta^{(i)}$ from $p(\theta \mid  s_{k+1})$. \\
+Update $s_{k+1}^x = K(s_{k}^x,\theta,y_{k+1})$.
+}
+}
+\caption{Particle Learning Algorithm.}\label{algorithmPL}
+\end{algorithm}
 
 \subsection{Adaptive Ensemble Kalman Filter}
 
@@ -456,15 +554,31 @@ p(\theta\mid y_{1:t}) \propto \exp \left(  -\frac{1}{2}(\theta-m_t)^\top C_t^{-1
 A grid-based representation is writing the posterior in the way that $p(\theta\mid y_{1:t}) \propto p(y_t\mid\theta,y_{1:t-1})p(\theta\mid y_{1:t-1})$ and update the recursion weights by $\pi_{t,k}\propto p(y_{t}\mid\theta,y_{1:t-1})\pi_{t,k-1}$. 
 
 To summarize it up, the complete algorithm is in the following 
-\begin{itemize}
-\item{Step 1.} Initialize samples $\theta^{(i)}\sim p(\theta)$ and $x_1^{(i)}\sim N(x_0,P_0)$.
-\item{Step 2.} Propagate. $x_t^{p(i)} = G(x_{t-1}^{(i)})$.
-\item{Step 3.} Approximate likelihood function by (\ref{esembleKalmanLikeli}). 
-\item{Step 4.} Update. Draw $\theta$ either use normal approximation or grid-based approximation to find (\ref{jointposteriorterm2}). 
-\item{Step 5.} Draw $\theta^{(i)}\sim p(\theta\mid y_{1:t})$.
-\item{Step 6.} Generate forecast ensemble by $x_t^{f(i)} = x_t^{p(i)}+w_t$.
-\item{Step 7.} Draw posterior ensemble using (\ref{ensembleKalmanForecast})
-\end{itemize}
+%\begin{itemize}
+%\item{Step 1.} Initialize samples $\theta^{(i)}\sim p(\theta)$ and $x_1^{(i)}\sim N(x_0,P_0)$.
+%\item{Step 2.} Propagate. $x_t^{p(i)} = G(x_{t-1}^{(i)})$.
+%\item{Step 3.} Approximate likelihood function by (\ref{esembleKalmanLikeli}). 
+%\item{Step 4.} Update. Draw $\theta$ either use normal approximation or grid-based approximation to find (\ref{jointposteriorterm2}). 
+%\item{Step 5.} Draw $\theta^{(i)}\sim p(\theta\mid y_{1:t})$.
+%\item{Step 6.} Generate forecast ensemble by $x_t^{f(i)} = x_t^{p(i)}+w_t$.
+%\item{Step 7.} Draw posterior ensemble using (\ref{ensembleKalmanForecast})
+%\end{itemize}
+\begin{algorithm}[h]
+\SetAlgoLined 
+%\KwResutt{Write here the resutt }
+Initialize samples $\theta^{(i)}\sim p(\theta)$ and $x_1^{(i)}\sim N(x_0,P_0)$, $i=1,\ldots,N$. \\
+\For{$k=1,\ldots,t$}{
+\For{$i=1,\ldots,N$}{
+Propagate. $x_k^{p(i)} = G(x_{k-1}^{(i)})$.\\
+Approximate likelihood function by (\ref{esembleKalmanLikeli}).\\
+Update. Draw $\theta$ either use normal approximation or grid-based approximation to find (\ref{jointposteriorterm2}). \\
+Draw $\theta^{(i)}\sim p(\theta\mid y_{1:k})$.\\
+Generate forecast ensemble by $x_k^{f(i)} = x_k^{p(i)}+w_k$.\\
+Draw posterior ensemble using (\ref{ensembleKalmanForecast}).
+}
+}
+\caption{Adaptive Ensemble Kalman Filter.}\label{algorithmEnKF}
+\end{algorithm}
 
 This algorithm works well when $\theta$ is small and the parameter in the forward map $G(\cdot)$ is known. If the forward map parameter is not known and has a high correlation with the state, the author suggests that it can be combined with the state augmentation \cite{anderson2001ensemble} and this algorithm is still working. 
 
@@ -483,7 +597,7 @@ Then $\{l(\theta_k)_k\}$ generated by the EM is a non-decreasing sequence.
 
 A straightforward on-line EM algorithm uses SMC method to maximize $l(\theta)$. However, it requires estimating sufficient statistics base on joint probability distributions whose dimension is increasing over time and has a computational load of $\mathit{O}(N^2)$ per time step \cite{kantas2009overview}.  To circumvent this problem, \cite{andrieu2005line} proposed a pseudo-likelihood function for finite state space models. 
 
-Assuming that the process is stationary, give a time lag $L\geq 1$ and any $k\geq 1$, $x_{1:t}$ and $y_{1:t}$ are sliced to $X_k\triangleq x_{kL+1:(k+1)L}$ and $Y_k\triangleq y_{kL+1:(k+1)L}$. For example: $X_1= x_{L+1:2L}$ consisting of $L$ data. Further, the joint distribution of $p(X_k,Y_k)$ is 
+Assuming that the process is stationary, give a time lag $L\geq 1$ and any $k\geq 1$, $x_{1:t}$ and $y_{1:t}$ are sliced to $X_k= x_{kL+1:(k+1)L}$ and $Y_k=  y_{kL+1:(k+1)L}$. For example: $X_1= x_{L+1:2L}$ consisting of $L$ data. Further, the joint distribution of $p(X_k,Y_k)$ is 
 \begin{equation}
 p(X_k,Y_k) = \pi(x_{kL+1})F(y_{kL+1}\mid x_{xL+1})\Pi_{n=kL+2}^{(k+1)L}G(x_n\mid x_{n-1})F(y_n\mid x_n). 
 \end{equation}
@@ -510,8 +624,7 @@ The advantage of this algorithm is that it only requires an approximation of the
 %\end{align*}
 %where $\epsilon\sim N(0,\tau)$ and $\omega\sim N(0,\sigma)$. Particularly, the initial value $x_0\sim N(m_0,C_0)$ is supposed to be known. $\sigma^2$ and $\tau^2$ are supposed to be \textit{Inverse Gamma} distributed with two parameters $(a_0,A_0)$ and $(b_0,B_0)$ respectively. Therefore, the unknown parameter $\theta$ is a set of $\{\alpha,\beta,\sigma^2,\tau^2\}$. 
 
-In this section, we are comparing the performance of Liu and West's filter, Storvik filter and particle learning %and adaptive ensemble Kalman filter 
-by a simple dynamic linear model, see example \cite{liu2001combined}. Explicitly, the model is 
+In this section, we are comparing the performance of Liu and West's filter (LW), Storvik filter (St), Particle Learning (PL) and the proposed sliding window MCMC algorithm \ref{algorithmslidingwindow} in section \ref{SectionHighDimensionalOU} by a simple dynamic linear model, see example \cite{liu2001combined}. Explicitly, the model is 
 \begin{align*}
 y_t&=F x_t+\epsilon_t,\\
 x_t&=\phi x_{t-1}+w_t,\\
@@ -529,7 +642,7 @@ p(y_{t+1}\mid s_{t}^x,\phi ) \propto \exp \left(-\frac{1}{2}(y_{t+1}-\phi  x_{t}
 p(x_{t+1}\mid \tilde{z}_t^{(i)},y_{1:t+1}) &= p(x_{t+1}\mid s_t^x,\phi,y_{1:t+1}) \propto p(x_{t+1},y_{1:t+1}\mid s_t^x,\phi)\\
 & \propto p(x_{t+1}\mid s_t^x,\phi)p(y_{t+1}\mid x_{t+1},s_t^x,\phi) \\
 &= N(x_{t+1}\mid \phi x_t,1)N(y_{t+1}\mid x_{t+1},1)\\
-&= N\left(\frac{1}{2}(y_{t+1}+\phi x_t),\frac{1}{\sqrt{2}}\right)
+&= N\left(x_{t+1}\mid \frac{1}{2}(y_{t+1}+\phi x_t),\frac{1}{\sqrt{2}}\right)
 \end{align*}
 \item Step 3. Update sufficient statistics  $s_{t+1}=S(\tilde{s}_{t}, x_{t+1},y_{t+1})$.
 \begin{align*}
@@ -537,36 +650,51 @@ s_{t+1,1} &= x_{t+1} \\
 s_{t+1,2} &= x_tx_{t+1}+s_{t,2} = x_ts_{t,1}+s_{t,2} \\
 s_{t+1,3} &= x_{t}^2 + s_{t,3} = s_{t,1}^2 + s_{t,3} .
 \end{align*}
-\item Step 4. Sample $\phi $ from $p(\phi  \mid  s_{t+1})$.
+\item Step 4. Sampling $\phi $ from $p(\phi  \mid  s_{t+1})$.
 \begin{align*}
 p(\phi  \mid  x_{1:t+1},y_{1:t+1}) & \propto p(x_{1:t+1},y_{1:t+1}\mid \phi )p(\phi )\propto p(x_{1:t+1}\mid \phi )p(\phi )\\
 &= N\left( \phi \mid  \frac{s_{t+1,2}}{s_{t+1,3}},\frac{1}{s_{t+1,3}} \right).
 \end{align*}
-\item Step 5. Update $s_{t+1}^x = K(s_{t}^x,\phi ,y_{t+1})$.
+\item Step 5. Update from $s_{t}^x$ to $s_{t+1}^x$ via $s_{t+1}^x = K(s_{t}^x,\phi ,y_{t+1})$.
 \end{itemize}
+
+
+Notice that the proposed sliding window MCMC algorithm requires using a few data to learn the parameter's mean and variance in the learning phase. Besides, LW, St and PL do not converge at the first few data. Then, to be fair, we take the first 300 data out and use them in the learning phase of the proposed algorithm and use the same length as the width of the sliding window. For the former three algorithms, we are using 5\,000 particles to infer parameter and state. For the latter MCMC algorithm, we are taking 5\,000 samples at each time $t$ for $\phi^{(i)}$ and $x_t^{(i)}$, where $i=1,\ldots,5\,000$ and $t=300,\ldots,897$. Furthermore, we run the comparison for 50 times to check their stabilities. 
 
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.5\textwidth,height=6cm]{Chapters/04Filtering/plot/ggFilterCompPhi.pdf}
-\includegraphics[width=0.9\textwidth,height=9cm]{Chapters/04Filtering/plot/plotlyFilterCompX.png}
-\caption{A simulation study shows that the three algorithms converge to the true $\phi$ at similar speed. The filtering for $x$ is very competitive.} \label{FilterRiewComparesion}
+\includegraphics[width=0.5\textwidth,height=5cm]{Chapters/04Filtering/plot/ggFilterCompPhi2.pdf}
+\includegraphics[width=\textwidth,height=9cm]{Chapters/04Filtering/plot/plotlyFilterCompX2.png}
+\caption{A comparison study using simulated time series data shows that LW, St and PL algorithms converge to the true $\phi$ at similar speed. The proposed MCMC algorithm has a higher variability. The filtering for $x_{300:897}$ is very competitive. These four algorithms return very close estimations. } \label{FilterRiewComparesion}
 \end{figure}
 
 \begin{table}[]
 \centering
-\caption{Comparing MSE and computation time of the three algorithms by running 100 iterations with $N=5\,000$ particles. }
+\caption{Comparison by repeatedly running 50 times with $N=5\,000$ particles for LW, St and PL and $M=5\,000$ samples for MCMC. }
 \label{FilterRiewComparesionTable}
-\begin{tabular}{|c|c|c|c|}
+%\begin{tabular}{|c|c|c|c|}
+%\hline
+%     & Liu and West's & Storvik Filter & Particle Learning  \\ \hline
+%MSE  &  0.5843 &  0.5842 &  0.5823     \\ \hline
+%Time (seconds) &  213.27   &  296.70  & 272.62    \\ \hline
+%Variance ($\times 10^{-4}$) &  7.3595   & 12.5294   & 11.7947    \\ \hline
+%\end{tabular}
+\begin{tabular}{|c|c|c|c|c|}
 \hline
-     & Liu and West's & Storvik Filter & Particle Learning  \\ \hline
-MSE  &  0.5843 &  0.5842 &  0.5823   \\ \hline
-Time (seconds) &  213.27   &  296.70  & 272.62     \\ \hline
-Variance ($\times 10^{-4}$) &  7.3595   & 12.5294   & 11.7947     \\ \hline
+     & LW & St & PL  & MCMC\\ \hline
+%Time (seconds) &  213.27   &  296.70  & 272.62   &  -- \\ \hline
+%Median of $\hat{\phi}$ &  0.7944 (0.0070) &  0.7922(0.0098)   & 0.7907 (0.0116) &   0.8036 (0.0045) \\ \hline
+%Variance of $\hat{\phi}$ ($\times 10^{-5}$) &  2.52  & 3.85  &  2.41 &   71.86  \\ \hline
+%$\frac{1}{n}\sum_i(\hat{x}_i-x_i)^2$ &  0.5731 &  0.5750 &  0.5742  & 0.5744  \\ \hline
+Median of $\hat{\phi}$ &  0.7944  &  0.7917   &  0.7919 & 0.8032 \\ \hline
+SE of $\hat{\phi}$ ($\times 10^{-4}$) &  15.1861  &  4.6121 & 5.4162 &  $\mathbf{0.9182}$  \\ \hline
+$\frac{1}{n}\sum_i(\hat{x}_i-x_i)^2$ &  0.5745 &  0.5740 &  0.5740 & 0.5744  \\ \hline
 \end{tabular}
 \end{table}
 
-From figure (\ref{FilterRiewComparesion}) it can be seen that the three algorithms converge to the true parameter $\phi$ with similar speed along time $t$. It is hard to tell which one is better visually. The filtering estimations for $x$ are competitive. However, from table (\ref{FilterRiewComparesionTable}), we can see that the Particle Learning returns the smallest mean squared error (MSE) at 0.5823, which is better than the other two algorithms. Liu and West's filter runs faster than others and has a smaller variance on parameter estimation. 
+
+From figure (\ref{FilterRiewComparesion}) it can be seen that the former three algorithms converge to the true parameter $\phi$ with similar speed along time $t$. LW filter has larger distance to the true parameter comparing with St and PL filters. The proposed MCMC algorithm has the biggest estimation variance. The estimations for $x_t$ from $t=300$ to $897$ are very close and hard to tell visually. From table (\ref{FilterRiewComparesionTable}), we can see that, by repeatedly running 50 times, the proposed MCMC algorithm is more stable in estimating parameter $\phi$ as it has the lowest standard error (SE) among all the algorithms. The MSE of all the algorithms on estimating $x$ are on the similar levels. 
 
 
 \section{Conclusion}
@@ -580,7 +708,7 @@ In summary, most of research issues for filtering and parameter estimation focus
 \item Exploration of accurate estimation with low variances in higher dimensional space. 
 \end{itemize}
 
-Subject to pages and time, some algorithms are not included. For instance, readers can refer to unscented Kalman filter \cite{wan2000unscented} for non-linear estimation, particle MCMC \cite{andrieu2010particle} for off-line Bayesian estimation, on-line gradient approach \cite{poyiadjis2005maximum} for parameter estimation. 
+Subject to pages and time, some algorithms are not included in the brief review. For more information and interests, readers can refer to unscented Kalman filter \cite{wan2000unscented} and its related algorithms for non-linear estimation, particle MCMC \cite{andrieu2010particle} for off-line Bayesian estimation and on-line gradient approach \cite{poyiadjis2005maximum} for parameter estimation. 
 
 
 
