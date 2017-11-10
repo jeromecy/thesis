@@ -24,39 +24,47 @@ The Global Positioning System (abbreviated as GPS) is a space-based navigation s
 
 For a moving vehicle, it is often mounted with a GPS unit that communicates with the satellites and records position, average speed and direction of traveling information. With this kind of information, a maneuvering target tracking system becomes available and useful. This tracking system can be used to reduce the cost by knowing in real-time the current location of a vehicle, such as a truck or a bus \cite{chadil2008real}, and also be very useful for Intelligent Transportation System (ITS) \cite{mcdonald2006intelligent}. For instance, it can be used in probe cars to measure real-time traffic data to identify the congesting area. In particular, an orchardist is able to follow the trajectory and motion patterns of tractors, which are working on an orchard or vineyard, and monitor their working status with tracking system. 
 
-No doubt that in conventional target tracking, the most common method is the standard Kalman filter \cite{kalman1960new}, which is a recursive solution to the discrete data linear filtering problem. The Kalman filter is a set of mathematical equations that provides an efficient computational means to estimate the state of a process in a recursive way, that minimizes the mean of the squared error \cite{bishop2001introduction}. Fernando Tusell gave a review of some \textit{R} packages, which could be used to fit data with Kalman Filter methods \cite{tusell2011kalman}. Limited to its property, Kalman Filter is tied up for a dynamic system, where the parameters and noise variances are unknown. In some dynamic systems, the variances are obtained based on the system identification algorithm, correlation method and least squares fusion criterion. To solve this issue, a self-tuning weighted measurement fusion Kalman filter is presented in \cite{ran2010self}. Likewise, a new adaptive Kalman filter will be a good choice \cite{oussalah2001adaptive}. 
+No doubt that in a conventional target tracking system, the most common method is the standard Kalman filter \cite{kalman1960new}, which is a recursive solution to the discrete data linear filtering problem. The Kalman filter is a set of mathematical equations that provides an efficient computational means to estimate the state of a process in a recursive way, that minimizes the mean of the squared errors \cite{bishop2001introduction}. \cite{tusell2011kalman} gives a review of some \textit{R} packages, which are used to fit data with Kalman filter methods. Limited to its property, Kalman filter is tied up for a dynamic system, where the parameters and noise variances are unknown. In some dynamic systems, the variances are obtained based on the system identification algorithm, correlation method and least squares fusion criterion. To solve this issue, a self-tuning weighted measurement fusion Kalman filter is presented in \cite{ran2010self}. Likewise, a new adaptive Kalman filter will be another choice \cite{oussalah2001adaptive}. 
 
 When the target maneuver occurs, Kalman filtering accuracy will be reduced or even diverged due to the model mismatch and noise characteristics that cannot be known exactly \cite{liu2014filtering}. Moreover, Kalman filter based methods require the state vector contains pre-specified coefficients during the whole approximation procedure and are within the bounded definition range determined at the beginning \cite{jauch2017recursive}. It is suggested that the smoothing spline fitting through the measured values reflecting the movements is an alternative approach. Even though fitting a univariate local linear trend model using a Kalman filter is equivalent to fitting a cubic spline, see \cite{eubank2004simple}, \cite{durbin2012time}, the latter algorithm overcomes the current limitation and can approximate data points throughout the whole process. 
 
-
-
+ 
 
 \section{Smoothing Spline Based Reconstruction}
 
+
 Starting from interpolation, the simplest way of connecting a set of sequences $(t_1,y_t),\ldots, (t_n,y_n)$ is by straight line segments. Known as piecewise
-linear interpolation. Apparently, sharp turnings occur at joint knots. A smooth path is expected and more common in real life application. A piecewise polynomial is a function $p(t) = p_n^m(t)$ on $[a,b]$ defined with the aid of $n$ knots: $-\infty \leq a <t_1 <\cdots <t_n<b\leq +\infty$. 
+linear interpolation. Apparently, sharp turnings occur at joint knots. A smooth path is expected and more common in real life application. A single polynomial function goes through the entire interval is not as flexible as a piecewise polynomial combination, each of which is defined on subintervals and joint at certain knots. This kind of piecewise polynomial interpolation is called a spline. 
 
-
-Several kinds of splines were introduced by \cite{esl2009}. The core idea of splines is to augment the vector of inputs $X$ with additional variables, then use linear models in this space of derived input features. Adding constraints to construct basis functions $h_i(x), i = 1, 2,\ldots, n$, a linear basis expansion in $X$ could be represented as
+Several kinds of splines were introduced by \cite{esl2009}. The core idea of splines is to augment the vector of inputs $T$ with additional variables, then use linear models in this space of derived input features. Adding constraints to construct basis functions $h_i(t), i = 1, 2,\ldots, n$, a linear basis expansion in $T$ is represented as
 \begin{equation*}
-f(x)=\sum_{i=1}^n \theta_i h_i(x) 
+f(t)=\sum_{i=1}^n \theta_i h_i(t) 
 \end{equation*}
-Once the basis functions $h_i(x)$ have been determined, the models are linear in the variables space. 
+Once the basis functions $h_i(t)$ have been determined, the models are linear in the variables space. 
 
-Smoothing spline is a basic spline and could be used in two-dimensions. Mehdi Zamani proved that in two-dimensional spaces, splines have the advantages of simplicity and less computational operations \cite{zamani2010simple}. The most important part of this method is to find the parameter $\lambda$. We have a process (function)  to calculate the $RSS$ (Residual Sum of Square), where the smallest $RSS$ is, the best $\lambda$ would be
+
+
+
+Smoothing spline is a basic spline and could be used in two-dimensions. \cite{zamani2010simple} proved that in two-dimensional spaces, splines have the advantages of simplicity and less computational operations. 
+
+
+The most important part of this method is to find the parameter $\lambda$. We have a process (function)  to calculate the $RSS$ (Residual Sum of Square), where the smallest $RSS$ is, the best $\lambda$ would be
 \begin{align*}
 RSS(f,\lambda)=\sum_{n=1}^{n}\{(y_i)-g(x_i)\}^2+\lambda\int g''(x_i)^2
 \end{align*}
 The function $g(x)$ that minimizes $RSS$ is a natural cubic spline with knots at $x_1,\ldots ,x_n$ \cite{esl2009}. 
 
-Some ways are give to estimate the parameter \cite{wood2000modelling}, \cite{kim2004smoothing}. However, we hope that $\lambda$ could be a piecewise parameter, rather than a constant number, then we will have piecewise penalty functions. Grace Wahba introduced adaptive splines and a method to calculate piecewise parameters \cite{donoho1995wavelet} and Ziyue Liu and Wensheng Guo improved the method \cite{liu2010data}. But to get these parameters, we have to compromise to use adaptive smoothing splines. 
+
+
+Some ways are give to estimate the parameter \cite{wood2000modelling}, \cite{kim2004smoothing}. However, we hope that $\lambda$ could be a piecewise parameter, rather than a constant number, then we will have piecewise penalty functions. \cite{donoho1995wavelet} introduced adaptive splines and a method to calculate piecewise parameters and \cite{liu2010data} give an improved formula for this method . But to get these parameters, we have to compromise to use adaptive smoothing splines. 
+
+
 
 Using splines to fit data has been studies by many researchers. Some simple examples are given in the book \cite{esl2009}. Moreover,  \cite{yoshimoto2003data} offers a method can treat not only data with a smooth underlying function, but also data with an underlying function having discontinuous points and/or cusps. Dan Simon discussed a new type of algebraic spline, which is used to derive a filter for smoothing or interpolating discrete data points in eighth-order \cite{simon2004data}.
 
-Based on these methods, Matthew decided to create a new spline. Temporarily, we name the new spline "Tractor spline". This spline has some properties. This spline has two linear segments outside the knots and $n-1$ internal cubics. The  spline needs $4n = 4(n -1)+ 2\times 2$ constraints per component. These are provided by specifying the values and first derivatives at the knots. This means $2n$ constraints per component but they count twice since they constrain the spline on both sides of the knot. After that, once we know the functions of tractor spline, the position of tractor at time $t$ will be known. Moreover, we hope to integrate the details of orchard to improve predictions and begin to characterise the type of tractor trajectories at a higher level.
 
 
-
+%Based on these methods, Matthew decided to create a new spline. Temporarily, we name the new spline "Tractor spline". This spline has some properties. This spline has two linear segments outside the knots and $n-1$ internal cubics. The  spline needs $4n = 4(n -1)+ 2\times 2$ constraints per component. These are provided by specifying the values and first derivatives at the knots. This means $2n$ constraints per component but they count twice since they constrain the spline on both sides of the knot. After that, once we know the functions of tractor spline, the position of tractor at time $t$ will be known. Moreover, we hope to integrate the details of orchard to improve predictions and begin to characterise the type of tractor trajectories at a higher level.
 
 
 
@@ -103,25 +111,47 @@ where $\lambda$ is a fixed smoothing parameter, $(t_i,y_i)$, $i=1, \cdots, n$ ar
 \end{cases}
 \end{align}
 
-In our case, the velocity data set $v_i$ with some independent Gaussian distributed errors $\varepsilon_i \sim N(0, \frac{\sigma_n^2}{\gamma})$ are used to estimate $f(t)$ simultaneously. $f$ is a linear combination of basis functions, as shown in equation (\ref{introfbasis}), in the meantime, $f'$ is a linear combination of the first derivative of these basis functions
+
+\subsection{TS}
+
+
+Luckily, spline methods have been developed to overcome these issues and to construct smoothing trajectories.  In 2006, \cite{magid2006spline} proposed a path planning algorithm based on splines. The main objective of the method is the smoothness of the path not a shortest or minimum-time path. A curved-base method uses a parametric cubic function $P(t)=a_0+a_1t+a_2t^2+a_3t^3$ to obtain a spline that passes through any given sequence of joint position-velocity paired points $(y_1, v_1), (y_2, v_2), \ldots, (y_n,v_n)$ \cite{yu2004curve}. More generally, B-spline have a closed-form expression of positions and allows continuity of order two between the curve segments and goes through the points smoothly with ignoring the outliers, see \eg \cite{komoriya1989trajectory}, \cite{ben2004geometric}. It is flexible and has minimal support with respect to a given degree, smoothness, and domain partition. \cite{gasparetto2007new} is using fifth-order B-spline to compose the overall trajectory. In that paper, the author allows one to set kinematic constraints on the motion, expressed as velocity, acceleration and jerk. In computer (or computerized) numerical control (CNC), Altintas and Erkorkmaz \cite{erkorkmaz2001high} presented a quintic spline trajectory generation algorithm connecting a series of reference knots that produces continuous position, velocity and acceleration profiles. \cite{yang2010analytical} proposed an efficient and analytical continuous curvature path-smoothing algorithm based on parametric cubic B\'{e}zier curves. Their method can fit ordered sequential points smoothly. 
+
+
+However, a parametric approach only captures features contained in the preconceived class of functions \cite{yao2005functional} and increases model bias. To avoid this, nonparametric methods have been developed. Rather than giving specified parameters, it is desired to reconstruct $f$ from the data $y(t_i)\equiv y_i$, $i=1, \ldots, n$ \cite{craven1978smoothing}. Smoothing spline estimates of the $f$ function appear as a solution to the following minimization problem: find $\hat{f} \in \mathit{C}^2[a,b]$ that minimizes the penalized residual sum of squares:
+\begin{equation}\label{smoothingob}
+\mbox{RSS}=\sum_{j=1}^{n}\left(  y_j-f(t_j)\right) ^2+\lambda\int_{a}^{b} f''(t)^2dt
+\end{equation}
+for pre-specified value $\lambda>0$ \cite{aydin2012smoothing}. In equation (\ref{smoothingob}), the first part is residual sum square and it penalizes the lack of fit. The second part is roughness penalty term weighted by a smoothing parameter $\lambda$, which varies from 0 to $+\infty$ and establishes a trade-off between interpolation and straight line. The motivation of the roughness penalty term is from a formalization of a mechanical device: if a thin piece of flexible wood, called a spline, is bent to the shape of the curve $g$, then the leading term in the strain energy is proportional to $\int f''^2$; see \eg \cite{green1993nonparametric}. The cost of equation (\ref{smoothingob}) is determined not only by its goodness-of-fit to the data quantified by the residual sum of squares, but also by its roughness \cite{schwarz2012geodesy}. For a given $\lambda$, minimizing equation (\ref{smoothingob}) will give the best compromise between smoothness and goodness-of-fit. Notice that the first term in equation (\ref{smoothingob}) depends only on the values of $f$ at knots $t_i, i=1, \ldots, n$. In the book,  the authors \cite{green1993nonparametric} show that the function that minimizes the roughness penalty for fixed values of $f(t_i)$ is a cubic spline: an interpolation of points via a continuous piecewise cubic function, with continuous first and second derivatives. The continuity requirements uniquely determine the interpolating spline, except at the boundaries \cite{sealfon2005smoothing}.
+
+\cite{zhang2013cubic} proposed their method using Hermite interpolation on each intervals to fit position, velocity and acceleration with kinematic constrains. Their trajectory formulation is a combination of several cubic splines on every intervals  or, in an alternative way, can be a single function found by minimizing 
 \begin{equation}
-f'(t) =\sum_{m=1}^{M}\alpha_mh'_m(t).
+p\sum_{j=1}^{n}|y_j-f(t_j)|^2+(1-p)\int |D^2f(t)|^2dt,
 \end{equation}
+where $n$ is the number of values of $x$, $D^2$ represents the second derivative of the function f(t) and $p$ is a smoothing parameter \cite{castro2006geometric}. 
+residual sum square error objective with penalty term\cite{castro2006geometric}.  in which a parameter $1-p$ is used to control the curvature of the splines. 
 
-The velocity information  is incorporated into MSE  equation (\ref{intromse}) by the addition of velocity term $(f'(t_i)-v_i)^2$. Then it becomes 
-\begin{equation}\label{mse2}
-\text{MSE}(f,\lambda,\gamma)=\frac{1}{n}\sum_{i=1}^n(f(t_i)-y_i)^2+\frac{\gamma}{n} \sum_{i=1}^n(f'(t_i)-v_i)^2+\lambda \int_{0}^{1}(f''(t))^2dt,
+
+
+
+%Due to the noise generated from observation units, one can use regression methods to find the best reconstruction returning the smallest sum square errors among all the sequences. Consider a regression model $y_i=f(t_i)+\epsilon_i$, where $a \leq t_1 < \cdots < t_n \leq b$ and $f \in \mathit{C}^2[a,b]$ is an unknown smooth function, $(\epsilon_i)_{i=1}^n \sim N(0,\sigma^2)$ are random errors. In a classical parametric regression, $f$ is assumed having the form $f(x,\beta)$, which is known up to the data estimated parameters $\beta$ \cite{kim2004smoothing}. When $f(x,\beta)$ is linear in $\beta$, we will have a standard linear model. 
+
+
+
+
+A conventional smoothing spline is controlled by one single parameter, which controls the smoothness of a spline on the whole domain. A natural extension is to allow the smoothing parameter to vary as a penalty function of the independent variable, adapting to the change of roughness  in different domains \cite{silverman1985some}, \cite{donoho1995wavelet}. In this way, a new objective function is formulated in the form of 
+\begin{equation}\label{objective}
+\sum_{j=1}^{n}(y_j-f(t_j))^2+\int_T\lambda(t) f''(t)^2dt,
 \end{equation}
-and $\hat{f}$ is the minimizer of the MSE equation (\ref{mse2}).
+by minimizing which, the best estimation $\hat{f}$ can be found. This approach makes adaptive smoothing as a minimization problem with a new penalty term. 
 
-In the model $y=f(t)+\varepsilon$, it is reasonable to assume that the observed data $y_i$ is Gaussian distribution with mean $f(t_i)$ and variance $\sigma_n^2$. In a similar way, the velocity is estimated as  $v=f'(t)+\frac{\varepsilon}{\gamma}$, where $v_i$ is Gaussian distribution with mean $f'(t_i)$ and variance $\frac{\sigma_n^2}{\gamma}$. Then the joint distribution of $\mathbf{y},\mathbf{v},f(t)$ and $f'(t)$ is normal with zero mean and a covariance matrix, which can be estimated through Gaussian Process Regression.
-
-
-Given a series of such fixes, I want to construct the most likely path taken by the tractor with some smart modeling of the movement. I then want to develop higher level characterizations of the trajectories and apply this to more general problems in curve and object recognition.
+Similar to the conventional smoothing spline problem, one have to to choose the penalty function $\lambda(t)$. The fundamental idea of nonparametric smoothing is to let the data choose the amount of smoothness, which consequently decides the model complexity \cite{gu1998model}. Most methods focus on data driven criteria, such as cross validation (CV), generalized cross validation (GCV) \cite{craven1978smoothing} and generalized maximum likelihood (GML) \cite{wahba1985comparison}. A new challenge is posed that the smoothing parameter becomes a function and is varying in domains. The structure of this penalty function controls the complexity on each domain and the whole final model. Liu and Guo proposed to approximate the penalty function with an indicator and extended the generalized likelihood to the adaptive smoothing spline \cite{liu2010data}.
 
 
 
 \subsection{Cross Validation}
+
+Review
 
 \subsection{K-Fold Cross Validation}
 
@@ -151,104 +181,92 @@ Step 7. Add the sums of squared deviations from steps 4 to 6 and divide by $k$. 
 Step 8. Vary  $\lambda_{down}, \lambda_{up}$ and $\gamma$ systematically and repeat steps 4-7 until CV shows a minimum.
 
 
-\section{Gaussian Process Regression}
-
-A Gaussian Process is a collection of random variables, any finite number of which have a joint Gaussian distribution, \cite{b_gpml}.
-
-A GP is fully defined by its mean $m(t)$ and covariance $K(s,t)$ functions as
-\begin{align}
-m(t)&=\mathbb{E}[f(t)] \\
-K(s,t)&=\mathbb{E}[(f(s)-m(s)) (f(t)-m(t))],
-\end{align}
-where $s$ and $t$ are two variables, and a function $f$ distributed as such is denoted in form of
-\begin{equation}
-f \sim GP(m(t),K(s,t)).
-\end{equation}
-Usually the mean function is assumed to be zero everywhere. 
-
-Given a set of input variables $\mathbf{T}$ for function $f(t)$ and the output $\mathbf{y}=f(\mathbf{T})+\varepsilon$ with independent identically distributed Gaussian noise $\varepsilon$ with variance $\sigma_n^2$,  we can use the above definition to predict the value of the function $f_*=f(t_*)$ at a particular input $t_*$. As the noisy observations becoming
-\begin{align}\label{covdef}
-\text{cov}(y_p,y_q) = K(t_p,t_q)+\sigma_n^2 \delta_{pq}
-\end{align}
-where $\delta_{pq}$ is a Kronecker delta which is one iff $p=q$ and zero otherwise, the joint distribution of the observed outputs $\mathbf{y}$ and the estimated output $f_*$ according to prior is
-\begin{equation}
-\left[ \begin{matrix}
-\mathbf{y}\\
-f_*
-\end{matrix} \right] \sim N \left(  
-0,\left[   \begin{matrix}
-K(\mathbf{T},\mathbf{T}) +\sigma_n^2I& K(\mathbf{T},t_*) \\
-K(t_*,\mathbf{T}) & K(t_*,t_*)
-\end{matrix}  \right] 
-\right).
-\end{equation}
-The posterior distribution over the predicted value is obtained by conditioning on the observed data
-\begin{equation}
-f_* | \mathbf{y},\mathbf{T},t_* \sim N(\bar{f_*},\text{cov}(f_*))
-\end{equation}
-where 
-\begin{align}
-\bar{f_*}&=\mathbb{E}[f_* | \mathbf{y},\mathbf{T},t_* ]=K(t_*,\mathbf{T})[K(\mathbf{T},\mathbf{T})+\sigma_n^2I]^{-1}\mathbf{y},\\
-\text{cov}(f_*)&=K(t_*,t_*)-K(t_*,\mathbf{T})[K(\mathbf{T},\mathbf{T})+\sigma_n^2I]^{-1}K(\mathbf{T},t_*).
-\end{align}
-
-We now add velocity information $\mathbf{v}=f'(\mathbf{T})+\varepsilon'$, where $\varepsilon'$ is independent distributed Gaussian noise with variance $\frac{\sigma_n^2}{\gamma}$.
-
-It is expected that a position point $y_i$ and velocity point $v_i$ are all effected by other points $\mathbf{y}$ and $\mathbf{v}$. So the covariance matrix for $\mathbf{y}$ and $\mathbf{v}$ is
-\begin{equation}\label{covYV}
-\Sigma(\mathbf{y},\mathbf{v}) = 
-\left[
-\begin{matrix}
-\text{cov}(\mathbf{y},\mathbf{y}) & \text{cov}(\mathbf{y},\mathbf{v}) \\
-\text{cov}(\mathbf{v},\mathbf{y}) & \text{cov}(\mathbf{v},\mathbf{v}) 
-\end{matrix}\right],
-\end{equation}
-where obviously $\text{cov}(\mathbf{y},\mathbf{v}) =\text{cov}(\mathbf{v},\mathbf{y})$. Then the joint distribution  is 
-\begin{equation}
-\left[
-\begin{matrix}
-\mathbf{y}\\
-\mathbf{v}
-\end{matrix}
-\right] \sim N(\mu_{y,v},\Sigma_{y,v}).
-\end{equation}
-Define $f_*$ and $f'_*$ the estimated position and velocity values at point $t_*$. From equation (\ref{covYV}) and using similar idea, it is easily to get the covariance matrices 
-\begin{equation}
-\begin{split}
-\Sigma(f_*,\mathbf{v}) &= 
-\left[
-\begin{matrix}
-\text{cov}(f_*,f_*) & \text{cov}(f_*,\mathbf{v}) \\
-\text{cov}(\mathbf{v},f_*) & \text{cov}(\mathbf{v},\mathbf{v}) 
-\end{matrix}\right],\\
-\Sigma(\mathbf{y},f'_*) &= 
-\left[
-\begin{matrix}
-\text{cov}(\mathbf{y},\mathbf{y}) & \text{cov}(\mathbf{y},f'_*) \\
-\text{cov}(f'_*,\mathbf{y}) & \text{cov}(f'_*,f'_*) 
-\end{matrix}\right],\\
-\Sigma(f_*,f'_*) &= 
-\left[
-\begin{matrix}
-\text{cov}(f_*,f_*) & \text{cov}(f_*,f'_*) \\
-\text{cov}(f'_*,f_*) & \text{cov}(f'_*,f'_*) 
-\end{matrix}\right],
-\end{split}
-\end{equation}
-\TODO{will need to give the form of these covariances at some point. in an appendix? i think you need discussion of how $f'$ is related to $f$ for a GP}
-
 \subsection{A Reproducing Kernel in Space $\mathbb{H}$}\label{sectionRK}
 
 A Reproducing Kernel in Space $\mathbb{H}$.
 
 
+From Wikipedia, the free encyclopedia.
+
+In probability theory and statistics, a Gaussian process is a particular kind of statistical model where observations occur in a continuous domain, \eg time or space. In a Gaussian process, every point in some continuous input space is associated with a normally distributed random variable. Moreover, every finite collection of those random variables has a multivariate normal distribution, i.e. every finite linear combination of them is normally distributed. The distribution of a Gaussian process is the joint distribution of all those (infinitely many) random variables, and as such, it is a distribution over functions with a continuous domain, e.g. time or space. 
+
+
+Viewed as a machine learning algorithm, a Gaussian process uses lazy learning and a measure of the similarity between points (the kernel function) to predict the value for an unseen point from training data. The prediction is not just an estimate for that point, but also has uncertainty information it is a one-dimensional Gaussian distribution (which is the marginal distribution at that point).
+
+For some kernel functions, matrix algebra can be used to calculate the predictions using the technique of Kriging. When a parameterized kernel is used, optimization software is typically used to fit a Gaussian process model.
+
+The concept of Gaussian processes is named after Carl Friedrich Gauss because it is based on the notion of the Gaussian distribution (normal distribution). Gaussian processes can be seen as an infinite-dimensional generalization of multivariate normal distributions.
+
+Gaussian processes are useful in statistical modeling, benefiting from properties inherited from the normal. For example, if a random process is modeled as a Gaussian process, the distributions of various derived quantities can be obtained explicitly. Such quantities include the average value of the process over a range of times and the error in estimating the average using sample values at a small set of times.
+
+A Hilbert space is a real or complex inner product space with respect to the distance function induced by the inner product \cite{dieudonne2013foundations}. Particularly, the Hilbert space $\mathcal{L}_2[0,1]$ is a set of square integrable functions $f(t):[0,1]\rightarrow\mathbb{R}$, where all functions satisfy 
+\begin{equation*}
+\mathcal{L}_2[0,1] =\lbrace f:\int_0^1f^2dt <\infty \rbrace
+\end{equation*}
+with an inner product $\langle f,g\rangle=\int_0^1fgdt$. 
+
+Consider a regression problem with observations $y_i = f(t_i)+\varepsilon_i$, $i=1,\ldots,n$, consisting i.i.d normal noises $\varepsilon_i\sim N(0,\sigma^2)$ in the space $C^{(m)}[0,1]=\{ f:f^{(m)}\in \mathit{L}_2[0,1] \}$. The classic nonparametric or semi-parametric regression is a function that minimizes the following penalized least square functional 
+\begin{equation}\label{GaussianProcessGeneralObjective}
+\frac{1}{n}\sum_{i=1}^{n}\left( y_i-f(t_i) \right)^2 + \lambda \int_{0}^{1} \left( f^{(m)}\right)^2dt, 
+\end{equation}
+where the first term is the lack of fit of $f$ to the data. In the second term, generally, $\lambda$ is a fixed smoothing parameter controlling the trade-off between over-fitting and bias \cite{esl2009}. The minimizer $f_\lambda$ of the above equation resides in an $n$-dimensional space and the computation in multivariate settings is generally of the order $O(n^3)$ \cite{kim2004smoothing}. It is shown that a piecewise polynomial smoothing spline of degree $2m-1$ is well known to provide an aesthetically satisfying method for estimating $f$ if $\mathbf{y}$ cannot be interpolated exactly by some polynomial of degree less than $m$ \cite{schoenberg1964spline}. For instance, when $m=2$, a piecewise cubic smoothing spline provides a powerful tool to estimate the above nonparametric function, in which the penalty term is $\int f''^2dt$ \cite{hastie1990generalized}. 
+
+
+
+Further, \cite{wahba1978improper} showed that a Bayesian version of this problem is to take a Gaussian process prior $f(t_i) = a_0+a_1t_i+\cdots + a_{m-1}t_i^{m-1} + x_i$, on $f$ with $x_i=X(t_i)$ being a zero mean Gaussian process whose $m$th derivative is scaled white noise, $i=1,\ldots,n$ \cite{speckman2003fully}. The extended Bayes estimates $f_\lambda$ with a "partially diffuse" prior is as exactly the same as spline solution. Some works have been done on discovering the relationship between nonparametric regression and Bayesian estimation. \cite{heckman1991minimax} shows that if $f$ the regression function $\E(y\mid f)$ has unknown prior distribution  $\mathbf{f}=(f(t_1),\ldots,f(t_n))^\top$ lying in a known class of $\Omega$, then the maximum is taken over all priors in $\Omega$ and the minimum is taken over linear estimator of $\mathbf{f}$. \cite{branson2017nonparametric} propose a Gaussian process regression method that acts as a Bayesian analog to local linear regression for sharp regression discontinuity designs. It is no doubt that one of the attractive features of the Bayesian approach is that, in principle, one can solve virtually any statistical decision or inference problem. Particularly, one can provide an accuracy assessment for $\hat{f}=\E (f\mid \mathbf{y})$ using posterior probability regions \cite{cox1993analysis}. 
+
+
+Based on the correspondence, \cite{craven1978smoothing} proposed an generalized cross-validation estimate for the minimizer $f_\lambda$. The estimate $\hat{\lambda}$ is the minimizer of the function where the trace of matrix $A(\lambda)$ in (\ref{crossvalidationmatrixA}) is incorporated. It is also able to establish an optimal convergence property for their estimator when the number of observations in a fixed interval tends to infinity \cite{wecker1983signal}. A high efficient  algorithm to optimize generalized cross-validation and generalized maximum likelihood scores with multiple smoothing parameters via the newton method was proposed by \cite{gu1991minimizing}. This algorithm can also be applied to the maximum likelihood and the restricted maximum  likelihood estimation. The behavior of the optimal regularization parameter in the method of regularization was investigated by \cite{wahba1990optimal}. 
+
+
+
+
+
+
+
 \section{Filtering Methods}
 
-\section{Sequential Monte Carlo Markov Chain Algorithm}
 
+
+As the development of technology of science and real life, the "big data" challenge becomes ubiquitous. Classical methods, such as Markov Chain Monte Carlo (MCMC), are normally suitable and good at handling a batch of data forecasting and analyzing. However, for big data and instant updating data stream, more robust and efficient methods are required. 
+
+
+Alternative approaches, such as Sequential Monte Carlo, for on-line updating and estimating are well studied in scientific literature and quite prevalent in academic research in the last decades. When it embraced with  state space model, which is a very popular class of time series models that have found numerous of applications in fields as diverse as statistics, ecology, econometrics, engineering and environmental sciences \cite{cappe2009inference} \cite{smcmip2011} \cite{elliott1995estimation} \cite{cargnoni1997bayesian}, it allows us to establish complex linear and nonlinear Bayesian estimations in time series patterns \cite{vieira2016online}. 
+
+
+
+
+\section{Sequential Markov Chain Monte Carlo Algorithm}
+
+
+Data assimilation is a sequential process, by which the observations are incorporated with a numerical model describing the evolution of this system throughout the whole process. It is applied in many fields, particularly in weather forecasting and hydrology. The quality of the numerical model determines the accuracy of this system, which requires sequential combined state and parameters inferences. Enormous literature has been done on discussing pure state estimation, however, fewer research is talking about estimating combined state and parameters, particularly in a sequential updating way. 
+
+Sequential Monte Carlo method is well studied in the scientific literature and quite prevalent in academic research in the last decades. It allows us to specify complex, non-linear time series patterns and enables performing real time Bayesian estimations when it is coupled with Dynamic Generalized Linear Models \cite{vieira2016online}. However, model's parameters are unknown in real world application and it is a limit for standard SMC. Extensions to this algorithm have been done by researchers. Kitagawa \cite{kitagawa1998self} proposed a self-organizing filter and augmenting the state vector with unknown parameters. The state and parameters are estimated simultaneously by either a non-Gaussian filter or a particle filter. Liu and West \cite{liu2001combined} proposed an improved particle filter to kill degeneracy, which is a normal issue in static parameters estimation. They are using a kernel smoothing approximation, with a correction factor to account for over-dispersion. Alternatively, Strovik \cite{storvik2002particle} proposed a new filter algorithm by assuming the posterior depends on a set of sufficient statistics, which can be updated recursively. However, this approach only applies to parameters with conjugate priors \cite{stroud2016bayesian}. Particle learning was first introduced in \cite{carvalho2010particle}. Unlike Strovik filter, it is using sufficient statistics solely to estimate parameters and promises to reduce particle impoverishment. These particle like methods are all using more or less sampling and resampling algorithms to update particles recursively. 
+
+Jonathan proposed in \cite{stroud2016bayesian} a SMC algorithm by using ensemble Kalman filter framework for high dimensional space models with observations. Their approach combines information about the parameters from data at different time points in a formal way using Bayesian updating. In \cite{polson2008practical}, the authors rely on a fixed-lag length of data approximation to filtering and sequential parameter learning in a general dynamic state space model. This approach allows for sequential parameter learning where importance sampling has difficulties and avoids degeneracies in particle filtering. A new adaptive Markov Chain Monte Carlo method yields a quick and flexible way for estimating posterior distribution in parameter estimation \cite{haario1999adaptive}. This new Adaptive Proposal method, depends on history data, is introduced to avoid the difficulties of tunning the proposal distribution in Metropolis-Hastings methods. 
+
+
+
+In this paper, I'm proposing an Adaptive Delayed-Acceptance Metropolis-Hastings algorithm to estimate the posterior distribution for combined states and parameters. To keep a higher running efficiency for the algorithm, we suggest cutting off history data but jut using a fixed length of data up to current state, like a sliding window. Once a new observation comes into the data stream, this window shift one step forward with the same length. The efficiency of this algorithm is discussed regarding to tune the best step size in learning process. 
 
 \section{Summary}
 
 
+
+In our case, the velocity data set $v_i$ with some independent Gaussian distributed errors $\varepsilon_i \sim N(0, \frac{\sigma_n^2}{\gamma})$ are used to estimate $f(t)$ simultaneously. $f$ is a linear combination of basis functions, as shown in equation (\ref{introfbasis}), in the meantime, $f'$ is a linear combination of the first derivative of these basis functions
+\begin{equation}
+f'(t) =\sum_{m=1}^{M}\alpha_mh'_m(t).
+\end{equation}
+
+The velocity information  is incorporated into MSE  equation (\ref{intromse}) by the addition of velocity term $(f'(t_i)-v_i)^2$. Then it becomes 
+\begin{equation}\label{mse2}
+\text{MSE}(f,\lambda,\gamma)=\frac{1}{n}\sum_{i=1}^n(f(t_i)-y_i)^2+\frac{\gamma}{n} \sum_{i=1}^n(f'(t_i)-v_i)^2+\lambda \int_{0}^{1}(f''(t))^2dt,
+\end{equation}
+and $\hat{f}$ is the minimizer of the MSE equation (\ref{mse2}).
+
+In the model $y=f(t)+\varepsilon$, it is reasonable to assume that the observed data $y_i$ is Gaussian distribution with mean $f(t_i)$ and variance $\sigma_n^2$. In a similar way, the velocity is estimated as  $v=f'(t)+\frac{\varepsilon}{\gamma}$, where $v_i$ is Gaussian distribution with mean $f'(t_i)$ and variance $\frac{\sigma_n^2}{\gamma}$. Then the joint distribution of $\mathbf{y},\mathbf{v},f(t)$ and $f'(t)$ is normal with zero mean and a covariance matrix, which can be estimated through Gaussian Process Regression.
+
+
+Given a series of such fixes, I want to construct the most likely path taken by the tractor with some smart modeling of the movement. I then want to develop higher level characterizations of the trajectories and apply this to more general problems in curve and object recognition.
 
 
