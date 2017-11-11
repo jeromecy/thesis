@@ -425,6 +425,15 @@
   publisher = {JSTOR}
 }
 
+@INCOLLECTION{cox1982practical,
+  author = {Cox, Maurice G},
+  title = {Practical spline approximation},
+  booktitle = {Topics in Numerical Analysis},
+  publisher = {Springer},
+  year = {1982},
+  pages = {79--112}
+}
+
 @ARTICLE{craven1978smoothing,
   author = {Craven, Peter and Wahba, Grace},
   title = {Smoothing noisy data with spline functions},
@@ -489,6 +498,13 @@
   owner = {zcao},
   publisher = {Elsevier},
   timestamp = {2017.10.23}
+}
+
+@BOOK{dierckx1995curve,
+  title = {Curve and surface fitting with splines},
+  publisher = {Oxford University Press},
+  year = {1995},
+  author = {Dierckx, Paul}
 }
 
 @BOOK{dieudonne2013foundations,
@@ -587,6 +603,15 @@
   year = {2012},
   author = {Durbin, James and Koopman, Siem Jan},
   volume = {38}
+}
+
+@ARTICLE{eilers1996flexible,
+  author = {Eilers, Paul HC and Marx, Brian D},
+  title = {Flexible smoothing with B-splines and penalties},
+  journal = {Statistical science},
+  year = {1996},
+  pages = {89--102},
+  publisher = {JSTOR}
 }
 
 @ARTICLE{einstein1956investigations,
@@ -1861,6 +1886,12 @@
   year = {2016},
   owner = {zcao},
   timestamp = {2017.10.23}
+}
+
+@ARTICLE{syed2011review,
+  author = {Syed, Ali R},
+  title = {A review of cross validation and adaptive model selection},
+  year = {2011}
 }
 
 @ARTICLE{tandeo2011linear,
