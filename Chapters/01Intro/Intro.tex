@@ -57,11 +57,11 @@ However, a parametric approach only captures features contained in the preconcei
 \begin{equation}\label{introSmoothingOb}
 \mbox{RSS}=\sum_{j=1}^{n}\left(  y_j-f(t_j)\right) ^2+\lambda\int_a^b (f^{(m)})^2dt
 \end{equation}
-for pre-specified value $\lambda>0$ \cite{aydin2012smoothing}. In the above equation, the first part is the residual sum squares controlling the lack of fit. The second part is roughness penalty term weighted by a smoothing parameter $\lambda$, which varies from 0 to $+\infty$ and establishes a trade-off between interpolation and straight line. 
+for pre-specified value $\lambda>0$ \cite{aydin2012smoothing}. In the above equation, the first term is the residual sum squares controlling the lack of fit. The second term is the roughness penalty weighted by a smoothing parameter $\lambda$, which varies from $0$ to $+\infty$ and establishes a trade-off between interpolation and straight line in the following way: 
 \begin{align*}
 \begin{cases}
 \lambda = 0  & \mbox{$f$ can be any function that interpolates the data}\\
-\lambda = \infty & \mbox{the simple least squares line fit since no second derivative can be tolerated}\\
+\lambda = +\infty & \mbox{the simple least squares line fit since no second derivative can be tolerated}\\
 \end{cases}
 \end{align*}\cite{esl2009}. 
 So the cost of the equation (\ref{introSmoothingOb}) is determined not only by its goodness-of-fit to the data quantified by the residual sum of squares, but also by its roughness \cite{schwarz2012geodesy}. The motivation of the roughness penalty term is from a formalization of a mechanical device: if a thin piece of flexible wood, called a spline, is bent to the shape of the curve $g$, then the leading term in the strain energy is proportional to $\int f''^2$ \cite{green1993nonparametric}. 
@@ -82,20 +82,32 @@ So the cost of the equation (\ref{introSmoothingOb}) is determined not only by i
 
 \section{Parameter Selection}
 
+As is discussed in the previous section, the determination of an optimum smoothing parameter $\lambda$ in the interval $(0,+\infty)$ was found to be an underlying complication. Various studies for selecting an appropriate smoothing parameter are developed and compared in literatures. 
+
+Craven and Wahba [5], Hardle [8], Hardle, Hall and Marron
+[9], Wahba [26], Hurvich, et al. [11], Eubank [6], Lee and Solo [17], Hastie and Tibshirani
+[10], Schimek [22], Cantoni and Ronchetti [4], Ruppert, Wand and Carroll [21], Lee [15, 16],
+and Kou [12] supplement on the selection of the smoothing parameter
+
+
+
+Almost every technique found in the scientific literature on the reconstruction and trajectory planning problem is based on the optimization of some parameters or some objective function, such as equation (\ref{introSmoothingOb}), \cite{gasparetto2007new}. The most significant optimality criteria are: 
+\begin{itemize}
+\item[1] minimum execution time,
+\item[2] minimum energy (or actuator effort),
+\item[3] minimum jerk.
+\end{itemize}
+Besides the aforementioned approaches, some hybrid optimality criteria have also been proposed (e.g. time energy optimal trajectory planning).
+
+
+
+
 
 Some ways are give to estimate the parameter \cite{wood2000modelling}, \cite{kim2004smoothing}. However, we hope that $\lambda$ could be a piecewise parameter, rather than a constant number, then we will have piecewise penalty functions. \cite{donoho1995wavelet} introduced adaptive splines and a method to calculate piecewise parameters and \cite{liu2010data} give an improved formula for this method . But to get these parameters, we have to compromise to use adaptive smoothing splines. 
 
 
 
 \textbf{Temporally put here }Due to the noise generated from observation units, one can use regression methods to find the best reconstruction returning the smallest sum square errors among all the sequences. Consider a regression model $y_i=f(t_i)+\epsilon_i$, where $a \leq t_1 < \cdots < t_n \leq b$ and $f \in \mathit{C}^2[a,b]$ is an unknown smooth function, $(\epsilon_i)_{i=1}^n \sim N(0,\sigma^2)$ are random errors. In a classical parametric regression, $f$ is assumed having the form $f(x,\beta)$, which is known up to the data estimated parameters $\beta$ \cite{kim2004smoothing}. When $f(x,\beta)$ is linear in $\beta$, we will have a standard linear model. 
-
-Almost every technique found in the scientific literature on the trajectory planning problem is based on the optimization of some parameter or some objective function \cite{gasparetto2007new}. The most significant optimality criteria are: 
-\begin{itemize}
-\item (1) minimum execution time,
-\item (2) minimum energy (or actuator effort),
-\item (3) minimum jerk.
-\end{itemize}
-Besides the aforementioned approaches, some hybrid optimality criteria have also been proposed (e.g. time energy optimal trajectory planning).
 
 
 Similar to the conventional smoothing spline problem, one have to to choose the penalty function $\lambda(t)$. The fundamental idea of nonparametric smoothing is to let the data choose the amount of smoothness, which consequently decides the model complexity \cite{gu1998model}. Most methods focus on data driven criteria, such as cross validation (CV), generalized cross validation (GCV) \cite{craven1978smoothing} and generalized maximum likelihood (GML) \cite{wahba1985comparison}. A new challenge is posed that the smoothing parameter becomes a function and is varying in domains. The structure of this penalty function controls the complexity on each domain and the whole final model. Liu and Guo proposed to approximate the penalty function with an indicator and extended the generalized likelihood to the adaptive smoothing spline \cite{liu2010data}.
