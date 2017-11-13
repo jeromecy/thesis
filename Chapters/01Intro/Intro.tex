@@ -165,110 +165,52 @@ Smoothing spline algorithms have several advantages in inferring and characteriz
 The word "filtering" refers to the methods for estimating the state of a time-varying system, which is indirectly observed through noisy measurements. A Bayes filter is a general probabilistic approach to infer an unknown probability density function recursively over time using incoming measurements and a mathematical process model. And an optimal Bayesian filtering is using Bayesian way of formulating optimal filtering, which meets some statistical criteria, such as least mean squired errors, maximum likelihood approximation and so on \cite{chen2003bayesian} \cite{sarkka2013bayesian}.  
 
 
-In a linear system, the optimal Bayesian solution coincides with the least squares solution. The successful optimal solution was given by \cite{kalman1960new},  known as Kalman filter.  
-
-The filtering problem is to maximize the posterior $p(x_t\mid y_{1:t})$. By assuming the current state $x_t$ only depends on the previous one step $x_{t-1}$, the joint distribution is 
+In a linear system, the optimal Bayesian solution coincides with the least squares solution. The successful optimal solution was given by \cite{kalman1960new},  known as Kalman filter. Consider the model 
+\begin{align*}
+\begin{array}{cccccccccc}\cdots &\to &x_{t-1}&\to &x_{t}&\to &x_{t+1}&\to &\cdots &{\text{truth}}\\ \cdots &&\downarrow &&\downarrow &&\downarrow &&\cdots &\\ \cdots&&y_{t-1}&&y_{t}&&y_{t+1}&&\cdots &{\text{observation}}\end{array}
+\end{align*}
+in which $x_t=F(x_{t-1})+\varepsilon_x$ is the true hidden state of the system and $y_t=G(x_t)+\varepsilon_y$ is the observed measurement. To estimate the filtering state $x_t$ from $y_{1:t}=\{y_1,\ldots,y_t\}$, Bayesian wants to maximize the posterior $p(x_t\mid y_{1:t})$ by marginalizing out all the previous measurements. Starting from the joint distribution of 
 \begin{equation*}
 p(x_t,x_{t-1},y_{1:t}) = p(y_t\mid x_t)p(x_t\mid x_{t-1})p(x_{t-1}\mid y_{1:t-1})p(y_{1:t-1}),
 \end{equation*}
-and $p(y_t\mid x_t)\sim N(H_tx_t,R_t)$. Supposing the expectation and variance, noted as $\hat{x}_{t-1}$ and $S_{t-1}$, of $x_{t-1}$ are known from the previous step, then we have
+and $p(y_t\mid x_t)\sim N(H_tx_t,R_t)$, in Kalman filter, by supposing the expectation $\hat{x}_{t-1}$ and variance $S_{t-1}$ of $x_{t-1}$ are known, one can find that 
 \begin{equation*}
-\int p(x_t\mid x_{t-1})p(x_{t-1}\mid \hat{x}_{t-1},S_{t-1})dx_{t-1} = N(x_t\mid \hat{x}_t,S_t),
+\int p(x_t\mid x_{t-1})p(x_{t-1}\mid \hat{x}_{t-1},S_{t-1})dx_{t-1} = N(x_t\mid \hat{x}_t,S_t), 
 \end{equation*}
-where 
-\begin{align}
-\hat{x}_t &=F\hat{x}_{t-1}\\
-S_t &=FS_{t-1}F^\top + Q_t.
-\end{align}
-More specifically, the log likelihood function is written as
+where $\hat{x}_t=F\hat{x}_{t-1}$ and $S_t=FS_{t-1}F^\top + Q_t$. More specifically, the log likelihood function is written as
 \begin{align*}
-\log p(x_t\mid y_{1:t}) &= \log p(y_t\mid x_t) + \log p(x_t\mid \hat{x}_{t-1}) + const\\
-                          &=\frac{1}{2}(y_t-Hx_t)^2-\frac{1}{2}(x_t-\hat{x}_{t-1})^2+const.
+\log p(x_t\mid y_{1:t}) &\propto \log p(y_t\mid x_t) + \log p(x_t\mid \hat{x}_{t-1}) \\% + const\\
+                          &=\frac{1}{2}(y_t-Gx_t)^2-\frac{1}{2}(x_t-\hat{x}_{t-1})^2.  %+const.
 \end{align*} 
 The solution to the above equation is
 \begin{equation*}
-\hat{x}_t = \left(H^\top R^{-1}H+S_{t-1}^{-1}\right)^{-1}\left( H^\top R_t^{-1}y_t+S_{t-1}^{-1}\hat{x}_{t-1} \right).
+\hat{x}_t = \left(G^\top R^{-1}G+S_{t-1}^{-1}\right)^{-1}\left( G^\top R_t^{-1}y_t+S_{t-1}^{-1}\hat{x}_{t-1} \right).
 \end{equation*}
-Additionally, one can get $S_t^{-1} = H^\top R_t^{-1}H+S_{t-1}^{-1}$.The recursive estimation of covariance matrix is
-\begin{equation}
-S_t = S_{t-1} - K_t HS_{t-1},
-\end{equation}
-where $K_t$ is the gain matrix and in the form of
-\begin{equation}
-K_t = S_{t-1} H^\top (R_t +HS_{t-1}H^\top)^{-1}.
-\end{equation}
-The recursive estimation is 
-\begin{equation}\label{estimation}
-\hat{x}_t = \hat{x}_{t-1}+K_t(y_t-H\hat{x}_{t-1}).
+Additionally, by setting $S_t^{-1} = G^\top R_t^{-1}G+S_{t-1}^{-1}$, the recursive estimation of covariance matrix is $S_t = S_{t-1} - K_t GS_{t-1}$, 
+and $K_t = S_{t-1} G^\top (R_t +GS_{t-1}G^\top)^{-1}$ is named Kalman gain matrix. Consequently, the recursive estimation is 
+\begin{equation}\label{KalmanEstimation}
+\hat{x}_t = \hat{x}_{t-1}+K_t(y_t-G\hat{x}_{t-1}).
 \end{equation}
 
-Kalman Filter has limitation that it does not apply to general non-linear model and non-Gaussian distributions.  For a non-linear system, one can use unscented Kalman filter and particle filter. The idea of an unscented Kalman filter is to create a normal distribution that approximates the result of a non-linear transformation by seeing what happens to a few carefully chosen points. The idea of particle filtering is to randomly generate a cloud of points and push these points through the non-linear transformation.
+Moreover, compared with filtering distribution $p(x_t\mid y_{1:t})$, the prediction distribution is trying to find the future state $x_{t+n}$ after $n$ steps from current state, which will be $p(x_{t+n}\mid y_{1:t})$, and the smoothing distribution is to find a specific state in the past steps, which is $p(x_k\mid y_{1:t})$ and $k<t$. 
 
 
+Kalman Filter has limitation that it does not apply to general non-linear model and non-Gaussian distributions. For a non-linear system, one can use unscented Kalman filter \cite{wan2000unscented} and Monte Carlo filter \cite{chen2003bayesian}. The idea of an unscented Kalman filter is to create a normal distribution that approximates the result of a non-linear transformation by seeing what happens to a few carefully chosen points. It is a straightforward extension of the unscented transformation to the recursive estimation in equation (\ref{KalmanEstimation}), where the state random variable is redefined as the concatenation of the original state and noise variables. 
 
+Monte Carlo filter is a class of Monte Carlo approaches. The power of these approaches is that they can numerically and efficiently handle integration problems. 
+Sequential Monte Carlo method is using Monte Carlo approaches to estimate and compute recursively. One of the attractive merits of sequential Monte Carlo approaches lies in the fact that they allow on-line estimation by combining the powerful Monte Carlo sampling methods with Bayesian inference, at an expense of reasonable computational cost \cite{chen2003bayesian}. One of the most popular methods is particle filter, which randomly generates a cloud of points and push these points through the non-linear transformation. 
 
-
-
-Nowadays, Bayesian filtering has become a broad topic involving many scientific areas that a comprehensive survey and detailed treatment seems crucial to cater the ever growing demands of understanding this important field for many novices, though it is noticed by the author that in the literature there exist a number of excellent tutorial papers on particle filters and Monte Carlo filters \cite{chen2003bayesian} \cite{doucet2000sequential} \cite{doucet2000rao} \cite{chen2012monte}.  
- 
-
-
-MCMC filtering is one leaf in the Bayesian filtering tree. 
-
-
-One of the attractive merits of sequential Monte Carlo approaches lies in the fact that the allow on-line estimation by combining the powerful Monte Carlo sampling methods with Bayesian inference, at an expense of reasonable computational cost \cite{chen2003bayesian}.  
-
-
-
-\subsection*{Kalman Filter}
-
-
-\subsection*{Unscented Kalman Filter}
-
-The unscented transformation is a method for calculating the statistics of a random variable which undergoes a nonlinear transformation. Consider propagating a random variable $x$ with dimension $L$ through a nonlinear function $y=f(x)$. Assume $x$ has mean $\bar{x}$ and covariance $P_x$. To calculate the statistics of $y$, we form a matrix $X$ of $2L+1$ sigma vectors $X_i$ according to the following:
-\begin{equation}\label{UT}
-\begin{split}
-X_0 &= \bar{x},\\
-X_i &= \bar{x} + \left(\sqrt{(L+\lambda)P_x}\right)_i, \mbox{    } i=1,\cdots, L, \\
-X_i &= \bar{x} - \left(\sqrt{(L+\lambda)P_x}\right)_i,  \mbox{    } i=L+1,\cdots, 2L,
-\end{split}
-\end{equation}
-where $\lambda = \alpha^2(L+\kappa)-L$ is a scaling parameter. The constant $\alpha$ determines the spread of the sigma points around $\bar{x}$ and is usually set to a small positive value $(10^{-4}\leq \alpha \leq 1)$. The constant $\kappa$ is a secondary scaling parameter, which is usually set to $3-L$. These sigma vectors are propagated through the nonlinear function
-\begin{equation*}
-Y_i = f(X_i), i=0, \cdots, 2L
-\end{equation*}
-and the mean and covariance for $y$ are approximated using a weighted sample mean and covariance of the posterior sigma points
+Suppose we can draw some particles $x_t^{(1)}, \ldots, x_t^{(N)}$ from the target probability distribution function $q(x)$, then these particles are used to estimate the expectation and variance of $f(x)$. The posterior distribution or density is empirically represented by a weighted sum of these samples $x_t^{(1)}, \ldots, x_t^{(N)}$ by 
 \begin{align*}
-\bar{y} &\approx \sum_{i=0}^{2L}W_i^{(m)}Y_i,\\
-P_y &\approx \sum_{i=0}^{2L}W_i^{(c)}(Y_i-\bar{y})(Y_i-\bar{y})^\top,
+\hat{p}(x_t\mid y_{1:t})=\frac{1}{N}\sum_{i=1}^N\delta (x_t-x_t^{(i)})\approx p(x_t\mid y_{1:t}).
 \end{align*}
-with weights $W_i$ given by
+When $N$ is sufficiently large, $\hat{p}(x_t\mid y_{1:t})$ approximates the true posterior $p(x_t\mid y_{1:t})$. By this approximation, the filtering problem becomes to get the expectation of current status
 \begin{align*}
-W_0^{(m)} &=\frac{\lambda}{L+\lambda},\\
-W_0^{(c)} &=\frac{\lambda}{L+\lambda}+1-\alpha^2+\beta,\\
-W_i^{(m)} &=W_i^{(c)} = \frac{1}{2(L+\lambda)}, i=1,\cdots, 2L,
+\E(f(x_t)) &\approx \frac{1}{N}\sum_{i=1}^Nf(x_t^{(i)}).
 \end{align*}
-where, for Gaussian distribution, $\beta=2$ is optimal.
-
-The unscented Kalman filter is a straightforward extension of the unscented transformation to the recursive estimation in equation (\ref{estimation}), where the state random variable is redefined as the concatenation of the original state and noise variables. 
-
-\subsection*{Particle Filter}
-
-Suppose the particles $x_1, \cdots, x_N$ are drawn from the target pdf $q(x)$
-\begin{equation}\label{sampling}
-x_t^{(i)} \sim q(x_t \mid  y_{1:t}), i = 1, \cdots, N.
-\end{equation}
-Then these particles are used to estimate the expectation and variance of $f(x)$. The posterior distribution or density is empirically represented by a weighted sum of samples $x_1, \cdots, x_N$ 
+The expectation is the mean of the status of all particles $x_t^{(1)}, \ldots, x_t^{(N)}$. Monte Carlo method helps us to draw samples $\{x_t^{(i)}\}_{i=1}^N$ from $q(x_t\mid y_{1:t})$ and get their expectation, which approximate by
 \begin{align*}
-\hat{p}(x_k\mid y_{1:t})=\frac{1}{N}\sum_{i=1}^N\delta (x_k-x_k^{(i)})\approx p(x_k\mid y_{1:t}).
-\end{align*}
-When $N$ is sufficiently large, $\hat{p}(x_k\mid y_{1:t})$ approximates the true posterior $p(x_k\mid y_{1:t})$. By this approximation, the filtering problem becomes to get the expectation of current status
-\begin{align*}
-E(f(x_k)) &\approx \frac{1}{N}\sum_{i=1}^Nf(x_k^{(i)}).
-\end{align*}
-The expectation is the mean of the status of all particles $x_1, \cdots, x_N$. Monte Carlo method helps us to draw samples $\{x_t^{(i)}\}_{i=1}^N$ from $q(x_t\mid y_{1:t})$ and get their expectation, which approximate by
-\begin{align*}
-E(f(x_t)) &\approx \sum_{i=1}^{N} \tilde{W}_t(x_t^{(i)})f(x_t^{(i)}),
+\E(f(x_t)) &\approx \sum_{i=1}^{N} \tilde{W}_t(x_t^{(i)})f(x_t^{(i)}),
 \end{align*}
 where $\tilde{W}_t(x_t^{(i)}) = \frac{ W_t(x_t^{(i)})}{\sum_{i=1}^NW_t(x_t^{(i)})}$ is factorized weight. Each particles has its own weighted value, so the expectation is a weighted mean. A smarter way is to update $W_t^{(i)}$ recursively in the form of
 \begin{align*}
@@ -284,28 +226,13 @@ After re-sampling process, it becomes
 \end{align*}
 where $n_i$ represents how many times the new particles $x_t^{(j)}$ were duplicated from $x_t^{(i)}$. 
 
-\subsection*{Unscented Particle Filter}
 
-The effectiveness of the approximation of particle filter depends on how close the proposal distribution is to the true posterior distribution. An improvement in the choice of proposal distribution over the simple transition prior, which also address the problem of sample depletion, can be accomplished by moving the particles towards the regions of high likelihood, based on the most recent observations $y_t$. An effective approach to accomplish this is to use an UKF generated Gaussian approximation to the optimal proposal. The sampling step (\ref{sampling}) is replaced with the UKF update on page 262 of reference 2.
-
-All other steps in the particle filter formulation remain unchanged.
-
-%For $i = 1, \cdots, N$, update the prior $t-1$ distribution for each particle with the UKF:
-%\begin{align*}
-%&\mbox{Calculate sigma points:}\\
-%& X_{t-1}^{(i)\alpha}=[ \bar{x}_{t-1}^{(i)\alpha}, \bar{x}_{t-1}^{(i)\alpha}+\gamma\sqrt{P_{t-1}^{(i)\alpha}}, \bar{x}_{t-1}^{(i)\alpha}-\gamma\sqrt{P_{t-1}^{(i)\alpha}} ] \\
-%&\mbox{Propagate particle into future (time update)}:\\
-%& X_{t\mid t-1}^{(i)x}=F(X_{t-1}^{(i)x},u_t,_{t-1}^{(i)v}).
-%\end{align*}
+However, this sampling and re-sampling methods may cause samples degeneracy, in which way the samples are not representative. The improvements of particle filter's performance have been devoted by \cite{carpenter1999improved}, \cite{godsill2001maximum}, \cite{stavropoulos2001improved}, \cite{smcmip2011}. 
 
 
-\begin{itemize}
-\item 1. J. Hua. Adaptive filters: LMS, RLS, Kalman filter. (2013)
-\item 2. S. Haykin. Kalman Filtering and Neural Networks. (2001)
-\item 3. N. J. Gordon. Beyond the Kalman Filter:Particle Filters for tracking applications. (2004)
-\item 4. Van Der Merwe, Rudolph, et al. The unscented particle filter. (2000)
-\end{itemize}
-
+Nowadays, Bayesian filtering has become a broad topic involving many scientific areas that a comprehensive survey and detailed treatment seems crucial to cater the ever growing demands of understanding this important field for many novices, though it is noticed by the author that in the literature there exist a number of excellent tutorial papers on particle filters and Monte Carlo filters \cite{chen2003bayesian} \cite{doucet2000sequential} \cite{doucet2000rao} \cite{chen2012monte}.  
+ 
+ 
 
 \section{Outline of Thesis}
 

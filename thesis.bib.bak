@@ -339,6 +339,17 @@
   timestamp = {2017.10.27}
 }
 
+@ARTICLE{carpenter1999improved,
+  author = {Carpenter, James and Clifford, Peter and Fearnhead, Paul},
+  title = {Improved particle filter for nonlinear problems},
+  journal = {IEE Proceedings-Radar, Sonar and Navigation},
+  year = {1999},
+  volume = {146},
+  pages = {2--7},
+  number = {1},
+  publisher = {IET}
+}
+
 @ARTICLE{carvalho2010particle,
   author = {Carvalho, Carlos M and Johannes, Michael S and Lopes, Hedibert F
 	and Polson, Nicholas G and others},
@@ -868,6 +879,18 @@
   title = {Spline-based Trajectory Optimization for Autonomous Vehicles with
 	Ackerman drive},
   year = {2010}
+}
+
+@ARTICLE{godsill2001maximum,
+  author = {Godsill, Simon and Doucet, Arnaud and West, Mike},
+  title = {Maximum a posteriori sequence estimation using Monte Carlo particle
+	filters},
+  journal = {Annals of the Institute of Statistical Mathematics},
+  year = {2001},
+  volume = {53},
+  pages = {82--96},
+  number = {1},
+  publisher = {Springer}
 }
 
 @ARTICLE{golightly2006bayesian,
@@ -1771,6 +1794,14 @@
   year = {2003},
   author = {Ruppert, David and Wand, Matt P and Carroll, Raymond J},
   number = {12}
+}
+
+@BOOK{sarkka2013bayesian,
+  title = {Bayesian filtering and smoothing},
+  publisher = {Cambridge University Press},
+  year = {2013},
+  author = {S{\"a}rkk{\"a}, Simo},
+  volume = {3}
 }
 
 @ARTICLE{schoenberg1964spline,
