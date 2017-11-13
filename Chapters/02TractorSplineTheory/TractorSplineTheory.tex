@@ -61,7 +61,7 @@ In this chapter, we propose an adaptive smoothing spline method based on Hermite
 
 %Errors comes from the GPS units and individuals' behaviors, which bring unreliable data and less precise results. %\cite{castro2006geometric}
 
-\section{Tractor spline}\label{ChapterTractorSpline}
+\section{Tractor spline}\label{SectionTractorSpline}
 
 \subsection{Objective Function}
 
@@ -358,7 +358,7 @@ For calculating consideration, we use $n=1024$ \cite{nason2010wavelet}. Because 
 \begin{equation}
 y_{i+1}=y_i+(v_i+v_{i+1})\frac{t_{i+1}-ti}{2}
 \end{equation}
-to calculate position information, we can easily generate simulated data. Then we add some i.i.d. $\epsilon \sim N(0,1)$ with SNR 7 noises on it. For wavelet transform reconstructions, we use the threshold policy of \textit{sure} and \textit{BayesThresh} with levels $j=4, \ldots, 9$, see  \cite{donoho1995adapting} and \cite{abramovich1998wavelet}. A semi-parametric regression model with spatially adaptive penalized splines (P-spline) is added in comparison, see \cite{krivobokova2008fast} \cite{ruppert2003semiparametric}.
+to calculate position information, we can easily generate simulated data. Then we add some \iid $\epsilon \sim N(0,1)$ with SNR 7 noises on it. For wavelet transform reconstructions, we use the threshold policy of \textit{sure} and \textit{BayesThresh} with levels $j=4, \ldots, 9$, see  \cite{donoho1995adapting} and \cite{abramovich1998wavelet}. A semi-parametric regression model with spatially adaptive penalized splines (P-spline) is added in comparison, see \cite{krivobokova2008fast} \cite{ruppert2003semiparametric}.
 
 For Tractor spline, we have two parameters $\lambda$ and $\gamma$ to optimize. To evaluate the performance of the velocity term in objective function (\ref{tractorsplineObjective}) and the adjusted penalty term in (\ref{adjustedpenalty}), the parameter $\gamma$ is set as 0 in one reconstruction of Tractor spline, whose objective function and solution become
 \begin{equation}\label{ofgamma0}

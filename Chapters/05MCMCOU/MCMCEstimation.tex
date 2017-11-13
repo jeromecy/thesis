@@ -404,7 +404,7 @@ where $X_0$ is assumed to be distributed according to $\pi$. Because central lim
 \begin{equation*}
 e_g(\sigma)\propto \left( \mbox{Var}_\pi (g(X))\tau_g  \right)^{-1}. 
 \end{equation*}
-However, the disadvantage of their method is that the measurement of efficiency is highly dependent on the function $g$. Instead, an alternative approach is using Effective Sample Size (ESS) \cite{kass1998markov}\cite{robert2004monte}. Given a Markov chain having $n$ iterations, the ESS measures the size of i.i.d. samples with the same standard error, which is defined in \cite{gong2016practical} in the following form of  
+However, the disadvantage of their method is that the measurement of efficiency is highly dependent on the function $g$. Instead, an alternative approach is using Effective Sample Size (ESS) \cite{kass1998markov}\cite{robert2004monte}. Given a Markov chain having $n$ iterations, the ESS measures the size of \iid . samples with the same standard error, which is defined in \cite{gong2016practical} in the following form of  
 \begin{equation*}
 \mbox{ESS} =  \frac{n}{1+2\sum_{k=1}^{\infty}\rho_k(X)} \approxeq \frac{n}{1+2\sum_{k=1}^{k_\mathtt{cut}}\rho_k(X)}= \frac{n}{\tau}, 
 \end{equation*}
@@ -447,7 +447,7 @@ If the time steps are even spaced, the model can be written as a simple linear m
 y_t\mid x_t      &\sim N(x_t,\sigma^2) \\
 x_t\mid x_{t-1} &\sim N(\phi x_{t-1},\tau^2),
 \end{align*}
-where $\sigma$ and $\tau$ are i.i.d errors occurring in processes and $\phi$ is a static process parameter in forward map. An initial value $x_0\sim N(0,L)$ is known. 
+where $\sigma$ and $\tau$ are \iid  errors occurring in processes and $\phi$ is a static process parameter in forward map. An initial value $x_0\sim N(0,L)$ is known. 
 
 
 To get the joint distribution for $x_{0:t}$ and $y_{1:t}$

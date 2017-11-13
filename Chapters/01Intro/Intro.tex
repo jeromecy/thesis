@@ -50,7 +50,7 @@ f(t)=d_i(t-t_i)^3+c_i(t-t_i)^2+b_i(t-t_i)+a_i,
 for given coefficients $d_i, c_i, b_i$ and $a_i$, where $t_i\leq t\leq t_{i+1}$, $i=1,2,\ldots,n$. $f$ is a cubic spline on $[a,b]$ if (1) on each intervals $f$ is a polynomial; (2) the polynomial pieces fit together at knots $t_i$ in such a way that $f$ itself and its first and second derivatives are continuous at each $t_i$. If the second and third derivatives of $f$ are zero at 0 and 1, $f$ is said to be a natural cubic spline \cite{green1993nonparametric}. 
 
 
-To find the best estimation $\hat{f}(t)$ goes through observation $y_i$, $i=1,\ldots,n$, one can use regression methods returning the smallest sum square errors among all the sequences. Consider a model $y_i=f(t_i)+\varepsilon_i$ with random errors $(\varepsilon_i)_{i=1}^n \sim N(0,\sigma^2)$ in space $\mathit{C}^m[a,b]$, classical parametric regression assumes that $f$ has the form $f(t,\beta)$, which is known up to the data estimated parameters $\beta$ \cite{kim2004smoothing}. When $f(t,\beta)$ is linear in $\beta$, we will have a standard linear model. 
+To find the best estimation $\hat{f}(t)$ goes through observation $y_i$, $i=1,\ldots,n$, one can use regression methods returning the least sum square errors among all the sequences. Consider a model $y_i=f(t_i)+\varepsilon_i$ with random errors $(\varepsilon_i)_{i=1}^n \sim N(0,\sigma^2)$ in space $\mathit{C}^m[a,b]$, classical parametric regression assumes that $f$ has the form $f(t,\beta)$, which is known up to the data estimated parameters $\beta$ \cite{kim2004smoothing}. When $f(t,\beta)$ is linear in $\beta$, we will have a standard linear model. 
 
 
 However, a parametric approach only captures features contained in the preconceived class of functions and increases model bias \cite{yao2005functional}. To avoid this, nonparametric methods have been developed. Rather than giving specified parameters, it is desired to reconstruct $f$ from the data $y(t_i)\equiv y_i$ itself  \cite{craven1978smoothing}. The estimates of polynomial smoothing splines appear as a solution to the following minimization problem: find $\hat{f} \in \mathit{C}^m[a,b]$ that minimizes the penalized residual sum of squares: 
@@ -82,120 +82,238 @@ So the cost of the equation (\ref{introSmoothingOb}) is determined not only by i
 
 \section{Parameter Selection}
 
-As is discussed in the previous section, the determination of an optimum smoothing parameter $\lambda$ in the interval $(0,+\infty)$ was found to be an underlying complication. Various studies for selecting an appropriate smoothing parameter are developed and compared in literatures. 
-
-Craven and Wahba [5], Hardle [8], Hardle, Hall and Marron
-[9], Wahba [26], Hurvich, et al. [11], Eubank [6], Lee and Solo [17], Hastie and Tibshirani
-[10], Schimek [22], Cantoni and Ronchetti [4], Ruppert, Wand and Carroll [21], Lee [15, 16],
-and Kou [12] supplement on the selection of the smoothing parameter
+As discussed in the previous section, the determination of an optimum smoothing parameter $\lambda$ in the interval $(0,+\infty)$ was found to be an underlying complication and the fundamental idea of nonparametric smoothing is to let the data choose the amount of smoothness, which consequently decides the model complexity \cite{gu1998model}. Various studies for selecting an appropriate smoothing parameter are developed and compared in literatures. Most methods focus on data driven criteria, such as cross validation (CV), generalized cross-validation (GCV) \cite{craven1978smoothing} and generalized maximum likelihood (GML) \cite{wahba1985comparison} and recently developed methods, such as improved Akaike information criterion (AIC) \cite{hurvich1998smoothing}, exact risk approaches \cite{wand1997exact} and so on. See \eg \cite{craven1978smoothing}, \cite{hardle1988far}, \cite{hardle1990applied}, \cite{wahba1990spline},  \cite{green1993nonparametric}, \cite{cantoni2001resistant} \cite{aydin2013smoothing}.  
 
 
+A classical parameter selection method is called cross-validation (CV). The idea behind this method can be traced back to 1930s \cite{larson1931shrinkage}. Because in most applications, only a limited amount of data is available. Thus an idea is to split this dataset into two sub groups, one of which is used for training the model and the other one is used to evaluating its statistical performance. The sample used in evaluation is considered as "new data" as long as data are \iid. 
 
-Almost every technique found in the scientific literature on the reconstruction and trajectory planning problem is based on the optimization of some parameters or some objective function, such as equation (\ref{introSmoothingOb}), \cite{gasparetto2007new}. The most significant optimality criteria are: 
+A single data split yields a validation estimate of the risk, and averaging over several splits yields a cross-validation estimate \cite{arlot2010survey}. Because of the assumption that data are identically distributed, and training and validation samples are independent, CV methods are widely use in parameter selection and model evaluation. 
+
+
+For example, a $k$-fold CV splits the data into $k$ roughly equal-sized parts. For the $k$th part, we fit the model to the other $k-1$ parts
+of the data, and calculate the prediction error of the fitted model when
+predicting the $k$th part of the data. A detailed procedure is given by \cite{wahba1975completely}: suppose we have $n$ paired data $(t_1,y_1), \ldots, (t_n,y_n)$. Run a $k$-fold CV according to the following process 
 \begin{itemize}
-\item[1] minimum execution time,
-\item[2] minimum energy (or actuator effort),
-\item[3] minimum jerk.
-\end{itemize}
-Besides the aforementioned approaches, some hybrid optimality criteria have also been proposed (e.g. time energy optimal trajectory planning).
-
-
-
-
-
-Some ways are give to estimate the parameter \cite{wood2000modelling}, \cite{kim2004smoothing}. However, we hope that $\lambda$ could be a piecewise parameter, rather than a constant number, then we will have piecewise penalty functions. \cite{donoho1995wavelet} introduced adaptive splines and a method to calculate piecewise parameters and \cite{liu2010data} give an improved formula for this method . But to get these parameters, we have to compromise to use adaptive smoothing splines. 
-
-
-
-\textbf{Temporally put here }Due to the noise generated from observation units, one can use regression methods to find the best reconstruction returning the smallest sum square errors among all the sequences. Consider a regression model $y_i=f(t_i)+\epsilon_i$, where $a \leq t_1 < \cdots < t_n \leq b$ and $f \in \mathit{C}^2[a,b]$ is an unknown smooth function, $(\epsilon_i)_{i=1}^n \sim N(0,\sigma^2)$ are random errors. In a classical parametric regression, $f$ is assumed having the form $f(x,\beta)$, which is known up to the data estimated parameters $\beta$ \cite{kim2004smoothing}. When $f(x,\beta)$ is linear in $\beta$, we will have a standard linear model. 
-
-
-Similar to the conventional smoothing spline problem, one have to to choose the penalty function $\lambda(t)$. The fundamental idea of nonparametric smoothing is to let the data choose the amount of smoothness, which consequently decides the model complexity \cite{gu1998model}. Most methods focus on data driven criteria, such as cross validation (CV), generalized cross validation (GCV) \cite{craven1978smoothing} and generalized maximum likelihood (GML) \cite{wahba1985comparison}. A new challenge is posed that the smoothing parameter becomes a function and is varying in domains. The structure of this penalty function controls the complexity on each domain and the whole final model. Liu and Guo proposed to approximate the penalty function with an indicator and extended the generalized likelihood to the adaptive smoothing spline \cite{liu2010data}.
-
-
-
-
-
-
-\subsection*{Frequentist Algorithm}
-
-Based on the procedure given by \cite{wahba1975completely}, we  follow the improved steps to calculate a K-fold cross validation. 
-
-Step 1. Remove the first data $t_1$ and last date $t_n$ from the dataset.
-
-Step 2. Divide dataset into k groups:
+\item 1. Remove the first data $t_1$ and last date $t_n$ from the dataset.
+\item 2. Split the rest data $t_2,\ldots,t_{n-1}$ into $k$ groups by:
 \begin{align*}
-& \mbox{Group 1}: t_2, t_{2+k}, \cdots \\
-& \mbox{Group 2}: t_3, t_{3+k}, \cdots \\
+\mbox{Group 1} &: t_2, t_{2+k}, \cdots \\
+%& \mbox{Group 2}: t_3, t_{3+k}, \cdots \\
 & \vdots \\
-& \mbox{Group k}: t_{k+1}, t_{2k+1}, \cdots
+ \mbox{Group k} &: t_{k+1}, t_{2k+1}, \cdots
 \end{align*}
+\item 3. Guess a value $\lambda^*$. 
+\item 4. Delete the first group of data. Fit a smoothing spline to the first data $(t_1,y_t)$, the rest groups of dataset and the last data $(t_n,y_n)$ with $\lambda^*$ in step 3. Compute the sum of squared deviations of this smoothing spline from the deleted data points. 
+\item 5. Delete instead the second group of data. Fit a smoothing spline to the remaining data with  $\lambda^*$. Compute the sum of squared deviations of the spline from deleted data points.
+\item 6. Repeat Step 5 for the 3rd, 4th, $\cdots$, $k$th group of data.
+\item 7. Add the sums of squared deviations from steps 4 to 6 and divide by $k$ to achieve a cross-validation score of $\lambda^*$.
+\item 8. Vary  $\lambda$ systematically and repeat steps 4-7 until CV shows a minimum.
+\end{itemize}
+Mathematically, we denote the CV score as 
+\begin{equation*}
+\mbox{CV}(\hat{f},\lambda) = \frac{1}{n}\sum_i^n (y_i -\hat{f}^{-k(i)}(t_i,\lambda)^2,
+\end{equation*}
+where $\hat{f}^{-k}(t)$ denotes the fitted function computed with the $k$th part of the data removed. Typical choices for $k$ are 5 and 10 \cite{esl2009}.  The function $\mbox{CV}(\hat{f},\lambda)$ provides an estimate of the test error curve, and we find the tuning parameter $\lambda$ that minimizes it will be the optimal solution. 
+
+A special case of $k$-fold CV is setting $k=n$, which is known as leave-one-out CV. In this scenario, the CV function takes each of the data out and calculate the errors between $\hat{f}^{(-i)}$ and the remaining $n-1$ data. In fact, the property that by taking one point out doesn't affect the estimation of a smoothing spline allows us to implement CV methods without hesitation. 
+
+As an improvement of CV, a GCV algorithm was proposed to calculate the trace of the estimation matrix $A(\lambda)$ instead of calculating individual element for linear fitting under squared error loss, in which way it provides further computational savings. Suppose we have $\hat{f}=A(\lambda)y$ with a given $\lambda$, for many linear fittings, the CV score is 
+\begin{equation*}
+\mbox{CV} = \frac{1}{n}\sum_{i=1}^{n} \left( y_i - \hat{f}^{(-i)}(t_i)\right)^2 = \frac{1}{n} \sum_{i=1}^{n}\left( \frac{y_i-\hat{f}(t_i)}{1-A_{ii}}  \right)^2, 
+\end{equation*}
+where $A_{ii}$ is the $i$th diagonal element of $A(\lambda)$. Then the GCV approximation score is 
+\begin{equation*}
+\mbox{GCV} =\frac{1}{n} \sum_{i=1}^{n}\left( \frac{y_i-\hat{f}(t_i)}{1-\tr(A)/n}  \right)^2.
+\end{equation*}
+In smoothing problems, GCV can also alleviate the tendency of cross-validation to under-smooth \cite{esl2009}. 
 
 
-Step 3. Guess values of $\lambda_{down}, \lambda_{up}$ and $\gamma$.
-
-Step 4. Delete the first group of data. Fit a smoothing spline to the first data, the rest groups of dataset and the last data, with  $\lambda_{down}, \lambda_{up}$ and $\gamma$ in step 3. Compute the sum of squared deviations of this smoothing spline from the deleted data points.
-
-Step 5. Delete instead the second group of data. Fit a smoothing spline to the remaining data with  $\lambda_{down}, \lambda_{up}$ and $\gamma$. Compute the sum of squared deviations of the spline from deleted data points.
-
-Step 6. Repeat Step 5 for the 3rd, 4th, $\cdots$, $k$th group of data.
-
-Step 7. Add the sums of squared deviations from steps 4 to 6 and divide by $k$. This is the cross validation score of three parameters  $\lambda_{down}, \lambda_{up}$ and $\gamma$.
-
-Step 8. Vary  $\lambda_{down}, \lambda_{up}$ and $\gamma$ systematically and repeat steps 4-7 until CV shows a minimum.
+%Almost every technique found in the scientific literature on the reconstruction and trajectory planning problem is based on the optimization of some parameters or some objective function, such as equation (\ref{introSmoothingOb}), \cite{gasparetto2007new}. The most significant optimality criteria are: 
+%\begin{itemize}
+%\item[1] minimum execution time,
+%\item[2] minimum energy (or actuator effort),
+%\item[3] minimum jerk.
+%\end{itemize}
+%Besides the aforementioned approaches, some hybrid optimality criteria have also been proposed (e.g. time energy optimal trajectory planning).
+%
 
 
-
-\subsection{Bayesian Algorithm}
-
-
-
-
-
-
-\section{Filtering Methods}
-
-
-
-As the development of technology of science and real life, the "big data" challenge becomes ubiquitous. Classical methods, such as Markov Chain Monte Carlo (MCMC), are normally suitable and good at handling a batch of data forecasting and analyzing. However, for big data and instant updating data stream, more robust and efficient methods are required. 
-
-
-Alternative approaches, such as Sequential Monte Carlo, for on-line updating and estimating are well studied in scientific literature and quite prevalent in academic research in the last decades. When it embraced with  state space model, which is a very popular class of time series models that have found numerous of applications in fields as diverse as statistics, ecology, econometrics, engineering and environmental sciences \cite{cappe2009inference} \cite{smcmip2011} \cite{elliott1995estimation} \cite{cargnoni1997bayesian}, it allows us to establish complex linear and nonlinear Bayesian estimations in time series patterns \cite{vieira2016online}. 
-
-
-
-
-\section{Sequential Markov Chain Monte Carlo Algorithm}
-
-
-Data assimilation is a sequential process, by which the observations are incorporated with a numerical model describing the evolution of this system throughout the whole process. It is applied in many fields, particularly in weather forecasting and hydrology. The quality of the numerical model determines the accuracy of this system, which requires sequential combined state and parameters inferences. Enormous literature has been done on discussing pure state estimation, however, fewer research is talking about estimating combined state and parameters, particularly in a sequential updating way. 
-
-Sequential Monte Carlo method is well studied in the scientific literature and quite prevalent in academic research in the last decades. It allows us to specify complex, non-linear time series patterns and enables performing real time Bayesian estimations when it is coupled with Dynamic Generalized Linear Models \cite{vieira2016online}. However, model's parameters are unknown in real world application and it is a limit for standard SMC. Extensions to this algorithm have been done by researchers. Kitagawa \cite{kitagawa1998self} proposed a self-organizing filter and augmenting the state vector with unknown parameters. The state and parameters are estimated simultaneously by either a non-Gaussian filter or a particle filter. Liu and West \cite{liu2001combined} proposed an improved particle filter to kill degeneracy, which is a normal issue in static parameters estimation. They are using a kernel smoothing approximation, with a correction factor to account for over-dispersion. Alternatively, Strovik \cite{storvik2002particle} proposed a new filter algorithm by assuming the posterior depends on a set of sufficient statistics, which can be updated recursively. However, this approach only applies to parameters with conjugate priors \cite{stroud2016bayesian}. Particle learning was first introduced in \cite{carvalho2010particle}. Unlike Strovik filter, it is using sufficient statistics solely to estimate parameters and promises to reduce particle impoverishment. These particle like methods are all using more or less sampling and resampling algorithms to update particles recursively. 
-
-Jonathan proposed in \cite{stroud2016bayesian} a SMC algorithm by using ensemble Kalman filter framework for high dimensional space models with observations. Their approach combines information about the parameters from data at different time points in a formal way using Bayesian updating. In \cite{polson2008practical}, the authors rely on a fixed-lag length of data approximation to filtering and sequential parameter learning in a general dynamic state space model. This approach allows for sequential parameter learning where importance sampling has difficulties and avoids degeneracies in particle filtering. A new adaptive Markov Chain Monte Carlo method yields a quick and flexible way for estimating posterior distribution in parameter estimation \cite{haario1999adaptive}. This new Adaptive Proposal method, depends on history data, is introduced to avoid the difficulties of tunning the proposal distribution in Metropolis-Hastings methods. 
+Rather than $\lambda$ being a constant number, a new challenge is posed that the smoothing parameter becomes a function $\lambda(t)$ and is varying in domains. The structure of this penalty function controls the complexity on each domain and the whole final model.  \cite{donoho1995wavelet} introduced adaptive splines and a method to calculate piecewise parameters and \cite{liu2010data} gives an improved formula for this method. \cite{liu2010data} proposed an approximation to the penalty function with an indicator and extended the generalized likelihood to the adaptive smoothing spline. This will be another interesting research topic. 
 
 
 
-In this paper, I'm proposing an Adaptive Delayed-Acceptance Metropolis-Hastings algorithm to estimate the posterior distribution for combined states and parameters. To keep a higher running efficiency for the algorithm, we suggest cutting off history data but jut using a fixed length of data up to current state, like a sliding window. Once a new observation comes into the data stream, this window shift one step forward with the same length. The efficiency of this algorithm is discussed regarding to tune the best step size in learning process. 
-
-\section{Summary}
 
 
+%Craven and Wahba [5], Hardle [8], Hardle, Hall and Marron
+%[9], Wahba [26], Hurvich, et al. [11], Eubank [6], Lee and Solo [17], Hastie and Tibshirani
+%[10], Schimek [22], Cantoni and Ronchetti [4], Ruppert, Wand and Carroll [21], Lee [15, 16],
+%and Kou [12] supplement on the selection of the smoothing parameter
 
-In our case, the velocity data set $v_i$ with some independent Gaussian distributed errors $\varepsilon_i \sim N(0, \frac{\sigma_n^2}{\gamma})$ are used to estimate $f(t)$ simultaneously. $f$ is a linear combination of basis functions, as shown in equation (\ref{introfbasis}), in the meantime, $f'$ is a linear combination of the first derivative of these basis functions
+
+
+
+%\textbf{Temporally put here }Due to the noise generated from observation units, one can use regression methods to find the best reconstruction returning the least sum square errors among all the sequences. Consider a regression model $y_i=f(t_i)+\epsilon_i$, where $a \leq t_1 < \cdots < t_n \leq b$ and $f \in \mathit{C}^2[a,b]$ is an unknown smooth function, $(\epsilon_i)_{i=1}^n \sim N(0,\sigma^2)$ are random errors. In a classical parametric regression, $f$ is assumed having the form $f(x,\beta)$, which is known up to the data estimated parameters $\beta$ \cite{kim2004smoothing}. When $f(x,\beta)$ is linear in $\beta$, we will have a standard linear model. 
+
+
+
+
+\section{Bayesian Filtering}
+
+Smoothing spline algorithms have several advantages in inferring and characterizing planar trajectories, particularly in reconstructing. However, subject to the property that smoothing splines require the solution of a global problem that involves the entire set of points to be interpolated, it might not be suitable for on-line estimation \cite{biagiotti2013online}. Therefore, it is time to use Bayesian algorithms to implement instant/on-line estimation and prediction. 
+
+
+The word "filtering" refers to the methods for estimating the state of a time-varying system, which is indirectly observed through noisy measurements. A Bayes filter is a general probabilistic approach to infer an unknown probability density function recursively over time using incoming measurements and a mathematical process model. And an optimal Bayesian filtering is using Bayesian way of formulating optimal filtering, which meets some statistical criteria, such as least mean squired errors, maximum likelihood approximation and so on \cite{chen2003bayesian} \cite{sarkka2013bayesian}.  
+
+
+In a linear system, the optimal Bayesian solution coincides with the least squares solution. The successful optimal solution was given by \cite{kalman1960new},  known as Kalman filter.  
+
+The filtering problem is to maximize the posterior $p(x_t\mid y_{1:t})$. By assuming the current state $x_t$ only depends on the previous one step $x_{t-1}$, the joint distribution is 
+\begin{equation*}
+p(x_t,x_{t-1},y_{1:t}) = p(y_t\mid x_t)p(x_t\mid x_{t-1})p(x_{t-1}\mid y_{1:t-1})p(y_{1:t-1}),
+\end{equation*}
+and $p(y_t\mid x_t)\sim N(H_tx_t,R_t)$. Supposing the expectation and variance, noted as $\hat{x}_{t-1}$ and $S_{t-1}$, of $x_{t-1}$ are known from the previous step, then we have
+\begin{equation*}
+\int p(x_t\mid x_{t-1})p(x_{t-1}\mid \hat{x}_{t-1},S_{t-1})dx_{t-1} = N(x_t\mid \hat{x}_t,S_t),
+\end{equation*}
+where 
+\begin{align}
+\hat{x}_t &=F\hat{x}_{t-1}\\
+S_t &=FS_{t-1}F^\top + Q_t.
+\end{align}
+More specifically, the log likelihood function is written as
+\begin{align*}
+\log p(x_t\mid y_{1:t}) &= \log p(y_t\mid x_t) + \log p(x_t\mid \hat{x}_{t-1}) + const\\
+                          &=\frac{1}{2}(y_t-Hx_t)^2-\frac{1}{2}(x_t-\hat{x}_{t-1})^2+const.
+\end{align*} 
+The solution to the above equation is
+\begin{equation*}
+\hat{x}_t = \left(H^\top R^{-1}H+S_{t-1}^{-1}\right)^{-1}\left( H^\top R_t^{-1}y_t+S_{t-1}^{-1}\hat{x}_{t-1} \right).
+\end{equation*}
+Additionally, one can get $S_t^{-1} = H^\top R_t^{-1}H+S_{t-1}^{-1}$.The recursive estimation of covariance matrix is
 \begin{equation}
-f'(t) =\sum_{m=1}^{M}\alpha_mh'_m(t).
+S_t = S_{t-1} - K_t HS_{t-1},
+\end{equation}
+where $K_t$ is the gain matrix and in the form of
+\begin{equation}
+K_t = S_{t-1} H^\top (R_t +HS_{t-1}H^\top)^{-1}.
+\end{equation}
+The recursive estimation is 
+\begin{equation}\label{estimation}
+\hat{x}_t = \hat{x}_{t-1}+K_t(y_t-H\hat{x}_{t-1}).
 \end{equation}
 
-The velocity information  is incorporated into MSE  equation (\ref{intromse}) by the addition of velocity term $(f'(t_i)-v_i)^2$. Then it becomes 
-\begin{equation}\label{mse2}
-\text{MSE}(f,\lambda,\gamma)=\frac{1}{n}\sum_{i=1}^n(f(t_i)-y_i)^2+\frac{\gamma}{n} \sum_{i=1}^n(f'(t_i)-v_i)^2+\lambda \int_{0}^{1}(f''(t))^2dt,
+Kalman Filter has limitation that it does not apply to general non-linear model and non-Gaussian distributions.  For a non-linear system, one can use unscented Kalman filter and particle filter. The idea of an unscented Kalman filter is to create a normal distribution that approximates the result of a non-linear transformation by seeing what happens to a few carefully chosen points. The idea of particle filtering is to randomly generate a cloud of points and push these points through the non-linear transformation.
+
+
+
+
+
+
+Nowadays, Bayesian filtering has become a broad topic involving many scientific areas that a comprehensive survey and detailed treatment seems crucial to cater the ever growing demands of understanding this important field for many novices, though it is noticed by the author that in the literature there exist a number of excellent tutorial papers on particle filters and Monte Carlo filters \cite{chen2003bayesian} \cite{doucet2000sequential} \cite{doucet2000rao} \cite{chen2012monte}.  
+ 
+
+
+MCMC filtering is one leaf in the Bayesian filtering tree. 
+
+
+One of the attractive merits of sequential Monte Carlo approaches lies in the fact that the allow on-line estimation by combining the powerful Monte Carlo sampling methods with Bayesian inference, at an expense of reasonable computational cost \cite{chen2003bayesian}.  
+
+
+
+\subsection*{Kalman Filter}
+
+
+\subsection*{Unscented Kalman Filter}
+
+The unscented transformation is a method for calculating the statistics of a random variable which undergoes a nonlinear transformation. Consider propagating a random variable $x$ with dimension $L$ through a nonlinear function $y=f(x)$. Assume $x$ has mean $\bar{x}$ and covariance $P_x$. To calculate the statistics of $y$, we form a matrix $X$ of $2L+1$ sigma vectors $X_i$ according to the following:
+\begin{equation}\label{UT}
+\begin{split}
+X_0 &= \bar{x},\\
+X_i &= \bar{x} + \left(\sqrt{(L+\lambda)P_x}\right)_i, \mbox{    } i=1,\cdots, L, \\
+X_i &= \bar{x} - \left(\sqrt{(L+\lambda)P_x}\right)_i,  \mbox{    } i=L+1,\cdots, 2L,
+\end{split}
 \end{equation}
-and $\hat{f}$ is the minimizer of the MSE equation (\ref{mse2}).
+where $\lambda = \alpha^2(L+\kappa)-L$ is a scaling parameter. The constant $\alpha$ determines the spread of the sigma points around $\bar{x}$ and is usually set to a small positive value $(10^{-4}\leq \alpha \leq 1)$. The constant $\kappa$ is a secondary scaling parameter, which is usually set to $3-L$. These sigma vectors are propagated through the nonlinear function
+\begin{equation*}
+Y_i = f(X_i), i=0, \cdots, 2L
+\end{equation*}
+and the mean and covariance for $y$ are approximated using a weighted sample mean and covariance of the posterior sigma points
+\begin{align*}
+\bar{y} &\approx \sum_{i=0}^{2L}W_i^{(m)}Y_i,\\
+P_y &\approx \sum_{i=0}^{2L}W_i^{(c)}(Y_i-\bar{y})(Y_i-\bar{y})^\top,
+\end{align*}
+with weights $W_i$ given by
+\begin{align*}
+W_0^{(m)} &=\frac{\lambda}{L+\lambda},\\
+W_0^{(c)} &=\frac{\lambda}{L+\lambda}+1-\alpha^2+\beta,\\
+W_i^{(m)} &=W_i^{(c)} = \frac{1}{2(L+\lambda)}, i=1,\cdots, 2L,
+\end{align*}
+where, for Gaussian distribution, $\beta=2$ is optimal.
 
-In the model $y=f(t)+\varepsilon$, it is reasonable to assume that the observed data $y_i$ is Gaussian distribution with mean $f(t_i)$ and variance $\sigma_n^2$. In a similar way, the velocity is estimated as  $v=f'(t)+\frac{\varepsilon}{\gamma}$, where $v_i$ is Gaussian distribution with mean $f'(t_i)$ and variance $\frac{\sigma_n^2}{\gamma}$. Then the joint distribution of $\mathbf{y},\mathbf{v},f(t)$ and $f'(t)$ is normal with zero mean and a covariance matrix, which can be estimated through Gaussian Process Regression.
+The unscented Kalman filter is a straightforward extension of the unscented transformation to the recursive estimation in equation (\ref{estimation}), where the state random variable is redefined as the concatenation of the original state and noise variables. 
+
+\subsection*{Particle Filter}
+
+Suppose the particles $x_1, \cdots, x_N$ are drawn from the target pdf $q(x)$
+\begin{equation}\label{sampling}
+x_t^{(i)} \sim q(x_t \mid  y_{1:t}), i = 1, \cdots, N.
+\end{equation}
+Then these particles are used to estimate the expectation and variance of $f(x)$. The posterior distribution or density is empirically represented by a weighted sum of samples $x_1, \cdots, x_N$ 
+\begin{align*}
+\hat{p}(x_k\mid y_{1:t})=\frac{1}{N}\sum_{i=1}^N\delta (x_k-x_k^{(i)})\approx p(x_k\mid y_{1:t}).
+\end{align*}
+When $N$ is sufficiently large, $\hat{p}(x_k\mid y_{1:t})$ approximates the true posterior $p(x_k\mid y_{1:t})$. By this approximation, the filtering problem becomes to get the expectation of current status
+\begin{align*}
+E(f(x_k)) &\approx \frac{1}{N}\sum_{i=1}^Nf(x_k^{(i)}).
+\end{align*}
+The expectation is the mean of the status of all particles $x_1, \cdots, x_N$. Monte Carlo method helps us to draw samples $\{x_t^{(i)}\}_{i=1}^N$ from $q(x_t\mid y_{1:t})$ and get their expectation, which approximate by
+\begin{align*}
+E(f(x_t)) &\approx \sum_{i=1}^{N} \tilde{W}_t(x_t^{(i)})f(x_t^{(i)}),
+\end{align*}
+where $\tilde{W}_t(x_t^{(i)}) = \frac{ W_t(x_t^{(i)})}{\sum_{i=1}^NW_t(x_t^{(i)})}$ is factorized weight. Each particles has its own weighted value, so the expectation is a weighted mean. A smarter way is to update $W_t^{(i)}$ recursively in the form of
+\begin{align*}
+W_t^{(i)} &\propto W_{t-1}^{(i)} \frac{ p(y_{1:t}\mid x_{0:t}^{(i)}) p(x_{t}^{(i)}\mid x_{t-1}^{(i)}) }   {q(x_{t}^{(i)}\mid x_{0:t-1}^{(i)},y_{t})}.
+\end{align*}
+To keep particles the same size, replace the low weights particles with new ones by 
+\begin{align*}
+p(x_t\mid y_{1:t})=\sum_{i=1}^Nw_t^{(i)} \delta (x_t-x_t^{(i)}).
+\end{align*}
+After re-sampling process, it becomes
+\begin{align*}
+\tilde{p}(x_t\mid y_{1:t})=\sum_{j=1}^N\frac{1}{N} \delta (x_t-x_t^{(i)}).= \sum_{i=1}^N\frac{n_i}{N}\delta (x_t-x_t^{(i)}).,
+\end{align*}
+where $n_i$ represents how many times the new particles $x_t^{(j)}$ were duplicated from $x_t^{(i)}$. 
+
+\subsection*{Unscented Particle Filter}
+
+The effectiveness of the approximation of particle filter depends on how close the proposal distribution is to the true posterior distribution. An improvement in the choice of proposal distribution over the simple transition prior, which also address the problem of sample depletion, can be accomplished by moving the particles towards the regions of high likelihood, based on the most recent observations $y_t$. An effective approach to accomplish this is to use an UKF generated Gaussian approximation to the optimal proposal. The sampling step (\ref{sampling}) is replaced with the UKF update on page 262 of reference 2.
+
+All other steps in the particle filter formulation remain unchanged.
+
+%For $i = 1, \cdots, N$, update the prior $t-1$ distribution for each particle with the UKF:
+%\begin{align*}
+%&\mbox{Calculate sigma points:}\\
+%& X_{t-1}^{(i)\alpha}=[ \bar{x}_{t-1}^{(i)\alpha}, \bar{x}_{t-1}^{(i)\alpha}+\gamma\sqrt{P_{t-1}^{(i)\alpha}}, \bar{x}_{t-1}^{(i)\alpha}-\gamma\sqrt{P_{t-1}^{(i)\alpha}} ] \\
+%&\mbox{Propagate particle into future (time update)}:\\
+%& X_{t\mid t-1}^{(i)x}=F(X_{t-1}^{(i)x},u_t,_{t-1}^{(i)v}).
+%\end{align*}
 
 
-Given a series of such fixes, I want to construct the most likely path taken by the tractor with some smart modeling of the movement. I then want to develop higher level characterizations of the trajectories and apply this to more general problems in curve and object recognition.
+\begin{itemize}
+\item 1. J. Hua. Adaptive filters: LMS, RLS, Kalman filter. (2013)
+\item 2. S. Haykin. Kalman Filtering and Neural Networks. (2001)
+\item 3. N. J. Gordon. Beyond the Kalman Filter:Particle Filters for tracking applications. (2004)
+\item 4. Van Der Merwe, Rudolph, et al. The unscented particle filter. (2000)
+\end{itemize}
+
+
+\section{Outline of Thesis}
+
+The structure of this thesis is organized in the following order. In chapter \ref{ChapterTS}, I propose an adaptive smoothing spline method based on \textit{Hermite} spline basis functions to obtain a reconstruction of $f$ and $f'$ from noisy data $\mathbf{y}$ and $\mathbf{v}$. Rather than only using residuals of $f(t_i)-y_i$, residuals of $f'(t_i)-v_i$ with a new parameter $\gamma$ are included. Numerical simulation and real data implementation are given after theoretical methodology. In chapter \ref{ChapterGPR}, I give the Bayesian estimation form of the Tractor spline in a second-derivative-piecewise-continuous reproducing kernel Hilbert space $\mathcal{C}_{\mbox{p.w.}}^2[0,1]$. An extended GCV is used to find the optimal parameters for Tractor spline. In chapter \ref{ChapterFR}, I will give a brief review on existing methods for sequential state and parameter inference, including concepts and popular algorithms on estimating states sequentially and some algorithms that can estimate both unknown parameters and states simultaneously. In chapter \ref{ChapterMCMC}, an Adaptive Delayed-Acceptance Metropolis-Hastings algorithm is proposed to estimate the posterior distribution for combined states and parameters. To keep a higher running efficiency for the algorithm, a sliding window approach, in which historical data will be cut off when a new observation comes into the data stream,  is used to improve the sampling efficiency. Theorems proofs, equation calculations and part of simulation results are illustrated in appendices. 
+
+
+
+
+
 
 

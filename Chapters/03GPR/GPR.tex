@@ -21,7 +21,7 @@ A Hilbert space is a real or complex inner product space with respect to the dis
 \end{equation*}
 with an inner product $\langle f,g\rangle=\int_0^1fgdt$. 
 
-Consider a regression problem with observations $y_i = f(t_i)+\varepsilon_i$, $i=1,\ldots,n$, consisting i.i.d normal noises $\varepsilon_i\sim N(0,\sigma^2)$ in the space $C^{(m)}[0,1]=\{ f:f^{(m)}\in \mathit{L}_2[0,1] \}$. The classic nonparametric or semi-parametric regression is a function that minimizes the following penalized least square functional 
+Consider a regression problem with observations $y_i = f(t_i)+\varepsilon_i$, $i=1,\ldots,n$, consisting \iid normal noises $\varepsilon_i\sim N(0,\sigma^2)$ in the space $C^{(m)}[0,1]=\{ f:f^{(m)}\in \mathit{L}_2[0,1] \}$. The classic nonparametric or semi-parametric regression is a function that minimizes the following penalized least square functional 
 \begin{equation}\label{GaussianProcessGeneralObjective}
 \frac{1}{n}\sum_{i=1}^{n}\left( y_i-f(t_i) \right)^2 + \lambda \int_{0}^{1} \left( f^{(m)}\right)^2dt, 
 \end{equation}
@@ -178,7 +178,7 @@ Therefore, we can see that the Bayesian estimation of smoothing spline is a spec
 \section{Tractor Spline as Bayes Estimate}
 
 
-Recall the definition of Tractor spline introduced in Chapter \ref{ChapterTractorSpline}. It is the solution to the objective function (\ref{tractorsplineObjective}), where an extra term for $f'(t)-v$ and an extra parameter $\gamma$ are incorporated. The penalty parameter $\lambda(t)$ is a function varying on different domains. If $\lambda(t)=\lambda$ is constant and $\gamma=0$, the Tractor spline degenerate to a conventional cubic smoothing spline consisting of a set of given basis functions.  
+Recall the definition of Tractor spline introduced in Chapter \ref{SectionTractorSpline}. It is the solution to the objective function (\ref{tractorsplineObjective}), where an extra term for $f'(t)-v$ and an extra parameter $\gamma$ are incorporated. The penalty parameter $\lambda(t)$ is a function varying on different domains. If $\lambda(t)=\lambda$ is constant and $\gamma=0$, the Tractor spline degenerate to a conventional cubic smoothing spline consisting of a set of given basis functions.  
 
 However, the Bayes estimate for a polynomial smoothing spline requires fixed interval on $[0,1]$ and the penalty parameter being constant. For the first constraint, with generality, an arbitrary interval $[a,b]$ can be transformed to $[0,1]$. For the second constraint, we assume that $\lambda(t)$ stays the same constant on each subinterval of $[0,1]$ and name the solution "trivial Tractor spline".  In this section, I still call it the "Tractor spline" for sake of simplicity. 
 
@@ -394,7 +394,7 @@ In most of the studies on polynomial smoothing splines, the random errors are as
 
 First of all, consider observations $y=f(t)+\varepsilon_1$ and $v=f'(t)+\varepsilon_2$, where $\varepsilon_1\sim N(0,\sigma^2W^{-1})$, $\varepsilon_2\sim N(0,\frac{\sigma^2}{\gamma}U^{-1})$ with variance parameter $\sigma^2$. The Tractor spline $\hat{f}$ with correlated errors in space $\mathcal{C}_{p.w}^2[0,1]$ is the minimizer of 
 \begin{equation}
-\frac{1}{n}(\mathbf{y}-\mathbf{f})^\top W(\mathbf{y}-\mathbf{f})+\frac{\gamma}{n}(\mathbf{v}-\mathbf{f}')^\top U(\mathbf{v}-\mathbf{f}')+\lambda\int_0^1f''^2dt.
+\frac{1}{n}(\mathbf{y}-\mathbf{f})^\top W(\mathbf{y}-\mathbf{f})+\frac{\gamma}{n}(\mathbf{v}-\mathbf{f}')^\top U(\mathbf{v}-\mathbf{f}')+\lambda\int_0^1(f'')^2dt.
 \end{equation}
 Because $f=\sum_{i=1}^{2n}\theta_iN_i(t)$ is a linear combination of basis functions, extended to the solution with covariance matrices, the coefficients is found by 
 \begin{equation}
@@ -411,18 +411,18 @@ Recall the leave-one-out cross-validation score of a tractor spline is
 \begin{equation*}
 \mbox{LOOCV}(\lambda,\gamma)=\frac{1}{n}\sum_{i=1}^{n}\left( \frac{\hat{f}(t_i)-y_i+\frac{\gamma T_{ii}}{1-\gamma V_{ii}}(\hat{f}'(t_i)-v_i)}{1-S_{ii}-\frac{\gamma T_{ii}}{1-\gamma V_{ii}}U_{ii}} \right)^2.
 \end{equation*}
-Followed by the approximation $S_{ii}\approx\frac{1}{n}\mbox{tr}(S)$, $T_{ii}\approx\frac{1}{n}\mbox{tr}(T)$, $U_{ii}\approx\frac{1}{n}\mbox{tr}(U)$ and $V_{ii}\approx\frac{1}{n}\mbox{tr}(V)$ \cite{syed2011review}, the Tractor spline GCV will be 
+Followed by the approximation $S_{ii}\approx\frac{1}{n}\tr(S)$, $T_{ii}\approx\frac{1}{n}\tr(T)$, $U_{ii}\approx\frac{1}{n}\tr(U)$ and $V_{ii}\approx\frac{1}{n}\tr(V)$ \cite{syed2011review}, the Tractor spline GCV will be 
 \begin{equation*}
-\mbox{GCV}(\lambda,\gamma)=\frac{1}{n}\sum_{i=1}^{n}\left( \frac{\hat{f}(t_i)-y_i+ \frac{\gamma\mbox{tr}(T)/n}{1-\gamma \mbox{tr}(V)/n}(\hat{f}'(t_i)-v_i)}{1-\mbox{tr}(S)/n-\frac{\gamma\mbox{tr}(T)/n}{1-\gamma \mbox{tr}(V)/n} \mbox{tr}(U)/n} \right)^2,
+\mbox{GCV}(\lambda,\gamma)=\frac{1}{n}\sum_{i=1}^{n}\left( \frac{\hat{f}(t_i)-y_i+ \frac{\gamma\tr(T)/n}{1-\gamma \tr(V)/n}(\hat{f}'(t_i)-v_i)}{1-\tr(S)/n-\frac{\gamma\tr(T)/n}{1-\gamma \tr(V)/n} \tr(U)/n} \right)^2,
 \end{equation*}
 which may provide further computational savings since it requires finding the trace rather than the individual diagonal entries of the hat matrix. It can be written in the form of
 \begin{equation*}
-\mbox{GCV}(\lambda,\gamma)=\frac{(\mathbf{\hat{f}}-\mathbf{y})^\top (\mathbf{\hat{f}}-\mathbf{y})+\frac{2\mbox{tr}(\gamma T)}{\mbox{tr}(I-\gamma V)}(\mathbf{\hat{f}}-\mathbf{y})^\top (\mathbf{\hat{f}}'-\mathbf{v}) + \left( \frac{\mbox{tr}(\gamma T)}{\mbox{tr}(I-\gamma V)} \right)^2 (\mathbf{\hat{f}}'-\mathbf{v})^\top (\mathbf{\hat{f}}'-\mathbf{v})}{\left( \mbox{tr}(I-S-\frac{\mbox{tr}(\gamma T)}{\mbox{tr}(I-\gamma V)}U) \right)^2}.
+\mbox{GCV}(\lambda,\gamma)=\frac{(\mathbf{\hat{f}}-\mathbf{y})^\top (\mathbf{\hat{f}}-\mathbf{y})+\frac{2\tr(\gamma T)}{\tr(I-\gamma V)}(\mathbf{\hat{f}}-\mathbf{y})^\top (\mathbf{\hat{f}}'-\mathbf{v}) + \left( \frac{\tr(\gamma T)}{\tr(I-\gamma V)} \right)^2 (\mathbf{\hat{f}}'-\mathbf{v})^\top (\mathbf{\hat{f}}'-\mathbf{v})}{\left( \tr(I-S-\frac{\tr(\gamma T)}{\tr(I-\gamma V)}U) \right)^2}.
 \end{equation*}
 A natural extension to the above GCV for tractor spine with correlated errors is
 \begin{equation}
 \footnotesize
-\mbox{GCV}(\lambda,\gamma)=\frac{(\mathbf{\hat{f}}-\mathbf{y})^\top W(\mathbf{\hat{f}}-\mathbf{y})+\frac{2\mbox{tr}(\gamma T)}{\mbox{tr}(I-\gamma V)}(\mathbf{\hat{f}}-\mathbf{y})^\top W^{1/2}U^{\top 1/2}(\mathbf{\hat{f}}'-\mathbf{v}) + \left( \frac{\mbox{tr}(\gamma T)}{\mbox{tr}(I-\gamma V)} \right)^2 (\mathbf{\hat{f}}'-\mathbf{v})^\top U(\mathbf{\hat{f}}'-\mathbf{v})}{\left( \mbox{tr}(I-S-\frac{\mbox{tr}(\gamma T)}{\mbox{tr}(I-\gamma V)}U) \right)^2}.
+\mbox{GCV}(\lambda,\gamma)=\frac{(\mathbf{\hat{f}}-\mathbf{y})^\top W(\mathbf{\hat{f}}-\mathbf{y})+\frac{2\tr(\gamma T)}{\tr(I-\gamma V)}(\mathbf{\hat{f}}-\mathbf{y})^\top W^{1/2}U^{\top 1/2}(\mathbf{\hat{f}}'-\mathbf{v}) + \left( \frac{\tr(\gamma T)}{\tr(I-\gamma V)} \right)^2 (\mathbf{\hat{f}}'-\mathbf{v})^\top U(\mathbf{\hat{f}}'-\mathbf{v})}{\left( \tr(I-S-\frac{\tr(\gamma T)}{\tr(I-\gamma V)}U) \right)^2}.
 \end{equation}
 \normalsize
 
@@ -441,7 +441,7 @@ v_i =f'(t_i)+\varepsilon_{i}^{(2)},
 \end{align}
 where $\varepsilon^{(1)}\sim N(0,\sigma^2W^{-1})$, $\varepsilon^{(2)}\sim N(0,\frac{\sigma^2}{\gamma}U^{-1})$ , $0\leq t_1 < \cdots < t_n \leq 1$. 
 
-With the same parameter found by GCV, Tractor spline and its Bayes estimate return the same reconstruction. However, because we are using constant $\lambda$ rather than a piecewise $\lambda(t)$, the trivial Tractor spline might not be the optimal solution compared with the one consisting an adaptive penalty term in section \ref{ChapterTractorSpline}. 
+With the same parameter found by GCV, Tractor spline and its Bayes estimate return the same reconstruction. However, because we are using constant $\lambda$ rather than a piecewise $\lambda(t)$, the trivial Tractor spline might not be the optimal solution compared with the one consisting an adaptive penalty term in section \ref{SectionTractorSpline}. 
 
 \begin{figure}[h]
 \centering

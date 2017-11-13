@@ -17,7 +17,7 @@
 \usepackage{lscape}
 \usepackage{subcaption}
 \usepackage[toc,page]{appendix}
-\usepackage[linesnumbered,ruled]{algorithm2e}
+\usepackage[ruled,vlined,linesnumbered,resetcount,algochapter]{algorithm2e}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%% New commands 
@@ -47,6 +47,8 @@
 \newcommand{\Var}{\mathrm{Var}}
 \newcommand{\Cov}{\mathrm{Cov}}
 \newcommand{\Corr}{\mathrm{Corr}}
+\newcommand{\tr}{\mathrm{tr}}
+\newcommand{\iid}{\textrm{i.i.d.}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%% Front page info 
 
@@ -81,19 +83,19 @@
 \input{Chapters/01Intro/Intro}
 \clearemptydoublepage
 
-\chapter{Adaptive Smoothing Tractor Spline for Trajectory Reconstruction}
+\chapter{Adaptive Smoothing Tractor Spline for Trajectory Reconstruction}\label{ChapterTS}
 \input{Chapters/02TractorSplineTheory/TractorSplineTheory}
 \clearemptydoublepage
 
 \chapter{Tractor Spline as Bayesian Estimation}
-\input{Chapters/03GPR/GPR}
+\input{Chapters/03GPR/GPR}\label{ChapterGPR}
 \clearemptydoublepage
 
 \chapter{A Brief Overview of On-line State and Parameters Estimation}
-\input{Chapters/04Filtering/Filtering}
+\input{Chapters/04Filtering/Filtering}\label{ChapterFR}
 \clearemptydoublepage
 
-\chapter{Adaptive Sequential MCMC for On-line State and Parameters Estimation}
+\chapter{Adaptive Sequential MCMC for On-line State and Parameters Estimation}\label{ChapterMCMC}
 \input{Chapters/05MCMCOU/MCMCEstimation}
 \clearemptydoublepage
 

@@ -661,12 +661,17 @@ p(\phi  \mid  x_{1:t+1},y_{1:t+1}) & \propto p(x_{1:t+1},y_{1:t+1}\mid \phi )p(\
 
 Notice that the proposed sliding window MCMC algorithm requires using a few data to learn the parameter's mean and variance in the learning phase. Besides, LW, St and PL do not converge at the first few data. Then, to be fair, we take the first 300 data out and use them in the learning phase of the proposed algorithm and use the same length as the width of the sliding window. For the former three algorithms, we are using 5\,000 particles to infer parameter and state. For the latter MCMC algorithm, we are taking 5\,000 samples at each time $t$ for $\phi^{(i)}$ and $x_t^{(i)}$, where $i=1,\ldots,5\,000$ and $t=300,\ldots,897$. Furthermore, we run the comparison for 50 times to check their stabilities. 
 
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.45\textwidth]{Chapters/04Filtering/plot/ggFilterCompPhi2.pdf}
+\includegraphics[width=0.45\textwidth]{Chapters/04Filtering/plot/ggBoxComp.pdf}
+\caption{A comparison study using simulated time series data shows that LW, St and PL algorithms converge to the true $\phi$ at similar speed. The proposed MCMC algorithm has a higher variability. By repeatedly running for 50 times, the box-plot indicates that the proposed MCMC has a higher stability comparing with the other three algorithms. } \label{FilterRiewComparesion01}
+\end{figure}
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.5\textwidth,height=5cm]{Chapters/04Filtering/plot/ggFilterCompPhi2.pdf}
-\includegraphics[width=\textwidth,height=9cm]{Chapters/04Filtering/plot/plotlyFilterCompX2.png}
-\caption{A comparison study using simulated time series data shows that LW, St and PL algorithms converge to the true $\phi$ at similar speed. The proposed MCMC algorithm has a higher variability. The filtering for $x_{300:897}$ is very competitive. These four algorithms return very close estimations. } \label{FilterRiewComparesion}
+\includegraphics[width=\textwidth]{Chapters/04Filtering/plot/plotlyFilterCompX2.png}
+\caption{The filtering for $x_{300:897}$ is very competitive. These four algorithms return very close estimations. } \label{FilterRiewComparesion02}
 \end{figure}
 
 \begin{table}[]
@@ -694,7 +699,7 @@ $\frac{1}{n}\sum_i(\hat{x}_i-x_i)^2$ &  0.5745 &  0.5740 &  0.5740 & 0.5744  \\ 
 \end{table}
 
 
-From figure (\ref{FilterRiewComparesion}) it can be seen that the former three algorithms converge to the true parameter $\phi$ with similar speed along time $t$. LW filter has larger distance to the true parameter comparing with St and PL filters. The proposed MCMC algorithm has the biggest estimation variance. The estimations for $x_t$ from $t=300$ to $897$ are very close and hard to tell visually. From table (\ref{FilterRiewComparesionTable}), we can see that, by repeatedly running 50 times, the proposed MCMC algorithm is more stable in estimating parameter $\phi$ as it has the lowest standard error (SE) among all the algorithms. The MSE of all the algorithms on estimating $x$ are on the similar levels. 
+From figure (\ref{FilterRiewComparesion01}) it can be seen that the former three algorithms converge to the true parameter $\phi$ with similar speed along time $t$. LW filter has larger distance to the true parameter comparing with St and PL filters. The proposed MCMC algorithm has the biggest estimation variance. The estimations for $x_t$ from $t=300$ to $897$ are very close and hard to tell visually. From table (\ref{FilterRiewComparesionTable}), we can see that, by repeatedly running 50 times, the proposed MCMC algorithm is more stable in estimating parameter $\phi$ as it has the lowest standard error (SE) among all the algorithms. The MSE of all the algorithms on estimating $x$ are on the similar levels. 
 
 
 \section{Conclusion}
