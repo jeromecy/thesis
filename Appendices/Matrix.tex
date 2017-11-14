@@ -436,7 +436,7 @@ then $X_{t+1}\mid Y_{1:t+1},\theta \sim N(\bar{\mu}_{t+1}^{(X)},\bar{\sigma}_{t+
 
 
 
-\begin{landscape}
+
 \subsubsection*{Covariance Matrix in Details}\label{covMatrixdetails}
 \begin{align*}
 \Sigma_t &= \begin{bmatrix}
@@ -467,6 +467,7 @@ M_t^\top \Sigma_t^{-1} M_t&= \frac{1}{1-\rho_{t}^2}
 \end{align*}
 %where $\Delta_t = T_t-T_{t-1}$.
 
+\begin{landscape}
 \tiny
 \begin{align*}
 \Sigma_{4}^{(X)-1}&=\frac{1}{1-\rho_{t}^2}\begin{bmatrix}
@@ -609,20 +610,20 @@ where $C_t = \frac{ (1-e^{-\gamma\Delta_t})^2 }{\gamma^2\sigma_t^{(x)2}}  + \fra
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.4\textwidth,height=0.2\textheight]{Chapters/05MCMCOU/plots/realdatacomparea1batchwindow.pdf}
-\includegraphics[width=0.4\textwidth,height=0.2\textheight]{Chapters/05MCMCOU/plots/realdatacomparea2batchwindow.pdf}
-\includegraphics[width=0.4\textwidth,height=0.2\textheight]{Chapters/05MCMCOU/plots/realdatacompareeffutbatchwindow.pdf}
-\includegraphics[width=0.4\textwidth,height=0.2\textheight]{Chapters/05MCMCOU/plots/realdatacompareessutbatchwindow.pdf}
+\includegraphics[width=0.45\textwidth]{Chapters/05MCMCOU/plots/realdatacomparea1batchwindow.pdf}
+\includegraphics[width=0.45\textwidth]{Chapters/05MCMCOU/plots/realdatacomparea2batchwindow.pdf}
+\includegraphics[width=0.45\textwidth]{Chapters/05MCMCOU/plots/realdatacompareeffutbatchwindow.pdf}
+\includegraphics[width=0.45\textwidth]{Chapters/05MCMCOU/plots/realdatacompareessutbatchwindow.pdf}
 \caption{Key features comparison. }\label{batchwindowkeyfeature}
 \end{figure}
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.4\textwidth,height=0.2\textheight]{Chapters/05MCMCOU/plots/realdatacomparegambatchwindow.pdf}
-\includegraphics[width=0.4\textwidth,height=0.2\textheight]{Chapters/05MCMCOU/plots/realdatacomparexi2batchwindow.pdf}
-\includegraphics[width=0.4\textwidth,height=0.2\textheight]{Chapters/05MCMCOU/plots/realdatacomparelab2batchwindow.pdf}
-\includegraphics[width=0.4\textwidth,height=0.2\textheight]{Chapters/05MCMCOU/plots/realdatacomparesig2batchwindow.pdf}
-\includegraphics[width=0.4\textwidth,height=0.2\textheight]{Chapters/05MCMCOU/plots/realdatacomparetau2batchwindow.pdf}
+\includegraphics[width=0.45\textwidth]{Chapters/05MCMCOU/plots/realdatacomparegambatchwindow.pdf}
+\includegraphics[width=0.45\textwidth]{Chapters/05MCMCOU/plots/realdatacomparexi2batchwindow.pdf}
+\includegraphics[width=0.45\textwidth]{Chapters/05MCMCOU/plots/realdatacomparelab2batchwindow.pdf}
+\includegraphics[width=0.45\textwidth]{Chapters/05MCMCOU/plots/realdatacomparesig2batchwindow.pdf}
+\includegraphics[width=0.45\textwidth]{Chapters/05MCMCOU/plots/realdatacomparetau2batchwindow.pdf}
 \caption{Parameter Comparison. }\label{batchwindowparameter}
 \end{figure}
 

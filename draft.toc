@@ -3,99 +3,100 @@
 \contentsline {section}{\numberline {1.2}Smoothing Spline Based Reconstruction}{2}
 \contentsline {section}{\numberline {1.3}Parameter Selection}{4}
 \contentsline {section}{\numberline {1.4}Bayesian Filtering}{7}
-\contentsline {section}{\numberline {1.5}Outline of Thesis}{10}
-\contentsline {chapter}{\numberline {2}Adaptive Smoothing Tractor Spline for Trajectory Reconstruction}{11}
-\contentsline {section}{\numberline {2.1}Introduction}{11}
-\contentsline {section}{\numberline {2.2}Tractor spline}{14}
-\contentsline {subsection}{\numberline {2.2.1}Objective Function}{14}
-\contentsline {subsection}{\numberline {2.2.2}Basis Functions}{15}
-\contentsline {subsection}{\numberline {2.2.3}Solution to The Objective Function}{17}
-\contentsline {subsection}{\numberline {2.2.4}Adjusted Penalty Term and Parameter Function}{19}
-\contentsline {section}{\numberline {2.3}Parameter Selection and Cross Validation}{20}
-\contentsline {section}{\numberline {2.4}Simulation Study}{22}
-\contentsline {subsection}{\numberline {2.4.1}Numerical Examples}{22}
-\contentsline {subsection}{\numberline {2.4.2}Evaluation}{29}
-\contentsline {section}{\numberline {2.5}Application on Real Dataset}{32}
-\contentsline {subsection}{\numberline {2.5.1}1-Dimension Trajectory}{33}
-\contentsline {subsection}{\numberline {2.5.2}2-Dimension Trajectory}{36}
-\contentsline {section}{\numberline {2.6}Conclusion and Discussion}{39}
-\contentsline {chapter}{\numberline {3}Tractor Spline as Bayesian Estimation}{41}
-\contentsline {section}{\numberline {3.1}Introduction}{41}
-\contentsline {section}{\numberline {3.2}Polynomial Smoothing Splines on $[0, 1]$ as Bayes Estimates}{43}
-\contentsline {subsection}{\numberline {3.2.1}Polynomial Smoothing Spline}{43}
-\contentsline {subsection}{\numberline {3.2.2}Reproducing Kernel Hilbert Space $\mathcal {H}^{(m)}[0,1]$}{44}
-\contentsline {subsection}{\numberline {3.2.3}Polynomial Smoothing Spline as Bayes Estimates}{45}
-\contentsline {subsection}{\numberline {3.2.4}Gaussian Process Regression}{46}
-\contentsline {section}{\numberline {3.3}Tractor Spline as Bayes Estimate}{47}
-\contentsline {subsection}{\numberline {3.3.1}Reproducing Kernel Hilbert Space $\mathcal {C}_{p.w.}^{2}[0,1]$}{47}
-\contentsline {subsection}{\numberline {3.3.2}Posterior of Bayes Estimates}{49}
-\contentsline {section}{\numberline {3.4}Tractor Spline with Correlated Random Errors}{51}
-\contentsline {section}{\numberline {3.5}A Numeric Simulation}{53}
-\contentsline {section}{\numberline {3.6}Conclusion}{53}
-\contentsline {chapter}{\numberline {4}A Brief Overview of On-line State and Parameters Estimation}{55}
-\contentsline {section}{\numberline {4.1}Introduction}{55}
-\contentsline {section}{\numberline {4.2}Filtering Problem and Estimation}{57}
-\contentsline {subsection}{\numberline {4.2.1}Sequential Monte Carlo Method}{57}
-\contentsline {subsection}{\numberline {4.2.2}Importance sampling}{59}
-\contentsline {subsection}{\numberline {4.2.3}Sequential Importance Sampling and Resampling}{60}
-\contentsline {subsection}{\numberline {4.2.4}Auxiliary Particle Filter}{62}
-\contentsline {subsection}{\numberline {4.2.5}Sequential Particle Filter}{63}
-\contentsline {subsection}{\numberline {4.2.6}MCMC-Based Particle Algorithm}{65}
-\contentsline {section}{\numberline {4.3}On-line State and Parameters Estimation}{66}
-\contentsline {subsection}{\numberline {4.3.1}Artificial Dynamic Noise}{67}
-\contentsline {subsection}{\numberline {4.3.2}Practical Filtering}{67}
-\contentsline {subsection}{\numberline {4.3.3}Liu and West's Filter}{69}
-\contentsline {subsection}{\numberline {4.3.4}Storvik Filter}{69}
-\contentsline {subsection}{\numberline {4.3.5}Particle Learning}{70}
-\contentsline {subsection}{\numberline {4.3.6}Adaptive Ensemble Kalman Filter}{71}
-\contentsline {subsection}{\numberline {4.3.7}On-line Pseudo-Likelihood Estimation}{73}
-\contentsline {section}{\numberline {4.4}Simulation Study}{74}
-\contentsline {section}{\numberline {4.5}Conclusion}{77}
-\contentsline {chapter}{\numberline {5}Adaptive Sequential MCMC for On-line State and Parameters Estimation}{79}
-\contentsline {section}{\numberline {5.1}Introduction}{79}
-\contentsline {section}{\numberline {5.2}Bayesian Inference on Combined State and Parameters}{80}
-\contentsline {subsection}{\numberline {5.2.1}Log-likelihood Function of Parameter Posterior}{82}
-\contentsline {subsection}{\numberline {5.2.2}The Forecast Distribution}{83}
-\contentsline {subsection}{\numberline {5.2.3}The Estimation Distribution}{84}
-\contentsline {section}{\numberline {5.3}Random Walk Metropolis-Hastings algorithm}{85}
-\contentsline {subsection}{\numberline {5.3.1}Self-tuning Metropolis-Hastings Algorithm}{86}
-\contentsline {subsection}{\numberline {5.3.2}Adaptive Delayed Acceptance Metropolis-Hastings Algorithm}{88}
-\contentsline {subsection}{\numberline {5.3.3}Efficiency of Metropolis-Hastings Algorithm}{90}
-\contentsline {section}{\numberline {5.4}Simulation Studies}{93}
-\contentsline {subsection}{\numberline {5.4.1}Simulation on Regular Time Series Data}{94}
-\contentsline {subsection}{\numberline {5.4.2}Simulation on Irregular Time Series Data}{98}
-\contentsline {section}{\numberline {5.5}High Dimensional OU-Process Application}{102}
-\contentsline {subsection}{\numberline {5.5.1}Approximations of The Parameters Posterior}{106}
-\contentsline {subsection}{\numberline {5.5.2}The Forecast Distribution}{106}
-\contentsline {subsection}{\numberline {5.5.3}The Estimation Distribution}{108}
-\contentsline {subsection}{\numberline {5.5.4}Prior Distribution for Parameters}{109}
-\contentsline {subsection}{\numberline {5.5.5}Efficiency of DA-MH}{111}
-\contentsline {subsection}{\numberline {5.5.6}Sliding Window State and Parameter Estimation}{112}
-\contentsline {subsection}{\numberline {5.5.7}Implementation}{115}
-\contentsline {section}{\numberline {5.6}Discussion and Future Work}{121}
-\contentsline {chapter}{\numberline {6}Data Simplify}{123}
-\contentsline {section}{\numberline {6.1}Introduction}{123}
-\contentsline {section}{\numberline {6.2}Preliminary}{124}
-\contentsline {section}{\numberline {6.3}Track Simplification Algorithm}{124}
-\contentsline {section}{\numberline {6.4}Evaluation}{125}
-\contentsline {section}{\numberline {6.5}Adaptive Kalman Filter}{127}
-\contentsline {section}{\numberline {6.6}Experimental results}{127}
-\contentsline {chapter}{\numberline {7}Future Work}{129}
-\contentsline {chapter}{\numberline {8}Summary}{131}
-\contentsline {chapter}{Appendices}{133}
+\contentsline {section}{\numberline {1.5}Markov Chain Monte Carlo Methods}{10}
+\contentsline {section}{\numberline {1.6}Outline of Thesis}{12}
+\contentsline {chapter}{\numberline {2}Adaptive Smoothing Tractor Spline for Trajectory Reconstruction}{15}
+\contentsline {section}{\numberline {2.1}Introduction}{15}
+\contentsline {section}{\numberline {2.2}Tractor spline}{18}
+\contentsline {subsection}{\numberline {2.2.1}Objective Function}{18}
+\contentsline {subsection}{\numberline {2.2.2}Basis Functions}{19}
+\contentsline {subsection}{\numberline {2.2.3}Solution to The Objective Function}{21}
+\contentsline {subsection}{\numberline {2.2.4}Adjusted Penalty Term and Parameter Function}{23}
+\contentsline {section}{\numberline {2.3}Parameter Selection and Cross Validation}{24}
+\contentsline {section}{\numberline {2.4}Simulation Study}{26}
+\contentsline {subsection}{\numberline {2.4.1}Numerical Examples}{26}
+\contentsline {subsection}{\numberline {2.4.2}Evaluation}{33}
+\contentsline {section}{\numberline {2.5}Application on Real Dataset}{36}
+\contentsline {subsection}{\numberline {2.5.1}1-Dimension Trajectory}{37}
+\contentsline {subsection}{\numberline {2.5.2}2-Dimension Trajectory}{40}
+\contentsline {section}{\numberline {2.6}Conclusion and Discussion}{43}
+\contentsline {chapter}{\numberline {3}Tractor Spline as Bayesian Estimation}{45}
+\contentsline {section}{\numberline {3.1}Introduction}{45}
+\contentsline {section}{\numberline {3.2}Polynomial Smoothing Splines on $[0, 1]$ as Bayes Estimates}{47}
+\contentsline {subsection}{\numberline {3.2.1}Polynomial Smoothing Spline}{47}
+\contentsline {subsection}{\numberline {3.2.2}Reproducing Kernel Hilbert Space $\mathcal {H}^{(m)}[0,1]$}{48}
+\contentsline {subsection}{\numberline {3.2.3}Polynomial Smoothing Spline as Bayes Estimates}{49}
+\contentsline {subsection}{\numberline {3.2.4}Gaussian Process Regression}{50}
+\contentsline {section}{\numberline {3.3}Tractor Spline as Bayes Estimate}{51}
+\contentsline {subsection}{\numberline {3.3.1}Reproducing Kernel Hilbert Space $\mathcal {C}_{p.w.}^{2}[0,1]$}{51}
+\contentsline {subsection}{\numberline {3.3.2}Posterior of Bayes Estimates}{53}
+\contentsline {section}{\numberline {3.4}Tractor Spline with Correlated Random Errors}{55}
+\contentsline {section}{\numberline {3.5}A Numeric Simulation}{57}
+\contentsline {section}{\numberline {3.6}Conclusion}{57}
+\contentsline {chapter}{\numberline {4}A Brief Overview of On-line State and Parameters Estimation}{59}
+\contentsline {section}{\numberline {4.1}Introduction}{59}
+\contentsline {section}{\numberline {4.2}Filtering Problem and Estimation}{61}
+\contentsline {subsection}{\numberline {4.2.1}Sequential Monte Carlo Method}{61}
+\contentsline {subsection}{\numberline {4.2.2}Importance sampling}{63}
+\contentsline {subsection}{\numberline {4.2.3}Sequential Importance Sampling and Resampling}{64}
+\contentsline {subsection}{\numberline {4.2.4}Auxiliary Particle Filter}{66}
+\contentsline {subsection}{\numberline {4.2.5}Sequential Particle Filter}{67}
+\contentsline {subsection}{\numberline {4.2.6}MCMC-Based Particle Algorithm}{69}
+\contentsline {section}{\numberline {4.3}On-line State and Parameters Estimation}{70}
+\contentsline {subsection}{\numberline {4.3.1}Artificial Dynamic Noise}{71}
+\contentsline {subsection}{\numberline {4.3.2}Practical Filtering}{71}
+\contentsline {subsection}{\numberline {4.3.3}Liu and West's Filter}{73}
+\contentsline {subsection}{\numberline {4.3.4}Storvik Filter}{73}
+\contentsline {subsection}{\numberline {4.3.5}Particle Learning}{74}
+\contentsline {subsection}{\numberline {4.3.6}Adaptive Ensemble Kalman Filter}{75}
+\contentsline {subsection}{\numberline {4.3.7}On-line Pseudo-Likelihood Estimation}{77}
+\contentsline {section}{\numberline {4.4}Simulation Study}{78}
+\contentsline {section}{\numberline {4.5}Conclusion}{81}
+\contentsline {chapter}{\numberline {5}Adaptive Sequential MCMC for On-line State and Parameters Estimation}{83}
+\contentsline {section}{\numberline {5.1}Introduction}{83}
+\contentsline {section}{\numberline {5.2}Bayesian Inference on Combined State and Parameters}{84}
+\contentsline {subsection}{\numberline {5.2.1}Log-likelihood Function of Parameter Posterior}{86}
+\contentsline {subsection}{\numberline {5.2.2}The Forecast Distribution}{87}
+\contentsline {subsection}{\numberline {5.2.3}The Estimation Distribution}{88}
+\contentsline {section}{\numberline {5.3}Random Walk Metropolis-Hastings algorithm}{89}
+\contentsline {subsection}{\numberline {5.3.1}Self-tuning Metropolis-Hastings Algorithm}{90}
+\contentsline {subsection}{\numberline {5.3.2}Adaptive Delayed Acceptance Metropolis-Hastings Algorithm}{92}
+\contentsline {subsection}{\numberline {5.3.3}Efficiency of Metropolis-Hastings Algorithm}{94}
+\contentsline {section}{\numberline {5.4}Simulation Studies}{97}
+\contentsline {subsection}{\numberline {5.4.1}Simulation on Regular Time Series Data}{98}
+\contentsline {subsection}{\numberline {5.4.2}Simulation on Irregular Time Series Data}{102}
+\contentsline {section}{\numberline {5.5}High Dimensional OU-Process Application}{106}
+\contentsline {subsection}{\numberline {5.5.1}Approximations of The Parameters Posterior}{110}
+\contentsline {subsection}{\numberline {5.5.2}The Forecast Distribution}{110}
+\contentsline {subsection}{\numberline {5.5.3}The Estimation Distribution}{112}
+\contentsline {subsection}{\numberline {5.5.4}Prior Distribution for Parameters}{113}
+\contentsline {subsection}{\numberline {5.5.5}Efficiency of DA-MH}{115}
+\contentsline {subsection}{\numberline {5.5.6}Sliding Window State and Parameter Estimation}{116}
+\contentsline {subsection}{\numberline {5.5.7}Implementation}{119}
+\contentsline {section}{\numberline {5.6}Discussion and Future Work}{125}
+\contentsline {chapter}{\numberline {6}Data Simplify}{127}
+\contentsline {section}{\numberline {6.1}Introduction}{127}
+\contentsline {section}{\numberline {6.2}Preliminary}{128}
+\contentsline {section}{\numberline {6.3}Track Simplification Algorithm}{128}
+\contentsline {section}{\numberline {6.4}Evaluation}{129}
+\contentsline {section}{\numberline {6.5}Adaptive Kalman Filter}{131}
+\contentsline {section}{\numberline {6.6}Experimental results}{131}
+\contentsline {chapter}{\numberline {7}Future Work}{133}
+\contentsline {chapter}{\numberline {8}Summary}{135}
+\contentsline {chapter}{Appendices}{137}
 \setcounter {tocdepth}{1}
 \begingroup \let \l@chapter \l@section \let \l@section \l@subsection 
-\contentsline {chapter}{\numberline {A}Spline Penalty}{134}
-\contentsline {section}{\numberline {A.1}Penalty Matrix in (2.16\hbox {})}{134}
-\contentsline {section}{\numberline {A.2}Proof of Theorem 2\hbox {}}{135}
-\contentsline {section}{\numberline {A.3}Proof of Lemma 2\hbox {}}{138}
-\contentsline {section}{\numberline {A.4}Proof of Theorem 3\hbox {}}{139}
-\contentsline {chapter}{\numberline {B}MCMC}{140}
-\contentsline {section}{\numberline {B.1}Appendices}{140}
-\contentsline {subsection}{\numberline {B.1.1}Linear Simulation Calculations}{140}
-\contentsline {subsection}{\numberline {B.1.2}OU process calculation}{143}
-\contentsline {subsection}{\numberline {B.1.3}Real Data Implementation}{151}
-\contentsline {subsubsection}{Comparison Between Batch and Sliding Window Methods}{155}
-\contentsline {subsubsection}{Parameter Evolution Visualization}{157}
+\contentsline {chapter}{\numberline {A}Spline Penalty}{138}
+\contentsline {section}{\numberline {A.1}Penalty Matrix in (2.16\hbox {})}{138}
+\contentsline {section}{\numberline {A.2}Proof of Theorem 2\hbox {}}{139}
+\contentsline {section}{\numberline {A.3}Proof of Lemma 2\hbox {}}{142}
+\contentsline {section}{\numberline {A.4}Proof of Theorem 3\hbox {}}{143}
+\contentsline {chapter}{\numberline {B}MCMC}{144}
+\contentsline {section}{\numberline {B.1}Appendices}{144}
+\contentsline {subsection}{\numberline {B.1.1}Linear Simulation Calculations}{144}
+\contentsline {subsection}{\numberline {B.1.2}OU process calculation}{147}
+\contentsline {subsection}{\numberline {B.1.3}Real Data Implementation}{155}
+\contentsline {subsubsection}{Comparison Between Batch and Sliding Window Methods}{159}
+\contentsline {subsubsection}{Parameter Evolution Visualization}{161}
 \endgroup 
-\contentsline {chapter}{\hbox to\@tempdima {\hfil }References}{161}
+\contentsline {chapter}{\hbox to\@tempdima {\hfil }References}{165}
