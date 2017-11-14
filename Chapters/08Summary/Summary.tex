@@ -1,7 +1,25 @@
 
 
-Inference and characterization of planar trajectories have been problems that confusing researchers for years. Precise and efficient algorithms are highly demanded in all kinds of applications. 
+Inference and characterization of planar trajectories have been problems that confusing researchers for years. Precise and efficient algorithms are highly demanded in all kinds of applications. In this thesis, an off-line method of Tractor spline is proposed to reconstruct the whole trajectory and an on-line adaptive MCMC algorithm is used to update and track unknown parameters and state instantly. 
 
-In this thesis, the proposed Tractor spline provides a more accurate reconstruction from all the observed data. It can be easily applied in higher dimensional spaces. The Bayesian estimate of Tractor spline can be widely used in complex situations. However, duo to its natural limitation, Tractor spline is not applicable for instant estimation, or requires higher computational capability.  Therefore, an adaptive sequential MCMC algorithm was proposed to estimate combined unknown parameters and state for linear state space models instantly. It is no doubt that the more data involved in the estimation process the better, however, higher time consuming was incurred. The sliding window algorithm is a compromising solution between accuracy and efficiency, by which it is easily to track and monitor a maneuver target. 
+In Chapter \ref{ChapterTS}, the proposed Tractor spline incorporates both location and velocity information but penalizes excessive accelerations. The penalty term is dependent on mechanic boom status indicated as 0 (not-working) and 1 (working). A new parameter, which controls the errors of velocity, and adjusted penalty terms, which adapts to a more complicated curvature status, are introduced to the new objective function. Additionally, an extended cross-validation techniques is used to find the all the smoothing parameters of interest. It can be seen from simulated studies that the Tractor spline has a higher accuracy than other methods. At the end of the chapter, a real data example are presented to demonstrate the effectiveness of Tractor spline.
+
+
+In Chapter \ref{ChapterGPR}, the Bayesian form for a trivial Tractor spline, whose penalty parameter is a fixed constant instead of a function, was introduced. In the particular reproducing kernel Hilbert space, in which the second derivatives are piecewise continuous, the Tractor spline is corresponding to the posterior mean of the Bayesian estimates, even though with correlated errors. As an extension to generalized cross-validation, an modified GCV formula is used to find the optimal parameters. 
+
+
+Chapter \ref{ChapterFR} takes a brief review on existing filtering and estimation algorithms. It is known that most algorithms for combined state and parameter estimation in state space models either estimate the states and parameters by incorporating the parameters in the state space, or marginalize out the parameters through sufficient statistics. 
+
+Then in Chapter \ref{ChapterMCMC}, an adaptive Markov Chain Monte Carlo (MCMC) algorithm is proposed. In the case of a linear state space model and starting with a joint distribution over states, observations and parameters, an MCMC sampler is implemented with two phases. In the learning phase, a self-tuning sampler is used to learn the parameter mean and covariance structure. In the estimation phase, the parameter mean and covariance structure informs the proposal mechanism and is also used in a delayed-acceptance algorithm, which greatly improves sampling efficiency. Information on the resulting state of the system is given by a Gaussian mixture. In on-line mode, the algorithm is adaptive and uses a sliding window approach by cutting off historical data to accelerate sampling speed and stay at a reasonable level of acceptance rates. This algorithm is applied to joint parameters and states estimation in the case of irregularly sampled GPS time series data. 
+
+
 
 The proposed algorithms in this thesis are contributing to related areas, nevertheless, are not perfect. Further research and works are required to improve their performances. 
+
+
+
+
+
+
+
+
