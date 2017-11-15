@@ -200,9 +200,9 @@ Given a sequence of paired data $\{(t_1,y_1,v_1),\ldots, (t_n,y_n,v_n) \}$, the 
 \frac{1}{n}\sum_{i=1}^{n}(y_i-f(t_i))^2+\frac{\gamma}{n}\sum_{i=1}^{n}(v_i-f'(t_i))^2+\lambda \int_{0}^{1}f''^2dt
 \end{equation}
 in the space $\mathcal{C}_{p.w.}^{2}[0,1]$ is a Tractor spline. Equipped with an appropriate inner product
-\begin{equation*}
+\begin{equation}\label{TractorSplineInnerProduct}
 \langle f,g \rangle=f(0) g(0)+f'(0) g'(0)+\int_{0}^{1}f''g''dx,
-\end{equation*}
+\end{equation}
 the space $\mathcal{C}_{p.w.}^{2}[0,1]$ is made a reproducing kernel Hilbert space. In fact, the representer $R_s(\cdot)$ is 
 \begin{equation}\label{kerneleq}
 R_s(t)=1+st+\int_{0}^{1} (s-u)_+(t-u)_+du.

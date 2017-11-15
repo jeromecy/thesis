@@ -97,11 +97,32 @@ A single data split yields a validation estimate of the risk, and averaging over
 For example, a $k$-fold CV splits the data into $k$ roughly equal-sized parts. For the $k$th part, we fit the model to the other $k-1$ parts
 of the data, and calculate the prediction error of the fitted model when
 predicting the $k$th part of the data. A detailed procedure is given by \cite{wahba1975completely}: suppose we have $n$ paired data $(t_1,y_1), \ldots, (t_n,y_n)$. Run a $k$-fold CV according to the following algorithm \ref{kfoldCV}. 
+%\begin{itemize}
+%\item 1. Remove the first data $t_1$ and last date $t_n$ from the dataset.
+%\item 2. Split the rest data $t_2,\ldots,t_{n-1}$ into $k$ groups by:
+%\begin{align*}
+%\mbox{Group 1} &: t_2, t_{2+k}, \cdots \\
+%%& \mbox{Group 2}: t_3, t_{3+k}, \cdots \\
+%& \vdots \\
+% \mbox{Group k} &: t_{k+1}, t_{2k+1}, \cdots
+%\end{align*}
+%\item 3. Guess a value $\lambda^*$. 
+%\item 4. Delete the first group of data. Fit a smoothing spline to the first data $(t_1,y_t)$, the rest groups of dataset and the last data $(t_n,y_n)$ with $\lambda^*$ in step 3. Compute the sum of squared deviations of this smoothing spline from the deleted data points. 
+%\item 5. Delete instead the second group of data. Fit a smoothing spline to the remaining data with  $\lambda^*$. Compute the sum of squared deviations of the spline from deleted data points.
+%\item 6. Repeat Step 5 for the 3rd, 4th, $\cdots$, $k$th group of data.
+%\item 7. Add the sums of squared deviations from steps 4 to 6 and divide by $k$ to achieve a cross-validation score of $\lambda^*$.
+%\item 8. Vary  $\lambda$ systematically and repeat steps 4-7 until CV shows a minimum.
+%\end{itemize}
 \begin{algorithm}[h]
 \SetAlgoLined 
 %\KwResutt{Write here the resutt }
 Initialization: Remove the first data $t_1$ and last date $t_n$ from the dataset. \\
-Split the rest data $t_2,\ldots,t_{n-1}$ into $k$ groups by: $ \mbox{Group k} : t_{k+1}, t_{2k+1}, \cdots$ \\
+Split the rest data $t_2,\ldots,t_{n-1}$ into $k$ groups by:
+\begin{align*}
+\mbox{Group 1} &: t_2, t_{2+k}, \cdots \\
+& \vdots \\
+ \mbox{Group k} &: t_{k+1}, t_{2k+1}, \cdots
+\end{align*} \\
 Guess a value $\lambda^*$. \\
 \While{CV score is not optimized}{
 \For{$i=1,\ldots,k$}{ \label{kfoldCV01}
