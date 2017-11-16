@@ -14,6 +14,12 @@ Agarwal, P.~K., Arge, L., and Erickson, J. (2003).
 \newblock {\em Journal of Computer and System Sciences\/},~{\em 66\/}(1),
   207--243.
 
+\bibitem[\protect\citeauthoryear{Anderson and Moore}{Anderson and
+  Moore}{1979}]{anderson1979optimal}
+Anderson, B.~D. and Moore, J.~B. (1979).
+\newblock Optimal filtering.
+\newblock {\em Englewood Cliffs\/},~{\em 21}, 22--95.
+
 \bibitem[\protect\citeauthoryear{Anderson}{Anderson}{2001}]{anderson2001ensemble}
 Anderson, J.~L. (2001).
 \newblock An ensemble adjustment Kalman filter for data assimilation.
@@ -103,6 +109,12 @@ Aydin, D. and Tuzemen, M.~S. (2012).
 Bajaj, R., Ranaweera, S.~L., and Agrawal, D.~P. (2002).
 \newblock GPS: location-tracking technology.
 \newblock {\em Computer\/},~{\em 35\/}(4), 92--94.
+
+\bibitem[\protect\citeauthoryear{Bar-Shalom and Li}{Bar-Shalom and
+  Li}{1993}]{bar1993estimation}
+Bar-Shalom, Y. and Li, X.-R. (1993).
+\newblock Estimation and tracking- Principles, techniques, and software.
+\newblock {\em Norwood, MA: Artech House, Inc, 1993.\/}.
 
 \bibitem[\protect\citeauthoryear{Bartlett}{Bartlett}{1951}]{bartlett1951inverse}
 Bartlett, M.~S. (1951).
@@ -237,6 +249,14 @@ Chadil, N., Russameesawang, A., and Keeratiwintakorn, P. (2008).
 \newblock In {\em Electrical Engineering/Electronics, Computer,
   Telecommunications and Information Technology, 2008. ECTI-Con 2008. 5th
   International Conference on}, Volume~1,  393--396. IEEE.
+
+\bibitem[\protect\citeauthoryear{Chandrasekar, Ridley, and
+  Bernstein}{Chandrasekar {\em et~al.}}{2007}]{chandrasekar2007comparison}
+Chandrasekar, J., Ridley, A., and Bernstein, D. (2007).
+\newblock A comparison of the extended and unscented Kalman filters for
+  discrete-time systems with nondifferentiable dynamics.
+\newblock In {\em American Control Conference, 2007. ACC'07},  4431--4436.
+  IEEE.
 
 \bibitem[\protect\citeauthoryear{Chen, Shao, and Ibrahim}{Chen {\em
   et~al.}}{2012}]{chen2012monte}
@@ -465,6 +485,11 @@ Gasparetto, A. and Zanotto, V. (2007).
 \newblock A new method for smooth trajectory planning of robot manipulators.
 \newblock {\em Mechanism and machine theory\/},~{\em 42\/}(4), 455--471.
 
+\bibitem[\protect\citeauthoryear{Gelb}{Gelb}{1974}]{gelb1974applied}
+Gelb, A. (1974).
+\newblock {\em Applied optimal estimation}.
+\newblock MIT press.
+
 \bibitem[\protect\citeauthoryear{Gelfand, Hills, Racine-Poon, and
   Smith}{Gelfand {\em et~al.}}{1990}]{gelfand1990illustration}
 Gelfand, A.~E., Hills, S.~E., Racine-Poon, A., and Smith, A.~F. (1990).
@@ -590,6 +615,13 @@ Gu, C. and Wahba, G. (1991).
 \newblock {\em SIAM Journal on Scientific and Statistical Computing\/},~{\em
   12\/}(2), 383--398.
 
+\bibitem[\protect\citeauthoryear{Gy{\"o}rgy, Kelemen, and D{\'a}vid}{Gy{\"o}rgy
+  {\em et~al.}}{2014}]{gyorgy2014unscented}
+Gy{\"o}rgy, K., Kelemen, A., and D{\'a}vid, L. (2014).
+\newblock Unscented Kalman filters and Particle Filter methods for nonlinear
+  state estimation.
+\newblock {\em Procedia Technology\/},~{\em 12}, 65--74.
+
 \bibitem[\protect\citeauthoryear{Haario, Saksman, and Tamminen}{Haario {\em
   et~al.}}{1999}]{haario1999adaptive}
 Haario, H., Saksman, E., and Tamminen, J. (1999).
@@ -645,6 +677,12 @@ Hastings, W.~K. (1970).
 \newblock Monte Carlo sampling methods using Markov chains and their
   applications.
 \newblock {\em Biometrika\/},~{\em 57\/}(1), 97--109.
+
+\bibitem[\protect\citeauthoryear{Haykin {\em et~al.}}{Haykin {\em
+  et~al.}}{2001}]{haykin2001kalman}
+Haykin, S.~S. {\em et~al.} (2001).
+\newblock {\em Kalman filtering and neural networks}.
+\newblock Wiley Online Library.
 
 \bibitem[\protect\citeauthoryear{Heckman and Woodroofe}{Heckman and
   Woodroofe}{1991}]{heckman1991minimax}
@@ -707,6 +745,18 @@ Johansen, A.~M. and Doucet, A. (2008).
 Judd, K.~L. (1998).
 \newblock {\em Numerical methods in economics}.
 \newblock MIT press.
+
+\bibitem[\protect\citeauthoryear{Julier and Uhlmann}{Julier and
+  Uhlmann}{1997}]{julier1997new}
+Julier, S.~J. and Uhlmann, J.~K. (1997).
+\newblock A new extension of the Kalman filter to nonlinear systems.
+\newblock In {\em Int. symp. aerospace/defense sensing, simul. and controls},
+  Volume~3,  182--193. Orlando, FL.
+
+\bibitem[\protect\citeauthoryear{Kailath}{Kailath}{1981}]{kailath1981lectures}
+Kailath, T. (1981).
+\newblock Lectures on Wiener and Kalman filtering.
+\newblock In {\em Lectures on Wiener and Kalman Filtering},  1--143. Springer.
 
 \bibitem[\protect\citeauthoryear{Kalman {\em et~al.}}{Kalman {\em
   et~al.}}{1960}]{kalman1960new}
@@ -815,6 +865,13 @@ Krivobokova, T., Crainiceanu, C.~M., and Kauermann, G. (2008).
 Larson, S.~C. (1931).
 \newblock The shrinkage of the coefficient of multiple correlation.
 \newblock {\em Journal of Educational Psychology\/},~{\em 22\/}(1), 45.
+
+\bibitem[\protect\citeauthoryear{LaViola}{LaViola}{2003}]{laviola2003comparison}
+LaViola, J.~J. (2003).
+\newblock A comparison of unscented and extended Kalman filtering for
+  estimating quaternion motion.
+\newblock In {\em American Control Conference, 2003. Proceedings of the 2003},
+  Volume~3,  2435--2440. IEEE.
 
 \bibitem[\protect\citeauthoryear{Lawson, Ravi, and Hwang}{Lawson {\em
   et~al.}}{2011}]{lawson2011compression}
@@ -1000,6 +1057,12 @@ Rasmussen, C.~E. and Williams, C.~K. (2006).
 \newblock {\em Gaussian processes for machine learning}, Volume~1.
 \newblock MIT press Cambridge.
 
+\bibitem[\protect\citeauthoryear{Rhodes}{Rhodes}{1971}]{rhodes1971tutorial}
+Rhodes, I. (1971).
+\newblock A tutorial introduction to estimation and filtering.
+\newblock {\em IEEE Transactions on Automatic Control\/},~{\em 16\/}(6),
+  688--706.
+
 \bibitem[\protect\citeauthoryear{Ristic, Arulampalam, and Gordon}{Ristic {\em
   et~al.}}{2004}]{ristic2004beyond}
 Ristic, B., Arulampalam, S., and Gordon, N. (2004).
@@ -1153,11 +1216,24 @@ Sorensen, D. and Gianola, D. (2007).
   genetics}.
 \newblock Springer Science \& Business Media.
 
+\bibitem[\protect\citeauthoryear{Sorenson}{Sorenson}{1985}]{sorenson1985kalman}
+Sorenson, H.~W. (1985).
+\newblock {\em Kalman filtering: theory and application}.
+\newblock IEEE.
+
 \bibitem[\protect\citeauthoryear{Speckman and Sun}{Speckman and
   Sun}{2003}]{speckman2003fully}
 Speckman, P.~L. and Sun, D. (2003).
 \newblock Fully Bayesian spline smoothing and intrinsic autoregressive priors.
 \newblock {\em Biometrika\/},~{\em 90\/}(2), 289--302.
+
+\bibitem[\protect\citeauthoryear{St-Pierre and Gingras}{St-Pierre and
+  Gingras}{2004}]{st2004comparison}
+St-Pierre, M. and Gingras, D. (2004).
+\newblock Comparison between the unscented Kalman filter and the extended
+  Kalman filter for the position estimation module of an integrated navigation
+  information system.
+\newblock In {\em Intelligent Vehicles Symposium, 2004 IEEE},  831--835. IEEE.
 
 \bibitem[\protect\citeauthoryear{Stavropoulos and Titterington}{Stavropoulos
   and Titterington}{2001}]{stavropoulos2001improved}

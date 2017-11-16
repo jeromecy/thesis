@@ -668,6 +668,35 @@ Notice that the proposed sliding window MCMC algorithm requires using a few data
 \caption{A comparison study using simulated time series data shows that LW, St and PL algorithms converge to the true $\phi$ at similar speed. The proposed MCMC algorithm has a higher variability. By repeatedly running for 50 times, the box-plot indicates that the proposed MCMC has a higher stability comparing with the other three algorithms. } \label{FilterRiewComparesion01}
 \end{figure}
 
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.45\textwidth]{Chapters/04Filtering/plot/LWchain100.pdf}
+\includegraphics[width=0.45\textwidth]{Chapters/04Filtering/plot/STchain100.pdf}
+\includegraphics[width=0.45\textwidth]{Chapters/04Filtering/plot/PLchain100.pdf}
+\includegraphics[width=0.45\textwidth]{Chapters/04Filtering/plot/MCMCchain100.pdf}
+\includegraphics[width=0.45\textwidth]{Chapters/04Filtering/plot/MCMCchain300.pdf}
+\includegraphics[width=0.45\textwidth]{Chapters/04Filtering/plot/MCMCchainVary.pdf}
+\caption{Chain plots. Repeatedly running 50 times. Cutting off the first \textbf{300} data. LW, St, PL filters are using 5\,000 particles. MCMC is using 5\,000 samples. The lengths of sliding window MCMC-100 and MCMC-300 stay constant at \textbf{100} and \textbf{300}. The length of MCMC-vary expends along time $t$. }
+\end{figure}
+
+ 
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.95\textwidth]{Chapters/04Filtering/plot/CompMCMCboxplotALL.pdf}
+\caption{Repeatedly running 50 times. Cutting off the first \textbf{300} data. LW, St, PL filters are using 5\,000 particles. MCMC is using 5\,000 samples. The length of sliding window MCMC stays constant \textbf{100} and \textbf{300}. The length of sliding window MCMC-vary is expanding along time $t$. For example, at $t=300$, the length is 300 ($y_{1:300}$); at $t=500$, the length is 500 ($y_{1:500}$). }
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+     & LW & St & PL  & MCMC-100 & MCMC-300 & MCMC-vary \\ \hline
+Mean of $\hat{\phi}$ & 0.7947 &   0.7908   &  0.7918 & 0.7914 &  0.8038& 0.7922 \\ \hline
+Se of $\hat{\phi}$ ($\times 10^{-4}$) &  13.1000  & 4.8793 & 6.2877 & 1.1388 & 0.3275 & 0.27506 \\ \hline
+$\frac{1}{n}\sum_i(\hat{x}_i-x_i)^2$ & 0.5745 & 0.5739 & 0.5737 & 0.5875&  0.5741 &  0.5740 \\ \hline
+\end{tabular}
+\end{figure}
+
+
+
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{Chapters/04Filtering/plot/plotlyFilterCompX2.png}

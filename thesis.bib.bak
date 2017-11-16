@@ -24,6 +24,15 @@
   publisher = {Elsevier}
 }
 
+@ARTICLE{anderson1979optimal,
+  author = {Anderson, Brian DO and Moore, John B},
+  title = {Optimal filtering},
+  journal = {Englewood Cliffs},
+  year = {1979},
+  volume = {21},
+  pages = {22--95}
+}
+
 @ARTICLE{anderson2001ensemble,
   author = {Anderson, Jeffrey L},
   title = {An ensemble adjustment Kalman filter for data assimilation},
@@ -193,6 +202,13 @@
   pages = {92--94},
   number = {4},
   publisher = {IEEE}
+}
+
+@ARTICLE{bar1993estimation,
+  author = {Bar-Shalom, Yaakov and Li, Xiao-Rong},
+  title = {Estimation and tracking- Principles, techniques, and software},
+  journal = {Norwood, MA: Artech House, Inc, 1993.},
+  year = {1993}
 }
 
 @ARTICLE{bartlett1951inverse,
@@ -813,6 +829,26 @@
   publisher = {Elsevier}
 }
 
+@BOOK{gelb1974applied,
+  title = {Applied optimal estimation},
+  publisher = {MIT press},
+  year = {1974},
+  author = {Gelb, Arthur}
+}
+
+@ARTICLE{gelfand1990illustration,
+  author = {Gelfand, Alan E and Hills, Susan E and Racine-Poon, Amy and Smith,
+	Adrian FM},
+  title = {Illustration of Bayesian inference in normal data models using Gibbs
+	sampling},
+  journal = {Journal of the American Statistical Association},
+  year = {1990},
+  volume = {85},
+  pages = {972--985},
+  number = {412},
+  publisher = {Taylor \& Francis Group}
+}
+
 @ARTICLE{gelman2008weakly,
   author = {Gelman, Andrew and Jakulin, Aleks and Pittau, Maria Grazia and Su,
 	Yu-Sung},
@@ -1022,6 +1058,17 @@
   pages = {383--398},
   number = {2},
   publisher = {SIAM}
+}
+
+@ARTICLE{gyorgy2014unscented,
+  author = {Gy{\"o}rgy, Katalin and Kelemen, Andr{\'a}s and D{\'a}vid, L{\'a}szl{\'o}},
+  title = {Unscented Kalman filters and Particle Filter methods for nonlinear
+	state estimation},
+  journal = {Procedia Technology},
+  year = {2014},
+  volume = {12},
+  pages = {65--74},
+  publisher = {Elsevier}
 }
 
 @BOOK{hardle1990applied,
@@ -1248,6 +1295,26 @@
   author = {Judd, Kenneth L}
 }
 
+@INPROCEEDINGS{julier1997new,
+  author = {Julier, Simon J and Uhlmann, Jeffrey K},
+  title = {A new extension of the Kalman filter to nonlinear systems},
+  booktitle = {Int. symp. aerospace/defense sensing, simul. and controls},
+  year = {1997},
+  volume = {3},
+  number = {26},
+  pages = {182--193},
+  organization = {Orlando, FL}
+}
+
+@INCOLLECTION{kailath1981lectures,
+  author = {Kailath, Thomas},
+  title = {Lectures on Wiener and Kalman filtering},
+  booktitle = {Lectures on Wiener and Kalman Filtering},
+  publisher = {Springer},
+  year = {1981},
+  pages = {1--143}
+}
+
 @ARTICLE{kalman1960new,
   author = {Kalman, Rudolph Emil and others},
   title = {A new approach to linear filtering and prediction problems},
@@ -1455,6 +1522,17 @@
   pages = {45},
   number = {1},
   publisher = {Warwick \& York}
+}
+
+@INPROCEEDINGS{laviola2003comparison,
+  author = {LaViola, Joseph J},
+  title = {A comparison of unscented and extended Kalman filtering for estimating
+	quaternion motion},
+  booktitle = {American Control Conference, 2003. Proceedings of the 2003},
+  year = {2003},
+  volume = {3},
+  pages = {2435--2440},
+  organization = {IEEE}
 }
 
 @TECHREPORT{lawson2011compression,
@@ -1783,6 +1861,17 @@
   volume = {1}
 }
 
+@ARTICLE{rhodes1971tutorial,
+  author = {Rhodes, Ian},
+  title = {A tutorial introduction to estimation and filtering},
+  journal = {IEEE Transactions on Automatic Control},
+  year = {1971},
+  volume = {16},
+  pages = {688--706},
+  number = {6},
+  publisher = {IEEE}
+}
+
 @ARTICLE{ristic2004beyond,
   author = {Ristic, Branko and Arulampalam, Sanjeev and Gordon, Neil},
   title = {Beyond the Kalman filter},
@@ -2058,6 +2147,13 @@
   author = {Sorensen, Daniel and Gianola, Daniel}
 }
 
+@BOOK{sorenson1985kalman,
+  title = {Kalman filtering: theory and application},
+  publisher = {IEEE},
+  year = {1985},
+  author = {Sorenson, Harold Wayne}
+}
+
 @ARTICLE{speckman2003fully,
   author = {Speckman, Paul L and Sun, Dongchu},
   title = {Fully Bayesian spline smoothing and intrinsic autoregressive priors},
@@ -2090,6 +2186,17 @@
   owner = {zcao},
   publisher = {IEEE},
   timestamp = {2017.10.23}
+}
+
+@INPROCEEDINGS{st2004comparison,
+  author = {St-Pierre, Mathieu and Gingras, Denis},
+  title = {Comparison between the unscented Kalman filter and the extended Kalman
+	filter for the position estimation module of an integrated navigation
+	information system},
+  booktitle = {Intelligent Vehicles Symposium, 2004 IEEE},
+  year = {2004},
+  pages = {831--835},
+  organization = {IEEE}
 }
 
 @ARTICLE{stroud2007sequential,

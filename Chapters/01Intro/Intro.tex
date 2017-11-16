@@ -55,7 +55,7 @@ To find the best estimation $\hat{f}(t)$ goes through observation $y_i$, $i=1,\l
 
 However, a parametric approach only captures features contained in the preconceived class of functions and increases model bias \cite{yao2005functional}. To avoid this, nonparametric methods have been developed. Rather than giving specified parameters, it is desired to reconstruct $f$ from the data $y(t_i)\equiv y_i$ itself  \cite{craven1978smoothing}. The estimates of polynomial smoothing splines appear as a solution to the following minimization problem: find $\hat{f} \in \mathit{C}^m[a,b]$ that minimizes the penalized residual sum of squares: 
 \begin{equation}\label{introSmoothingOb}
-\mbox{RSS}=\sum_{i=1}^{n}\left(  y_i-f(t_i)\right) ^2+\lambda\int_a^b (f^{(m)})^2dt
+\mbox{RSS}=\sum_{i=1}^{n}\left(  y_i-f(t_i)\right) ^2+\lambda\int_a^b \left(f^{(m)}\right)^2dt
 \end{equation}
 for pre-specified value $\lambda>0$ \cite{aydin2012smoothing}. In the above equation, the first term is the residual sum squares controlling the lack of fit. The second term is the roughness penalty weighted by a smoothing parameter $\lambda$, which varies from $0$ to $+\infty$ and establishes a trade-off between interpolation and straight line in the following way: 
 \begin{align*}
@@ -145,19 +145,18 @@ In smoothing problems, GCV can also alleviate the tendency of cross-validation t
 Rather than $\lambda$ being constant, a new challenge is posed that the smoothing parameter becomes a function $\lambda(t)$ and is varying in domains. The structure of this penalty function controls the complexity on each domain and the whole final model.  \cite{donoho1995wavelet} introduced adaptive splines and a method to calculate piecewise parameters and \cite{liu2010data} give an improved formula for this method. They  proposed an approximation to the penalty function with an indicator and extended the generalized likelihood to the adaptive smoothing spline. This will be another interesting research topic. 
 
 
-
-
-
 %Craven and Wahba [5], Hardle [8], Hardle, Hall and Marron
 %[9], Wahba [26], Hurvich, et al. [11], Eubank [6], Lee and Solo [17], Hastie and Tibshirani
 %[10], Schimek [22], Cantoni and Ronchetti [4], Ruppert, Wand and Carroll [21], Lee [15, 16],
 %and Kou [12] supplement on the selection of the smoothing parameter
 
 
-
-
 %\textbf{Temporally put here }Due to the noise generated from observation units, one can use regression methods to find the best reconstruction returning the least sum square errors among all the sequences. Consider a regression model $y_i=f(t_i)+\epsilon_i$, where $a \leq t_1 < \cdots < t_n \leq b$ and $f \in \mathit{C}^2[a,b]$ is an unknown smooth function, $(\epsilon_i)_{i=1}^n \sim N(0,\sigma^2)$ are random errors. In a classical parametric regression, $f$ is assumed having the form $f(x,\beta)$, which is known up to the data estimated parameters $\beta$ \cite{kim2004smoothing}. When $f(x,\beta)$ is linear in $\beta$, we will have a standard linear model. 
 
+
+%\subsection*{Improved AIC}
+%
+%The AIC, abbreviated for Akaike Information Criterion, is originally for parametric problems of model selection. 
 
 
 
@@ -166,30 +165,27 @@ Rather than $\lambda$ being constant, a new challenge is posed that the smoothin
 Smoothing spline algorithms have several advantages in inferring and characterizing planar trajectories, particularly in reconstructing. However, subject to the property that smoothing splines require the solution of a global problem that involves the entire set of points to be interpolated, it might not be suitable for on-line estimation \cite{biagiotti2013online}. Therefore, it is time to use Bayesian algorithms to implement instant/on-line estimation and prediction. 
 
 
-The word "filtering" refers to the methods for estimating the state of a time-varying system, which is indirectly observed through noisy measurements. A Bayes filter is a general probabilistic approach to infer an unknown probability density function recursively over time using incoming measurements and a mathematical process model. An optimal Bayesian filtering is using Bayesian way of formulating optimal filtering, which meets some statistical criteria, such as least mean squired errors, maximum likelihood approximation and so on \cite{chen2003bayesian} \cite{sarkka2013bayesian}.  
+The word \textit{filtering} refers to the methods for estimating the state of a time-varying system, which is indirectly observed through noisy measurements. A Bayes filter is a general probabilistic approach to infer an unknown probability density function recursively over time using incoming measurements and a mathematical process model. The concept \textit{optimal estimation} refers to some criteria that measures the optimality in specific sense \cite{anderson1979optimal}. For example, a posterior estimation of $\hat{x}_t\sim p(x_t\mid y_{1:t})$ that minimizes the loss function $J_t=\E (x_t-\hat{x}_t)^2$ for incorrect estimates, or least mean squired errors, maximum likelihood approximation and so on \cite{chen2003bayesian} \cite{sarkka2013bayesian}. Hence, an optimal \textit{Bayesian filtering} is using Bayesian way of formulating optimal filtering by meeting some statistical criteria. 
 
 
 
 \subsection*{Kalman Filter}
 
-In a linear system, the optimal Bayesian solution coincides with the least squares solution. The successful optimal solution was given by \cite{kalman1960new},  known as Kalman filter. Consider the following model 
+In a discrete-time linear system, the optimal Bayesian solution coincides with the least squares solution. The successful optimal one was given by \cite{kalman1960new},  the celebrated \textit{Kalman filter}. It is recursively updating the estimation of state by computing from the previous estimation and new input observation. In addition to eliminating the need for storing the entire past observed data, the Kalman filter is computationally more efficient then computing the estimate directly from the entire past observed data at each step of the filtering process \cite{haykin2001kalman}. 
+
+A detailed Kalman filter and its may variants can be found in \cite{chen2003bayesian}, \cite{rhodes1971tutorial}, \cite{kailath1981lectures}, \cite{sorenson1985kalman}. In fact, it is also shown that the Kalman filter can be derived within a Bayesian framework and reduces to a maximum posteriori probability (MAP) solution \cite{haykin2001kalman}. 
+
+Consider the following model 
 \begin{align*}
 \begin{array}{cccccccccc}\cdots &\to &x_{t-1}&\to &x_{t}&\to &x_{t+1}&\to &\cdots &{\text{truth}}\\ \cdots &&\downarrow &&\downarrow &&\downarrow &&\cdots &\\ \cdots&&y_{t-1}&&y_{t}&&y_{t+1}&&\cdots &{\text{observation}}\end{array}
-\end{align*}
-in which $x_t=F(x_{t-1})+\varepsilon_x$ is the true hidden state of the system and $y_t=G(x_t)+\varepsilon_y$ is the observed measurement, where $\varepsilon$ indicates noise in the model. To estimate the filtering state $x_t$ from $y_{1:t}=\{y_1,\ldots,y_t\}$, Bayesian wants to maximize the posterior $p(x_t\mid y_{1:t})$ by marginalizing out all the previous measurements. Starting from the joint distribution of 
-\begin{equation*}
-p(x_t,x_{t-1},y_{1:t}) = p(y_t\mid x_t)p(x_t\mid x_{t-1})p(x_{t-1}\mid y_{1:t-1})p(y_{1:t-1}),
-\end{equation*}
-and $p(y_t\mid x_t)\sim N(H_tx_t,R_t)$, in Kalman filter, by supposing the expectation $\hat{x}_{t-1}$ and variance $S_{t-1}$ of $x_{t-1}$ are known, one can find that 
-\begin{equation*}
-\int p(x_t\mid x_{t-1})p(x_{t-1}\mid \hat{x}_{t-1},S_{t-1})dx_{t-1} = N(x_t\mid \hat{x}_t,S_t), 
-\end{equation*}
-where $\hat{x}_t=F\hat{x}_{t-1}$ and $S_t=FS_{t-1}F^\top + Q_t$. More specifically, the log likelihood function is written as
-\begin{align*}
-\log p(x_t\mid y_{1:t}) &\propto \log p(y_t\mid x_t) + \log p(x_t\mid \hat{x}_{t-1}) \\% + const\\
-                          &=\frac{1}{2}(y_t-Gx_t)^2-\frac{1}{2}(x_t-\hat{x}_{t-1})^2.  %+const.
-\end{align*} 
-Therefore, the solution to the above equation will be 
+ \end{align*}
+in which $x_t=F(x_{t-1})+\varepsilon_x$ is the true hidden state propagating through the transition matrix $F$ and $y_t=G(x_t)+\varepsilon_y$ is the observation measured by the measurement matrix $G$ of the system, where $\varepsilon$ indicates \iid noise in the model. 
+
+
+
+To estimate the filtering state $x_t$ from $y_{1:t}=\{y_1,\ldots,y_t\}$, Bayesian wants to maximize the posterior $p(x_t\mid y_{1:t})$ by marginalizing out all the previous measurements. Given the joint distribution of $p(x_t,x_{t-1},y_{1:t})$, Kalman filter supposes the expectation $\hat{x}_{t-1}$ and its variance $S_{t-1}$ are known and passing through the system by $\hat{x}_t=F\hat{x}_{t-1}$ and $S_t=FS_{t-1}F^\top + Q_t$. Because of the log likelihood function is written as
+$\log p(x_t\mid y_{1:t}) \propto \frac{1}{2}(y_t-Gx_t)^2-\frac{1}{2}(x_t-\hat{x}_{t-1})^2$,
+therefore, the solution is 
 \begin{equation*}
 \hat{x}_t = \left(G^\top R^{-1}G+S_{t-1}^{-1}\right)^{-1}\left( G^\top R_t^{-1}y_t+S_{t-1}^{-1}\hat{x}_{t-1} \right).
 \end{equation*}
@@ -198,20 +194,30 @@ and $K_t = S_{t-1} G^\top (R_t +GS_{t-1}G^\top)^{-1}$ is named Kalman gain matri
 \begin{equation}\label{KalmanEstimation}
 \hat{x}_t = \hat{x}_{t-1}+K_t(y_t-G\hat{x}_{t-1}).
 \end{equation}
-So far, we take a brief review on the calculation of Kalman filter and obtain its recursive filtering formula for a linear system. 
 
 
-Moreover, compared with filtering distribution $p(x_t\mid y_{1:t})$, the prediction distribution is trying to find a future state $x_{t+n}$ which is $n$ steps after current state, that will be $p(x_{t+n}\mid y_{1:t})$, and the smoothing distribution is to find a specific state in the past, which is $p(x_k\mid y_{1:t})$ for $k<t$. 
+Furthermore, compared with filtering distribution $p(x_t\mid y_{1:t})$, the prediction distribution is trying to find a future state $x_{t+n}$ which is $n$ steps after current state, that will be $p(x_{t+n}\mid y_{1:t})$, and the smoothing distribution is to find a specific state in the past, which is $p(x_k\mid y_{1:t})$ for $k<t$. 
+
+
+Kalman Filter has limitation that it does not apply to general non-linear model and non-Gaussian distributions. For a non-linear system, one can use the extended Kalman filter (EKF), which is widely used for solving nonlinear state estimation applications \cite{gelb1974applied}, \cite{bar1993estimation}. The EKF uses Taylor expansion to construct linear approximations of nonlinear functions, therefore, the state transition $f$ and observation $g$ do not have to be linear but to be differentiable. However, in the EKF process, these approximations can introduce large errors in the true posterior mean and covariance of the transformed (Gaussian) random variable \cite{wan2000unscented}. 
+
+
+Alternatively, the Unscented Kalman Filter (UKF) is a derivative-free method \cite{julier1997new}, \cite{wan2000unscented}, \cite{gyorgy2014unscented}. It is using the Kalman filter to create a normal distribution that approximates the result of a non-linear transformation numerically by seeing what happens to a few carefully chosen points. The unscented transform is used to recursively estimating the equation (\ref{KalmanEstimation}), where the state random variable is redefined as the concatenation of the original state and noise variables. In contrast, Kalman filter doesn't require numerical approximations. 
+
+
+The performance of EKF and UKF is compared in a few references regarding to different kinds of aspects, such as \cite{chandrasekar2007comparison}, \cite{laviola2003comparison}, \cite{st2004comparison}. There is not an overall conclusion that which one performs better. 
+
+
 
 
 
 \subsection*{Monte Carlo Filter}
 
-Kalman Filter has limitation that it does not apply to general non-linear model and non-Gaussian distributions. For a non-linear system, one can use unscented Kalman filter \cite{wan2000unscented} and Monte Carlo filter \cite{chen2003bayesian}. The idea of an unscented Kalman filter is to create a normal distribution that approximates the result of a non-linear transformation numerically by seeing what happens to a few carefully chosen points. The unscented transform is used to recursively estimating the equation (\ref{KalmanEstimation}), where the state random variable is redefined as the concatenation of the original state and noise variables. In contrast, Kalman filter doesn't require numerical approximations. 
 
-Monte Carlo filter is a class of Monte Carlo approaches. 
-%The power of these approaches is that they can numerically and efficiently handle integration problems. 
-The important advantage of Monte Carlo is that a large number of posterior moments can be estimated at a reasonable computational effort and that estimates of the numerical accuracy of these results are obtained in a simple way \cite{kloek1978bayesian}. Sequential Monte Carlo method is using Monte Carlo approaches to estimate and compute recursively. One of the attractive merits of sequential Monte Carlo approaches lies in the fact that they allow on-line estimation by combining the powerful Monte Carlo sampling methods with Bayesian inference, at an expense of reasonable computational cost \cite{chen2003bayesian}. One of the most popular methods is particle filter, which randomly generates a cloud of points and push these points through the non-linear transformation. 
+Monte Carlo filter, \cite{chen2003bayesian},  is a class of Monte Carlo approaches. The power of these approaches is that they can numerically and efficiently handle integration problems. 
+
+The important advantage of Monte Carlo is that a large number of posterior moments can be estimated at a reasonable computational effort and that estimates of the numerical accuracy of these results are obtained in a simple way \cite{kloek1978bayesian}. Sequential Monte Carlo method is using Monte Carlo approaches to estimate and compute recursively. One of the attractive merits of sequential Monte Carlo approaches lies in the fact that they allow on-line estimation by combining the powerful Monte Carlo sampling methods with Bayesian inference, at an expense of reasonable computational cost \cite{chen2003bayesian}. One of the most popular methods is the Particle filter, which randomly generates a cloud of points and push these points through the process. It is a recursive implementation of the Monte Carlo approaches. 
+
 
 Suppose we can draw some particles $x_t^{(1)}, \ldots, x_t^{(N)}$ from the target probability distribution function $q(x)$, then these particles are used to estimate the expectation and variance of $f(x)$. The posterior distribution or density is empirically represented by a weighted sum of these samples $x_t^{(1)}, \ldots, x_t^{(N)}$ by 
 \begin{align*}
