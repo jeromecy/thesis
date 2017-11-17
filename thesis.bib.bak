@@ -95,9 +95,7 @@
   volume = {18},
   pages = {343--373},
   number = {4},
-  owner = {zcao},
-  publisher = {Springer},
-  timestamp = {2017.10.23}
+  publisher = {Springer}
 }
 
 @ARTICLE{arlot2010survey,
@@ -144,6 +142,14 @@
   owner = {zcao},
   publisher = {Ieee},
   timestamp = {2017.10.23}
+}
+
+@ARTICLE{atchade2009adaptive,
+  author = {Atchade, Yves and Fort, Gersende and Moulines, Eric and Priouret,
+	Pierre},
+  title = {Adaptive Markov chain Monte Carlo: theory and methods},
+  journal = {Preprint},
+  year = {2009}
 }
 
 @ARTICLE{Atkinson2004,
@@ -366,6 +372,17 @@
   timestamp = {2017.10.27}
 }
 
+@ARTICLE{carlin1992monte,
+  author = {Carlin, Bradley P and Polson, Nicholas G and Stoffer, David S},
+  title = {A Monte Carlo approach to nonnormal and nonlinear state-space modeling},
+  journal = {Journal of the American Statistical Association},
+  year = {1992},
+  volume = {87},
+  pages = {493--500},
+  number = {418},
+  publisher = {Taylor \& Francis Group}
+}
+
 @ARTICLE{carpenter1999improved,
   author = {Carpenter, James and Clifford, Peter and Fearnhead, Paul},
   title = {Improved particle filter for nonlinear problems},
@@ -425,6 +442,16 @@
   year = {2008},
   volume = {1},
   pages = {393--396},
+  organization = {IEEE}
+}
+
+@INPROCEEDINGS{chandrasekar2007comparison,
+  author = {Chandrasekar, J and Ridley, AJ and Bernstein, DS},
+  title = {A comparison of the extended and unscented Kalman filters for discrete-time
+	systems with nondifferentiable dynamics},
+  booktitle = {American Control Conference, 2007. ACC'07},
+  year = {2007},
+  pages = {4431--4436},
   organization = {IEEE}
 }
 
@@ -691,6 +718,16 @@
   publisher = {Springer}
 }
 
+@ARTICLE{doucet2009tutorial,
+  author = {Doucet, Arnaud and Johansen, Adam M},
+  title = {A tutorial on particle filtering and smoothing: Fifteen years later},
+  journal = {Handbook of nonlinear filtering},
+  year = {2009},
+  volume = {12},
+  pages = {3},
+  number = {656-704}
+}
+
 @ARTICLE{douglas1973algorithms,
   author = {Douglas, David H and Peucker, Thomas K},
   title = {Algorithms for the reduction of the number of points required to
@@ -951,6 +988,13 @@
   publisher = {Springer}
 }
 
+@ARTICLE{godsill2000methodology,
+  author = {Godsill, SJ and Doucet, A and West, M},
+  title = {Methodology for Monte Carlo smoothing with application to time-varying
+	autoregressions},
+  year = {2000}
+}
+
 @ARTICLE{golightly2006bayesian,
   author = {Golightly, Andrew and Wilkinson, Darren J},
   title = {Bayesian sequential inference for nonlinear multivariate diffusions},
@@ -1102,6 +1146,17 @@
   owner = {zcao},
   publisher = {Heidelberg: Physica-Verlag,[1992-},
   timestamp = {2017.10.23}
+}
+
+@ARTICLE{haario2001adaptive,
+  author = {Haario, Heikki and Saksman, Eero and Tamminen, Johanna and others},
+  title = {An adaptive Metropolis algorithm},
+  journal = {Bernoulli},
+  year = {2001},
+  volume = {7},
+  pages = {223--242},
+  number = {2},
+  publisher = {Bernoulli Society for Mathematical Statistics and Probability}
 }
 
 @INCOLLECTION{hammersley1964percolation,
@@ -1327,6 +1382,13 @@
   timestamp = {2017.05.23}
 }
 
+@BOOK{kalos2008monte,
+  title = {Monte carlo methods},
+  publisher = {John Wiley \& Sons},
+  year = {2008},
+  author = {Kalos, Malvin H and Whitlock, Paula A}
+}
+
 @INPROCEEDINGS{kantas2009overview,
   author = {Kantas, N and Doucet, A and Singh, SS and Maciejowski, JM},
   title = {An overview of sequential Monte Carlo methods for parameter estimation},
@@ -1487,6 +1549,17 @@
   year = {1989},
   pages = {398--405},
   organization = {IEEE}
+}
+
+@ARTICLE{kong1994sequential,
+  author = {Kong, Augustine and Liu, Jun S and Wong, Wing Hung},
+  title = {Sequential imputations and Bayesian missing data problems},
+  journal = {Journal of the American statistical association},
+  year = {1994},
+  volume = {89},
+  pages = {278--288},
+  number = {425},
+  publisher = {Taylor \& Francis}
 }
 
 @BOOK{AEM,
@@ -1654,6 +1727,15 @@
   year = {2006},
   pages = {2296--2301},
   organization = {IEEE}
+}
+
+@INPROCEEDINGS{mahendran2012adaptive,
+  author = {Mahendran, Nimalan and Wang, Ziyu and Hamze, Firas and De Freitas,
+	Nando},
+  title = {Adaptive MCMC with Bayesian optimization},
+  booktitle = {Artificial Intelligence and Statistics},
+  year = {2012},
+  pages = {751--760}
 }
 
 @ARTICLE{martino2010generalized,
@@ -1919,6 +2001,17 @@
   timestamp = {2017.10.27}
 }
 
+@ARTICLE{roberts2009examples,
+  author = {Roberts, Gareth O and Rosenthal, Jeffrey S},
+  title = {Examples of adaptive MCMC},
+  journal = {Journal of Computational and Graphical Statistics},
+  year = {2009},
+  volume = {18},
+  pages = {349--367},
+  number = {2},
+  publisher = {Taylor \& Francis}
+}
+
 @ARTICLE{roberts2001optimal,
   author = {Roberts, Gareth O and Rosenthal, Jeffrey S and others},
   title = {Optimal scaling for various Metropolis-Hastings algorithms},
@@ -1930,6 +2023,14 @@
   owner = {zcao},
   publisher = {Institute of Mathematical Statistics},
   timestamp = {2017.10.27}
+}
+
+@BOOK{rubin2004multiple,
+  title = {Multiple imputation for nonresponse in surveys},
+  publisher = {John Wiley \& Sons},
+  year = {2004},
+  author = {Rubin, Donald B},
+  volume = {81}
 }
 
 @BOOK{ruppert2003semiparametric,
@@ -2241,6 +2342,17 @@
   owner = {zcao},
   publisher = {Springer},
   timestamp = {2017.10.23}
+}
+
+@ARTICLE{tanner1987calculation,
+  author = {Tanner, Martin A and Wong, Wing Hung},
+  title = {The calculation of posterior distributions by data augmentation},
+  journal = {Journal of the American statistical Association},
+  year = {1987},
+  volume = {82},
+  pages = {528--540},
+  number = {398},
+  publisher = {Taylor \& Francis Group}
 }
 
 @ARTICLE{taylor2000integration,

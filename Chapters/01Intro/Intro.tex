@@ -176,9 +176,9 @@ In a discrete-time linear system, the optimal Bayesian solution coincides with t
 A detailed Kalman filter and its may variants can be found in \cite{chen2003bayesian}, \cite{rhodes1971tutorial}, \cite{kailath1981lectures}, \cite{sorenson1985kalman}. In fact, it is also shown that the Kalman filter can be derived within a Bayesian framework and reduces to a maximum posteriori probability (MAP) solution \cite{haykin2001kalman}. 
 
 Consider the following model 
-\begin{align*}
+\begin{align}\label{introKFmodel}
 \begin{array}{cccccccccc}\cdots &\to &x_{t-1}&\to &x_{t}&\to &x_{t+1}&\to &\cdots &{\text{truth}}\\ \cdots &&\downarrow &&\downarrow &&\downarrow &&\cdots &\\ \cdots&&y_{t-1}&&y_{t}&&y_{t+1}&&\cdots &{\text{observation}}\end{array}
- \end{align*}
+ \end{align}
 in which $x_t=F(x_{t-1})+\varepsilon_x$ is the true hidden state propagating through the transition matrix $F$ and $y_t=G(x_t)+\varepsilon_y$ is the observation measured by the measurement matrix $G$ of the system, where $\varepsilon$ indicates \iid noise in the model. 
 
 
@@ -214,52 +214,69 @@ The performance of EKF and UKF is compared in a few references regarding to diff
 \subsection*{Monte Carlo Filter}
 
 
-Monte Carlo filter, \cite{chen2003bayesian},  is a class of Monte Carlo approaches. The power of these approaches is that they can numerically and efficiently handle integration problems. 
+Monte Carlo filter, \cite{chen2003bayesian},  is a class of Monte Carlo approaches. The power of these approaches is that they can numerically and efficiently handle integration and optimization problems. 
 
-The important advantage of Monte Carlo is that a large number of posterior moments can be estimated at a reasonable computational effort and that estimates of the numerical accuracy of these results are obtained in a simple way \cite{kloek1978bayesian}. Sequential Monte Carlo method is using Monte Carlo approaches to estimate and compute recursively. One of the attractive merits of sequential Monte Carlo approaches lies in the fact that they allow on-line estimation by combining the powerful Monte Carlo sampling methods with Bayesian inference, at an expense of reasonable computational cost \cite{chen2003bayesian}. One of the most popular methods is the Particle filter, which randomly generates a cloud of points and push these points through the process. It is a recursive implementation of the Monte Carlo approaches. 
-
-
-Suppose we can draw some particles $x_t^{(1)}, \ldots, x_t^{(N)}$ from the target probability distribution function $q(x)$, then these particles are used to estimate the expectation and variance of $f(x)$. The posterior distribution or density is empirically represented by a weighted sum of these samples $x_t^{(1)}, \ldots, x_t^{(N)}$ by 
-\begin{align*}
-\hat{p}(x_t\mid y_{1:t})=\frac{1}{N}\sum_{i=1}^N\delta (x_t-x_t^{(i)})\approx p(x_t\mid y_{1:t}).
-\end{align*}
-When $N$ is sufficiently large, $\hat{p}(x_t\mid y_{1:t})$ approximates the true posterior $p(x_t\mid y_{1:t})$. By this approximation, the filtering problem becomes to get the expectation of current status
-\begin{align*}
-\E(f(x_t)) &\approx \frac{1}{N}\sum_{i=1}^Nf(x_t^{(i)}).
-\end{align*}
-The expectation is the mean of the status of all particles $x_t^{(1)}, \ldots, x_t^{(N)}$. Monte Carlo method helps us to draw samples $\{x_t^{(i)}\}_{i=1}^N$ from $q(x_t\mid y_{1:t})$ and get their expectation, which approximate by
-\begin{align*}
-\E(f(x_t)) &\approx \sum_{i=1}^{N} \tilde{W}_t(x_t^{(i)})f(x_t^{(i)}),
-\end{align*}
-with normalized weights $\tilde{W}_t(x_t^{(i)}) = \frac{W_t(x_t^{(i)})}{\sum_{i=1}^NW_t(x_t^{(i)})}$. Because of each particles has its own weighted value, then the expectation is a weighted mean. A smarter way is to update $W_t^{(i)}$ recursively in order to avoid heavy computing in each iteration. The recursive updating formula is 
-\begin{align*}
-W_t^{(i)} &\propto W_{t-1}^{(i)} \frac{ p(y_{1:t}\mid x_{0:t}^{(i)}) p(x_{t}^{(i)}\mid x_{t-1}^{(i)}) }   {q(x_{t}^{(i)}\mid x_{0:t-1}^{(i)},y_{t})}.
-\end{align*}
-To keep particles the same size, replace the low weighted particles with new ones by 
-\begin{align*}
-p(x_t\mid y_{1:t})=\sum_{i=1}^Nw_t^{(i)} \delta (x_t-x_t^{(i)}).
-\end{align*}
-After re-sampling process, it becomes
-\begin{align*}
-\tilde{p}(x_t\mid y_{1:t})=\sum_{j=1}^N\frac{1}{N} \delta (x_t-x_t^{(i)}).= \sum_{i=1}^N\frac{n_i}{N}\delta (x_t-x_t^{(i)}).,
-\end{align*}
-where $n_i$ represents how many times the new particles $x_t^{(j)}$ were duplicated from $x_t^{(i)}$. 
+The important advantage of Monte Carlo is that a large number of posterior moments can be estimated at a reasonable computational effort and that estimates of the numerical accuracy of these results are obtained in a simple way \cite{kloek1978bayesian}. Sequential Monte Carlo method is using Monte Carlo approaches to estimate and to compute recursively. One of the attractive merits is in the fact that they allow on-line estimation by combining the powerful Monte Carlo sampling methods with Bayesian inference at an expense of reasonable computational cost \cite{chen2003bayesian}. 
 
 
-However, this sampling and re-sampling methods may cause samples impoverishment, in which way the particles are not representative. The improvements of particle filter's performance have been devoted by \cite{carpenter1999improved}, \cite{godsill2001maximum}, \cite{stavropoulos2001improved}, \cite{smcmip2011}. 
+For example, consider the model (\ref{introKFmodel}) with parameter $\theta$. The likelihood approximation is $p(y_t\mid y_{1:t-1},\theta)$ and can be written by
+\begin{equation*}
+p(y_t\mid y_{1:t-1},\theta) = \int p(y_t\mid x_t,\theta)p(x_t\mid y_{1:t-1},\theta) dx_t = \E \left[p(y_t\mid x_t,\theta)\right].
+\end{equation*}
+The standard Monte Carlo algorithm is trying to compute the integration by drawing $N$ independent samples $x_t^{(i)}$ from $p(x_t\mid y_{1:t-1},\theta)$ at first and then add them up to approximate the integration for large $N$, \cite{kalos2008monte}, that is 
+\begin{equation*}
+\E\left[p(y_t\mid x_t,\theta)\right]\approx \frac{1}{N}\sum_i p(y_t\mid x_t^{(i)},\theta). 
+\end{equation*}
 
 
-Nowadays, Bayesian filtering has become a broad topic involving many scientific areas that a comprehensive survey and detailed treatment seems crucial to cater the ever growing demands of understanding this important field for many novices, though it is noticed by the author that in the literature there exist a number of excellent tutorial papers on particle filters and Monte Carlo filters \cite{chen2003bayesian} \cite{doucet2000sequential} \cite{doucet2000rao} \cite{chen2012monte}.  
+In terms of getting good samples of $x_t^{(i)}$, which can be used for representing $p(y_t\mid x_t^{(i)},\theta)$, an importance sampling method was devised. The idea of this method is by assigning weights $W_t^{(i)}$ to samples, the most important ones are evaluated for computing the integral. Further, sequential importance sampling (SIS) allows a sequential update of the importance weights by 
+\begin{equation*}
+W_t^{(i)} \propto W_{t-1}^{(i)} \frac{ p(y_t \mid x_t^{(i)}) p(x_{t}^{(i)}\mid x_{t-1}^{(i)}) }{q(x_{t}^{(i)}\mid x_{t-1}^{(i)},y_{t})}
+\end{equation*}
+with an appropriate chosen \textit{proposal distribution} $q(x_{t}\mid  x_{t-1},y_{t})$. It is also called \textit{importance density} or \textit{important function} \cite{chen2003bayesian}. 
+
+
+However, the SIS makes samples skewed that only few samples have proper weights as time increases and most of them have very small but positive weights. This phenomenon is often called \textit{weight degeneracy} or \textit{sample impoverishment} \cite{green1995reversible} \cite{berzuini1997dynamic}. 
+
+
+Besides the SIS processes, a resampling step, also called as selection step, is trying to eliminate the samples with small weights and duplicate the samples with large weights in a principled way \cite{rubin2004multiple}, \cite{tanner1987calculation}. This method is named SIR. Suppose samples with associated weights are $\{x_t^{(i)},W_t^{(i)}\}$, a resampling step is executed by generating new samples $\tilde{x}_t^{(i)}$ according to normalized weights $\tilde{W}_t^{(i)}$. It is pointed out that the resampling step does not really prevent weights degeneracy but improve further calculation. 
+
+The common feature of SIS and SIR is that both of these methods are based on importance sampling and updating samples weights recursively. The difference is that in SIR, the resampling step is always performed. Whereas in SIS, resampling is only taken when needed. 
+
+
+The most successful application of importance sampling with resampling algorithm is Particle filter (PF). PF randomly generates a cloud of points and push these points through the computation process. It is a recursive implementation of the Monte Carlo approaches \cite{doucet2009tutorial}. 
+
+
+A generic PF firstly generates $N$ uniformly weighted random measurements $\{x_{t-1}^{(i)},\frac{1}{N} \}$ at time $t-1$. Once a new observation $y_t$ comes into the system, the weights will be updated recursively by involving the likelihood function $p(y_t\mid x_t^{(i)})$ and propagation function $p(x_t^{(i)}\mid x_{t-1}^{(i)})$. In fact, it is the SIS step. To monitor how bad is the weight degeneracy, a suggested measurement \textit{effective sample size} was introduced in \cite{kong1994sequential}. It is the reciprocal of sum squared weights in the form of 
+\begin{equation*}
+N_{\mbox{\tiny eff}} = \frac{1}{\sum_{i=1}^{N}\left(W_t^{(i)} \right)^2}. 
+\end{equation*}
+If the $N_{\mbox{\tiny eff}}$ is less than a predefined threshold, the resampling procedure is executed and the set of particles remains the same size $N$. 
+
+
+
+However, the PF sampling and re-sampling methods may cause practical problems. Such as high weighted particles have been selected may times and lead to the loss of diversity. This problem is known as sample impoverishment, in which way the particles are not representative. The improvements of particle filter's performance have been devoted by \cite{carpenter1999improved}, \cite{godsill2001maximum}, \cite{stavropoulos2001improved}, \cite{smcmip2011}. 
+
+
+Apparently, Bayesian filtering has become a broad topic involving many scientific areas that a comprehensive survey and detailed treatment seems crucial to cater the ever growing demands of understanding this important field for many novices, though it is noticed by the author that in the literature there exist a number of excellent tutorial papers on particle filters and Monte Carlo filters \cite{chen2003bayesian} \cite{doucet2000sequential} \cite{doucet2000rao} \cite{chen2012monte}.  
  
+
+
 
 \section{Markov Chain Monte Carlo Methods}
 
-Markov chain Monte Carlo (MCMC) methods are a set of powerful stochastic algorithms that allow us to solve most of these Bayesian computational problems when the data are available in batches \cite{andrieu1999sequential}, \cite{green1995reversible}, \cite{andrieu2001model}. The key idea is simple. If samples are unable to be drawn directly from a distribution $\pi(x)$, we can construct a Markov chain of samples from another distribution $\hat{\pi}(x)$ that is equilibrium to $\pi(x)$. If the chain is long enough, these samples of the chain can be used as a basis for summarizing features of $\pi(x)$ of interest \cite{smith1993bayesian}. 
+
+Schemes exist to counteract sample impoverishment \cite{ristic2004beyond}. One approach is to consider the states for the particles to be predetermined by the forward filter and then to obtain the smoothed estimates by recalculating the particles' weights via a recursion from the final to the first time step \cite{godsill2000methodology}. Another approach is to use a Markov chain Monte Carlo (MCMC) move step \cite{carlin1992monte}.
+
+
+MCMC methods are a set of powerful stochastic algorithms that allow us to solve most of these Bayesian computational problems when the data are available in batches \cite{andrieu1999sequential}, \cite{green1995reversible}, \cite{andrieu2001model}. They are based on sampling from probability distributions based on a Markov chain. If samples are unable to be drawn directly from a distribution $\pi(x)$, we can construct a Markov chain of samples from another distribution $\hat{\pi}(x)$ that is equilibrium to $\pi(x)$. If the chain is long enough, these samples of the chain can be used as a basis for summarizing features of $\pi(x)$ of interest \cite{smith1993bayesian}. This is a crucial property. See \eg \cite{cappe2009inference} and \cite{liu2008monte} for details. 
+
+
 
 
 \subsection*{Metropolis-Hastings Algorithm}
 
-Metropolis-Hastings algorithm is an important class of MCMC algorithms \cite{smith1993bayesian} \cite{tierney1994markov} \cite{gilks1995markov}. Given essentially a probability distribution $\pi$ (the "target distribution"), MH algorithm provides a way to generate a Markov Chain $x_1, x_2,\ldots, x_t$, who has the target distribution as a stationary distribution, for the uncertain parameters $x$ requiring only that this density can be calculated at $x$. Suppose that we can evaluate $\pi(x)$ for any $x$. The transition probabilities should satisfy the detailed balance condition
+Metropolis-Hastings algorithm is an important class of MCMC algorithms \cite{smith1993bayesian} \cite{tierney1994markov} \cite{gilks1995markov}. Given essentially a probability distribution $\pi$ (the "target distribution"), MH algorithm provides a way to generate a Markov chain $x_1, x_2,\ldots, x_t$, who has the target distribution as a stationary distribution, for the uncertain parameters $x$ requiring only that this density can be calculated at $x$. Suppose that we can evaluate $\pi(x)$ for any $x$. The transition probabilities should satisfy the detailed balance condition
 \begin{equation*}
 \pi(x^{(t)})q(x', x^{(t)}) = \pi(x')q(x^{(t)}, x'),
 \end{equation*}
@@ -274,6 +291,7 @@ In this way, a tentative new state $x'$ is generated from the proposal density $
 \end{equation}
 If $\alpha \geq 1$, then the new state is accepted. Otherwise, the new state is accepted with probability $\alpha$.
 
+A simple mechanic proposing algorithm is \textit{Random Walk Metropolis-Hastings} (RM MH). It is easy to implement and symmetric under the exchange of the initial and proposed points. 
 
 Besides, modified Metropolis-Hastings algorithms, such as the delayed-rejection MH, multiple-try MH and reversible-jump MH algorithms have been studied by \cite{tierney1999some}, \cite{liu2000multiple} and \cite{green1995reversible}. 
  
@@ -296,14 +314,33 @@ Gibbs sampling can be viewed as one of Metropolis methods and meets the converge
 \subsection*{Adaptive MCMC Algorithm}
 
 
+Metropolis-Hastings algorithm is widely used in statistical inference, to sample from complicated high-dimensional distributions. Typically, this algorithm has parameters that must be tuned in each new situation to obtain reasonable mixing times, such as the step size in a random walk Metropolis \cite{mahendran2012adaptive}. Tuning of associated parameters such as proposal variances is crucial to achieve efficient mixing, but can also be very difficult. 
+
+%It is introduced that Metropolis-Hastings algorithm draws samples from a target distribution $\pi(\cdot)$ by proposing $x'$ from $x^{(t)}$. Then calculate a probability to decide whether accept or reject it. The proposal distribution 
+
+Adaptive MCMC methods have been developed to automatically adjust these parameters. See \eg \cite{andrieu2008tutorial}, \cite{atchade2009adaptive}, \cite{roberts2009examples}. One of the most successful adaptive MCMC algorithms was introduced by \cite{haario2001adaptive}, where, based on the  random walk Metropolis algorithm, the covariance of the proposal distribution is calculated using all of the previous states. For instance, with an AM chain $x_0,x_1,\ldots,x_t$, the proposal $x'$ is from $N(x_t,R_t)$, where $R_t$ is the covariance matrix determined by the spatial distribution of the state $x_0,x_1,\ldots,x_t$. 
+
+Even though the adaptive Metropolis algorithm is non-Markovian, the establishment was verified that the AM algorithm indeed have the correct ergodic properties. 
+
+
+A Bayesian optimization for adaptive MCMC was proposed by \cite{mahendran2012adaptive}. The author proposed adaptive strategy consists of two phases: adaptation and sampling. In the first phase, Bayesian optimization is used to construct a randomized policy. After that, in the second phase,  a mixture of MCMC kernels selected according to the learned randomized policy is used to explore the target distribution. 
+
+
+Further investigation in the use of adaptive MCMC algorithms to automatically
+tune the Markov chain parameters can be found at \cite{roberts2009examples}. 
 
 
 
 \subsection*{Hamiltonian Monte Carlo}
 
+The Hamiltonian Monte Carlo, also known as hybrid Monte Carlo algorithm, is using Hamiltonian dynamics to produce distant proposals for the Metropolis
+algorithm in order to avoid slow exploration of the state space that results from the diffusive behavior of simple random walk proposals \cite{neal2011mcmc}. 
 
 
-Zig-zag
+
+
+
+\subsection*{Zig-zag Monte Carlo}
 
 t-walk
 

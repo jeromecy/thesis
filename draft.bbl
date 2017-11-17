@@ -83,6 +83,12 @@ Arulampalam, M.~S., Maskell, S., Gordon, N., and Clapp, T. (2002).
 \newblock {\em IEEE Transactions on signal processing\/},~{\em 50\/}(2),
   174--188.
 
+\bibitem[\protect\citeauthoryear{Atchade, Fort, Moulines, and Priouret}{Atchade
+  {\em et~al.}}{2009}]{atchade2009adaptive}
+Atchade, Y., Fort, G., Moulines, E., and Priouret, P. (2009).
+\newblock Adaptive Markov chain Monte Carlo: theory and methods.
+\newblock {\em Preprint\/}.
+
 \bibitem[\protect\citeauthoryear{Atkinson}{Atkinson}{2004}]{Atkinson2004}
 Atkinson, A.D., S.~J. (2004).
 \newblock Propuesta para el levantamiento de vías de comunicación para
@@ -211,6 +217,14 @@ Cargnoni, C., M{\"u}ller, P., and West, M. (1997).
   Gaussian dynamic models.
 \newblock {\em Journal of the American Statistical Association\/},~{\em
   92\/}(438), 640--647.
+
+\bibitem[\protect\citeauthoryear{Carlin, Polson, and Stoffer}{Carlin {\em
+  et~al.}}{1992}]{carlin1992monte}
+Carlin, B.~P., Polson, N.~G., and Stoffer, D.~S. (1992).
+\newblock A Monte Carlo approach to nonnormal and nonlinear state-space
+  modeling.
+\newblock {\em Journal of the American Statistical Association\/},~{\em
+  87\/}(418), 493--500.
 
 \bibitem[\protect\citeauthoryear{Carpenter, Clifford, and Fearnhead}{Carpenter
   {\em et~al.}}{1999}]{carpenter1999improved}
@@ -406,6 +420,12 @@ Doucet, A., Godsill, S., and Andrieu, C. (2000).
 \newblock On sequential Monte Carlo sampling methods for Bayesian filtering.
 \newblock {\em Statistics and computing\/},~{\em 10\/}(3), 197--208.
 
+\bibitem[\protect\citeauthoryear{Doucet and Johansen}{Doucet and
+  Johansen}{2009}]{doucet2009tutorial}
+Doucet, A. and Johansen, A.~M. (2009).
+\newblock A tutorial on particle filtering and smoothing: Fifteen years later.
+\newblock {\em Handbook of nonlinear filtering\/},~{\em 12\/}(656-704), 3.
+
 \bibitem[\protect\citeauthoryear{Douglas and Peucker}{Douglas and
   Peucker}{1973}]{douglas1973algorithms}
 Douglas, D.~H. and Peucker, T.~K. (1973).
@@ -550,6 +570,12 @@ Gloderer, M. and Hertle, A. (2010).
   Ackerman drive.
 
 \bibitem[\protect\citeauthoryear{Godsill, Doucet, and West}{Godsill {\em
+  et~al.}}{2000}]{godsill2000methodology}
+Godsill, S., Doucet, A., and West, M. (2000).
+\newblock Methodology for Monte Carlo smoothing with application to
+  time-varying autoregressions.
+
+\bibitem[\protect\citeauthoryear{Godsill, Doucet, and West}{Godsill {\em
   et~al.}}{2001}]{godsill2001maximum}
 Godsill, S., Doucet, A., and West, M. (2001).
 \newblock Maximum a posteriori sequence estimation using Monte Carlo particle
@@ -627,6 +653,12 @@ Gy{\"o}rgy, K., Kelemen, A., and D{\'a}vid, L. (2014).
 Haario, H., Saksman, E., and Tamminen, J. (1999).
 \newblock Adaptive proposal distribution for random walk Metropolis algorithm.
 \newblock {\em Computational Statistics\/},~{\em 14\/}(3), 375--396.
+
+\bibitem[\protect\citeauthoryear{Haario, Saksman, Tamminen, {\em
+  et~al.}}{Haario {\em et~al.}}{2001}]{haario2001adaptive}
+Haario, H., Saksman, E., Tamminen, J., {\em et~al.} (2001).
+\newblock An adaptive Metropolis algorithm.
+\newblock {\em Bernoulli\/},~{\em 7\/}(2), 223--242.
 
 \bibitem[\protect\citeauthoryear{Hammersley and Handscomb}{Hammersley and
   Handscomb}{1964}]{hammersley1964percolation}
@@ -764,6 +796,12 @@ Kalman, R.~E. {\em et~al.} (1960).
 \newblock A new approach to linear filtering and prediction problems.
 \newblock {\em Journal of basic Engineering\/},~{\em 82\/}(1), 35--45.
 
+\bibitem[\protect\citeauthoryear{Kalos and Whitlock}{Kalos and
+  Whitlock}{2008}]{kalos2008monte}
+Kalos, M.~H. and Whitlock, P.~A. (2008).
+\newblock {\em Monte carlo methods}.
+\newblock John Wiley \& Sons.
+
 \bibitem[\protect\citeauthoryear{Kantas, Doucet, Singh, and Maciejowski}{Kantas
   {\em et~al.}}{2009}]{kantas2009overview}
 Kantas, N., Doucet, A., Singh, S., and Maciejowski, J. (2009).
@@ -854,6 +892,13 @@ Komoriya, K. and Tanie, K. (1989).
   Robots and Its Applications. IROS'89. Proceedings., IEEE/RSJ International
   Workshop on},  398--405. IEEE.
 
+\bibitem[\protect\citeauthoryear{Kong, Liu, and Wong}{Kong {\em
+  et~al.}}{1994}]{kong1994sequential}
+Kong, A., Liu, J.~S., and Wong, W.~H. (1994).
+\newblock Sequential imputations and Bayesian missing data problems.
+\newblock {\em Journal of the American statistical association\/},~{\em
+  89\/}(425), 278--288.
+
 \bibitem[\protect\citeauthoryear{Krivobokova, Crainiceanu, and
   Kauermann}{Krivobokova {\em et~al.}}{2008}]{krivobokova2008fast}
 Krivobokova, T., Crainiceanu, C.~M., and Kauermann, G. (2008).
@@ -940,6 +985,12 @@ Magid, E., Keren, D., Rivlin, E., and Yavneh, I. (2006).
 \newblock In {\em Intelligent Robots and Systems, 2006 IEEE/RSJ International
   Conference on},  2296--2301. IEEE.
 
+\bibitem[\protect\citeauthoryear{Mahendran, Wang, Hamze, and
+  De~Freitas}{Mahendran {\em et~al.}}{2012}]{mahendran2012adaptive}
+Mahendran, N., Wang, Z., Hamze, F., and De~Freitas, N. (2012).
+\newblock Adaptive MCMC with Bayesian optimization.
+\newblock In {\em Artificial Intelligence and Statistics},  751--760.
+
 \bibitem[\protect\citeauthoryear{Martino and M{\'\i}guez}{Martino and
   M{\'\i}guez}{2010}]{martino2010generalized}
 Martino, L. and M{\'\i}guez, J. (2010).
@@ -995,6 +1046,12 @@ M{\"u}ller, P. (1991).
 Nason, G. (2010).
 \newblock {\em Wavelet methods in statistics with R}.
 \newblock Springer Science \& Business Media.
+
+\bibitem[\protect\citeauthoryear{Neal {\em et~al.}}{Neal {\em
+  et~al.}}{2011}]{neal2011mcmc}
+Neal, R.~M. {\em et~al.} (2011).
+\newblock MCMC using Hamiltonian dynamics.
+\newblock {\em Handbook of Markov Chain Monte Carlo\/},~{\em 2\/}(11).
 
 \bibitem[\protect\citeauthoryear{Nelder and Mead}{Nelder and
   Mead}{1965}]{nelder1965simplex}
@@ -1089,11 +1146,23 @@ Roberts, G.~O., Gelman, A., Gilks, W.~R., {\em et~al.} (1997).
   algorithms.
 \newblock {\em The annals of applied probability\/},~{\em 7\/}(1), 110--120.
 
+\bibitem[\protect\citeauthoryear{Roberts and Rosenthal}{Roberts and
+  Rosenthal}{2009}]{roberts2009examples}
+Roberts, G.~O. and Rosenthal, J.~S. (2009).
+\newblock Examples of adaptive MCMC.
+\newblock {\em Journal of Computational and Graphical Statistics\/},~{\em
+  18\/}(2), 349--367.
+
 \bibitem[\protect\citeauthoryear{Roberts, Rosenthal, {\em et~al.}}{Roberts {\em
   et~al.}}{2001}]{roberts2001optimal}
 Roberts, G.~O., Rosenthal, J.~S., {\em et~al.} (2001).
 \newblock Optimal scaling for various Metropolis-Hastings algorithms.
 \newblock {\em Statistical science\/},~{\em 16\/}(4), 351--367.
+
+\bibitem[\protect\citeauthoryear{Rubin}{Rubin}{2004}]{rubin2004multiple}
+Rubin, D.~B. (2004).
+\newblock {\em Multiple imputation for nonresponse in surveys}, Volume~81.
+\newblock John Wiley \& Sons.
 
 \bibitem[\protect\citeauthoryear{Ruppert, Wand, and Carroll}{Ruppert {\em
   et~al.}}{2003}]{ruppert2003semiparametric}
@@ -1274,6 +1343,13 @@ Tandeo, P., Ailliot, P., and Autret, E. (2011).
   application to sea surface temperature.
 \newblock {\em Stochastic Environmental Research and Risk Assessment\/},~{\em
   25\/}(6), 793--804.
+
+\bibitem[\protect\citeauthoryear{Tanner and Wong}{Tanner and
+  Wong}{1987}]{tanner1987calculation}
+Tanner, M.~A. and Wong, W.~H. (1987).
+\newblock The calculation of posterior distributions by data augmentation.
+\newblock {\em Journal of the American statistical Association\/},~{\em
+  82\/}(398), 528--540.
 
 \bibitem[\protect\citeauthoryear{Taylor, Woolley, and Zito}{Taylor {\em
   et~al.}}{2000}]{taylor2000integration}
