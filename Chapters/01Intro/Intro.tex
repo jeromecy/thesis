@@ -318,7 +318,7 @@ Metropolis-Hastings algorithm is widely used in statistical inference, to sample
 
 %It is introduced that Metropolis-Hastings algorithm draws samples from a target distribution $\pi(\cdot)$ by proposing $x'$ from $x^{(t)}$. Then calculate a probability to decide whether accept or reject it. The proposal distribution 
 
-Adaptive MCMC methods have been developed to automatically adjust these parameters. See \eg \cite{andrieu2008tutorial}, \cite{atchade2009adaptive}, \cite{roberts2009examples}. One of the most successful adaptive MCMC algorithms was introduced by \cite{haario2001adaptive}, where, based on the  random walk Metropolis algorithm, the covariance of the proposal distribution is calculated using all of the previous states. For instance, with an AM chain $x_0,x_1,\ldots,x_t$, the proposal $x'$ is from $N(x_t,R_t)$, where $R_t$ is the covariance matrix determined by the spatial distribution of the state $x_0,x_1,\ldots,x_t$. 
+Adaptive MCMC methods have been developed to automatically adjust these parameters. See \eg \cite{andrieu2008tutorial}, \cite{atchade2009adaptive}, \cite{roberts2009examples}. One of the most successful adaptive MCMC algorithms was introduced by \cite{haario2001adaptive}, where, based on the  random walk Metropolis algorithm, the covariance of the proposal distribution is calculated using all of the previous states. For instance, with an AM chain $x_0,x_1,\ldots,x_t$, the proposal $x'$ is from $N(\cdot\mid x_t,R_t)$, where $R_t$ is the covariance matrix determined by the spatial distribution of the state $x_0,x_1,\ldots,x_t$. 
 
 Even though the adaptive Metropolis algorithm is non-Markovian, the establishment was verified that the AM algorithm indeed have the correct ergodic properties. 
 
@@ -333,18 +333,37 @@ tune the Markov chain parameters can be found at \cite{roberts2009examples}.
 
 \subsection*{Hamiltonian Monte Carlo}
 
-The Hamiltonian Monte Carlo, also known as hybrid Monte Carlo algorithm, is using Hamiltonian dynamics to produce distant proposals for the Metropolis
-algorithm in order to avoid slow exploration of the state space that results from the diffusive behavior of simple random walk proposals \cite{neal2011mcmc}. 
+The Hamiltonian Monte Carlo (HMC), devised by \cite{duane1987hybrid} as hybrid Monte Carlo, is using Hamiltonian dynamics to produce distant proposals for the Metropolis algorithm in order to avoid slow exploration of the state space that results from the diffusive behavior of simple random walk proposals \cite{neal2011mcmc}. In practice, the HMC sampler is more efficient for sampling in high-dimensional distributions than MH.
 
 
+The key feature of HMC is the Hamiltonian system equation as follows: 
+\begin{equation*}
+H(x,v) = U(x)+K(v),
+\end{equation*}
+which is consisting of potential energy $U(x)$ with a d-dimensional momentum vector (position) $x$ and kinetic energy function $K(v)=\frac{v^\top M^{-1}v}{2}$ with a d-dimensional momentum vector (velocity) $v$. Here, $M$ is a symmetric positive-definite "mass matrix". The momentum parameter $v$ is responsible for keeping proposals inside the typical set, instead than having them drifting towards the tails or towards the mode. 
+
+
+To propose $\{x',v'\}$, HMC is using leapfrog method, which is based on Euler's method and modified Euler's method, to increase the proposing accuracy \cite{betancourt2017conceptual}. It is accepted with the probability
+\begin{equation*}
+\alpha = \min\lbrace  \exp\left(H(x,v)-H(x',v')\right), 1\rbrace.
+\end{equation*}
+
+
+Compared with MH and Gibbs sampling, the HMC has a higher efficiency in most high-dimensional cases. It is incorporating not only with energy $U(x)$ but also with gradient. In this way, HMC explores a larger area and converges to balance faster. 
+
+However, HMC has some problems with sampling from distributions with isolated local minimums and has little energy jumping out of a local minimal cave. 
 
 
 
 \subsection*{Zig-zag Monte Carlo}
 
-t-walk
 
 
+\subsection*{T-Walk}
+
+
+
+\subsection*{Nested Sampling}
 
 
 \section{Outline of Thesis}

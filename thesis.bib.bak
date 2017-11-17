@@ -743,6 +743,18 @@
   timestamp = {2017.09.08}
 }
 
+@ARTICLE{duane1987hybrid,
+  author = {Duane, Simon and Kennedy, Anthony D and Pendleton, Brian J and Roweth,
+	Duncan},
+  title = {Hybrid monte carlo},
+  journal = {Physics letters B},
+  year = {1987},
+  volume = {195},
+  pages = {216--222},
+  number = {2},
+  publisher = {Elsevier}
+}
+
 @ARTICLE{dubins1957curves,
   author = {Dubins, Lester E},
   title = {On curves of minimal length with a constraint on average curvature,
@@ -1835,6 +1847,16 @@
   publisher = {Springer Science \& Business Media},
   year = {2010},
   author = {Nason, Guy}
+}
+
+@ARTICLE{neal2011mcmc,
+  author = {Neal, Radford M and others},
+  title = {MCMC using Hamiltonian dynamics},
+  journal = {Handbook of Markov Chain Monte Carlo},
+  year = {2011},
+  volume = {2},
+  number = {11},
+  publisher = {CRC Press New York, NY}
 }
 
 @ARTICLE{nelder1965simplex,
