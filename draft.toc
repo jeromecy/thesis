@@ -4,7 +4,7 @@
 \contentsline {section}{\numberline {1.3}Parameter Selection}{4}
 \contentsline {section}{\numberline {1.4}Bayesian Filtering}{7}
 \contentsline {section}{\numberline {1.5}Markov Chain Monte Carlo Methods}{11}
-\contentsline {section}{\numberline {1.6}Outline of Thesis}{14}
+\contentsline {section}{\numberline {1.6}Outline of Thesis}{16}
 \contentsline {chapter}{\numberline {2}Adaptive Smoothing Tractor Spline for Trajectory Reconstruction}{17}
 \contentsline {section}{\numberline {2.1}Introduction}{17}
 \contentsline {section}{\numberline {2.2}Tractor spline}{20}
@@ -28,7 +28,7 @@
 \contentsline {subsection}{\numberline {3.2.3}Polynomial Smoothing Spline as Bayes Estimates}{51}
 \contentsline {subsection}{\numberline {3.2.4}Gaussian Process Regression}{52}
 \contentsline {section}{\numberline {3.3}Tractor Spline as Bayes Estimate}{53}
-\contentsline {subsection}{\numberline {3.3.1}Reproducing Kernel Hilbert Space $\mathcal {C}_{p.w.}^{2}[0,1]$}{53}
+\contentsline {subsection}{\numberline {3.3.1}Reproducing Kernel Hilbert Space $\mathcal {C}_{\relax \fontsize {10}{12}\selectfont \abovedisplayskip 10\p@ plus2\p@ minus5\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6\p@ plus3\p@ minus3\p@ \def \leftmargin \leftmargini \parsep 5\p@ plus2.5\p@ minus\p@ \topsep 10\p@ plus4\p@ minus6\p@ \itemsep 5\p@ plus2.5\p@ minus\p@ {\leftmargin \leftmargini \topsep 6\p@ plus2\p@ minus2\p@ \parsep 3\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip p.w.}^{2}[0,1]$}{53}
 \contentsline {subsection}{\numberline {3.3.2}Posterior of Bayes Estimates}{55}
 \contentsline {section}{\numberline {3.4}Tractor Spline with Correlated Random Errors}{57}
 \contentsline {section}{\numberline {3.5}A Numeric Simulation}{59}
@@ -74,29 +74,22 @@
 \contentsline {subsection}{\numberline {5.5.6}Sliding Window State and Parameter Estimation}{120}
 \contentsline {subsection}{\numberline {5.5.7}Implementation}{123}
 \contentsline {section}{\numberline {5.6}Discussion and Future Work}{129}
-\contentsline {chapter}{\numberline {6}Data Simplify}{131}
-\contentsline {section}{\numberline {6.1}Introduction}{131}
-\contentsline {section}{\numberline {6.2}Preliminary}{132}
-\contentsline {section}{\numberline {6.3}Track Simplification Algorithm}{132}
-\contentsline {section}{\numberline {6.4}Evaluation}{133}
-\contentsline {section}{\numberline {6.5}Adaptive Kalman Filter}{135}
-\contentsline {section}{\numberline {6.6}Experimental results}{135}
-\contentsline {chapter}{\numberline {7}Future Work}{137}
-\contentsline {chapter}{\numberline {8}Summary}{139}
-\contentsline {chapter}{Appendices}{143}
+\contentsline {chapter}{\numberline {6}Future Work}{131}
+\contentsline {chapter}{\numberline {7}Summary}{135}
+\contentsline {chapter}{Appendices}{139}
 \setcounter {tocdepth}{1}
 \begingroup \let \l@chapter \l@section \let \l@section \l@subsection 
-\contentsline {chapter}{\numberline {A}Spline Penalty}{144}
-\contentsline {section}{\numberline {A.1}Penalty Matrix in (2.16\hbox {})}{144}
-\contentsline {section}{\numberline {A.2}Proof of Theorem 2\hbox {}}{145}
-\contentsline {section}{\numberline {A.3}Proof of Lemma 2\hbox {}}{148}
-\contentsline {section}{\numberline {A.4}Proof of Theorem 3\hbox {}}{149}
-\contentsline {chapter}{\numberline {B}MCMC}{150}
-\contentsline {section}{\numberline {B.1}Appendices}{150}
-\contentsline {subsection}{\numberline {B.1.1}Linear Simulation Calculations}{150}
-\contentsline {subsection}{\numberline {B.1.2}OU process calculation}{153}
-\contentsline {subsection}{\numberline {B.1.3}Real Data Implementation}{161}
-\contentsline {subsubsection}{Comparison Between Batch and Sliding Window Methods}{165}
-\contentsline {subsubsection}{Parameter Evolution Visualization}{167}
+\contentsline {chapter}{\numberline {A}Spline Penalty}{140}
+\contentsline {section}{\numberline {A.1}Penalty Matrix in (2.16\hbox {})}{140}
+\contentsline {section}{\numberline {A.2}Proof of Theorem 2\hbox {}}{141}
+\contentsline {section}{\numberline {A.3}Proof of Lemma 2\hbox {}}{144}
+\contentsline {section}{\numberline {A.4}Proof of Theorem 3\hbox {}}{145}
+\contentsline {chapter}{\numberline {B}MCMC}{146}
+\contentsline {section}{\numberline {B.1}Appendices}{146}
+\contentsline {subsection}{\numberline {B.1.1}Linear Simulation Calculations}{146}
+\contentsline {subsection}{\numberline {B.1.2}OU process calculation}{149}
+\contentsline {subsection}{\numberline {B.1.3}Real Data Implementation}{157}
+\contentsline {subsubsection}{Comparison Between Batch and Sliding Window Methods}{161}
+\contentsline {subsubsection}{Parameter Evolution Visualization}{163}
 \endgroup 
-\contentsline {chapter}{\hbox to\@tempdima {\hfil }References}{171}
+\contentsline {chapter}{\hbox to\@tempdima {\hfil }References}{167}
