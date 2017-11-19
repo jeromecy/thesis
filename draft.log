@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.5)  18 NOV 2017 18:14
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.5)  19 NOV 2017 14:18
 entering extended mode
 **draft.tex
 (C:\Users\zcao\Documents\Latex\Thesis\draft.tex
@@ -665,21 +665,26 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 
 ]
 (C:\Users\zcao\Documents\Latex\Thesis\Abstract.tex [5]) [6]
-(C:\Users\zcao\Documents\Latex\Thesis\Acknowledgements.tex [7
+(C:\Users\zcao\Documents\Latex\Thesis\Acknowledgements.tex
+Overfull \hbox (3.2139pt too wide) in paragraph at lines 3--4
+[]\OT1/cmr/m/n/12 Secondly, I would like to ap-pre-ci-ate my co-supervisor Pro-
+fes-sor David Bryant
+ []
+
+[7
 
 
-]) [8]
-(C:\Users\zcao\Documents\Latex\Thesis\draft.toc [9
+]) [8] (C:\Users\zcao\Documents\Latex\Thesis\draft.toc [9
 
 
 
 ] [10])
 \tf@toc=\write3
- [11] [12
+ [11]
+[12
 
 
-]
-(C:\Users\zcao\Documents\Latex\Thesis\draft.lot)
+] (C:\Users\zcao\Documents\Latex\Thesis\draft.lot)
 \tf@lot=\write4
  [13
 
@@ -712,24 +717,31 @@ Chapter 1.
 
 
 ] [2]
-[3]
 Overfull \hbox (9.639pt too wide) in paragraph at lines 66--66
 [] 
  []
 
-[4]
+[3]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[5] [6] [7] [8] [9]
-Overfull \hbox (5.68484pt too wide) in paragraph at lines 250--251
+
+Underfull \vbox (badness 1629) has occurred while \output is active []
+
+ [4]
+[5] [6] [7]
+Underfull \vbox (badness 1242) has occurred while \output is active []
+
+ [8]
+[9]
+Overfull \hbox (5.68484pt too wide) in paragraph at lines 256--257
 []\OT1/cmr/m/n/12 A generic PF firstly gen-er-ates $\OML/cmm/m/it/12 N$ \OT1/cm
 r/m/n/12 uni-formly weighted ran-dom mea-sure-ments $\OMS/cmsy/m/n/12 f\OML/cmm
 /m/it/12 x[]; []\OMS/cmsy/m/n/12 g$
  []
 
 [10] [11]
-Overfull \hbox (8.92471pt too wide) in paragraph at lines 307--309
+Overfull \hbox (8.92471pt too wide) in paragraph at lines 313--315
 \OT1/cmr/m/n/12 using the newly up-dated sam-ple $\OML/cmm/m/it/12 x[]$\OT1/cmr
 /m/n/12 . Af-ter one it-er-a-tion, the new se-quence $\OML/cmm/m/it/12 x[]; [] 
 ; x[]$
@@ -3540,7 +3552,7 @@ mtt12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmt
 t8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/m
 sam10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbol
 s/msbm10.pfb>
-Output written on draft.pdf (204 pages, 10168471 bytes).
+Output written on draft.pdf (204 pages, 10168718 bytes).
 PDF statistics:
  2835 PDF objects out of 2984 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
