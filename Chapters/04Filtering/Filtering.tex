@@ -624,7 +624,7 @@ The advantage of this algorithm is that it only requires an approximation of the
 %\end{align*}
 %where $\epsilon\sim N(0,\tau)$ and $\omega\sim N(0,\sigma)$. Particularly, the initial value $x_0\sim N(m_0,C_0)$ is supposed to be known. $\sigma^2$ and $\tau^2$ are supposed to be \textit{Inverse Gamma} distributed with two parameters $(a_0,A_0)$ and $(b_0,B_0)$ respectively. Therefore, the unknown parameter $\theta$ is a set of $\{\alpha,\beta,\sigma^2,\tau^2\}$. 
 
-In this section, we are comparing the performance of Liu and West's filter (LW), Storvik filter (St), Particle Learning (PL) and the proposed sliding window MCMC algorithm \ref{algorithmslidingwindow} in section \ref{SectionHighDimensionalOU} by a simple dynamic linear model, see example \cite{liu2001combined}. Explicitly, the model is 
+In this section, we are comparing the performance of Liu and West's filter (LW), Storvik filter (St), Particle Learning (PL) and the proposed sequential MCMC algorithm \ref{algorithmslidingwindow} in section \ref{SectionHighDimensionalOU} by a simple dynamic linear model, see example \cite{liu2001combined}. Explicitly, the model is 
 \begin{align*}
 y_t&=F x_t+\epsilon_t,\\
 x_t&=\phi x_{t-1}+w_t,\\
@@ -632,7 +632,7 @@ x_0&\sim N(m_0,C_0),
 \end{align*}
 where $\epsilon_t\sim N(0,\sigma^2)$ and $w_t\sim N(0,\tau^2)$, $x_t$ are hidden status and $y_t$ are observations. Assuming that $F=1$, $\sigma^2=1$ and $\tau^2=1$. The initial value $x_0=0$. $\theta = \phi$ a single static parameter without unobserved state variable. 
 
-A length 897 simulated data set was generated from this $\mathit{AR}(1)$ model at $\phi=0.8$. First of all, we should find the sufficient statistics for Storvik filter and Particle Learning. For Particle Learning, the sufficient statistics $s_t$ and $s_t^x$ are satisfying the updating rules $s_t=S(s_{t-1},x_t,y_t)$ and $s_t^x=K(s_{t-1}^x,\phi ,y_t)$. Because of the assumption, the Kalman observation map is $H_k=1$ and the variances are normal distributed. Thus, the Kalman gain is $K=1$. For details, the Particle Learning algorithm runs as : 
+A length of 897 simulated data set was generated from this $\mathit{AR}(1)$ model at $\phi=0.8$. First of all, we should find the sufficient statistics for Storvik filter and Particle Learning. For Particle Learning, the sufficient statistics $s_t^x$ for state $x$ and $s_t$ for parameter $\phi$ are satisfying the updating rules $s_t^x=K(s_{t-1}^x,\phi ,y_t)$ and $s_t=S(s_{t-1},x_t,y_t)$ respectively. Because of the assumption, the Kalman observation map is $H_k=1$ and the variances are normal distributed. Thus, the Kalman gain is $K=1$. For details, the Particle Learning algorithm runs as : 
 \begin{itemize}
 \item Step 1. Resample $\{\tilde{z}_t^{(i)}\}_{i=1}^N=(\tilde{s}_t^{x(i)},\tilde{s}_t^{(i)},\tilde{\phi }^{(i)})$ from $p(z_t\mid s_t^x,s_t,\phi )$ with weight $w\propto p(y_{t+1}\mid s_{t}^x,\phi )$. It is found that \begin{equation*}
 p(y_{t+1}\mid s_{t}^x,\phi ) \propto \exp \left(-\frac{1}{2}(y_{t+1}-\phi  x_{t})^2 \right).
@@ -659,33 +659,49 @@ p(\phi  \mid  x_{1:t+1},y_{1:t+1}) & \propto p(x_{1:t+1},y_{1:t+1}\mid \phi )p(\
 \end{itemize}
 
 
-Notice that the proposed sliding window MCMC algorithm requires using a few data to learn the parameter's mean and variance in the learning phase. Besides, LW, St and PL do not converge at the first few data. Then, to be fair, we take the first 300 data out and use them in the learning phase of the proposed algorithm and use the same length as the width of the sliding window. For the former three algorithms, we are using 5\,000 particles to infer parameter and state. For the latter MCMC algorithm, we are taking 5\,000 samples at each time $t$ for $\phi^{(i)}$ and $x_t^{(i)}$, where $i=1,\ldots,5\,000$ and $t=300,\ldots,897$. Furthermore, we run the comparison for 50 times to check their stabilities. 
+Notice that the proposed sliding window MCMC algorithm requires using a few data to learn the parameter's mean and variance in the learning phase. Besides, LW, St and PL do not converge at the first few data. Then, to be fair, we take the first 300 data out and use them in the learning phase of the proposed algorithm. In the estimation phase, we are using three different strategies: a fixed length of 100, a fixed length of 300 and a expanding length including all the historical data along time $t$. In the former three algorithms, we are using 5\,000 particles to infer state and parameter. In the latter MCMC algorithm, we are taking 5\,000 samples at each time $t$ for  $x_t^{(i)}$ and $\phi^{(i)}$, where $i=1,\ldots,5\,000$ and $t=300,\ldots,897$. Furthermore, we run the comparison for 50 times to check their stabilities. 
+
+%\begin{figure}[h]
+%\centering
+%\includegraphics[width=0.45\textwidth]{Chapters/04Filtering/plot/ggFilterCompPhi2.pdf}
+%\includegraphics[width=0.45\textwidth]{Chapters/04Filtering/plot/ggBoxComp.pdf}
+%\caption{A comparison study using simulated time series data shows that LW, St and PL algorithms converge to the true $\phi$ at similar speed. The proposed MCMC algorithm has a higher variability. By repeatedly running for 50 times, the box-plot indicates that the proposed MCMC has a higher stability comparing with the other three algorithms. } \label{FilterRiewComparesion01}
+%\end{figure}
+
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.45\textwidth]{Chapters/04Filtering/plot/ggFilterCompPhi2.pdf}
-\includegraphics[width=0.45\textwidth]{Chapters/04Filtering/plot/ggBoxComp.pdf}
-\caption{A comparison study using simulated time series data shows that LW, St and PL algorithms converge to the true $\phi$ at similar speed. The proposed MCMC algorithm has a higher variability. By repeatedly running for 50 times, the box-plot indicates that the proposed MCMC has a higher stability comparing with the other three algorithms. } \label{FilterRiewComparesion01}
-\end{figure}
-
-
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.45\textwidth]{Chapters/04Filtering/plot/LWchain100.pdf}
-\includegraphics[width=0.45\textwidth]{Chapters/04Filtering/plot/STchain100.pdf}
-\includegraphics[width=0.45\textwidth]{Chapters/04Filtering/plot/PLchain100.pdf}
-\includegraphics[width=0.45\textwidth]{Chapters/04Filtering/plot/MCMCchain100.pdf}
-\includegraphics[width=0.45\textwidth]{Chapters/04Filtering/plot/MCMCchain300.pdf}
-\includegraphics[width=0.45\textwidth]{Chapters/04Filtering/plot/MCMCchainVary.pdf}
-\caption{Chain plots. Repeatedly running 50 times. Cutting off the first \textbf{300} data. LW, St, PL filters are using 5\,000 particles. MCMC is using 5\,000 samples. The lengths of sliding window MCMC-100 and MCMC-300 stay constant at \textbf{100} and \textbf{300}. The length of MCMC-vary expends along time $t$. }
+  \begin{subfigure}[t]{0.46\textwidth}
+\includegraphics[width=\textwidth]{Chapters/04Filtering/plot/LWchain100.pdf}
+\caption{Liu and West's filter}
+  \end{subfigure}
+  \begin{subfigure}[t]{0.46\textwidth}
+\includegraphics[width=\textwidth]{Chapters/04Filtering/plot/STchain100.pdf}
+\caption{Storvik Filter}
+  \end{subfigure}
+  \begin{subfigure}[t]{0.46\textwidth}
+\includegraphics[width=\textwidth]{Chapters/04Filtering/plot/PLchain100.pdf}
+\caption{Particle Learning}
+  \end{subfigure}
+    \begin{subfigure}[t]{0.46\textwidth}
+\includegraphics[width=\textwidth]{Chapters/04Filtering/plot/MCMCchain100.pdf}
+  \caption{MCMC with 100-length}
+    \end{subfigure}
+   \begin{subfigure}[t]{0.46\textwidth}
+\includegraphics[width=\textwidth]{Chapters/04Filtering/plot/MCMCchain300.pdf}
+ \caption{MCMC with 300-length}
+   \end{subfigure}
+   \begin{subfigure}[t]{0.46\textwidth}
+\includegraphics[width=\textwidth]{Chapters/04Filtering/plot/MCMCchainVary.pdf}
+ \caption{MCMC with varying-length}
+   \end{subfigure}
+\caption{Trace plots. Repeatedly running 50 times. Cutting off the first \textbf{300} data. It is apparently that all these algorithms converge to the true parameter (black horizontal line) along time. St, PL and MCMC-vary have a narrower range. MCMC-100 has a higher variability and MCMC-vary has the least. The more data incorporated in the estimation phase the better approximation to be obtained. }\label{FilterRiewComparesion01}
 \end{figure}
 
  
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.95\textwidth]{Chapters/04Filtering/plot/CompMCMCboxplotALL.pdf}
-\caption{Repeatedly running 50 times. Cutting off the first \textbf{300} data. LW, St, PL filters are using 5\,000 particles. MCMC is using 5\,000 samples. The length of sliding window MCMC stays constant \textbf{100} and \textbf{300}. The length of sliding window MCMC-vary is expanding along time $t$. For example, at $t=300$, the length is 300 ($y_{1:300}$); at $t=500$, the length is 500 ($y_{1:500}$). }
 \begin{tabular}{|c|c|c|c|c|c|c|}
 \hline
      & LW & St & PL  & MCMC-100 & MCMC-300 & MCMC-vary \\ \hline
@@ -693,56 +709,59 @@ Mean of $\hat{\phi}$ & 0.7947 &   0.7908   &  0.7918 & 0.7914 &  0.8038& 0.7922 
 Se of $\hat{\phi}$ ($\times 10^{-4}$) &  13.1000  & 4.8793 & 6.2877 & 1.1388 & 0.3275 & 0.27506 \\ \hline
 $\frac{1}{n}\sum_i(\hat{x}_i-x_i)^2$ & 0.5745 & 0.5739 & 0.5737 & 0.5875&  0.5741 &  0.5740 \\ \hline
 \end{tabular}
+\caption{Box-plots comparison of all the algorithms. The proposed MCMC algorithm is more stable than other filters.} \label{FilterRiewComparesionTable}
 \end{figure}
-
 
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{Chapters/04Filtering/plot/plotlyFilterCompX2.png}
-\caption{The filtering for $x_{300:897}$ is very competitive. These four algorithms return very close estimations. } \label{FilterRiewComparesion02}
+\caption{The filtering for $x_{300:897}$ is very competitive. These algorithms return very close estimations. } \label{FilterRiewComparesion02}
 \end{figure}
 
-\begin{table}[]
-\centering
-\caption{Comparison by repeatedly running 50 times with $N=5\,000$ particles for LW, St and PL and $M=5\,000$ samples for MCMC. }
-\label{FilterRiewComparesionTable}
-%\begin{tabular}{|c|c|c|c|}
+
+%\begin{table}[]
+%\centering
+%\caption{Comparison by repeatedly running 50 times with $N=5\,000$ particles for LW, St and PL and $M=5\,000$ samples for MCMC. }
+%\label{FilterRiewComparesionTable}
+%%\begin{tabular}{|c|c|c|c|}
+%%\hline
+%%     & Liu and West's & Storvik Filter & Particle Learning  \\ \hline
+%%MSE  &  0.5843 &  0.5842 &  0.5823     \\ \hline
+%%Time (seconds) &  213.27   &  296.70  & 272.62    \\ \hline
+%%Variance ($\times 10^{-4}$) &  7.3595   & 12.5294   & 11.7947    \\ \hline
+%%\end{tabular}
+%\begin{tabular}{|c|c|c|c|c|}
 %\hline
-%     & Liu and West's & Storvik Filter & Particle Learning  \\ \hline
-%MSE  &  0.5843 &  0.5842 &  0.5823     \\ \hline
-%Time (seconds) &  213.27   &  296.70  & 272.62    \\ \hline
-%Variance ($\times 10^{-4}$) &  7.3595   & 12.5294   & 11.7947    \\ \hline
+%     & LW & St & PL  & MCMC\\ \hline
+%%Time (seconds) &  213.27   &  296.70  & 272.62   &  -- \\ \hline
+%%Median of $\hat{\phi}$ &  0.7944 (0.0070) &  0.7922(0.0098)   & 0.7907 (0.0116) &   0.8036 (0.0045) \\ \hline
+%%Variance of $\hat{\phi}$ ($\times 10^{-5}$) &  2.52  & 3.85  &  2.41 &   71.86  \\ \hline
+%%$\frac{1}{n}\sum_i(\hat{x}_i-x_i)^2$ &  0.5731 &  0.5750 &  0.5742  & 0.5744  \\ \hline
+%Median of $\hat{\phi}$ &  0.7944  &  0.7917   &  0.7919 & 0.8032 \\ \hline
+%SE of $\hat{\phi}$ ($\times 10^{-4}$) &  15.1861  &  4.6121 & 5.4162 &  $\mathbf{0.9182}$  \\ \hline
+%$\frac{1}{n}\sum_i(\hat{x}_i-x_i)^2$ &  0.5745 &  0.5740 &  0.5740 & 0.5744  \\ \hline
 %\end{tabular}
-\begin{tabular}{|c|c|c|c|c|}
-\hline
-     & LW & St & PL  & MCMC\\ \hline
-%Time (seconds) &  213.27   &  296.70  & 272.62   &  -- \\ \hline
-%Median of $\hat{\phi}$ &  0.7944 (0.0070) &  0.7922(0.0098)   & 0.7907 (0.0116) &   0.8036 (0.0045) \\ \hline
-%Variance of $\hat{\phi}$ ($\times 10^{-5}$) &  2.52  & 3.85  &  2.41 &   71.86  \\ \hline
-%$\frac{1}{n}\sum_i(\hat{x}_i-x_i)^2$ &  0.5731 &  0.5750 &  0.5742  & 0.5744  \\ \hline
-Median of $\hat{\phi}$ &  0.7944  &  0.7917   &  0.7919 & 0.8032 \\ \hline
-SE of $\hat{\phi}$ ($\times 10^{-4}$) &  15.1861  &  4.6121 & 5.4162 &  $\mathbf{0.9182}$  \\ \hline
-$\frac{1}{n}\sum_i(\hat{x}_i-x_i)^2$ &  0.5745 &  0.5740 &  0.5740 & 0.5744  \\ \hline
-\end{tabular}
-\end{table}
+%\end{table}
 
 
-From figure (\ref{FilterRiewComparesion01}) it can be seen that the former three algorithms converge to the true parameter $\phi$ with similar speed along time $t$. LW filter has larger distance to the true parameter comparing with St and PL filters. The proposed MCMC algorithm has the biggest estimation variance. The estimations for $x_t$ from $t=300$ to $897$ are very close and hard to tell visually. From table (\ref{FilterRiewComparesionTable}), we can see that, by repeatedly running 50 times, the proposed MCMC algorithm is more stable in estimating parameter $\phi$ as it has the lowest standard error (SE) among all the algorithms. The MSE of all the algorithms on estimating $x$ are on the similar levels. 
+From figure (\ref{FilterRiewComparesion01}) it can be seen that the former three algorithms converge to the true parameter $\phi$ with similar speed along time $t$. LW filter has larger distance to the true parameter comparing with St and PL filters. The proposed MCMC with 100 length data in estimation phase has the biggest variance. By setting a longer length, the MCMC becomes more stable. 
+
+The estimations for $x_t$ from $t=300$ to $897$ are very close and hard to tell visually. From table (\ref{FilterRiewComparesionTable}), we can see that, by repeatedly running 50 times, the proposed MCMC algorithm is more stable in estimating parameter $\phi$ as it has the lowest standard error (SE) among all the algorithms. The MSE of all the algorithms on estimating $x$ are on the similar levels. 
 
 
 \section{Conclusion}
 
-In this chapter, we take a brief review on existing sequential state estimation and combined state and parameter estimation. Particle filter is an efficient method for state estimation, although the particles impoverishment is inevitable. Extended to this method, researchers are working on killing particles degeneracy and several accomplishments have been achieved. A new challenge is estimating the unknown parameters. In no doubt, for complex stochastic processes and dynamics, both  Bayesian and Frequentist methods are working well. 
+In this chapter, we take a brief overview on existing sequential state estimation and combined state and parameters estimation. Particle filter is an efficient method for state estimation, although the particles impoverishment is inevitable. Extended to this method, researchers are working on killing particles degeneracy and several accomplishments have been achieved. A new challenge is estimating the unknown parameters. In no doubt, for complex stochastic processes and dynamics, both Bayesian and Frequentist methods are working well. One may refer to \cite{wakefield2013bayesian} for further discussion between Bayesian and Frequentist methods and implementation. 
 
-In summary, most of research issues for filtering and parameter estimation focused on 
+As a summary, most of research issues for filtering and parameter estimation focused on 
 \begin{itemize}
 \item Choices of resampling scheme to kill particles degeneracy, such as Liu and West's filter.
-\item Exploration of an efficient sampling algorithm, such as Metropolis-Hastings sampler. 
+\item Exploration of an efficient sampling algorithm, such as Metropolis-Hastings sampler and related sampling algorithms. 
 \item Exploration of accurate estimation with low variances in higher dimensional space. 
 \end{itemize}
 
-Subject to pages and time, some algorithms are not included in the brief review. For more information and interests, readers can refer to unscented Kalman filter \cite{wan2000unscented} and its related algorithms for non-linear estimation, particle MCMC \cite{andrieu2010particle} for off-line Bayesian estimation and on-line gradient approach \cite{poyiadjis2005maximum} for parameter estimation. 
+Subject to pages and time, some algorithms are not included in the this chapter. For more information and interests, readers can refer to unscented Kalman filter \cite{wan2000unscented} and its related algorithms for non-linear estimation, particle MCMC \cite{andrieu2010particle} for off-line Bayesian estimation and on-line gradient approach \cite{poyiadjis2005maximum} for parameter estimation. 
 
 
 

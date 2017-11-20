@@ -1,72 +1,8 @@
-%
-%\begin{landscape}
-%\section{2D Matrix}
-%\begin{align*}
-%\Sigma_t &= \begin{bmatrix}
-%\sigma_t^{(x)2} & \rho_{t} \sigma_t^{(x)} \sigma_t^{(u)}\\
-% \rho_{t} \sigma_t^{(x)} \sigma_t^{(u)} & \sigma_t^{(u)2} 
-%\end{bmatrix}\\
-%\Sigma_t^{-1} &= \frac{1}{1-\rho_{t}^2} \begin{bmatrix} \frac{1}{\sigma_t^{(x)2}} & -\frac{\rho_{t}}{\sigma_t^{(x)} \sigma_t^{(u)} }\\
-%-\frac{\rho_{t}}{\sigma_t^{(x)} \sigma_t^{(u)} } & \frac{1}{\sigma_t^{(u)2}} \end{bmatrix}\\
-%M_t^\top &= \begin{bmatrix}
-%1 & 0 \\
-%\frac{1-e^{-\gamma \Delta_t}}{\gamma} & e^{-\gamma \Delta_t}
-%\end{bmatrix} \\
-%z_t &= \begin{bmatrix} x_t \\ u_t \end{bmatrix}
-%\end{align*}
-%\begin{align*}
-%M_t^\top \Sigma_t^{-1} &= \frac{1}{1-\rho_{t}^2} 
-%\begin{bmatrix}
-%\frac{1}{\sigma_t^{(x)2}}  & -\frac{\rho_{t}}{\sigma_t^{(x)} \sigma_t^{(u)} }\\
-%\frac{1-e^{-\gamma \Delta_t}}{\gamma\sigma_t^{(x)2}} -\frac{\rho_{t} e^{-\gamma \Delta_t}}{\sigma_t^{(x)} \sigma_t^{(u)} }  & 
-% -\frac{\rho_{t} (1-e^{-\gamma \Delta_t}) }{ \gamma \sigma_t^{(x)} \sigma_t^{(u)} } + \frac{  e^{-\gamma\Delta_t} }{   \sigma_t^{(u)2} }
-%\end{bmatrix} \\
-%M_t^\top \Sigma_t^{-1} M_t&= \frac{1}{1-\rho_{t}^2} 
-%\begin{bmatrix}
-%\frac{1}{\sigma_t^{(x)2}}  &  \frac{1-e^{-\gamma\Delta_t}}{\gamma\sigma_t^{(x)2}} -\frac{\rho_{t} e^{-\gamma\Delta_t}}{\sigma_t^{(x)}\sigma_t^{(u)}} \\
-%\frac{1-e^{-\gamma \Delta_t}}{\gamma\sigma_t^{(x)2}} -\frac{\rho_{t} e^{-\gamma \Delta_t}}{\sigma_t^{(x)} \sigma_t^{(u)} }  & 
-%\frac{ (1-e^{-\gamma \Delta_t})^2}{\gamma^2\sigma_t^{(x)2}} - \frac{2 \rho_{t} e^{-\gamma \Delta_t} (1-e^{-\gamma\Delta_t}) }{\gamma\sigma_t^{(x)} \sigma_t^{(u)} } +\frac{e^{-2\gamma\Delta_t}}{\sigma_t^{(u)2}}
-%\end{bmatrix} 
-%\end{align*}
-%%where $\Delta_t = T_t-T_{t-1}$.
-%
-%\begin{align*}
-%\Sigma_{4}^{(X)-1}&=\frac{1}{1-\rho_{t}^2}\begin{bmatrix}
-%%1111111
-% \frac{1-\rho_{t}^2}{\sigma_1^{(x)2}}  + \frac{1}{\sigma_2^{(x)2}}  &  - \frac{1}{\sigma_2^{(x)2}}  &   0 &   0  &   \frac{1-e^{- \gamma\Delta_2}}{\gamma\sigma_2^{(x)2}} -\frac{\rho_{t} e^{-\gamma\Delta_2}}{\sigma_2^{(x)}\sigma_2^{(u)}} & \frac{\rho_{t}}{\sigma_2^{(x)}\sigma_2^{(u)}} & 0 & 0 \\
-% %222222
-% - \frac{1}{\sigma_2^{(x)2}}    &  \frac{1}{\sigma_2^{(x)2}}  + \frac{1}{\sigma_3^{(x)2}}  &  - \frac{1}{\sigma_3^{(x)2}}   & 0 & -\frac{1-e^{- \gamma\Delta_2}}{\gamma\sigma_2^{(x)2}} +\frac{\rho_{t} e^{-\gamma\Delta_2}}{\sigma_2^{(x)}\sigma_2^{(u)}} & \frac{1-e^{- \gamma\Delta_3}}{\gamma\sigma_3^{(x)2}} -\frac{\rho_{t} e^{-\gamma\Delta_3}}{\sigma_3^{(x)}\sigma_3^{(u)}} -\frac{\rho_{t}}{\sigma_2^{(x)}\sigma_2^{(u)}}    & \frac{\rho_{t}}{\sigma_3^{(x)}\sigma_3^{(u)}}  & 0 \\
-% %333333
-% 0 & - \frac{1}{\sigma_3^{(x)2}}   & \frac{1}{\sigma_3^{(x)2}}  + \frac{1}{\sigma_4^{(x)2}}   &  - \frac{1}{\sigma_4^{(x)2}}   & 0 & -\frac{1-e^{- \gamma\Delta_3}}{\gamma\sigma_3^{(x)2}} +\frac{\rho_{t} e^{-\gamma\Delta_3}}{\sigma_3^{(x)}\sigma_3^{(u)}} & \frac{1-e^{- \gamma\Delta_4}}{\gamma\sigma_4^{(x)2}} -\frac{\rho_{t} e^{-\gamma\Delta_4}}{\sigma_4^{(x)}\sigma_4^{(u)}} -\frac{\rho_{t}}{\sigma_3^{(x)}\sigma_3^{(u)}}  & \frac{\rho_{t}}{\sigma_4^{(x)}\sigma_4^{(u)}}  \\
-% %4444444444
-% 0 & 0 & - \frac{1}{\sigma_4^{(x)2}}   &  \frac{1}{\sigma_4^{(x)2}}   & 0 & 0 & -\frac{1-e^{- \gamma\Delta_4}}{\gamma\sigma_4^{(x)2}} +\frac{\rho_{t} e^{-\gamma\Delta_4}}{\sigma_4^{(x)}\sigma_4^{(u)}}& -\frac{\rho_{t}}{\sigma_4^{(x)}\sigma_4^{(u)}}  \\
-%  %5555555
-%%\frac{1-e^{- \gamma\Delta_2}}{\gamma\sigma_2^{(x)2}} - \frac{\rho_{t} e^{-\gamma\Delta_2}}{\sigma_2^{(x)}\sigma_2^{(u)}}  & -\frac{1-e^{- \gamma\Delta_2}}{\gamma\sigma_2^{(x)2}} +\frac{\rho_{t} e^{-\gamma\Delta_2}}{\sigma_2^{(x)}\sigma_2^{(u)}}& 0 & 0 & \frac{1}{\sigma_1^{(u)2}}+C_1 & -\frac{e^{-\gamma\Delta_2}}{\sigma_2^{(u)2}}+\frac{\rho_{t}(1-e^{-\gamma\Delta_2})}{\gamma\sigma_2^{(x)}\sigma_2^{(u)}} & 0 & 0 \\
-%\top &  \top & 0 & 0 & \frac{1-\rho_{t}^2}{\sigma_1^{(u)2}}+C_2 & -\frac{e^{-\gamma\Delta_2}}{\sigma_2^{(u)2}}+\frac{\rho_{t}(1-e^{-\gamma\Delta_2})}{\gamma\sigma_2^{(x)}\sigma_2^{(u)}} & 0 & 0 \\
-% %66666666666
-%% -\frac{\rho_{t}}{\sigma_2^{(x)}\sigma_2^{(u)}} &  \frac{1-e^{- \gamma\Delta_3}}{\gamma\sigma_3^{(x)2}} - \frac{\rho_{t} e^{-\gamma\Delta_3}}{\sigma_3^{(x)}\sigma_3^{(u)}} -\frac{\rho_{t}}{\sigma_2^{(x)}\sigma_2^{(u)}}  & -\frac{1-e^{- \gamma\Delta_3}}{\gamma\sigma_3^{(x)2}} +\frac{\rho_{t} e^{-\gamma\Delta_3}}{\sigma_3^{(x)}\sigma_3^{(u)}} & 0 & -\frac{e^{-\gamma\Delta_2}}{\sigma_2^{(u)2}}+\frac{\rho_{t}(1-e^{-\gamma\Delta_2})}{\gamma\sigma_2^{(x)}\sigma_2^{(u)}}   & \frac{1}{\sigma_2^{(u)2}}+C_2 & -\frac{e^{-\gamma\Delta_3}}{\sigma_3^{(u)2}}+\frac{\rho_{t}(1-e^{-\gamma\Delta_3})}{\gamma\sigma_3^{(x)2}\sigma_3^{(u)}} & 0 \\
-%  \top &  \top & \top& 0 & -\frac{e^{-\gamma\Delta_2}}{\sigma_2^{(u)2}}+\frac{\rho_{t}(1-e^{-\gamma\Delta_2})}{\gamma\sigma_2^{(x)}\sigma_2^{(u)}}   & \frac{1}{\sigma_2^{(u)2}}+C_3 & -\frac{e^{-\gamma\Delta_3}}{\sigma_3^{(u)2}}+\frac{\rho_{t}(1-e^{-\gamma\Delta_3})}{\gamma\sigma_3^{(x)2}\sigma_3^{(u)}} & 0 \\
-%%77777777
-% %0 &- \frac{\rho_{t}}{\sigma_3^{(x)}\sigma_3^{(u)}} & \frac{1-e^{- \gamma\Delta_4}}{\gamma\sigma_4^{(x)2}} - \frac{\rho_{t} e^{-\gamma\Delta_4}}{\sigma_4^{(x)}\sigma_4^{(u)}}  -\frac{\rho_{t}}{\sigma_3^{(x)}\sigma_3^{(u)}}  & -\frac{1-e^{- \gamma\Delta_4}}{\gamma\sigma_4^{(x)2}} +\frac{\rho_{t} e^{-\gamma\Delta_4}}{\sigma_4^{(x)}\sigma_4^{(u)}} & 0 & -\frac{e^{-\gamma\Delta_3}}{\sigma_3^{(u)2}}+\frac{\rho_{t}(1-e^{-\gamma\Delta_3})}{\gamma\sigma_3^{(x)}\sigma_3^{(u)}}  & \frac{1}{\sigma_3^{(u)2}}+C_3 & -\frac{e^{-\gamma\Delta_4}}{\sigma_4^{(u)2}}+\frac{\rho_{t}(1-e^{-\gamma\Delta_4})}{\gamma\sigma_4^{(x)}\sigma_4^{(u)}}  \\
-%  0 &\top&\top & \top& 0 & -\frac{e^{-\gamma\Delta_3}}{\sigma_3^{(u)2}}+\frac{\rho_{t}(1-e^{-\gamma\Delta_3})}{\gamma\sigma_3^{(x)}\sigma_3^{(u)}}  & \frac{1}{\sigma_3^{(u)2}}+C_4 & -\frac{e^{-\gamma\Delta_4}}{\sigma_4^{(u)2}}+\frac{\rho_{t}(1-e^{-\gamma\Delta_4})}{\gamma\sigma_4^{(x)}\sigma_4^{(u)}}  \\
-%%8888
-%% 0 & 0 & - \frac{\rho_{t}}{\sigma_4^{(x)}\sigma_4^{(u)}} & -\frac{\rho_{t}}{\sigma_4^{(x)}\sigma_4^{(u)}} & 0 & 0 & -\frac{e^{-\gamma\Delta_4}}{\sigma_4^{(u)2}}+\frac{\rho_{t}(1-e^{-\gamma\Delta_4})}{\gamma\sigma_4^{(x)}\sigma_4^{(u)}}  & \frac{1}{\sigma_4^{(u)2}}+C_4
-%  0 & 0 & \top&\top& 0 & 0 & -\frac{e^{-\gamma\Delta_4}}{\sigma_4^{(u)2}}+\frac{\rho_{t}(1-e^{-\gamma\Delta_4})}{\gamma\sigma_4^{(x)}\sigma_4^{(u)}}  & \frac{1}{\sigma_4^{(u)2}}
-%\end{bmatrix}
-%\end{align*}
-%where $C_t = \frac{ (1-e^{-\gamma\Delta_t})^2 }{\gamma^2\sigma_t^{(x)2}}  + \frac{ e^{-2\gamma\Delta_t}}{\sigma_t^{(u)2}} - \frac{2\rho_{t} e^{-\gamma\Delta_t} (1-e^{-\gamma\Delta_t}) }{ \gamma \sigma_t^{(x)}\sigma_t^{(u)}}$, $\Delta_t = T_t-T_{t-1}$.
-%\end{landscape}
+\setcounter{figure}{1} 
 
+\section{Linear Simulation Calculations}\label{linearcalculation}
 
-
-
-\section{Appendices}
-
-\subsection{Linear Simulation Calculations}\label{linearcalculation}
-
-\subsubsection*{Forecast} 
-
-
+\subsection*{Forecast} 
 
 Calculating the log-posterior of parameters requires finding out the forecast distribution of $p(y_{1:t}\mid y_{1:t-1},\theta)$. A general way is using the joint distribution of $y_{t}$ and $y_{1:t-1}$, which is $p(y_{1:t}\mid \theta)\sim N(0,\Sigma_{YY})$ and following the procedure in section \ref{sectionforecast} to work out the inverse matrix of a multivariate normal distribution. For example, one may find the inverse of the covariance matrix 
 \begin{align*}
@@ -100,8 +36,6 @@ With the above formula, the recursive way of updating the mean and covariance ar
 \end{align}
 
 where $K_1=\frac{\sigma^4}{\sigma^2+\tau^2+L^2\phi^2}$. For calculation details, readers can refer to appendices (\ref{linearcalculation}). 
-
-
 
 
 By using the formula, one term of equation (\ref{beforeSMformula}) becomes 
@@ -159,7 +93,7 @@ where $K_1=\frac{\sigma^4}{\sigma^2+\tau^2+L^2\phi^2}$.
 
 
 
-\subsubsection*{Estimation}
+\subsection*{Estimation}
 
 
 As introduced before, $p(x_t \mid y_{1:t})$ is a mixture Gaussian distribution with given $\theta$ and its mean and variance can be found by 
@@ -192,11 +126,9 @@ By substituting them into the equation (\ref{linearmu}) and (\ref{linearsigma}),
 
 
 
+\section{OU-Process Calculation}\label{OUcalculation}
 
-
-\subsection{OU process calculation}\label{OUcalculation}
-
-\subsubsection*{Forecast}
+\subsection*{Forecast}
 We are now using the capital letter $Y$ to represent the joint $\{y,v\}$ and $Y_{1:t} = \{y_1,v_1,y_2,v_2,\cdots, y_t, v_t \}$, $Y_{t+1} = \{y_{t+1}, v_{t+1}\}$. It is known that 
 \begin{align*}
 p(Y_{1:t},\theta) &\sim N\left( 0,\Sigma_{YY}^{(t)} \right)\\
@@ -378,7 +310,7 @@ and $K_1 =B_1^{-1} - A_1^{-1} = \begin{bmatrix}
 
 
 
-\subsubsection*{Estimation}
+\subsection*{Estimation}
 
 Because of the joint distribution (\ref{jointmatrix}), one can find the best estimation with a given $\theta$ by
 \begin{align*}
@@ -437,7 +369,8 @@ then $X_{t+1}\mid Y_{1:t+1},\theta \sim N(\bar{\mu}_{t+1}^{(X)},\bar{\sigma}_{t+
 
 
 
-\subsubsection*{Covariance Matrix in Details}\label{covMatrixdetails}
+\section{Covariance Matrix in Details}\label{covMatrixdetails}
+
 \begin{align*}
 \Sigma_t &= \begin{bmatrix}
 \sigma_t^{(x)2} & \rho_{t} \sigma_t^{(x)} \sigma_t^{(u)}\\
@@ -500,9 +433,9 @@ where $C_t = \frac{ (1-e^{-\gamma\Delta_t})^2 }{\gamma^2\sigma_t^{(x)2}}  + \fra
 \clearpage
 
 
-\subsection{Real Data Implementation}
+\section{Real Data Implementation}
 
-\subsubsection*{Efficiency Plots}
+\subsection*{Efficiency Plots}
 
 %\begin{figure}[h]
 %\centering
@@ -523,14 +456,17 @@ where $C_t = \frac{ (1-e^{-\gamma\Delta_t})^2 }{\gamma^2\sigma_t^{(x)2}}  + \fra
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.4\textwidth,height=5cm]{Chapters/05MCMCOU/plots/gg1k1chain.pdf}
-\includegraphics[width=0.4\textwidth,height=5cm]{Chapters/05MCMCOU/plots/gg1k1acf.pdf}
-\includegraphics[width=0.4\textwidth,height=5cm]{Chapters/05MCMCOU/plots/gg1k13chain.pdf}
-\includegraphics[width=0.4\textwidth,height=5cm]{Chapters/05MCMCOU/plots/gg1k13acf.pdf}
-\includegraphics[width=0.4\textwidth,height=5cm]{Chapters/05MCMCOU/plots/gg1k22chain.pdf}
-\includegraphics[width=0.4\textwidth,height=5cm]{Chapters/05MCMCOU/plots/gg1k22acf.pdf}
-\includegraphics[width=0.4\textwidth,height=5cm]{Chapters/05MCMCOU/plots/gg1k25chain.pdf}
-\includegraphics[width=0.4\textwidth,height=5cm]{Chapters/05MCMCOU/plots/gg1k25acf.pdf}
+\includegraphics[width=0.45\textwidth,height=5cm]{Chapters/05MCMCOU/plots/gg1k1chain.pdf}
+\includegraphics[width=0.45\textwidth,height=5cm]{Chapters/05MCMCOU/plots/gg1k1acf.pdf}
+\includegraphics[width=0.45\textwidth,height=5cm]{Chapters/05MCMCOU/plots/gg1k13chain.pdf}
+\includegraphics[width=0.45\textwidth,height=5cm]{Chapters/05MCMCOU/plots/gg1k13acf.pdf}
+\end{figure}
+\begin{figure}[h]\ContinuedFloat
+\centering
+\includegraphics[width=0.45\textwidth,height=5cm]{Chapters/05MCMCOU/plots/gg1k22chain.pdf}
+\includegraphics[width=0.45\textwidth,height=5cm]{Chapters/05MCMCOU/plots/gg1k22acf.pdf}
+\includegraphics[width=0.45\textwidth,height=5cm]{Chapters/05MCMCOU/plots/gg1k25chain.pdf}
+\includegraphics[width=0.45\textwidth,height=5cm]{Chapters/05MCMCOU/plots/gg1k25acf.pdf}
 \caption{Running the same amount of time and taking the same length of data, the step size $\epsilon=2.5$ returns the highest ESSUT value and generates more effective samples with a lower correlation. }\label{1koutof8kfigures}
 \end{figure}
 
@@ -538,13 +474,13 @@ where $C_t = \frac{ (1-e^{-\gamma\Delta_t})^2 }{\gamma^2\sigma_t^{(x)2}}  + \fra
 
 \clearpage
 
-\subsubsection*{Comparing Estimation with Different Length of Data }
+\subsection*{Comparing Estimation with Different Length of Data }
 
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth,height=0.5\textheight]{Chapters/05MCMCOU/plots/realdatalengthcompare.pdf}
-\caption{Impacts of data length on optimal parameter. }
+\caption{Impacts of data length on optimal parameter. There is a obvious trend on the estimation against length of data in estimation process. }
 \end{figure}
 
 
@@ -606,32 +542,59 @@ where $C_t = \frac{ (1-e^{-\gamma\Delta_t})^2 }{\gamma^2\sigma_t^{(x)2}}  + \fra
 
 
 
-\subsubsection{Comparison Between Batch and Sliding Window Methods}
+\section{Comparison Between Batch and Sliding Window Methods}
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.45\textwidth]{Chapters/05MCMCOU/plots/realdatacomparea1batchwindow.pdf}
-\includegraphics[width=0.45\textwidth]{Chapters/05MCMCOU/plots/realdatacomparea2batchwindow.pdf}
-\includegraphics[width=0.45\textwidth]{Chapters/05MCMCOU/plots/realdatacompareeffutbatchwindow.pdf}
-\includegraphics[width=0.45\textwidth]{Chapters/05MCMCOU/plots/realdatacompareessutbatchwindow.pdf}
-\caption{Key features comparison. }\label{batchwindowkeyfeature}
+\begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/realdatacomparea1batchwindow2.pdf}
+	\caption{$\alpha_1$}
+\end{subfigure}
+\begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/realdatacomparea2batchwindow2.pdf}
+	\caption{$\alpha_2$}
+\end{subfigure}
+\begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/realdatacompareeffutbatchwindow2.pdf}
+	\caption{EffUT}
+\end{subfigure}
+\begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/realdatacompareessutbatchwindow2.pdf}
+	\caption{ESSUT}
+\end{subfigure}
+\caption{Comparison of $\alpha_1$, $\alpha_2$, EffUT and ESSUT between batch MCMC (orange) and sliding window MCMC (green). }\label{batchwindowkeyfeature}
 \end{figure}
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.45\textwidth]{Chapters/05MCMCOU/plots/realdatacomparegambatchwindow.pdf}
-\includegraphics[width=0.45\textwidth]{Chapters/05MCMCOU/plots/realdatacomparexi2batchwindow.pdf}
-\includegraphics[width=0.45\textwidth]{Chapters/05MCMCOU/plots/realdatacomparelab2batchwindow.pdf}
-\includegraphics[width=0.45\textwidth]{Chapters/05MCMCOU/plots/realdatacomparesig2batchwindow.pdf}
-\includegraphics[width=0.45\textwidth]{Chapters/05MCMCOU/plots/realdatacomparetau2batchwindow.pdf}
-\caption{Parameter Comparison. }\label{batchwindowparameter}
+\begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/realdatacomparegambatchwindow2.pdf}
+	\caption{$\gamma$}
+\end{subfigure}
+\begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/realdatacomparexi2batchwindow2.pdf}
+	\caption{$\xi^2$}
+\end{subfigure}
+\begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/realdatacomparelab2batchwindow2.pdf}
+\caption{$\lambda^2$}
+\end{subfigure}
+\begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/realdatacomparesig2batchwindow2.pdf}
+\caption{$\sigma^2$}
+\end{subfigure}
+\begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/realdatacomparetau2batchwindow2.pdf}
+\caption{$\tau^2$}
+\end{subfigure}
+\caption{Comparison of parameters estimation between batch MCMC (orange) and sliding window MCMC (green). }\label{batchwindowparameter}
 \end{figure}
 
 
 
 \clearpage
 
-\subsubsection{Parameter Evolution Visualization}
+\section{Parameter Evolution Visualization}
 
 \begin{figure}[h]
 \centering
@@ -647,11 +610,9 @@ where $C_t = \frac{ (1-e^{-\gamma\Delta_t})^2 }{\gamma^2\sigma_t^{(x)2}}  + \fra
 \includegraphics[width=0.3\textwidth,height=0.18\textheight]{Chapters/05MCMCOU/plots/paraEvolution/corMatrix10.pdf}
 \includegraphics[width=0.3\textwidth,height=0.18\textheight]{Chapters/05MCMCOU/plots/paraEvolution/corMatrix11.pdf}
 \includegraphics[width=0.3\textwidth,height=0.18\textheight]{Chapters/05MCMCOU/plots/paraEvolution/corMatrix12.pdf}
-\caption{Parameter Evolution Visualization. }
+%\caption{Parameter Evolution Visualization. }
 \end{figure}
-
-\clearpage
-\begin{figure}[h]
+\begin{figure}[h]\ContinuedFloat
 \centering
 \includegraphics[width=0.3\textwidth,height=0.2\textheight]{Chapters/05MCMCOU/plots/paraEvolution/corMatrix13.pdf}
 \includegraphics[width=0.3\textwidth,height=0.2\textheight]{Chapters/05MCMCOU/plots/paraEvolution/corMatrix14.pdf}
@@ -665,11 +626,9 @@ where $C_t = \frac{ (1-e^{-\gamma\Delta_t})^2 }{\gamma^2\sigma_t^{(x)2}}  + \fra
 \includegraphics[width=0.3\textwidth,height=0.2\textheight]{Chapters/05MCMCOU/plots/paraEvolution/corMatrix22.pdf}
 \includegraphics[width=0.3\textwidth,height=0.2\textheight]{Chapters/05MCMCOU/plots/paraEvolution/corMatrix23.pdf}
 \includegraphics[width=0.3\textwidth,height=0.2\textheight]{Chapters/05MCMCOU/plots/paraEvolution/corMatrix24.pdf}
-\caption{Parameter Evolution Visualization. }
+%\caption{Parameter Evolution Visualization. }
 \end{figure}
-
-\clearpage
-\begin{figure}[h]
+\begin{figure}[h]\ContinuedFloat
 \centering
 \includegraphics[width=0.3\textwidth,height=0.2\textheight]{Chapters/05MCMCOU/plots/paraEvolution/corMatrix25.pdf}
 \includegraphics[width=0.3\textwidth,height=0.2\textheight]{Chapters/05MCMCOU/plots/paraEvolution/corMatrix26.pdf}
@@ -683,12 +642,9 @@ where $C_t = \frac{ (1-e^{-\gamma\Delta_t})^2 }{\gamma^2\sigma_t^{(x)2}}  + \fra
 \includegraphics[width=0.3\textwidth,height=0.2\textheight]{Chapters/05MCMCOU/plots/paraEvolution/corMatrix34.pdf}
 \includegraphics[width=0.3\textwidth,height=0.2\textheight]{Chapters/05MCMCOU/plots/paraEvolution/corMatrix35.pdf}
 \includegraphics[width=0.3\textwidth,height=0.2\textheight]{Chapters/05MCMCOU/plots/paraEvolution/corMatrix36.pdf}
-\caption{Parameter Evolution Visualization. }
+%\caption{Parameter Evolution Visualization. }
 \end{figure}
-
-\clearpage
-
-\begin{figure}[h]
+\begin{figure}[h]\ContinuedFloat
 \centering
 \includegraphics[width=0.3\textwidth,height=0.2\textheight]{Chapters/05MCMCOU/plots/paraEvolution/corMatrix37.pdf}
 \includegraphics[width=0.3\textwidth,height=0.2\textheight]{Chapters/05MCMCOU/plots/paraEvolution/corMatrix38.pdf}
@@ -702,5 +658,5 @@ where $C_t = \frac{ (1-e^{-\gamma\Delta_t})^2 }{\gamma^2\sigma_t^{(x)2}}  + \fra
 \includegraphics[width=0.3\textwidth,height=0.2\textheight]{Chapters/05MCMCOU/plots/paraEvolution/corMatrix46.pdf}
 \includegraphics[width=0.3\textwidth,height=0.2\textheight]{Chapters/05MCMCOU/plots/paraEvolution/corMatrix47.pdf}
 \includegraphics[width=0.3\textwidth,height=0.2\textheight]{Chapters/05MCMCOU/plots/paraEvolution/corMatrix48.pdf}
-\caption{Parameter Evolution Visualization. }
+\caption{Parameters Evolution Visualization. The correlation among parameters doesn't change two much. The parameters are considered static. }
 \end{figure}

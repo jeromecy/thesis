@@ -51,7 +51,7 @@
 \contentsline {subsection}{\numberline {4.3.6}Adaptive Ensemble Kalman Filter}{77}
 \contentsline {subsection}{\numberline {4.3.7}On-line Pseudo-Likelihood Estimation}{79}
 \contentsline {section}{\numberline {4.4}Simulation Study}{80}
-\contentsline {section}{\numberline {4.5}Conclusion}{83}
+\contentsline {section}{\numberline {4.5}Conclusion}{82}
 \contentsline {chapter}{\numberline {5}Adaptive Sequential MCMC for On-line State and Parameters Estimation}{87}
 \contentsline {section}{\numberline {5.1}Introduction}{87}
 \contentsline {section}{\numberline {5.2}Bayesian Inference on Combined State and Parameters}{88}
@@ -79,17 +79,17 @@
 \contentsline {chapter}{Appendices}{139}
 \setcounter {tocdepth}{1}
 \begingroup \let \l@chapter \l@section \let \l@section \l@subsection 
-\contentsline {chapter}{\numberline {A}Spline Penalty}{140}
+\contentsline {chapter}{\numberline {A}Proofs of Tractor Spline Theorems}{140}
 \contentsline {section}{\numberline {A.1}Penalty Matrix in (2.16\hbox {})}{140}
 \contentsline {section}{\numberline {A.2}Proof of Theorem 2\hbox {}}{141}
 \contentsline {section}{\numberline {A.3}Proof of Lemma 2\hbox {}}{144}
 \contentsline {section}{\numberline {A.4}Proof of Theorem 3\hbox {}}{145}
-\contentsline {chapter}{\numberline {B}MCMC}{146}
-\contentsline {section}{\numberline {B.1}Appendices}{146}
-\contentsline {subsection}{\numberline {B.1.1}Linear Simulation Calculations}{146}
-\contentsline {subsection}{\numberline {B.1.2}OU process calculation}{149}
-\contentsline {subsection}{\numberline {B.1.3}Real Data Implementation}{157}
-\contentsline {subsubsection}{Comparison Between Batch and Sliding Window Methods}{161}
-\contentsline {subsubsection}{Parameter Evolution Visualization}{163}
+\contentsline {chapter}{\numberline {B}Calculations And Figures of Adaptive Sequential MCMC}{146}
+\contentsline {section}{\numberline {B.1}Linear Simulation Calculations}{146}
+\contentsline {section}{\numberline {B.2}OU-Process Calculation}{149}
+\contentsline {section}{\numberline {B.3}Covariance Matrix in Details}{155}
+\contentsline {section}{\numberline {B.4}Real Data Implementation}{157}
+\contentsline {section}{\numberline {B.5}Comparison Between Batch and Sliding Window Methods}{161}
+\contentsline {section}{\numberline {B.6}Parameter Evolution Visualization}{163}
 \endgroup 
-\contentsline {chapter}{\hbox to\@tempdima {\hfil }References}{167}
+\contentsline {chapter}{\hbox to\@tempdima {\hfil }References}{163}

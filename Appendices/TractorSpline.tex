@@ -4,7 +4,6 @@
 
 \section{Penalty Matrix in (\ref{tractormse})}\label{PenaltyTermDetails}
 
-
 The $k$-th $\Omega^{(k)}$ is a $2n \times 2n$ matrix in the form of
 \begin{align}
 \Omega_{2k-1,2k-1}^{(k)} & =\int_{t_{k}}^{t_{k+1}} \frac{d^2 h_{00}^{(k)}(t)}{dt^2}  \frac{d^2 h_{00}^{(k)}(t)}{dt^2} dt=\frac{12}{\Delta_k^3}\\
@@ -24,20 +23,6 @@ $k=1,2,\ldots,n-1$. It's a bandwidth four matrix. Then
 \end{equation*}
 
 
-%
-%The penalty matrix $\Omega$ in (\ref{tractormse}) is a combination of three sub matrix $\Omega_1$, $\Omega_2$ and $\Omega_3$, which are in the following form
-%\begin{align*}
-%\Omega_{k,k}^{(1)} & =\int_{t_{k}}^{t_{k+1}} \frac{d^2 h_{00}^{(k)}(t)}{dt^2}  \frac{d^2 h_{00}^{(k)}(t)}{dt^2} dt=\frac{12}{\Delta_k^3}\\
-%\Omega_{k,k+1}^{(1)} &=\int_{t_{k}}^{t_{k+1}} \frac{d^2 h_{00}^{(k)}(t)}{dt^2}  \frac{d^2 h_{01}^{(k+1)}(t)}{dt^2} dt=\frac{-12}{\Delta_k^3}\\
-%\Omega_{k+1,k+1}^{(1)} &=\int_{t_{k}}^{t_{k+1}} \frac{d^2 h_{01}^{(k+1)}(t)}{dt^2}  \frac{d^2 h_{01}^{(k+1)}(t)}{dt^2} dt=\frac{12}{\Delta_k^3}\\
-%\Omega_{k,k}^{(2)} &=\int_{t_{k}}^{t_{k+1}} \frac{d^2 h_{10}^{(k)}(t)}{dt^2}  \frac{d^2 h_{10}^{(k)}(t)}{dt^2} dt=\frac{4}{\Delta_k} \\
-%\Omega_{k,k+1}^{(2)} &=\int_{t_{k}}^{t_{k+1}} \frac{d^2 h_{10}^{(k)}(t)}{dt^2}  \frac{d^2 h_{11}^{(k+1)}(t)}{dt^2} dt=\frac{2}{\Delta_k}\\
-%\Omega_{k+1,k+1}^{(2)} &=\int_{t_{k}}^{t_{k+1}} \frac{d^2 h_{11}^{(k+1)}(t)}{dt^2}  \frac{d^2 h_{11}^{(k+1)}(t)}{dt^2} dt=\frac{4}{\Delta_k}\\
-%\Omega_{k,k}^{(3)} &=\int_{t_{k}}^{t_{k+1}} \frac{d^2 h_{00}^{(k)}(t)}{dt^2}  \frac{d^2 h_{10}^{(k)}(t)}{dt^2} dt=\frac{6}{\Delta_k^2}\\
-%\Omega_{k,k+1}^{(3)} &=\int_{t_{k}}^{t_{k+1}} \frac{d^2 h_{00}^{(k)}(t)}{dt^2}  \frac{d^2 h_{11}^{(k+1)}(t)}{dt^2} dt=\frac{6}{\Delta_k^2}\\
-%\Omega_{k+1,k}^{(3)} &=\int_{t_{k}}^{t_{k+1}} \frac{d^2 h_{10}^{(k)}(t)}{dt^2}  \frac{d^2 h_{01}^{(k+1)}(t)}{dt^2} dt=\frac{-6}{\Delta_k^2}\\
-%\Omega_{k+1,k+1}^{(3)} &=\int_{t_{k}}^{t_{k+1}} \frac{d^2 h_{01}^{(k+1)}(t)}{dt^2}  \frac{d^2 h_{11}^{(k+1)}(t)}{dt^2} dt=\frac{-6}{\Delta_k^2}
-%\end{align*}
 
 \section{Proof of Theorem \ref{basisindependent}}
 
@@ -81,7 +66,7 @@ N_{2n-1}(t_{2n})=1 \\
 N_{2n}(\frac{t_{2n-1}+t_{2n}}{3})=a_{2n,2n-2} \\
 N_{2n}(\frac{2(t_{2n-1}+t_{2n})}{3})=a_{2n,2n-1} \\
 N_{2n}(t_{2n})=0 \\
-0 &  otherwise
+0 &  \mbox{otherwise}
 \end{cases}$,\\
 and $a_{ij}\neq 0.$ After decomposing determinant $D$ in equation (\ref{matrixD}),  gives
 \begin{align*}
@@ -129,7 +114,7 @@ After rearranging, we have
 \begin{align*}
 f(t)=& \{ \frac{2\theta_{2k-1}}{(t_{k+1}-t_{k})^3} +\frac{\theta_{2k}}{(t_{k+1}-t_{k})^2} -\frac{2\theta_{2k+1}}{(t_{k+1}-t_{k})^3} +\frac{\theta_{2k+2}}{(t_{k+1}-t_{k})^2} \} (t-t_k)^3 \\
 +&  \{ -\frac{3\theta_{2k-1}}{(t_{k+1}-t_{k})^2} -\frac{2\theta_{2k}}{(t_{k+1}-t_{k})} +\frac{3\theta_{2k+1}}{(t_{k+1}-t_{k})^2} - \frac{\theta_{2k+2}}{(t_{k+1}-t_{k})} \} (t-t_k)^2 \\
-+&  \theta_{2k} (t-t_k) +\theta_{2k-1}
++&  \theta_{2k} (t-t_k) +\theta_{2k-1},
 \end{align*}
 where coefficients are
 \begin{align*}
