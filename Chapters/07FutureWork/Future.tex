@@ -43,7 +43,7 @@ Inspired by the above ideas, the basis functions of Tractor spline can be treate
 
 \subsection*{Non-trivial Tractor Spline with Correlated Errors}
 
-In Chapter \ref{ChapterGPR}, the Bayesian estimate of Tractor spline with correlated errors is given. The extended GCV helps to find the optimal parameters for the estimate. Whereas, the extended GCV is only applicable for trivial Tractor spline, where $\lambda(t)$ is a constant. 
+In Chapter \ref{ChapterGPR}, the Bayes estimate of Tractor spline with correlated errors is given. The extended GCV helps to find the optimal parameters for the estimate. Whereas, the extended GCV is only applicable for trivial Tractor spline, where $\lambda(t)$ is a constant. 
 
 
 In \cite{opsomer2001nonparametric} and \cite{wang1998smoothing}, the authors present a few extensions of the generalized maximum likelihood (GML), generalized cross-validation (GCV) and unbiased risk (UBR) methods to find optimal parameters for smoothing spline ANOVA models when observations are correlated. These algorithms in applied on conventional polynomial smoothing spine, but not on Tractor spline. Suppose the errors of the observations $y$ and $v$ are $\varepsilon_y\sim N(0,\sigma^2W^{-1})$ and $\varepsilon_v\sim N(0,\tau^2U^{-1})$ with unknown parameters $\sigma^2$ and $\tau^2$, I hope to find general solutions, similarly to GML, GCV and UBR, to tune the parameters for Tractor spline returning least true mean squared errors. 

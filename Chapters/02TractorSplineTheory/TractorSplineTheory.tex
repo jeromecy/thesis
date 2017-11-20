@@ -1,20 +1,3 @@
-%\section{Writing Something}
-%
-%I'm thinking, I should start writing from Spline method, without adaptive terms on $\lambda$. An advanced Cross Validation method is given. Then when I tried to use this method to construct trajectories (application on real data), there appears some issues. So I brought adaptive terms. 
-%
-%It's a batch case method. Trajectory is reconstructed from a batch of data and some issues appeared. The numeric simulations proved that this new method is better. However, some issues still exist in real data application (long-gap-curve).
-%
-%Then I will introduce Gaussian Process Regression and how it could estimate Smoothing Spline. Based on some references and Tractor Spline, I will prove some relationships between Tractor spline and GPR. this is a spin-off results.
-%
-%These are all batch method. Even if researchers could do some online smoothing, the computation time cost a lot. 
-%
-%Why don't we do online estimation by using some efficiency method? Introduce filters and other methods (Probably Kalman filter, particle filter and other filter) and dynamic linear regression models. Then the proposed method, parameters estimation and something else. It's an online case.
-%
-%Parameter estimation methods: Metropolis-Hastings methods, better than MLE because the latter doesn't give the distribution of the estimates. 
-%
-%Moreover, I need to figure out how these different methods working and the advantages and disadvantages they have.
-
-
 
 \section{Introduction}
 
@@ -57,22 +40,22 @@ by minimizing which, the best estimation $\hat{f}$ can be found. This approach m
 Similar to the conventional smoothing spline problem, one have to to choose the penalty function $\lambda(t)$. The fundamental idea of nonparametric smoothing is to let the data choose the amount of smoothness, which consequently decides the model complexity \cite{gu1998model}. Most methods focus on data driven criteria, such as cross validation (CV), generalized cross validation (GCV) \cite{craven1978smoothing} and generalized maximum likelihood (GML) \cite{wahba1985comparison}. A new challenge is posed that the smoothing parameter becomes a function and is varying in domains. The structure of this penalty function controls the complexity on each domain and the whole final model. Liu and Guo proposed to approximate the penalty function with an indicator and extended the generalized likelihood to the adaptive smoothing spline \cite{liu2010data}.
 
 
-In this chapter, we propose an adaptive smoothing spline method based on Hermite spline basis functions to obtain a reconstruction of $f$ and $f'$ from $n$ paired time series noisy data $\mathbf{y}=\{y_1,\ldots,y_n\}$ and $\mathbf{v}=\{v_1,\ldots,v_n\}$. Rather than only using residuals of $f(t_i)-y_i$, we include residuals of $f'(t_i)-v_i$ with a new parameter $\gamma$ in our objective function. In this way, the spline keeps a balance between position and velocity. By using new basis functions, we reconstruct a smoothing spline on the whole interval $[a,b]$. Derived from the new objective function, an advanced cross validation formula for $f(t)$ and $f'(t)$ is given. We show that it performs very well on simulated signal data \textit{Blocks}, \textit{Bumps}, \textit{HeaviSine} and \textit{Doppler} \cite{donoho1994ideal}. After that, we implement our algorithm on real data application and obtain a better reconstruction. This method can be used in either getting true signal from noisy data or reconstructing the trajectory of a moving object. 
+In this chapter, we propose an adaptive smoothing spline method based on Hermite spline basis functions to obtain a reconstruction of $f$ and $f'$ from $n$ paired time series noisy data $\mathbf{y}=\{y_1,\ldots,y_n\}$ and $\mathbf{v}=\{v_1,\ldots,v_n\}$. Rather than only using residuals of $f(t_i)-y_i$, we include residuals of $f'(t_i)-v_i$ with a new parameter $\gamma$ in our objective function. In this way, the spline keeps a balance between position and velocity. By using new basis functions, we reconstruct a smoothing spline on the whole interval $[a,b]$. Derived from the new objective function, an advanced cross validation formula for $f(t)$ and $f'(t)$ is given. We show that it performs very well on simulated signal data \textit{Blocks}, \textit{Bumps}, \textit{HeaviSine} and \textit{Doppler} \cite{donoho1994ideal}. After that, we implement our algorithm on 2-Dimensional real data application and obtain a better reconstruction. This method can be used in either getting true signal from noisy data or reconstructing the trajectory of a moving object. 
 
 %Errors comes from the GPS units and individuals' behaviors, which bring unreliable data and less precise results. %\cite{castro2006geometric}
 
 \section{Tractor spline}\label{SectionTractorSpline}
 
-\subsection{Objective Function}
+%\subsection{Objective Function}
 
-In a 2D curve nonparametric regression, consider $n$  time points $t_{1:n}$, such that $a \leq t_1<t_2< \cdots < t_n \leq b$. Let $z_i=(x_i,y_i)$ and $w_i=(u_i,v_i)$ for $i=1, \ldots, n$. We define a positive piecewise constant function $\lambda(t)$ :
+In the nonparametric regression, consider $n$ paired time series points $\{t_1,y_1,v_1\}$, $\ldots$, $\{t_n,y_n,v_n\}$, such that $a \leq t_1<t_2< \cdots < t_n \leq b$, $y$ is the position information and $v$ indicates its velocity. We define a positive piecewise constant function $\lambda(t)$ :
 \begin{equation}
 \lambda(t) = \lambda_i \geq 0,
 \end{equation}
-where $t_i \leq t<t_{i+1}, t_0=a, t_{n+1}=b$, that will control the curvature penalty in each interval. For a function $f:[a,b]\longrightarrow \mathbb{R}^2$ and $\gamma>0$, define the objective function 
+where $t_i \leq t<t_{i+1}, t_0=a, t_{n+1}=b$, that will control the curvature penalty in each interval. For a function $f:[a,b]\rightarrow \mathbb{R}$ and $\gamma>0$, define the objective function 
 
- \begin{equation}\label{tractorsplineObjective}
-J[f]= \frac{1}{n} \sum_{i=1}^{n} \lVert f(t_i)-z_i\rVert_2^2 + \frac{\gamma}{n} \sum_{i=1}^{n} \lVert f'(t_i)-w_i \rVert_2^2 +\sum_{i=0}^{n} \lambda_i\int_{t_i}^{t_{i+1}} \lVert f''(t)\rVert_2^2 dt,
+\begin{equation}\label{tractorsplineObjective}
+J[f]= \frac{1}{n} \sum_{i=1}^{n} \left( f(t_i)-y_i \right)^2 + \frac{\gamma}{n} \sum_{i=1}^{n} \left( f'(t_i)-v_i \right)^2 +\sum_{i=0}^{n} \lambda_i\int_{t_i}^{t_{i+1}} \left( f''(t)\right)^2 dt,
 \end{equation}
 where $\gamma$ is the parameter that weights the residuals between $\mathbf{f}'$ and $\mathbf{v}$, and $\lambda(t)$ is the smoothing parameter function.
 
@@ -81,10 +64,11 @@ For $n\geq2$, the objective function $J[f]$ is minimized by a cubic spline that 
 \end{theorem}
 The solution to the objective function (\ref{tractorsplineObjective}) is called Tractor spline.
 
-In the following, we split the 2D function $f(x,y)$ into two sub functions $f_x(t)$ on $x$-axis and $f_y(t)$ on $y$-axis with respect to time $t$. Compared with other parameters, choosing time $t$ to be the parameter has some advantages: 1. The expressions of all the constraints are simpler \cite{zhang2013cubic}; 2. It can be simply applied from 2-dimension to 3-dimension by adding an extra $z$-axis.  
+%In the following, we split the 2D function $f(x,y)$ into two sub functions $f_x(t)$ on $x$-axis and $f_y(t)$ on $y$-axis with respect to time $t$. Compared with other parameters, choosing time $t$ to be the parameter has some advantages: 1. The expressions of all the constraints are simpler \cite{zhang2013cubic}; 2. It can be simply applied from 2-dimension to 3-dimension by adding an extra $z$-axis.  
 
 \subsection{Basis Functions}
-Suppose we have a time series sequence of observed dataset $a=t_1<t_2<\cdots<t_n=b$. The function $f(t)$ (stands for $f_y(t)$) defined on this interval $[t_1,t_n]$ is called Tractor spline, if it is the solution to the objective function (\ref{tractorsplineObjective}). Then it has the following property: on each interior interval $(t_i,t_{i+1})$, $i=2,\ldots,n-2$, $f(t)$ is a cubic polynomial, but on interval $(t_1,t_2)$ and $(t_{n-1},t_n)$ can be linear; $f(t)$ fits together at each point $t_i$ in such a way that $f(t)$ itself and its first derivatives are continuous at each $t_i$,  $i=2,\ldots,n-2$. 
+Suppose we have a time series sequence of observed dataset $a=t_1<t_2<\cdots<t_n=b$. The function $f(t)$ %(stands for $f_y(t)$)
+defined on this interval $[t_1,t_n]$ is called Tractor spline, if it is the solution to the objective function (\ref{tractorsplineObjective}). Then it has the following property: on each interior interval $(t_i,t_{i+1})$, $i=2,\ldots,n-2$, $f(t)$ is a cubic polynomial, but on interval $(t_1,t_2)$ and $(t_{n-1},t_n)$ can be linear; $f(t)$ fits together at each point $t_i$ in such a way that $f(t)$ itself and its first derivatives are continuous at each $t_i$,  $i=2,\ldots,n-2$. 
 
 Using Hermite interpolation on an arbitrary interval $[t_i,t_{i+1}]$, the cubic spline basis functions can be constructed as follows
 \begin{align}\label{hermitebasis1}
@@ -355,7 +339,7 @@ Then
 In this section, we examine the visual quality of the proposed method with four functions: \textit{Blocks}, \textit{Bumps}, \textit{HeaviSine} and \textit{Doppler}, which have been used in \cite{donoho1994ideal}, \cite{donoho1995adapting} and \cite{abramovich1998wavelet} because of their caricature features in imaging, spectroscopy and other scientific signal processing. However it is unfair for Tractor spline fitting "jump" position in \textit{Blocks} and \textit{Bumps} function, because it fits position and velocity simultaneously and these points imply infinite first derivative in original functions, which are impossible for vehicles or individuals. In terms of this issue, we treat these functions as velocity, and use noise free points to generate accurate position data, then add noises back to them.
 
 For calculating consideration, we use $n=1024$ \cite{nason2010wavelet}. Because all noises are randomly generated, for convenience of reinitialization and repetition of comparing, we set random seed as 2016. The noises are independent Gaussian distribution $\epsilon \sim N(0,1)$ and signal-to-noise ratio (SNR), which is defined as the ratio of the power of a signal and the power of background noise, is set at 7. These data are treated as velocity (first derivative). By setting initial position $y_0=0$, acceleration $a_0=0$ and using the following formula 
-\begin{equation}
+\begin{equation}\label{generateVelocity}
 y_{i+1}=y_i+(v_i+v_{i+1})\frac{t_{i+1}-ti}{2}
 \end{equation}
 to calculate position information, we can easily generate simulated data. Then we add some \iid $\epsilon \sim N(0,1)$ with SNR 7 noises on it. For wavelet transform reconstructions, we use the threshold policy of \textit{sure} and \textit{BayesThresh} with levels $j=4, \ldots, 9$, see  \cite{donoho1995adapting} and \cite{abramovich1998wavelet}. A semi-parametric regression model with spatially adaptive penalized splines (P-spline) is added in comparison, see \cite{krivobokova2008fast} \cite{ruppert2003semiparametric}.
@@ -635,37 +619,37 @@ By comparing, we can see that all these methods can rebuild up the skeleton of g
 %  \caption{Estimated penalty functions. Left side shows how the value of $\lambda(t)$ changes on the interval. Right side projects $\lambda(t)$ into reconstructions. The bigger the blacks dots present, the larger the penalty values are.}\label{numpenalty}
 %\end{figure}
 
-
-
 \begin{figure}
     \centering
     \begin{subfigure}{\textwidth}
     \centering
-    \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBlocksPenaltyBar.pdf}
-    \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBlocksPenaltyLine.pdf}
+    \includegraphics[width=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBlocksPenaltyBar.pdf}
+    \includegraphics[width=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBlocksPenaltyLine.pdf}
     \caption{Distribution of penalty values in reconstructed \textit{Blocks} function.}
     \end{subfigure}
     \begin{subfigure}{\textwidth}
     \centering
-    \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBumpsPenaltyBar.pdf}
-    \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBumpsPenaltyLine.pdf}
+    \includegraphics[width=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBumpsPenaltyBar.pdf}
+    \includegraphics[width=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBumpsPenaltyLine.pdf}
     \caption{Distribution of penalty values in reconstructed \textit{Bumps} function.}
     \end{subfigure}
     \begin{subfigure}{\textwidth}
     \centering
-    \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSinePenaltyBar.pdf}
-    \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSinePenaltyLine.pdf}
+    \includegraphics[width=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSinePenaltyBar.pdf}
+    \includegraphics[width=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSinePenaltyLine.pdf}
     \caption{Distribution of penalty values in reconstructed \textit{HeaviSine} function.}
     \end{subfigure}
+\end{figure}
+\begin{figure}\ContinuedFloat
+    \centering 
     \begin{subfigure}{\textwidth}
     \centering
-    \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggDopplerPenaltyBar.pdf}
-    \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggDopplerPenaltyLine.pdf}
+    \includegraphics[width=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggDopplerPenaltyBar.pdf}
+    \includegraphics[width=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggDopplerPenaltyLine.pdf}
     \caption{Distribution of penalty values in reconstructed \textit{Doppler} function.}
     \end{subfigure}
 \caption{Distribution of penalty values in reconstructed Tractor spline. Figures on left side indicate the values of $\lambda(t)$ varying in intervals. On right side, $\lambda(t)$ is projected into reconstructions. The bigger the blacks dots present, the larger the penalty values are.}\label{numpenalty}
  \end{figure}
-
 
 
 Figure \ref{numpenalty} shows the estimated penalty function
@@ -687,25 +671,25 @@ The left column illustrates the value of penalty function on different intervals
     \centering
     \begin{subfigure}{0.45\textwidth}
     \centering
-    \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBlocksTractorVelocity.pdf}
+    \includegraphics[width=\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBlocksTractorVelocity.pdf}
     \caption{Estimated \textit{Blocks}  }
     \end{subfigure}%
     \begin{subfigure}{0.45\textwidth}
     \centering
-    \includegraphics[width=\linewidth,,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBumpsTractorVelocity.pdf}
+    \includegraphics[width=\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBumpsTractorVelocity.pdf}
     \caption{Estimated \textit{Bumps}  }
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
-    \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSineTractorVelocity.pdf}
+    \includegraphics[width=\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSineTractorVelocity.pdf}
     \caption{Estimated \textit{HeaviSine}  }
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
-    \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggDopplerTractorVelocity.pdf}
+    \includegraphics[width=\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggDopplerTractorVelocity.pdf}
     \caption{Estimated \textit{Doppler}  }
     \end{subfigure}
-\caption{Estimated velocity functions (original simulation functions) by Tractor spline.}\label{numvtractor}
+\caption{Estimated velocity functions by Tractor spline. The velocity is generated from the original simulation functions by equation (\ref{generateVelocity})}\label{numvtractor}
  \end{figure}
 
 
@@ -732,7 +716,7 @@ The results are shown in table \ref{mse3200} and \ref{tmse3200}. All of these me
  	\caption{MSE. Mean square errors of different methods. The numbers in bold indicate the smallest error among these methods under the same level. The difference is not significant.}\label{mse3200}
 	\setlength\tabcolsep{1.5pt}
 	\begin{tabular}{|c|c|c|c|c|c|c|c|}
-\hline	MSE ($10^{-4}$)   & SNR & TS & TS$_{\gamma=0}$ & TS$_{APT=0}$  & P-spline & Wavelet(sure)& Wavelet(Bayes)\\ \hline
+\hline	MSE ($10^{-4}$)   & SNR & TS & TS$_{\footnotesize\gamma=0}$ & TS$_{\footnotesize APT=0}$  & P-spline & Wavelet(sure)& Wavelet(Bayes)\\ \hline
 \textit{Blocks}    & 7   &  16.53& 15.99 & 16.69 & 16.14  & \textbf{15.39} & 16.68 \\ \hline
 \textit{Blocks}    & 3   &  89.79 & \textbf{87.64} & 89.94  & 88.27 & 98.35 & 90.24 \\ \hline
 \textit{Bumps}     & 7   & 4.40 & 4.19 & 4.55 & 4.33 & \textbf{4.18} & 4.59 \\ \hline
@@ -751,7 +735,7 @@ The results are shown in table \ref{mse3200} and \ref{tmse3200}. All of these me
 	\caption{TMSE. True mean square errors of different methods. The numbers in bold indicate the smallest error among these methods under the same level. The proposed Tractor spline returns the smallest TMSE among all the methods under the same level except for $\textit{Doppler}$ with SNR=7. The differences are significant. }\label{tmse3200}
 	\setlength\tabcolsep{1.5pt}
 	\begin{tabular}{|c|c| c| c| c|c|c|c|}
-\hline	TMSE ($10^{-6}$)  & SNR & TS & TS$_{\gamma=0}$ & TS$_{APT=0}$  & P-spline & Wavelet(sure) & Wavelet(Bayes)\\ \hline
+\hline	TMSE ($10^{-6}$)  & SNR & TS & TS$_{\footnotesize\gamma=0}$ & TS$_{\footnotesize APT=0}$  & P-spline & Wavelet(sure) & Wavelet(Bayes)\\ \hline
 		\textit{Blocks}    & 7   & \textbf{1.75} & 54.25 &  28.68   & 54.76   & 201.02   & 182.12   \\ \hline
 		\textit{Blocks}    & 3   & \textbf{16.44} & 152.5 & 30.76  & 171.59   & 1138.08  & 712.36  \\ \hline
 		\textit{Bumps}     & 7  & \textbf{1.64} & 23.44  & 21.10     & 24.21 & 71.71 & 69.26 \\ \hline
@@ -765,16 +749,27 @@ The results are shown in table \ref{mse3200} and \ref{tmse3200}. All of these me
 %\end{sidewaystable}
 
 
-\clearpage 
+%\clearpage 
 
 \section{Application on Real Dataset}\label{splineapplication}
 
-In this section, we apply the proposed method to real dataset, which are recorded by GPS units mounted on a tractor. The original dataset contains time marks, longitude, latitude, velocity, bearing (in degrees,  heading to North) and boom status. First of all, we convert the longitude and latitude information from a 3D sphere to 2D surface by Universal Transverse Mercator coordinate system (UTM). After that, we project the velocity $w$ into $u$ and $v$ on $x$-axis and $y$-axis respectively by 
+In this section, we apply the proposed method to real dataset, which are recorded by GPS units mounted on a tractor. The original dataset contains the information about time marks, longitude, latitude, velocity, bearing (in degrees,  heading to North) and boom status. 
+
+In a 2 or higher $d$-dimensional curve nonparametric regression, consider the general form of a length $n$ time series data points $\{t_1,p_1,s_1\}, \ldots, \{t_n,p_n,s_n\}$, such that $a \leq t_1<t_2< \cdots < t_n \leq b$, $p_i$ and $s_i$ are $d$-dimensional vectors contain position and velocity information at time $i$ respectively. The positive piecewise constant function $\lambda(t) = \lambda_i$ on each interval $t_i \leq t<t_{i+1}, t_0=a, t_{n+1}=b$.  Then the function $f:[a,b]\rightarrow \mathbb{R}^d$ with $\gamma>0$ is a Tractor spline in the $d$-dimensional space if it is the solution to the generic form of the objective function: 
+\begin{equation}\label{tractorsplineObjective2D}
+J[f]= \frac{1}{n} \sum_{i=1}^{n} \lVert f(t_i)-p_i\rVert_d^2 + \frac{\gamma}{n} \sum_{i=1}^{n} \lVert f'(t_i)-s_i \rVert_d^2 +\sum_{i=0}^{n} \lambda_i\int_{t_i}^{t_{i+1}} \lVert f''(t)\rVert_2^2 dt. 
+\end{equation}
+
+
+Particularly, the GPS data are recored in 2-dimension form. Hence, in the following application, we split the 2-dimensional function $f(x,y)$ into two sub functions $f_x(t)$ on $x$-axis and $f_y(t)$ on $y$-axis with respect to time $t$. Compared with other parameters, choosing time $t$ to be the parameter has some advantages: 1. The expressions of all the constraints are simpler \cite{zhang2013cubic}; 2. It can be simply applied from 2-dimension to 3-dimension by adding an extra $z$-axis. Without of generality, a dataset in a higher dimensional space can be projected into several sub-spaces, such as $p=\{x,y,z,\ldots \}$ and $s=\{u,v,w,\ldots \}$. 
+
+
+Thereafter, we firstly convert the longitude and latitude information from a 3D sphere to 2D surface by Universal Transverse Mercator coordinate system (UTM) and then project the velocity $s$ into $u$ and $v$ on $x$-axis and $y$-axis respectively by 
 \begin{align}
-u &=w\cdot \sin (\omega\frac{\pi}{180}),\\
-v &= w\cdot \cos (\omega\frac{\pi}{180}),
+u &=s\cdot \sin (\omega\frac{\pi}{180}),\\
+v &= s\cdot \cos (\omega\frac{\pi}{180}),
 \end{align}
-where $\omega$ is in degrees. Boom status is tagged as 0 if it is not working and 1 if it is. Time marks are transformed by subtract the first mark, in which way the time starts from 0. Time duplicated data, caused by errors, had been removed. In convenience of comparing with wavelet algorithm, we choose the first 512 out of 928 rows of data. The original data is plotted in figure \ref{original512}.
+where $\omega$ is the bearing in degrees. Boom status is tagged as 0 if it is not working and 1 if it is. Time marks are transformed by subtract the first mark, in which way the time starts from 0. Time duplicated data, caused by errors, had been removed. In convenience of comparing with wavelet algorithm, we choose the first 512 out of 928 rows of data. The original data is plotted in figure \ref{original512}.
 
 %\begin{figure}
 %  \centering
@@ -786,25 +781,25 @@ where $\omega$ is in degrees. Boom status is tagged as 0 if it is not working an
     \centering
     \begin{subfigure}{0.45\textwidth}
     \centering
-    \includegraphics[width=\linewidth,height=0.5\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/gg512Points.pdf}
+    \includegraphics[width=\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/gg512Points.pdf}
     \caption{Original positions}
     \end{subfigure}%
     \begin{subfigure}{0.45\textwidth}
     \centering
-    \includegraphics[width=\linewidth,,height=0.5\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/gg512Path.pdf}
+    \includegraphics[width=\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/gg512Path.pdf}
     \caption{Original trajectory }
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
-    \includegraphics[width=\linewidth,height=0.5\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/gg512PointsX.pdf}
-    \caption{Original positions on $x$ axis  }
+    \includegraphics[width=\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/gg512PointsX.pdf}
+    \caption{Original positions on $x$-axis  }
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
-    \includegraphics[width=\linewidth,height=0.5\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/gg512PointsY.pdf}
-    \caption{Original positions on $y$ axis  }
+    \includegraphics[width=\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/gg512PointsY.pdf}
+    \caption{Original positions on $y$-axis  }
     \end{subfigure}
-\caption{Original data points. (a) Original positions recorded by GPS units. Circle points means the boom is not working; cross points means it is working. (b) Original trajectory with line-based method: simply connect all the points sequentially with straight lines. (c) Original positions on $x$ axis. (d)  Original positions on $y$ axis.}\label{original512}
+\caption{Original data points. (a) Original positions recorded by GPS units. Circle points means the boom is not working; cross points means it is working. (b) Original trajectory with line-based method: simply connect all the points sequentially with straight lines. (c) Original positions on $x$-axis. (d)  Original positions on $y$-axis.}\label{original512}
  \end{figure}
 
 
@@ -829,32 +824,32 @@ Table \ref{1dxymse} illustrates the MSE of all methods on both $x$ and $y$ axise
     \centering
     \begin{subfigure}{0.45\textwidth}
     \centering
-    \includegraphics[width=\linewidth,height=0.5\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXPSpline.pdf}
+    \includegraphics[width=\textwidth,height=0.5\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXPSpline.pdf}
     \caption{Reconstruction by P-spline}
     \end{subfigure}%
     \begin{subfigure}{0.45\textwidth}
     \centering
-    \includegraphics[width=\linewidth,,height=0.5\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXSure.pdf}
+    \includegraphics[width=\textwidth,,height=0.5\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXSure.pdf}
     \caption{Reconstruction by wavelet ($\textit{sure}$)}
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
-    \includegraphics[width=\linewidth,height=0.5\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXBayes.pdf}
+    \includegraphics[width=\textwidth,height=0.5\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXBayes.pdf}
     \caption{Reconstruction by wavelet ($\textit{Bayes}$)\\ \mbox{  }}
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
-    \includegraphics[width=\linewidth,height=0.5\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXTractorGamma.pdf}
+    \includegraphics[width=\textwidth,height=0.5\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXTractorGamma.pdf}
     \caption{Reconstruction by Tractor spline setting  $\gamma=0$ }
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
-    \includegraphics[width=\linewidth,height=0.5\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXTractorAPT.pdf}
+    \includegraphics[width=\textwidth,height=0.5\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXTractorAPT.pdf}
     \caption{Reconstruction by Tractor spline setting with conventional penalty term}
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
-    \includegraphics[width=\linewidth,height=0.5\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXTractor.pdf}
+    \includegraphics[width=\textwidth,height=0.5\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXTractor.pdf}
     \caption{Reconstruction by proposed Tractor spline}
     \end{subfigure}
  \caption{Fitted data points on $x$ axis. (a) Fitted by P-spline, which gives over-fitting on these points and misses some information. (b) Fitted by wavelet ($\textit{sure}$) algorithm. At some turning points, it gives over-fitting. (c) Fitted by wavelet ($\textit{BayesThresh}$) algorithm. It fits better than ($\textit{sure}$) and the result is close to the proposed method. (d) Fitted by Tractor spline without velocity information. The reconstruction is good to get the original trajectory. (e) Fitted by Tractor spline without adjusted penalty term. It gives less fitting at boom-not-working points because of a large time gap. (f) Fitted by proposed method. It fits all data points in a good way.}\label{1dx}
@@ -981,7 +976,7 @@ Similar results as that in 1 dimension reconstruction, the velocity information 
 
 \begin{figure}
   \centering
-    \includegraphics[width=\textwidth,height=9cm]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYPenaltyPath.pdf} 
+    \includegraphics[width=\textwidth,height=10cm]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYPenaltyPath.pdf} 
   \caption{2-Dimensional reconstruction with penalty function. Larger dots indicate bigger penalty values. The mean square errors (MSE) on $x$ and $y$ are 0.2407 and 0.4784 respectively. The mean distance error $\sqrt{(\hat{f}_x-x)^2+ (\hat{f}_y-y)^2}$ is 0.6458.}\label{2dxy}
 \end{figure}
 
@@ -1007,10 +1002,22 @@ and presented in figure \ref{2dpenalty}. As the similar results in 1 dimension r
 \clearpage
 
 \section{Conclusion and Discussion}
-In this chapter, we propose a Tractor spline model including the first derivative and adaptive penalty terms to reconstruct trajectory. This method performs better when we know $z=\{x,y\}$ and $w=\{u,v\}$ information than other methods. Additionally, the reconstruction of a Tractor spline contains $4\times (n-1)$ parameters if we have $n$ knots. By adding $2\times (n-2)$ constraints, the original function and its first derivative are continuous on each interior knots, the degrees of freedom will be $4\times (n-1)-2\times (n-2)=2n$. Because there are $n$ location and $n$ velocity data, thus we don't need to specify more parameters or add more constrains on the model. Although the mean square error of Tractor spline is not the smallest comparing with other methods, the true mean square error is the smallest most of the time. It means that the reconstruction is closer to the truth. In cross validation, we only focus on the errors of $f$ ignoring that in $f'$. So the reconstruction of $f'$ is not as smooth as that in $f$, which does not affect trajectory reconstruction. A drawback of Tractor spline is the cost in finding local minimal parameters, where the cross validation algorithm returns a smaller score. So we optimized our code to make it runs as faster as it can.
+
+In this chapter, we propose a Tractor spline model, which is the solution to the objective function consisting of both position and velocity information. The adjusted penalty function adapts to complicated curvatures. In a high $d$-dimensional space, Tractor spline can be projected into sub-spaces with respect to $t$ and combined each solution together as a final outcome. This method performs better when we know $p$ and $s$ information than other methods. 
 
 
+Additionally, the reconstruction of a Tractor spline contains $4\times (n-1)$ parameters if we have $n$ knots. By adding $2\times (n-2)$ constraints, the original function and its first derivative are continuous at each interior knots, the degrees of freedom will be $4\times (n-1)-2\times (n-2)=2n$. Because there are $n$ position and $n$ velocity points, thus we don't need to specify more parameters or add more constrains to the model. 
 
+Even though the mean squared errors of a Tractor spline is not the least comparing with other methods, the true mean squared errors is the least of among all the methods. That means the reconstruction is closer to the true path. 
+
+
+In parameter selection, the cross-validation only focuses on the errors of $f$ ignoring that in $f'$. So the reconstruction of $f'$ is not as smooth as that of $f$, which does not affect trajectory reconstruction. A drawback of Tractor spline is that the computing time in finding local minimal CV score is higher than using B-spline. If there is an efficient way to compute matrix inverse, the calculation speed will be much faster. So in the simulation and application studies, we try optimize our coding to make it run as faster as possible.
+
+
+Another potential application of Tractor spline is on vessel monitoring system. This system is a fisheries surveillance that allows environmental and fisheries regulatory organization to track and monitor the activities of fishing vessels. The system calculates the unit's position and sends a data report to shore-side users. This information includes time and position in latitude and longitude. However, duo to weak signals, the tracking system may lose some information. The Tractor spline can help to reconstruct the whole trajectory for a fishery vessel and use it to analyze its performance. For example, a larger penalty value indicates a stop on the sea inferring that the vessel is casting nets; a smaller penalty value indicates the vessel is moving normally. 
+
+
+After all, there is a wide range of applications for Tractor spline in real life. A future work is how to implement Tractor spline on-line to get instant estimations and how to make it run faster. 
 
 
 

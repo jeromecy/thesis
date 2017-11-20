@@ -1139,11 +1139,23 @@ ESSUT & 29.8912   & 5.10   & 2.5   & 0.0360   & 0.7861    \\ \hline
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.45\textwidth]{Chapters/05MCMCOU/plots/ggeff.pdf}
-\includegraphics[width=0.45\textwidth]{Chapters/05MCMCOU/plots/ggeut.pdf}
-\includegraphics[width=0.45\textwidth]{Chapters/05MCMCOU/plots/ggess.pdf}
-\includegraphics[width=0.45\textwidth]{Chapters/05MCMCOU/plots/ggessut.pdf}
-\caption{An example of Eff, EUT, ESS and ESSUT found by using the same data. }
+\begin{subfigure}[t]{0.45\textwidth}
+	\includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/ggeff.pdf}
+	\caption{Efficiency against different step sizes}
+\end{subfigure}
+\begin{subfigure}[t]{0.45\textwidth}
+	\includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/ggeut.pdf}
+	\caption{EffUT against different step sizes}
+\end{subfigure}
+\begin{subfigure}[t]{0.45\textwidth}
+	\includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/ggess.pdf}
+	\caption{ESS against different step sizes}
+\end{subfigure}
+\begin{subfigure}[t]{0.45\textwidth}
+	\includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/ggessut.pdf}
+	\caption{ESSUT against different step sizes}
+\end{subfigure}
+\caption{Influences of different step sizes on sampling efficiency (Eff), efficiency in unit time (EUT), effective sample size (ESS) and effective sample size in unit time (ESSUT) found by using the same data}
 \label{effeutessessutexamplefigure}
 \end{figure}
 
@@ -1226,11 +1238,23 @@ where $t>L$. We name this method \textit{Sliding Window Sequential Parameter Lea
 The next question is how to choose an appropriate $L$. The length of data used in MH and DA-MH algorithms has influence on the efficiency and accuracy of parameter learning and state estimation. Being tested on real data set, there is no doubt that the more data be in use, the more accurate the estimation is, and lower efficient is in computation. In table (\ref{lengthofdatacompare}), one can see the pattern of parameters $\gamma,\xi,\tau$ follow the same trend with the choice of $L$ and $\sigma$ increases when $L$ decreases. Since estimation bias is inevitable, we are indeed to keep the bias as small as possible, and in the meantime, the higher efficiency and larger effective sample size are bonus items. In figure (\ref{compareLengthData}), we can see that the efficiency and effective sample size are not varying along the sample size used in sampling algorithm, but in unit time, they are decreasing rapidly as data size increasing. 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.45\textwidth]{Chapters/05MCMCOU/plots/simudataOUlengtheff.pdf}
-\includegraphics[width=0.45\textwidth]{Chapters/05MCMCOU/plots/simudataOUlengthess.pdf}
-\includegraphics[width=0.45\textwidth]{Chapters/05MCMCOU/plots/simudataOUlengtheffut.pdf}
-\includegraphics[width=0.45\textwidth]{Chapters/05MCMCOU/plots/simudataOUlengthessut.pdf}
-\caption{Comparison Eff, ESS, EffUT and ESSUT of different length of data. }\label{compareLengthData}
+\begin{subfigure}[t]{0.45\textwidth}
+	\includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/simudataOUlengtheff.pdf}
+	\caption{Efficiency against data length}
+\end{subfigure}
+\begin{subfigure}[t]{0.45\textwidth}
+	\includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/simudataOUlengtheffut.pdf}
+	\caption{Eff in unit time against data length}
+\end{subfigure}
+\begin{subfigure}[t]{0.45\textwidth}
+	\includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/simudataOUlengthess.pdf}
+	\caption{ESS against data length}
+\end{subfigure}
+\begin{subfigure}[t]{0.45\textwidth}
+	\includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/simudataOUlengthessut.pdf}
+	\caption{ESS in unit time against data length}
+\end{subfigure}
+\caption{Comparison efficiency (Eff), efficiency in unit time (EffUT), effective sample saize (ESS) and effective sample size in unit time (ESSUT) against different length of data. Increasing data length doesn't significantly improve the efficiency and ESS in unit time.}\label{compareLengthData}
 \end{figure}
 In addition, from a practical point of view, the observation error $\sigma$ should be kept at a reasonable level, let's say $50cm$, and the computation time should be as less as possible. To reach that level, $L=100$ is an appropriate choice. For an one-dimensional linear model, $L$ can be chose larger and that doesn't change too much. If the data up to time $t$ is less than or equal to the chosen $L$, the whole data set is used in learning $\theta$ and estimating $X_t$. 
 
@@ -1319,12 +1343,27 @@ To implement the algorithm \ref{algorithmslidingwindow}, firstly we should get a
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.45\textwidth]{Chapters/05MCMCOU/plots/realdatalearninggam.pdf}
-\includegraphics[width=0.45\textwidth]{Chapters/05MCMCOU/plots/realdatalearningxi2.pdf}
-\includegraphics[width=0.45\textwidth]{Chapters/05MCMCOU/plots/realdatalearninglab2.pdf}
-\includegraphics[width=0.45\textwidth]{Chapters/05MCMCOU/plots/realdatalearningsig2.pdf}
-\includegraphics[width=0.45\textwidth]{Chapters/05MCMCOU/plots/realdatalearningtau2.pdf}
-\caption{Trace plots of $\theta$ from learning surface process after taking 1\,000 samples from 5\,000. }
+\begin{subfigure}[t]{0.45\textwidth}
+	\includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/realdatalearninggam.pdf}
+    \caption{Trace plot of $\gamma$}
+\end{subfigure}
+\begin{subfigure}[t]{0.45\textwidth}
+	\includegraphics[width=\linewidth]{Chapters/05MCMCOU/plots/realdatalearningxi2.pdf}
+ 	\caption{Trace plot of $\xi^2$}
+\end{subfigure}
+\begin{subfigure}[t]{0.45\textwidth}
+	\includegraphics[width=\linewidth]{Chapters/05MCMCOU/plots/realdatalearninglab2.pdf}
+	\caption{Trace plot of $\lambda^2$}
+\end{subfigure}
+\begin{subfigure}[t]{0.45\textwidth}
+	\includegraphics[width=\linewidth]{Chapters/05MCMCOU/plots/realdatalearningsig2.pdf}
+	\caption{Trace plot of $\sigma^2$}
+\end{subfigure}
+\begin{subfigure}[t]{0.45\textwidth}
+	\includegraphics[width=\linewidth]{Chapters/05MCMCOU/plots/realdatalearningtau2.pdf}
+	\caption{Trace plot of $\tau^2$}
+\end{subfigure}
+\caption{Trace plots of $\theta$ from learning phase after taking 1\,000 burn-in samples out from 5\,000. }
 \end{figure}
 
 
@@ -1383,8 +1422,4 @@ Since a cheap surrogate $\hat{\pi}(\cdot)$ for the true $\pi(\cdot)$ is found in
 In this paper, we are using the a self-tuning one-variable-at-a-time Metropolis-Hastings Random Walk to learn the parameter hyper space for a linear state space model.  Starting from the joint covariance and distribution of $X$ and $Y$, we have a recursive way to update the mean and covariance sequentially. After getting the cheap approximation posterior distribution, Delayed-Acceptance Metropolis-Hastings algorithm accelerates the estimating process.  The advantage of this algorithm is that it is easily to understand and implement in practice. Contrast, Particle Learning algorithm is high efficient but the sufficient statistics are not available all the time . 
 
 Some future work can be done on inferring state from precious movement with other kinetic information, not just with diffusive  velocity. Besides, I am more interested in increase the efficiency and accuracy of MCMC method. 
-
-
-\clearpage
-
 
