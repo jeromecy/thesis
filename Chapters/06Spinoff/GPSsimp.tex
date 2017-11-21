@@ -14,7 +14,7 @@ Alternatively, global simplification algorithms have an overview of all tracked 
 Intuitively, the global simplification algorithms can be applied on off-line data analyses and local simplification algorithms will perform better on on-line or real-time track simplification. However, a pertinent algorithm is required in our case. 
 
 
-In our case, a GPS log is a sequence time series GPS points $p_i \in P$, $P=\{ p_1,p_2, \ldots, p_n \}$. Each GPS point $p_i$ contains information of time mark, latitude, longitude and semantic information of velocity, heading direction and boom status, which can be written in form of
+In our case, a GPS log is a sequence time series points $p_i \in P$, $P=\{ p_1,p_2, \ldots, p_n \}$. Each GPS point $p_i$ contains information of time mark, latitude, longitude and semantic information of velocity, heading direction and boom status, which can be written in form of
 \begin{equation}
 T=\{p_t=[x_t,y_t,v_t,\theta_t,b_t] \mid t \in \mathbb{R} \}.
 \end{equation}
@@ -34,8 +34,8 @@ To move further, here are two concepts that will be useful to understand the sim
 
 The first two steps are initial simplification to reduce some errors caused by mis-operation and GPS units bugs.
 \begin{itemize}
-\item[Step 1] Merging. If the length of a segment composed by consecutive boom working or not-working points is less than a threshold, merge this one into its backward segment. 
-\item[Step 2] Removing. If two or more data points have duplicated time mark, remove the latter ones. 
+\item Merging Phase. If the length of a segment composed by consecutive boom working or not-working points is less than a threshold, merge this one into its backward segment. 
+\item Removing Phase. If two or more data points have duplicated time mark, remove the latter ones. 
 \end{itemize}
 Now only two types of segment points are left in GPS log, boom working and not-working, and the length of each segment is greater than the predetermined threshold.
 
@@ -98,7 +98,7 @@ Table (\ref{DataSimpCompTable}) describes the results after simplifying by DP al
 
 \begin{table}
 \centering
-\caption{Error Comparing}
+\caption{Comparison between raw data and simplifying algorithms}
 \label{DataSimpCompTable}
 \begin{tabular}{|l|c|c|c|}
 \hline 
@@ -112,16 +112,40 @@ Table (\ref{DataSimpCompTable}) describes the results after simplifying by DP al
 \end{table}
 
 
-\begin{figure}
+\begin{figure}[h]
 \centering
-\includegraphics[width=0.9\textwidth]{Chapters/06Spinoff/plot/3p1.pdf}
-\caption{A segment start from time 2000 to 3000, recorded by GPS units. On the left side, it's the trajectory connected by raw data with 27 points. In the middle, it's the trajectory connected by simplified data with Douglas-Peucker algorithm with 24 points. On the right side, it's the trajectory connected by simplified data with proposed simplification algorithm with 23 points.}\label{DataSimpRawTra}
+%\includegraphics[width=0.9\textwidth]{Chapters/06Spinoff/plot/3p1.pdf}
+\begin{subfigure}[t]{0.47\textwidth}
+\includegraphics[width=\linewidth]{Chapters/06Spinoff/plot/ggRawTrac.pdf}
+\caption{Raw trajectory}
+\end{subfigure}
+ \begin{subfigure}[t]{0.47\textwidth}
+\includegraphics[width=\linewidth]{Chapters/06Spinoff/plot/ggDPTrac.pdf}
+\caption{Simplified trajectory by DP}
+\end{subfigure}
+ \begin{subfigure}[t]{0.47\textwidth}
+\includegraphics[width=\linewidth]{Chapters/06Spinoff/plot/ggSPTrac.pdf}
+\caption{Simplified trajectory by proposed algorithm}
+\end{subfigure}
+\caption{A segment start from time $t=2000$ to $3000$, recorded by GPS units. $\blacktriangle$ indicates the boom is not-working. $\bullet$ indicate the boom is working. Figure (a), it's the trajectory connected by raw data with 27 points. Figure (b), it's the trajectory connected by simplified data with Douglas-Peucker algorithm with 24 points. Figure (c), it's the trajectory connected by simplified data with proposed simplification algorithm with 23  points.}\label{DataSimpRawTra}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[h]
 \centering
-\includegraphics[width=0.9\textwidth]{Chapters/06Spinoff/plot/km3p}
-\caption{Trajectory fitted by Kalman Filter. The errors of raw data, DP and tractor algorithm caused by KF are 26.8922, 23.9788 and 23.9710 respectively.}\label{DataSimpKFTra}
+%\includegraphics[width=0.9\textwidth]{Chapters/06Spinoff/plot/km3p}
+\begin{subfigure}[t]{0.47\textwidth}
+\includegraphics[width=\linewidth]{Chapters/06Spinoff/plot/ggRawKF.pdf}
+\caption{Fitted Kalman Filter with raw data}
+\end{subfigure}
+ \begin{subfigure}[t]{0.47\textwidth}
+\includegraphics[width=\linewidth]{Chapters/06Spinoff/plot/ggDPKF.pdf}
+\caption{Fitted Kalman Filter with simplified data by DP}
+\end{subfigure}
+ \begin{subfigure}[t]{0.47\textwidth}
+\includegraphics[width=\linewidth]{Chapters/06Spinoff/plot/ggSPKF.pdf}
+\caption{Fitted Kalman Filter with simplified data by proposed algorithm}
+\end{subfigure}
+\caption{Trajectory fitted by Kalman Filter. The mean squared errors of raw data, DP and proposed algorithm are 26.8922, 23.9788 and 23.9710 respectively.}\label{DataSimpKFTra}
 \end{figure}
 
 
