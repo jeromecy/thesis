@@ -36,7 +36,7 @@ Based on the correspondence, \cite{craven1978smoothing} proposed an generalized 
 
 
 
-In this chapter, we prove that the Tractor spline can be estimated by Bayesian approach in second-derivative-piecewise-continuous Reproducing Kernel Hilbert Space. The GCV is used to find the optimal parameters for Tractor spline. 
+In this chapter, it is proved that the Tractor spline can be estimated by Bayesian approach in second-derivative-piecewise-continuous Reproducing Kernel Hilbert Space. The GCV is used to find the optimal parameters for Tractor spline. 
 
 
 
@@ -95,7 +95,7 @@ According to theorem \ref{theoremRKHS}, the Hilbert space associated with $R$ ca
 
 Because it is possible to interpret the smoothing spline regression estimator as a Bayes estimate when the mean function $r(\cdot)$ is given an improper prior distribution \cite{wahba1990spline} \cite{berlinet2011reproducing}, therefore, we will find that the posterior mean of $f=f_0+f_1$ on $[0,1]$ with proper priors is the polynomial smoothing  spline of (\ref{GaussianProcessGeneralObjective}). 
 
-Indeed, we can find out every $f=f_0+f_1$ on $[0,1]$ with $f_0$ and $f_1$ having independent Gaussian priors with zero means and covariances as 
+Indeed, it can be found that for each $f=f_0+f_1$ on $[0,1]$ with $f_0$ and $f_1$, it has independent Gaussian priors with zero means and covariances, which have the following property that 
 \begin{align*}
 \E (f_0(s)f_0(t)) &= \tau^2 R_0(s,t)=\tau^2 \sum_{\nu=0}^{m-1}\frac{s^\nu}{\nu!}\frac{t^\nu}{\nu!}, \\
 \E (f_1(s)f_1(t)) &= bR_1(s,t) = b\int_{0}^{1} \frac{(s-u)_+^{m-1}}{(m-1)!} \frac{(t-u)_+^{m-1}}{(m-1)!},
@@ -144,7 +144,7 @@ f \sim GP(m(t),K(s,t)).
 \end{equation*}
 Usually the mean function is assumed to be zero everywhere. 
 
-Given a set of input variables $\mathbf{t} = \{t_1,\ldots,t_n\}$ for function $f(t)$ and the output $\mathbf{y}=f(\mathbf{t})+\varepsilon$ with independent identically distributed Gaussian noise $\varepsilon$ with variance $\sigma_n^2$,  we can use the above definition to predict the value of the function $f_*=f(t_*)$ at a particular input $t_*$. As the noisy observations becoming
+Given a set of input variables $\mathbf{t} = \{t_1,\ldots,t_n\}$ for function $f(t)$ and the output $\mathbf{y}=f(\mathbf{t})+\varepsilon$ with \iid  Gaussian noise $\varepsilon$ with variance $\sigma_n^2$,  we can use the above definition to predict the value of the function $f_*=f(t_*)$ at a particular input $t_*$. As the noisy observations becoming
 \begin{equation*} %\label{GaussianProcessCovDef}
 \Cov (y_p,y_q) = K(t_p,t_q)+\sigma_n^2 \delta_{pq}
 \end{equation*}
@@ -169,7 +169,7 @@ where
 \bar{f_*}&=\E [f_* \mid  \mathbf{y},\mathbf{t},t_* ]=K(t_*,\mathbf{t})[K(\mathbf{t},\mathbf{t})+\sigma_n^2I]^{-1}\mathbf{y},\\
 \Cov(f_*)&=K(t_*,t_*)-K(t_*,\mathbf{t})[K(\mathbf{t},\mathbf{t})+\sigma_n^2I]^{-1}K(\mathbf{t},t_*).
 \end{align}
-Therefore, we can see that the Bayesian estimation of smoothing spline is a special format of Gaussian process regression with diffuse prior and the covariance matrix $R(s,t)$. 
+Therefore, it can seen that the Bayesian estimation of a smoothing spline is a special format of Gaussian process regression with diffuse prior and the covariance matrix $R(s,t)$. 
 
 
 
@@ -180,7 +180,7 @@ Therefore, we can see that the Bayesian estimation of smoothing spline is a spec
 
 Recall the definition of Tractor spline introduced in Chapter \ref{SectionTractorSpline}. It is the solution to the objective function (\ref{tractorsplineObjective}), where an extra term for $f'(t)-v$ and an extra parameter $\gamma$ are incorporated. The penalty parameter $\lambda(t)$ is a function varying on different domains. If $\lambda(t)=\lambda$ is constant and $\gamma=0$, the Tractor spline degenerate to a conventional cubic smoothing spline consisting of a set of given basis functions.  
 
-However, the Bayes estimate for a polynomial smoothing spline requires fixed interval on $[0,1]$ and the penalty parameter being constant. For the first constraint, without loss of generality, an arbitrary interval $[a,b]$ can be transformed to $[0,1]$. For the second constraint, we assume that $\lambda(t)$ stays the same constant in each subinterval of $[0,1]$ and name the solution "trivial Tractor spline".  In this section, I still call it the "Tractor spline" for sake of simplicity. 
+However, the Bayes estimate for a polynomial smoothing spline requires fixed interval on $[0,1]$ and the penalty parameter being constant. For the first constraint, without loss of generality, an arbitrary interval $[a,b]$ can be transformed to $[0,1]$. For the second constraint, it is assumed that $\lambda(t)$ stays the same constant in each subinterval of $[0,1]$ and name the solution "trivial Tractor spline".  In this section, I still call it the "Tractor spline" for sake of simplicity. 
 
 
 In the following, we are going to prove that this kind of trivial Tractor spline is corresponding to Bayes estimate in a particular reproducing kernel Hilbert space. 
