@@ -27,8 +27,9 @@ $k=1,2,\ldots,n-1$. It's a bandwidth four matrix. Then
 \section{Proof of Theorem \ref{basisindependent}}
 
 \begin{proof}
-It is obviously that every basis functions are continuous on subinterval $[t_k,t_{k+1}]$. We firstly prove that these basis functions are independent. 
-We have $2n$ basis functions and $n$ knots. Then choose $t_1, \frac{t_1+t_2}{2}, t_2, \frac{t_2+t_3}{2}, \cdots, t_{n-1}$, $\frac{t_{n-1}+t_n}{3}$, $\frac{2(t_{n-1}+t_n)}{3}, t_n$ as new $2n$ knots, and denoted by $c_1,c_2,\cdots,c_{2n}$. Then the determinant is
+It is obvious that these basis functions are continuous on subinterval $[t_k,t_{k+1}]$. We will prove that these basis functions are independent at first. 
+
+Given $2n$ basis functions and $n$ knots, we choose $t_1, \frac{t_1+t_2}{2}, t_2, \frac{t_2+t_3}{2}, \cdots, t_{n-1}$, $\frac{t_{n-1}+t_n}{3}$, $\frac{2(t_{n-1}+t_n)}{3}, t_n$ as new $2n$ knots, and denoted by $c_1,c_2,\cdots,c_{2n}$. Then the determinant is
 \begin{align}\label{matrixD}
 \begin{split}
 D(c_1,c_2,\cdots,c_{2n})=&

@@ -1,14 +1,14 @@
 
 \section{Introduction}
 
-GPS devices are widely used in orchard planting and maintenance. This location-based system allows orchardist to check trajectory of tractors. Trajectory is a connection by a time series successive positions recorded by GPS devices. A classical GPS device records skeleton information, including time mark, latitude, longitude, number of available satellites, etc. Recently, researchers try to enrich trajectory (called Semantic Trajectory) by adding background geographic information to discover meaningful pattern \cite{ying2011semantic}. 
+GPS devices are widely used in orchard planting and maintenance. This location-based system allows orchardist to check trajectory of tractors. The trajectory is a connection by a time series successive positions recorded by GPS devices. A classical GPS device records skeleton information, including time mark, latitude, longitude, number of available satellites, etc. Recently, researchers try to enrich trajectory (called Semantic Trajectory) by adding background geographic information to discover meaningful pattern \cite{ying2011semantic}. 
 
 
-Normally GPS units record more data than necessary, and causes more errors due to weak signals or shelter from branches. To obtain a higher accurate observation dataset and to same local storage space, several data simplification methods were proposed and are focusing on simplifying data set by making either local or global decisions. 
+Normally GPS units record more data than necessary and cause more errors due to weak signals or shelter from branches. To obtain a higher accurate observation dataset and to same local storage space, several data simplification methods were proposed and are focusing on simplifying data set by making either a local or global decision. 
 
-A local simplification algorithms focuses on a couple of particular consecutive points. By analyzing the relationship among these points, a decision is made that which point can be deleted or retained. Distance threshold algorithm is one of these algorithms. All points, for which the distance to the preceding track point is less than a predetermined threshold is deleted. Direction changing algorithm is another one. The point is retained if the change in direction is greater than a predetermined threshold  \cite{ivanov2012real}. 
+A local simplification algorithm focuses on a couple of particular consecutive points. By analyzing the relationship between these points, a decision is made that which point can be deleted or retained. Distance threshold algorithm is one of these algorithms. All points, for which the distance to the preceding track point is less than a predetermined threshold is deleted. Direction changing algorithm is another one. The point is retained if the change in direction is greater than a predetermined threshold  \cite{ivanov2012real}. 
 
-Alternatively, global simplification algorithms have an overview of all tracked points. After analyzing the relationships among these points, a decision will be made about which one or more points to delete or to retain. The Douglas-Peucker algorithm is the most popular one  \cite{douglas1973algorithms}. A TS simplification method, represented in \cite{chen2009trajectory}, consider both the skeleton information and semantic meanings of a trajectory when performing simplification. 
+Alternatively, global simplification algorithms have an overview of all tracked points. After analyzing the relationships among these points, a decision will be made about which one or more points to delete or to retain. The Douglas-Peucker algorithm is the most popular one  \cite{douglas1973algorithms}. A proposed simplification method, represented in \cite{chen2009trajectory}, consider both the skeleton information and semantic meanings of a trajectory when performing simplification. 
 
 
 Intuitively, the global simplification algorithms can be applied on off-line data analyses and local simplification algorithms will perform better on on-line or real-time track simplification. However, a pertinent algorithm is required in our case. 
@@ -24,7 +24,7 @@ Particularly, a tractor working on an orchard generates two kinds of boom status
 
 To move further, here are two concepts that will be useful to understand the simplification scheme.
 \begin{itemize}
-\item $\mathbf{Segment}$ A segment is a part of consecutive trajectory. Regarding to the status of boom, trajectory can be simply divided into two kinds of segment in our dataset, one is boom-working, the other is boom-not-working. 
+\item $\mathbf{Segment}$ A segment is a part of the consecutive trajectory. Regarding the status of the boom, the trajectory can be simply divided into two kinds of the segment in our dataset, one is boom-working, the other is boom-not-working. 
 \item $\mathbf{Direction}$. Direction $\theta$ denotes the heading direction of a tractor at a specific point location. This parameter uses north direction as a basis, in which way $\ang{0} \leq \theta < \ang{360}$.
 \end{itemize}
 
@@ -32,12 +32,12 @@ To move further, here are two concepts that will be useful to understand the sim
 
 \section{Simplification Algorithm}
 
-The first two steps are initial simplification to reduce some errors caused by mis-operation and GPS units bugs.
+The first two steps are designed to reduce some errors caused by misoperation and GPS units bugs.
 \begin{itemize}
-\item Merging Phase. If the length of a segment composed by consecutive boom working or not-working points is less than a threshold, merge this one into its backward segment. 
+\item Merging Phase. If the length of a segment composed of consecutive boom working or not-working points is less than a threshold, merge this one into its backward segment. 
 \item Removing Phase. If two or more data points have duplicated time mark, remove the latter ones. 
 \end{itemize}
-Now only two types of segment points are left in GPS log, boom working and not-working, and the length of each segment is greater than the predetermined threshold.
+Now only two types of segment points are left in GPS log, boom working, and not-working and the length of each segment are greater than the predetermined threshold.
 
 The following algorithm is based on the relationship between a candidate point $p_i$ and it's neighboring points $p_{i-1}$ and $p_{i+1}$, and the importance of the $p_i$ in the segment where it belongs to, $i=2,\ldots,n-1$. 
 
@@ -65,7 +65,7 @@ Errors are measured by Synchronized Euclidean Distance \cite{lawson2011compressi
 \caption{Synchronized Euclidean Distance \cite{lawson2011compression}}\label{DataSimpSED}
 \end{figure}
 
-Another way to calculate the difference between a GPS trace and its compressed version is to measure the perpendicular distance. This algorithms ignore the temporal component and use simple perpendicular distance. The figure \ref{DataSimpAB} expresses these difference clearly. 
+Another way to calculate the difference between a GPS trace and its compressed version is to measure the perpendicular distance. This algorithm ignores the temporal component and uses simple perpendicular distance. The figure \ref{DataSimpAB} expresses these difference clearly. 
 
 \begin{figure}[h]
 \centering
@@ -92,7 +92,7 @@ P_k&=(I-K_kH)P_k^-
 where $K_k$ is the Kalman gain matrix, $z_k$ is the observed data.
 
 
-The original data set has 1021 rows, each of them contains latitude, longitude, velocity, bearing (heading direction) and boom status. Douglas-Peucker Algorithm, with distance threshold $0.205$m, retained 847 points. Proposed algorithm, given a predictable distance $5$m and heading direction changing threshold $\ang{30}$, returns the same amount of simplified points. Under the same circumstance, we calculated SED and other information. 
+The original data set has 1021 rows, each of them contains latitude, longitude, velocity, bearing (heading direction) and boom status. Douglas-Peucker Algorithm, with distance threshold $0.205$m, retained 847 points. The proposed algorithm, given a predictable distance $5$m and heading direction changing threshold $\ang{30}$, returns the same amount of simplified points. Under the same circumstance, we calculated SED and other information. 
 
 Table (\ref{DataSimpCompTable}) describes the results after simplifying by DP algorithm and the proposed algorithm. Figure \ref{DataSimpRawTra} demonstrates the simplified raw data and figure \ref{DataSimpKFTra} is the fitted trajectories by Kalman filter. 
 
@@ -151,17 +151,4 @@ Table (\ref{DataSimpCompTable}) describes the results after simplifying by DP al
 
 \section{Conclusion}
 
-The data simplification algorithm was firstly proposed to solve fitting-drift problem. Duplicated and short-distance points cause reconstruction issues in spline fitting. The advantage of using data simplification algorithm is that less data points will potentially increase computation efficiency and save storage space without of losing reconstruction information.  
-
-
-
-
-
-
-
-
-
-
-
-
-
+The data simplification algorithm was originally proposed to solve the fitting-drift problem. Duplicated and short-distance points cause reconstruction issues in spline fitting. The advantage of using data simplification algorithm is that fewer data points will potentially increase computation efficiency and save storage space without of losing reconstruction information.  

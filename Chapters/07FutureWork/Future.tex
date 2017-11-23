@@ -7,7 +7,7 @@ In this thesis, two main practical algorithms are proposed: the adaptive Tractor
 Tractor spline is an advanced smoothing spline algorithm returning least true mean squared errors. However, to implement this algorithm on-line needs feasible solutions. One of them probably is combining spline method and gradient boosting algorithm. 
 
 
-In machine learning application, it is better to build a non-parametric regression or classification model from the data itself. A connection between statistical framework and machine learning is the gradient-descent based formulation of boosting methods, which was derived by \cite{freund1995desicion}, \cite{friedman2001greedy}. The gradient boosting algorithm is a powerful machine-learning technique that has shown considerable success in a wide range of practical applications, particularly in machine learning competitions on \textit{Kaggle}. 
+In machine learning application, it is better to build a non-parametric regression or classification model from the data itself. A connection between the statistical framework and machine learning is the gradient-descent based formulation of boosting methods, which was derived by \cite{freund1995desicion}, \cite{friedman2001greedy}. The gradient boosting algorithm is a powerful machine-learning technique that has shown considerable success in a wide range of practical applications, particularly in machine learning competitions on \textit{Kaggle}. 
 
 
 The motivation of gradient boosting algorithms is combining weak learners together as a strong leaner, which keeps minimizing the target loss function. 
@@ -68,7 +68,6 @@ In the sampling step of real data application, the mechanic boom status is not i
 %\end{bmatrix}$.
 
 
-
 \subsection*{Grid-based MCMC}
 
 In several references, Grid-based methods have been proved that it provides an optimal recursion of the filtered density $p(x_t\mid y_{1:t})$ if the state space is discrete and consists of a finite number of states \cite{ristic2004beyond}, \cite{stroud2016bayesian}, \cite{arulampalam2002tutorial} and \cite{hartmann2016grid}. 
@@ -78,12 +77,11 @@ In the application of real time series dataset, the model is assumed as an OU-pr
 However, the grid-based MCMC may not practical for a higher $n$-dimensional space, which requires $\BigO{N^n}$ computation cost per MCMC step. 
 
 
-
 \subsection*{Parallel MCMC}
 
-Parallel computing is a type of computation in which many calculations or the execution of processes are carried out simultaneously on multi-core processors \cite{asanovic2006landscape}. A master process controls the strategy on how to splits large, expensive computation into smaller slave processes and solved concurrently on each separate processor \cite{Almasi1994Highly}. After computing, slave processes pass results back to master process, in which the final result is generated. 
+Parallel computing is a type of computation in which many calculations or the execution of processes are carried out simultaneously on multi-core processors \cite{asanovic2006landscape}. A master process controls the strategy on how to splits large, expensive computation into smaller slave processes and solved concurrently on each separate processor \cite{Almasi1994Highly}. After computing, slave processes pass results back to the master process, in which the final result is generated. 
 
-Parallel Markov Chain Monte Carlo (MCMC) is using this technology to deploy the computation and run samplers on multi-cores CPU. Approaches for parallel MCMC are either by implementing parallelization within a single chain or by running multiple chains \cite{wu2012parallel}. It is useful for computing complex Bayesian models, which does not only lead to a dramatic speedup in computing but can also be used to optimize model parameters in complex Bayesian models.
+Parallel Markov Chain Monte Carlo (MCMC) is using this technology to deploy the computation and run samplers on multi-core CPU. Approaches for parallel MCMC are either by implementing parallelization within a single chain or by running multiple chains \cite{wu2012parallel}. It is useful for computing complex Bayesian models, which does not only lead to a dramatic speedup in computing but can also be used to optimize model parameters in complex Bayesian models.
 
 A simple parallel Monte Carlo estimation of $\E(p(\theta))$ proceeds in the following way \cite{kontoghiorghes2005handbook}. Suppose there are $k$ CPU cores to generate $N$ samples. Thus, on each CPU there are $m=N/k$ samples on average. A master process passes $m$ to each slave process $i$, $i=1,\ldots,k$. At each slave process, it generates $m$ samples for $\theta_i^{(m)}$ and passes middle-result $S_i$ back to the master process. At last, the master process computes the final result by 
 \begin{equation*}
@@ -91,7 +89,7 @@ A simple parallel Monte Carlo estimation of $\E(p(\theta))$ proceeds in the foll
 \end{equation*}
 
 Therefore, parallel MCMC is using MCMC sampler scheme to draw samples on multi-cores simultaneously.  A naive yet natural approach to parallel MCMC is simply to generate several independent Markov chains on different
-processors and then combine results appropriately \cite{bradford1996markov} \cite{gelman1992inference}. Or, alternatively, develop parallelism within a single chain. Suppose there are $k$ CPU cores. Give initial values $\theta_i^{(0)}$ for each core. Concurrently update $\theta$ chains by a predetermined MCMC sampler with $p(\theta\mid y_{1:t})$ on each slave process. Computes summary statistics for the updated $\theta_i^{(0:N)}$ and passes back to the master process. Finally, achieve a sequence of $\theta$ of length $kN$ \cite{wu2012parallel}. 
+processors and then combine results appropriately \cite{bradford1996markov} \cite{gelman1992inference}. Or, alternatively, develop parallelism within a single chain. Suppose there are $k$ CPU cores. Give initial values $\theta_i^{(0)}$ for each core. Concurrently update $\theta$ chains by a predetermined MCMC sampler with $p(\theta\mid y_{1:t})$ on each slave process. Computes summary statistics for the updated $\theta_i^{(0: N)}$ and passes back to the master process. Finally, achieve a sequence of $\theta$ of length $kN$ \cite{wu2012parallel}. 
 
 A further weighted parallel MCMC and parallelization approach to Gibbs sampler is proposed by \cite{vanderwerken2013parallel}.
 
