@@ -4,12 +4,12 @@
 As the development of the technology of science and real life, the "big data" challenge becomes ubiquitous. Classical methods, such as Markov Chain Monte Carlo (MCMC), are normally suitable and good at handling a batch of data forecasting and analyzing. However, for big data and instant updating data stream, more robust and efficient methods are required. 
 
 
-Alternative approaches, such as Sequential Monte Carlo, for on-line updating and estimating are well studied in scientific literature and quite prevalent in academic research in the last decades. When it embraced with  state space model, which is a very popular class of time series models that have found numerous of applications in fields as diverse as statistics, ecology, econometrics, engineering and environmental sciences \cite{cappe2009inference} \cite{smcmip2011} \cite{elliott1995estimation} \cite{cargnoni1997bayesian}, it allows us to establish complex linear and nonlinear Bayesian estimations in time series patterns \cite{vieira2016online}. 
+Alternative approaches, such as Sequential Monte Carlo, for on-line updating and estimating are well studied in scientific literature and prevalent in academic research in the last decades. When it embraced with  state space model, which is a popular class of time series models that have found numerous of applications in fields as diverse as statistics, ecology, econometrics, engineering and environmental sciences \cite{cappe2009inference} \cite{smcmip2011} \cite{elliott1995estimation} \cite{cargnoni1997bayesian}, it allows us to establish complex linear and nonlinear Bayesian estimations in time series patterns \cite{vieira2016online}. 
 
 
 \subsection*{State Space Model}
 
-State space models are models that rely on the concept of state variables. If we describe a system as an operator mapping from the space of inputs to the space of outputs, then we may need the entire input-output history of the system together with the planned input in order to compute the future output values \cite{hangos2006analysis}. In an alternative way, by using new information at time $t$ containing all the past information up to the current state and initial conditions to get the current output is possible, that is known as a sequential method. A genetic state space model consists of two sets of equations: state equation and output equation. The state equation describes the evolution of the true input and state variables sequentially as a function and passes the variable one after one, generally, with some noises. The output equation catches the input values and interprets it out by an algebraic equation. A general state space model has the form form
+State space models are models that rely on the concept of state variables. If we describe a system as an operator mapping from the space of inputs to the space of outputs, then we may need the entire input-output history of the system together with the planned input in order to compute the future output values \cite{hangos2006analysis}. In an alternative way, by using new information at time $t$ containing all the past information up to the current state and initial conditions to get the current output is possible, which is known as a sequential method. A genetic state space model consists of two sets of equations: state equation and output equation. The state equation describes the evolution of the true input and state variables sequentially as a function and passes the variable one after one, generally, with some noises. The output equation catches the input values and interprets it out by an algebraic equation. A general state space model has the form form
 \begin{align}\label{statemodel1}
 \mbox{State equation } x_t &= G_t(x_{t-1})+w_t,\\
 \label{statemodel2}
@@ -39,7 +39,7 @@ In applications, the process function $G_t$ and $F_t$ contain unknown parameters
 
 \subsection*{Contents}
 
-In this chapter, I will give a brief review of existing methods for sequential state and parameter inference. In section \ref{sectionFiltering}, I'm introducing some concepts and popular algorithms on estimating states sequentially. These algorithms are the fundamental of advanced methods. In section \ref{sectionStateandPara}, we will have a look at on-line algorithms that can estimate both unknown parameters and states simultaneously. In section \ref{sectionFilterreviewSimulation}, finally I will analyze these methods numerically and compare them with a proposed algorithm \ref{algorithmslidingwindow} in section \ref{SectionHighDimensionalOU}  with simulated data. 
+In this chapter, I will give a brief review of existing methods for sequential state and parameter inference. In section \ref{sectionFiltering}, I am introducing some concepts and popular algorithms on estimating states sequentially. These algorithms are the fundamental of advanced methods. In section \ref{sectionStateandPara}, we will have a look at on-line algorithms that can estimate both unknown parameters and states simultaneously. In section \ref{sectionFilterreviewSimulation}, finally I will analyze these methods numerically and compare them with a proposed algorithm \ref{algorithmslidingwindow} in section \ref{SectionHighDimensionalOU}  with simulated data. 
 
 
 
@@ -49,7 +49,7 @@ In this chapter, I will give a brief review of existing methods for sequential s
 
 \subsection{Sequential Monte Carlo Method}
 
-The use of Monte Carlo methods for filtering can be traced back to the pioneering contributions of  \cite{handschin1969monte} and  \cite{handschin1970monte}. These researchers tried to use an importance sampling paradigm to approximate the target distributions and. Later on, an importance sampling algorithms were implemented sequentially in the filtering context. This algorithm is called sequential importance sampling, often abbreviated SIS, and has been known since the early 1970s. Limited by the power of computers and suffering from sample impoverishment or weight degeneracy, the SIS didn't develop very well until 1993. Gordon used this a technique based on sampling and importance sampling methods to find the best state estimation  \cite{gordon1993novel}. A particle filter algorithm was proposed to allow rejuvenation of the set of samples by duplicating the samples with high importance weights and, on the contrary, removing samples with low weights \cite{cappe2009inference}. Since then, sequential Monte Carlo (SMC) methods have been applied in many different fields including but not limited to computer vision, signal processing, control, econometrics, finance, robotics, and statistics \cite{smcmip2011}  \cite{ristic2004beyond}.
+The use of Monte Carlo methods for filtering can be traced back to the pioneering contributions of  \cite{handschin1969monte} and  \cite{handschin1970monte}. These researchers tried to use an importance sampling paradigm to approximate the target distributions and. Later on, an importance sampling algorithms were implemented sequentially in the filtering context. This algorithm is called sequential importance sampling, often abbreviated SIS, and has been known since the early 1970s. Limited by the power of computers and suffering from sample impoverishment or weight degeneracy, the SIS did not develop well until 1993. Gordon used this a technique based on sampling and importance sampling methods to find the best state estimation  \cite{gordon1993novel}. A particle filter algorithm was proposed to allow rejuvenation of the set of samples by duplicating the samples with high importance weights and, on the contrary, removing samples with low weights \cite{cappe2009inference}. Since then, sequential Monte Carlo (SMC) methods have been applied in many different fields including but not limited to computer vision, signal processing, control, econometrics, finance, robotics, and statistics \cite{smcmip2011}  \cite{ristic2004beyond}.
 
 In the state space model, a generic particle filter estimates the posterior distribution of the hidden states using the observation measurement process. The filtering problem is to estimate sequentially the values of the hidden states $x_t$ given the values of the observation process $y_{1:t}$ at any time $t$. In another word, it is to find the value of $p(x_t  \mid  y_{1:t})$. The process is divided into two steps: prediction and updating. In the prediction step, the assumption of Markov Chain is the current status $x_t $ only depends on the previous one $x_{t-1}$. Then we can calculate the probability of $x_t$ by 
 \begin{align*}
@@ -106,7 +106,7 @@ To solve the above equation, we can use Monte Carlo method by drawing samples $\
 &= \sum_{i=1}^{N} \tilde{W}_t\left(x_t^{(i)}\right)f\left(x_t^{(i)}\right),
 \end{split}
 \end{align}
-where $\tilde{W}_t\left(x_t^{(i)}\right) = \frac{ W_t\left(x_t^{(i)}\right)}{\sum_{i=1}^NW_t\left(x_t^{(i)}\right)}$ is factorized weight. Each particles has its own weighted value, so the expectation is a weighted mean. However, the drawback of this method is that the computation is quite expensive. A smarter way is to update $W_t^{(i)}$ recursively. Suppose the proposal distribution 
+where $\tilde{W}_t\left(x_t^{(i)}\right) = \frac{ W_t\left(x_t^{(i)}\right)}{\sum_{i=1}^NW_t\left(x_t^{(i)}\right)}$ is factorized weight. Each particles has its own weighted value, so the expectation is a weighted mean. However, the drawback of this method is that the computation is expensive. A smarter way is to update $W_t^{(i)}$ recursively. Suppose the proposal distribution 
 \begin{align*}
 q(x_{0:t}\mid y_{1:t}) = q(x_{0:t-1}\mid y_{1:t-1}) q(x_t \mid  x_{0:t-1},y_{1:t}),
 \end{align*}
@@ -135,7 +135,7 @@ the importance weights $W_t^{(i)}$ can be updated recursively via
 W_t^{(i)} &\propto W_{t-1}^{(i)} \frac{ p(y_t \mid x_t^{(i)}) p(x_{t}^{(i)}\mid x_{t-1}^{(i)}) }   {q(x_{t}^{(i)}\mid x_{t-1}^{(i)},y_{t})}.
 \end{align*}
 
-The problem of SIS filter is that the distribution of importance weights becomes more and more skewed as time increases. Hence, after some iterations, only very few particles have non-zero importance weights. This phenomenon is called \textit{weight degeneracy} or \textit{sample impoverishment} \cite{smcmip2011}.
+The problem of SIS filter is that the distribution of importance weights becomes more and more skewed as time increases. Hence, after some iterations, only few particles have non-zero importance weights. This phenomenon is called \textit{weight degeneracy} or \textit{sample impoverishment} \cite{smcmip2011}.
 
 The effective sample size $\textit{N}_{\textit{\tiny eff}}$ is suggested to monitor how bad the degeneration is, which is
 \begin{align*}
@@ -216,7 +216,7 @@ w_t^{(i)}\propto \frac{ p(y_t\mid x_t^{(i)})  }{  p(y_t\mid\mu_t^{k(i)})   }.
 \end{equation*}
 This auxiliary variable based SIR requires only the ability to propagate and evaluate the likelihood, just as the original SIR suggestion of \cite{gordon1993novel}.  
 
-The main idea behind the APF, that is modifying the original sequence of target distributions to guide particles in promising regions, can be extended outside the filtering framework \cite{JOHANSEN20081498}. It is also recommended in the literature \cite{liu2008monte} that the particles can be re-sampled not according to the normalized weights $w_t^{\mbox{\tiny SISR}}(x_{1:t})=\frac{p(x_{1:t})}{ p(x_{1:t-1}q(x_t\mid x_{1:t-1})  }$  but according to a generic score function $w_t(x_{1:t})>0$ at time t
+The main idea behind the APF is modifying the original sequence of target distributions to guide particles in promising regions, can be extended outside the filtering framework \cite{JOHANSEN20081498}. It is also recommended in the literature \cite{liu2008monte} that the particles can be re-sampled not according to the normalized weights $w_t^{\mbox{\tiny SISR}}(x_{1:t})=\frac{p(x_{1:t})}{ p(x_{1:t-1}q(x_t\mid x_{1:t-1})  }$  but according to a generic score function $w_t(x_{1:t})>0$ at time t
 \begin{equation*}
 w_t(x_{1:t}) = g(w_t^{\mbox{\tiny SISR}}(x_{1:t})),
 \end{equation*}
@@ -228,9 +228,9 @@ where $g: \mathbb{R}^+\rightarrow \mathbb{R}^+$ is a monotonously increasing fun
 
 
 SMC method is effective for exploring the sequence of posteriors distribution  $\pi(x_t\mid\theta) = p(x_t\mid y_{1:t},\theta)$, where the static parameters are
-treated as known. An inference about $\pi_{t-1}$ is used to draw an inference on $\pi_t$ by SIS and resampling. Its interest is focused on $x_t$ instead of the whole path $x_{0:t}$, that is the filtering problem. However, this algorithm evolves, weights and resamples a population of $N$ number of particles, $x_t^{(1)},\ldots,x_t^{(N)}$, so that at each time $t$ they are a properly weighted sample from $\pi(x_t \mid \theta)$. Additionally, it is not practicable on huge datasets, because of numerous iterations in the sampling process. 
+treated as known. An inference about $\pi_{t-1}$ is used to draw an inference on $\pi_t$ by SIS and resampling. Its interest is focusing on $x_t$ instead of the whole path $x_{0:t}$, that is the filtering problem. However, this algorithm evolves, weights and re-samples a population of $N$ number of particles, $x_t^{(1)},\ldots,x_t^{(N)}$, so that at each time $t$ they are a properly weighted sample from $\pi(x_t \mid \theta)$. Additionally, it is not practicable on huge datasets, because of numerous iterations in the sampling process. 
 
-As a complementary solution, sequential particle filter method was proposed by Nicolas \cite{chopin2002sequential} as the first part of his Ph.D. thesis. Instead, sequential particle filter is using preliminary explorations of partial distribution $\pi(\theta\mid y_{1:k})$ $(k<t)$. The concept is: an inference of $\pi(\theta)$ is drawn from the first $k$ observations, let's name it "learning phase", and it is then updated through importance sampling to incorporate the following $l$ observations, name it "updating phase", \cite{chopin2002sequential}.  This method is named as iterated batch importance sampling (IBIS) algorithm, which is used for the recursive exploration of the sequence of parameter posterior distributions $\pi(\theta)$. It updates a population of $N$ particles for $\theta$, $\theta^{(1)}, \ldots, \theta^{(N)}$, so that at each time $t$ they are a properly weighted sample from $\pi(\theta)$. The algorithm includes occasional MCMC steps for rejuvenating the current population of particles of $\theta$  to prevent the number of distinct from decreasing over time. 
+As a complementary solution, sequential particle filter method was proposed by Nicolas \cite{chopin2002sequential} as the first part of his Ph.D. thesis. Instead, sequential particle filter is using preliminary explorations of partial distribution $\pi(\theta\mid y_{1:k})$ $(k<t)$. The concept is: an inference of $\pi(\theta)$ is drawn from the first $k$ observations, named as learning phase, and it is updated through importance sampling to incorporate the following $l$ observations, named as updating phase, \cite{chopin2002sequential}.  This method is the iterated batch importance sampling (IBIS) algorithm, which is used for the recursive exploration of the sequence of parameter posterior distributions $\pi(\theta)$. It updates a population of $N$ particles for $\theta$, $\theta^{(1)}, \ldots, \theta^{(N)}$, so that at each time $t$ they are a properly weighted sample from $\pi(\theta)$. The algorithm includes occasional MCMC steps for rejuvenating the current population of particles of $\theta$  to prevent the number of distinct from decreasing over time. 
 
 In a batch mode, we are assuming the parameter $\theta$ is static. When the first $k$ observations become available, we can find the posterior distribution is $\pi(\theta\mid y_{1:k})$. After that, a few $l (l<\infty)$ observations come into data stream, the posterior becomes $\pi(\theta\mid y_{1:k+l})$ and it is likely to be similar with $\pi(\theta\mid y_{1:k})$.  Hence, a proper reweighting particles by the incremental weight is 
 \begin{align*}
@@ -258,7 +258,7 @@ Propagating. Draw $\theta_i^m$ from $K_{k+l}(\theta_i^*)$, where $K_{k+l}$ is a 
 Set $(\theta_i^m,\frac{1}{N})$ to $(\theta_i,w_i)$, $k+l$ to $k$.}
  \caption{Sequential Particle Filter.}\label{algorithmSequentialPF}
 \end{algorithm}
-The algorithm stops when $k=t$, that is when the particle system targets the distribution of interest $\pi(\theta\mid y_{1:t})$. 
+The algorithm stops at $k=t$, where the particle system targets the distribution of interest $\pi(\theta\mid y_{1:t})$. 
 
 
 \subsection{MCMC-Based Particle Algorithm}
@@ -316,7 +316,7 @@ In \cite{septier2009multiple}, the authors discussed some attractive features of
 
 \section{On-line State and Parameters Estimation}\label{sectionStateandPara}
 
-The state transition density and the conditional likelihood function depend not only upon the dynamic state $x_t$, but also on a static parameter vector $\theta$, which will be stressed by use of the notations $f(x_t \mid x_{t-1},\theta)$ and $g(y_t\mid x_t,\theta)$. Putting the algorithms on-line means to update the parameters and states instantly as new observations coming into the data stream. For Bayesian dynamic models, however, the most natural option consists in treating the unknown parameter $\theta$, using the state space representation, as a component of the state which has no dynamic evolution, also referred to as a static parameter \cite{cappe2007overview}. The standard SMC is deficient for on-line parameter estimation. As a result of the successive resampling steps, after a certain time $t$, the approximation $\hat{p}(\theta\mid y_{1:t})$ will only contain a single unique value for $\theta$. In other words, SMC approximation of the marginalized parameter posterior distribution is represented by a single Dirac delta function. It also causes error accumulation in successive Monte Carlo (MC) steps grows exponentially or polynomially in time \cite{kantas2009overview}. 
+The state transition density and the conditional likelihood function depend not only upon the dynamic state $x_t$, but also on a static parameter vector $\theta$, which will be stressed by use of the notations $f(x_t \mid x_{t-1},\theta)$ and $g(y_t\mid x_t,\theta)$. Putting the algorithms on-line means to update the parameters and states instantly as new observations coming into the data stream. For Bayesian dynamic models, however, the most natural option consists in treating the unknown parameter $\theta$, using the state space representation, as a component of the state which lacks dynamic evolution, also referred to as a static parameter \cite{cappe2007overview}. The standard SMC is deficient for on-line parameter estimation. As a result of the successive resampling steps, after a certain time $t$, the approximation $\hat{p}(\theta\mid y_{1:t})$ will only contain a single unique value for $\theta$. In other words, SMC approximation of the marginalized parameter posterior distribution is represented by a single Dirac delta function. It also causes error accumulation in successive Monte Carlo (MC) steps grows exponentially or polynomially in time \cite{kantas2009overview}. 
 
 Therefore, in this section, we are introducing some methods that will estimate combined state and parameter by either jointly estimating of state and parameter or by marginalizing the parameter using sufficient statistics. 
 
@@ -498,7 +498,7 @@ By denoting $s_t$ and $s_t^x$ the sufficient statistics for the parameter and st
 %\KwResutt{Write here the resutt }
 \For{$k=1,\ldots,t$}{
 \For{$i=1,\ldots,N$}{
-Resample $\tilde{z}_k^{(i)}=(\tilde{s}_k^{x(i)},\tilde{s}_k^{(i)},\tilde{\theta}^{(i)})$ from $p(z_k\mid s_k^x,s_k,\theta)$ with weight $w\propto p(y_{k+1}\mid s_{k}^x,\theta)$.\\
+Re-sample $\tilde{z}_k^{(i)}=(\tilde{s}_k^{x(i)},\tilde{s}_k^{(i)},\tilde{\theta}^{(i)})$ from $p(z_k\mid s_k^x,s_k,\theta)$ with weight $w\propto p(y_{k+1}\mid s_{k}^x,\theta)$.\\
 Draw $x_{k+1}^{(i)}$ from $p(x_{k+1}\mid \tilde{s}_k^x,\tilde{\theta},y_{1:k+1})$. \\
 Update sufficient statistics  $s_{k+1}=S(\tilde{s}_{k}, x_{k+1},y_{k+1})$. \\
 Sample $\theta^{(i)}$ from $p(\theta \mid  s_{k+1})$. \\
@@ -510,7 +510,7 @@ Update $s_{k+1}^x = K(s_{k}^x,\theta,y_{k+1})$.
 
 \subsection{Adaptive Ensemble Kalman Filter}
 
-Storvik filter and Particle learning algorithms are efficient in some ways,  however, the drawbacks are obvious. One of them is that the sufficient statistics are not always available, or hard to find, for complex models. They are trying to reduce the problem of particle impoverishment, although in practice they didn't solve the problem completely \cite{chopin2010particle}. An ensemble Kalman filter method was proposed for sequential state and parameter estimation \cite{stroud2016bayesian}. It is fully Bayesian and propagates the joint posterior density of states and parameters through over the process. 
+Storvik filter and Particle learning algorithms are efficient in some ways,  however, the drawbacks are obvious. One of them is that the sufficient statistics are not always available, or hard to find, for complex models. They are trying to reduce the problem of particle impoverishment, although in practice they did not solve the problem completely \cite{chopin2010particle}. An ensemble Kalman filter method was proposed for sequential state and parameter estimation \cite{stroud2016bayesian}. It is fully Bayesian and propagates the joint posterior density of states and parameters through over the process. 
 
 
 The ensemble Kalman filter, which is an extension to the standard Kalman filter \cite{kalman1960new}, is an approximate filtering method introduced in the geophysics literature by \cite{evensen1994sequential}. Instead of working with the entire distribution, the ensemble Kalman filter stores propagates and updates an ensemble of vectors that approximates the state distribution \cite{katzfuss2016understanding}. 
@@ -716,7 +716,7 @@ $\frac{1}{n}\sum_i(\hat{x}_i-x_i)^2$ & 0.5745 & 0.5739 & 0.5737 & 0.5875&  0.574
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{Chapters/04Filtering/plot/plotlyFilterCompX2.png}
-\caption{The filtering for $x_{300:897}$ is very competitive. These algorithms return very close estimations. } \label{FilterRiewComparesion02}
+\caption{The filtering for $x_{300:897}$ is competitive. These algorithms return close estimations. } \label{FilterRiewComparesion02}
 \end{figure}
 
 

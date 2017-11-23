@@ -20,9 +20,9 @@
 \section{Background}
 
 
-The Global Positioning System (abbreviated as GPS) is a space-based navigation system consisting of a network of 24 satellites in six different 12-hour orbital paths spaced. So that at least five of them are in view from every point on the globe \cite{kaplan2005understanding} \cite{bajaj2002gps}. With these satellites, a GPS receiver provides geographic information to them and triangulate its location on the ground, such as longitude, latitude and elevation. These receivers are using passive locating technology, by which they can receive signals without transmitting any data. It is perhaps the most widely publicized location-sensing system providing an excellent lateration framework for determining geographic positions \cite{hightower2001location}. Offered free of charge and accessible worldwide, GPS is used in plenty applications in military and general public, including aircraft tracking, vehicle navigation, robot localization, surveying, astronomy and so on. 
+The Global Positioning System (abbreviated as GPS) is a space-based navigation system consisting of a network of 24 satellites in six different 12-hour orbital paths spaced. So that at least five of them are in view from every point on the globe \cite{kaplan2005understanding} \cite{bajaj2002gps}. With these satellites, a GPS receiver provides geographic information to them and triangulate its location on the ground, such as longitude, latitude, and elevation. These receivers are using passive locating technology, by which they can receive signals without transmitting any data. It is perhaps the most widely publicized location-sensing system providing an excellent lateration framework for determining geographic positions \cite{hightower2001location}. Offered free of charge and accessible worldwide, GPS is used in plenty applications in military and general public, including aircraft tracking, vehicle navigation, robot localization, surveying, astronomy, and so on. 
 
-For a moving vehicle, it is often mounted with a GPS unit that communicates with these satellites and records position, speed and direction of traveling information. With this kind of information, a maneuvering target tracking system becomes available and useful. This tracking system can be used to reduce the cost by knowing in real-time the current location of a vehicle, such as a truck or a bus \cite{chadil2008real}, and also be very useful for Intelligent Transportation System (ITS) \cite{mcdonald2006intelligent}. For instance, it can be used in probe cars to measure real-time traffic data to identify the congesting area. In particular, an orchardist is able to follow the trajectory and motion patterns of tractors, which are working on an orchard or vineyard, and monitor their working status with the tracking system. 
+For a moving vehicle, it is often mounted with a GPS unit that communicates with these satellites and records position, speed, and direction of traveling information. With this kind of information, a maneuvering target tracking system becomes available and useful. This tracking system can be used to reduce the cost by knowing in real-time the current location of a vehicle, such as a truck or a bus \cite{chadil2008real}, and also be useful for Intelligent Transportation System (ITS) \cite{mcdonald2006intelligent}. For instance, it can be used in probe cars to measure real-time traffic data to identify the congesting area. In particular, an orchardist is able to follow the trajectory and motion patterns of tractors, which are working on an orchard or vineyard, and monitor their working status with the tracking system. 
 
 
 
@@ -33,7 +33,7 @@ It is suggested that the smoothing spline fitting through the measured values re
 \section{Smoothing Spline Based Reconstruction}
 
 
-Starting from interpolation, the simplest way of connecting a set of sequences $(t_1,y_1),\ldots, (t_n,y_n)$ is by straight line segments. Known as piecewise  linear interpolation. Apparently, sharp turnings occur at joint knots. A smooth path is expected and more common in real life application. A single polynomial function goes through the entire interval, such as B\'ezier curve, is not as flexible as a combination of several polynomials, each of which is defined on subintervals and joint at certain knots. This kind of piecewise polynomial interpolation is called a spline. 
+Starting from interpolation, the simplest way of connecting a set of sequences $(t_1,y_1),\ldots, (t_n,y_n)$ is by straight line segments. Known as piecewise linear interpolation. Apparently, sharp turnings occur at joint knots. A smooth path is expected and more common in real life application. A single polynomial function goes through the entire interval, such as B\'ezier curve, is not as flexible as a combination of several polynomials, each of which is defined on subintervals and joint at certain knots. This kind of piecewise polynomial interpolation is called a spline. 
 
 The core idea of splines is to augment the vector of inputs $T$ with additional variables, then use linear models in this space of derived input features. Adding constraints to construct basis functions $h_i(t), i = 1, 2,\ldots, n$, a linear basis expansion in $T$ is represented as
 \begin{equation*}
@@ -65,7 +65,7 @@ for pre-specified value $\lambda>0$ \cite{aydin2012smoothing}. In the above equa
 \end{cases}
 \end{align*}\cite{esl2009}. 
 
-Hence the cost of the equation (\ref{introSmoothingOb}) is determined not only by its goodness-of-fit to the data quantified by the residual sum of squares but also by its roughness \cite{schwarz2012geodesy}. The motivation of the roughness penalty term is from a formalization of a mechanical device: if a thin piece of flexible wood, called a spline, is bent to the shape of the curve $g$, then the leading term in the strain energy is proportional to $\int f''^2$ \cite{green1993nonparametric}. 
+Hence, the cost of the equation (\ref{introSmoothingOb}) is determined not only by its goodness-of-fit to the data quantified by the residual sum of squares but also by its roughness \cite{schwarz2012geodesy}. The motivation of the roughness penalty term is from a formalization of a mechanical device: if a thin piece of flexible wood, called a spline, is bent to the shape of the curve $g$, then the leading term in the strain energy is proportional to $\int f''^2$ \cite{green1993nonparametric}. 
 
 
 
@@ -89,7 +89,7 @@ As discussed in the previous section, the determination of an optimum smoothing 
 
 %\subsection*{Cross-Validation}
 
-A classical parameter selection method is called cross-validation (CV). The idea behind this method can be traced back to 1930s \cite{larson1931shrinkage}. Because in most applications, only a limited amount of data is available. Thus an idea is to split this dataset into two subgroups, one of which is used for training the model and the other one is used to evaluating its statistical performance. The sample used in evaluation is considered as "new data" as long as data are \iid. 
+A classical parameter selection method is called cross-validation (CV). The idea behind this method can be traced back to 1930s \cite{larson1931shrinkage}. Because in most applications, only a limited amount of data is available. Thus, an idea is to split this dataset into two subgroups, one of which is used for training the model and the other one is used to evaluating its statistical performance. The sample used in evaluation is considered as "new data" as long as data are \iid. 
 
 A single data split yields a validation estimate of the risk and averaging over several splits yields a cross-validation estimate \cite{arlot2010survey}. Because of the assumption that data are identically distributed, and training and validation samples are independent, CV methods are widely used in parameter selection and model evaluation. 
 
@@ -108,7 +108,7 @@ Guess a value $\lambda^*$. \\
 Delete the $i$th group of data. Fit a smoothing spline to the first data $(t_1,y_1)$, the rest $k-1$ groups of dataset and the last data $(t_n,y_n)$ with $\lambda^*$.\\ 
 Compute the sum of squared deviations $s_i$ of this smoothing spline from the deleted $i$th group data points. \\ 
 }\label{kfoldCV02}
-Add the sums of squared deviations from steps \ref{kfoldCV01} to \ref{kfoldCV02} and divide it by $k$ to achieve a cross-validation score of $\lambda^*$, that is $s=\frac{1}{k}\sum_{i=1}^{k}s_i$ . \\ \label{kfoldCV03}
+Add the sums of squared deviations from steps \ref{kfoldCV01} to \ref{kfoldCV02} and divide it by $k$ to achieve a cross-validation score of $\lambda^*$ that is $s=\frac{1}{k}\sum_{i=1}^{k}s_i$ . \\ \label{kfoldCV03}
 Vary  $\lambda$ systematically and repeat steps \ref{kfoldCV01} to \ref{kfoldCV03} until CV shows a minimum.
 }
  \caption{$k$-fold cross-validation.}\label{kfoldCV}
@@ -119,13 +119,13 @@ Mathematically, we denote the CV score as
 \end{equation*}
 where $\hat{f}^{(-k)}(t)$ denotes the fitted function computed with the $k$th part of the data removed. Typical choices for $k$ are 5 and 10 \cite{esl2009}.  The function $\mbox{CV}(\hat{f},\lambda)$ provides an estimate of the test error curve, and the tuning parameter $\lambda$ that minimizes it will be the optimal solution. 
 
-A special case of $k$-fold CV is setting $k=n$, which is known as leave-one-out CV. In this scenario, the CV function takes each of the data out and calculate the errors of $\hat{f}^{(-i)}$ from the remaining $n-1$ points. In fact, the property, that taking one point out doesn't affect the estimation, of smoothing splines fitting allows us to implement CV methods without hesitation. 
+A special case of $k$-fold CV is setting $k=n$, which is known as leave-one-out CV. In this scenario, the CV function takes each of the data out and calculate the errors of $\hat{f}^{(-i)}$ from the remaining $n-1$ points. In fact, the property that taking one point out does not affect the estimation, of smoothing splines fitting allows us to implement CV methods without hesitation. 
 
 As an improvement of CV, the GCV algorithm was proposed to calculate the trace of the estimation matrix $A(\lambda)$ instead of calculating individual elements for linear fitting under squared error loss, in which way it provides further computational savings. Suppose we have a solution $\hat{f}=A(\lambda)y$ with a given $\lambda$, for many linear fittings, the CV score is 
 \begin{equation*}
 \mbox{CV} = \frac{1}{n}\sum_{i=1}^{n} \left( y_i - \hat{f}^{(-i)}(t_i)\right)^2 = \frac{1}{n} \sum_{i=1}^{n}\left( \frac{y_i-\hat{f}(t_i)}{1-A_{ii}}  \right)^2, 
 \end{equation*}
-where $A_{ii}$ is the $i$th diagonal element of $A(\lambda)$. Then the GCV approximation score is 
+where $A_{ii}$ is the $i$th diagonal element of $A(\lambda)$. Then, the GCV approximation score is 
 \begin{equation*}
 \mbox{GCV} =\frac{1}{n} \sum_{i=1}^{n}\left( \frac{y_i-\hat{f}(t_i)}{1-\tr(A)/n}  \right)^2.
 \end{equation*}
@@ -174,7 +174,7 @@ It is no doubt that in a conventional target tracking system, the most common me
 
 \subsection*{Kalman Filter}
 
-In a discrete-time linear system, the optimal Bayesian solution coincides with the least squares solution. The successful optimal one was given by \cite{kalman1960new}, the celebrated \textit{Kalman filter}. It is a set of mathematical equations that provides an efficient computational means to estimate the state of a process in a recursive way, that minimizes the mean of the squared errors \cite{bishop2001introduction}. 
+In a discrete-time linear system, the optimal Bayesian solution coincides with the least squares solution. The successful optimal one was given by \cite{kalman1960new}, the celebrated \textit{Kalman filter}. It is a set of mathematical equations that provides an efficient computational means to estimate the state of a process in a recursive way by minimizing the mean of the squared errors \cite{bishop2001introduction}. 
 
 The Kalman filter recursively updates the estimated state by computing from the previous estimation and new input observation. In addition to eliminating the need for storing the entire past observed data, it is computationally more efficient than computing the estimate directly from the entire past observed data at each step of the filtering process \cite{haykin2001kalman}. 
 %In fact, it is also shown that the Kalman filter can be derived within a Bayesian framework and reduces to a maximum posterior probability (MAP) solution \cite{haykin2001kalman}. 
@@ -199,11 +199,11 @@ and $K_t = S_{t-1} G^\top (R_t +GS_{t-1}G^\top)^{-1}$ is named Kalman gain matri
 \hat{x}_t = \hat{x}_{t-1}+K_t(y_t-G\hat{x}_{t-1}).
 \end{equation}
 
-Furthermore, compared with filtering distribution $p(x_t\mid y_{1:t})$, the prediction distribution is trying to find a future state $x_{t+n}$ which is $n$ steps after current state, that will be $p(x_{t+n}\mid y_{1:t})$, and the smoothing distribution is to find a specific state in the past, which is $p(x_k\mid y_{1:t})$ for $k<t$. 
+Furthermore, compared with filtering distribution $p(x_t\mid y_{1:t})$, the prediction distribution is trying to find an $n$-steps later distribution $p(x_{t+n}\mid y_{1:t})$ from current state, and the smoothing distribution is to find a specific state in the past $p(x_k\mid y_{1:t})$ for $k<t$. 
 
 Kalman Filter has a limitation that it does not apply to general non-linear model and non-Gaussian distributions. For a non-linear system, one can use the extended Kalman filter (EKF), which is widely used for solving nonlinear state estimation applications \cite{gelb1974applied}, \cite{bar1993estimation}. The EKF uses Taylor expansion to construct linear approximations of nonlinear functions, therefore, the state transition $f$ and observation $g$ do not have to be linear but to be differentiable. However, in the EKF process, these approximations can introduce large errors in the true posterior mean and covariance of the transformed (Gaussian) random variable \cite{wan2000unscented}. 
 
-Alternatively, the Unscented Kalman Filter (UKF) is a derivative-free method \cite{julier1997new}, \cite{wan2000unscented}, \cite{gyorgy2014unscented}. It is using the Kalman filter to create a normal distribution that approximates the result of a non-linear transformation numerically by seeing what happens to a few carefully chosen points. The unscented transform is used to recursively estimating the equation (\ref{KalmanEstimation}), where the state random variable is redefined as the concatenation of the original state and noise variables. In contrast, Kalman filter doesn't require numerical approximations. 
+Alternatively, the Unscented Kalman Filter (UKF) is a derivative-free method \cite{julier1997new}, \cite{wan2000unscented}, \cite{gyorgy2014unscented}. It is using the Kalman filter to create a normal distribution that approximates the result of a non-linear transformation numerically by seeing what happens to a few carefully chosen points. The unscented transform is used to recursively estimating the equation (\ref{KalmanEstimation}), where the state random variable is redefined as the concatenation of the original state and noise variables. In contrast, Kalman filter does not require numerical approximations. 
 
 The performance of EKF and UKF is compared in a few references regarding to different kinds of aspects, such as \cite{chandrasekar2007comparison}, \cite{laviola2003comparison}, \cite{st2004comparison}. There is not an overall conclusion that which one performs better. 
 
@@ -226,11 +226,11 @@ For example, consider the model (\ref{introKFmodel}) with parameter $\theta$. Th
 \begin{equation*}
 p(y_t\mid y_{1:t-1},\theta) = \int p(y_t\mid x_t,\theta)p(x_t\mid y_{1:t-1},\theta) dx_t = \E \left[p(y_t\mid x_t,\theta)\right].
 \end{equation*}
-The standard Monte Carlo algorithm is trying to compute the integration by drawing $N$ independent samples $x_t^{(i)}$ from $p(x_t\mid y_{1:t-1},\theta)$ at first and then add them up to approximate the integration for large $N$, \cite{kalos2008monte}, that is 
+The standard Monte Carlo algorithm is trying to compute the integration by drawing $N$ independent samples $x_t^{(i)}$ from $p(x_t\mid y_{1:t-1},\theta)$ at first and then, by adding them up, to approximate the integration for large $N$ in the following way 
 \begin{equation*}
-\E\left[p(y_t\mid x_t,\theta)\right]\approx \frac{1}{N}\sum_i p(y_t\mid x_t^{(i)},\theta). 
+\E\left[p(y_t\mid x_t,\theta)\right]\approx \frac{1}{N}\sum_i p(y_t\mid x_t^{(i)},\theta), 
 \end{equation*}
-
+\cite{kalos2008monte}.
 
 In terms of getting good samples of $x_t^{(i)}$, which can be used for representing $p(y_t\mid x_t^{(i)},\theta)$, an importance sampling method was devised. The idea of this method is by assigning weights $W_t^{(i)}$ to samples, the most important ones are evaluated for computing the integral. Further, sequential importance sampling (SIS) allows a sequential update of the importance weights by 
 \begin{equation*}
@@ -239,10 +239,10 @@ W_t^{(i)} \propto W_{t-1}^{(i)} \frac{ p(y_t \mid x_t^{(i)}) p(x_{t}^{(i)}\mid x
 with an appropriate chosen \textit{proposal distribution} $q(x_{t}\mid  x_{t-1},y_{t})$. It is also called \textit{importance density} or \textit{important function} \cite{chen2003bayesian}. 
 
 
-Nevertheless, the SIS makes samples skewed that only a few samples have proper weights as time increases and most of them have very small but positive weights. This phenomenon is often called \textit{weight degeneracy} or \textit{sample impoverishment} \cite{green1995reversible} \cite{berzuini1997dynamic}. 
+Nevertheless, the SIS makes samples skewed that only a few samples have proper weights as time increases and most of them have small but positive weights. This phenomenon is often called \textit{weight degeneracy} or \textit{sample impoverishment} \cite{green1995reversible} \cite{berzuini1997dynamic}. 
 
 
-Besides the SIS processes, a resampling step, also called as selection step, is trying to eliminate the samples with small weights and duplicate the samples with large weights in a principled way \cite{rubin2004multiple}, \cite{tanner1987calculation}. This method is named SIR. Suppose samples with associated weights are $\{x_t^{(i)},W_t^{(i)}\}$, a resampling step is executed by generating new samples $\tilde{x}_t^{(i)}$ according to normalized weights $\tilde{W}_t^{(i)}$. It is pointed out that the resampling step does not really prevent weights degeneracy but improve further calculation. 
+Besides the SIS processes, a resampling step, also called as selection step, is trying to eliminate the samples with small weights and duplicate the samples with large weights in a principled way \cite{rubin2004multiple}, \cite{tanner1987calculation}. This method is named SIR. Suppose samples with associated weights are $\{x_t^{(i)},W_t^{(i)}\}$, a resampling step is executed by generating new samples $\tilde{x}_t^{(i)}$ according to normalized weights $\tilde{W}_t^{(i)}$. It is pointed out that the resampling step does not prevent weights degeneracy but improve further calculation. 
 
 The common feature of SIS and SIR is that both of these methods are based on importance sampling and updating samples weights recursively. The difference is that in SIR, the resampling step is always performed. Whereas in SIS, resampling is only taken when needed. 
 
@@ -310,14 +310,14 @@ x_{t+1}^{(N)}  &\sim \pi(x_N \mid x_{t+1}^{(1)},x_{t+1}^{(2)},\ldots,x_{t+1}^{(N
 \end{align*}
 using the newly updated sample $x_{t+1}^{(i)}$. After one iteration, the new sequence $x_{t+1}^{(1)},\ldots,x_{t+1}^{(N)}$ is obtained. 
 
-Gibbs sampling can be viewed as one of Metropolis methods and meets the convergence property, that the probability distribution of $x_t$ tends to $\pi(x)$ as $t\to\infty$, as long as $\pi(x)$ does not have pathological properties. Similarly to MH algorithms, some modified Gibbs sampler, such as single-site Gibbs sampling algorithm \cite{sorensen2007likelihood}, a blocked Gibbs sampling algorithm \cite{garcia1996multivariate} and hybrid Gibbs sampling algorithm \cite{mathew2012bayesian}, are well developed and applied in different applications \cite{gelfand1990illustration}. 
+Gibbs sampling can be viewed as one of Metropolis methods and meets the convergence property that the probability distribution of $x_t$ tends to $\pi(x)$ as $t\to\infty$, as long as $\pi(x)$ does not have pathological properties. Similarly to MH algorithms, some modified Gibbs sampler, such as single-site Gibbs sampling algorithm \cite{sorensen2007likelihood}, a blocked Gibbs sampling algorithm \cite{garcia1996multivariate} and hybrid Gibbs sampling algorithm \cite{mathew2012bayesian}, are well developed and applied in different applications \cite{gelfand1990illustration}. 
 
 
 
 \subsection*{Adaptive MCMC Algorithm}
 
 
-Metropolis-Hastings algorithm is widely used in statistical inference, to sample from complicated high-dimensional distributions. Typically, this algorithm has parameters that must be tuned in each new situation to obtain reasonable mixing times, such as the step size in a random walk Metropolis \cite{mahendran2012adaptive}. Tuning of associated parameters such as proposal variances is crucial to achieving efficient mixing, but can also be very difficult. 
+Metropolis-Hastings algorithm is widely used in statistical inference, to sample from complicated high-dimensional distributions. Typically, this algorithm has parameters that must be tuned in each new situation to obtain reasonable mixing times, such as the step size in a random walk Metropolis \cite{mahendran2012adaptive}. Tuning of associated parameters such as proposal variances is crucial to achieving efficient mixing, but can also be difficult. 
 
 %It is introduced that Metropolis-Hastings algorithm draws samples from a target distribution $\pi(\cdot)$ by proposing $x'$ from $x^{(t)}$. Then calculate a probability to decide whether accept or reject it. The proposal distribution 
 
@@ -361,7 +361,7 @@ However, HMC has some problems with sampling from distributions with isolated lo
 The zig-zag process is a continuous-time piecewise deterministic-stochastic process introduced in \cite{bierkens2016piecewise}. It is an application of the Curie-Weiss model, \cite{turitsyn2011irreversible}, in high dimension and provides a practically efficient sampling scheme for sampling in the big data regime with some remarkable properties \cite{bierkens2017limit}. 
 
 
-Given a target density $\pi(\cdot)$, the Zig-Zag process $f(x,\theta)$ is defined in a $d \otimes 2$ space $E$. $x$ is in the $d$-dimensional topological subspace and $\theta$ is in a binary discrete $\{-1,1\}_d$ subspace denoting the flipping statues. The switching rate $\lambda(x,\theta)$ agrees with the target distribution $\pi(\cdot)$ in a certain way and is defined as $\lambda(x,\theta) = \max \lbrace 0,\theta U'(x) \rbrace +\gamma(x)$, where $U'(x)  = \lambda(x,\theta) - \lambda(x,-\theta)$. Then the Zig-Zag operator $L$ is 
+Given a target density $\pi(\cdot)$, the Zig-Zag process $f(x,\theta)$ is defined in a $d \otimes 2$ space $E$. $x$ is in the $d$-dimensional topological subspace and $\theta$ is in a binary discrete $\{-1,1\}_d$ subspace denoting the flipping statues. The switching rate $\lambda(x,\theta)$ agrees with the target distribution $\pi(\cdot)$ in a certain way and is defined as $\lambda(x,\theta) = \max \lbrace 0,\theta U'(x) \rbrace +\gamma(x)$, where $U'(x)  = \lambda(x,\theta) - \lambda(x,-\theta)$. Then, the Zig-Zag operator $L$ is 
 \begin{equation*}
 Lf(x,\theta)=\theta\partial f_x+\lambda(x,\theta)\left(f(x,-\theta)-f(x,\theta )\right),
 \end{equation*}

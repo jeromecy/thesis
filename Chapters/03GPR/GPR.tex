@@ -75,7 +75,7 @@ It is easily to prove that $R(s,t)$ is non-negative and is reproducing kernel, b
 
 Before moving on to further steps, we are now introducing the following two theorems. 
 \begin{theorem}\cite{aronszajn1950theory}\label{theoremRKHS}
-Suppose $R$ is a symmetric, positive definite kernel on a set $X$. Then there is a unique Hilbert space of functions on $X$ for which $R$ is a reproducing kernel. 
+Suppose $R$ is a symmetric, positive definite kernel on a set $X$. Then, there is a unique Hilbert space of functions on $X$ for which $R$ is a reproducing kernel. 
 \end{theorem}
 \begin{theorem}\cite{gu2013smoothing}\label{theoremKernel}
 If the reproducing kernel $R$ of a space $\mathcal{H}$ on domain $X$ can
@@ -226,7 +226,7 @@ Define a new notation $\dot{R}(s,t)=\frac{\partial R}{\partial s}(s,t)=\frac{\pa
 \end{equation*}
 % % % % % % % % % % % % % % % %  Old version, space H* might be wrong % % % % %
 % % % % % % % % % % % % % % % %
-%It can be seen that the first term $\dot{R}_0=t\in \mathcal{H}_0$, and the space spanned by the second term $\dot{R}_1=\int_0^s(t-u)_+du$, denoted as $\mathcal{\dot{H}}$, is not in $\mathcal{H}_1$, but $\mathcal{\dot{H}} \cap \mathcal{H}_1\neq \emptyset$. Then we have a new space $\mathcal{H}_*=\mathcal{\dot{H}} \cup \mathcal{H}_1$. Thus the two new sub spaces in $\mathcal{C}_{\footnotesize p.w.}^2[0,1]$ are $\mathcal{H}_0$ and $\mathcal{H}_*$.
+%It can be seen that the first term $\dot{R}_0=t\in \mathcal{H}_0$, and the space spanned by the second term $\dot{R}_1=\int_0^s(t-u)_+du$, denoted as $\mathcal{\dot{H}}$, is not in $\mathcal{H}_1$, but $\mathcal{\dot{H}} \cap \mathcal{H}_1\neq \emptyset$. Then we have a new space $\mathcal{H}_*=\mathcal{\dot{H}} \cup \mathcal{H}_1$. Thus, the two new sub spaces in $\mathcal{C}_{\footnotesize p.w.}^2[0,1]$ are $\mathcal{H}_0$ and $\mathcal{H}_*$.
 %
 %Given the sample points $t_j, j=1, \ldots, n$ in equation $(\ref{maineq})$ and noting that the space
 %\begin{equation}
@@ -241,7 +241,7 @@ It can be seen that the first term $\dot{R}_0=t\in \mathcal{H}_0$, and the space
 \begin{equation*}
 \mathcal{A}=\{f: f=\sum_{j=1}^{n}\alpha_jR_1(t_j,\cdot)+\sum_{j=1}^{n}\beta_j\dot{R}_1(t_j,\cdot)\} 
 \end{equation*}
-is a closed linear subspace of $\mathcal{H}_1$. Then we have a new space $\mathcal{H}_*=\mathcal{\dot{H}} \cup \mathcal{A}$. Thus the two new sub spaces in $\mathcal{C}_{\footnotesize p.w.}^2[0,1]$ are $\mathcal{H}_0$ and $\mathcal{H}_*$.
+is a closed linear subspace of $\mathcal{H}_1$. Then, we have a new space $\mathcal{H}_*=\mathcal{\dot{H}} \cup \mathcal{A}$. Thus, the two new sub spaces in $\mathcal{C}_{\footnotesize p.w.}^2[0,1]$ are $\mathcal{H}_0$ and $\mathcal{H}_*$.
 
 
 For any $f  \in \mathcal{C}_{\footnotesize p.w.}^2[0,1]$, it can be written as 
@@ -269,7 +269,7 @@ and noting that $\int_0^1R''_1(t_i,t)R''_1(t_j,t)dt=R_1(t_i,t_j)$, $\int_0^1R''_
 +n\lambda (\mathbf{c}^\top Q\mathbf{c} + 2\mathbf{c}^\top P\mathbf{b}+ \mathbf{b}^\top P'\mathbf{b})+n\lambda(\rho,\rho).
 \end{split}
 \end{equation}
-Note that $\rho$ only appears in the third term and is minimized at $\rho=0$. Hence, a tractor spline resides in the space $\mathcal{H}_0\oplus \mathcal{H}_*$ of finite dimension. Then the solution to $(\ref{maineq})$ is computed via the minimization of the first three terms in $(\ref{matriteq})$ with respect to $\mathbf{d}$, $\mathbf{c}$ and $\mathbf{b}$.
+Note that $\rho$ only appears in the third term and is minimized at $\rho=0$. Hence, a tractor spline resides in the space $\mathcal{H}_0\oplus \mathcal{H}_*$ of finite dimension. Thus, the solution to $(\ref{maineq})$ is computed via the minimization of the first three terms in $(\ref{matriteq})$ with respect to $\mathbf{d}$, $\mathbf{c}$ and $\mathbf{b}$.
 
 
 
@@ -450,7 +450,7 @@ With the same parameter found by GCV, Tractor spline and its Bayes estimate retu
 
 \section{Conclusion}
 
-In this Chapter, we take a review of the work that have been done in the last few decades for the relationship between polynomial smoothing spline and the Bayes estimates. With improper priors, the two methods are corresponding to each other. In fact, smoothing spline is a particular case of Gaussian process regression. By following the work done by \cite{gu2013smoothing}, we find the Bayes estimate for Tractor spline with a constant penalty parameter $\lambda$.  However, it is a particular scenario of Tractor spline whose $\lambda(t)$ varying on domains. So the trivial Tractor spline might not be an optimal solution. Additionally, we give the formula of GCV for Tractor spline with correlated errors on $y$ and $v$. 
+In this Chapter, we take a review of the work that has been done in the last few decades for the relationship between polynomial smoothing spline and the Bayes estimates. With improper priors, the two methods are corresponding to each other. In fact, smoothing spline is a particular case of Gaussian process regression. By following the work done by \cite{gu2013smoothing}, we find the Bayes estimate for Tractor spline with a constant penalty parameter $\lambda$.  However, it is a particular scenario of Tractor spline whose $\lambda(t)$ varying on domains. So the trivial Tractor spline might not be an optimal solution. Additionally, we give the formula of GCV for Tractor spline with correlated errors on $y$ and $v$. 
 
 
 A further work is to find the Bayes estimate for the real Tractor spline with a piecewise penalty term $\lambda(t)$. Besides GCV, other methods, such as EM and UBR are worth being invested in further research. 
