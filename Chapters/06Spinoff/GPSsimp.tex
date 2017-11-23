@@ -117,17 +117,17 @@ Table (\ref{DataSimpCompTable}) describes the results after simplifying by DP al
 %\includegraphics[width=0.9\textwidth]{Chapters/06Spinoff/plot/3p1.pdf}
 \begin{subfigure}[t]{0.47\textwidth}
 \includegraphics[width=\linewidth]{Chapters/06Spinoff/plot/ggRawTrac.pdf}
-\caption{Raw trajectory}
+\caption{Raw trajectory}\label{ggRawTrac}
 \end{subfigure}
  \begin{subfigure}[t]{0.47\textwidth}
 \includegraphics[width=\linewidth]{Chapters/06Spinoff/plot/ggDPTrac.pdf}
-\caption{Simplified trajectory by DP}
+\caption{Simplified trajectory by DP}\label{ggDPTrac}
 \end{subfigure}
  \begin{subfigure}[t]{0.47\textwidth}
 \includegraphics[width=\linewidth]{Chapters/06Spinoff/plot/ggSPTrac.pdf}
-\caption{Simplified trajectory by proposed algorithm}
+\caption{Simplified trajectory by proposed algorithm}\label{ggSPTrac}
 \end{subfigure}
-\caption{A segment start from time $t=2000$ to $3000$, recorded by GPS units. $\blacktriangle$ indicates the boom is not-working. $\bullet$ indicate the boom is working. Figure (a), it's the trajectory connected by raw data with 27 points. Figure (b), it's the trajectory connected by simplified data with Douglas-Peucker algorithm with 24 points. Figure (c), it's the trajectory connected by simplified data with proposed simplification algorithm with 23  points.}\label{DataSimpRawTra}
+\caption{A segment start from time $t=2000$ to $3000$, recorded by GPS units. $\blacktriangle$ indicates the boom is not-working. $\bullet$ indicate the boom is working. Figure \ref{ggRawTrac}, it's the trajectory connected by raw data with 27 points. Figure \ref{ggDPTrac}, it's the trajectory connected by simplified data with Douglas-Peucker algorithm with 24 points. Figure \ref{ggSPTrac}, it's the trajectory connected by simplified data with proposed simplification algorithm with 23  points.}\label{DataSimpRawTra}
 \end{figure}
 
 \begin{figure}[h]
