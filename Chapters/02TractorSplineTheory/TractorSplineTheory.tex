@@ -137,7 +137,7 @@ f=\sum_{k=1}^{2n} \theta_k N_k(t),
 \end{equation}
 where $\{\theta_k\}_{k=1}^{2n}$ are parameters.
 
-Figure (\ref{basisfigure}) presents two basis functions on an arbitrary interval $[t_k, t_{k+2} )$ where they are continuous and differential. At the interior joint knot $t_k$, basis functions in the previous and following interval share the same position $y_k$ and velocity $v_k$. 
+Figure \ref{basisfigure} presents two basis functions on an arbitrary interval $[t_k, t_{k+2} )$ where they are continuous and differential. At the interior joint knot $t_k$, basis functions in the previous and following interval share the same position $y_k$ and velocity $v_k$. 
 \begin{figure}[h] 
 \centering
 %\includegraphics[width=0.6\textwidth, height=4.5cm]{Chapters/02TractorSplineTheory/plot/ggbasistk}
@@ -352,7 +352,7 @@ and
 \begin{equation}\label{thetahat0}
 \hat{\theta}_{\gamma=0}=(\mathbf{B}^\top\mathbf{B}+n\Omega_{\lambda})^{-1}\mathbf{B}^\top\mathbf{y}
 \end{equation}
-and the adjusted penalty term in (\ref{adjustedpenalty}) was removed from another reconstruction, noted as "Tractor spline without APT". Figure (\ref{num1}) to (\ref{num4}) display the original (velocity), generated position, wavelet with two different threshold methods, P-spline and three kinds of Tractor spline fitted functions. The parameters $\lambda$ and $\gamma$ of a Tractor spline are automatically selected from formula (\ref{tractorcv}) by $\textit{optim}$ function in $R$ \cite{nelder1965simplex}.
+and the adjusted penalty term in (\ref{adjustedpenalty}) was removed from another reconstruction, noted as "Tractor spline without APT". Figure \ref{num1} to \ref{num4} display the original (velocity), generated position, wavelet with two different threshold methods, P-spline and three kinds of Tractor spline fitted functions. The parameters $\lambda$ and $\gamma$ of a Tractor spline are automatically selected from formula (\ref{tractorcv}) by $\textit{optim}$ function in $R$ \cite{nelder1965simplex}.
 
 
 %\begin{figure}
@@ -778,28 +778,28 @@ where $\omega$ is the bearing in degrees. Boom status is tagged as 0 if it is no
 %\end{figure}
 
 \begin{figure}
-    \centering
+\centering
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/gg512Points.pdf}
-    \caption{Original positions}
+    \caption{Original positions}\label{gg512Points}
     \end{subfigure}%
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/gg512Path.pdf}
-    \caption{Original trajectory }
+    \caption{Original trajectory}\label{gg512Path}
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/gg512PointsX.pdf}
-    \caption{Original positions on $x$-axis  }
+    \caption{Original positions on $x$-axis}\label{gg512PointsX}
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/gg512PointsY.pdf}
-    \caption{Original positions on $y$-axis  }
+    \caption{Original positions on $y$-axis}\label{gg512PointsY}
     \end{subfigure}
-\caption{Original data points. (a) Original positions recorded by GPS units. Circle points means the boom is not working; cross points means it is working. (b) Original trajectory with line-based method: simply connect all the points sequentially with straight lines. (c) Original positions on $x$-axis. (d)  Original positions on $y$-axis.}\label{original512}
+\caption{Original data points. Figure \ref{gg512Points} is th original positions recorded by GPS units. Circle points means the boom is not working; cross points means it is working. Figure \ref{gg512Path} is an line-based trajectory: simply connect all the points sequentially with straight lines. Figure \ref{gg512PointsX} is the original $x$ position. Figure \ref{gg512PointsY} is the original $y$ positions.}\label{original512}
  \end{figure}
 
 
@@ -825,34 +825,34 @@ Table \ref{1dxymse} illustrates the MSE of all methods on both $x$ and $y$ axise
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\textwidth,height=0.5\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXPSpline.pdf}
-    \caption{Reconstruction by P-spline}
+    \caption{Reconstruction by P-spline}\label{ggRealdataXPSpline}
     \end{subfigure}%
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\textwidth,,height=0.5\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXSure.pdf}
-    \caption{Reconstruction by wavelet ($\textit{sure}$)}
+    \caption{Reconstruction by wavelet ($\textit{sure}$)}\label{ggRealdataXSure}
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\textwidth,height=0.5\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXBayes.pdf}
-    \caption{Reconstruction by wavelet ($\textit{Bayes}$)\\ \mbox{  }}
+    \caption{Reconstruction by wavelet ($\textit{Bayes}$)\\ \mbox{  }}\label{ggRealdataXBayes}
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\textwidth,height=0.5\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXTractorGamma.pdf}
-    \caption{Reconstruction by Tractor spline setting  $\gamma=0$ }
+    \caption{Reconstruction by Tractor spline setting  $\gamma=0$ }\label{ggRealdataXTractorGamma}
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\textwidth,height=0.5\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXTractorAPT.pdf}
-    \caption{Reconstruction by Tractor spline setting with conventional penalty term}
+    \caption{Reconstruction by Tractor spline setting with conventional penalty term}\label{ggRealdataXTractorAPT}
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\textwidth,height=0.5\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXTractor.pdf}
-    \caption{Reconstruction by proposed Tractor spline}
+    \caption{Reconstruction by proposed Tractor spline}\label{ggRealdataXTractor}
     \end{subfigure}
- \caption{Fitted data points on $x$ axis. (a) Fitted by P-spline, which gives over-fitting on these points and misses some information. (b) Fitted by wavelet ($\textit{sure}$) algorithm. At some turning points, it gives over-fitting. (c) Fitted by wavelet ($\textit{BayesThresh}$) algorithm. It fits better than ($\textit{sure}$) and the result is close to the proposed method. (d) Fitted by Tractor spline without velocity information. The reconstruction is good to get the original trajectory. (e) Fitted by Tractor spline without adjusted penalty term. It gives less fitting at boom-not-working points because of a large time gap. (f) Fitted by proposed method. It fits all data points in a good way.}\label{1dx}
+ \caption{Fitted data points on $x$ axis. Figure \ref{ggRealdataXPSpline} Fitted by P-spline, which gives over-fitting on these points and misses some information. Figure \ref{ggRealdataXSure} Fitted by wavelet ($\textit{sure}$) algorithm. At some turning points, it gives over-fitting. Figure \ref{ggRealdataXBayes} Fitted by wavelet ($\textit{BayesThresh}$) algorithm. It fits better than ($\textit{sure}$) and the result is close to the proposed method. Figure \ref{ggRealdataXTractorGamma} Fitted by Tractor spline without velocity information. The reconstruction is good to get the original trajectory. Figure \ref{ggRealdataXTractorAPT} Fitted by Tractor spline without adjusted penalty term. It gives less fitting at boom-not-working points because of a large time gap. Figure \ref{ggRealdataXTractor} Fitted by proposed method. It fits all data points in a good way.}\label{1dx}
  \end{figure}
 
 
@@ -869,34 +869,34 @@ Table \ref{1dxymse} illustrates the MSE of all methods on both $x$ and $y$ axise
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,height=0.5\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataYPSpline.pdf}
-    \caption{Not available for P-spline}
+    \caption{Not available for P-spline}\label{ggRealdataYPSpline}
     \end{subfigure}%
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,,height=0.5\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataYSure.pdf}
-    \caption{Reconstruction by wavelet ($\textit{sure}$)}
+    \caption{Reconstruction by wavelet ($\textit{sure}$)}\label{ggRealdataYSure}
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,height=0.5\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataYBayes.pdf}
-    \caption{Reconstruction by wavelet ($\textit{Bayes}$)\\ \mbox{  }}
+    \caption{Reconstruction by wavelet ($\textit{Bayes}$)\\ \mbox{  }}\label{ggRealdataYBayes}
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,height=0.5\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataYTractorGamma.pdf}
-    \caption{Reconstruction by Tractor spline setting  $\gamma=0$ }
+    \caption{Reconstruction by Tractor spline setting  $\gamma=0$ }\label{ggRealdataYTractorGamma}
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,height=0.5\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataYTractorAPT.pdf}
-    \caption{Reconstruction by Tractor spline setting with conventional penalty term}
+    \caption{Reconstruction by Tractor spline setting with conventional penalty term}\label{ggRealdataYTractorAPT}
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,height=0.5\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataYTractor.pdf}
-    \caption{Reconstruction by proposed Tractor spline}
+    \caption{Reconstruction by proposed Tractor spline}\label{ggRealdataYTractor}
     \end{subfigure}
-\caption{Fitted data points on $y$ axis. (a) Fitted P-spline is not applicable on $y$ axis as the matrix is not invertible. (b) Fitted by wavelet ($\textit{sure}$) algorithm. At some turning points, it gives over-fitting. (c) Fitted by wavelet ($\textit{BayesThresh}$) algorithm is much better than wavelet ($\textit{sure}$). (d) Fitted by Tractor spline without velocity information. The reconstruction is good to get the original trajectory. (e) Fitted by Tractor spline without adjusted penalty term. It gives less fitting at boom-not-working. (f) Fitted by proposed method. It fits all data points in a good way.}\label{1dy}
+\caption{Fitted data points on $y$ axis. Figure \ref{ggRealdataYPSpline} Fitted P-spline is not applicable on $y$ axis as the matrix is not invertible. Figure \ref{ggRealdataYSure} Fitted by wavelet ($\textit{sure}$) algorithm. At some turning points, it gives over-fitting. Figure \ref{ggRealdataYBayes} Fitted by wavelet ($\textit{BayesThresh}$) algorithm is much better than wavelet ($\textit{sure}$). Figure \ref{ggRealdataYTractorGamma} Fitted by Tractor spline without velocity information. The reconstruction is good to get the original trajectory. Figure \ref{ggRealdataYTractorAPT} Fitted by Tractor spline without adjusted penalty term. It gives less fitting at boom-not-working. Figure \ref{ggRealdataYTractor} Fitted by proposed method. It fits all data points in a good way.}\label{1dy}
  \end{figure}
 
 
@@ -925,7 +925,7 @@ b=1 & \mbox{if boom is working}\\
 b=0 & \mbox{if boom is not working}
 \end{cases}.
 \end{equation}
-To tell the differences more clearly, we take $\log(\lambda(t))$ in our demonstration. Figure \ref{penaltyxygg} indicates that at turning points and long time gap knots, the adjusted penalty term will lead $\lambda(t)$ to large values, which forces the spline to be a straight line between two knots. It can be seen in figure (c) and (d) clearly. Histogram plots of $\log(\lambda(t))$ show that most of the penalty values are small, which allows the Tractor spline goes as closer as it can to the observed points. Only a few of penalty values are large, so that Tractor spline gives a straight line at tricky points. 
+To tell the differences more clearly, we take $\log(\lambda(t))$ in our demonstration. Figure \ref{penaltyxygg} indicates that at turning points and long time gap knots, the adjusted penalty term will lead $\lambda(t)$ to large values, which forces the spline to be a straight line between two knots. It can be seen in figure \ref{penaltyxyggXYPath} clearly. Histogram plots of $\log(\lambda(t))$ show that most of the penalty values are small, which allows the Tractor spline goes as closer as it can to the observed points. Only a few of penalty values are large, so that Tractor spline gives a straight line at tricky points. 
 
 %\begin{figure}
 %  \centering
@@ -933,28 +933,27 @@ To tell the differences more clearly, we take $\log(\lambda(t))$ in our demonstr
 %  \caption{Penalty function of Tractor spline on $x$ and $y$ axises. The big black dots in plots (c) and (d) represent large penalty function.}\label{penaltyxygg}
 %\end{figure}
 
-
 \begin{figure}
     \centering
     \begin{subfigure}{\textwidth}
     \centering
     \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXPenaltyLine.pdf}
     \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataYPenaltyLine.pdf}
-    \caption{Distribution of penalty values on $x$ and $y$ axises. }
+    \caption{Distribution of penalty values on $x$ and $y$ axises}\label{penaltyxyggXYLine}
     \end{subfigure}
     \begin{subfigure}{\textwidth}
     \centering
     \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXPenaltyHist.pdf}
     \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataYPenaltyHist.pdf}
-    \caption{Histograms of penalty values on $x$ and $y$ axises.}
+    \caption{Histograms of penalty values on $x$ and $y$ axises.}\label{penaltyxyggXYHist}
     \end{subfigure}
     \begin{subfigure}{\textwidth}
     \centering
     \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXPenaltyPath.pdf}
     \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataYPenaltyPath.pdf}
-    \caption{Reconstruction with penalty values on $x$ and $y$ axises separately.}
+    \caption{Reconstruction with penalty values on $x$ and $y$ axises separately}\label{penaltyxyggXYPath}
     \end{subfigure}
- \caption{Penalty function of Tractor spline on $x$ and $y$ axises. The big black dots in plots (c) indicate large penalty values. It can be seen that most of large penalty values occur at turnings, where the tractor likely slows down and takes breaks. }\label{penaltyxygg}
+ \caption{Penalty function of Tractor spline on $x$ and $y$ axises. The big black dots in figure \ref{penaltyxyggXYPath} indicate large penalty values. It can be seen that most of large penalty values occur at turnings, where the tractor likely slows down and takes breaks. }\label{penaltyxygg}
  \end{figure}
 
 

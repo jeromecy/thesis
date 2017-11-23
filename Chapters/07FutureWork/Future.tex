@@ -13,25 +13,29 @@ In machine learning application, it is better to build a non-parametric regressi
 The motivation of gradient boosting algorithms is combining weak learners together as a strong leaner, which keeps minimizing the target loss function. 
 It has high customizable application to meet particular needs, like being learned with respect to different loss functions. For example, for a continuous response $y\in \mathit{R}$, the loss function can be chosen a Gaussian $L_2$ loss function. Hence the squared error $L_2$ loss function is 
 \begin{equation*}
-L_2(y,f(x)) = \frac{1}{2}\left(y-f(x)\right)^2,
+L_2(y,f(t)) = \frac{1}{2}\left(y-f(t)\right)^2,
 \end{equation*}
 and the best trained $f^*$ is 
 \begin{equation*}
-f^* = \arg_{f(x)}\min E_{x,y}L_2(y,f(x)).
+f^* = \arg_{f}\min E_{t,y}L_2(y,f(t))).
 \end{equation*}
-To find $f^*$, it is reducing the loss $\tilde{y}_i=y_i-F_{m-1}(x_i)$ recursively. Consequently, the 
+To find $f^*$, it is reducing the loss $\tilde{y}_i=y_i-F_{m-1}(t_i)$ recursively. Consequently, the 
 \begin{equation*}
-f_m(x) = f_{m-1}(x)+ \rho_mh(x,\alpha_m),
+f_m(t) = f_{m-1}(t)+ \rho_mh(t,\alpha_m),
 \end{equation*}
-is the sum of some basic learners $h_m(x,\alpha)$. $m=1,\ldots,M$ determines the complexity of the solution. 
+is the sum of some basic learners $h_m(t,\alpha)$. $m=1,\ldots,M$ determines the complexity of the solution. 
 
 
-On-line boosting algorithms are given by \cite{babenko2009family} and \cite{beygelzimer2015online}. It is assumed that the loss over the entire training data can be expressed as a sum of the loss for each point $t$, that is $L(f(x,y))=\sum_i L(f(x_i,y_i))$. Instead of computing the gradient of entire
-loss, the gradient is computed with respect to just one data point. 
+On-line boosting algorithms are given by \cite{babenko2009family} and \cite{beygelzimer2015online}. It is assumed that the loss over the entire training data can be expressed as a sum of the loss for each point $t_i$, that is $L(f(t,y))=\sum_i L(f(t_i,y_i))$. Instead of computing the gradient of entire
+loss, the gradient is computed with respect to just one data point. Furthermore, by adding additional regularization term will help to smooth the final learned weights to avoid over-fitting in a penalized regression problem \cite{chen2016xgboost}. 
 
-Further, by adding additional regularization term will help to smooth the final learned weights to avoid over-fitting in a penalized regression problem \cite{chen2016xgboost}. 
+Accordingly, the Tractor spline $f^*(t)$ is a sum of several weak learners $f_m(t)$, each of which has $2N$ parameters $\theta_m=\{\theta_m^{(1)},\ldots,\theta_m^{(2N)}\}$. The optimal $\theta^*$ is found by 
+\begin{equation*}
+\theta^*=\sum_{m=0}^{M}\theta_m,
+\end{equation*}
+where $\theta_m$ is computed via $\theta_m=-\rho_m\frac{\partial L(\theta)}{\partial \theta}$. 
 
-Inspired by the above ideas, the basis functions of Tractor spline can be treated as basic learners and $f_m(t)=f_{m-1}(t)+\rho_m N_{2m-1}(t,\theta)+\eta_mN_{2m}(t,\theta)$ is obtained along new observations $\{y_t,v_t\}$ coming into data stream with respect to minimizing the loss function $L(f(t,x,u,y,v))$. 
+As a result, after $M$ iterations, $\theta^*$ is convergence and $f^*(t,y,\theta^*)$ is obtained. 
 
 
 
@@ -53,9 +57,9 @@ In \cite{opsomer2001nonparametric} and \cite{wang1998smoothing}, the authors pre
 
 \subsection*{Informative Proposals}
 
-In Chapter \ref{ChapterMCMC}, the proposed adaptive MCMC algorithm draws samples of $\theta=\{\gamma,\xi^2,\lambda^2,\sigma^2,\tau^2\}$ from $N(m,C)$, where the information of $m$ and $C$ are learned from a self-tuning learning phase. For each $\theta^{(i)}$, it generates a paired $\{\mu_t^{(i)},\Sigma_t^{(i)}\}$ for mixture Gaussian $x_t$. 
+In Chapter \ref{ChapterMCMC}, the proposed adaptive MCMC algorithm draws samples of $\theta=\{\gamma,\xi^2,\lambda^2,\sigma^2,\tau^2\}$ from $N(m,C)$, where the information of $m$ and $C$ are learned from a self-tuning learning phase. For each $\theta^{(i)}$, it generates a paired mean and variance $\{\mu_t^{(i)},\Sigma_t^{(i)}\}$ for mixture Gaussian $x_t$. 
 
-In the sampling step of real data application, the mechanic boom status is not incorporated, which may provide useful information. Like the penalty parameter $\lambda$ being classified by $\lambda_d$ and $\lambda_u$ according to boom status, the MCMC sampler may use this information to propose $\theta$ with different strategy, such as different step sizes, different $m$s and $C$s. In this way, the parameter $\theta$ is classified by $\theta_u$ and $\theta_d$. 
+In the sampling step of real data application, the mechanic boom status is not incorporated, which may provide useful information. Like the penalty parameter $\lambda$ being classified by $\lambda_d$ and $\lambda_u$ according to boom status, the MCMC sampler may use this information to propose $\theta$ with different strategies, such as different step sizes, different $m$s and $C$s. In this way, the parameter $\theta$ is classified by $\theta_u$ and $\theta_d$. 
 
 (not finished yet)
 
@@ -69,7 +73,7 @@ In the sampling step of real data application, the mechanic boom status is not i
 
 In several references, Grid-based methods have been proved that it provides an optimal recursion of the filtered density $p(x_t\mid y_{1:t})$ if the state space is discrete and consists of a finite number of states \cite{ristic2004beyond}, \cite{stroud2016bayesian}, \cite{arulampalam2002tutorial} and \cite{hartmann2016grid}. 
 
-In the application of real time series dataset, the model is assumed as an OU-process containing five unknown parameters. With the idea of grid-based algorithm, the 5-dimension parameter space $\mathit{R}^5$ can be initialized by spanning $\theta_0^{(i)}$ with equal weights $w_0=\{\frac{1}{N},\frac{1}{N},\frac{1}{N},\frac{1}{N},\frac{1}{N}\}$ at time $t=0$, where $i=1,\ldots,N$. When a new observation $Y_t=\{y_t,v_t\}$ comes into the system, the weights for each parameter in each subspace are updated via $w_t\propto p(Y_t\mid \theta,Y_{1:t-1})w_{t-1}$. 
+In the application of real time series dataset, the model is assumed as an OU-process containing five unknown parameters. With the idea of grid-based algorithm, the 5-dimension parameter space $\mathbb{R}^5$ can be initialized by spanning $\theta_0^{(i)}$ with equal weights $w_0=\{\frac{1}{N},\frac{1}{N},\frac{1}{N},\frac{1}{N},\frac{1}{N}\}$ at time $t=0$, where $i=1,\ldots,N$. When a new observation $Y_t=\{y_t,v_t\}$ comes into the system, the weights for each parameter in each subspace are updated via $w_t\propto p(Y_t\mid \theta,Y_{1:t-1})w_{t-1}$. 
 
 However, the grid-based MCMC may not practical for a higher $n$-dimensional space, which requires $\BigO{N^n}$ computation cost per MCMC step. 
 

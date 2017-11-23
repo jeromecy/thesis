@@ -233,25 +233,25 @@ If the proposed value is accepted it becomes the next current value $x^{(t+1)}= 
 
 \subsection{Self-tuning Metropolis-Hastings Algorithm}
 
-In this section, I am proposing a Self-tuning MH algorithm with one-variable-at-a-time Random Walk, which can tune step sizes on its own to gain the target acceptance rates, to estimate the structure of parameters in a $d$-dimensional space. Supposing all the parameters are independent, the idea of this algorithm is that in each iteration, only one parameter is proposed and the others are kept unchanged. After sampling, take $n$ samples out of the total amount of $N$ as new sequences. In figure (\ref{randomwalk}), examples of different proposing methods are compared. 
+In this section, I am proposing a Self-tuning MH algorithm with one-variable-at-a-time Random Walk, which can tune step sizes on its own to gain the target acceptance rates, to estimate the structure of parameters in a $d$-dimensional space. Supposing all the parameters are independent, the idea of this algorithm is that in each iteration, only one parameter is proposed and the others are kept unchanged. After sampling, take $n$ samples out of the total amount of $N$ as new sequences. In figure \ref{randomwalk}, examples of different proposing methods are compared. 
 \begin{figure}[h]
 \centering
  \begin{subfigure}[b]{0.32\textwidth}
      %\includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/oneRW.pdf}
      \includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/ggoneRW.pdf}
-     \caption{\footnotesize One-variable-at-a-time Random Walk.}
+     \caption{\footnotesize One-variable-at-a-time Random Walk.}\label{MCMConevariableRW}
 \end{subfigure}
 \begin{subfigure}[b]{0.32\textwidth}
     %\includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/indRW.pdf}
      \includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/ggindRW.pdf}
-    \caption{\footnotesize Independent Multi-variable-at-a-time Random Walk.}
+    \caption{\footnotesize Independent Multi-variable-at-a-time Random Walk.}\label{MCMCMultivariableRW}
 \end{subfigure}
 \begin{subfigure}[b]{0.32\textwidth}
     %\includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/corRW.pdf}
      \includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/ggcorRW.pdf}   
-    \caption{\footnotesize Correlated Multi-variable-at-a-time Random Walk.}
+    \caption{\footnotesize Correlated Multi-variable-at-a-time Random Walk.}\label{MCMCCorrelatedRW}
 \end{subfigure}
-\caption{Examples of 2-Dimension Random Walk Metropolis-Hastings algorithm. Figure (a) is using one-variable-at-a-time proposal Random Walk. At each time, only one variable is changed and the other one stay constant. Figure (b) and (c) are using multi-variable-at-a-time Random Walk. The difference is in figure (b), every forward step are proposed independently, but in (c) are proposed according to the covariance matrix. }
+\caption{Examples of 2-Dimension Random Walk Metropolis-Hastings algorithm. Figure \ref{MCMConevariableRW} is using one-variable-at-a-time proposal Random Walk. At each time, only one variable is changed and the other one stay constant. Figure \ref{MCMCMultivariableRW} and \ref{MCMCCorrelatedRW} are using multi-variable-at-a-time Random Walk. The difference is in figure \ref{MCMCMultivariableRW}, every forward step are proposed independently, but in \ref{MCMCCorrelatedRW} are proposed according to the covariance matrix. }
 \label{randomwalk}
 \end{figure}
 To gain the target acceptance rates $\alpha_i (i = 1, \dots, d)$, the step sizes $s_i$ for each parameter can be tuned automatically. The concept of the algorithm is if the proposal is accepted, then we have more confidence on the direction and step size that were made. In this scenario, the next movement should be further, that means the step size $s_{t+1}$ in the next step is bigger than $s_t$; otherwise, a conservative proposal is made with a shorter distance, which is $s_{t+1}\leq s_t$. 
@@ -372,19 +372,19 @@ In equation (\ref{stepsizeep}), the jump size $\epsilon$ determines the efficien
  \begin{subfigure}[b]{0.32\textwidth}
      \includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/gglargechain.pdf}
      \includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/gglargeacf.pdf}
-     \caption{With a large step size.}
+     \caption{With a large step size}\label{MCMClargestep}
 \end{subfigure}
 \begin{subfigure}[b]{0.32\textwidth}
     \includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/ggsmallchain.pdf}
     \includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/ggsmallacf.pdf}
-    \caption{With a small step size. }
+    \caption{With a small step size}\label{MCMCsmallstep}
 \end{subfigure}
 \begin{subfigure}[b]{0.32\textwidth}
     \includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/ggbestchain.pdf}
     \includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/ggbestacf.pdf}
-    \caption{With a proper step size.}
+    \caption{With a proper step size}\label{MCMCproperstep}
 \end{subfigure}
-\caption{Metropolis algorithm sampling for a single parameter with (a) a large step size, (b) a small step size, (c) an appropriate step size. The upper plots show the sample chain and lower plots indicate the autocorrelation for each case.}
+\caption{Metropolis algorithm sampling for a single parameter with: \ref{MCMClargestep} a large step size, \ref{MCMCsmallstep} a small step size, \ref{MCMCproperstep} an appropriate step size. The upper plots show the sample chain and lower plots indicate the autocorrelation for each case.}
 \label{largesmallstepsize}
 \end{figure}
 
@@ -481,7 +481,7 @@ where $B$ is a $t\times t$ diagonal matrix with elements $\frac{1}{\sigma^2}$. T
 
 \subsubsection*{Parameters Estimation}
 
-In formula (\ref{M1}), the parameter posterior is estimated with observation data $y_{1:t}$. By using the algorithm (\ref{algoonevarible}), although it may take a longer time, we will achieve a precise estimation. Similarly with section (\ref{sectionlogParameter}), from the objective function, the posterior distribution of $\theta$ is 
+In formula (\ref{M1}), the parameter posterior is estimated with observation data $y_{1:t}$. By using the algorithm \ref{algoonevarible}, although it may take a longer time, we will achieve a precise estimation. Similarly with section \ref{sectionlogParameter}, from the objective function, the posterior distribution of $\theta$ is 
 \begin{equation*}
 p(\theta \mid Y) \propto p(Y\mid\theta)p(\theta) \propto e^{-\frac{1}{2} Y \Sigma_{YY}^{-1} Y } \sqrt{\det \Sigma_{YY}^{-1}} p(\theta).
 \end{equation*}
@@ -492,7 +492,7 @@ Then by taking natural logarithm on the posterior of $\theta$ and using the usef
 
 In a simple linear case, we are choosing the parameter $\theta = \{\phi=0.9,\tau^2=0.5,\sigma^2=1\}$ as the author did in \cite{lopes2011particle} and using $n=500$ dataset, setting initial $L=0$. Instead of inferring $\tau$ and $\sigma$, we are estimating $\nu_1 = \ln \tau^2$ and $\nu_2 = \ln \sigma^2$ in the RW-MH to avoid singular proposals. After the process, the parameters can be transformed back to original scale. Therefore, the new parameter  $\theta^* =  \{\phi,\nu_1,\nu_2\} = \{\phi,\ln\tau^2,\ln\sigma^2\}$. 
 
-Buy using algorithm (\ref{algoonevarible}) and aiming the optimal acceptance rate at 0.44, after 10\,000 iterations we get the acceptance rates for each parameters are $\alpha_\phi = 0.4409, \alpha_{\nu_1}= 0.4289$ and $\alpha_{\nu_2}= 0.4505$, and the estimations are $\phi =0.8794, \nu_1= -0.6471$ and $\nu_2= -0.0639$ respectively. Thus, we have the cheap surrogate $\hat{\pi}(\cdot)$. Keep going to the DA-MH with another 10\,000 iterations, the algorithm returns the best estimation with $\alpha_1=0.1896$ and $\alpha_2 = 0.8782$. In figure (\ref{linearmarginplots}), the trace plots illustrates that the Markov Chain of $\hat{\theta}$ is stably fluctuating around the true $\theta$. 
+Buy using algorithm (\ref{algoonevarible}) and aiming the optimal acceptance rate at 0.44, after 10\,000 iterations we get the acceptance rates for each parameters are $\alpha_\phi = 0.4409, \alpha_{\nu_1}= 0.4289$ and $\alpha_{\nu_2}= 0.4505$, and the estimations are $\phi =0.8794, \nu_1= -0.6471$ and $\nu_2= -0.0639$ respectively. Thus, we have the cheap surrogate $\hat{\pi}(\cdot)$. Keep going to the DA-MH with another 10\,000 iterations, the algorithm returns the best estimation with $\alpha_1=0.1896$ and $\alpha_2 = 0.8782$. In figure \ref{linearmarginplots}, the trace plots illustrates that the Markov Chain of $\hat{\theta}$ is stably fluctuating around the true $\theta$. 
 
 \begin{figure}[h]
 \centering
@@ -565,7 +565,7 @@ where $K_1=\frac{\sigma^4}{\sigma^2+\tau^2+L^2\phi^2}$. For calculation details,
 
 \subsubsection*{The Estimation Distribution}
 
-As introduced in section (\ref{generalEstDistr}), from the joint distribution of $x_{1:t}$ and $y_{1:t}$, one can find the best estimation with a given $\theta$ by
+As introduced in section \ref{generalEstDistr}, from the joint distribution of $x_{1:t}$ and $y_{1:t}$, one can find the best estimation with a given $\theta$ by
 \begin{align*}
 \hat{x}_{1:t} \mid y_{1:t},\theta \sim N(L^{-\top}W,L^{-\top}L^{-1}),
 \end{align*}
@@ -601,14 +601,14 @@ By substituting them into the equation (\ref{linearmu}) and (\ref{linearsigma}),
 \centering
 \begin{subfigure}[b]{0.45\textwidth}
     \includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/linearsimuXall.pdf}
-     \caption{Estimation the whole $x_{1:t}$}
+     \caption{Estimation the whole $x_{1:t}$}\label{MCMClinearsimuXall}
 \end{subfigure}
 \begin{subfigure}[b]{0.45\textwidth}
     %\includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/gglinearestXt.pdf}
 	\includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/gglinearestXt2.pdf}
-     \caption{Estimation of a single $x_t$}
+     \caption{Estimation of a single $x_t$}\label{MCMClinearsimuXt2}
 \end{subfigure}
-\caption{Linear simulation of $x_{1:t}$ and single $x_t$.In sub-figure (a), the dots is the true $x_{1:t}$ and the solid line is the estimation $\hat{x}_{1:t}$. In sub-figure (b), the estimation $\hat{x}_t$ is very close to the true $x$. In fact, the true $x$ falls in the interval $[\hat{x}-\varepsilon,\hat{x}+\varepsilon]$.}
+\caption{Linear simulation of $x_{1:t}$ and single $x_t$.In figure \ref{MCMClinearsimuXall}, the dots is the true $x_{1:t}$ and the solid line is the estimation $\hat{x}_{1:t}$. In figure \ref{MCMClinearsimuXt2}, the estimation $\hat{x}_t$ is very close to the true $x$. In fact, the true $x$ falls in the interval $\lbrack \hat{x}-\varepsilon,\hat{x}+\varepsilon\rbrack$.}
 \label{linearmarginXt}
 \end{figure}
 
@@ -698,7 +698,7 @@ where $B_t$ is a $t\times t$ diagonal matrix with elements $\frac{1}{\sigma^2}$.
 
 \subsubsection*{Parameters Estimation}
 
-To use the algorithm (\ref{algoonevarible}), similarly with section (\ref{sectionlogParameter}), we firstly need to find the posterior distribution of $\theta$ with observations $y_{1:t}$, which in fact is 
+To use the algorithm \ref{algoonevarible}, similarly with section \ref{sectionlogParameter}, we firstly need to find the posterior distribution of $\theta$ with observations $y_{1:t}$, which in fact is 
 \begin{equation*}
 p(\theta \mid Y) \propto p(Y\mid\theta)p(\theta) \propto e^{-\frac{1}{2} Y \Sigma_{YY}^{-1} Y } \sqrt{\det \Sigma_{YY}^{-1}} p(\theta).
 \end{equation*}
@@ -708,7 +708,7 @@ By taking natural logarithm on the posterior of $\theta$ and using the useful so
 \end{equation}
 Because of all parameters are positive, we are estimating $\nu_1=\ln\lambda$, $\nu_2=\ln\gamma^2$ and $\nu_3=\ln\sigma^2$ instead. When the estimation process is done, we can transform them back to the original scale by taking exponential. 
 
-After running the whole process, it gives us the best estimation $\hat{\theta} = \{\gamma=0.4841, \lambda^2=0.1032, \sigma^2=0.9276\}$. In figure (\ref{simuOUmarginplots}), we can see that the $\theta$ chains are skew to the true value with tails.
+After running the whole process, it gives us the best estimation $\hat{\theta} = \{\gamma=0.4841, \lambda^2=0.1032, \sigma^2=0.9276\}$. In figure \ref{simuOUmarginplots}, we can see that the $\theta$ chains are skew to the true value with tails.
 \begin{figure}[h]
 \centering
  \begin{subfigure}[b]{0.3\textwidth}
@@ -745,7 +745,7 @@ With the above formula, the recursive way of updating the mean and covariance ar
 \end{align}
 where $K_1=\frac{\sigma^4}{\sigma^2+\tau_1^2+L^2\phi_1^2}$. 
 
-Additionally, as introduced in section (\ref{generalEstDistr}), the best estimation of $x_{1:t}$ with a given $\theta$ is 
+Additionally, as introduced in section \ref{generalEstDistr}, the best estimation of $x_{1:t}$ with a given $\theta$ is 
 \begin{align*}
 \hat{x}_{1:t} \mid y_{1:t},\theta \sim N(L^{-\top}W,L^{-\top}L^{-1}),
 \end{align*}
@@ -764,16 +764,16 @@ By substituting them into the equation (\ref{linearmu}) and (\ref{linearsigma}),
 
 \begin{figure}[h]
 \centering
-\begin{subfigure}[b]{0.45\textwidth}
+\begin{subfigure}[h]{0.45\textwidth}
     \includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/simudataOUallX.pdf}
-     \caption{Batch method of estimation $x_{1:t}$.}
+     \caption{Batch method of estimation $x_{1:t}$}\label{MCMCOUallX}
 \end{subfigure}
-\begin{subfigure}[b]{0.45\textwidth}
+\begin{subfigure}[h]{0.45\textwidth}
 %    \includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/simudataOUXt.pdf}
     \includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/simudataOUXt2.pdf}
-     \caption{Sequential method of estimation $x_t$.}
+     \caption{Sequential method of estimation $x_t$}\label{MCMCOUallXt2}
 \end{subfigure}
-\caption{Irregular time step OU process simulation of $x_{1:t}$ and sole $x_t$. In sub-figure (a), the dots is the true $x_{1:t}$ and the solid line is the estimation $\hat{x}_{1:t}$. In sub-figure (b), the chain in solid line is the estimation $\hat{x}_t$; dotted line is the true value of $x$; dot-dash line on top is the observed value of $y$; dashed lines are the estimated error. }
+\caption{Irregular time step OU process simulation of $x_{1:t}$ and sole $x_t$. In figure \ref{MCMCOUallX}, the dots is the true $x_{1:t}$ and the solid line is the estimation $\hat{x}_{1:t}$. In figure \ref{MCMCOUallXt2}, the chain in solid line is the estimation $\hat{x}_t$; dotted line is the true value of $x$; dot-dash line on top is the observed value of $y$; dashed lines are the estimated error. }
 \label{simuOUxt}
 \end{figure}
 
@@ -901,7 +901,7 @@ In fact, the matrix $A_t$ is a $2t \times 2t$ bandwidth six sparse matrix at tim
 \Sigma_{YX}  &\Sigma_{YY} 
 \end{bmatrix}.
 \end{align*}
-The detail structure of the covariance matrix $\Sigma_{XX} $ is in section (\ref{covMatrixdetails}). 
+A detailed structure of the covariance matrix $\Sigma_{XX} $ is presented in section \ref{covMatrixdetails}. 
 
 \subsection{Approximations of The Parameters Posterior}
 
@@ -1004,7 +1004,7 @@ K_{t}^{-1} &= B_1D_{t}^{-\top}D_{t}^{-1}B_1 + B_1\Phi_{t} (B_1^{-1} - K_{t-1}) \
 \end{align*}
 and $K_1 =B_1^{-1} - A_1^{-1} = \begin{bmatrix}
 \frac{\sigma^4}{\sigma^2 +L_x^2} & 0 \\ 0 &\frac{\tau^4}{\tau^2 +L_u^2}
-\end{bmatrix} $. For calculation details, readers can refer to section (\ref{OUcalculation}). 
+\end{bmatrix} $. For calculation details, readers can refer to section \ref{OUcalculation}. 
 
 \subsection{The Estimation Distribution}
 
@@ -1095,9 +1095,9 @@ where $IG(\alpha,\beta)$ represents the \textit{Inverse Gamma} distribution with
 
 \subsection{Efficiency of DA-MH}
 
-We have discussed the efficiency of Delayed-Acceptance Metropolis-Hastings algorithm and how it is affected by the step size. To explain explicitly, here we give an example comparing Eff, EffUT, ESS and ESSUT, which are calculated by using the same dataset and running 10\,000 iterations of DA-MH. We are taking an 0.3-equal-spaced sequence $s=\{0.1,\dots,4\}$ from 0.1 to 4 and choosing each of them to calculate the criterion values. Table (\ref{effeutessessutexampletable}) and figure (\ref{effeutessessutexamplefigure}) show the results of this comparison. 
+We have discussed the efficiency of Delayed-Acceptance Metropolis-Hastings algorithm and how it is affected by the step size. To explain explicitly, here we give an example comparing Eff, EffUT, ESS and ESSUT, which are calculated by using the same dataset and running 10\,000 iterations of DA-MH. We are taking an 0.3-equal-spaced sequence $s=\{0.1,\dots,4\}$ from 0.1 to 4 and choosing each of them to calculate the criterion values. Table \ref{effeutessessutexampletable} and figure \ref{effeutessessutexamplefigure} show the results of this comparison. 
 
-The best step size found by Eff is 1, which is as the same as it found by ESS. By using $s=1$ and running 1\,000 iterations, the DA-MH takes 36.35 seconds to get the Markov chain for $\theta$ and the acceptance rates $\alpha_1$ for approximate $\hat{\pi}(\cdot)$ and $\alpha_2$ for posterior distribution $\pi(\cdot)$ are 0.3097 and 0.8324 respectively. By using EffUT and ESSUT, the best step size is 2.5, which is bigger. The advantages of using this kind of step size is the computation time decreased to 5.10 seconds significantly. Because of the approximation $\hat{\pi}(\cdot)$ took bad proposals out and only approve good ones going to the next level, that can be seen from the lower rates $\alpha_1$ in table (\ref{effeutessessutexampletable}). 
+The best step size found by Eff is 1, which is as the same as it found by ESS. By using $s=1$ and running 1\,000 iterations, the DA-MH takes 36.35 seconds to get the Markov chain for $\theta$ and the acceptance rates $\alpha_1$ for approximate $\hat{\pi}(\cdot)$ and $\alpha_2$ for posterior distribution $\pi(\cdot)$ are 0.3097 and 0.8324 respectively. By using EffUT and ESSUT, the best step size is 2.5, which is bigger. The advantages of using this kind of step size is the computation time decreased to 5.10 seconds significantly. Because of the approximation $\hat{\pi}(\cdot)$ took bad proposals out and only approve good ones going to the next level, that can be seen from the lower rates $\alpha_1$ in table \ref{effeutessessutexampletable}. 
 
 %\begin{table}[h]
 %\centering
@@ -1161,7 +1161,7 @@ ESSUT & 29.8912   & 5.10   & 2.5   & 0.0360   & 0.7861    \\ \hline
 
 
 
-On the surface, a bigger step size causes lower acceptance rates $\alpha_1$ and it might not be a smart choice. However, on the other hand, one should notice the less time cost. To make it sensible, we are running the Delayed-Acceptance MH with different step sizes, as presented in table (\ref{effeutessessutexampletable}),  for the same (or similar) amount of time. Because of the bigger step size takes less time than smaller one, so we achieve a longer chain. To be more clear, we take 1\,000 samples out from a longer chain, such as 8\,500, and calculate Eff, EffUT, ESS and ESSUT separately using the embedded function \textsf{IAT}, \cite{christen2010general}, and \textsf{ESS} of the package \textsf{LaplacesDemon} in \textit{R} and the above formulas . As we can see from the outcomes, by running the similar amount of time, the Markov chain using a bigger step size has a higher efficiency and effective sample size in unit time. More intuitively, the advantage of using larger step size is the sampling algorithm generates more representative samples per second. Figure (\ref{1koutof8kfigures}) is comparing different $\theta$ chains found by using different step size but running the same amount of time. As we can see that $\theta$ with the optimal step size has a lower correlated relationship. 
+On the surface, a bigger step size causes lower acceptance rates $\alpha_1$ and it might not be a smart choice. However, on the other hand, one should notice the less time cost. To make it sensible, we are running the Delayed-Acceptance MH with different step sizes, as presented in table \ref{effeutessessutexampletable},  for the same (or similar) amount of time. Because of the bigger step size takes less time than smaller one, so we achieve a longer chain. To be more clear, we take 1\,000 samples out from a longer chain, such as 8\,500, and calculate Eff, EffUT, ESS and ESSUT separately using the embedded function \textsf{IAT}, \cite{christen2010general}, and \textsf{ESS} of the package \textsf{LaplacesDemon} in \textit{R} and the above formulas . As we can see from the outcomes, by running the similar amount of time, the Markov chain using a bigger step size has a higher efficiency and effective sample size in unit time. More intuitively, the advantage of using larger step size is the sampling algorithm generates more representative samples per second. Figure (\ref{1koutof8kfigures}) is comparing different $\theta$ chains found by using different step size but running the same amount of time. As we can see that $\theta$ with the optimal step size has a lower correlated relationship. 
 \begin{table}[h]
 \centering
 \begin{tabular}{|c|c|c|c|c|c|c|}
@@ -1235,7 +1235,7 @@ p(X_{t}\mid Y_{t-L+1:t},\theta),
 \end{equation}
 where $t>L$. We name this method \textit{Sliding Window Sequential Parameter Learning Filter}. 
 
-The next question is how to choose an appropriate $L$. The length of data used in MH and DA-MH algorithms has influence on the efficiency and accuracy of parameter learning and state estimation. Being tested on real data set, there is no doubt that the more data be in use, the more accurate the estimation is, and lower efficient is in computation. In table (\ref{lengthofdatacompare}), one can see the pattern of parameters $\gamma,\xi,\tau$ follow the same trend with the choice of $L$ and $\sigma$ increases when $L$ decreases. Since estimation bias is inevitable, we are indeed to keep the bias as small as possible, and in the meantime, the higher efficiency and larger effective sample size are bonus items. In figure (\ref{compareLengthData}), we can see that the efficiency and effective sample size are not varying along the sample size used in sampling algorithm, but in unit time, they are decreasing rapidly as data size increasing. 
+The next question is how to choose an appropriate $L$. The length of data used in MH and DA-MH algorithms has influence on the efficiency and accuracy of parameter learning and state estimation. Being tested on real data set, there is no doubt that the more data be in use, the more accurate the estimation is, and lower efficient is in computation. In table \ref{lengthofdatacompare}, one can see the pattern of parameters $\gamma,\xi,\tau$ follow the same trend with the choice of $L$ and $\sigma$ increases when $L$ decreases. Since estimation bias is inevitable, we are indeed to keep the bias as small as possible, and in the meantime, the higher efficiency and larger effective sample size are bonus items. In figure \ref{compareLengthData}, we can see that the efficiency and effective sample size are not varying along the sample size used in sampling algorithm, but in unit time, they are decreasing rapidly as data size increasing. 
 \begin{figure}[h]
 \centering
 \begin{subfigure}[t]{0.45\textwidth}
@@ -1258,9 +1258,9 @@ The next question is how to choose an appropriate $L$. The length of data used i
 \end{figure}
 In addition, from a practical point of view, the observation error $\sigma$ should be kept at a reasonable level, let's say $50cm$, and the computation time should be as less as possible. To reach that level, $L=100$ is an appropriate choice. For an one-dimensional linear model, $L$ can be chose larger and that doesn't change too much. If the data up to time $t$ is less than or equal to the chosen $L$, the whole data set is used in learning $\theta$ and estimating $X_t$. 
 
-For the true posterior, the algorithm requires a cheap estimation $\hat{\pi}(\cdot)$, which is found by one-variable-at-a-time Metropolis-Hastings algorithm. The advantage is getting a precise estimation of the parameter structure, and disadvantage is, obviously, lower efficiency. Luckily, we find that it is not necessary to run this MH every time when estimate a new state from $x_{t-1}$ to $x_t$. In fact, in DA-MH process, the cheap $\hat{\pi}$ doesn't vary too much in the filtering process with new data coming into the dataset. We may use this property in the algorithm. At first, we use all available data from $1$ to $t$ with length up to $L$ to learn the structure of $\theta$ and find out the cheap approximation $\hat{\pi}$. Then, use DA-MH to estimate the true posterior $\pi$ for $\theta$ and $x_t$. After that, extend dataset to $1:t+1$ if $t\leq L$ or shift the data window to $2:t+1$ if $t>L$ and run DA-MH again to estimate $\theta$ and $x_{t+1}$. From figures (\ref{batchwindowkeyfeature}) and (\ref{batchwindowparameter}), we can see that the main features and parameters in the estimating process between using batch and sliding window methods have not significant differences. 
+For the true posterior, the algorithm requires a cheap estimation $\hat{\pi}(\cdot)$, which is found by one-variable-at-a-time Metropolis-Hastings algorithm. The advantage is getting a precise estimation of the parameter structure, and disadvantage is, obviously, lower efficiency. Luckily, we find that it is not necessary to run this MH every time when estimate a new state from $x_{t-1}$ to $x_t$. In fact, in DA-MH process, the cheap $\hat{\pi}$ doesn't vary too much in the filtering process with new data coming into the dataset. We may use this property in the algorithm. At first, we use all available data from $1$ to $t$ with length up to $L$ to learn the structure of $\theta$ and find out the cheap approximation $\hat{\pi}$. Then, use DA-MH to estimate the true posterior $\pi$ for $\theta$ and $x_t$. After that, extend dataset to $1:t+1$ if $t\leq L$ or shift the data window to $2:t+1$ if $t>L$ and run DA-MH again to estimate $\theta$ and $x_{t+1}$. From figures \ref{batchwindowkeyfeature} and \ref{batchwindowparameter}, we can see that the main features and parameters in the estimating process between using batch and sliding window methods have not significant differences. 
  
-To avoid estimation bias in the algorithm, we are introducing \textit{threshold} and \textit{cut off} processes. \textit{threshold} means when a bias occurs in the algorithm, the cheap $\hat{\pi}$ may not be appropriate and a new one is needed. Thus, we have to update $\hat{\pi}$ with a latest data we have. A \textit{cut off} process stops the algorithm when a large $\Delta_t$ happens. A large time gap indicates the vehicle stops at some time point and it causes irregularity and bias. A smart way is stopping the process and waiting for new data coming in. By running testings on real data, the \textit{threshold} is chosen $\alpha_2<0.7$ and \textit{cut off} is $\Delta_t\geq 300$ seconds. These two values are on researchers' choice. From figures (\ref{comparenotanupDAL}) and ( \ref{comparenotanupfeatures}), we can see that by using the \textit{threshold}, we are efficiently avoiding bias and getting more effective samples. 
+To avoid estimation bias in the algorithm, we are introducing \textit{threshold} and \textit{cut off} processes. \textit{threshold} means when a bias occurs in the algorithm, the cheap $\hat{\pi}$ may not be appropriate and a new one is needed. Thus, we have to update $\hat{\pi}$ with a latest data we have. A \textit{cut off} process stops the algorithm when a large $\Delta_t$ happens. A large time gap indicates the vehicle stops at some time point and it causes irregularity and bias. A smart way is stopping the process and waiting for new data coming in. By running testings on real data, the \textit{threshold} is chosen $\alpha_2<0.7$ and \textit{cut off} is $\Delta_t\geq 300$ seconds. These two values are on researchers' choice. From figures \ref{comparenotanupDAL} and  \ref{comparenotanupfeatures}, we can see that by using the \textit{threshold}, we are efficiently avoiding bias and getting more effective samples. 
 
 
 %Bias occurs in estimating log-posterior distribution of $\theta$ without updating-mean. 
@@ -1332,7 +1332,7 @@ Shift the window by setting $t = t+1$ and go back to step \ref{algorithmestimait
 
 \subsection{Implementation}
 
-To implement the algorithm \ref{algorithmslidingwindow}, firstly we should get an idea of how the hyper parameter space looks like by running step \ref{algorithmlearningsurface} of the algorithm with some observed data. By setting $L=100$ and running 5\,000 iterations, we can find the whole $\theta$ samples in 59 seconds. For each parameter of $\theta$, we take 1\,000 sub-samples out of 5\,000 as new sequences. The new $\theta^*$ is representative for the hyper parameter space. Then the traces and correlation is derived from $\theta^*$. Meanwhile, the acceptance rates for each parameter are $\alpha_\gamma = 0.453,\alpha_{\xi^2}=0.433, \alpha_{\lambda^2}=0.435, \alpha_{\sigma^2}=0.414, \alpha_{\tau^2}=0.4490$ respectively. Hence, the structure of  $\hat{\theta}\sim N\left( m_t,C_t\right)$ is achieved. That can be seen in figure (\ref{realdatacorMatrix}). 
+To implement the algorithm \ref{algorithmslidingwindow}, firstly we should get an idea of how the hyper parameter space looks like by running step \ref{algorithmlearningsurface} of the algorithm with some observed data. By setting $L=100$ and running 5\,000 iterations, we can find the whole $\theta$ samples in 59 seconds. For each parameter of $\theta$, we take 1\,000 sub-samples out of 5\,000 as new sequences. The new $\theta^*$ is representative for the hyper parameter space. Then the traces and correlation is derived from $\theta^*$. Meanwhile, the acceptance rates for each parameter are $\alpha_\gamma = 0.453,\alpha_{\xi^2}=0.433, \alpha_{\lambda^2}=0.435, \alpha_{\sigma^2}=0.414, \alpha_{\tau^2}=0.4490$ respectively. Hence, the structure of  $\hat{\theta}\sim N\left( m_t,C_t\right)$ is achieved. That can be seen in figure \ref{realdatacorMatrix}. 
 %In fact, as assuming the parameter doesn't vary too much through out the process, the correlation changes a little.  
 \begin{figure}[h]
 \centering
