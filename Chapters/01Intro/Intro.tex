@@ -20,7 +20,7 @@
 \section{Background}
 
 
-The Global Positioning System (abbreviated as GPS) is a space-based navigation system consisting of a network of 24 satellites in six different 12-hour orbital paths spaced. So that at least five of them are in view from every point on the globe \cite{kaplan2005understanding} \cite{bajaj2002gps}. With these satellites, a GPS receiver provides geographic information to them and triangulate its location on the ground, such as longitude, latitude, and elevation. These receivers are using passive locating technology, by which they can receive signals without transmitting any data. It is perhaps the most widely publicized location-sensing system providing an excellent lateration framework for determining geographic positions \cite{hightower2001location}. Offered free of charge and accessible worldwide, GPS is used in plenty applications in military and general public, including aircraft tracking, vehicle navigation, robot localization, surveying, astronomy, and so on. 
+The Global Positioning System (abbreviated as GPS) is a space-based navigation system consisting of a network of 24 satellites placed in space in six different 12-hour orbital paths \cite{agrawal2015introduction}, so that at least five of them are in view from every point on the globe \cite{kaplan2005understanding} \cite{bajaj2002gps}. With these satellites, a GPS receiver sends geographic information to them and triangulate its location on the ground, such as longitude, latitude, and elevation. These receivers are using passive locating technology, by which they can receive signals without transmitting any data. It is perhaps the most widely publicized location-sensing system providing an excellent lateration framework for determining geographic positions \cite{hightower2001location}. Offered free of charge and accessible worldwide, GPS is used in plenty applications in military and general public, including aircraft tracking, vehicle navigation, robot localization, surveying, astronomy, and so on. 
 
 For a moving vehicle, it is often mounted with a GPS unit that communicates with these satellites and records position, speed, and direction of traveling information. With this kind of information, a maneuvering target tracking system becomes available and useful. This tracking system can be used to reduce the cost by knowing in real-time the current location of a vehicle, such as a truck or a bus \cite{chadil2008real}, and also be useful for Intelligent Transportation System (ITS) \cite{mcdonald2006intelligent}. For instance, it can be used in probe cars to measure real-time traffic data to identify the congesting area. In particular, an orchardist is able to follow the trajectory and motion patterns of tractors, which are working on an orchard or vineyard, and monitor their working status with the tracking system. 
 
@@ -299,18 +299,18 @@ A simple mechanic proposing algorithm is \textit{Random Walk Metropolis-Hastings
 Besides, modified Metropolis-Hastings algorithms, such as the delayed-rejection MH, multiple-try MH and reversible-jump MH algorithms have been studied by \cite{tierney1999some}, \cite{liu2000multiple} and \cite{green1995reversible}. 
  
 
-\subsection*{Gibbs Sampling Algorithm}
-
-\textit{Gibbs sampling}, also known as the heat bath method or "Glauber dynamics", was proposed by \cite{geman1984stochastic}. It has been proved particularly convenient for a range of applications in Bayesian statistics \cite{smith1993bayesian} \cite{mackay2003information}. Gibbs sampler is generating posterior samples conditionally on remaining variables fixed to their current values from a distribution that has at least two dimensions. For example, consider a general case that contains $N$ variables $x_t^{(1)},\ldots,x_t^{(N)}$ at time $t$. The samples for the next state $t+1$ will be 
-\begin{align*}
-x_{t+1}^{(1)}  &\sim \pi(x_1 \mid x_t^{(2)},x_t^{(3)},\ldots,x_t^{(N)}) \\
-x_{t+1}^{(2)}  &\sim \pi(x_2 \mid x_{t+1}^{(1)},x_t^{(3)},\ldots,x_t^{(N)}) \\
-&\vdots \\
-x_{t+1}^{(N)}  &\sim \pi(x_N \mid x_{t+1}^{(1)},x_{t+1}^{(2)},\ldots,x_{t+1}^{(N-1)})
-\end{align*}
-using the newly updated sample $x_{t+1}^{(i)}$. After one iteration, the new sequence $x_{t+1}^{(1)},\ldots,x_{t+1}^{(N)}$ is obtained. 
-
-Gibbs sampling can be viewed as one of Metropolis methods and meets the convergence property that the probability distribution of $x_t$ tends to $\pi(x)$ as $t\to\infty$, as long as $\pi(x)$ does not have pathological properties. Similarly to MH algorithms, some modified Gibbs sampler, such as single-site Gibbs sampling algorithm \cite{sorensen2007likelihood}, a blocked Gibbs sampling algorithm \cite{garcia1996multivariate} and hybrid Gibbs sampling algorithm \cite{mathew2012bayesian}, are well developed and applied in different applications \cite{gelfand1990illustration}. 
+%\subsection*{Gibbs Sampling Algorithm}
+%
+%\textit{Gibbs sampling}, also known as the heat bath method or "Glauber dynamics", was proposed by \cite{geman1984stochastic}. It has been proved particularly convenient for a range of applications in Bayesian statistics \cite{smith1993bayesian} \cite{mackay2003information}. Gibbs sampler is generating posterior samples conditionally on remaining variables fixed to their current values from a distribution that has at least two dimensions. For example, consider a general case that contains $N$ variables $x_t^{(1)},\ldots,x_t^{(N)}$ at time $t$. The samples for the next state $t+1$ will be 
+%\begin{align*}
+%x_{t+1}^{(1)}  &\sim \pi(x_1 \mid x_t^{(2)},x_t^{(3)},\ldots,x_t^{(N)}) \\
+%x_{t+1}^{(2)}  &\sim \pi(x_2 \mid x_{t+1}^{(1)},x_t^{(3)},\ldots,x_t^{(N)}) \\
+%&\vdots \\
+%x_{t+1}^{(N)}  &\sim \pi(x_N \mid x_{t+1}^{(1)},x_{t+1}^{(2)},\ldots,x_{t+1}^{(N-1)})
+%\end{align*}
+%using the newly updated sample $x_{t+1}^{(i)}$. After one iteration, the new sequence $x_{t+1}^{(1)},\ldots,x_{t+1}^{(N)}$ is obtained. 
+%
+%Gibbs sampling can be viewed as one of Metropolis methods and meets the convergence property that the probability distribution of $x_t$ tends to $\pi(x)$ as $t\to\infty$, as long as $\pi(x)$ does not have pathological properties. Similarly to MH algorithms, some modified Gibbs sampler, such as single-site Gibbs sampling algorithm \cite{sorensen2007likelihood}, a blocked Gibbs sampling algorithm \cite{garcia1996multivariate} and hybrid Gibbs sampling algorithm \cite{mathew2012bayesian}, are well developed and applied in different applications \cite{gelfand1990illustration}. 
 
 
 
@@ -331,73 +331,73 @@ Further investigation in the use of adaptive MCMC algorithms to automatically
 tune the Markov chain parameters can be found at \cite{roberts2009examples}. 
 
 
-
-\subsection*{Hamiltonian Monte Carlo}
-
-The \textit{Hamiltonian Monte Carlo} (HMC), devised by \cite{duane1987hybrid} as hybrid Monte Carlo, is using Hamiltonian dynamics to produce distant proposals for the Metropolis algorithm in order to avoid slow exploration of the state space that results from the diffusive behavior of simple random walk proposals \cite{neal2011mcmc}. In practice, the HMC sampler is more efficient for sampling in high-dimensional distributions than MH.
-
-
-The key feature of HMC is the Hamiltonian system equation as follows: 
-\begin{equation*}
-H(x,v) = U(x)+K(v),
-\end{equation*}
-which is consisting of potential energy $U(x)$ with a d-dimensional momentum vector (position) $x$ and kinetic energy function $K(v)=\frac{v^\top M^{-1}v}{2}$ with a d-dimensional momentum vector (velocity) $v$. Here, $M$ is a symmetric positive-definite "mass matrix". The momentum parameter $v$ is responsible for keeping proposals inside the typical set, instead than having them drifting towards the tails or towards the mode. 
-
-
-To propose $\{x',v'\}$, HMC is using leapfrog method, which is based on Euler's method and modified Euler's method, to increase the proposing accuracy \cite{betancourt2017conceptual}. It is accepted with the probability
-\begin{equation*}
-\alpha = \min\lbrace  \exp\left(H(x,v)-H(x',v')\right), 1\rbrace.
-\end{equation*}
-
-
-Compared with MH and Gibbs sampling, the HMC has a higher efficiency in most of the high-dimensional cases. It is incorporating not only with energy $U(x)$ but also with a gradient. In this way, HMC explores a larger area and converges to balance faster. 
-
-However, HMC has some problems with sampling from distributions with isolated local minimums and has little energy jumping out of a local minimal cave. 
-
-
-
-\subsection*{Zig-Zag Monte Carlo}
-
-The zig-zag process is a continuous-time piecewise deterministic-stochastic process introduced in \cite{bierkens2016piecewise}. It is an application of the Curie-Weiss model, \cite{turitsyn2011irreversible}, in high dimension and provides a practically efficient sampling scheme for sampling in the big data regime with some remarkable properties \cite{bierkens2017limit}. 
-
-
-Given a target density $\pi(\cdot)$, the Zig-Zag process $f(x,\theta)$ is defined in a $d \otimes 2$ space $E$. $x$ is in the $d$-dimensional topological subspace and $\theta$ is in a binary discrete $\{-1,1\}_d$ subspace denoting the flipping statues. The switching rate $\lambda(x,\theta)$ agrees with the target distribution $\pi(\cdot)$ in a certain way and is defined as $\lambda(x,\theta) = \max \lbrace 0,\theta U'(x) \rbrace +\gamma(x)$, where $U'(x)  = \lambda(x,\theta) - \lambda(x,-\theta)$. Then, the Zig-Zag operator $L$ is 
-\begin{equation*}
-Lf(x,\theta)=\theta\partial f_x+\lambda(x,\theta)\left(f(x,-\theta)-f(x,\theta )\right),
-\end{equation*}
-for all $(x,\theta)\in E$. 
-
-Thereafter, the obtained sequence of the Zig-Zag process is used to approximate expectations with respect to $\pi(\cdot)$ according to the law of large numbers. 
-
-
-To check the performance of Zig-Zag sampler and comparing with other MCMC sampler, the effective sample size (ESS) is given as $ESS=\frac{\Var_\pi f}{\Var(\pi_t(f))}=\frac{\Var_\pi f}{\sigma^2N_s}N(t)$, $N(t)$ is the number of switches up to time $t$. It is numerically tested that the Zig-Zag sampler has a higher ESS than a tuned Random-Walk Metropolis-Hastings \cite{bierkens2017limit}. 
-
-The application of Zig-Zag process in big data scheme and some properties are given in \cite{bierkens2017limit} and \cite{bierkens2016zig}.
-
-
-
-\subsection*{The T-Walk}
-
-A general purpose sampling algorithm for continuous distributions, named as \textit{the t-walk}, is given by \cite{christen2010general}. It is a self-adjusting MCMC
-algorithm that requires no tuning and has been shown to provide good results in many cases of up to 400 dimensions. Further, because of the t-walk is not adaptive, then it does not require new restricting conditions but only the log of the posterior and two initial points \cite{blaauw2011flexible}. 
-
-
-Given a posterior distribution $\pi(\cdot)$, the new objective function $f(x,x')$ is the product of $\pi(x)\pi(x')$ from $X \otimes X$. The new proposal $(y,y')$ is given by
-\begin{equation*} (y,y') =
-\begin{cases}
-(x,h(x',x)) & \mbox{with probability 0.5}\\
-(h(x',x),x') & \mbox{with probability 0.5}
-\end{cases}
-\end{equation*}
-where $h(x,x')$ is a preselected proposing strategy. In each iteration, only one of the two chains $x$ and $x'$ moves according to a random walk. For example, suppose in the first step the $x$ stays the same but $y'$ is proposed from $q(\cdot\mid x,x')$, then the acceptance ratio is 
-\begin{equation*}
-\frac{\pi(y')}{\pi(x')}\frac{q(x'\mid y',x) }{q(y'\mid x',x)}. 
-\end{equation*}
-After a few iterations, there are two dual and coupled chains obtained. Hence, the t-walk is a kind of multiple chain approach. 
-
-Four recommendations for the choices of $h(x,x')$ including a scaled random walk, referred to \textit{the walk move}, \textit{traverse move}, \textit{hop moves} and \textit{blow moves} are given in \cite{christen2010general}. 
-
-The t-walk is now available in a complete set of computer packages, including \textit{R}, \textit{Python}. It is convenient for researchers to go a deeper implementation. 
+%
+%\subsection*{Hamiltonian Monte Carlo}
+%
+%The \textit{Hamiltonian Monte Carlo} (HMC), devised by \cite{duane1987hybrid} as hybrid Monte Carlo, is using Hamiltonian dynamics to produce distant proposals for the Metropolis algorithm in order to avoid slow exploration of the state space that results from the diffusive behavior of simple random walk proposals \cite{neal2011mcmc}. In practice, the HMC sampler is more efficient for sampling in high-dimensional distributions than MH.
+%
+%
+%The key feature of HMC is the Hamiltonian system equation as follows: 
+%\begin{equation*}
+%H(x,v) = U(x)+K(v),
+%\end{equation*}
+%which is consisting of potential energy $U(x)$ with a d-dimensional momentum vector (position) $x$ and kinetic energy function $K(v)=\frac{v^\top M^{-1}v}{2}$ with a d-dimensional momentum vector (velocity) $v$. Here, $M$ is a symmetric positive-definite "mass matrix". The momentum parameter $v$ is responsible for keeping proposals inside the typical set, instead than having them drifting towards the tails or towards the mode. 
+%
+%
+%To propose $\{x',v'\}$, HMC is using leapfrog method, which is based on Euler's method and modified Euler's method, to increase the proposing accuracy \cite{betancourt2017conceptual}. It is accepted with the probability
+%\begin{equation*}
+%\alpha = \min\lbrace  \exp\left(H(x,v)-H(x',v')\right), 1\rbrace.
+%\end{equation*}
+%
+%
+%Compared with MH and Gibbs sampling, the HMC has a higher efficiency in most of the high-dimensional cases. It is incorporating not only with energy $U(x)$ but also with a gradient. In this way, HMC explores a larger area and converges to balance faster. 
+%
+%However, HMC has some problems with sampling from distributions with isolated local minimums and has little energy jumping out of a local minimal cave. 
+%
+%
+%
+%\subsection*{Zig-Zag Monte Carlo}
+%
+%The zig-zag process is a continuous-time piecewise deterministic-stochastic process introduced in \cite{bierkens2016piecewise}. It is an application of the Curie-Weiss model, \cite{turitsyn2011irreversible}, in high dimension and provides a practically efficient sampling scheme for sampling in the big data regime with some remarkable properties \cite{bierkens2017limit}. 
+%
+%
+%Given a target density $\pi(\cdot)$, the Zig-Zag process $f(x,\theta)$ is defined in a $d \otimes 2$ space $E$. $x$ is in the $d$-dimensional topological subspace and $\theta$ is in a binary discrete $\{-1,1\}_d$ subspace denoting the flipping statues. The switching rate $\lambda(x,\theta)$ agrees with the target distribution $\pi(\cdot)$ in a certain way and is defined as $\lambda(x,\theta) = \max \lbrace 0,\theta U'(x) \rbrace +\gamma(x)$, where $U'(x)  = \lambda(x,\theta) - \lambda(x,-\theta)$. Then, the Zig-Zag operator $L$ is 
+%\begin{equation*}
+%Lf(x,\theta)=\theta\partial f_x+\lambda(x,\theta)\left(f(x,-\theta)-f(x,\theta )\right),
+%\end{equation*}
+%for all $(x,\theta)\in E$. 
+%
+%Thereafter, the obtained sequence of the Zig-Zag process is used to approximate expectations with respect to $\pi(\cdot)$ according to the law of large numbers. 
+%
+%
+%To check the performance of Zig-Zag sampler and comparing with other MCMC sampler, the effective sample size (ESS) is given as $ESS=\frac{\Var_\pi f}{\Var(\pi_t(f))}=\frac{\Var_\pi f}{\sigma^2N_s}N(t)$, $N(t)$ is the number of switches up to time $t$. It is numerically tested that the Zig-Zag sampler has a higher ESS than a tuned Random-Walk Metropolis-Hastings \cite{bierkens2017limit}. 
+%
+%The application of Zig-Zag process in big data scheme and some properties are given in \cite{bierkens2017limit} and \cite{bierkens2016zig}.
+%
+%
+%
+%\subsection*{The T-Walk}
+%
+%A general purpose sampling algorithm for continuous distributions, named as \textit{the t-walk}, is given by \cite{christen2010general}. It is a self-adjusting MCMC
+%algorithm that requires no tuning and has been shown to provide good results in many cases of up to 400 dimensions. Further, because of the t-walk is not adaptive, then it does not require new restricting conditions but only the log of the posterior and two initial points \cite{blaauw2011flexible}. 
+%
+%
+%Given a posterior distribution $\pi(\cdot)$, the new objective function $f(x,x')$ is the product of $\pi(x)\pi(x')$ from $X \otimes X$. The new proposal $(y,y')$ is given by
+%\begin{equation*} (y,y') =
+%\begin{cases}
+%(x,h(x',x)) & \mbox{with probability 0.5}\\
+%(h(x',x),x') & \mbox{with probability 0.5}
+%\end{cases}
+%\end{equation*}
+%where $h(x,x')$ is a preselected proposing strategy. In each iteration, only one of the two chains $x$ and $x'$ moves according to a random walk. For example, suppose in the first step the $x$ stays the same but $y'$ is proposed from $q(\cdot\mid x,x')$, then the acceptance ratio is 
+%\begin{equation*}
+%\frac{\pi(y')}{\pi(x')}\frac{q(x'\mid y',x) }{q(y'\mid x',x)}. 
+%\end{equation*}
+%After a few iterations, there are two dual and coupled chains obtained. Hence, the t-walk is a kind of multiple chain approach. 
+%
+%Four recommendations for the choices of $h(x,x')$ including a scaled random walk, referred to \textit{the walk move}, \textit{traverse move}, \textit{hop moves} and \textit{blow moves} are given in \cite{christen2010general}. 
+%
+%The t-walk is now available in a complete set of computer packages, including \textit{R}, \textit{Python}. It is convenient for researchers to go a deeper implementation. 
 
 
 

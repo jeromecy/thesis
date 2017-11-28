@@ -12,16 +12,16 @@ Luckily, spline methods have been developed to overcome these issues and to cons
 
 However, a parametric approach only captures features contained in the preconceived class of functions \cite{yao2005functional} and increases model bias. To avoid this, nonparametric methods have been developed. Rather than giving specified parameters, it is desired to reconstruct $f$ from the data $y(t_i)\equiv y_i$, $i=1, \ldots, n$ \cite{craven1978smoothing}. Smoothing spline estimates of the $f$ function appear as a solution to the following minimization problem: find $\hat{f} \in \mathit{C}^2[a,b]$ that minimizes the penalized residual sum of squares:
 \begin{equation}\label{smoothingob}
-\mbox{RSS}=\sum_{j=1}^{n}\left(  y_j-f(t_j)\right) ^2+\lambda\int_{a}^{b} f''(t)^2dt
+\mbox{RSS}=\sum_{i=1}^{n}\left(  y_i-f(t_i)\right) ^2+\lambda\int_{a}^{b} \left(f''(t)\right)^2dt
 \end{equation}
 for pre-specified value $\lambda>0$ \cite{aydin2012smoothing}. In equation (\ref{smoothingob}), the first part is residual sum square and it penalizes the lack of fit. The second part is roughness penalty term weighted by a smoothing parameter $\lambda$, which varies from 0 to $+\infty$ and establishes a trade-off between interpolation and straight line. The motivation of the roughness penalty term is from a formalization of a mechanical device: if a thin piece of flexible wood, called a spline, is bent to the shape of the curve $g$, then the leading term in the strain energy is proportional to $\int f''^2$; see \eg \cite{green1993nonparametric}. The cost of equation (\ref{smoothingob}) is determined not only by its goodness-of-fit to the data quantified by the residual sum of squares but also by its roughness \cite{schwarz2012geodesy}. For a given $\lambda$, minimizing equation (\ref{smoothingob}) will give the best compromise between smoothness and goodness-of-fit. Notice that the first term in equation (\ref{smoothingob}) depends only on the values of $f$ at knots $t_i, i=1, \ldots, n$. In the book, the authors \cite{green1993nonparametric} show that the function that minimizes the roughness penalty for fixed values of $f(t_i)$ is a cubic spline: an interpolation of points via a continuous piecewise cubic function, with continuous first and second derivatives. The continuity requirements uniquely determine the interpolating spline, except at the boundaries \cite{sealfon2005smoothing}.
 
 
 \cite{zhang2013cubic} proposed their method using Hermite interpolation on each intervals to fit position, velocity and acceleration with kinematic constrains. Their trajectory formulation is a combination of several cubic splines on every intervals or, in an alternative way, can be a single function found by minimizing 
 \begin{equation}
-p\sum_{j=1}^{n}|y_j-f(t_j)|^2+(1-p)\int |D^2f(t)|^2dt,
+p\sum_{i=1}^{n}\lvert y_i-f(t_i) \rvert^2+(1-p)\int \lvert D^2f(t) \rvert^2dt,
 \end{equation}
-where $n$ is the number of values of $x$, $D^2$ represents the second derivative of the function f(t) and $p$ is a smoothing parameter \cite{castro2006geometric}. 
+where $n$ is the number of values of $x$, $D^2$ represents the second derivative of the function $f(t)$ and $p$ is a smoothing parameter \cite{castro2006geometric}. 
 residual sum square error objective with penalty term\cite{castro2006geometric}, in which a parameter $1-p$ is used to control the curvature of the splines. 
 
 
@@ -34,7 +34,7 @@ residual sum square error objective with penalty term\cite{castro2006geometric},
 
 A conventional smoothing spline is controlled by one single parameter, which controls the smoothness of a spline on the whole domain. A natural extension is to allow the smoothing parameter to vary as a penalty function of the independent variable, adapting to the change of roughness in different domains \cite{silverman1985some}, \cite{donoho1995wavelet}. In this way, a new objective function is formulated in the form of 
 \begin{equation}\label{objective}
-\sum_{j=1}^{n}(y_j-f(t_j))^2+\int_T\lambda(t) f''(t)^2 dt,
+\sum_{i=1}^{n}\left(y_i-f(t_i) \right)^2+\int_T\lambda(t) \left( f''(t)\right)^2 dt,
 \end{equation}
 by minimizing which, the best estimation $\hat{f}$ can be found. This approach makes adaptive smoothing as a minimization problem with a new penalty term. 
 
@@ -42,7 +42,7 @@ by minimizing which, the best estimation $\hat{f}$ can be found. This approach m
 Similar to the conventional smoothing spline problem, one has to choose the penalty function $\lambda(t)$. The fundamental idea of nonparametric smoothing is to let the data choose the amount of smoothness, which consequently decides the model complexity \cite{gu1998model}. Most methods focus on data-driven criteria, such as cross-validation (CV), generalized cross-validation (GCV) \cite{craven1978smoothing} and generalized maximum likelihood (GML) \cite{wahba1985comparison}. A new challenge is posed that the smoothing parameter becomes a function and is varying in domains. The structure of this penalty function controls the complexity of each domain and the whole final model. \cite{liu2010data} proposed to approximate the penalty function with an indicator and extended the generalized likelihood to the adaptive smoothing spline.
 
 
-In this chapter, I propose an adaptive smoothing spline method based on Hermite spline basis functions to obtain a reconstruction of $f$ and $f'$ from $n$ paired time series noisy data $\mathbf{y}=\{y_1,\ldots,y_n\}$ and $\mathbf{v}=\{v_1,\ldots,v_n\}$. Rather than only using residuals of $f(t_i)-y_i$, an extra residuals of $f'(t_i)-v_i$ with a new parameter $\gamma$ in our objective function is included. In this way, the spline keeps a balance between position and velocity. By using new basis functions, the new smoothing spline is reconstructed on the whole interval $[a,b]$. Derived from the new objective function, an advanced cross-validation formula for both $f(t)$ and $f'(t)$ is given. It is shown that the new spline performs well on simulated signal data \textit{Blocks}, \textit{Bumps}, \textit{HeaviSine} and \textit{Doppler} \cite{donoho1994ideal}. At the end of this chapter, an application of this smoothing spline on a set of 2-dimensional real data is given. It obtains a better reconstruction. This method can be used in either getting the true signal from noisy data or reconstructing the trajectory of a moving object. 
+In this chapter, I propose an adaptive smoothing spline method based on Hermite spline basis functions to obtain a reconstruction of $f$ and $f'$ from $n$ paired time series noisy data $\mathbf{y}=\{y_1,\ldots,y_n\}$ and $\mathbf{v}=\{v_1,\ldots,v_n\}$. Rather than only using residuals of $f(t_i)-y_i$, an extra residuals of $f'(t_i)-v_i$ with a new parameter $\gamma$ in our objective function is included. In this way, the spline keeps a balance between position and velocity. By using new basis functions, the new smoothing spline is reconstructed on the whole interval $\left[a,b\right]$. Derived from the new objective function, an advanced cross-validation formula for both $f(t)$ and $f'(t)$ is given. It is shown that the new spline performs well on simulated signal data \textit{Blocks}, \textit{Bumps}, \textit{HeaviSine} and \textit{Doppler} \cite{donoho1994ideal}. At the end of this chapter, an application of this smoothing spline on a set of 2-dimensional real data is given. It obtains a better reconstruction. This method can be used in either getting the true signal from noisy data or reconstructing the trajectory of a moving object. 
 
 %Errors comes from the GPS units and individuals' behaviors, which bring unreliable data and less precise results. %\cite{castro2006geometric}
 
@@ -64,7 +64,7 @@ where $\gamma$ is the parameter that weights the residuals between $\mathbf{f}'$
 \begin{theorem}
 For $n\geq2$, the objective function $J[f]$ is minimized by a cubic spline that is linear outside the knots.
 \end{theorem}
-The solution to the objective function (\ref{tractorsplineObjective}) is called Tractor spline.
+The solution to the objective function (\ref{tractorsplineObjective}) is named Tractor spline. 
 
 %In the following, we split the 2D function $f(x,y)$ into two sub functions $f_x(t)$ on $x$-axis and $f_y(t)$ on $y$-axis with respect to time $t$. Compared with other parameters, choosing time $t$ to be the parameter has some advantages: 1. The expressions of all the constraints are simpler \cite{zhang2013cubic}; 2. It can be simply applied from 2-dimension to 3-dimension by adding an extra $z$-axis.  
 
@@ -72,7 +72,7 @@ The solution to the objective function (\ref{tractorsplineObjective}) is called 
 Suppose there is a time series sequence of observed dataset $a=t_1<t_2<\cdots<t_n=b$. The function $f(t)$ %(stands for $f_y(t)$)
 defined on this interval $[t_1,t_n]$ is called Tractor spline, if it is the solution to the objective function (\ref{tractorsplineObjective}). Then, it has the following property: on each interior interval $(t_i,t_{i+1})$, $i=2,\ldots,n-2$, $f(t)$ is a cubic polynomial, but on interval $(t_1,t_2)$ and $(t_{n-1},t_n)$ can be linear; $f(t)$ fits together at each point $t_i$ in such a way that $f(t)$ itself and its first derivatives are continuous at each $t_i$,  $i=2,\ldots,n-2$. 
 
-Using Hermite interpolation on an arbitrary interval $[t_i,t_{i+1}]$, the cubic spline basis functions can be constructed as follows
+Using Hermite interpolation on an arbitrary interval $[t_i,t_{i+1} ) $, the cubic spline basis functions can be constructed as follows
 \begin{align}\label{hermitebasis1}
 & h_{00}^{(i)}(t)=
 \begin{cases}
@@ -99,17 +99,17 @@ Then a Hermite spline $f^{(i)}(t)$ on interval $[t_i,t_{i+1})$ with points $p_i=
 f^{(i)}(t)=h_{00}^{(i)}(t)y_i+h_{10}^{(i)}(t)v_i+h_{01}^{(i)}(t)y_{i+1} +h_{11}^{(i)}(t)v_{i+1}.
 \end{equation}
 
-To construct a Tractor spline on the entire interval $[t_1,t_n]$, the new basis functions are defined in such way, that $N_1 = h^{(1)}_{00}$, $N_2 = h^{(1)}_{10}$, and for all $k=1,2,\ldots,n-2$, 
+To construct a Tractor spline on the entire interval $[t_1,t_n]$, the new basis functions are defined in such way, that $N_1 = h^{(1)}_{00}$, $N_2 = h^{(1)}_{10}$, and for all $i=1,2,\ldots,n-2$, 
 
 \begin{align}
-N_{2k+1}&=
+N_{2i+1}&=
 \begin{cases}
-h_{01}^{(k)}+h_{00}^{(k+1)} \hphantom{+(+t_{n}-t_{n-1}-t_{n})1.}  & \mbox{if $t<t_n$}\\
+h_{01}^{(i)}+h_{00}^{(i+1)} \hphantom{+(+t_{n}-t_{n-1}-t_{n})1.}  & \mbox{if $t<t_n$}\\
 2(\frac{t-t_{n-1}}{t_{n}-t_{n-1}})^3-3(\frac{t-t_{n-1}}{t_{n}-t_{n-1s}})^2+1 &  \mbox{if $t=t_n$}
 \end{cases},\\
-N_{2k+2}&=
+N_{2i+2}&=
 \begin{cases}
- h_{11}^{(k)}+h_{10}^{(k+1)} & \mbox{if $t<t_n$}\\
+ h_{11}^{(i)}+h_{10}^{(i+1)} & \mbox{if $t<t_n$}\\
 \frac{(t-t_{n-1})^3}{(t_{n}-t_{n-1})^2}-2\frac{(t-t_{n-1})^2}{t_{n}-t_{n-1}}+(t-t_{n-1}) & \mbox{if $t=t_n$}
 \end{cases},
 \end{align}
@@ -132,6 +132,7 @@ h_{11}^{(n-1)} & \mbox{if $t<t_n$}\\
 On $[t_1,t_n]$, the functions $N_1,\ldots,N_{2n}$ provide a basis for the set of functions which are continuous, have continuous first derivatives and are 
 cubic on each open interval $(t_i,t_{i+1})$, where $i=1, \ldots, n-1$.
 \end{theorem}
+The proof of theorem \ref{basisindependent} is in appendix \ref{AppendixBasisproof}.
 %Then $N_1(t), \ldots, N_{2n}(t)$ are $2n$ basis functions on the interval $[a,b]$. 
 As independent basis functions, $N_1(t), \ldots, N_{2n}(t)$ span a $2n$ dimensional function space $\mathbb{H}$. For any $f \in \mathbb{H}$, it can be represented in the form of
 \begin{equation}
@@ -139,13 +140,13 @@ f=\sum_{k=1}^{2n} \theta_k N_k(t),
 \end{equation}
 where $\{\theta_k\}_{k=1}^{2n}$ are parameters.
 
-Figure \ref{basisfigure} presents two basis functions on an arbitrary interval $[t_k, t_{k+2} )$ where they are continuous and differential. At the interior joint knot $t_k$, basis functions in the previous and following interval share the same position $y_k$ and velocity $v_k$. 
+Figure \ref{basisfigure} presents two basis functions on an arbitrary interval $[t_i, t_{i+2} )$ where they are continuous and differential. At the interior joint knot $t_i$, basis functions in the previous and following interval share the same position $y_i$ and velocity $v_i$. 
 \begin{figure}[h] 
 \centering
 %\includegraphics[width=0.6\textwidth, height=4.5cm]{Chapters/02TractorSplineTheory/plot/ggbasistk}
-\includegraphics[width=0.6\textwidth, height=5cm]{Chapters/02TractorSplineTheory/plot/pptbasisplot}
+\includegraphics[width=0.6\textwidth, height=5cm]{Chapters/02TractorSplineTheory/plot/pptbasisplot2.pdf}
 %\small 
-\caption{The two basis functions $N_{2k+1}$ and $N_{2k+2}$ on an arbitrary interval $[t_k, t_{k+2})$. It is apparently that these basis functions are continuous on this interval and have continuous first derivatives.}
+\caption{The two basis functions $N_{2i+1}$ and $N_{2i+2}$ on an arbitrary interval $[t_i, t_{i+2})$. It is apparently that these basis functions are continuous on this interval and have continuous first derivatives.}
 \label{basisfigure}
 \end{figure}
 
@@ -159,7 +160,7 @@ Basis functions have been defined in the previous subsection, therefore the Trac
 \begin{equation}\label{tractormse}
 \text{MSE}(\theta, \lambda,\gamma) = (\mathbf{y}-\mathbf{B}\theta)^\top (\mathbf{y}-\mathbf{B}\theta) +\gamma (\mathbf{v}-\mathbf{C}\theta)^\top (\mathbf{v}-\mathbf{C}\theta)+n \theta^\top\mathbf{\Omega}_{\lambda}\theta,
 \end{equation}
-where $\{\mathbf{B}\}_{ij} = N_j(t_i)$ , $\{\mathbf{C}\}_{ij} = N'_j(t_i)$ and $\{\Omega_{2n}^{(k)} \}_{jk}=\int_{t_k}^{t_{k+1}}\lambda_k N''_j(t)N''_k(t)dt$. After substituting the series observation $t_1, \ldots, t_n$ into basis functions, we get $N_1(t_1)=1, N_1(t_2)=0, \ldots, N_{2k-1}(t_{k})=1, N_{2k}(t_{k})=0, \ldots, N_{2n-1}(t_n)=1, N_{2n}(t_n)=0$; and into first derivative of basis functions, we get $N'_1(t_1)=0, N_1'(t_2)=1, \ldots, N_{2k-1}'(t_{k})=0, N_{2k}'(t_{k})=1, \ldots, N_{2n-1}'(t_n)=0, N_{2n}'(t_n)=1$. That means the matrices $\mathbf{B}$ and $\mathbf{C}$ in MSE equation (\ref{tractormse}) are $n \times 2n$ dimensional and the elements are
+where $\{\mathbf{B}\}_{ij} = N_j(t_i)$ , $\{\mathbf{C}\}_{ij} = N'_j(t_i)$ and $\{\Omega_{2n}^{(i)} \}_{jk}=\int_{t_i}^{t_{i+1}}\lambda_i N''_j(t)N''_k(t)dt$. After substituting the series observation $t_1, \ldots, t_n$ into basis functions, we get $N_1(t_1)=1, N_1(t_2)=0, \ldots, N_{2i-1}(t_{i})=1, N_{2i}(t_{i})=0, \ldots, N_{2n-1}(t_n)=1, N_{2n}(t_n)=0$; and into first derivative of basis functions, we get $N'_1(t_1)=0, N_1'(t_2)=1, \ldots, N_{2i-1}'(t_{i})=0, N_{2i}'(t_{i})=1, \ldots, N_{2n-1}'(t_n)=0, N_{2n}'(t_n)=1$. That means the matrices $\mathbf{B}$ and $\mathbf{C}$ in MSE equation (\ref{tractormse}) are $n \times 2n$ dimensional and the elements are
 \begin{align}
 \mathbf{B}&=\{B\}_{ij}=\begin{cases}
 1, & j=2i-1\\
@@ -170,9 +171,9 @@ where $\{\mathbf{B}\}_{ij} = N_j(t_i)$ , $\{\mathbf{C}\}_{ij} = N'_j(t_i)$ and $
 0, & \mbox{otherwise}
 \end{cases}
 \end{align}
-where $i=1, \ldots, n$.  The $k$-th $\Omega_{\lambda_k}^{(k)}$ is a $2n \times 2n$ matrix and its details is in appendix. Then, the penalty term is
+where $i=1, \ldots, n$, $j=1,\ldots,2n$ and $k=1,\ldots,2n$. The $i$-th $\Omega_{\lambda_i}^{(i)}$ on the interval $[t_i,t_{i+1}]$ is a $2n \times 2n$ matrix and $\Omega_{\lambda_n}^{(n)}$ does not exist. Its detail is in appendix \ref{PenaltyTermDetails}. Then, the penalty term is
 \begin{equation}
-\mathbf{\Omega}_\lambda=\sum_{k=1}^{n-1}\Omega_{\lambda_k}^{(k)},
+\mathbf{\Omega}_\lambda=\sum_{i=1}^{n-1}\Omega_{\lambda_i}^{(i)},
 \end{equation}
 which is a bandwidth four matrix.
 
@@ -183,7 +184,7 @@ The solution to (\ref{tractormse}) is easily seen to be
 \end{equation}
 a generalized ridge regression. Therefore, the fitted smoothing spline is given by
 \begin{equation}
-\hat{f}(t)=\sum_{i=1}^{2n}N_i(t)\hat{\theta}_i
+\hat{f}(t)=\sum_{k=1}^{2n}N_k(t)\hat{\theta}_k
 \end{equation}
 
 A smoothing spline with parameters $\lambda(t)$ and $\gamma$ is an example of a linear smoother \cite{esl2009}. This is because the estimated parameters in equation (\ref{thetahat}) are a linear combination of $y_i$ and $v_i$. Denote by $\hat{\mathbf{f}}$ and $\hat{\mathbf{f}'}$ the $2n$ vector of fitted values $\hat{f}(t_i)$ and $\hat{f'}(t_i)$ at the training points $t_i$. Then
@@ -241,7 +242,7 @@ For sufficient cases of $\lambda(t)$ and $\gamma$, Tractor spline has the follow
 
 To get the reconstructed trajectory in a multi-dimensional space, one can use the Tractor spline to find the trajectory in each dimension separately and then combine them together for a higher dimension, such as 2D and 3D. Typically, the data are not regularly sampled in time. Due to the property of Hermite spline, the combination of a multi-dimensional reconstruction for irregular time difference dataset will bring some issues.  Image the situation that a vehicle is moving along the $x$-axis, but stays unchanged on its $y$ position. By fitting $\mathbf{x}$ and $\mathbf{u}$, the Tractor spline $f_x(t)$ will give us the best fit which returns smallest errors to the objective function. While with the same parameter $\lambda(t)$ and $\gamma$, $f_y(t)$ returns a cubic curve, where it should give us a straight line as we expected. Moreover, in some circumstances, with time increasing $\mathbf{f}$ and $\mathbf{f}'$ remain the same, or change slightly. In this situation, the Hermite spline will return wiggles in each dimension and curves in combined two dimensions. 
 
-To get a reliable reconstruction, we introduce an adjusted penalty term $\frac{(\Delta t_i)^\alpha}{(\Delta d_i)^\beta}$, where $\alpha \ge 0$ and $\beta \ge 0$, to the penalty function $\lambda(t)$, in which the Tractor spline is penalized by its real difference of $\Delta d_i$ and $\Delta t_i$ for each interval $[t_i, t_{i+1}]$. With this term, when either $\mathbf{u}$ for $x$ or $\mathbf{v}$ for $y$ goes down or equals to 0, it will make sure that the penalty function will be large enough and returns a straight line rather than a curve on this domain. Because of the unit of the penalty term is $m^2/t^3$, to keep the same scale, $\alpha$ and $\beta$ in the adjusted penalty term are chosen as $3$ and $2$ respectively. From the physical point of view, the term is the reciprocal of the product of velocity and acceleration. Either velocity or acceleration goes to zero, the moving object should either stop, which returns a straight line through time on $x$ or $y$ axises and a dot on the higher dimension or keep moving with the same speed, which returns a linear instead of a curved path. 
+To get a reliable reconstruction, we introduce an adjusted penalty term $\frac{(\Delta t_i)^\alpha}{(\Delta d_i)^\beta}$, where $\alpha \ge 0$ and $\beta \ge 0$, to the penalty function $\lambda(t)$, in which the Tractor spline is penalized by its real difference of $\Delta d_i$ and $\Delta t_i$ for each interval $[t_i, t_{i+1}]$. With this term, when either $\mathbf{u}$ for $x$ or $\mathbf{v}$ for $y$ goes down or equals to 0, it will make sure that the penalty function will be large enough and returns a straight line rather than a curve on this domain. Because of the unit of the penalty term is $m^2/t^3$, to keep the same scale, $\alpha$ and $\beta$ in the adjusted penalty term are chosen as $3$ and $2$ respectively. From the physical point of view, the term is the reciprocal of the product of velocity and acceleration. Either velocity or acceleration goes to zero, the moving object should either stop, which returns a straight line through time on $x$ or $y$ axes and a dot on the higher dimension or keep moving with the same speed, which returns a linear instead of a curved path. 
 
 Consequently, the final form of the penalty function is 
 \begin{equation}\label{adjustedpenalty}
@@ -275,7 +276,7 @@ An efficient way to calculate cross-validation score is given by \cite{green1993
 \end{equation}
 and the following lemma.
 \begin{lemma}\label{cvlema}
-The cross validation score satisfies
+The cross-validation score satisfies
 \begin{equation}
 \mbox{CV}(\lambda)=\frac{1}{n} \sum_{i=1}^n \left(\frac{y_i-\hat{f}(t_i)}{1-A_{ii}(\lambda)}\right)^2
 \end{equation}
@@ -284,7 +285,7 @@ where $\hat{f}$ is the spline smoother calculated from the full data set $\{(t_i
 
 For a Tractor spline and its MSE function, there are two parameters need to be estimated $\lambda$ and $\gamma$. Then the objective function (\ref{originalcv}) becomes
 \begin{align}
-\frac{1}{n}\sum_{j \neq i}\lVert y_j-f(t_j) \rVert_2^2+\frac{\gamma}{n}\sum_{j \neq i} \lVert v_j-f'(t_j) \rVert_2^2+ \int \lambda(t) \lVert f''\rVert_2^2dt,
+\frac{1}{n}\sum_{j \neq i}\left( y_j-f(t_j) \right)^2+\frac{\gamma}{n}\sum_{j \neq i} \left( v_j-f'(t_j) \right)^2+ \int \lambda(t) \left( f'' \right)^2dt,
 \end{align}
 and the cross-validation score function is
 \begin{align}
@@ -303,15 +304,15 @@ For a Tractor spline, the parameter $\hat{\theta}=(B^\top B+\gamma C^\top C+n\Om
  \end{split}
 \end{equation}
 From lemma \ref{cvlema}, we can prove the following theorem.
-\begin{theorem}\label{cvscore}
-The cross validation score of a Tractor spline satisfies
+\begin{theorem}\label{tractorsplinecvscore}
+The cross-validation score of a Tractor spline satisfies
 \begin{equation}\label{tractorcv}
 \mbox{CV}(\lambda,\gamma)=\frac{1}{n}\sum_{i=1}^{n} \left( \frac{\hat{f}(t_i)-y_i+\gamma \frac{T_{ii}}{1-\gamma V_{ii}}(\hat{f}'(t_i)-v_i)}{1-S_{ii}-\gamma\frac{T_{ii}}{1-\gamma V_{ii}}U_{ii}} \right)^2
 \end{equation}
 where $\hat{f}$ is the Tractor spline smoother calculated from the full data set $\{(t_i,y_i,v_i)\}$ with smoothing parameter $\lambda$ and $\gamma$.
 \end{theorem}
 
-The proof of Theorem \ref{cvscore} follows immediately from a lemma, and gives an expression for the deleted residuals $y_i-\hat{f}^{(-i)}(t_i)$ and $v_i-\hat{f}'^{(-i)}(t_i)$ in terms of $y_i-\hat{f}(t_i)$ and $v_i-\hat{f}'(t_i)$ respectively. 
+The proof of Theorem \ref{tractorsplinecvscore} follows immediately from a lemma, and gives an expression for the deleted residuals $y_i-\hat{f}^{(-i)}(t_i)$ and $v_i-\hat{f}'^{(-i)}(t_i)$ in terms of $y_i-\hat{f}(t_i)$ and $v_i-\hat{f}'(t_i)$ respectively. 
 
 \begin{lemma} \label{cvlemma}
 For fixed $\lambda,\gamma$ and $i$, denote $\mathbf{f}^{(-i)}$ by the vector with components $f_j^{(-i)}=\hat{f}^{(-i)}(t_j,\lambda,\gamma)$,  $\mathbf{f}'^{(-i)}$ by the vector with components $f_j'^{(-i)}=\hat{f}'^{(-i)}(t_j,\lambda,\gamma)$, and define vectors $\mathbf{y}^*$ and $\mathbf{v}^*$ by 
@@ -340,15 +341,24 @@ Then
 
 In this section, we examine the visual quality of the proposed method with four functions: \textit{Blocks}, \textit{Bumps}, \textit{HeaviSine} and \textit{Doppler}, which have been used in \cite{donoho1994ideal}, \cite{donoho1995adapting} and \cite{abramovich1998wavelet} because of their caricature features in imaging, spectroscopy and other scientific signal processing. However it is unfair for Tractor spline fitting "jump" position in \textit{Blocks} and \textit{Bumps} function because it fits position and velocity simultaneously and these points imply infinite first derivative in original functions, which are impossible for vehicles or individuals. In terms of this issue, we treat these functions as velocity, and use noise free points to generate accurate position data, then add noises back to them.
 
-For calculating consideration, we use $n=1024$ \cite{nason2010wavelet}. Because all noises are randomly generated, for the convenience of reinitialization and repeatable comparison, we set random seed at 2016. The noises are \iid Gaussian distributed $\epsilon \sim N(0,1)$ and signal-to-noise ratio (SNR), which is defined as the ratio of the power of a signal and the power of background noise, is set at 7. These data are treated as velocity (first derivative). By setting initial position $y_0=0$, acceleration $a_0=0$ and using the following formula 
+For calculating consideration, we use $n=1024$ \cite{nason2010wavelet}. Because all noises are randomly generated, for the convenience of reinitialization and repeatable comparison, we set random seed at 2016. The noises are \iid zero-mean Gaussian distributed $\varepsilon \sim N(0,\sigma)$ and signal-to-noise ratio (SNR), which specifies the ratio of the standard deviation of the function to the standard deviation of the simulated errors, is set at 7. Explicitly, if the standard deviation of the true signal $f$ is $\sigma_f$, the simulated data will be $f+\varepsilon$, where the simulated error  $\varepsilon \sim N(0,\sigma_f/7)$. 
+
+Therefore, if the original function $g(t)$ is treated as velocity function $f'(t)=g(t)$, thus by setting initial position $y_0=0$, acceleration $a_0=0$ and using the following formula 
 \begin{equation}\label{generateVelocity}
-y_{i+1}=y_i+(v_i+v_{i+1})\frac{t_{i+1}-ti}{2}
+f(t_{i+1})=f(t_i)+\left(g(t_i)+g(t_{i+1}) \right)\frac{t_{i+1}-t_i}{2}
 \end{equation}
-to calculate position information, we can easily generate simulated data. Further, we add some \iid $\epsilon \sim N(0,1)$ with SNR 7 noises to it. For wavelet transform reconstructions, we use the threshold policy of \textit{sure} and \textit{BayesThresh} with levels $j=4, \ldots, 9$, see  \cite{donoho1995adapting} and \cite{abramovich1998wavelet}. A semi-parametric regression model with spatially adaptive penalized splines (P-spline) is added in comparison, see \cite{krivobokova2008fast} \cite{ruppert2003semiparametric}.
+for calculating position information, we can easily generate simulated data. Further, we add some \iid  zero-mean $\varepsilon$ noises with SNR 7 to them to get the measurements by 
+\begin{align}\label{tractorsplinegeneratefunctions}
+\begin{split}
+y_i &= f(t_i) + \varepsilon_f, \\
+v_i &= g(t_i) + \varepsilon_g,
+\end{split}
+\end{align}
+where $\varepsilon_f\sim N(0,\sigma_f/7)$ and $\varepsilon_g\sim N(0,\sigma_g/7)$. For wavelet transform reconstructions, we use the threshold policy of \textit{sure} and \textit{BayesThresh} with levels $l=4, \ldots, 9$, see  \cite{donoho1995adapting} and \cite{abramovich1998wavelet}. A semi-parametric regression model with spatially adaptive penalized splines (\textit{P-spline}) is added in comparison, see \cite{krivobokova2008fast} \cite{ruppert2003semiparametric}.
 
 For Tractor spline, we have two parameters $\lambda$ and $\gamma$ to optimize. To evaluate the performance of the velocity term in objective function (\ref{tractorsplineObjective}) and the adjusted penalty term in (\ref{adjustedpenalty}), the parameter $\gamma$ is set as 0 in one reconstruction of Tractor spline, whose objective function and solution become
 \begin{equation}\label{ofgamma0}
-J[f]_{\gamma=0}= \frac{1}{n} \sum_{i=1}^{n} (f(t_i)-y_i)^2 +\sum_{i=1}^{n-1} \lambda_i\int_{t_i}^{t_{i+1}} f''(t)^2 dt,
+J[f]_{\gamma=0}= \frac{1}{n} \sum_{i=1}^{n} (f(t_i)-y_i)^2 +\sum_{i=1}^{n-1} \lambda_i\int_{t_i}^{t_{i+1}} (f'')^2 dt,
 \end{equation}
 and
 \begin{equation}\label{thetahat0}
@@ -368,37 +378,37 @@ and the adjusted penalty term in (\ref{adjustedpenalty}) was removed from anothe
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBlocks.pdf}
-    \caption{The \textit{Blocks} function.}
+    \caption{The \textit{Blocks} function}
     \end{subfigure}%
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBlocksNoise.pdf}
-    \caption{Noisy \textit{Blocks} at \textit{SNR}=7.}
+    \caption{Noisy \textit{Blocks} at \textit{SNR}=7}
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBlocksPosition.pdf}
-    \caption{Generated positions.}
+    \caption{Generated positions}
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBlocksPositionNoise.pdf}
-    \caption{Noisy position at \textit{SNR}=7.}
+    \caption{Noisy position at \textit{SNR}=7}
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBlocksSure.pdf}
-    \caption{Reconstruction from Wavelet by sure threshold.}
+    \caption{Reconstruction from Wavelet by sure threshold}
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBlocksBayes.pdf}
-    \caption{Reconstruction from Wavelet by BayesThresh approach.}
+    \caption{Reconstruction from Wavelet by BayesThresh approach}
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBlocksPSpline.pdf}
-    \caption{Reconstruction by P-spline. \\\mbox{  } }
+    \caption{Reconstruction by P-spline \\\mbox{  } }
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
@@ -408,12 +418,12 @@ and the adjusted penalty term in (\ref{adjustedpenalty}) was removed from anothe
   \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBlocksTractorAPT.pdf}
-    \caption{Reconstruction by Tractor spline with conventional penalty term.}
+    \caption{Reconstruction by Tractor spline with conventional penalty term}
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBlocksTractor.pdf}
-    \caption{Reconstruction by proposed Tractor spline.}
+    \caption{Reconstruction by proposed Tractor spline}
     \end{subfigure}
 \caption{Numerical example: $\textit{Blocks}$. Comparison of different reconstruction methods with simulated data.}\label{num1}
  \end{figure}
@@ -431,37 +441,37 @@ and the adjusted penalty term in (\ref{adjustedpenalty}) was removed from anothe
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBumps.pdf}
-    \caption{True \textit{Bumps} function.}
+    \caption{True \textit{Bumps} function}
     \end{subfigure}%
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBumpsNoise.pdf}
-    \caption{Noisy \textit{Bumps} at \textit{SNR}=7.}
+    \caption{Noisy \textit{Bumps} at \textit{SNR}=7}
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBumpsPosition.pdf}
-    \caption{Generated positions.}
+    \caption{Generated positions}
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBumpsPositionNoise.pdf}
-    \caption{Noisy position at \textit{SNR}=7.}
+    \caption{Noisy position at \textit{SNR}=7}
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBumpsSure.pdf}
-    \caption{Reconstruction from Wavelet by sure threshold.}
+    \caption{Reconstruction from Wavelet by sure threshold}
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBumpsBayes.pdf}
-    \caption{Reconstruction from Wavelet by BayesThresh approach.}
+    \caption{Reconstruction from Wavelet by BayesThresh approach}
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBumpsPSpline.pdf}
-    \caption{Reconstruction by P-spline. \\\mbox{  } }
+    \caption{Reconstruction by P-spline \\\mbox{  } }
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
@@ -471,12 +481,12 @@ and the adjusted penalty term in (\ref{adjustedpenalty}) was removed from anothe
   \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBumpsTractorAPT.pdf}
-    \caption{Reconstruction by Tractor spline with conventional penalty term.}
+    \caption{Reconstruction by Tractor spline with conventional penalty term}
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBumpsTractor.pdf}
-    \caption{Reconstruction by proposed Tractor spline.}
+    \caption{Reconstruction by proposed Tractor spline}
     \end{subfigure}
 \caption{Numerical example: $\textit{Bumps}$. Comparison of different reconstruction methods with simulated data.}\label{num2}
  \end{figure}
@@ -496,37 +506,37 @@ and the adjusted penalty term in (\ref{adjustedpenalty}) was removed from anothe
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSine.pdf}
-    \caption{True \textit{HeaviSine} function.}
+    \caption{True \textit{HeaviSine} function}
     \end{subfigure}%
     \begin{subfigure}{0.45\textwidth}
     \centering
-    \includegraphics[width=\linewidth,,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSineNoise.pdf}
-    \caption{Noisy \textit{HeaviSine} at \textit{SNR}=7.}
+    \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSineNoise.pdf}
+    \caption{Noisy \textit{HeaviSine} at \textit{SNR}=7}
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSinePosition.pdf}
-    \caption{Generated positions.}
+    \caption{Generated positions}
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSinePositionNoise.pdf}
-    \caption{Noisy position at \textit{SNR}=7.}
+    \caption{Noisy position at \textit{SNR}=7}
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSineSure.pdf}
-    \caption{Reconstruction from Wavelet by sure threshold.}
+    \caption{Reconstruction from Wavelet by sure threshold}
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSineBayes.pdf}
-    \caption{Reconstruction from Wavelet by BayesThresh approach.}
+    \caption{Reconstruction from Wavelet by BayesThresh approach}
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSinePSpline.pdf}
-    \caption{Reconstruction by P-spline. \\\mbox{  } }
+    \caption{Reconstruction by P-spline \\\mbox{  } }
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
@@ -536,12 +546,12 @@ and the adjusted penalty term in (\ref{adjustedpenalty}) was removed from anothe
   \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSineTractorAPT.pdf}
-    \caption{Reconstruction by Tractor spline with conventional penalty term.}
+    \caption{Reconstruction by Tractor spline with conventional penalty term}
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSineTractor.pdf}
-    \caption{Reconstruction by proposed Tractor spline.}
+    \caption{Reconstruction by proposed Tractor spline}
     \end{subfigure}
 \caption{Numerical example: $\textit{HeaviSine}$. Comparison of different reconstruction methods with simulated data.}\label{num3}
  \end{figure}
@@ -560,37 +570,37 @@ and the adjusted penalty term in (\ref{adjustedpenalty}) was removed from anothe
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggDoppler.pdf}
-    \caption{True \textit{Doppler} function.}
+    \caption{True \textit{Doppler} function}
     \end{subfigure}%
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggDopplerNoise.pdf}
-    \caption{Noisy \textit{Doppler} at \textit{SNR}=7.}
+    \caption{Noisy \textit{Doppler} at \textit{SNR}=7}
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggDopplerPosition.pdf}
-    \caption{Generated positions.}
+    \caption{Generated positions}
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggDopplerPositionNoise.pdf}
-    \caption{Noisy position at \textit{SNR}=7.}
+    \caption{Noisy position at \textit{SNR}=7}
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggDopplerSure.pdf}
-    \caption{Reconstruction from Wavelet by sure threshold.}
+    \caption{Reconstruction from Wavelet by sure threshold}
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggDopplerBayes.pdf}
-    \caption{Reconstruction from Wavelet by BayesThresh approach.}
+    \caption{Reconstruction from Wavelet by BayesThresh approach}
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggDopplerPSpline.pdf}
-    \caption{Reconstruction by P-spline. \\\mbox{  } }
+    \caption{Reconstruction by P-spline \\\mbox{  } }
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
@@ -600,17 +610,17 @@ and the adjusted penalty term in (\ref{adjustedpenalty}) was removed from anothe
   \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggDopplerTractorAPT.pdf}
-    \caption{Reconstruction by Tractor spline with conventional penalty term.}
+    \caption{Reconstruction by Tractor spline with conventional penalty term}
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggDopplerTractor.pdf}
     \caption{Reconstruction by proposed Tractor spline.}
     \end{subfigure}
-\caption{Numerical example: $\textit{Doppler}$. Comparison of different reconstruction methods with simulated data.}\label{num4}
+\caption{Numerical example: $\textit{Doppler}$. Comparison of different reconstruction methods with simulated data}\label{num4}
  \end{figure}
 
-By comparing, we can see that all these methods can rebuild up the skeleton of generated trajectory. \textit{Wavelet(sure)} method have more wiggles in interior interval than \textit{Wavelet(BayesThresh)}, and the latter one becomes fluctuation near boundary knots. \textit{P-spline} gives much smoother fitting than wavelets, but the drawback is losing more specific details. Tractor spline without velocity loses some information, as can be seen from \textit{Blocks} and \textit{Bumps} where there should be a straight line. Tractor spline without adjusted penalty term gets over-fitting when the direction changes more frequently than normal, although it catches specific feature in \textit{HeaviSine}. The proposed Tractor spline performs much better than other methods and returns the near-true trajectory reconstructions.  
+By comparing, we can see that all these methods can rebuild up the skeleton of generated trajectory. \textit{Wavelet(sure)} method has more wiggles in interior interval than \textit{Wavelet(BayesThresh)} does, and the latter one becomes fluctuation near boundary knots. \textit{P-spline} gives a smoother fitting than wavelets, but the drawback is lack of specific details. Tractor spline without velocity loses some information, as can be seen from \textit{Blocks} and \textit{Bumps} where there should be a straight line. Tractor spline without adjusted penalty term gets over-fitting when the direction changes more frequently than normal, although it catches specific feature in \textit{HeaviSine}. The proposed Tractor spline performs much better than other methods and returns the near-true trajectory reconstructions.  
 
 
 
@@ -627,19 +637,19 @@ By comparing, we can see that all these methods can rebuild up the skeleton of g
     \centering
     \includegraphics[width=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBlocksPenaltyBar.pdf}
     \includegraphics[width=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBlocksPenaltyLine.pdf}
-    \caption{Distribution of penalty values in reconstructed \textit{Blocks} function.}
+    \caption{Distribution of penalty values in reconstructed \textit{Blocks} function}
     \end{subfigure}
     \begin{subfigure}{\textwidth}
     \centering
     \includegraphics[width=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBumpsPenaltyBar.pdf}
     \includegraphics[width=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBumpsPenaltyLine.pdf}
-    \caption{Distribution of penalty values in reconstructed \textit{Bumps} function.}
+    \caption{Distribution of penalty values in reconstructed \textit{Bumps} function}
     \end{subfigure}
     \begin{subfigure}{\textwidth}
     \centering
     \includegraphics[width=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSinePenaltyBar.pdf}
     \includegraphics[width=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSinePenaltyLine.pdf}
-    \caption{Distribution of penalty values in reconstructed \textit{HeaviSine} function.}
+    \caption{Distribution of penalty values in reconstructed \textit{HeaviSine} function}
     \end{subfigure}
 \end{figure}
 \begin{figure}\ContinuedFloat
@@ -648,7 +658,7 @@ By comparing, we can see that all these methods can rebuild up the skeleton of g
     \centering
     \includegraphics[width=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggDopplerPenaltyBar.pdf}
     \includegraphics[width=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggDopplerPenaltyLine.pdf}
-    \caption{Distribution of penalty values in reconstructed \textit{Doppler} function.}
+    \caption{Distribution of penalty values in reconstructed \textit{Doppler} function}
     \end{subfigure}
 \caption{Distribution of penalty values in reconstructed Tractor spline. Figures on left side indicate the values of $\lambda(t)$ varying in intervals. On right side, $\lambda(t)$ is projected into reconstructions. The bigger the blacks dots present, the larger the penalty values are.}\label{numpenalty}
  \end{figure}
@@ -658,7 +668,7 @@ Figure \ref{numpenalty} shows the estimated penalty function
 \begin{equation}
 \lambda(t)=\frac{(\Delta t)^3}{(\Delta d)^2}\lambda.
 \end{equation}
-The left column illustrates the value of penalty function at different intervals and the right column is the projection on position. Bigger black dots present larger penalty values. It can be seen that $\lambda(t)$ adapts to the smoothness pattern of position and will be large where a long time gap may occur. The details of how this penalty function works will be explained in next subsection.
+The figures in the left column illustrate the value of the penalty function at different intervals, the figures in the right column are the observations and reconstructed trajectory. Bigger black dots present larger penalty values. It can be seen that $\lambda(t)$ adapts to the smoothness pattern of position and will be large where a long time gap may occur. The details of how this penalty function works will be explained in next subsection.
 
 
 %\begin{figure}
@@ -751,6 +761,59 @@ The results are shown in table \ref{mse3200} and \ref{tmse3200}. All of these me
 %\end{sidewaystable}
 
 
+\subsection{Error Analysis}
+
+The simulated data is generated by equations (\ref{tractorsplinegeneratefunctions}) and the SNRs are set at 7 and 3 separately to compare the performances of different algorithms. All of the algorithms can reconstruct the true trajectory from noisy data and return acceptable MSE values, though Tractor spline returns the least TMSE in most of the circumstances. 
+
+Table \ref{tablecompareSNR} is comparing the capability of Tractor spline in retrieving the true SNR. 
+
+\begin{table}
+	\centering
+	\caption{SNR.}\label{tablecompareSNR}
+	\setlength\tabcolsep{1.5pt}
+	\begin{tabular}{|c|c| c| c|}
+\hline	                   & true SNR & from $f$ & from fitted $\hat{f}$ \\ \hline
+		\textit{Blocks}    & 7   & 6.9442    &  6.9485     \\ \hline
+		\textit{Blocks}    & 3   &  2.9761   &               \\ \hline
+		\textit{Bumps}     & 7  & 6.9442    &  6.9548  \\ \hline
+		\textit{Bumps}     & 3  & 2.9761    &              \\ \hline
+		\textit{HeaviSine} & 7 & 6.9442    &   6.9207   \\ \hline
+		\textit{HeaviSine} & 3 & 2.9761    &             \\ \hline
+		\textit{Doppler}   & 7   & 6.9442   &  6.8757   \\ \hline
+		\textit{Doppler}   & 3   & 2.9761   &               \\ \hline
+	\end{tabular}	
+\end{table}
+
+
+
+
+\begin{figure}
+    \centering
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggacfBlocks7.pdf}
+    \caption{ACF of errors from \textit{Blocks} with SNR at 7 }
+    \end{subfigure}%
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggacfBumps7.pdf}
+    \caption{ACF of errors from \textit{Bumps} with SNR at 7 }
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggacfHeavi7.pdf}
+    \caption{ACF of errors from \textit{HeaviSine} with SNR at 7 }
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggacfDoppler7.pdf}
+    \caption{ACF of errors from \textit{Doppler} with SNR at 7 }
+    \end{subfigure}
+\caption{ACF of errors.}\label{tractorsplineSNRacf}
+ \end{figure}
+
+
+
 %\clearpage 
 
 \section{Application on Real Dataset}\label{splineapplication}
@@ -789,7 +852,7 @@ where $\omega$ is the bearing in degrees. Boom status is tagged as 0 if it is no
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/gg512Path.pdf}
-    \caption{Original trajectory}\label{gg512Path}
+    \caption{Line-based trajectory}\label{gg512Path}
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
@@ -801,7 +864,7 @@ where $\omega$ is the bearing in degrees. Boom status is tagged as 0 if it is no
     \includegraphics[width=\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/gg512PointsY.pdf}
     \caption{Original positions on $y$-axis}\label{gg512PointsY}
     \end{subfigure}
-\caption{Original data points. Figure \ref{gg512Points} is th original positions recorded by GPS units. Circle points means the boom is not working; cross points means it is working. Figure \ref{gg512Path} is an line-based trajectory: simply connect all the points sequentially with straight lines. Figure \ref{gg512PointsX} is the original $x$ position. Figure \ref{gg512PointsY} is the original $y$ positions.}\label{original512}
+\caption{Original data points. Figure \ref{gg512Points} is th original positions recorded by GPS units. Circle points means the boom is not working; cross points means it is working. Figure \ref{gg512Path} is the line-based trajectory by simply connecting all points sequentially with straight lines. Figure \ref{gg512PointsX} is the original $x$ position. Figure \ref{gg512PointsY} is the original $y$ positions.}\label{original512}
  \end{figure}
 
 
@@ -814,7 +877,7 @@ To fit the real data, we bring the parameter $\lambda_d$ back to our model. Then
 We treat $x$ and $y$ position separately and compare how velocity information in objective function (\ref{tractorsplineObjective}) and the adjusted penalty term in equation (\ref{adjustedpenalty}) work in our model. All parameters in fitted Tractor spline are automatically selected by cross-validation in equation (\ref{tractorcv}). Figure \ref{1dx} and figure \ref{1dy} compare the results of fitted methods on $x$ and $y$ axis. P-spline gives over-fitting on $x$ axis reconstruction and not applicable on $y$ axis due to errors. Wavelet(sure) misses some key points at corners when a tractor tries to have a turn. Tractor spline without adjusted penalty term presents less fitting at time gap knots, where time marks keep increasing while position stays the same with velocity is 0. If we take the last knot $p_k$ before and the first knot $p_{k+1}$ after the time gap, Hermite spline basis will use $y_k, v_k, y_{k+1}$ and $v_{k+1}$ to build up a cubic spline, even though the velocity information is not useful. That is why we got a curve rather than a straight line. Wavelet(BayesThresh), Tractor spline without velocity and proposed Tractor spline give acceptable results.
 
 
-Table \ref{1dxymse} illustrates the MSE of all methods on both $x$ and $y$ axises. The proposed Tractor spline returns the smallest errors among all methods.
+Table \ref{1dxymse} illustrates the MSE of all methods on both $x$ and $y$ axes. The proposed Tractor spline returns the smallest errors among all methods.
 
 %\begin{figure}
 %  \centering
@@ -906,15 +969,15 @@ Table \ref{1dxymse} illustrates the MSE of all methods on both $x$ and $y$ axise
 
 %\begin{sidewaystable}
 \begin{table}
-\caption{Mean square error. Tractor spline returns smallest errors among all these methods. P-spline was unable to reconstruct the $y$ trajectory as the original dataset contains value-$0$ time differences.} \label{1dxymse}
+\caption{Mean square error. Tractor spline returns smallest errors among all these methods. P-spline was unable to reconstruct the $y$ trajectory as the original dataset contains 0 $\Delta_y$.} \label{1dxymse}
 % \centering
 	\setlength\tabcolsep{1.5pt}
 \begin{center}
  	\begin{tabular}{|c|c|c|c|c|c|c|}
  		\hline
  		MSE   &  TS & TS$_{\gamma=0}$ & TS$_{APT=0}$   & P-spline & Wavelet(sure) & Wavelet(Bayes)\\ \hline
-	\textit{$x$-\mbox{axis}}    &  0.204582 & 0.283044 & 0.329834     & 2860.548   & 256.0494  & 6.295914  \\ \hline
-	\textit{$y$-\mbox{axis}}    &  0.002020 & 0.306154 & 0.311513     & \textit{NA} & 1960.2220 & 19.332990  \\ \hline
+	\textit{$x$}   &  0.2046 & 0.2830 & 0.3298     & 2860.5480   & 256.0494  & 6.2959  \\ \hline
+	\textit{$y$}   &  0.0020 & 0.3062 & 0.3115     & \textit{NA} & 1960.2220 & 19.3330  \\ \hline
  	\end{tabular}
  \end{center}
 \end{table}
@@ -922,18 +985,18 @@ Table \ref{1dxymse} illustrates the MSE of all methods on both $x$ and $y$ axise
 
 The penalty function of the proposed Tractor spline is
 \begin{equation}\label{penaltylamb}
-\lambda(t)=b\frac{\Delta t^3}{\Delta d^2}*\lambda_d+(1-b)\frac{\Delta t^3}{\Delta d^2}*\lambda_u, \mbox{where}
+\lambda(t)=b\frac{\Delta t^3}{\Delta d^2}\lambda_d+(1-b)\frac{\Delta t^3}{\Delta d^2}\lambda_u, \mbox{where}
 \begin{cases}
 b=1 & \mbox{if boom is working}\\
 b=0 & \mbox{if boom is not working}
-\end{cases}.
+\end{cases}
 \end{equation}
 To tell the differences more clearly, we take $\log(\lambda(t))$ in our demonstration. Figure \ref{penaltyxygg} indicates that at turning points and long time gap knots, the adjusted penalty term will lead $\lambda(t)$ to large values, which forces the spline to be a straight line between two knots. It can be seen in figure \ref{penaltyxyggXYPath} clearly. Histogram plots of $\log(\lambda(t))$ show that most of the penalty values are small, which allows the Tractor spline goes as closer as it can to the observed points. Only a few of penalty values are large, so that Tractor spline gives a straight line at tricky points. 
 
 %\begin{figure}
 %  \centering
 %    \includegraphics[width=\textwidth,height=13cm]{Chapters/02TractorSplineTheory/plot/penaltyxy06} 
-%  \caption{Penalty function of Tractor spline on $x$ and $y$ axises. The big black dots in plots (c) and (d) represent large penalty function.}\label{penaltyxygg}
+%  \caption{Penalty function of Tractor spline on $x$ and $y$ axes. The big black dots in plots (c) and (d) represent large penalty function.}\label{penaltyxygg}
 %\end{figure}
 
 \begin{figure}
@@ -942,38 +1005,38 @@ To tell the differences more clearly, we take $\log(\lambda(t))$ in our demonstr
     \centering
     \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXPenaltyLine.pdf}
     \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataYPenaltyLine.pdf}
-    \caption{Distribution of penalty values on $x$ and $y$ axises}\label{penaltyxyggXYLine}
+    \caption{Distribution of penalty values on $x$ and $y$}\label{penaltyxyggXYLine}
     \end{subfigure}
     \begin{subfigure}{\textwidth}
     \centering
     \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXPenaltyHist.pdf}
     \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataYPenaltyHist.pdf}
-    \caption{Histograms of penalty values on $x$ and $y$ axises.}\label{penaltyxyggXYHist}
+    \caption{Histograms of penalty values on $x$ and $y$}\label{penaltyxyggXYHist}
     \end{subfigure}
     \begin{subfigure}{\textwidth}
     \centering
     \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXPenaltyPath.pdf}
     \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataYPenaltyPath.pdf}
-    \caption{Reconstruction with penalty values on $x$ and $y$ axises separately}\label{penaltyxyggXYPath}
+    \caption{Reconstruction with penalty values on $x$ and $y$ separately}\label{penaltyxyggXYPath}
     \end{subfigure}
- \caption{Penalty function of Tractor spline on $x$ and $y$ axises. The big black dots in figure \ref{penaltyxyggXYPath} indicate large penalty values. It can be seen that most of large penalty values occur at turnings, where the tractor likely slows down and takes breaks. }\label{penaltyxygg}
+ \caption{Penalty function of Tractor spline on $x$ and $y$ axes. The big black dots in figure \ref{penaltyxyggXYPath} indicate large penalty values. It can be seen that most of large penalty values occur at turnings, where the tractor likely slows down and takes breaks. }\label{penaltyxygg}
  \end{figure}
 
 
 \subsection{2-Dimension Trajectory}
 
-In a 2-dimensional trajectory reconstruction, we use the same parameters $\lambda_d$, $\lambda_u$ and $\gamma$ on both $x$ and $y$ axises. The parameters will be found by cross-validation where it returns the smallest score of
+In a 2-dimensional trajectory reconstruction, we use the same parameters $\lambda_d$, $\lambda_u$ and $\gamma$ on both $x$ and $y$ axes. The parameters will be found by cross-validation where it returns the smallest score of
 \begin{equation}
 \mbox{CV}=\mbox{CV}_x+\mbox{CV}_y.
 \end{equation}
 In a 2-dimensional reconstruction, $\Delta d$ in adjusted penalty term is the Euclidean distance $d(p_1,p_2)=\sqrt{(\Delta x)^2+(\Delta y)^2}$ between two positions on 2D surface.
 
 Similar results as that in 1 dimension reconstruction, the velocity information keeps trajectory in the right direction and the penalty term makes sure that the crazy curve will disappear between long time gap points. Figure \ref{2dxy} demonstrates the final overall 2D reconstruction. 
-%fitted trajectory on $x$ and $y$ axises separately and compares the final 2D trajectory with the line based original one. 
+%fitted trajectory on $x$ and $y$ axes separately and compares the final 2D trajectory with the line based original one. 
 %\begin{figure}
 %  \centering
 %    \includegraphics[width=\textwidth,height=9cm]{Chapters/02TractorSplineTheory/plot/fittedoriginal04} 
-%  \caption{Fitted data points on $x$ and $y$ axises. The mean square errors (MSE) on $x$ and $y$ are 0.240734 and 0.478422 respectively. The mean distance error $\sqrt{(\hat{f}_x-x)^2+ (\hat{f}_y-y)^2}$ is 0.645830.}\label{2dxy}
+%  \caption{Fitted data points on $x$ and $y$ axes. The mean square errors (MSE) on $x$ and $y$ are 0.240734 and 0.478422 respectively. The mean distance error $\sqrt{(\hat{f}_x-x)^2+ (\hat{f}_y-y)^2}$ is 0.645830.}\label{2dxy}
 %\end{figure}
 
 \begin{figure}
@@ -982,7 +1045,7 @@ Similar results as that in 1 dimension reconstruction, the velocity information 
   \caption{2-Dimensional reconstruction with penalty function. Larger dots indicate bigger penalty values. The mean square errors (MSE) on $x$ and $y$ are 0.2407 and 0.4784 respectively. The mean distance error $\sqrt{(\hat{f}_x-x)^2+ (\hat{f}_y-y)^2}$ is 0.6458.}\label{2dxy}
 \end{figure}
 
-The penalty term of 2 dimension reconstruction will be the sum of each penalty on $x$ and $y$ axises. So the estimated penalty function is
+The penalty term of a 2-dimension reconstruction will be the sum of each penalty on $x$ and $y$ axes. So the estimated penalty function is
 \begin{equation}
 \lambda(t)=\lambda(t)_x+\lambda(t)_y
 \end{equation}
@@ -990,7 +1053,7 @@ and presented in figure \ref{2dpenalty}. As the similar results in 1 dimension r
 %\begin{figure}
 %  \centering
 %    \includegraphics[width=\textwidth,height=9cm]{Chapters/02TractorSplineTheory/plot/penaltyoriginal04} 
-%  \caption{Penalty function of 2 dimensional reconstruction. Bigger black dots present larger penalty value on $x$ and $y$ axises simultaneously.}\label{2dpenalty}
+%  \caption{Penalty function of 2 dimensional reconstruction. Bigger black dots present larger penalty value on $x$ and $y$ axes simultaneously.}\label{2dpenalty}
 %\end{figure}
 
 \begin{figure}
@@ -1001,7 +1064,7 @@ and presented in figure \ref{2dpenalty}. As the similar results in 1 dimension r
 \end{figure}
 
 
-\clearpage
+%\clearpage
 
 \section{Conclusion and Discussion}
 

@@ -5,7 +5,7 @@ Data assimilation is a sequential process, by which the observations are incorpo
 
 Sequential Monte Carlo method is well studied in the scientific literature and quite prevalent in academic research in the last decades. It allows us to specify complex, non-linear time series patterns and enables performing real-time Bayesian estimations when it is coupled with Dynamic Generalized Linear Models \cite{vieira2016online}. However, model's parameters are unknown in real-world application and it is a limit for standard SMC. Extensions to this algorithm have been done by researchers. Kitagawa \cite{kitagawa1998self} proposed a self-organizing filter and augmenting the state vector with unknown parameters. The state and parameters are estimated simultaneously by either a non-Gaussian filter or a particle filter. Liu and West \cite{liu2001combined} proposed an improved particle filter to kill degeneracy, which is a normal issue in static parameters estimation. They are using a kernel smoothing approximation, with a correction factor to account for over-dispersion. Alternatively, Storvik \cite{storvik2002particle} proposed a new filter algorithm by assuming the posterior depends on a set of sufficient statistics, which can be updated recursively. However, this approach only applies to parameters with conjugate priors \cite{stroud2016bayesian}. Particle learning was first introduced in \cite{carvalho2010particle}. Unlike Storvik filter, it is using sufficient statistics solely to estimate parameters and promises to reduce particle impoverishment. These particle-like methods are all using more or less sampling and resampling algorithms to update particles recursively. 
 
-Jonathan proposed in \cite{stroud2016bayesian} an SMC algorithm by using ensemble Kalman filter framework for high dimensional space models with observations. Their approach combines information about the parameters from data at different time points in a formal way using Bayesian updating. In \cite{polson2008practical}, the authors rely on a fixed-lag length of data approximation to filtering and sequential parameter learning in a general dynamic state-space model. This approach allows for sequential parameter learning where importance sampling has difficulties and avoids degeneracies in particle filtering. A new adaptive Markov Chain Monte Carlo method yields a quick and flexible way for estimating posterior distribution in parameter estimation \cite{haario1999adaptive}. This new Adaptive Proposal method depends on historical data, is introduced to avoid the difficulties of tunning the proposal distribution in Metropolis-Hastings methods. 
+Jonathan proposed in \cite{stroud2016bayesian} an SMC algorithm by using ensemble Kalman filter framework for high dimensional space models with observations. Their approach combines information about the parameters from data at different time points in a formal way using Bayesian updating. In \cite{polson2008practical}, the authors rely on a fixed-lag length of data approximation to filtering and sequential parameter learning in a general dynamic state-space model. This approach allows for sequential parameter learning where importance sampling has difficulties and avoids degeneracies in particle filtering. A new adaptive Markov chain Monte Carlo method yields a quick and flexible way for estimating posterior distribution in parameter estimation \cite{haario1999adaptive}. This new Adaptive Proposal method depends on historical data, is introduced to avoid the difficulties of tunning the proposal distribution in Metropolis-Hastings methods. 
 
 
 
@@ -201,9 +201,9 @@ and  the unconditional variance of $x_t$, by law of total variance, is
 
 \section{Random Walk Metropolis-Hastings algorithm}
 
-Metropolis-Hastings algorithm is an important class of Markov Chain Monte Carlo (MCMC) algorithms \cite{smith1993bayesian} \cite{tierney1994markov} \cite{gilks1995markov}.  This algorithm has been used extensively in physics but was little known to others until M\"{u}ller \cite{muller1991generic} and Tierney \cite{tierney1994markov} expounded the value of this algorithm to statisticians. The algorithm is extremely powerful and versatile and has been included in a list of "The Top 10 Algorithms"  with the greatest influence on the development and practice of science and engineering in the 20th century \cite{dongarra2000guest} \cite{medova2008bayesian}. 
+Metropolis-Hastings algorithm is an important class of MCMC algorithms \cite{smith1993bayesian} \cite{tierney1994markov} \cite{gilks1995markov}.  This algorithm has been used extensively in physics but was little known to others until M\"{u}ller \cite{muller1991generic} and Tierney \cite{tierney1994markov} expounded the value of this algorithm to statisticians. The algorithm is extremely powerful and versatile and has been included in a list of "The Top 10 Algorithms"  with the greatest influence on the development and practice of science and engineering in the 20th century \cite{dongarra2000guest} \cite{medova2008bayesian}. 
 
-Given essentially a probability distribution $\pi$ (the "target distribution"), MH algorithm provides a way to generate a Markov Chain $x_1, x_2,\ldots, x_t$, who has the target distribution as a stationary distribution, for the uncertain parameters $x$ requiring only that this density can be calculated at $x$. Suppose that we can evaluate $\pi(x)$ for any $x$. The transition probabilities should satisfy the detailed balance condition
+Given essentially a probability distribution $\pi$ (the "target distribution"), MH algorithm provides a way to generate a Markov chain $x_1, x_2,\ldots, x_t$, who has the target distribution as a stationary distribution, for the uncertain parameters $x$ requiring only that this density can be calculated at $x$. Suppose that we can evaluate $\pi(x)$ for any $x$. The transition probabilities should satisfy the detailed balance condition
 \begin{equation*}
 \pi(x^{(t)})q(x', x^{(t)}) = \pi(x')q(x^{(t)}, x'),
 \end{equation*}
@@ -492,7 +492,7 @@ Then, by taking natural logarithm on the posterior of $\theta$ and using the use
 
 In a simple linear case, we are choosing the parameter $\theta = \{\phi=0.9,\tau^2=0.5,\sigma^2=1\}$ as the author did in \cite{lopes2011particle} and using $n=500$ dataset, setting initial $L=0$. Instead of inferring $\tau$ and $\sigma$, we are estimating $\nu_1 = \ln \tau^2$ and $\nu_2 = \ln \sigma^2$ in the RW-MH to avoid singular proposals. After the process, the parameters can be transformed back to original scale. Therefore, the new parameter  $\theta^* =  \{\phi,\nu_1,\nu_2\} = \{\phi,\ln\tau^2,\ln\sigma^2\}$. 
 
-Buy using algorithm (\ref{algoonevarible}) and aiming the optimal acceptance rate at 0.44, after 10\,000 iterations we get the acceptance rates for each parameters are $\alpha_\phi = 0.4409, \alpha_{\nu_1}= 0.4289$ and $\alpha_{\nu_2}= 0.4505$, and the estimations are $\phi =0.8794, \nu_1= -0.6471$ and $\nu_2= -0.0639$ respectively. Thus, we have the cheap surrogate $\hat{\pi}(\cdot)$. Keep going to the DA-MH with another 10\,000 iterations, the algorithm returns the best estimation with $\alpha_1=0.1896$ and $\alpha_2 = 0.8782$. In figure \ref{linearmarginplots}, the trace plots illustrates that the Markov Chain of $\hat{\theta}$ is stably fluctuating around the true $\theta$. 
+Buy using algorithm (\ref{algoonevarible}) and aiming the optimal acceptance rate at 0.44, after 10\,000 iterations we get the acceptance rates for each parameters are $\alpha_\phi = 0.4409, \alpha_{\nu_1}= 0.4289$ and $\alpha_{\nu_2}= 0.4505$, and the estimations are $\phi =0.8794, \nu_1= -0.6471$ and $\nu_2= -0.0639$ respectively. Thus, we have the cheap surrogate $\hat{\pi}(\cdot)$. Keep going to the DA-MH with another 10\,000 iterations, the algorithm returns the best estimation with $\alpha_1=0.1896$ and $\alpha_2 = 0.8782$. In figure \ref{linearmarginplots}, the trace plots illustrates that the Markov chain of $\hat{\theta}$ is stably fluctuating around the true $\theta$. 
 
 \begin{figure}[h]
 \centering
@@ -1132,7 +1132,7 @@ EffUT  & 0.0031     & 5.10   & 2.5   & 0.0360   & 0.7861   \\ \hline
 ESS     & 501.4248 & 36.35 & 1.0   & 0.3097    & 0.8324     \\ \hline
 ESSUT & 29.8912   & 5.10   & 2.5   & 0.0360   & 0.7861    \\ \hline
 \end{tabular}
-\caption{An example of Eff, EffUT, ESS and ESSUT found by running 10\,000 iterations with same data. The computation time is measured in seconds $s$. }
+\caption{An example of Eff, EffUT, ESS and ESSUT found by running 10\,000 iterations with same data. The computation time is measured in seconds~$s$. }
 \label{effeutessessutexampletable}
 \end{table}
 
@@ -1174,7 +1174,7 @@ Step Size& Length & Time & Eff   & EffUT & ESS & ESSUT \\ \hline
 2.5    &   7\,000          &  3.62  & 0.0161 &0.0044  & 112.3134   &  31.0258    \\ \hline
 2.5    &   $1\,000^\star$ &  3.62 & \textbf{0.1095} &  \textbf{0.0302}  &  \textbf{113.4063} & \textbf{31.3277} \\ \hline
 \end{tabular}
-\caption{Comparing Eff, EffUT, ESS and ESSUT values using different step size. The $1000^\star$ means taking 1\,000 samples from a longer chain, like 1\,000 out of 5\,000 sample chain. The computation time is measured in seconds $s$.}
+\caption{Comparing Eff, EffUT, ESS and ESSUT values using different step size. The $1000^\star$ means taking 1\,000 samples from a longer chain, like 1\,000 out of 5\,000 sample chain. The computation time is measured in seconds~$s$.}
 \label{stepsizecompare}
 \end{table}
 

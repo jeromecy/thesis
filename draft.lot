@@ -1,13 +1,14 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {2.1}{\ignorespaces MSE. Mean square errors of different methods. The numbers in bold indicate the smallest error among these methods under the same level. The difference is not significant.\relax }}{37}
-\contentsline {table}{\numberline {2.2}{\ignorespaces TMSE. True mean square errors of different methods. The numbers in bold indicate the smallest error among these methods under the same level. The proposed Tractor spline returns the smallest TMSE among all the methods under the same level except for $\textit {Doppler}$ with SNR=7. The differences are significant. \relax }}{38}
-\contentsline {table}{\numberline {2.3}{\ignorespaces Mean square error. Tractor spline returns smallest errors among all these methods. P-spline was unable to reconstruct the $y$ trajectory as the original dataset contains value-$0$ time differences.\relax }}{40}
+\contentsline {table}{\numberline {2.1}{\ignorespaces MSE. Mean square errors of different methods. The numbers in bold indicate the smallest error among these methods under the same level. The difference is not significant.\relax }}{35}
+\contentsline {table}{\numberline {2.2}{\ignorespaces TMSE. True mean square errors of different methods. The numbers in bold indicate the smallest error among these methods under the same level. The proposed Tractor spline returns the smallest TMSE among all the methods under the same level except for $\textit {Doppler}$ with SNR=7. The differences are significant. \relax }}{35}
+\contentsline {table}{\numberline {2.3}{\ignorespaces SNR.\relax }}{36}
+\contentsline {table}{\numberline {2.4}{\ignorespaces Mean square error. Tractor spline returns smallest errors among all these methods. P-spline was unable to reconstruct the $y$ trajectory as the original dataset contains 0 $\Delta _y$.\relax }}{40}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces An example of Eff, EffUT, ESS and ESSUT found by running 10\tmspace +\thinmuskip {.1667em}000 iterations with same data. The computation time is measured in seconds $s$. \relax }}{120}
-\contentsline {table}{\numberline {5.2}{\ignorespaces Comparing Eff, EffUT, ESS and ESSUT values using different step size. The $1000^\star $ means taking 1\tmspace +\thinmuskip {.1667em}000 samples from a longer chain, like 1\tmspace +\thinmuskip {.1667em}000 out of 5\tmspace +\thinmuskip {.1667em}000 sample chain. The computation time is measured in seconds $s$.\relax }}{122}
+\contentsline {table}{\numberline {5.1}{\ignorespaces An example of Eff, EffUT, ESS and ESSUT found by running 10\tmspace +\thinmuskip {.1667em}000 iterations with same data. The computation time is measured in seconds\nobreakspace {}$s$. \relax }}{120}
+\contentsline {table}{\numberline {5.2}{\ignorespaces Comparing Eff, EffUT, ESS and ESSUT values using different step size. The $1000^\star $ means taking 1\tmspace +\thinmuskip {.1667em}000 samples from a longer chain, like 1\tmspace +\thinmuskip {.1667em}000 out of 5\tmspace +\thinmuskip {.1667em}000 sample chain. The computation time is measured in seconds\nobreakspace {}$s$.\relax }}{122}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
