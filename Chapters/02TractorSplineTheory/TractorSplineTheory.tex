@@ -253,7 +253,7 @@ where  $t_i\leq t < t_{i+1}$. Eventually, in objective function, there is one pa
 
 
 
-\section{Parameter Selection and Cross Validation}
+\section{Parameter Selection and Cross-Validation}
 
 The problem of choosing the smoothing parameter is ubiquitous in curve estimation, and there are two different philosophical approaches to this question. The first one is to regard the free choice of smoothing parameter as an advantageous feature of the procedure. The other one is to find the parameter automatically by the data \cite{green1993nonparametric}. We prefer the latter one, use data to train our model and find the best parameters. The most well-known method is cross-validation.
 
@@ -262,15 +262,15 @@ Assuming that the random errors have zero mean, the true regression curve $f(t)$
 
 Now, focus on an observation $y_i$ at point $t_i$ as being a new observation by omitting it from the set of data, which are used to estimate $\hat{f}$. Denote by $\hat{f}^{(-i)}(t,\lambda)$ the estimated function from the remaining data, where $\lambda$ is the smoothing parameter. Then $\hat{f}^{(-i)}(t,\lambda)$ minimizes 
 \begin{align}\label{originalcv}
-\frac{1}{n}\sum_{j \neq i}(y_j-f(t_j))^2+\lambda \int f''^2dt
+\frac{1}{n-1}\sum_{j \neq i}\left(y_j-f(t_j) \right)^2+\lambda \int (f'')^2dt
 \end{align}
- and $\lambda$ can be quantified by cross-validation score function
+and $\lambda$ can be quantified by cross-validation score function
 \begin{align}
 \mbox{CV}(\lambda)=\frac{1}{n}\sum_{i=1}^{n}\left(  y_i-\hat{f}^{(-i)}(t_i,\lambda)\right) ^2.
 \end{align}
-The basis idea of cross-validation is to choose the value of $\lambda$ that minimizes $\mbox{CV}(\lambda)$. 
+The basis idea of cross-validation is to choose the value of $\lambda$ that minimizes $\mbox{CV}(\lambda)$ \cite{green1993nonparametric}. 
 
-An efficient way to calculate cross-validation score is given by \cite{green1993nonparametric}. Through the equation (\ref{fhy}), it is known that the value of the smoothing spline $\hat{f}$ depend linearly on the data $y_i$. Define the matrix $A(\lambda)$, which is a map vector of observed values $y_i$ to predicted values $\hat{f}(t_i)$. Then we have
+An efficient way to calculate cross-validation score is introduced by \cite{green1993nonparametric}. Through the equation (\ref{fhy}), it is known that the value of the smoothing spline $\hat{f}$ depend linearly on the data $y_i$. Define the matrix $A(\lambda)$, which is a map vector of observed values $y_i$ to predicted values $\hat{f}(t_i)$. Then we have
 \begin{equation}\label{crossvalidationmatrixA}
 \hat{\mathbf{f}}=A(\lambda)\mathbf{y}
 \end{equation}
@@ -341,20 +341,20 @@ Then
 
 In this section, we examine the visual quality of the proposed method with four functions: \textit{Blocks}, \textit{Bumps}, \textit{HeaviSine} and \textit{Doppler}, which have been used in \cite{donoho1994ideal}, \cite{donoho1995adapting} and \cite{abramovich1998wavelet} because of their caricature features in imaging, spectroscopy and other scientific signal processing. However it is unfair for Tractor spline fitting "jump" position in \textit{Blocks} and \textit{Bumps} function because it fits position and velocity simultaneously and these points imply infinite first derivative in original functions, which are impossible for vehicles or individuals. In terms of this issue, we treat these functions as velocity, and use noise free points to generate accurate position data, then add noises back to them.
 
-For calculating consideration, we use $n=1024$ \cite{nason2010wavelet}. Because all noises are randomly generated, for the convenience of reinitialization and repeatable comparison, we set random seed at 2016. The noises are \iid zero-mean Gaussian distributed $\varepsilon \sim N(0,\sigma)$ and signal-to-noise ratio (SNR), which specifies the ratio of the standard deviation of the function to the standard deviation of the simulated errors, is set at 7. Explicitly, if the standard deviation of the true signal $f$ is $\sigma_f$, the simulated data will be $f+\varepsilon$, where the simulated error  $\varepsilon \sim N(0,\sigma_f/7)$. 
+For calculating consideration, we use $n=1024$ \cite{nason2010wavelet}. Because all noises are randomly generated, for the convenience of reinitialization and repeatable comparison, we set random seed at 2016. The noises are \iid zero-mean Gaussian distributed with standard deviation regarding to signal-to-noise ratio (SNR), which specifies the ratio of the standard deviation of the function to the standard deviation of the simulated errors. Explicitly, if the standard deviation of the true signal $f$ is $\sigma_f$, the simulated data will be $f+\varepsilon$, where the simulated error  $\varepsilon \sim N(0,\sigma_f/SNR)$. 
 
 Therefore, if the original function $g(t)$ is treated as velocity function $f'(t)=g(t)$, thus by setting initial position $y_0=0$, acceleration $a_0=0$ and using the following formula 
 \begin{equation}\label{generateVelocity}
 f(t_{i+1})=f(t_i)+\left(g(t_i)+g(t_{i+1}) \right)\frac{t_{i+1}-t_i}{2}
 \end{equation}
-for calculating position information, we can easily generate simulated data. Further, we add some \iid  zero-mean $\varepsilon$ noises with SNR 7 to them to get the measurements by 
+for calculating position information, we can easily generate simulated data. Further, we add some \iid  zero-mean $\varepsilon$ noises with SNR to them to get the measurements by 
 \begin{align}\label{tractorsplinegeneratefunctions}
 \begin{split}
 y_i &= f(t_i) + \varepsilon_f, \\
 v_i &= g(t_i) + \varepsilon_g,
 \end{split}
 \end{align}
-where $\varepsilon_f\sim N(0,\sigma_f/7)$ and $\varepsilon_g\sim N(0,\sigma_g/7)$. For wavelet transform reconstructions, we use the threshold policy of \textit{sure} and \textit{BayesThresh} with levels $l=4, \ldots, 9$, see  \cite{donoho1995adapting} and \cite{abramovich1998wavelet}. A semi-parametric regression model with spatially adaptive penalized splines (\textit{P-spline}) is added in comparison, see \cite{krivobokova2008fast} \cite{ruppert2003semiparametric}.
+where $\varepsilon_f\sim N(0,\sigma_f/SNR)$ and $\varepsilon_g\sim N(0,\sigma_g/SNR)$. The value of SNR can be chosen 7 or 3. For wavelet transform reconstructions, we use the threshold policy of \textit{sure} and \textit{BayesThresh} with levels $l=4, \ldots, 9$, see  \cite{donoho1995adapting} and \cite{abramovich1998wavelet}. A semi-parametric regression model with spatially adaptive penalized splines (\textit{P-spline}) is added in comparison, see \cite{krivobokova2008fast} \cite{ruppert2003semiparametric}.
 
 For Tractor spline, we have two parameters $\lambda$ and $\gamma$ to optimize. To evaluate the performance of the velocity term in objective function (\ref{tractorsplineObjective}) and the adjusted penalty term in (\ref{adjustedpenalty}), the parameter $\gamma$ is set as 0 in one reconstruction of Tractor spline, whose objective function and solution become
 \begin{equation}\label{ofgamma0}
@@ -786,55 +786,7 @@ Table \ref{tablecompareSNR} is comparing the capability of Tractor spline in ret
 \end{table}
 
 
-Further analysis in figure \ref{tractorsplineSNR7acf} and \ref{tractorsplineSNR3acf} show that the residuals from the true trajectories are independent. 
-\begin{figure}
-    \centering
-    \begin{subfigure}{0.45\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggacfBlocks7.pdf}
-    \caption{ACF of residuals from \textit{Blocks} with SNR at 7 }
-    \end{subfigure}%
-    \begin{subfigure}{0.45\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggacfBumps7.pdf}
-    \caption{ACF of residuals from \textit{Bumps} with SNR at 7 }
-    \end{subfigure}
-    \begin{subfigure}{0.45\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggacfHeavi7.pdf}
-    \caption{ACF of residuals from \textit{HeaviSine} with SNR at 7 }
-    \end{subfigure}
-    \begin{subfigure}{0.45\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggacfDoppler7.pdf}
-    \caption{ACF of residuals from \textit{Doppler} with SNR at 7 }
-    \end{subfigure}
-\caption{ACF of residuals at SNR level of 7.}\label{tractorsplineSNR7acf}
- \end{figure}
-\begin{figure}
-    \centering
-    \begin{subfigure}{0.45\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggacfBlocks3.pdf}
-    \caption{ACF of residuals from \textit{Blocks} with SNR at 3 }
-    \end{subfigure}%
-    \begin{subfigure}{0.45\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggacfBumps3.pdf}
-    \caption{ACF of residuals from \textit{Bumps} with SNR at 3 }
-    \end{subfigure}
-    \begin{subfigure}{0.45\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggacfHeavi3.pdf}
-    \caption{ACF of residuals from \textit{HeaviSine} with SNR at 3 }
-    \end{subfigure}
-    \begin{subfigure}{0.45\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggacfDoppler3.pdf}
-    \caption{ACF of residuals from \textit{Doppler} with SNR at 3 }
-    \end{subfigure}
-\caption{ACF of residuals at SNR level of 3.}\label{tractorsplineSNR3acf}
- \end{figure}
+Further analysis in figure \ref{tractorsplineSNR7acf} and \ref{tractorsplineSNR3acf} shows that the residuals from the true trajectories are independent. 
 
 
 %\clearpage 
@@ -1054,7 +1006,7 @@ The 1-dimensional reconstruction gets the best fittings $\hat{f}_x$ and $\hat{f}
 
 \subsection{2-Dimension Trajectory}
 
-In a 2-dimensional trajectory reconstruction, different from combined 1-dimensional reconstruction, we are using the same parameters $\lambda_d$, $\lambda_u$ and $\gamma$ on both $x$ and $y$ axes. The overall best parameters return the least cross-validation score on all axes. Explicitly, it is calculated by the following formula 
+In a 2-dimensional trajectory reconstruction, different from combined 1-dimensional reconstruction, we are using the same parameters $\lambda_d$, $\lambda_u$ and $\gamma$ for both $x$ and $y$ axes. The overall best parameters return the least cross-validation score on all axes. Explicitly, it is calculated by the following formula 
 \begin{equation}
 \mbox{CV}=\mbox{CV}_x+\mbox{CV}_y.
 \end{equation}
@@ -1071,16 +1023,16 @@ In the adjusted penalty term, $\Delta d$ is the Euclidean distance $\Delta_d(p_1
      \centering
      \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYPenaltyPathofX.pdf}
      \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYPenaltyPathofY.pdf}
-     \caption{Reconstruction on $x$ and $y$}
+     \caption{2-dimensional reconstruction on separate $x$ and $y$}
      \end{subfigure}
      \begin{subfigure}{\textwidth}
      \centering
      \includegraphics[width=0.9\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYPenaltyPathofXY.pdf}
-     \caption{Complete combined reconstruction on $x$ and $y$}
+     \caption{2-dimensional reconstruction}
      \end{subfigure}
 %\includegraphics[width=\textwidth,height=10cm]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYPenaltyPath.pdf} 
  %\caption{2-Dimensional reconstruction with penalty function. Larger dots indicate bigger penalty values. The mean squared errors (MSE) on $x$ and $y$ are 0.2407 and 0.4784 respectively. The mean distance error $\sqrt{(\hat{f}_x-x)^2+ (\hat{f}_y-y)^2}$ is 0.6458.}\label{2dxy}
- \caption{2-dimensional complete reconstruction. Larger dots indicate bigger values in penalty term.}\label{completecombind2dxy}
+ \caption{2-dimensional reconstruction. Larger dots indicate bigger values of penalty term.}\label{completecombind2dxy}
 \end{figure}
 
 %The penalty term of a 2-dimension reconstruction will be the sum of each penalty on $x$ and $y$ axes. So the estimated penalty function is
@@ -1095,7 +1047,7 @@ In the adjusted penalty term, $\Delta d$ is the Euclidean distance $\Delta_d(p_1
 %\end{figure}
 The penalty function $\lambda(t)$ of a 2-dimensional reconstruction is shared by $x$ and $y$ axes and presented in figure \ref{2dpenalty}. The complete penalty term is 
 \begin{equation*}
-n\theta_x^\top\Omega_{\lambda_d,\lambda_u,x}\theta_x + n\theta_y^\top\Omega_{\lambda_d,\lambda_u,y}\theta_y.
+n\theta_x^\top\Omega_{\lambda_d,\lambda_u}\theta_x + n\theta_y^\top\Omega_{\lambda_d,\lambda_u}\theta_y.
 \end{equation*}
 Similarly, most of the large penalty values appear at long-time-gap knots and turning points. A histogram plot of penalty function shows that most of the values are small and only a couple of them are large. 
 \begin{figure}
