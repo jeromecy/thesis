@@ -283,9 +283,9 @@ The cross-validation score satisfies
 where $\hat{f}$ is the spline smoother calculated from the full data set $\{(t_i,y_i)\}$ with smoothing paramter $\lambda$.
 \end{lemma}
 
-For a Tractor spline and its MSE function, there are two parameters need to be estimated $\lambda$ and $\gamma$. Then the objective function (\ref{originalcv}) becomes
+For a Tractor spline and its MSE function, there are two parameters $\lambda$ and $\gamma$ that are need to be estimated for. As a result, the objective function (\ref{originalcv}) becomes
 \begin{align}
-\frac{1}{n}\sum_{j \neq i}\left( y_j-f(t_j) \right)^2+\frac{\gamma}{n}\sum_{j \neq i} \left( v_j-f'(t_j) \right)^2+ \int \lambda(t) \left( f'' \right)^2dt,
+\frac{1}{n-1}\sum_{j \neq i}\left( y_j-f(t_j) \right)^2+\frac{\gamma}{n-1}\sum_{j \neq i} \left( v_j-f'(t_j) \right)^2+ \int \lambda(t) \left( f'' \right)^2dt,
 \end{align}
 and the cross-validation score function is
 \begin{align}
@@ -637,19 +637,19 @@ By comparing, we can see that all these methods can rebuild up the skeleton of g
     \centering
     \includegraphics[width=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBlocksPenaltyBar.pdf}
     \includegraphics[width=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBlocksPenaltyLine.pdf}
-    \caption{Distribution of penalty values in reconstructed \textit{Blocks} function}
+    \caption{Distribution of the penalty values in reconstructed \textit{Blocks}}
     \end{subfigure}
     \begin{subfigure}{\textwidth}
     \centering
     \includegraphics[width=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBumpsPenaltyBar.pdf}
     \includegraphics[width=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBumpsPenaltyLine.pdf}
-    \caption{Distribution of penalty values in reconstructed \textit{Bumps} function}
+    \caption{Distribution of the penalty values in reconstructed \textit{Bumps}}
     \end{subfigure}
     \begin{subfigure}{\textwidth}
     \centering
     \includegraphics[width=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSinePenaltyBar.pdf}
     \includegraphics[width=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSinePenaltyLine.pdf}
-    \caption{Distribution of penalty values in reconstructed \textit{HeaviSine} function}
+    \caption{Distribution of the penalty values in reconstructed \textit{HeaviSine}}
     \end{subfigure}
 \end{figure}
 \begin{figure}\ContinuedFloat
@@ -658,17 +658,13 @@ By comparing, we can see that all these methods can rebuild up the skeleton of g
     \centering
     \includegraphics[width=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggDopplerPenaltyBar.pdf}
     \includegraphics[width=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggDopplerPenaltyLine.pdf}
-    \caption{Distribution of penalty values in reconstructed \textit{Doppler} function}
+    \caption{Distribution of the penalty values in reconstructed \textit{Doppler}}
     \end{subfigure}
-\caption{Distribution of penalty values in reconstructed Tractor spline. Figures on left side indicate the values of $\lambda(t)$ varying in intervals. On right side, $\lambda(t)$ is projected into reconstructions. The bigger the blacks dots present, the larger the penalty values are.}\label{numpenalty}
- \end{figure}
+\caption{Distribution of the penalty values $\lambda(t)$ in Tractor spline. Figures on the left side indicate the values varying in intervals. On the right side, these values are projected into reconstructions. The bigger the blacks dots present, the larger the penalty values are.}\label{numpenalty}
+\end{figure}
 
 
-Figure \ref{numpenalty} shows the estimated penalty function
-\begin{equation}
-\lambda(t)=\frac{(\Delta t)^3}{(\Delta d)^2}\lambda.
-\end{equation}
-The figures in the left column illustrate the value of the penalty function at different intervals, the figures in the right column are the observations and reconstructed trajectory. Bigger black dots present larger penalty values. It can be seen that $\lambda(t)$ adapts to the smoothness pattern of position and will be large where a long time gap may occur. The details of how this penalty function works will be explained in next subsection.
+Figure \ref{numpenalty} shows the estimated penalty values $\lambda(t)=\frac{(\Delta t)^3}{(\Delta d)^2}\lambda$. The figures in the left column illustrate the values of the penalty term at different intervals, the figures in the right column are the observations and reconstructed trajectory. Bigger black dots present larger penalty values. It can be seen that $\lambda(t)$ adapts to the smoothness pattern of position and will be large where a long time gap may occur. The details of how this penalty function works will be explained in next subsection.
 
 
 %\begin{figure}
@@ -976,30 +972,31 @@ To tell the differences more clearly, we take $\lambda(t)$ in our demonstration.
     \centering
     \begin{subfigure}{\textwidth}
     \centering
-    \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXPenaltyLine.pdf}
-    \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataYPenaltyLine.pdf}
+    \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXPenaltyLine2.pdf}
+    \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataYPenaltyLine2.pdf}
     \caption{Distribution of the penalty term on $x$ and $y$}\label{penaltyxyggXYLine}
     \end{subfigure}
+%    \begin{subfigure}{\textwidth}
+%    \centering
+%    \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXPenaltyHist.pdf}
+%    \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataYPenaltyHist.pdf}
+%    \caption{Histograms of the penalty term on $x$ and $y$}\label{penaltyxyggXYHist}
+%    \end{subfigure}
     \begin{subfigure}{\textwidth}
     \centering
-    \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXPenaltyHist.pdf}
-    \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataYPenaltyHist.pdf}
-    \caption{Histograms of the penalty term on $x$ and $y$}\label{penaltyxyggXYHist}
-    \end{subfigure}
-    \begin{subfigure}{\textwidth}
-    \centering
-    \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXPenaltyPath.pdf}
-    \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataYPenaltyPath.pdf}
+    \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXPenaltyPath2.pdf}
+    \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataYPenaltyPath2.pdf}
     \caption{Reconstruction on $x$ and $y$ separately}\label{penaltyxyggXYPath}
     \end{subfigure}
- \caption{The penalty term $n\theta^\top\Omega\theta$ of Tractor spline on $x$ and $y$ axes. The big black dots in figure \ref{penaltyxyggXYPath} indicate large penalty values. It can be seen that most of large penalty values occur at turnings, where the tractor likely slows down and takes breaks. }\label{penaltyxygg}
+ %\caption{The penalty term $n\theta^\top\Omega\theta$ of Tractor spline on $x$ and $y$ axes. The big black dots in figure \ref{penaltyxyggXYPath} indicate large penalty values. It can be seen that most of large penalty values occur at turnings, where the tractor likely slows down and takes breaks. }\label{penaltyxygg}
+ \caption{The penalty value $\lambda(t)$ of Tractor spline on $x$ and $y$ axes. The big black dots in figure \ref{penaltyxyggXYPath} indicate large penalty values. It can be seen that most of large penalty values occur at turnings, where the tractor likely slows down and takes breaks. }\label{penaltyxygg}
  \end{figure}
 
 The 1-dimensional reconstruction gets the best fittings $\hat{f}_x$ and $\hat{f}_y$ on $x$ and $y$ axes separately using different penalty values, classified as $\lambda_{d,x}$, $\lambda_{u,x}$, $\lambda_{d,y}$, $\lambda_{u,y}$, $\gamma_x$ and $\gamma_y$. The final reconstruction is the combination of  $\hat{f}_x$ and $\hat{f}_y$. It is shown in figure \ref{1DCombinedXY}. 
 \begin{figure}
   \centering
-    \includegraphics[width=\textwidth,height=10cm]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataCombinedXY.pdf} 
-  \caption{Combined reconstruction on $x$ and $y$.}\label{1DCombinedXY}
+    \includegraphics[width=\textwidth,height=10cm]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataCombinedXY2.pdf} 
+  \caption{Combined reconstruction on $x$ and $y$. Red dots are the measurements $y$. }\label{1DCombinedXY}
 \end{figure}
 
 
@@ -1021,18 +1018,20 @@ In the adjusted penalty term, $\Delta d$ is the Euclidean distance $\Delta_d(p_1
   \centering
  \begin{subfigure}{\textwidth}
      \centering
-     \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYPenaltyPathofX.pdf}
-     \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYPenaltyPathofY.pdf}
+%     \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYPenaltyPathofX.pdf}
+%     \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYPenaltyPathofY.pdf}
+     \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYPenaltyPathofX2.pdf}
+     \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYPenaltyPathofY2.pdf}
      \caption{2-dimensional reconstruction on separate $x$ and $y$}
      \end{subfigure}
      \begin{subfigure}{\textwidth}
      \centering
-     \includegraphics[width=0.9\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYPenaltyPathofXY.pdf}
+     \includegraphics[width=0.9\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYPenaltyPathofXY2.pdf}
      \caption{2-dimensional reconstruction}
      \end{subfigure}
 %\includegraphics[width=\textwidth,height=10cm]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYPenaltyPath.pdf} 
  %\caption{2-Dimensional reconstruction with penalty function. Larger dots indicate bigger penalty values. The mean squared errors (MSE) on $x$ and $y$ are 0.2407 and 0.4784 respectively. The mean distance error $\sqrt{(\hat{f}_x-x)^2+ (\hat{f}_y-y)^2}$ is 0.6458.}\label{2dxy}
- \caption{2-dimensional reconstruction. Larger dots indicate bigger values of penalty term.}\label{completecombind2dxy}
+ \caption{2-dimensional reconstruction. Larger dots indicate bigger values of penalty function.}\label{completecombind2dxy}
 \end{figure}
 
 %The penalty term of a 2-dimension reconstruction will be the sum of each penalty on $x$ and $y$ axes. So the estimated penalty function is
@@ -1052,9 +1051,17 @@ n\theta_x^\top\Omega_{\lambda_d,\lambda_u}\theta_x + n\theta_y^\top\Omega_{\lamb
 Similarly, most of the large penalty values appear at long-time-gap knots and turning points. A histogram plot of penalty function shows that most of the values are small and only a couple of them are large. 
 \begin{figure}
   \centering
-    \includegraphics[width=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYPenaltyLine2.pdf}
-    \includegraphics[width=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYPenaltyHist2.pdf} 
-  \caption{Penalty term of 2-dimensional reconstruction.}\label{2dpenalty}
+    \includegraphics[width=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYPenaltyLine.pdf}
+    \includegraphics[width=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYPenaltyHist.pdf} 
+  \caption{Penalty value of $\lambda(t)$ in 2-dimensional reconstruction.}\label{2dpenalty}
+\end{figure}
+
+
+The following figure \ref{complete2DXY} is a complete reconstruction from the whole observed dataset $\{x,u,y,v\}$. The overall reconstruction gives a smoothing path that goes through each measurement and avoids curvatures at turning points. 
+\begin{figure}
+\centering
+\includegraphics[width=0.9\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataCompleteXY.pdf}
+\caption{2-dimensional reconstruction. Larger dots indicate bigger values of penalty function.}\label{complete2DXY}
 \end{figure}
 
 
