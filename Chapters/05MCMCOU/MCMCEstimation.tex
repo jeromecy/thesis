@@ -404,9 +404,9 @@ where $X_0$ is assumed to be distributed according to $\pi$. Because central lim
 \begin{equation*}
 e_g(\sigma)\propto \left( \Var_\pi (g(X))\tau_g \right)^{-1}. 
 \end{equation*}
-However, the disadvantage of their method is that the measurement of efficiency is highly dependent on the function $g$. Instead, an alternative approach is using Effective Sample Size (ESS) \cite{kass1998markov} \cite{robert2004monte}. Given a Markov chain having $n$ iterations, the ESS measures the size of \iid . samples with the same standard error, which is defined in \cite{gong2016practical} in the following form of  
+However, the disadvantage of their method is that the measurement of efficiency is highly dependent on the function $g$. Instead, an alternative approach is using \textit{Effective Sample Size} (ESS) \cite{kass1998markov} \cite{robert2004monte}. Given a Markov chain having $n$ iterations, the ESS measures the size of \iid . samples with the same standard error, which is defined in \cite{gong2016practical} in the following form of  
 \begin{equation*}
-\mbox{ESS} =  \frac{n}{1+2\sum_{k=1}^{\infty}\rho_k(X)} \approxeq \frac{n}{1+2\sum_{k=1}^{k_\text{\tiny cut}}\rho_k(X)}= \frac{n}{\tau}, 
+\mbox{ESS} =  \frac{n}{1+2\sum_{k=1}^{\infty}\rho_k(X)} \approx \frac{n}{1+2\sum_{k=1}^{k_\text{\tiny cut}}\rho_k(X)}= \frac{n}{\tau}, 
 \end{equation*}
 where $n$ is the number of samples, $k_\mathtt{cut}$ is lag of the first $\rho_k<0.01 \mbox{ or } 0.05$ , and $\tau$ is the integrated autocorrelation time. Moreover, a wide support among both statisticians \cite{geyer1992practical} and physicists \cite{sokal1997monte} are using the following cost of an independent sample to evaluate the performance of MCMC, that is 
 \begin{equation*}
@@ -415,7 +415,7 @@ where $n$ is the number of samples, $k_\mathtt{cut}$ is lag of the first $\rho_k
 
 Being inspired by their research, we now define the Efficiency in Unit Time (EffUT)  and ESS in Unit Time (ESSUT) as follows: 
 \begin{align}
-\mbox{EffUT}     &= \frac{e_g}{T},\\
+\mbox{EffUT}   &= \frac{e_g}{T},\\
 \mbox{ESSUT} &= \frac{\mbox{ESS}}{T},
 \end{align} 
 where $T$ represents the computation time, which is also known as running time. The computation time is the length of time, in minutes or hours, etc, required to perform a computational process. The best Markov chain with an appropriate step size $\epsilon$ should not only have a lower correlation, as illustrated in figure \ref{largesmallstepsize}, but also have less time-consuming. The standard efficiency $e_g$ and ESS do not depend on the computation time, but EffUT and ESSUT do. The best-tuned step size gains the balance between the size of effective proposed samples and cost of time. 
@@ -1160,7 +1160,7 @@ ESSUT & 29.8912   & 5.10   & 2.5   & 0.0360   & 0.7861    \\ \hline
 
 
 
-On the surface, a bigger step size causes lower acceptance rates $\alpha_1$ and it might not be a smart choice. However, on the other hand, one should notice the less time cost. To make it sensible, we are running the Delayed-Acceptance MH with different step sizes, as presented in table \ref{effeutessessutexampletable},  for the same (or similar) amount of time. Because of the bigger step size takes less time than smaller one, so we achieve a longer chain. To be more clear, we take 1\,000 samples out from a longer chain, such as 8\,500, and calculate Eff, EffUT, ESS and ESSUT separately using the embedded function \textsf{IAT}, \cite{christen2010general}, and \textsf{ESS} of the package \textsf{LaplacesDemon} in \textit{R} and the above formulas . As we can see from the outcomes, by running the similar amount of time, the Markov chain using a bigger step size has a higher efficiency and effective sample size in unit time. More intuitively, the advantage of using larger step size is the sampling algorithm generates more representative samples per second. Figure \ref{1koutof8kfigures} is comparing different $\theta$ chains found by using different step size but running the same amount of time. As we can see that $\theta$ with the optimal step size has a lower correlated relationship. 
+On the surface, a bigger step size causes lower acceptance rates $\alpha_1$ and it might not be a smart choice. However, on the other hand, one should notice the less time cost. To make it sensible, we are running the Delayed-Acceptance MH with different step sizes, as presented in table \ref{effeutessessutexampletable},  for the same (or similar) amount of time. Because of the bigger step size takes less time than smaller one, so we achieve a longer chain. To be more clear, we take 1\,000 samples out from a longer chain, such as 8\,500, and calculate Eff, EffUT, ESS and ESSUT separately using the embedded function \textsf{IAT}, \cite{christen2010general}, and \textsf{ESS} of the package \textsf{LaplacesDemon} in \textit{R} and the above formulas . As we can see from the outcomes, by running the similar amount of time, the Markov chain using a bigger step size has a higher efficiency and effective sample size in unit time. More intuitively, the advantage of using larger step size is the sampling algorithm generates more representative samples per second. Figure \ref{1koutof8kfigures} is comparing different $\theta$ chains found by using different step sizes but running the same amount of time. As we can see that $\theta$ with the optimal step size has a lower correlated relationship. 
 \begin{table}[h]
 \centering
 \begin{tabular}{|c|c|c|c|c|c|c|}
@@ -1420,7 +1420,7 @@ Since a cheap surrogate $\hat{\pi}(\cdot)$ for the true $\pi(\cdot)$ is found in
 
 \section{Discussion and Future Work}
 
-In this paper, we are using the a self-tuning one-variable-at-a-time Metropolis-Hastings Random Walk to learn the parameter hyper space for a linear state-space model.  Starting from the joint covariance and distribution of $X$ and $Y$, we have a recursive way to update the mean and covariance sequentially. After getting the cheap approximation posterior distribution, Delayed-Acceptance Metropolis-Hastings algorithm accelerates the estimating process.  The advantage of this algorithm is that it is easily to understand and implement in practice. Contrast, Particle Learning algorithm is high efficient but the sufficient statistics are not available all the time . 
+In this chapter, we are using the a self-tuning one-variable-at-a-time Metropolis-Hastings Random Walk to learn the parameter hyper space for a linear state-space model.  Starting from the joint covariance and distribution of $X$ and $Y$, we have a recursive way to update the mean and covariance sequentially. After getting the cheap approximation posterior distribution, Delayed-Acceptance Metropolis-Hastings algorithm accelerates the estimating process.  The advantage of this algorithm is that it is easily to understand and implement in practice. Contrast, Particle Learning algorithm is high efficient but the sufficient statistics are not available all the time . 
 
 Some future work can be done on inferring state from precious movement with other kinetic information, not just with diffusive  velocity. Besides, I am more interested in increase the efficiency and accuracy of MCMC method. 
 

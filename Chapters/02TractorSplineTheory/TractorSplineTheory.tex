@@ -364,7 +364,7 @@ and
 \begin{equation}\label{thetahat0}
 \hat{\theta}_{\gamma=0}=(\mathbf{B}^\top\mathbf{B}+n\Omega_{\lambda})^{-1}\mathbf{B}^\top\mathbf{y}
 \end{equation}
-and the adjusted penalty term in (\ref{adjustedpenalty}) was removed from another reconstruction, noted as "Tractor spline without APT". Figure \ref{num1} to \ref{num4} display the original (velocity), generated position, wavelet with two different threshold methods, P-spline and three kinds of Tractor spline fitted functions. The parameters $\lambda$ and $\gamma$ of a Tractor spline are automatically selected from formula (\ref{tractorcv}) by $\textit{optim}$ function in $R$ \cite{nelder1965simplex}.
+and the adjusted penalty term in (\ref{adjustedpenalty}) was removed from another reconstruction, noted as "Tractor spline without APT". Figure \ref{num1} to \ref{num4} display the original (velocity), generated position, wavelet with two different threshold methods, P-spline and three kinds of Tractor spline fitted functions. The parameters $\lambda$ and $\gamma$ of a Tractor spline are automatically selected from formula (\ref{tractorcv}) by $\textsf{optim}$ function in $R$ \cite{nelder1965simplex}.
 
 
 %\begin{figure}
@@ -766,8 +766,7 @@ Table \ref{tablecompareSNR} is comparing the capability of Tractor spline in ret
 
 \begin{table}
 	\centering
-	\caption{Retrieved SNR.}\label{tablecompareSNR}
-	\setlength\tabcolsep{1.5pt}
+    \caption{Retrieved SNR. Tractor spline effectively retrieves the SNR, which is calculated by $\sigma_{\hat{f}} / \sigma_{(\hat{f}-y)}$. }\label{tablecompareSNR}
 	\begin{tabular}{|c|c|c|c|}
 \hline	         SNR              & predefined  value & from $f$ & from Tractor spline $\hat{f}$ \\ \hline
 		\textit{Blocks}    & 7   & 6.9442    &  6.9485     \\ \hline
@@ -779,10 +778,11 @@ Table \ref{tablecompareSNR} is comparing the capability of Tractor spline in ret
 		\textit{Doppler}   & 7   & 6.9442   &  6.8757   \\ \hline
 		\textit{Doppler}   & 3   & 2.9761   &  2.9625   \\ \hline
 	\end{tabular}	
+
 \end{table}
 
 
-Further analysis in figure \ref{tractorsplineSNR7acf} and \ref{tractorsplineSNR3acf} shows that the residuals from the true trajectories are independent. 
+Further analysis in figures \ref{tractorsplineSNR7acf} and \ref{tractorsplineSNR3acf} shows that the residuals from Tractor splines are independent. 
 
 
 %\clearpage 
@@ -797,7 +797,7 @@ J[f]= \frac{1}{n} \sum_{i=1}^{n} \lVert f(t_i)-p_i\rVert_d^2 + \frac{\gamma}{n} 
 \end{equation}
 
 
-Particularly, the GPS data is recored in a 2-dimensional form. Hence, in the following application, we split the 2-dimensional function $f(x,y)$ into two sub functions $f_x(t)$ on $x$-axis and $f_y(t)$ on $y$-axis with respect to time $t$. Compared with other parameters, choosing time $t$ to be the parameter has some advantages: 1. The expressions of all the constraints are simpler \cite{zhang2013cubic}; 2. It can be simply applied from 2-dimension to 3-dimension by adding an extra $z$-axis. Without of generality, a dataset in a higher dimensional space can be projected into several sub-spaces, such as $p=\{x,y,z,\ldots \}$ and $s=\{u,v,w,\ldots \}$. 
+Particularly, the GPS data is recorded in a 2-dimensional form, in which scenario $d=2$. Hence, in the following application, we split the 2-dimensional function $f(x,y)$ into two sub functions $f_x(t)$ on $x$-axis and $f_y(t)$ on $y$-axis with respect to time $t$. Compared with other parameters, choosing time $t$ to be the parameter has some advantages: 1. The expressions of all the constraints are simpler \cite{zhang2013cubic}; 2. It can be simply applied from 2-dimension to 3-dimension by adding an extra $z$-axis. Without of generality, a dataset in a higher dimensional space can be projected into several sub-spaces, such as $p=\{x,y,z,\ldots \}$ and $s=\{u,v,w,\ldots \}$. 
 
 
 Thereafter, at first, we convert the longitude and latitude information from a 3D sphere to 2D surface by Universal Transverse Mercator coordinate system (UTM) and then project the velocity $s$ into $u$ and $v$ on $x$-axis and $y$-axis respectively by 
@@ -954,7 +954,7 @@ Table \ref{1dxymse} illustrates the MSE of all methods on both $x$ and $y$ axes.
 
 The penalty function of the proposed Tractor spline is
 \begin{equation}\label{penaltylamb}
-\lambda(t)=b\frac{\Delta t^3}{\Delta d^2}\lambda_d+(1-b)\frac{\Delta t^3}{\Delta d^2}\lambda_u, \mbox{where}
+\lambda(t)=b\frac{\Delta t^3}{\Delta d^2}\lambda_d+(1-b)\frac{\Delta t^3}{\Delta d^2}\lambda_u, \mbox{ where}
 \begin{cases}
 b=1 & \mbox{if boom is working}\\
 b=0 & \mbox{if boom is not working}
@@ -986,17 +986,17 @@ To tell the differences more clearly, we take $\lambda(t)$ in our demonstration.
     \centering
     \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXPenaltyPath2.pdf}
     \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataYPenaltyPath2.pdf}
-    \caption{Reconstruction on $x$ and $y$ separately}\label{penaltyxyggXYPath}
+    \caption{Reconstruction on $x$ and $y$}\label{penaltyxyggXYPath}
     \end{subfigure}
  %\caption{The penalty term $n\theta^\top\Omega\theta$ of Tractor spline on $x$ and $y$ axes. The big black dots in figure \ref{penaltyxyggXYPath} indicate large penalty values. It can be seen that most of large penalty values occur at turnings, where the tractor likely slows down and takes breaks. }\label{penaltyxygg}
- \caption{The penalty value $\lambda(t)$ of Tractor spline on $x$ and $y$ axes. The big black dots in figure \ref{penaltyxyggXYPath} indicate large penalty values. It can be seen that most of large penalty values occur at turnings, where the tractor likely slows down and takes breaks. }\label{penaltyxygg}
+ \caption{The penalty value $\lambda(t)$ of the Tractor spline on $x$ and $y$ axes. Red dots are the measurements $\mathbf{y}$. The bigger red dots in figure \ref{penaltyxyggXYPath} indicate larger penalty values. It can be seen that most of large penalty values occur at turnings, where the tractor likely slows down and takes breaks. }\label{penaltyxygg}
  \end{figure}
 
-The 1-dimensional reconstruction gets the best fittings $\hat{f}_x$ and $\hat{f}_y$ on $x$ and $y$ axes separately using different penalty values, classified as $\lambda_{d,x}$, $\lambda_{u,x}$, $\lambda_{d,y}$, $\lambda_{u,y}$, $\gamma_x$ and $\gamma_y$. The final reconstruction is the combination of  $\hat{f}_x$ and $\hat{f}_y$. It is shown in figure \ref{1DCombinedXY}. 
+The 1-dimensional reconstruction gets the best fittings $\hat{f}_x$ and $\hat{f}_y$ on $x$ and $y$ axes separately using different penalty values, denoted as $\lambda_{d,x}$, $\lambda_{u,x}$, $\lambda_{d,y}$, $\lambda_{u,y}$, $\gamma_x$ and $\gamma_y$. The final reconstruction is the combination of  $\hat{f}_x$ and $\hat{f}_y$. It is shown in figure \ref{1DCombinedXY}. 
 \begin{figure}
   \centering
     \includegraphics[width=\textwidth,height=10cm]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataCombinedXY2.pdf} 
-  \caption{Combined reconstruction on $x$ and $y$. Red dots are the measurements $y$. }\label{1DCombinedXY}
+  \caption{Combined reconstruction on $x$ and $y$. Red dots are the measurements $\mathbf{y}$. The bigger size it is, the larger penalty value it indicates. }\label{1DCombinedXY}
 \end{figure}
 
 
@@ -1031,7 +1031,7 @@ In the adjusted penalty term, $\Delta d$ is the Euclidean distance $\Delta_d(p_1
      \end{subfigure}
 %\includegraphics[width=\textwidth,height=10cm]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYPenaltyPath.pdf} 
  %\caption{2-Dimensional reconstruction with penalty function. Larger dots indicate bigger penalty values. The mean squared errors (MSE) on $x$ and $y$ are 0.2407 and 0.4784 respectively. The mean distance error $\sqrt{(\hat{f}_x-x)^2+ (\hat{f}_y-y)^2}$ is 0.6458.}\label{2dxy}
- \caption{2-dimensional reconstruction. Larger dots indicate bigger values of penalty function.}\label{completecombind2dxy}
+ \caption{2-dimensional reconstruction. Larger dots indicate bigger values of penalty function $\lambda(t)$.}\label{completecombind2dxy}
 \end{figure}
 
 %The penalty term of a 2-dimension reconstruction will be the sum of each penalty on $x$ and $y$ axes. So the estimated penalty function is
@@ -1058,10 +1058,11 @@ Similarly, most of the large penalty values appear at long-time-gap knots and tu
 
 
 The following figure \ref{complete2DXY} is a complete reconstruction from the whole observed dataset $\{x,u,y,v\}$. The overall reconstruction gives a smoothing path that goes through each measurement and avoids curvatures at turning points. 
+%Instead of reconstructing on $x$ and $y$ axes separately, it chooses the penalty value with respect to the balance on both of the two directions. 
 \begin{figure}
 \centering
 \includegraphics[width=0.9\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataCompleteXY.pdf}
-\caption{2-dimensional reconstruction. Larger dots indicate bigger values of penalty function.}\label{complete2DXY}
+\caption{2-dimensional reconstruction. Larger dots indicate bigger values of penalty function $\lambda(t)$.}\label{complete2DXY}
 \end{figure}
 
 
