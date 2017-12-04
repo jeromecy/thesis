@@ -1,4 +1,6 @@
 
+
+
 \section{Introduction}
 
 GPS devices are widely used in orchard planting and maintenance. This location-based system allows orchardist to check trajectory of tractors. The trajectory is a connection by a time series successive positions recorded by GPS devices. A classical GPS device records skeleton information, including time mark, latitude, longitude, number of available satellites, etc. Recently, researchers try to enrich trajectory (called Semantic Trajectory) by adding background geographic information to discover meaningful pattern \cite{ying2011semantic}. 
@@ -56,21 +58,192 @@ Finally, the point $p_i$ belongs to the track if Rule 1 = TRUE or Rule 2 = TRUE 
 
 \section{Evaluation}
 
-Errors are measured by Synchronized Euclidean Distance \cite{lawson2011compression}. SED measures the distances between the original and compressed trace at the same time. As shown in figure \ref{DataSimpSED}. $P_{t1}, \ldots ,P_{t5}$ are original points. After simplification, the points $P_{t2}, P_{t3}$ and $P_{t4}$ were removed. The black curve is the original trajectory, in contrast, gray dash line is the simplified trajectory. The gray point $P'_{t2}$ on simplified trajectory has the same time difference as the point $P_{t2}$ on original trajectory does. Therefore, the distance between $P_{t2}$ and $P'_{t2}$ is calculated.
+Errors are measured by Synchronized Euclidean Distance \cite{lawson2011compression}. SED measures the distances between the original and compressed trace at the same time. As shown in figure \ref{DataSimpSED}. $P_{t1}, \ldots ,P_{t5}$ are original points in green. After simplification, these points $P_{t2}, P_{t3}$ and $P_{t4}$ were removed. The black curve is the original trajectory, in contrast, the gray dash line is the simplified trajectory. The blue points $P'_{t2}$,$P'_{t3}$ and $P'_{t4}$ on simplified trajectory have the same time difference as the point $P_{t2}$, $P_{t3}$ and $P_{t4}$ on original trajectory did. Therefore, the distances between $P_{t2}$ and $P'_{t2}$, $P_{t3}$ and $P'_{t3}$ and $P_{t4}$, $P'_{t4}$ can be calculated.
 
 
+%\begin{figure}[h]
+%\centering
+%\includegraphics[width=0.9\textwidth]{Chapters/06Spinoff/plot/sed.jpg}
+%\caption{Synchronized Euclidean Distance \cite{lawson2011compression}}\label{DataSimpSED}
+%\end{figure}
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.9\textwidth]{Chapters/06Spinoff/plot/sed.jpg}
+\begin{tikzpicture}
+\begin{scope}[every node/.style={circle,draw}]
+    \node[fill=green!30] (A) at (0,0) {$P_{t1}$};
+    \node[fill=blue!30] (B) at (3,0) {$P'_{t2}$};
+    \node[fill=blue!30] (C) at (7,0) {$P'_{t3}$};
+    \node[fill=blue!30] (D) at (11,0) {$P'_{t4}$};
+    \node[fill=green!30] (E) at (13,0) {$P_{t5}$};
+    \node[fill=green!30] (F) at (5,4) {$P_{t2}$};
+    \node[fill=green!30] (G) at (7,5) {$P_{t3}$};
+    \node[fill=green!30] (H) at (9,4) {$P_{t4}$};
+\end{scope}
+\begin{scope}[>={Stealth[black]},
+              every node/.style={fill=white,circle},
+              every edge/.style={draw=black,thick}]
+    \path [-] (A) edge[bend right= -1]  (F); 
+    \path [-] (F) edge[bend right= -5]  (G); 
+    \path [-] (G) edge[bend right=-5]  (H); 
+    \path [-] (H) edge[bend right= -1] (E); 
+\draw [line width=0.5mm,dash dot,gray] (A) -- (B);
+\draw [line width=0.5mm,dash dot,gray] (B) -- (C);
+\draw [line width=0.5mm,dash dot,gray] (C) -- (D);
+\draw [line width=0.5mm,dash dot,gray] (D) -- (E);
+\draw [line width=0.5mm,dotted] (F) -- (B);
+\draw [line width=0.5mm,dotted] (G) -- (C);
+\draw [line width=0.5mm,dotted] (D) -- (H);
+\draw [line width=0.5mm,blue!30] (F) -- (5,0);
+\draw [line width=0.5mm,blue!30] (H) -- (9,0);
+\draw [right angle symbol={B}{A}{F}];
+\draw [right angle symbol={A}{B}{H}];
+\path [->] (0,1) edge node {\textit{fast}} (4,4);
+\path [->] (10,4) edge node {\textit{fast}} (13,1);
+\end{scope}
+\end{tikzpicture}
 \caption{Synchronized Euclidean Distance \cite{lawson2011compression}}\label{DataSimpSED}
 \end{figure}
 
-Another way to calculate the difference between a GPS trace and its compressed version is to measure the perpendicular distance. This algorithm ignores the temporal component and uses simple perpendicular distance. The figure \ref{DataSimpAB} expresses these difference clearly. 
+
+Another way to calculate the difference between a GPS trace and its compressed version is to measure the perpendicular distance. This algorithm ignores the temporal component and uses simple perpendicular distance. The figure \ref{DataSimpAB} expresses these differences clearly. 
+
+%\begin{figure}[h]
+%\centering
+%\includegraphics[width=0.9\textwidth]{Chapters/06Spinoff/plot/ab.JPG}
+%\caption{(a) error measured at fixed sampling rate as sum of perpendicular distance chords; (b) error measured at fixed sampling rates as sum of time-synchronous distance chords. \cite{meratnia2004spatiotemporal}}\label{DataSimpAB}
+%\end{figure}
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.9\textwidth]{Chapters/06Spinoff/plot/ab.JPG}
-\caption{(a) error measured at fixed sampling rate as sum of perpendicular distance chords; (b) error measured at fixed sampling rates as sum of time-synchronous distance chords. \cite{meratnia2004spatiotemporal}}\label{DataSimpAB}
+\centering
+    \begin{subfigure}[b]{0.5\textwidth}
+    \resizebox{\linewidth}{!}{
+		\begin{tikzpicture}[dot/.style={circle,label={#1},name=#1}]
+		\coordinate (a) at (0,0);
+		\node[below of=a] {\Large $a(t_0)$};
+		\fill (a) circle[radius=2pt];
+		\coordinate (b) at (15,-1);
+		\node[above of=b] {\Large $a(t_5)$};
+		\fill (b) circle[radius=2pt];
+		\coordinate (c) at (0,1);
+		\node[above of=c] {\Large $p(t_0)$};
+		\fill (c) circle[radius=2pt];
+		\coordinate (d) at  (2,3);
+		\node[above of=d] {\Large $p(t_1)$};
+		\fill (d) circle[radius=2pt];
+		\coordinate (e) at  (7,4);
+		\node[above of=e] {\Large $p(t_2)$};
+		\fill (e) circle[radius=2pt];
+		\coordinate (f) at (8,3);
+		\node[above of=f] {\Large $p(t_3)$};
+		\fill (f) circle[radius=2pt];
+		\coordinate (g) at (10,-3);
+		\node[below of=g] {\Large $p(t_4)$};
+		\fill (g) circle[radius=2pt];
+		\coordinate (h) at (15,-2);
+		\node[below of=h] {\Large $p(t_5)$};
+		\fill (h) circle[radius=2pt];
+		\draw [line width=0.5mm] (c) -- (d) -- (e)--(f)--(g)--(h);
+		\draw [line width=0.5mm] (a) -- (b);
+		 % %y=x+1
+		\foreach \x in {0.0,0.2,...,2} {
+		    \pgfmathsetmacro\y{\x +1}
+		    	\draw (\x,\y) -- ($(0,0)!(\x,\y)!(15,-1)$);
+		}
+		% % y=0.2x+2.6
+		\foreach \x in {2,2.5,...,7} {
+		    \pgfmathsetmacro\y{0.2*\x +2.6}
+		    	\draw (\x,\y) -- ($(0,0)!(\x,\y)!(15,-1)$);
+		}
+		% % y=-x+11
+		\foreach \x in {7,7.2,...,8} {
+		    \pgfmathsetmacro\y{-\x +11}
+		    	\draw (\x,\y) -- ($(0,0)!(\x,\y)!(15,-1)$);
+		}
+		% % y=-3x+27
+		\foreach \x in {8,8.2,...,10} {
+		    \pgfmathsetmacro\y{-3*\x +27}
+		    	\draw (\x,\y) -- ($(0,0)!(\x,\y)!(15,-1)$);
+		}
+		% % y=0.2x-5
+		\foreach \x in {10,10.5,...,15} {
+		    \pgfmathsetmacro\y{0.2*\x -5}
+		    	\draw (\x,\y) -- ($(0,0)!(\x,\y)!(15,-1)$);
+		}
+		\end{tikzpicture}
+	}
+	\caption{perpendicular distance chords}\label{DataSimpA}
+	\end{subfigure}%
+	\begin{subfigure}[b]{0.5\textwidth}
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tikzpicture}[dot/.style={circle,label={#1},name=#1}]
+		\coordinate (a) at (0,0);
+		\node[below of=a] {\Large $a(t_0)$};
+		\fill (a) circle[radius=2pt];
+		\coordinate (b) at (15,-1);
+		\node[above of=b] {\Large $a(t_5)$};
+		\fill (b) circle[radius=2pt];
+		\coordinate (c) at (0,1);
+		\node[above of=c] {\Large $p(t_0)$};
+		\fill (c) circle[radius=2pt];
+		\coordinate (d) at  (2,3);
+		\node[above of=d] {\Large $p(t_1)$};
+		\fill (d) circle[radius=2pt];
+		\coordinate (e) at  (7,4);
+		\node[above of=e] {\Large $p(t_2)$};
+		\fill (e) circle[radius=2pt];
+		\coordinate (f) at (8,3);
+		\node[above of=f] {\Large $p(t_3)$};
+		\fill (f) circle[radius=2pt];
+		\coordinate (g) at (10,-3);
+		\node[below of=g] {\Large $p(t_4)$};
+		\fill (g) circle[radius=2pt];
+		\coordinate (h) at (15,-2);
+		\node[below of=h] {\Large $p(t_5)$};
+		\fill (h) circle[radius=2pt];
+		\draw [line width=0.5mm] (c) -- (d) -- (e)--(f)--(g)--(h);
+		\draw [line width=0.5mm] (a) -- (b);
+		 % %y=x+1	
+		\foreach \x [count=\i] in {0.0,0.2,...,2} {
+		    \pgfmathsetmacro\y{\x +1}
+		    \pgfmathsetmacro\k{(\i-1)/3}
+		    \pgfmathsetmacro\z{-1/15*\k}
+		    	\draw (\x,\y) -- (\k,\z);
+		}
+		 % y=0.2x+2.6
+		\foreach \x [count=\i] in {2,2.5,...,7} {
+		    \pgfmathsetmacro\y{0.2*\x +2.6}
+		    \pgfmathsetmacro\k{(\i+9)/3}
+		    \pgfmathsetmacro\z{-1/15*\k }
+		    	   \draw (\x,\y) -- (\k,\z);
+		}
+		 % y=-x+11
+		\foreach \x [count=\i] in {7,7.2,...,8} {
+		    \pgfmathsetmacro\y{-\x +11}
+		    \pgfmathsetmacro\k{(\i+19)/3}
+		    \pgfmathsetmacro\z{-1/15*\k }
+		    	   \draw (\x,\y) -- (\k,\z);
+		}
+		% % y=-3x+27
+		\foreach \x [count=\i] in {8,8.2,...,10} {
+		    \pgfmathsetmacro\y{-3*\x +27}
+		    \pgfmathsetmacro\k{(\i+24)/3}
+		    \pgfmathsetmacro\z{-1/15*\k }
+		    	   \draw (\x,\y) -- (\k,\z);
+		}
+		% % y=0.2x-5
+		\foreach \x [count=\i] in {10,10.5,...,15} {
+		    \pgfmathsetmacro\y{0.2*\x -5}
+		    \pgfmathsetmacro\k{(\i+34)/3}
+		    \pgfmathsetmacro\z{-1/15*\k }
+		    	   \draw (\x,\y) -- (\k,\z);
+		}
+		\end{tikzpicture}
+	}
+	\caption{time-synchronous distance chords}\label{DataSimpB}
+    \end{subfigure}
+\caption{\ref{DataSimpA} indicates that the errors are measured at fixed sampling rate as sum of perpendicular distance chords; \ref{DataSimpB} indicates that the errors are measured at fixed sampling rates as sum of time-synchronous distance chords. \cite{meratnia2004spatiotemporal}}\label{DataSimpAB}
 \end{figure}
 
 
