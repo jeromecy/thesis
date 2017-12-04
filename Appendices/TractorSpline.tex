@@ -1,10 +1,11 @@
 
 
 \numberwithin{equation}{section}
+\numberwithin{lemma}{section}
 
 \section{Penalty Matrix in (\ref{tractormse})}\label{PenaltyTermDetails}
 
-The $i$-th $\Omega^{(i)}$ is a $2n \times 2n$ bandwidth four symmetric matrix and its non-zero elements on the upper triangular are in the form of
+The $i$-th $\Omega^{(i)}$ is a $2n \times 2n$ bandwidth four symmetric matrix and its non-zero elements on the upper triangular are 
 \begin{align}
 \Omega_{2i-1,2i-1}^{(i)} & =\int_{t_{i}}^{t_{i+1}} \frac{d^2 h_{00}^{(i)}(t)}{dt^2}  \frac{d^2 h_{00}^{(i)}(t)}{dt^2} dt=\frac{12}{\Delta_i^3}\\
 \Omega_{2i-1,2i}^{(i)} &=\int_{t_{i}}^{t_{i+1}} \frac{d^2 h_{00}^{(i)}(t)}{dt^2}  \frac{d^2 h_{10}^{(i)}(t)}{dt^2} dt=\frac{6}{\Delta_i^2}\\
@@ -26,20 +27,71 @@ where $\Delta_i=T_{i+1}-T_i$ and $i=1,2,\ldots,n-1$. Then
 
 \section{Proof of Theorem \ref{basisindependent}}\label{AppendixBasisproof}
 
+To prove Theorem \ref{basisindependent}, we are introducing a Lemma \cite{Peng1983linear} in the first place. 
+
+\begin{lemma}\label{basiscontinuousLemma}
+Functions $N_1(t),N_2(t),\ldots,N_n(t)$ on interval $[a,b]$, if they are linear dependent, the necessary and sufficient condition is for any $c_1,c_2,\ldots,c_n \in [a,b]$, the determinant $D(c_1,c_2,\ldots,c_n)=0$; if they are linear independent, the necessary and sufficient condition is that there exist $c_1,c_2,\ldots,c_n \in [a,b]$, so that the determinant $D(c_1,c_2,\cdots,c_n) \neq 0$, where 
+\begin{equation*}
+D(c_1,c_2,\ldots,c_n)=
+\begin{vmatrix}
+N_1(c_1) & N_1(c_2) & \cdots& N_1(c_n)\\
+N_2(c_1) & N_2(c_2)& \cdots & N_2(c_n)\\
+ \vdots  &  \vdots  & \ddots  & \vdots  \\  
+N_n(c_1) & N_n(c_2) & \cdots & N_n(c_n)\\
+\end{vmatrix}
+\end{equation*}
+\end{lemma}
+
+In the following, we are proving Theorem \ref{basisindependent} with the help of Lemma \ref{basiscontinuousLemma}. 
+
 \begin{proof}
-It is obvious that these basis functions are continuous on subinterval $[t_k,t_{k+1}]$. We will prove that these basis functions are independent at first. 
+It is obvious that these basis functions are continuous on subinterval $[t_i,t_{i+1}]$, where $i=1,\ldots,n-1$. We will prove that these basis functions are independent at first. 
 
 Given $2n$ basis functions and $n$ knots, we choose $t_1, \frac{t_1+t_2}{2}, t_2, \frac{t_2+t_3}{2}, \cdots, t_{n-1}$, $\frac{t_{n-1}+t_n}{3}$, $\frac{2(t_{n-1}+t_n)}{3}, t_n$ as new $2n$ knots, and denoted by $c_1,c_2,\cdots,c_{2n}$. Then the determinant is
 \begin{align}\label{matrixD}
-\begin{split}
 D(c_1,c_2,\cdots,c_{2n})=&
-\begin{vmatrix}
+\begin{bmatrix}
 N_1(c_1) & N_1(c_2) & \cdots& N_1(c_{2n})\\
 N_2(c_1) & N_2(c_2)& \cdots & N_2(c_{2n})\\
  \vdots  &  \vdots  & \ddots  & \vdots  \\  
 N_{2n}(c_1) & N_{2n}(c_2) & \cdots & N_{2n}(c_{2n})\\
-\end{vmatrix}
-\\=&
+\end{bmatrix}
+\end{align}
+%where $D(c_1,c_2,\cdots,c_{2n})=\begin{cases}
+%N_1(t_1)=1 \\
+%N_1(\frac{t_1+t_2}{2})=a_{12} \\
+%N_2(t_1)=0 \\
+%N_2(\frac{t_1+t_2}{2})=a_{22} \\
+%N_{2i+1}(\frac{t_i+t_{i+1}}{2})=a_{2i+1,2i} \\ 
+%N_{2i+1}(t_{i+1})=1  \\ 
+%N_{2i+1}(\frac{t_{i+1}+t_{i+2}}{2})=a_{2i+1,2i+2}  \\ 
+%N_{2i+2}(\frac{t_i+t_{i+1}}{2})=a_{2i+2,2i} \\ 
+%N_{2i+2}(\frac{t_{i+1}+t_{i+2}}{2})=a_{2i+2,2i+2} \\ 
+%N_{2n-1}(t_{2n-1})=0 \\
+%N_{2n-1}(\frac{t_{2n-1}+t_{2n}}{3})=a_{2n-1,2n-2} \\
+%N_{2n-1}(\frac{2(t_{2n-1}+t_{2n})}{3})=a_{2n-1,2n-1} \\
+%N_{2n-1}(t_{2n})=1 \\
+%N_{2n}(\frac{t_{2n-1}+t_{2n}}{3})=a_{2n,2n-2} \\
+%N_{2n}(\frac{2(t_{2n-1}+t_{2n})}{3})=a_{2n,2n-1} \\
+%N_{2n}(t_{2n})=0 \\
+%0 &  \mbox{otherwise}
+%\end{cases}$,\\
+where the non-zero elements of matrix $D$ are \begin{align*}
+\begin{matrix}
+N_1(t_1)=1 & N_1\left(\frac{t_1+t_2}{2}\right)=a_{12} &  N_2(t_1)=0 \\ N_2\left(\frac{t_1+t_2}{2}\right)=a_{22} & N_{2i+1}\left(\frac{t_i+t_{i+1}}{2}\right)=a_{2i+1,2i} & N_{2i+1}(t_{i+1})=1  \\ 
+N_{2i+1}\left(\frac{t_{i+1}+t_{i+2}}{2}\right)=a_{2i+1,2i+2}  & 
+N_{2i+2}\left(\frac{t_i+t_{i+1}}{2}\right)=a_{2i+2,2i} &
+N_{2i+2}\left(\frac{t_{i+1}+t_{i+2}}{2}\right)=a_{2i+2,2i+2} \\
+ N_{2n-1}(t_{2n-1})=0 & N_{2n-1}\left(\frac{t_{2n-1}+t_{2n}}{3}\right)=a_{2n-1,2n-2} &
+N_{2n-1}\left(\frac{2(t_{2n-1}+t_{2n})}{3}\right)=a_{2n-1,2n-1} \\
+N_{2n-1}(t_{2n})=1 & N_{2n}(\frac{t_{2n-1}+t_{2n}}{3})=a_{2n,2n-2} &
+N_{2n}\left(\frac{2(t_{2n-1}+t_{2n})}{3}\right)=a_{2n,2n-1} \\
+N_{2n}(t_{2n})=0 
+\end{matrix}
+\end{align*}
+where $i=1,\ldots,n-1$. By decomposing determinant $D$ in the following way, it will give us 
+\begin{align*}
+\det D= & 
 \begin{vmatrix}
 1 & a_{12} & 0 & 0 & \cdots& 0 & 0 \\
 0 & a_{22} & 0 & 0 & \cdots& 0 & 0\\
@@ -47,46 +99,22 @@ N_{2n}(c_1) & N_{2n}(c_2) & \cdots & N_{2n}(c_{2n})\\
  \vdots  &  \vdots  &  \vdots &  \vdots & \ddots  & \vdots   &  \vdots\\  
 0 & 0 & 0 & 0 & \cdots& a_{2n-1,2n-1} & 1\\
 0 & 0 & 0 & 0 & \cdots& a_{2n,2n-1} & 0 \\
-\end{vmatrix},
-\end{split}
-\end{align}
-where $D(c_1,c_2,\cdots,c_{2n})=\begin{cases}
-N_1(t_1)=1 \\
-N_1(\frac{t_1+t_2}{2})=a_{12} \\
-N_2(t_1)=0 \\
-N_2(\frac{t_1+t_2}{2})=a_{22} \\
-N_{2k+1}(\frac{t_k+t_{k+1}}{2})=a_{2k+1,2k} & k=1,2,\cdots,2n \\ 
-N_{2k+1}(t_{k+1})=1 & k=1,2,\cdots,2n \\ 
-N_{2k+1}(\frac{t_{k+1}+t_{k+2}}{2})=a_{2k+1,2k+2} & k=1,2,\cdots,2n \\ 
-N_{2k+2}(\frac{t_k+t_{k+1}}{2})=a_{2k+2,2k} & k=1,2,\cdots,2n \\ 
-N_{2k+2}(\frac{t_{k+1}+t_{k+2}}{2})=a_{2k+2,2k+2}  & k=1,2,\cdots,2n\\ 
-N_{2n-1}(t_{2n-1})=0 \\
-N_{2n-1}(\frac{t_{2n-1}+t_{2n}}{3})=a_{2n-1,2n-2} \\
-N_{2n-1}(\frac{2(t_{2n-1}+t_{2n})}{3})=a_{2n-1,2n-1} \\
-N_{2n-1}(t_{2n})=1 \\
-N_{2n}(\frac{t_{2n-1}+t_{2n}}{3})=a_{2n,2n-2} \\
-N_{2n}(\frac{2(t_{2n-1}+t_{2n})}{3})=a_{2n,2n-1} \\
-N_{2n}(t_{2n})=0 \\
-0 &  \mbox{otherwise}
-\end{cases}$,\\
-and $a_{ij}\neq 0.$ After decomposing determinant $D$ in equation (\ref{matrixD}),  gives
-\begin{align*}
-\det D= & 
+\end{vmatrix} =
 \begin{vmatrix}
  a_{22} & 0 & 0 & \cdots& 0 & 0\\
  a_{32} & 1 & a_{34} & \cdots& 0 & 0\\
   \vdots  &  \vdots &  \vdots & \ddots  & \vdots   &  \vdots\\  
 0 & 0 & 0 & \cdots& a_{2n-1,2n-1} & 1\\
 0 & 0 & 0 & \cdots& a_{2n,2n-1} & 0 \\
-\end{vmatrix}
-=a_{22}
+\end{vmatrix} 
+\\ &=a_{22}
 \begin{vmatrix}
  1 & a_{34} & \cdots& 0 & 0\\
   \vdots &  \vdots & \ddots  & \vdots   &  \vdots\\  
  0 & 0 & \cdots& a_{2n-1,2n-1} & 1\\
  0 & 0 & \cdots& a_{2n,2n-1} & 0 \\
-\end{vmatrix}\\
-=& \cdots =a_{22}a_{44}\cdots a_{2n-4,2n-4} 
+\end{vmatrix}
+\cdots =a_{22}a_{44}\cdots a_{2n-4,2n-4} 
 \begin{vmatrix}
 a_{2n-2,2n-2} & a_{2n-2,2n-1}  & 0\\
 a_{2n-1,2n-2} & a_{2n-1,2n-1} & 1\\
@@ -94,51 +122,53 @@ a_{2n-1,2n-2} & a_{2n-1,2n-1} & 1\\
 \end{vmatrix}\\
 =& a_{22}a_{44}\cdots a_{2n-4,2n-4} (a_{2n-2,2n-1}a_{2n,2n-2}-a_{2n,2n-1}a_{2n-2,2n-2}) \neq 0.
 \end{align*}
-With the conclusion in Lemma 1, $N_1(t),\ldots,N_{2n}(t)$  are linearly independent on interval $[t_1, t_n]$.
-Secondly, we prove that basis functions represent any cubic function on each interval $[t_k, t_{k+1}]$. Due to the definition of cubic spline, on interval $[t_k, t_{k+1}]$, a cubic spline $g(t)$ can be written in the form of
+With the conclusion of Lemma \ref{basiscontinuousLemma}, $N_1(t),\ldots,N_{2n}(t)$  are linearly independent on interval $[t_1, t_n]$.
+
+Secondly, we will prove that basis functions represent any cubic function on each interval $[t_i, t_{i+1}]$. Due to the definition of cubic spline, on interval $[t_i, t_{i+1}]$, a cubic spline $g(t)$ can be written in the form of
 \begin{eqnarray}
-g(t)=d_k (t-t_k)^3+c_k(t-t_k)^2+b_k(t-t_k)+a_k, \mbox{for $t_k \leq t \leq t_{k+1}$}
+g(t)=d_i (t-t_i)^3+c_i(t-t_i)^2+b_i(t-t_i)+a_i, \mbox{for $t_i \leq t \leq t_{i+1}$}
 \end{eqnarray}
-For any $f(t)$ on $[t_1, t_n]$, it can be represented as $f(t)=\sum_{k=1}^{2n} \theta_k N_k(t)$. Then for $\forall t \in [t_k,t_{k+1}]$, we have
+For any $f(t)$ on $[t_1, t_n]$, it can be represented as $f(t)=\sum_{k=1}^{2n} \theta_k N_k(t)$. Then for $\forall t \in [t_i,t_{i+1}]$, $i=1,\ldots,n-1$, we have
 \begin{align*}
 f(t)=\begin{cases}
-\theta_{2k-1}N_{2k-1}(t)+\theta_{2k}N_{2k}(t)+\theta_{2k+1}N_{2k+1}(t)+\theta_{2k+2}N_{2k+3}(t), & t_k \leq t \leq t_{k+1}  \\
+\theta_{2i-1}N_{2i-1}(t)+\theta_{2i}N_{2i}(t)+\theta_{2i+1}N_{2i+1}(t)+\theta_{2i+2}N_{2i+3}(t), & t_i \leq t \leq t_{i+1}  \\
 0, & \mbox{otherwise}\\
-\end{cases},
+\end{cases}
 \end{align*}
-thus
+Hence, 
 \begin{align*}
-f(t)=&\theta_{2k-1}\{ 2(\frac{t-t_{k}}{t_{k+1}-t_{k}})^3-3(\frac{t-t_{k}}{t_{k+1}-t_{k}})^2+1  \} \\+&\theta_{2k} \{  \frac{(t-t_{k})^3}{(t_{k+1}-t_{k})^2}-2\frac{(t-t_{k})^2}{t_{k+1}-t_{k}}+(t-t_{k}) \} \\
-+&\theta_{2k+1} \{ -2(\frac{t-t_k}{t_{k+1}-t_k})^3+3(\frac{t-t_k}{t_{k+1}-t_k})^2  \}  +\theta_{2k+2} \{  \frac{(t-t_k)^3}{(t_{k+1}-t_k)^2}-\frac{(t-t_k)^2}{t_{k+1}-t_k} \}.
+f(t)=&\theta_{2i-1}\left( 2\left(\frac{t-t_{i}}{t_{i+1}-t_{i}}\right)^3-3\left(\frac{t-t_{i}}{t_{i+1}-t_{i}}\right)^2+1  \right) +\theta_{2i} \left( \frac{(t-t_{i})^3}{(t_{i+1}-t_{i})^2}-2\frac{(t-t_{i})^2}{t_{i+1}-t_{i}}+(t-t_{i}) \right) \\
++&\theta_{2i+1} \left( -2\left(\frac{t-t_i}{t_{i+1}-t_i}\right)^3+3\left(\frac{t-t_i}{t_{i+1}-t_i}\right)^2 \right)  +\theta_{2i+2} \left( \frac{(t-t_i)^3}{(t_{i+1}-t_i)^2}-\frac{(t-t_i)^2}{t_{i+1}-t_i} \right).
 \end{align*}
 After rearranging, we have
 \begin{align*}
-f(t)=& \{ \frac{2\theta_{2k-1}}{(t_{k+1}-t_{k})^3} +\frac{\theta_{2k}}{(t_{k+1}-t_{k})^2} -\frac{2\theta_{2k+1}}{(t_{k+1}-t_{k})^3} +\frac{\theta_{2k+2}}{(t_{k+1}-t_{k})^2} \} (t-t_k)^3 \\
-+&  \{ -\frac{3\theta_{2k-1}}{(t_{k+1}-t_{k})^2} -\frac{2\theta_{2k}}{(t_{k+1}-t_{k})} +\frac{3\theta_{2k+1}}{(t_{k+1}-t_{k})^2} - \frac{\theta_{2k+2}}{(t_{k+1}-t_{k})} \} (t-t_k)^2 \\
-+&  \theta_{2k} (t-t_k) +\theta_{2k-1},
+f(t)=& \left(\frac{2\theta_{2i-1}}{(t_{i+1}-t_{i})^3} +\frac{\theta_{2i}}{(t_{i+1}-t_{i})^2} -\frac{2\theta_{2i+1}}{(t_{i+1}-t_{i})^3} +\frac{\theta_{2i+2}}{(t_{i+1}-t_{i})^2} \right)  (t-t_i)^3 \\
++& \left(-\frac{3\theta_{2i-1}}{(t_{i+1}-t_{i})^2} -\frac{2\theta_{2i}}{(t_{i+1}-t_{i})} +\frac{3\theta_{2i+1}}{(t_{i+1}-t_{i})^2} - \frac{\theta_{2i+2}}{(t_{i+1}-t_{i})}\right)  (t-t_i)^2 \\
++&  \theta_{2i} (t-t_i) +\theta_{2i-1},
 \end{align*}
 where coefficients are
 \begin{align*}
 \begin{cases}
-\theta_{2k-1}=a_k\\
-\theta_{2k}=b_k\\
--\frac{3\theta_{2k-1}}{(t_{k+1}-t_{k})^2} -\frac{2\theta_{2k}}{(t_{k+1}-t_{k})} +\frac{3\theta_{2k+1}}{(t_{k+1}-t_{k})^2} - \frac{\theta_{2k+2}}{(t_{k+1}-t_{k})}=c_k\\
-\frac{2\theta_{2k-1}}{(t_{k+1}-t_{k})^3} +\frac{\theta_{2k}}{(t_{k+1}-t_{k})^2} -\frac{2\theta_{2k+1}}{(t_{k+1}-t_{k})^3} +\frac{\theta_{2k+2}}{(t_{k+1}-t_{k})^2}=d_k
+\theta_{2i-1}=a_i\\
+\theta_{2i}=b_i\\
+-\frac{3\theta_{2i-1}}{(t_{i+1}-t_{i})^2} -\frac{2\theta_{2i}}{(t_{i+1}-t_{i})} +\frac{3\theta_{2i+1}}{(t_{i+1}-t_{i})^2} - \frac{\theta_{2i+2}}{(t_{i+1}-t_{i})}=c_i\\
+\frac{2\theta_{2i-1}}{(t_{i+1}-t_{i})^3} +\frac{\theta_{2i}}{(t_{i+1}-t_{i})^2} -\frac{2\theta_{2i+1}}{(t_{i+1}-t_{i})^3} +\frac{\theta_{2i+2}}{(t_{i+1}-t_{i})^2}=d_i
 \end{cases}
 \end{align*}
-the resulting can always be solved for $\theta_{2k-1}, \theta_{2k},\theta_{2k+1},\theta_{2k+2}$ in terms of $a_k,b_k,c_k,d_k$ on interval $[t_k, t_{k+1}]$. So cubic spline on each interval can be represented by basis functions. \\
+The resulting can always be solved for $\theta_{2i-1}, \theta_{2i},\theta_{2i+1},\theta_{2i+2}$ in terms of $a_i,b_i,c_i,d_i$ on interval $[t_i, t_{i+1}]$. So cubic spline on each interval can be represented by basis functions. \\
 
-Finally, we will prove basis functions are continuous on $[t_1, t_n]$. For any knot $t_k$, where $t_1< t_k <t_n$, it is known that $f(t_k)=\theta_{2k-1}$. Moreover, 
+Finally, we will prove basis functions are continuous on $[t_1, t_n]$. For any knot $t_i$, where $t_1< t_i <t_n$, it is known that $f(t_i)=\theta_{2i-1}$. Moreover, 
 \begin{align*}
-\lim\limits_{t\rightarrow t_k+} f(t) = \lim\limits_{t\rightarrow t_k+} (\theta_{2k-1}N_{2k-1}(t)+\theta_{2k}N_{2k}(t)+\theta_{2k+1}N_{2k+1}(t)+\theta_{2k+2}N_{2k+3}(t))=\theta_{2k-1},\\
-\lim\limits_{t\rightarrow t_k-} f(t) = \lim\limits_{t\rightarrow t_k-} (\theta_{2k-1}N_{2k-1}(t)+\theta_{2k}N_{2k}(t)+\theta_{2k+1}N_{2k+1}(t)+\theta_{2k+2}N_{2k+3}(t))=\theta_{2k-1}.
+\lim\limits_{t\rightarrow t_i+} f(t) = \lim\limits_{t\rightarrow t_i+} (\theta_{2i-1}N_{2i-1}(t)+\theta_{2i}N_{2i}(t)+\theta_{2i+1}N_{2i+1}(t)+\theta_{2i+2}N_{2i+3}(t))=\theta_{2i-1},\\
+\lim\limits_{t\rightarrow t_i-} f(t) = \lim\limits_{t\rightarrow t_i-} (\theta_{2i-1}N_{2i-1}(t)+\theta_{2i}N_{2i}(t)+\theta_{2i+1}N_{2i+1}(t)+\theta_{2i+2}N_{2i+3}(t))=\theta_{2i-1}.
 \end{align*}
-So
+As a result, 
 \begin{align*}
-\lim\limits_{t\rightarrow t_k^+} f(t) =\lim\limits_{t\rightarrow t_k^-} f(t) =f(t),
+\lim\limits_{t\rightarrow t_i^+} f(t) =\lim\limits_{t\rightarrow t_i^-} f(t) =f(t),
 \end{align*}
 $f(t)$ is continuous at knots, and then continuous on whole interval $[t_1,t_n]$.
-$f(t)$ is a continuous cubic spline on interval $[t_1,t_n]$, then $f(t)$ has continuous first and second derivatives.
+
+Consequently, $f(t)$ is a continuous cubic spline on interval $[t_1,t_n]$, then $f(t)$ has continuous first and second derivatives.
 \end{proof}
 
 \section{Proof of Lemma \ref{cvlemma}}

@@ -254,7 +254,7 @@ b_{t+1} &= A_t^{-1}C_t S_{t+1} (I+ S_{t+1}^\top (B_1^{-1} - K_t)  S_{t+1} +D_{t+
 -b_t \\ B_1^{-1}-K_t 
 \end{bmatrix}  S_{t+1} (I+ S_{t+1}^\top (B_1^{-1} - K_t)  S_{t+1} +D_{t+1}^\top B_1^{-1}D_{t+1}  )^{-1} D_{t+1}^\top B_1^{-1}.
 \end{align*}
-To achieve the recursive updating formula, firstly we need to find the form of $b_{t+1}^\top B_t^2 Y_{1:t}$. In fact, it is 
+To achieve the recursive updating formula, firstly we need to find the form of $b_{t+1}^\top B_t^2 Y_{1:t}$. In fact, it is \footnotesize
 \begin{align*}
 b_{t+1}^\top B_t Y_{1:t} &= B_1^{-\top}D_{t+1}  (I+ S_{t+1}^\top  (B_1^{-1} - K_t)  S_{t+1} +D_{t+1}^\top B_1^{-1}D_{t+1}  )^{-\top} S_{t+1}^\top 
 \begin{bmatrix}
@@ -268,6 +268,7 @@ Y_{1:t-1} \\ Y_t
 &= B_1^{-\top}D_{t+1}  (I+ S_{t+1}^\top  (B_1^{-1} - K_t)  S_{t+1} +D_{t+1}^\top B_1^{-1}D_{t+1}  )^{-\top} S_{t+1}^\top 
 \left(  K_t B_1\bar{\mu}_t+ (I-K_t B_1)  Y_t      \right), \\
 \end{align*}
+\normalsize
 By using equation (\ref{recursiveKp1}) and simplifying the above equation, one can achieve a recursive updating form of the mean, which is 
 \begin{align*}
 %\bar{\mu}_{t+1} = -B_1K_{t+1}^{-1} B_1^{-1}D_{t+1}  (I+ S_{t+1}^\top  (B_1^{-1} - K_t)  S_{t+1} +D_{t+1}^\top B_1^{-1}D_{t+1}  )^{-\top} S_{t+1}^\top 
@@ -342,7 +343,7 @@ where
 \end{align*}
 and $U_{t+1} = L^{-1} C_{t+1} = \mbox{solve}(L,C_{t+1})$.
 
-The filtering distribution of the state given parameters is $p(X_t\mid Y_{1:t}, \theta )$. To find its form, one can use the joint distribution of $X_{t+1}$ and $Y_{1:t+1}$, which is $p(X_{t+1}, Y_{1:t+1}  \mid  \theta)\sim N(0,\Gamma)$, where
+The filtering distribution of the state with given parameters is $p(X_t\mid Y_{1:t}, \theta )$. To find its form, one can use the joint distribution of $X_{t+1}$ and $Y_{1:t+1}$, which is $p(X_{t+1}, Y_{1:t+1}  \mid  \theta)\sim N(0,\Gamma)$, where
 \begin{equation*}
 \Gamma=\begin{bmatrix} C_{t+1}^\top(A-B)^{-1}C_{t+1} & C_{t+1}^\top(A-B)^{-1}\\(A-B)^{-1}C_{t+1} & (I-A^{-1}B)^{-1}B^{-1} \end{bmatrix}.
 \end{equation*}

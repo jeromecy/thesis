@@ -393,7 +393,7 @@ Plenty of work has been done to determine the efficiency of Metropolis-Hastings 
 
 
 
-In terms of the step size $\epsilon$, it is pointed out that for a stochastic approximation procedure, its step size sequence $\{\epsilon_i\}$ should satisfy $\sum_{i=1}^\infty \epsilon_i=\infty $ and $\sum_{i=1}^\infty \epsilon_i^{1+\lambda}<\infty $ for some $\lambda>0$. The former condition somehow ensures that any point of $X$ can eventually be reached, while the second condition ensures that the noise is contained and does not prevent convergence \cite{andrieu2008tutorial}. Sherlock, Fearnhead, and Roberts \cite{sherlock2010random} tune various algorithms to attain target acceptance rates, and their Algorithm 2 tunes step sizes of univariate updates to attain the optimal efficiency of Markov chain at the acceptance rates between 0.4 and 0.45. Additionally, Graves in \cite{graves2011automatic} mentioned that it is certain that one could use the actual arctangent relationship to try to choose a good $\epsilon$: in the univariate example, if $\alpha$ is the desired acceptance rate, then $\epsilon = 2\sigma / \tan (\pi/2\alpha)$, where $\sigma$ is the posterior standard deviation, will be obtained. In fact, some explorations infer a linear relationship between acceptance rate and step size, which is $\mbox{logit}(\alpha) \approx 0.76-1.12\log \epsilon/\sigma$, and the slope of the relationship is nearly equal to the constant -1.12 independently. However, in multi-variable-at-a-time RWM, one expects that the proper interpretation of $\sigma$ is not the posterior standard deviation but the average conditional standard deviation, which is presumably more difficult to estimate from a Metropolis algorithm. In a higher $d$-dimensional space, or propose multi-variable-at-a-time, suppose $\Sigma$ is known or could be estimated, then $X'$ can be proposed from $q\sim N(X,\epsilon^2\Sigma)$. Thus,the optimal step size $\epsilon$ is required. A concessive way of RWM in high dimension is proposing one-variable-at-a-time and treating them as one dimension space individually. In any case, however, the behavior of RWM on a multivariate normal distribution is governed by its covariance matrix $\Sigma$, and it is better than using a fixed $N(X,\epsilon^2I_d)$ distribution\cite{roberts2001optimal}.
+In terms of the step size $\epsilon$, it is pointed out that for a stochastic approximation procedure, its step size sequence $\{\epsilon_i\}$ should satisfy $\sum_{i=1}^\infty \epsilon_i=\infty $ and $\sum_{i=1}^\infty \epsilon_i^{1+\lambda}<\infty $ for some $\lambda>0$. The former condition somehow ensures that any point of $X$ can eventually be reached, while the second condition ensures that the noise is contained and does not prevent convergence \cite{andrieu2008tutorial}. Sherlock, Fearnhead, and Roberts \cite{sherlock2010random} tune various algorithms to attain target acceptance rates, and their Algorithm 2 tunes step sizes of univariate updates to attain the optimal efficiency of Markov chain at the acceptance rates between 0.4 and 0.45. Additionally, Graves in \cite{graves2011automatic} mentioned that it is certain that one could use the actual arctangent relationship to try to choose a good $\epsilon$: in the univariate example, if $\alpha$ is the desired acceptance rate, then $\epsilon = 2\sigma / \tan (\pi/2\alpha)$, where $\sigma$ is the posterior standard deviation, will be obtained. In fact, some explorations infer a linear relationship between acceptance rate and step size, which is $\mathtt{logit}(\alpha) \approx 0.76-1.12\ln \epsilon/\sigma$, and the slope of the relationship is nearly equal to the constant -1.12 independently. However, in multi-variable-at-a-time RWM, one expects that the proper interpretation of $\sigma$ is not the posterior standard deviation but the average conditional standard deviation, which is presumably more difficult to estimate from a Metropolis algorithm. In a higher $d$-dimensional space, or propose multi-variable-at-a-time, suppose $\Sigma$ is known or could be estimated, then $X'$ can be proposed from $q\sim N(X,\epsilon^2\Sigma)$. Thus,the optimal step size $\epsilon$ is required. A concessive way of RWM in high dimension is proposing one-variable-at-a-time and treating them as one dimension space individually. In any case, however, the behavior of RWM on a multivariate normal distribution is governed by its covariance matrix $\Sigma$, and it is better than using a fixed $N(X,\epsilon^2I_d)$ distribution\cite{roberts2001optimal}.
 
 
 To explore the efficiency of a MCMC process, we introduce some notions first. For an arbitrary square integrable function $g$, Gareth, Roberts and Jeffrey \cite{roberts2001optimal} define its integrated autocorrelation time by 
@@ -440,7 +440,7 @@ We define $\Delta_k = T_k-T_{k-1}$. If $\Delta_t$ is a constant, we retrieve a s
 %If the transition processes $F$ and $G$ are linear and normal distributed, we call this model $\textit{Linear Gaussian State-Space Model}$. 
 
 
-\subsection{Simulation on Regular Time Series Data}
+\subsection{Simulation on Regularly Sampled Time Series Data}
 
 If the time steps are even spaced, the model can be written as a simple linear model in the following 
 \begin{align*}
@@ -614,7 +614,7 @@ By substituting them into the equation (\ref{linearmu}) and (\ref{linearsigma}),
 
 
 
-\subsection{Simulation on Irregular Time Series Data}
+\subsection{Simulation on Irregularly Sampled Time Series Data}
 
 Irregularly sampled time series data is painful for scientists and researchers. In spatial data analysis, several satellites and buoy networks provide continuous observations of wind speed, sea surface temperature, ocean currents, etc. However, data was recorded with irregular time-step, with generally several data each day but also sometimes gaps of several days without any data. In \cite{tandeo2011linear}, the author adopts a continuous-time state-space model to analyze this kind of irregular time-step data, in which the state is supposed to be an Ornstein-Uhlenbeck process. 
 
@@ -780,7 +780,7 @@ By substituting them into the equation (\ref{linearmu}) and (\ref{linearsigma}),
 
 
 
-\section{High Dimensional OU-Process Application}\label{SectionHighDimensionalOU}
+\section{High Dimensional Ornstein-Uhlenbeck Process Application}\label{SectionHighDimensionalOU}
 
 Tractors moving on an orchard are mounted with GPS units, which are recording data and transfer to the remote server. This data infers longitude, latitude, bearing, etc, with unevenly spaced time mark. However, one dimensional OU process containing either only position or velocity is not enough to infer a complex movement. 
 
@@ -792,7 +792,7 @@ Tractors moving on an orchard are mounted with GPS units, which are recording da
 \label{realdatareview}
 \end{figure}
 
-Therefore, in this section, we are introducing an OU-process model combing both position and velocity with the following equations  
+Therefore, in this section, we are introducing an Ornstein-Uhlenbeck process (OU-process) model combing both position and velocity with the following equations  
 \begin{equation}\label{OUprocess}
 \begin{cases}
 du_t = -\gamma u_t dt+ \lambda dW_t,\\

@@ -142,7 +142,7 @@ f \sim GP(m(t),K(s,t)).
 \end{equation*}
 Usually the mean function is assumed to be zero everywhere. 
 
-Given a set of input variables $\mathbf{t} = \{t_1,\ldots,t_n\}$ for function $f(t)$ and the output $\mathbf{y}=f(\mathbf{t})+\varepsilon$ with \iid  Gaussian noise $\varepsilon$ with variance $\sigma_n^2$,  we can use the above definition to predict the value of the function $f_*=f(t_*)$ at a particular input $t_*$. As the noisy observations becoming
+Given a set of input variables $\mathbf{t} = \{t_1,\ldots,t_n\}$ for function $f(t)$ and the output $\mathbf{y}=f(\mathbf{t})+\varepsilon$ with \iid  Gaussian noise $\varepsilon$ of variance $\sigma_n^2$,  we can use the above definition to predict the value of the function $f_*=f(t_*)$ at a particular input $t_*$. As the noisy observations becoming
 \begin{equation*} %\label{GaussianProcessCovDef}
 \Cov (y_p,y_q) = K(t_p,t_q)+\sigma_n^2 \delta_{pq}
 \end{equation*}
