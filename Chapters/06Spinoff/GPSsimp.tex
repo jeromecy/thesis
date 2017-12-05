@@ -58,15 +58,10 @@ Finally, the point $p_i$ belongs to the track if Rule 1 = TRUE or Rule 2 = TRUE 
 
 \section{Evaluation}
 
-Errors are measured by Synchronized Euclidean Distance \cite{lawson2011compression}. SED measures the distances between the original and compressed trace at the same time. As shown in figure \ref{DataSimpSED}. $P_{t1}, \ldots ,P_{t5}$ are original points in green. After simplification, these points $P_{t2}, P_{t3}$ and $P_{t4}$ were removed. The black curve is the original trajectory, in contrast, the gray dash line is the simplified trajectory. The blue points $P'_{t2}$,$P'_{t3}$ and $P'_{t4}$ on simplified trajectory have the same time difference as the point $P_{t2}$, $P_{t3}$ and $P_{t4}$ on original trajectory did. Therefore, the distances between $P_{t2}$ and $P'_{t2}$, $P_{t3}$ and $P'_{t3}$ and $P_{t4}$, $P'_{t4}$ can be calculated.
+Errors are measured by Synchronized Euclidean Distance \cite{lawson2011compression}. SED measures the distances between the original and compressed trace at the same time. As shown in figure \ref{DataSimpSED}, the green points $P_{t1}, \ldots ,P_{t5}$ are original positions. After simplification, the points $P_{t2}, P_{t3}$ and $P_{t4}$ were removed. The black curve is the original trajectory, in contrast, the gray dash-dot line is the simplified trajectory. The blue points $P'_{t2}$,$P'_{t3}$ and $P'_{t4}$ on simplified trajectory have the same time difference as the point $P_{t2}$, $P_{t3}$ and $P_{t4}$ on original trajectory did. For instance, the time difference between $P_{t2}$ and $P_{t3}$ is the same as that between $P'_{t2}$ and $P'_{t3}$. Further, the distances between $P_{t2}$ and $P'_{t2}$, $P_{t3}$ and $P'_{t3}$ and $P_{t4}$, $P'_{t4}$ can be calculated.
 
 
-%\begin{figure}[h]
-%\centering
-%\includegraphics[width=0.9\textwidth]{Chapters/06Spinoff/plot/sed.jpg}
-%\caption{Synchronized Euclidean Distance \cite{lawson2011compression}}\label{DataSimpSED}
-%\end{figure}
-\begin{figure}[h]
+\begin{figure}
 \centering
 \begin{tikzpicture}
 \begin{scope}[every node/.style={circle,draw}]
@@ -101,48 +96,42 @@ Errors are measured by Synchronized Euclidean Distance \cite{lawson2011compressi
 \path [->] (10,4) edge node {\textit{fast}} (13,1);
 \end{scope}
 \end{tikzpicture}
-\caption{Synchronized Euclidean Distance \cite{lawson2011compression}}\label{DataSimpSED}
+\caption{Synchronized Euclidean Distance}\label{DataSimpSED}
 \end{figure}
 
 
-Another way to calculate the difference between a GPS trace and its compressed version is to measure the perpendicular distance. This algorithm ignores the temporal component and uses simple perpendicular distance. The figure \ref{DataSimpAB} expresses these differences clearly. 
+Another way to calculate the difference between a GPS trace and its compressed version is to measure the perpendicular distance. This algorithm ignores the temporal component and uses simple perpendicular distance \cite{meratnia2004spatiotemporal}. The figure \ref{DataSimpAB} expresses these differences clearly. 
 
-%\begin{figure}[h]
-%\centering
-%\includegraphics[width=0.9\textwidth]{Chapters/06Spinoff/plot/ab.JPG}
-%\caption{(a) error measured at fixed sampling rate as sum of perpendicular distance chords; (b) error measured at fixed sampling rates as sum of time-synchronous distance chords. \cite{meratnia2004spatiotemporal}}\label{DataSimpAB}
-%\end{figure}
-
-\begin{figure}[h]
+\begin{figure}
 \centering
 \centering
     \begin{subfigure}[b]{0.5\textwidth}
     \resizebox{\linewidth}{!}{
 		\begin{tikzpicture}[dot/.style={circle,label={#1},name=#1}]
 		\coordinate (a) at (0,0);
-		\node[below of=a] {\Large $a(t_0)$};
-		\fill (a) circle[radius=2pt];
+		\node[below of=a] {\LARGE $a(t_0)$};
+		\fill (a) circle[radius=4pt];
 		\coordinate (b) at (15,-1);
-		\node[above of=b] {\Large $a(t_5)$};
-		\fill (b) circle[radius=2pt];
+		\node[above of=b] {\LARGE $a(t_5)$};
+		\fill (b) circle[radius=4pt];
 		\coordinate (c) at (0,1);
-		\node[above of=c] {\Large $p(t_0)$};
-		\fill (c) circle[radius=2pt];
+		\node[above of=c] {\LARGE $p(t_0)$};
+		\fill (c) circle[radius=4pt];
 		\coordinate (d) at  (2,3);
-		\node[above of=d] {\Large $p(t_1)$};
-		\fill (d) circle[radius=2pt];
+		\node[above of=d] {\LARGE $p(t_1)$};
+		\fill (d) circle[radius=4pt];
 		\coordinate (e) at  (7,4);
-		\node[above of=e] {\Large $p(t_2)$};
-		\fill (e) circle[radius=2pt];
+		\node[above of=e] {\LARGE $p(t_2)$};
+		\fill (e) circle[radius=4pt];
 		\coordinate (f) at (8,3);
-		\node[above of=f] {\Large $p(t_3)$};
-		\fill (f) circle[radius=2pt];
+		\node[above of=f] {\LARGE $p(t_3)$};
+		\fill (f) circle[radius=4pt];
 		\coordinate (g) at (10,-3);
-		\node[below of=g] {\Large $p(t_4)$};
-		\fill (g) circle[radius=2pt];
+		\node[below of=g] {\LARGE $p(t_4)$};
+		\fill (g) circle[radius=4pt];
 		\coordinate (h) at (15,-2);
-		\node[below of=h] {\Large $p(t_5)$};
-		\fill (h) circle[radius=2pt];
+		\node[below of=h] {\LARGE $p(t_5)$};
+		\fill (h) circle[radius=4pt];
 		\draw [line width=0.5mm] (c) -- (d) -- (e)--(f)--(g)--(h);
 		\draw [line width=0.5mm] (a) -- (b);
 		 % %y=x+1
@@ -179,29 +168,29 @@ Another way to calculate the difference between a GPS trace and its compressed v
 	\resizebox{\linewidth}{!}{
 		\begin{tikzpicture}[dot/.style={circle,label={#1},name=#1}]
 		\coordinate (a) at (0,0);
-		\node[below of=a] {\Large $a(t_0)$};
-		\fill (a) circle[radius=2pt];
+		\node[below of=a] {\LARGE $a(t_0)$};
+		\fill (a) circle[radius=4pt];
 		\coordinate (b) at (15,-1);
-		\node[above of=b] {\Large $a(t_5)$};
-		\fill (b) circle[radius=2pt];
+		\node[above of=b] {\LARGE $a(t_5)$};
+		\fill (b) circle[radius=4pt];
 		\coordinate (c) at (0,1);
-		\node[above of=c] {\Large $p(t_0)$};
-		\fill (c) circle[radius=2pt];
+		\node[above of=c] {\LARGE $p(t_0)$};
+		\fill (c) circle[radius=4pt];
 		\coordinate (d) at  (2,3);
-		\node[above of=d] {\Large $p(t_1)$};
-		\fill (d) circle[radius=2pt];
+		\node[above of=d] {\LARGE $p(t_1)$};
+		\fill (d) circle[radius=4pt];
 		\coordinate (e) at  (7,4);
-		\node[above of=e] {\Large $p(t_2)$};
-		\fill (e) circle[radius=2pt];
+		\node[above of=e] {\LARGE $p(t_2)$};
+		\fill (e) circle[radius=4pt];
 		\coordinate (f) at (8,3);
-		\node[above of=f] {\Large $p(t_3)$};
-		\fill (f) circle[radius=2pt];
+		\node[above of=f] {\LARGE $p(t_3)$};
+		\fill (f) circle[radius=4pt];
 		\coordinate (g) at (10,-3);
-		\node[below of=g] {\Large $p(t_4)$};
-		\fill (g) circle[radius=2pt];
+		\node[below of=g] {\LARGE $p(t_4)$};
+		\fill (g) circle[radius=4pt];
 		\coordinate (h) at (15,-2);
-		\node[below of=h] {\Large $p(t_5)$};
-		\fill (h) circle[radius=2pt];
+		\node[below of=h] {\LARGE $p(t_5)$};
+		\fill (h) circle[radius=4pt];
 		\draw [line width=0.5mm] (c) -- (d) -- (e)--(f)--(g)--(h);
 		\draw [line width=0.5mm] (a) -- (b);
 		 % %y=x+1	
@@ -243,20 +232,18 @@ Another way to calculate the difference between a GPS trace and its compressed v
 	}
 	\caption{time-synchronous distance chords}\label{DataSimpB}
     \end{subfigure}
-\caption{\ref{DataSimpA} indicates that the errors are measured at fixed sampling rate as sum of perpendicular distance chords; \ref{DataSimpB} indicates that the errors are measured at fixed sampling rates as sum of time-synchronous distance chords. \cite{meratnia2004spatiotemporal}}\label{DataSimpAB}
+\caption{\ref{DataSimpA} indicates that the errors are measured at fixed sampling rate as sum of perpendicular distance chords. \ref{DataSimpB} indicates that the errors are measured at fixed sampling rates as sum of time-synchronous distance chords.}\label{DataSimpAB}
 \end{figure}
 
 
 \section{Numerical Study}
 
-In the numerical simulation study, we are using Kalman Filter (KF) to fit the trajectory after data simplifying. The KF equations describe the prediction step in the following way: 
+In the numerical simulation study, we are using \textit{Kalman Filter} (KF) to fit the trajectory after data simplification. The KF equations describe the prediction step in the following way: 
 \begin{align*}
 \hat{x}_k^-&=A\hat{x}_{k-1}+Bu_k \\
 P_k^-&=AP_{k-1}A^\top+Q
 \end{align*}
-where $\hat{x}_k^-$ is a priori state estimate, $\hat{x}_k$ is a posteriori state estimate, $A$ is status transition matrix, $P_k^-$ is a priori estimate for error covariance, $u_k$ is an input parameter and $Q$ is process noise covariance. 
-
-When a new observation comes into the data stream, KF update and corrects its estimation by: 
+where $\hat{x}_k^-$ is a priori state estimate, $\hat{x}_k$ is a posteriori state estimate, $A$ is status transition matrix, $P_k^-$ is a priori estimate for error covariance, $u_k$ is an input parameter and $Q$ is process noise covariance. When a new observation comes into the data stream, KF update and corrects its estimation by: 
 \begin{align*}
 K_k&=P_k^-H^\top (HP_k^-H^\top+R)^{-1} \\
 \hat{x}_k&=\hat{x}_k^-+K_k(z_k-H\hat{x}_k^-) \\
@@ -265,9 +252,9 @@ P_k&=(I-K_kH)P_k^-
 where $K_k$ is the Kalman gain matrix, $z_k$ is the observed data.
 
 
-The original data set has 1021 rows, each of them contains latitude, longitude, velocity, bearing (heading direction) and boom status. Douglas-Peucker Algorithm, with distance threshold $0.205$m, retained 847 points. The proposed algorithm, given a predictable distance $5$m and heading direction changing threshold $\ang{30}$, returns the same amount of simplified points. Under the same circumstance, we calculated SED and other information. 
+The original data set has 1\,021 rows, each of them contains latitude, longitude, velocity, bearing (heading direction) and boom status. Douglas-Peucker Algorithm, with distance threshold $0.205$m, retained 847 points. The proposed algorithm, given a predictable distance $5$m and heading direction changing threshold $\ang{30}$, returns the same amount of simplified points. Under the same circumstance, we calculated SED and other information. 
 
-Table (\ref{DataSimpCompTable}) describes the results after simplifying by DP algorithm and the proposed algorithm. Figure \ref{DataSimpRawTra} demonstrates the simplified raw data and figure \ref{DataSimpKFTra} is the fitted trajectories by Kalman filter. 
+Table \ref{DataSimpCompTable} describes the results after being simplified by DP algorithm and the proposed algorithm. Figure \ref{DataSimpRawTra} demonstrates the simplified raw data and figure \ref{DataSimpKFTra} is the fitted trajectories by KF. 
 
 \begin{table}
 \centering
@@ -278,14 +265,16 @@ Table (\ref{DataSimpCompTable}) describes the results after simplifying by DP al
   & \textbf{Original Data} & \textbf{DP Algorithm} & \textbf{Proposed Algorithm}  \\
 \hline 
 \textbf{Points Left} & 1021              & 847         & 847         \\
+\hline 
 \textbf{Tracked Distances}(m)  & 74041.31     & 74038.33    & 74012.56     \\
+\hline 
 \textbf{SED} (m)    & NA        & 1316.715    & 607.9587   \\
 \hline 
 \end{tabular}
 \end{table}
 
 
-\begin{figure}[h]
+\begin{figure}
 \centering
 %\includegraphics[width=0.9\textwidth]{Chapters/06Spinoff/plot/3p1.pdf}
 \begin{subfigure}[t]{0.47\textwidth}
@@ -297,31 +286,36 @@ Table (\ref{DataSimpCompTable}) describes the results after simplifying by DP al
 \caption{Simplified trajectory by DP}\label{ggDPTrac}
 \end{subfigure}
  \begin{subfigure}[t]{0.47\textwidth}
-\includegraphics[width=\linewidth]{Chapters/06Spinoff/plot/ggSPTrac.pdf}
+%\includegraphics[width=\linewidth]{Chapters/06Spinoff/plot/ggSPTrac2.pdf}
+\begin{tikzpicture}
+    \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=\textwidth]{Chapters/06Spinoff/plot/ggSPTrac2.pdf}};
+	\draw[red,ultra thick] (2.6,3.6) circle [x radius=1cm, y radius=4mm, rotate=140];
+	\draw[red,ultra thick] (6,1.2) circle [x radius=1cm, y radius=5mm, rotate=140];
+\end{tikzpicture}
 \caption{Simplified trajectory by proposed algorithm}\label{ggSPTrac}
 \end{subfigure}
-\caption{A segment start from time $t=2000$ to $3000$, recorded by GPS units. $\blacktriangle$ indicates the boom is not-working. $\bullet$ indicate the boom is working. Figure \ref{ggRawTrac}, the trajectory connected by raw data with 27 points. Figure \ref{ggDPTrac}, the trajectory connected by simplified data with Douglas-Peucker algorithm with 24 points. Figure \ref{ggSPTrac}, the trajectory connected by simplified data with proposed simplification algorithm with 23  points.}\label{DataSimpRawTra}
+\caption{A segment start from time $t=2\,000$ to $3\,000$, recorded by GPS units. $\blacktriangle$ indicates that the boom is not-working. $\bullet$ indicates that the boom is working. Figure \ref{ggRawTrac}, the trajectory connected by raw data with 27 points. Figure \ref{ggDPTrac}, the trajectory connected by simplified data with Douglas-Peucker algorithm with 24 points. Figure \ref{ggSPTrac}, the trajectory connected by simplified data with proposed simplification algorithm with 23  points.}\label{DataSimpRawTra}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}
 \centering
-%\includegraphics[width=0.9\textwidth]{Chapters/06Spinoff/plot/km3p}
 \begin{subfigure}[t]{0.47\textwidth}
-\includegraphics[width=\linewidth]{Chapters/06Spinoff/plot/ggRawKF.pdf}
+\includegraphics[width=\linewidth]{Chapters/06Spinoff/plot/ggRawKF2.pdf}
 \caption{Fitted Kalman Filter with raw data}
 \end{subfigure}
  \begin{subfigure}[t]{0.47\textwidth}
-\includegraphics[width=\linewidth]{Chapters/06Spinoff/plot/ggDPKF.pdf}
+\includegraphics[width=\linewidth]{Chapters/06Spinoff/plot/ggDPKF2.pdf}
 \caption{Fitted Kalman Filter with simplified data by DP}
 \end{subfigure}
  \begin{subfigure}[t]{0.47\textwidth}
-\includegraphics[width=\linewidth]{Chapters/06Spinoff/plot/ggSPKF.pdf}
+\includegraphics[width=\linewidth]{Chapters/06Spinoff/plot/ggSPKF2.pdf}
 \caption{Fitted Kalman Filter with simplified data by proposed algorithm}
 \end{subfigure}
 \caption{Trajectory fitted by Kalman Filter. The mean squared errors of raw data, DP and proposed algorithm are 26.8922, 23.9788 and 23.9710 respectively.}\label{DataSimpKFTra}
 \end{figure}
 
+\pagebreak
 
 \section{Conclusion}
 
-The data simplification algorithm was originally proposed to solve the fitting-drift problem. Duplicated and short-distance points cause reconstruction issues in spline fitting. The advantage of using data simplification algorithm is that fewer data points will potentially increase computation efficiency and save storage space without of losing reconstruction information.  
+The data simplification algorithm was originally proposed to solve the fitting-drift problem. Duplicated and short-distance points cause reconstruction issues in spline fitting. The advantage of using data simplification algorithm is that less data points will potentially increase computation efficiency and save storage space without of losing information in reconstruction.  
