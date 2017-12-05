@@ -21,12 +21,12 @@ In our case, a GPS log is a sequence time series points $p_i \in P$, $P=\{ p_1,p
 T=\{p_t=[x_t,y_t,v_t,\theta_t,b_t] \mid t \in \mathbb{R} \}.
 \end{equation}
 Sequentially connect these points will give us a trajectory of a moving vehicle.
-Particularly, a tractor working on an orchard generates two kinds of boom status information: working and not working. This information is recorded by GPS units and is indicated by $b=1$ for working and $b=0$ for not-working.
+Particularly, a tractor working on an orchard generates two kinds of boom status information: operating and not operating. This information is recorded by GPS units and is indicated by $b=1$ for operating and $b=0$ for not-operating.
 
 
 To move further, here are two concepts that will be useful to understand the simplification scheme.
 \begin{itemize}
-\item $\mathbf{Segment}$ A segment is a part of the consecutive trajectory. Regarding the status of the boom, the trajectory can be simply divided into two kinds of the segment in our dataset, one is boom-working, the other is boom-not-working. 
+\item $\mathbf{Segment}$ A segment is a part of the consecutive trajectory. Regarding the status of the boom, the trajectory can be simply divided into two kinds of the segment in our dataset, one is boom-operating, the other is boom-not-operating. 
 \item $\mathbf{Direction}$. Direction $\theta$ denotes the heading direction of a tractor at a specific point location. This parameter uses north direction as a basis, in which way $\ang{0} \leq \theta < \ang{360}$.
 \end{itemize}
 
@@ -36,10 +36,10 @@ To move further, here are two concepts that will be useful to understand the sim
 
 The first two steps are designed to reduce some errors caused by misoperation and GPS units bugs.
 \begin{itemize}
-\item Merging Phase. If the length of a segment composed of consecutive boom working or not-working points is less than a threshold, merge this one into its backward segment. 
+\item Merging Phase. If the length of a segment composed of consecutive boom operating or not-operating points is less than a threshold, merge this one into its backward segment. 
 \item Removing Phase. If two or more data points have duplicated time mark, remove the latter ones. 
 \end{itemize}
-Now only two types of segment points are left in GPS log, boom working, and not-working and the length of each segment are greater than the predetermined threshold.
+Now only two types of segment points are left in GPS log, boom operating, and not-operating and the length of each segment are greater than the predetermined threshold.
 
 The following algorithm is based on the relationship between a candidate point $p_i$ and its neighboring points $p_{i-1}$ and $p_{i+1}$, and the importance of the $p_i$ in the segment where it belongs to, $i=2,\ldots,n-1$. 
 
@@ -294,7 +294,7 @@ Table \ref{DataSimpCompTable} describes the results after being simplified by DP
 \end{tikzpicture}
 \caption{Simplified trajectory by proposed algorithm}\label{ggSPTrac}
 \end{subfigure}
-\caption{A segment start from time $t=2\,000$ to $3\,000$, recorded by GPS units. $\blacktriangle$ indicates that the boom is not-working. $\bullet$ indicates that the boom is working. Figure \ref{ggRawTrac}, the trajectory connected by raw data with 27 points. Figure \ref{ggDPTrac}, the trajectory connected by simplified data with Douglas-Peucker algorithm with 24 points. Figure \ref{ggSPTrac}, the trajectory connected by simplified data with proposed simplification algorithm with 23  points.}\label{DataSimpRawTra}
+\caption{A segment start from time $t=2\,000$ to $3\,000$, recorded by GPS units. $\blacktriangle$ indicates that the boom is not-operating. $\bullet$ indicates that the boom is operating. Figure \ref{ggRawTrac}, the trajectory connected by raw data with 27 points. Figure \ref{ggDPTrac}, the trajectory connected by simplified data with Douglas-Peucker algorithm with 24 points. Figure \ref{ggSPTrac}, the trajectory connected by simplified data with proposed simplification algorithm with 23  points.}\label{DataSimpRawTra}
 \end{figure}
 
 \begin{figure}

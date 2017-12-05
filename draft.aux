@@ -184,6 +184,7 @@
 \@writefile{toc}{\contentsline {section}{\numberline {2.2}Tractor spline}{20}}
 \newlabel{SectionTractorSpline}{{2.2}{20}}
 \newlabel{tractorsplineObjective}{{2.5}{20}}
+\newlabel{TractorSplineTheorem}{{1}{21}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2.1}Basis Functions}{21}}
 \newlabel{hermitebasis1}{{2.6}{21}}
 \newlabel{basisindependent}{{2}{22}}
@@ -255,7 +256,7 @@
 \newlabel{sub@gg512PointsX}{{c}{40}}
 \newlabel{gg512PointsY}{{2.8d}{40}}
 \newlabel{sub@gg512PointsY}{{d}{40}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.8}{\ignorespaces Original data points. Figure 2.8a\hbox {} is th original positions recorded by GPS units. Circle points means the boom is not working; cross points means it is working. Figure 2.8b\hbox {} is the line-based trajectory by simply connecting all points sequentially with straight lines. Figure 2.8c\hbox {} is the original $x$ position. Figure 2.8d\hbox {} is the original $y$ positions.\relax }}{40}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.8}{\ignorespaces Original data points. Figure 2.8a\hbox {} is th original positions recorded by GPS units. Circle points means the boom is not operating; cross points means it is operating. Figure 2.8b\hbox {} is the line-based trajectory by simply connecting all points sequentially with straight lines. Figure 2.8c\hbox {} is the original $x$ position. Figure 2.8d\hbox {} is the original $y$ positions.\relax }}{40}}
 \newlabel{original512}{{2.8}{40}}
 \@writefile{lot}{\contentsline {table}{\numberline {2.4}{\ignorespaces Mean squared error. Tractor spline returns smallest errors among all these methods. P-spline was unable to reconstruct the $y$ trajectory as the original dataset contains 0 $\Delta _y$.\relax }}{41}}
 \newlabel{1dxymse}{{2.4}{41}}
@@ -272,7 +273,7 @@
 \newlabel{sub@ggRealdataXTractorAPT}{{e}{42}}
 \newlabel{ggRealdataXTractor}{{2.9f}{42}}
 \newlabel{sub@ggRealdataXTractor}{{f}{42}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.9}{\ignorespaces Fitted data points on $x$ axis. Figure 2.9a\hbox {} Fitted by P-spline, which gives over-fitting on these points and misses some information. Figure 2.9b\hbox {} Fitted by wavelet ($\textit  {sure}$) algorithm. At some turning points, it gives over-fitting. Figure 2.9c\hbox {} Fitted by wavelet ($\textit  {BayesThresh}$) algorithm. It fits better than ($\textit  {sure}$) and the result is close to the proposed method. Figure 2.9d\hbox {} Fitted by Tractor spline without velocity information. The reconstruction is good to get the original trajectory. Figure 2.9e\hbox {} Fitted by Tractor spline without adjusted penalty term. It gives less fitting at boom-not-working points because of a large time gap. Figure 2.9f\hbox {} Fitted by proposed method. It fits all data points in a good way.\relax }}{42}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.9}{\ignorespaces Fitted data points on $x$ axis. Figure 2.9a\hbox {} Fitted by P-spline, which gives over-fitting on these points and misses some information. Figure 2.9b\hbox {} Fitted by wavelet ($\textit  {sure}$) algorithm. At some turning points, it gives over-fitting. Figure 2.9c\hbox {} Fitted by wavelet ($\textit  {BayesThresh}$) algorithm. It fits better than ($\textit  {sure}$) and the result is close to the proposed method. Figure 2.9d\hbox {} Fitted by Tractor spline without velocity information. The reconstruction is good to get the original trajectory. Figure 2.9e\hbox {} Fitted by Tractor spline without adjusted penalty term. It gives less fitting at boom-not-operating points because of a large time gap. Figure 2.9f\hbox {} Fitted by proposed method. It fits all data points in a good way.\relax }}{42}}
 \newlabel{1dx}{{2.9}{42}}
 \newlabel{ggRealdataYPSpline}{{2.10a}{43}}
 \newlabel{sub@ggRealdataYPSpline}{{a}{43}}
@@ -286,7 +287,7 @@
 \newlabel{sub@ggRealdataYTractorAPT}{{e}{43}}
 \newlabel{ggRealdataYTractor}{{2.10f}{43}}
 \newlabel{sub@ggRealdataYTractor}{{f}{43}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.10}{\ignorespaces Fitted data points on $y$ axis. Figure 2.10a\hbox {} Fitted P-spline is not applicable on $y$ axis as the matrix is not invertible. Figure 2.10b\hbox {} Fitted by wavelet ($\textit  {sure}$) algorithm. At some turning points, it gives over-fitting. Figure 2.10c\hbox {} Fitted by wavelet ($\textit  {BayesThresh}$) algorithm is much better than wavelet ($\textit  {sure}$). Figure 2.10d\hbox {} Fitted by Tractor spline without velocity information. The reconstruction is good to get the original trajectory. Figure 2.10e\hbox {} Fitted by Tractor spline without adjusted penalty term. It gives less fitting at boom-not-working. Figure 2.10f\hbox {} Fitted by proposed method. It fits all data points in a good way.\relax }}{43}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.10}{\ignorespaces Fitted data points on $y$ axis. Figure 2.10a\hbox {} Fitted P-spline is not applicable on $y$ axis as the matrix is not invertible. Figure 2.10b\hbox {} Fitted by wavelet ($\textit  {sure}$) algorithm. At some turning points, it gives over-fitting. Figure 2.10c\hbox {} Fitted by wavelet ($\textit  {BayesThresh}$) algorithm is much better than wavelet ($\textit  {sure}$). Figure 2.10d\hbox {} Fitted by Tractor spline without velocity information. The reconstruction is good to get the original trajectory. Figure 2.10e\hbox {} Fitted by Tractor spline without adjusted penalty term. It gives less fitting at boom-not-operating. Figure 2.10f\hbox {} Fitted by proposed method. It fits all data points in a good way.\relax }}{43}}
 \newlabel{1dy}{{2.10}{43}}
 \newlabel{penaltyxyggXYLine}{{2.11a}{44}}
 \newlabel{sub@penaltyxyggXYLine}{{a}{44}}
@@ -743,15 +744,17 @@
 \@writefile{toc}{\contentsline {section}{\numberline {A.1}Penalty Matrix in (2.16\hbox {})}{144}}
 \newlabel{PenaltyTermDetails}{{A.1}{144}}
 \citation{Peng1983linear}
-\@writefile{toc}{\contentsline {section}{\numberline {A.2}Proof of Theorem 2\hbox {}}{145}}
-\newlabel{AppendixBasisproof}{{A.2}{145}}
-\newlabel{basiscontinuousLemma}{{A.2.1}{145}}
-\newlabel{matrixD}{{A.2.1}{145}}
-\@writefile{toc}{\contentsline {section}{\numberline {A.3}Proof of Lemma 2\hbox {}}{148}}
-\@writefile{toc}{\contentsline {section}{\numberline {A.4}Proof of Theorem 3\hbox {}}{148}}
-\newlabel{th3proofeq1}{{A.4.1}{148}}
-\newlabel{th3proofeq2}{{A.4.3}{149}}
-\@writefile{toc}{\contentsline {section}{\numberline {A.5}Residuals Analysis}{150}}
+\@writefile{toc}{\contentsline {section}{\numberline {A.2}Proof of Theorem 1\hbox {}}{145}}
+\newlabel{AppendixTractorSplineProof}{{A.2}{145}}
+\@writefile{toc}{\contentsline {section}{\numberline {A.3}Proof of Theorem 2\hbox {}}{145}}
+\newlabel{AppendixBasisproof}{{A.3}{145}}
+\newlabel{basiscontinuousLemma}{{A.3.1}{146}}
+\newlabel{matrixD}{{A.3.1}{146}}
+\@writefile{toc}{\contentsline {section}{\numberline {A.4}Proof of Lemma 2\hbox {}}{148}}
+\@writefile{toc}{\contentsline {section}{\numberline {A.5}Proof of Theorem 3\hbox {}}{149}}
+\newlabel{th3proofeq1}{{A.5.1}{149}}
+\newlabel{th3proofeq2}{{A.5.3}{149}}
+\@writefile{toc}{\contentsline {section}{\numberline {A.6}Residuals Analysis}{150}}
 \@writefile{lof}{\contentsline {figure}{\numberline {A.1}{\ignorespaces ACF of residuals at SNR level of 7.\relax }}{150}}
 \newlabel{tractorsplineSNR7acf}{{A.1}{150}}
 \@writefile{lof}{\contentsline {figure}{\numberline {A.2}{\ignorespaces ACF of residuals at SNR level of 3.\relax }}{151}}
@@ -813,7 +816,7 @@
 \newlabel{sub@ggDPTrac}{{b}{179}}
 \newlabel{ggSPTrac}{{C.3c}{179}}
 \newlabel{sub@ggSPTrac}{{c}{179}}
-\@writefile{lof}{\contentsline {figure}{\numberline {C.3}{\ignorespaces A segment start from time $t=2\tmspace  +\thinmuskip {.1667em}000$ to $3\tmspace  +\thinmuskip {.1667em}000$, recorded by GPS units. $\blacktriangle $ indicates that the boom is not-working. $\bullet $ indicates that the boom is working. Figure C.3a\hbox {}, the trajectory connected by raw data with 27 points. Figure C.3b\hbox {}, the trajectory connected by simplified data with Douglas-Peucker algorithm with 24 points. Figure C.3c\hbox {}, the trajectory connected by simplified data with proposed simplification algorithm with 23 points.\relax }}{179}}
+\@writefile{lof}{\contentsline {figure}{\numberline {C.3}{\ignorespaces A segment start from time $t=2\tmspace  +\thinmuskip {.1667em}000$ to $3\tmspace  +\thinmuskip {.1667em}000$, recorded by GPS units. $\blacktriangle $ indicates that the boom is not-operating. $\bullet $ indicates that the boom is operating. Figure C.3a\hbox {}, the trajectory connected by raw data with 27 points. Figure C.3b\hbox {}, the trajectory connected by simplified data with Douglas-Peucker algorithm with 24 points. Figure C.3c\hbox {}, the trajectory connected by simplified data with proposed simplification algorithm with 23 points.\relax }}{179}}
 \newlabel{DataSimpRawTra}{{C.3}{179}}
 \@writefile{lof}{\contentsline {figure}{\numberline {C.4}{\ignorespaces Trajectory fitted by Kalman Filter. The mean squared errors of raw data, DP and proposed algorithm are 26.8922, 23.9788 and 23.9710 respectively.\relax }}{180}}
 \newlabel{DataSimpKFTra}{{C.4}{180}}

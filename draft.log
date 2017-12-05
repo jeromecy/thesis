@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.5)  5 DEC 2017 10:38
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.5)  5 DEC 2017 21:01
 entering extended mode
 **draft.tex
 (C:\Users\zcao\Documents\Latex\Thesis\draft.tex
@@ -1069,10 +1069,7 @@ Chapter 2.
 (C:\Users\zcao\Documents\Latex\Thesis\Chapters/02TractorSplineTheory/TractorSpl
 ineTheory.tex [17
 
-] [18] [19] [20]
-Underfull \vbox (badness 2057) has occurred while \output is active []
-
- [21]
+] [18] [19] [20] [21]
 <Chapters/02TractorSplineTheory/plot/pptbasisplot2.pdf, id=145, 722.7pt x 542.0
 25pt>
 File: Chapters/02TractorSplineTheory/plot/pptbasisplot2.pdf Graphic file (type 
@@ -3071,36 +3068,30 @@ Appendix A.
 (C:\Users\zcao\Documents\Latex\Thesis\Appendices/TractorSpline.tex [144
 
 ]
-Overfull \hbox (36.41626pt too wide) in paragraph at lines 91--91
-[] 
- []
-
-
-Overfull \hbox (36.03036pt too wide) in paragraph at lines 124--124
-[] 
- []
-
 [145]
-Overfull \hbox (37.14043pt too wide) in paragraph at lines 142--142
+Overfull \hbox (36.41626pt too wide) in paragraph at lines 113--113
 [] 
  []
 
 
-Underfull \vbox (badness 1024) has occurred while \output is active []
+Overfull \hbox (36.03036pt too wide) in paragraph at lines 146--146
+[] 
+ []
+
+
+Underfull \vbox (badness 2409) has occurred while \output is active []
 
  [146]
-Underfull \hbox (badness 10000) in paragraph at lines 157--159
+Overfull \hbox (37.14043pt too wide) in paragraph at lines 164--164
+[] 
+ []
+
+[147]
+Underfull \hbox (badness 10000) in paragraph at lines 179--181
 
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [147]
-Underfull \vbox (badness 2644) has occurred while \output is active []
-
- [148]
-[149]
+[148] [149]
 <Chapters/02TractorSplineTheory/plot/ggplot/ggacfBlocks7.pdf, id=1901, 844.1537
 5pt x 597.23125pt>
 File: Chapters/02TractorSplineTheory/plot/ggplot/ggacfBlocks7.pdf Graphic file 
@@ -3108,7 +3099,7 @@ File: Chapters/02TractorSplineTheory/plot/ggplot/ggacfBlocks7.pdf Graphic file
 
 <use Chapters/02TractorSplineTheory/plot/ggplot/ggacfBlocks7.pdf>
 Package pdftex.def Info: Chapters/02TractorSplineTheory/plot/ggplot/ggacfBlocks
-7.pdf used on input line 235.
+7.pdf used on input line 257.
 (pdftex.def)             Requested size: 198.45662pt x 140.40404pt.
 
 <Chapters/02TractorSplineTheory/plot/ggplot/ggacfBumps7.pdf, id=1902, 844.15375
@@ -3118,7 +3109,7 @@ type pdf)
 
 <use Chapters/02TractorSplineTheory/plot/ggplot/ggacfBumps7.pdf>
 Package pdftex.def Info: Chapters/02TractorSplineTheory/plot/ggplot/ggacfBumps7
-.pdf used on input line 240.
+.pdf used on input line 262.
 (pdftex.def)             Requested size: 198.45662pt x 140.40404pt.
 
 <Chapters/02TractorSplineTheory/plot/ggplot/ggacfHeavi7.pdf, id=1903, 844.15375
@@ -3128,7 +3119,7 @@ type pdf)
 
 <use Chapters/02TractorSplineTheory/plot/ggplot/ggacfHeavi7.pdf>
 Package pdftex.def Info: Chapters/02TractorSplineTheory/plot/ggplot/ggacfHeavi7
-.pdf used on input line 245.
+.pdf used on input line 267.
 (pdftex.def)             Requested size: 198.45662pt x 140.40404pt.
 
 <Chapters/02TractorSplineTheory/plot/ggplot/ggacfDoppler7.pdf, id=1904, 844.153
@@ -3138,7 +3129,7 @@ File: Chapters/02TractorSplineTheory/plot/ggplot/ggacfDoppler7.pdf Graphic file
 
 <use Chapters/02TractorSplineTheory/plot/ggplot/ggacfDoppler7.pdf>
 Package pdftex.def Info: Chapters/02TractorSplineTheory/plot/ggplot/ggacfDopple
-r7.pdf used on input line 250.
+r7.pdf used on input line 272.
 (pdftex.def)             Requested size: 198.45662pt x 140.40404pt.
 
 <Chapters/02TractorSplineTheory/plot/ggplot/ggacfBlocks3.pdf, id=1905, 844.1537
@@ -3148,7 +3139,7 @@ File: Chapters/02TractorSplineTheory/plot/ggplot/ggacfBlocks3.pdf Graphic file
 
 <use Chapters/02TractorSplineTheory/plot/ggplot/ggacfBlocks3.pdf>
 Package pdftex.def Info: Chapters/02TractorSplineTheory/plot/ggplot/ggacfBlocks
-3.pdf used on input line 259.
+3.pdf used on input line 281.
 (pdftex.def)             Requested size: 198.45662pt x 140.40404pt.
 
 <Chapters/02TractorSplineTheory/plot/ggplot/ggacfBumps3.pdf, id=1906, 844.15375
@@ -3158,7 +3149,7 @@ type pdf)
 
 <use Chapters/02TractorSplineTheory/plot/ggplot/ggacfBumps3.pdf>
 Package pdftex.def Info: Chapters/02TractorSplineTheory/plot/ggplot/ggacfBumps3
-.pdf used on input line 264.
+.pdf used on input line 286.
 (pdftex.def)             Requested size: 198.45662pt x 140.40404pt.
 
 <Chapters/02TractorSplineTheory/plot/ggplot/ggacfHeavi3.pdf, id=1907, 844.15375
@@ -3168,7 +3159,7 @@ type pdf)
 
 <use Chapters/02TractorSplineTheory/plot/ggplot/ggacfHeavi3.pdf>
 Package pdftex.def Info: Chapters/02TractorSplineTheory/plot/ggplot/ggacfHeavi3
-.pdf used on input line 269.
+.pdf used on input line 291.
 (pdftex.def)             Requested size: 198.45662pt x 140.40404pt.
 
 <Chapters/02TractorSplineTheory/plot/ggplot/ggacfDoppler3.pdf, id=1908, 844.153
@@ -3178,7 +3169,7 @@ File: Chapters/02TractorSplineTheory/plot/ggplot/ggacfDoppler3.pdf Graphic file
 
 <use Chapters/02TractorSplineTheory/plot/ggplot/ggacfDoppler3.pdf>
 Package pdftex.def Info: Chapters/02TractorSplineTheory/plot/ggplot/ggacfDopple
-r3.pdf used on input line 274.
+r3.pdf used on input line 296.
 (pdftex.def)             Requested size: 198.45662pt x 140.40404pt.
 
 <Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYResidualsXpoints.pdf, i
@@ -3189,7 +3180,7 @@ df Graphic file (type pdf)
 <use Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYResidualsXpoints.pd
 f>
 Package pdftex.def Info: Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataX
-YResidualsXpoints.pdf used on input line 284.
+YResidualsXpoints.pdf used on input line 306.
 (pdftex.def)             Requested size: 198.45662pt x 140.40404pt.
 
 <Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYResidualsXhist.pdf, id=
@@ -3199,7 +3190,7 @@ File: Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYResidualsXhist.pdf
 
 <use Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYResidualsXhist.pdf>
 Package pdftex.def Info: Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataX
-YResidualsXhist.pdf used on input line 285.
+YResidualsXhist.pdf used on input line 307.
 (pdftex.def)             Requested size: 198.45662pt x 140.40404pt.
 
 <Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYResidualsYpoints.pdf, i
@@ -3210,7 +3201,7 @@ df Graphic file (type pdf)
 <use Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYResidualsYpoints.pd
 f>
 Package pdftex.def Info: Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataX
-YResidualsYpoints.pdf used on input line 290.
+YResidualsYpoints.pdf used on input line 312.
 (pdftex.def)             Requested size: 198.45662pt x 140.40404pt.
 
 <Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYResidualsYhist.pdf, id=
@@ -3220,26 +3211,25 @@ File: Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYResidualsYhist.pdf
 
 <use Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYResidualsYhist.pdf>
 Package pdftex.def Info: Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataX
-YResidualsYhist.pdf used on input line 291.
+YResidualsYhist.pdf used on input line 313.
 (pdftex.def)             Requested size: 198.45662pt x 140.40404pt.
-) [150
-
- <C:/Users/zcao/Documents/Latex/Thesis/Chapters/02TractorSplineTheory/plot/ggpl
-ot/ggacfBlocks7.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/02TractorSp
-lineTheory/plot/ggplot/ggacfBumps7.pdf> <C:/Users/zcao/Documents/Latex/Thesis/C
-hapters/02TractorSplineTheory/plot/ggplot/ggacfHeavi7.pdf> <C:/Users/zcao/Docum
-ents/Latex/Thesis/Chapters/02TractorSplineTheory/plot/ggplot/ggacfDoppler7.pdf>
-] [151 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/02TractorSplineTheory/plo
-t/ggplot/ggacfBlocks3.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/02Tra
-ctorSplineTheory/plot/ggplot/ggacfBumps3.pdf> <C:/Users/zcao/Documents/Latex/Th
-esis/Chapters/02TractorSplineTheory/plot/ggplot/ggacfHeavi3.pdf> <C:/Users/zcao
+) [150 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/02TractorSplineTheory/plo
+t/ggplot/ggacfBlocks7.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/02Tra
+ctorSplineTheory/plot/ggplot/ggacfBumps7.pdf> <C:/Users/zcao/Documents/Latex/Th
+esis/Chapters/02TractorSplineTheory/plot/ggplot/ggacfHeavi7.pdf> <C:/Users/zcao
 /Documents/Latex/Thesis/Chapters/02TractorSplineTheory/plot/ggplot/ggacfDoppler
-3.pdf>] [152 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/02TractorSplineTheo
-ry/plot/ggplot/ggRealdataXYResidualsXpoints.pdf> <C:/Users/zcao/Documents/Latex
-/Thesis/Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYResidualsXhist.p
-df> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/02TractorSplineTheory/plot/g
-gplot/ggRealdataXYResidualsYpoints.pdf> <C:/Users/zcao/Documents/Latex/Thesis/C
-hapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYResidualsYhist.pdf>]
+7.pdf>] [151 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/02TractorSplineTheo
+ry/plot/ggplot/ggacfBlocks3.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters
+/02TractorSplineTheory/plot/ggplot/ggacfBumps3.pdf> <C:/Users/zcao/Documents/La
+tex/Thesis/Chapters/02TractorSplineTheory/plot/ggplot/ggacfHeavi3.pdf> <C:/User
+s/zcao/Documents/Latex/Thesis/Chapters/02TractorSplineTheory/plot/ggplot/ggacfD
+oppler3.pdf>] [152 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/02TractorSpli
+neTheory/plot/ggplot/ggRealdataXYResidualsXpoints.pdf> <C:/Users/zcao/Documents
+/Latex/Thesis/Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYResidualsX
+hist.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/02TractorSplineTheory/
+plot/ggplot/ggRealdataXYResidualsYpoints.pdf> <C:/Users/zcao/Documents/Latex/Th
+esis/Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYResidualsYhist.pdf>
+]
 Appendix B.
 (C:\Users\zcao\Documents\Latex\Thesis\Appendices/MCMC.tex [153
 
@@ -4118,10 +4108,10 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 26597 strings out of 493706
- 586777 string characters out of 3142169
- 550143 words of memory out of 3000000
- 29275 multiletter control sequences out of 15000+200000
+ 26599 strings out of 493706
+ 586827 string characters out of 3142169
+ 550164 words of memory out of 3000000
+ 29277 multiletter control sequences out of 15000+200000
  31642 words of font info for 125 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  55i,21n,67p,10391b,1027s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -4157,7 +4147,7 @@ mtt12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmt
 t8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/m
 sam10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbol
 s/msbm10.pfb>
-Output written on draft.pdf (220 pages, 10366473 bytes).
+Output written on draft.pdf (220 pages, 10368894 bytes).
 PDF statistics:
  2745 PDF objects out of 2984 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

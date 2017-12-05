@@ -61,10 +61,10 @@ J[f]= \frac{1}{n} \sum_{i=1}^{n} \left( f(t_i)-y_i \right)^2 + \frac{\gamma}{n} 
 \end{equation}
 where $\gamma$ is the parameter that weights the residuals between $\mathbf{f}'$ and $\mathbf{v}$, and $\lambda(t)$ is the smoothing parameter function.
 
-\begin{theorem}
+\begin{theorem}\label{TractorSplineTheorem}
 For $n\geq2$, the objective function $J[f]$ is minimized by a cubic spline that is linear outside the knots.
 \end{theorem}
-The solution to the objective function (\ref{tractorsplineObjective}) is named Tractor spline. 
+The solution to the objective function (\ref{tractorsplineObjective}) is named Tractor spline. The proof of Theorem \ref{TractorSplineTheorem} is in appendix \ref{AppendixTractorSplineProof}. 
 
 %In the following, we split the 2D function $f(x,y)$ into two sub functions $f_x(t)$ on $x$-axis and $f_y(t)$ on $y$-axis with respect to time $t$. Compared with other parameters, choosing time $t$ to be the parameter has some advantages: 1. The expressions of all the constraints are simpler \cite{zhang2013cubic}; 2. It can be simply applied from 2-dimension to 3-dimension by adding an extra $z$-axis.  
 
@@ -171,9 +171,9 @@ where $\{\mathbf{B}\}_{ij} = N_j(t_i)$ , $\{\mathbf{C}\}_{ij} = N'_j(t_i)$ and $
 0, & \mbox{otherwise}
 \end{cases}
 \end{align}
-where $i=1, \ldots, n$, $j=1,\ldots,2n$ and $k=1,\ldots,2n$. The $i$-th $\Omega_{\lambda_i}^{(i)}$ on the interval $[t_i,t_{i+1}]$ is a $2n \times 2n$ matrix and $\Omega_{\lambda_n}^{(n)}$ does not exist. Its detail is in appendix \ref{PenaltyTermDetails}. Then, the penalty term is
+where $i=1, \ldots, n$, $j=1,\ldots,2n$ and $k=1,\ldots,2n$. The $i$-th $\Omega^{(i)}$ on the interval $[t_i,t_{i+1}]$ is a $2n \times 2n$ matrix and $\Omega^{(n)}$ does not exist. Its detail is in appendix \ref{PenaltyTermDetails}. As a result, the penalty term is
 \begin{equation}
-\mathbf{\Omega}_\lambda=\sum_{i=1}^{n-1}\Omega_{\lambda_i}^{(i)},
+\mathbf{\Omega}_\lambda=\sum_{i=1}^{n-1}\lambda_i\Omega^{(i)},
 \end{equation}
 which is a bandwidth four matrix.
 
@@ -280,7 +280,7 @@ The cross-validation score satisfies
 \begin{equation}
 \mbox{CV}(\lambda)=\frac{1}{n} \sum_{i=1}^n \left(\frac{y_i-\hat{f}(t_i)}{1-A_{ii}(\lambda)}\right)^2
 \end{equation}
-where $\hat{f}$ is the spline smoother calculated from the full data set $\{(t_i,y_i)\}$ with smoothing paramter $\lambda$.
+where $\hat{f}$ is the spline smoother calculated from the full data set $\{(t_i,y_i)\}$ with smoothing parameter $\lambda$.
 \end{lemma}
 
 For a Tractor spline and its MSE function, there are two parameters $\lambda$ and $\gamma$ that are need to be estimated for. As a result, the objective function (\ref{originalcv}) becomes
@@ -805,12 +805,12 @@ Thereafter, at first, we convert the longitude and latitude information from a 3
 u &=s\cdot \sin (\omega\frac{\pi}{180}),\\
 v &= s\cdot \cos (\omega\frac{\pi}{180}),
 \end{align}
-where $\omega$ is the bearing in degrees. Boom status is tagged as 0 if it is not working and 1 if it is. Time marks are transformed by subtracting the first mark, in which way the time starts from 0. Time duplicated data, caused by errors, had been removed from the dataset. In the convenience of comparing with wavelet algorithm, we choose the first 512 out of 928 rows of data. The original data is plotted in figure \ref{original512}.
+where $\omega$ is the bearing in degrees. Boom status is tagged as 0 if it is not operating and 1 if it is. Time marks are transformed by subtracting the first mark, in which way the time starts from 0. Time duplicated data, caused by errors, had been removed from the dataset. In the convenience of comparing with wavelet algorithm, we choose the first 512 out of 928 rows of data. The original data is plotted in figure \ref{original512}.
 
 %\begin{figure}
 %  \centering
 %         \includegraphics[width=\textwidth,height=9cm]{Chapters/02TractorSplineTheory/plot/original04}
-%  \caption{Original data points. (a) Original position recorded by GPS units. Circle points stand for the status of boom not working; cross points stand for working. (b) Original trajectory made by simply connecting GPS points sequentially. (c) Original position on $x$ axis. (d)  Original position on $y$ axis.}\label{original512}
+%  \caption{Original data points. (a) Original position recorded by GPS units. Circle points stand for the status of boom not operating; cross points stand for operating. (b) Original trajectory made by simply connecting GPS points sequentially. (c) Original position on $x$ axis. (d)  Original position on $y$ axis.}\label{original512}
 %\end{figure}
 
 \begin{figure}
@@ -835,7 +835,7 @@ where $\omega$ is the bearing in degrees. Boom status is tagged as 0 if it is no
     \includegraphics[width=\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/gg512PointsY.pdf}
     \caption{Original positions on $y$-axis}\label{gg512PointsY}
     \end{subfigure}
-\caption{Original data points. Figure \ref{gg512Points} is th original positions recorded by GPS units. Circle points means the boom is not working; cross points means it is working. Figure \ref{gg512Path} is the line-based trajectory by simply connecting all points sequentially with straight lines. Figure \ref{gg512PointsX} is the original $x$ position. Figure \ref{gg512PointsY} is the original $y$ positions.}\label{original512}
+\caption{Original data points. Figure \ref{gg512Points} is th original positions recorded by GPS units. Circle points means the boom is not operating; cross points means it is operating. Figure \ref{gg512Path} is the line-based trajectory by simply connecting all points sequentially with straight lines. Figure \ref{gg512PointsX} is the original $x$ position. Figure \ref{gg512PointsY} is the original $y$ positions.}\label{original512}
  \end{figure}
 
 
@@ -852,7 +852,7 @@ Table \ref{1dxymse} illustrates the MSE of all methods on both $x$ and $y$ axes.
 %\begin{figure}
 %  \centering
 %   		\includegraphics[width=\textwidth,height=13cm]{Chapters/02TractorSplineTheory/plot/fittedx06}
-%  \caption{Fitted data points on $x$ axis. (a) Fitted by P-spline, which gives over-fitting on these points and misses some information. (b) Fitted by wavelet ($\textit{sure}$) algorithm. At some turning points, it gives over-fitting. (c) Fitted by wavelet ($\textit{BayesThresh}$) algorithm. It fits better than ($\textit{sure}$) and the result is close to the proposed method. (d) Fitted by Tractor spline without velocity information. The reconstruction is good to get the original trajectory. (e) Fitted by Tractor spline without adjusted penalty term. It gives less fitting at boom-not-working points because of a large time gap. (f) Fitted by proposed method. It fits all data points in a good way.}\label{1dx}
+%  \caption{Fitted data points on $x$ axis. (a) Fitted by P-spline, which gives over-fitting on these points and misses some information. (b) Fitted by wavelet ($\textit{sure}$) algorithm. At some turning points, it gives over-fitting. (c) Fitted by wavelet ($\textit{BayesThresh}$) algorithm. It fits better than ($\textit{sure}$) and the result is close to the proposed method. (d) Fitted by Tractor spline without velocity information. The reconstruction is good to get the original trajectory. (e) Fitted by Tractor spline without adjusted penalty term. It gives less fitting at boom-not-operating points because of a large time gap. (f) Fitted by proposed method. It fits all data points in a good way.}\label{1dx}
 %\end{figure}
 \begin{figure}
     \centering
@@ -886,7 +886,7 @@ Table \ref{1dxymse} illustrates the MSE of all methods on both $x$ and $y$ axes.
     \includegraphics[width=\textwidth,height=0.5\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXTractor.pdf}
     \caption{Reconstruction by proposed Tractor spline}\label{ggRealdataXTractor}
     \end{subfigure}
- \caption{Fitted data points on $x$ axis. Figure \ref{ggRealdataXPSpline} Fitted by P-spline, which gives over-fitting on these points and misses some information. Figure \ref{ggRealdataXSure} Fitted by wavelet ($\textit{sure}$) algorithm. At some turning points, it gives over-fitting. Figure \ref{ggRealdataXBayes} Fitted by wavelet ($\textit{BayesThresh}$) algorithm. It fits better than ($\textit{sure}$) and the result is close to the proposed method. Figure \ref{ggRealdataXTractorGamma} Fitted by Tractor spline without velocity information. The reconstruction is good to get the original trajectory. Figure \ref{ggRealdataXTractorAPT} Fitted by Tractor spline without adjusted penalty term. It gives less fitting at boom-not-working points because of a large time gap. Figure \ref{ggRealdataXTractor} Fitted by proposed method. It fits all data points in a good way.}\label{1dx}
+ \caption{Fitted data points on $x$ axis. Figure \ref{ggRealdataXPSpline} Fitted by P-spline, which gives over-fitting on these points and misses some information. Figure \ref{ggRealdataXSure} Fitted by wavelet ($\textit{sure}$) algorithm. At some turning points, it gives over-fitting. Figure \ref{ggRealdataXBayes} Fitted by wavelet ($\textit{BayesThresh}$) algorithm. It fits better than ($\textit{sure}$) and the result is close to the proposed method. Figure \ref{ggRealdataXTractorGamma} Fitted by Tractor spline without velocity information. The reconstruction is good to get the original trajectory. Figure \ref{ggRealdataXTractorAPT} Fitted by Tractor spline without adjusted penalty term. It gives less fitting at boom-not-operating points because of a large time gap. Figure \ref{ggRealdataXTractor} Fitted by proposed method. It fits all data points in a good way.}\label{1dx}
  \end{figure}
 
 
@@ -894,7 +894,7 @@ Table \ref{1dxymse} illustrates the MSE of all methods on both $x$ and $y$ axes.
 %\begin{figure}
 %  \centering
 %     		\includegraphics[width=\textwidth,height=13cm]{Chapters/02TractorSplineTheory/plot/fittedy06}
-%  \caption{Fitted data points on $y$ axis. (a) Fitted P-spline is not applicable on $y$ axis as the matrix is not invertible. (b) Fitted by wavelet ($\textit{sure}$) algorithm. At some turning points, it gives over-fitting. (c) Fitted by wavelet ($\textit{BayesThresh}$) algorithm is much better than wavelet ($\textit{sure}$). (d) Fitted by Tractor spline without velocity information. The reconstruction is good to get the original trajectory. (e) Fitted by Tractor spline without adjusted penalty term. It gives less fitting at boom-not-working. (f) Fitted by proposed method. It fits all data points in a good way.}\label{1dy}
+%  \caption{Fitted data points on $y$ axis. (a) Fitted P-spline is not applicable on $y$ axis as the matrix is not invertible. (b) Fitted by wavelet ($\textit{sure}$) algorithm. At some turning points, it gives over-fitting. (c) Fitted by wavelet ($\textit{BayesThresh}$) algorithm is much better than wavelet ($\textit{sure}$). (d) Fitted by Tractor spline without velocity information. The reconstruction is good to get the original trajectory. (e) Fitted by Tractor spline without adjusted penalty term. It gives less fitting at boom-not-operating. (f) Fitted by proposed method. It fits all data points in a good way.}\label{1dy}
 %\end{figure}
 
 
@@ -930,7 +930,7 @@ Table \ref{1dxymse} illustrates the MSE of all methods on both $x$ and $y$ axes.
     \includegraphics[width=\linewidth,height=0.5\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataYTractor.pdf}
     \caption{Reconstruction by proposed Tractor spline}\label{ggRealdataYTractor}
     \end{subfigure}
-\caption{Fitted data points on $y$ axis. Figure \ref{ggRealdataYPSpline} Fitted P-spline is not applicable on $y$ axis as the matrix is not invertible. Figure \ref{ggRealdataYSure} Fitted by wavelet ($\textit{sure}$) algorithm. At some turning points, it gives over-fitting. Figure \ref{ggRealdataYBayes} Fitted by wavelet ($\textit{BayesThresh}$) algorithm is much better than wavelet ($\textit{sure}$). Figure \ref{ggRealdataYTractorGamma} Fitted by Tractor spline without velocity information. The reconstruction is good to get the original trajectory. Figure \ref{ggRealdataYTractorAPT} Fitted by Tractor spline without adjusted penalty term. It gives less fitting at boom-not-working. Figure \ref{ggRealdataYTractor} Fitted by proposed method. It fits all data points in a good way.}\label{1dy}
+\caption{Fitted data points on $y$ axis. Figure \ref{ggRealdataYPSpline} Fitted P-spline is not applicable on $y$ axis as the matrix is not invertible. Figure \ref{ggRealdataYSure} Fitted by wavelet ($\textit{sure}$) algorithm. At some turning points, it gives over-fitting. Figure \ref{ggRealdataYBayes} Fitted by wavelet ($\textit{BayesThresh}$) algorithm is much better than wavelet ($\textit{sure}$). Figure \ref{ggRealdataYTractorGamma} Fitted by Tractor spline without velocity information. The reconstruction is good to get the original trajectory. Figure \ref{ggRealdataYTractorAPT} Fitted by Tractor spline without adjusted penalty term. It gives less fitting at boom-not-operating. Figure \ref{ggRealdataYTractor} Fitted by proposed method. It fits all data points in a good way.}\label{1dy}
  \end{figure}
 
 
@@ -956,8 +956,8 @@ The penalty function of the proposed Tractor spline is
 \begin{equation}\label{penaltylamb}
 \lambda(t)=b\frac{\Delta t^3}{\Delta d^2}\lambda_d+(1-b)\frac{\Delta t^3}{\Delta d^2}\lambda_u, \mbox{ where}
 \begin{cases}
-b=1 & \mbox{if boom is working}\\
-b=0 & \mbox{if boom is not working}
+b=1 & \mbox{if boom is operating}\\
+b=0 & \mbox{if boom is not operating}
 \end{cases}
 \end{equation}
 To tell the differences more clearly, we take $\lambda(t)$ in our demonstration. Figure \ref{penaltyxygg} indicates that at turning points and long time gap knots, the adjusted penalty term will lead $\lambda(t)$ to large values, which forces the spline to be a straight line between two knots. It can be seen in figure \ref{penaltyxyggXYPath} clearly. Histogram plots of $\lambda(t)$ show that most of the penalty values are small, which allows the Tractor spline to go as closer as possible to the observed points. Only a few of penalty values are large, so that Tractor spline gives a straight line at tricky points. 
