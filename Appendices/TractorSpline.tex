@@ -193,18 +193,19 @@ $f(t)$ is continuous at knots, and then continuous on whole interval $[t_1,t_n]$
 Consequently, $f(t)$ is a continuous cubic spline on interval $[t_1,t_n]$, then $f(t)$ has continuous first and second derivatives.
 \end{proof}
 
+
 \section{Proof of Lemma \ref{cvlemma}}
 \begin{proof}
 For any spline $f$, 
 \begin{equation}
 \begin{split}
-&\frac{1}{n}\sum_{j=1}^{n}\left(y_j^*-f(t_j)\right)^2+\frac{\gamma}{n} \sum_{j=1}^{n}\left(v_j^*-f'(t_j)\right)^2+\lambda\int f''^2 \\
-\geq&\frac{1}{n}\sum_{j\neq i}^{n}\left(y_j^*-f(t_j)\right)^2+\frac{\gamma}{n} \sum_{j\neq i}^{n}\left(v_j^*-f'(t_j)\right)^2+\lambda\int f''^2\\
-\geq&\frac{1}{n}\sum_{j\neq i}^{n}\left(y_j^*-\hat{f}^{(-i)}(t_j)\right)^2+\frac{\gamma}{n} \sum_{j\neq i}^{n}\left(v_j^*-\hat{f}'^{(-i)}(t_j)\right)^2+\lambda\int \hat{f}^{(-i)''2}\\
-=&\frac{1}{n}\sum_{j=1}^{n}\left(y_j^*-\hat{f}^{(-i)}(t_j)\right)^2+\frac{\gamma}{n} \sum_{j=1}^{n}\left(v_j^*-\hat{f}'^{(-i)}(t_j)\right)^2+\lambda\int \hat{f}^{(-i)''2}
+&\sum_{j=1}^{n}\left(y_j^*-f(t_j)\right)^2+\gamma \sum_{j=1}^{n}\left(v_j^*-f'(t_j)\right)^2+\lambda\int f''^2 \\
+\geq&\sum_{j\neq i}^{n}\left(y_j^*-f(t_j)\right)^2+\gamma  \sum_{j\neq i}^{n}\left(v_j^*-f'(t_j)\right)^2+\lambda\int f''^2\\
+\geq&\sum_{j\neq i}^{n}\left(y_j^*-\hat{f}^{(-i)}(t_j)\right)^2+\gamma  \sum_{j\neq i}^{n}\left(v_j^*-\hat{f}'^{(-i)}(t_j)\right)^2+\lambda\int \hat{f}^{(-i)''2}\\
+=&\sum_{j=1}^{n}\left(y_j^*-\hat{f}^{(-i)}(t_j)\right)^2+\gamma  \sum_{j=1}^{n}\left(v_j^*-\hat{f}'^{(-i)}(t_j)\right)^2+\lambda\int \hat{f}^{(-i)''2}
 \end{split}
 \end{equation}
-by the definition of $\hat{f}^{(-i)}$, $\hat{f}'^{(-i)}$ and the fact that $y_i^*=\hat{f}^{(-i)}(t_i)$, $v_i^*=\hat{f}'^{(-i)}(t_i)$. It follows that $\hat{f}^{(-i)}$ is the minimizer of the MSE function (\ref{tractorsplineObjective}), so that
+by the definition of $\hat{f}^{(-i)}$, $\hat{f}'^{(-i)}$ and the fact that $y_i^*=\hat{f}^{(-i)}(t_i)$, $v_i^*=\hat{f}'^{(-i)}(t_i)$. It follows that $\hat{f}^{(-i)}$ is the minimizer of the RSS function (\ref{tractorsplineObjective}), so that
 \begin{align}
 \mathbf{\hat{f}}^{(-i)}&=S\mathbf{y}^*+\gamma T\mathbf{v}^*\\
 \mathbf{\hat{f}}'^{(-i)}&=U\mathbf{y}^*+\gamma V\mathbf{v}^*
@@ -232,7 +233,7 @@ Additionally,
 =&(\hat{f}'(t_i)-v_i)+U_{ii}(\hat{f}^{(-i)}(t_i)-y_i)+\gamma V_{ii}(\hat{f}'^{(-i)}(t_i)-v_i).
 \end{split}
 \end{equation}
-Then
+Therefore, 
 \begin{equation}\label{th3proofeq2}
 \hat{f}'^{(-i)}(t_i)-v_i = \frac{\hat{f}'(t_i)-v_i}{1-\gamma V_{ii}}+ \frac{U_{ii}(\hat{f}^{(-i)}(t_i)-y_i)}{1-\gamma V_{ii}}.
 \end{equation}
@@ -240,9 +241,9 @@ After substituting equation (\ref{th3proofeq2}) into (\ref{th3proofeq1}), we get
 \begin{equation}
 \hat{f}^{(-i)}(t_i)-y_i=\frac{\hat{f}(t_i)-y_i+\gamma \frac{T_{ii}}{1-\gamma V_{ii}}(\hat{f}'(t_i)-v_i)}{1-S_{ii}-\gamma\frac{T_{ii}}{1-\gamma V_{ii}}U_{ii}}.
 \end{equation}
-Then
+As a result, 
 \begin{equation}
-CV(\lambda,\gamma)=\frac{1}{n}\sum_{i=1}^{n}\frac{\hat{f}(t_i)-y_i+\gamma \frac{T_{ii}}{1-\gamma V_{ii}}(\hat{f}'(t_i)-v_i)}{1-S_{ii}-\gamma\frac{T_{ii}}{1-\gamma V_{ii}}U_{ii}}.
+\mbox{CV}(\lambda,\gamma)=\frac{1}{n}\sum_{i=1}^{n}\frac{\hat{f}(t_i)-y_i+\gamma \frac{T_{ii}}{1-\gamma V_{ii}}(\hat{f}'(t_i)-v_i)}{1-S_{ii}-\gamma\frac{T_{ii}}{1-\gamma V_{ii}}U_{ii}}.
 \end{equation}
 \end{proof}
 
