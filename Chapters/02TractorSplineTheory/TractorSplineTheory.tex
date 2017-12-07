@@ -57,7 +57,7 @@ In the nonparametric regression, consider $n$ paired time series points $\{t_1,y
 where $t_i \leq t<t_{i+1}, t_0=a, t_{n+1}=b$, that will control the curvature penalty in each interval. For a function $f:[a,b]\rightarrow \mathbb{R}$ and $\gamma>0$, define the objective function 
 
 \begin{equation}\label{tractorsplineObjective}
-J[f]= \sum_{i=1}^{n} \left( f(t_i)-y_i \right)^2 + \gamma \sum_{i=1}^{n} \left( f'(t_i)-v_i \right)^2 +\sum_{i=0}^{n} \lambda_i\int_{t_i}^{t_{i+1}} \left( f''(t)\right)^2 dt,
+J[f]= \frac{1}{n} \sum_{i=1}^{n} \left( f(t_i)-y_i \right)^2 + \frac{\gamma}{n} \sum_{i=1}^{n} \left( f'(t_i)-v_i \right)^2 +\sum_{i=0}^{n} \lambda_i\int_{t_i}^{t_{i+1}} \left( f''(t)\right)^2 dt,
 \end{equation}
 where $\gamma$ is the parameter that weights the residuals between $\mathbf{f}'$ and $\mathbf{v}$, and $\lambda(t)$ is the smoothing parameter function.
 
@@ -69,8 +69,8 @@ The solution to the objective function (\ref{tractorsplineObjective}) is named T
 %In the following, we split the 2D function $f(x,y)$ into two sub functions $f_x(t)$ on $x$-axis and $f_y(t)$ on $y$-axis with respect to time $t$. Compared with other parameters, choosing time $t$ to be the parameter has some advantages: 1. The expressions of all the constraints are simpler \cite{zhang2013cubic}; 2. It can be simply applied from 2-dimension to 3-dimension by adding an extra $z$-axis.  
 
 \subsection{Basis Functions}
-Suppose there is a time series sequence of observed dataset $a=t_1<t_2<\cdots<t_n=b$. The function $f(t)$ %(stands for $f_y(t)$)
-defined on this interval $[t_1,t_n]$ is called Tractor spline, if it is the solution to the objective function (\ref{tractorsplineObjective}). Then, it has the following property: on each interior interval $(t_i,t_{i+1})$, $i=2,\ldots,n-2$, $f(t)$ is a cubic polynomial, but on interval $(t_1,t_2)$ and $(t_{n-1},t_n)$ can be linear; $f(t)$ fits together at each point $t_i$ in such a way that $f(t)$ itself and its first derivatives are continuous at each $t_i$,  $i=2,\ldots,n-2$. 
+Suppose there is a time series sequence of observed dataset $a\leq t_1<t_2<\cdots<t_n \leq b$. The function $f(t)$ %(stands for $f_y(t)$)
+defined on this interval $[t_1,t_n]$ is called Tractor spline, if it is the solution to the objective function (\ref{tractorsplineObjective}). Then, it has the following property: on each interior interval $(t_i,t_{i+1})$, $i=1,\ldots,n-1$, $f(t)$ is a cubic polynomial, but on interval $(a,t_0)$ and $(t_n,b)$ is linear; $f(t)$ fits together at each point $t_i$ in such a way that $f(t)$ itself and its first derivatives are continuous at each $t_i$,  $i=1,\ldots,n-1$. 
 
 Using Hermite interpolation on an arbitrary interval $[t_i,t_{i+1} ) $, the cubic spline basis functions can be constructed as follows
 \begin{align}\label{hermitebasis1}
@@ -101,31 +101,57 @@ f^{(i)}(t)=h_{00}^{(i)}(t)y_i+h_{10}^{(i)}(t)v_i+h_{01}^{(i)}(t)y_{i+1} +h_{11}^
 
 To construct a Tractor spline on the entire interval $[t_1,t_n]$, the new basis functions are defined in such way, that $N_1 = h^{(1)}_{00}$, $N_2 = h^{(1)}_{10}$, and for all $i=1,2,\ldots,n-2$, 
 
-\begin{align}
+%\begin{align}
+%N_{2i+1}&=
+%\begin{cases}
+%h_{01}^{(i)}+h_{00}^{(i+1)} \hphantom{+(+t_{n}-t_{n-1}-t_{n})1.}  & \mbox{if $t<t_n$}\\
+%2(\frac{t-t_{n-1}}{t_{n}-t_{n-1}})^3-3(\frac{t-t_{n-1}}{t_{n}-t_{n-1s}})^2+1 &  \mbox{if $t=t_n$}
+%\end{cases},\\
+%N_{2i+2}&=
+%\begin{cases}
+% h_{11}^{(i)}+h_{10}^{(i+1)} & \mbox{if $t<t_n$}\\
+%\frac{(t-t_{n-1})^3}{(t_{n}-t_{n-1})^2}-2\frac{(t-t_{n-1})^2}{t_{n}-t_{n-1}}+(t-t_{n-1}) & \mbox{if $t=t_n$}
+%\end{cases},
+%\end{align}
+%and
+%\begin{align}
+%N_{2n-1} &= 
+%\begin{cases}
+%h_{01}^{(n-1)} & \mbox{if $t<t_n$}\\ 
+%-2(\frac{t-t_{n-1}}{t_{n}-t_{n-1}})^3+3(\frac{t-t_{n-1}}{t_{n}-t_{n-1}})^2 & \mbox{if $t=t_n$}
+%\end{cases},\\
+%N_{2n} &= 
+%\begin{cases}
+%h_{11}^{(n-1)} & \mbox{if $t<t_n$}\\
+%\frac{(t-t_{n-1})^3}{(t_{n}-t_{n-1})^2}-\frac{(t-t_{n-1})^2}{t_{n}-t_{n-1}}  \hphantom{+t+.} & \mbox{if $t=t_n$}
+%\end{cases}.
+%\end{align}
+
+\begin{align*}
 N_{2i+1}&=
 \begin{cases}
-h_{01}^{(i)}+h_{00}^{(i+1)} \hphantom{+(+t_{n}-t_{n-1}-t_{n})1.}  & \mbox{if $t<t_n$}\\
-2(\frac{t-t_{n-1}}{t_{n}-t_{n-1}})^3-3(\frac{t-t_{n-1}}{t_{n}-t_{n-1s}})^2+1 &  \mbox{if $t=t_n$}
+h_{01}^{(i)}+h_{00}^{(i+1)}  & \mbox{if $t<t_n$}\\
+0 &  \mbox{if $t=t_n$}
 \end{cases},\\
 N_{2i+2}&=
 \begin{cases}
  h_{11}^{(i)}+h_{10}^{(i+1)} & \mbox{if $t<t_n$}\\
-\frac{(t-t_{n-1})^3}{(t_{n}-t_{n-1})^2}-2\frac{(t-t_{n-1})^2}{t_{n}-t_{n-1}}+(t-t_{n-1}) & \mbox{if $t=t_n$}
+0 & \mbox{if $t=t_n$}
 \end{cases},
-\end{align}
+\end{align*}
 and
-\begin{align}
+\begin{align*}
 N_{2n-1} &= 
 \begin{cases}
 h_{01}^{(n-1)} & \mbox{if $t<t_n$}\\ 
--2(\frac{t-t_{n-1}}{t_{n}-t_{n-1}})^3+3(\frac{t-t_{n-1}}{t_{n}-t_{n-1}})^2 & \mbox{if $t=t_n$}
+1 & \mbox{if $t=t_n$}
 \end{cases},\\
 N_{2n} &= 
 \begin{cases}
 h_{11}^{(n-1)} & \mbox{if $t<t_n$}\\
-\frac{(t-t_{n-1})^3}{(t_{n}-t_{n-1})^2}-\frac{(t-t_{n-1})^2}{t_{n}-t_{n-1}}  \hphantom{+t+.} & \mbox{if $t=t_n$}
+0 & \mbox{if $t=t_n$}
 \end{cases}.
-\end{align}
+\end{align*}
 
 %The following theorem proves the new generated functions are basis on the entire interval $[a,b]$.
 \begin{theorem}\label{basisindependent}
@@ -158,9 +184,9 @@ From the definition of basis functions, it can be seen that at a joint knot of t
 
 Basis functions have been defined in the previous subsection, therefore the Tractor spline $f(t)$ on $[a,b]$, where $a \leq t_1 < t_2< \cdots < t_{n-1}<t_n \leq b$, can be found by minimizing  objective function (\ref{tractorsplineObjective}), which reduces to
 \begin{equation}\label{tractormse}
-\text{RSS}(\theta, \lambda,\gamma) = (\mathbf{y}-\mathbf{B}\theta)^\top (\mathbf{y}-\mathbf{B}\theta) +\gamma (\mathbf{v}-\mathbf{C}\theta)^\top (\mathbf{v}-\mathbf{C}\theta)+\theta^\top\mathbf{\Omega}_{\lambda}\theta,
+\text{MSE}(\theta, \lambda,\gamma) = (\mathbf{y}-\mathbf{B}\theta)^\top (\mathbf{y}-\mathbf{B}\theta) +\gamma (\mathbf{v}-\mathbf{C}\theta)^\top (\mathbf{v}-\mathbf{C}\theta)+n \theta^\top\mathbf{\Omega}_{\lambda}\theta,
 \end{equation}
-where $\{\mathbf{B}\}_{ij} = N_j(t_i)$ , $\{\mathbf{C}\}_{ij} = N'_j(t_i)$ and $\{\Omega_{2n}^{(i)} \}_{jk}=\int_{t_i}^{t_{i+1}}\lambda_i N''_j(t)N''_k(t)dt$. After substituting the series observation $t_1, \ldots, t_n$ into basis functions, we get $N_1(t_1)=1, N_1(t_2)=0, \ldots, N_{2i-1}(t_{i})=1, N_{2i}(t_{i})=0, \ldots, N_{2n-1}(t_n)=1, N_{2n}(t_n)=0$; and into first derivative of basis functions, we get $N'_1(t_1)=0, N_1'(t_2)=1, \ldots, N_{2i-1}'(t_{i})=0, N_{2i}'(t_{i})=1, \ldots, N_{2n-1}'(t_n)=0, N_{2n}'(t_n)=1$. That means the matrices $\mathbf{B}$ and $\mathbf{C}$ in RSS equation (\ref{tractormse}) are $n \times 2n$ dimensional and the elements are
+where $\{\mathbf{B}\}_{ij} = N_j(t_i)$ , $\{\mathbf{C}\}_{ij} = N'_j(t_i)$ and $\{\Omega_{2n}^{(i)} \}_{jk}=\int_{t_i}^{t_{i+1}}\lambda_i N''_j(t)N''_k(t)dt$. After substituting the series observation $t_1, \ldots, t_n$ into basis functions, we get $N_1(t_1)=1, N_1(t_2)=0, \ldots, N_{2i-1}(t_{i})=1, N_{2i}(t_{i})=0, \ldots, N_{2n-1}(t_n)=1, N_{2n}(t_n)=0$; and into first derivative of basis functions, we get $N'_1(t_1)=0, N_1'(t_2)=1, \ldots, N_{2i-1}'(t_{i})=0, N_{2i}'(t_{i})=1, \ldots, N_{2n-1}'(t_n)=0, N_{2n}'(t_n)=1$. That means the matrices $\mathbf{B}$ and $\mathbf{C}$ in MSE equation (\ref{tractormse}) are $n \times 2n$ dimensional and the elements are
 \begin{align}
 \mathbf{B}&=\{B\}_{ij}=\begin{cases}
 1, & j=2i-1\\
@@ -180,7 +206,7 @@ which is a bandwidth four matrix.
 
 The solution to (\ref{tractormse}) is easily seen to be
 \begin{equation}\label{thetahat}
-\hat{\theta}=(\mathbf{B}^\top\mathbf{B}+\gamma\mathbf{C}^\top\mathbf{C}+\mathbf{\Omega}_{\lambda})^{-1}(\mathbf{B}^\top\mathbf{y}+\gamma\mathbf{C}^\top\mathbf{v})
+\hat{\theta}=(\mathbf{B}^\top\mathbf{B}+\gamma\mathbf{C}^\top\mathbf{C}+n\mathbf{\Omega}_{\lambda})^{-1}(\mathbf{B}^\top\mathbf{y}+\gamma\mathbf{C}^\top\mathbf{v})
 \end{equation}
 a generalized ridge regression. Therefore, the fitted smoothing spline is given by
 \begin{equation}
@@ -190,14 +216,14 @@ a generalized ridge regression. Therefore, the fitted smoothing spline is given 
 A smoothing spline with parameters $\lambda(t)$ and $\gamma$ is an example of a linear smoother \cite{esl2009}. This is because the estimated parameters in equation (\ref{thetahat}) are a linear combination of $y_i$ and $v_i$. Denote by $\hat{\mathbf{f}}$ and $\hat{\mathbf{f}'}$ the $2n$ vector of fitted values $\hat{f}(t_i)$ and $\hat{f'}(t_i)$ at the training points $t_i$. Then
 \begin{equation}
 \begin{split}
-\hat{\mathbf{f}} =\mathbf{B}(\mathbf{B}^\top\mathbf{B}+\gamma\mathbf{C}^\top\mathbf{C}+\mathbf{\Omega}_{\lambda})^{-1}(\mathbf{B}^\top\mathbf{y}+\gamma\mathbf{C}^\top\mathbf{v})\\
+\hat{\mathbf{f}} =\mathbf{B}(\mathbf{B}^\top\mathbf{B}+\gamma\mathbf{C}^\top\mathbf{C}+n\mathbf{\Omega}_{\lambda})^{-1}(\mathbf{B}^\top\mathbf{y}+\gamma\mathbf{C}^\top\mathbf{v})\\
 \triangleq \mathbf{S}_{\lambda,\gamma}\mathbf{y}+\gamma\mathbf{T}_{\lambda,\gamma}\mathbf{v} 
 \end{split}
 \end{equation}
 \begin{equation}
 \begin{split}
 \hat{\mathbf{f}'}
-=\mathbf{C}(\mathbf{B}^\top\mathbf{B}+\gamma\mathbf{C}^\top\mathbf{C}+\mathbf{\Omega}_{\lambda})^{-1}(\mathbf{B}^\top\mathbf{y}+\gamma\mathbf{C}^\top\mathbf{v})\\
+=\mathbf{C}(\mathbf{B}^\top\mathbf{B}+\gamma\mathbf{C}^\top\mathbf{C}+n\mathbf{\Omega}_{\lambda})^{-1}(\mathbf{B}^\top\mathbf{y}+\gamma\mathbf{C}^\top\mathbf{v})\\
 \triangleq\mathbf{U}_{\lambda,\gamma}\mathbf{y}+\gamma\mathbf{V}_{\lambda,\gamma}\mathbf{v}
 \end{split}
 \end{equation}
@@ -211,7 +237,7 @@ Here the linear operator $\mathbf{H}_\xi$ is a symmetric, positive semidefinite 
 \begin{equation}
 (\mathbf{B}^\top\mathbf{B}+\gamma\mathbf{C}^\top\mathbf{C}+n\mathbf{\Omega}_{\lambda})^{-1}=\mathbf{R}\mathbf{R}^\top,
 \end{equation}
-it is easy to prove that $\mathbf{T}_{\lambda,\gamma}=\mathbf{B}\mathbf{R}\mathbf{R}^\top\mathbf{C}^\top$ and $\mathbf{U}_{\lambda,\gamma}=\mathbf{C}\mathbf{R}\mathbf{R}^\top\mathbf{B}^\top$, then we will have 
+it is easily to prove that $\mathbf{T}_{\lambda,\gamma}=\mathbf{B}\mathbf{R}\mathbf{R}^\top\mathbf{C}^\top$ and $\mathbf{U}_{\lambda,\gamma}=\mathbf{C}\mathbf{R}\mathbf{R}^\top\mathbf{B}^\top$, then we will have 
  $\mathbf{T}_{\lambda,\gamma}= \mathbf{U}_{\lambda,\gamma}^\top$. When $\lambda=\gamma=0$, the matrix $\mathbf{S}_{\lambda_0,\gamma_0}=\mathbf{B}(\mathbf{B}^\top\mathbf{B})^{-1}\mathbf{B}^\top$ is idempotent.  
 
 For sufficient cases of $\lambda(t)$ and $\gamma$, Tractor spline has the following property:
@@ -225,12 +251,12 @@ For sufficient cases of $\lambda(t)$ and $\gamma$, Tractor spline has the follow
 %Then we take some sample knots $\mathbf{y}^{(new)}$ with the same size of $\mathbf{y}$ from $\hat{\mathbf{f}}$ and reconstruct the spline function. It is easily seen that
 % \begin{equation}
 %\hat{\mathbf{f}}^{(new)} = \mathbf{S}_{\lambda_0,\gamma_0}\mathbf{y}^{(new)}=\mathbf{S}_{\lambda_0,\gamma_0}\mathbf{S}_{\lambda_0,\gamma_0}\mathbf{y}=(\mathbf{B}(\mathbf{B}^\top\mathbf{B})^{-1}\mathbf{B}^\top)(\mathbf{B}(\mathbf{B}^\top\mathbf{B})^{-1}\mathbf{B}^\top)=\mathbf{S}_{\lambda_0,\gamma_0}\mathbf{y},
-% \end{equation}
-% which returns the same reconstruction. So $\hat{\mathbf{f}}$ is generated and only affected by $\mathbf{y}$. And the same as $\hat{\mathbf{f}'}$, because
+ %\end{equation}
+ %which returns the same reconstruction. So $\hat{\mathbf{f}}$ is generated and only affected by $\mathbf{y}$. And the same as $\hat{\mathbf{f}'}$, because
 %\begin{equation}
 %\hat{\mathbf{f}'}^{(new)}=\mathbf{U}_{\lambda_0,\gamma_0}\mathbf{y}^{(new)}=\mathbf{U}_{\lambda_0,\gamma_0}\mathbf{S}_{\lambda_0,\gamma_0}\mathbf{y}=(\mathbf{C}\mathbf{B} (\mathbf{B}^\top\mathbf{B})^{-1}\mathbf{B}^\top)(\mathbf{B}(\mathbf{B}^\top\mathbf{B})^{-1}\mathbf{B}^\top)\mathbf{y}=\mathbf{U}_{\lambda_0,\gamma_0}\mathbf{y}.
 %\end{equation}
-% That means no matter how many times we reconstruct Tractor spline, once the matrices are fixed and observed knots are given, it will always return the same results when $\lambda=\gamma=0$.
+ %That means no matter how many times we reconstruct Tractor spline, once the matrices are fixed and observed knots are given, it will always return the same results when $\lambda=\gamma=0$.
 
 %\begin{theorem}
 %For $n\geq 2$, the objective function $J[f]$ in equation (\ref{tractorsplineObjective}) is minimized by a Tractor spline.
@@ -260,21 +286,25 @@ The problem of choosing the smoothing parameter is ubiquitous in curve estimatio
 
 Assuming that the random errors have zero mean, the true regression curve $f(t)$ has the property that, if an observation $y$ is taken at a point $t$, the value $f(t)$ is the best predictor of $y$ in terms of returning a small value of $(y-f(t))^2$. 
 
-Now, focus on an observation $y_i$ at point $t_i$ as being a new observation by omitting it from the set of data, which are used to estimate $\hat{f}$. Denote by $\hat{f}^{(-i)}(t,\lambda)$ the estimated function from the remaining data, where $\lambda$ is the smoothing parameter. Then $\hat{f}^{(-i)}(t,\lambda)$ minimizes 
-\begin{align}\label{originalcv}
-\sum_{j \neq i}\left(y_j-f(t_j) \right)^2+\lambda \int (f'')^2dt
-\end{align}
-and $\lambda$ can be quantified by cross-validation score function
-\begin{align}
+Now, focus on an observation $y_i$ at point $t_i$ as being a new observation by omitting it from the set of data, which are used to estimate $\hat{f}$. Denote by $\hat{f}^{(-i)}(t,\lambda)$ the estimated function from the remaining data, where $\lambda$ is the smoothing parameter. Then $\hat{f}^{(-i)}(t,\lambda)$ minimizing 
+\begin{equation*} %\label{originalcv}
+\frac{1}{n-1}\sum_{j \neq i}\left(y_j-f(t_j) \right)^2+\lambda^* \int (f'')^2dt
+\end{equation*}
+is equivalent of minimizing 
+\begin{equation}\label{originalcv}
+\frac{1}{n}\sum_{j \neq i}\left(y_j-f(t_j) \right)^2+\lambda\int (f'')^2dt,
+\end{equation}
+and $\lambda=\frac{n-1}{n}\lambda^*$ can be quantified by cross-validation score function
+\begin{equation}
 \mbox{CV}(\lambda)=\frac{1}{n}\sum_{i=1}^{n}\left(  y_i-\hat{f}^{(-i)}(t_i,\lambda)\right) ^2.
-\end{align}
+\end{equation}
 The basis idea of cross-validation is to choose the value of $\lambda$ that minimizes $\mbox{CV}(\lambda)$ \cite{green1993nonparametric}. 
 
 An efficient way to calculate cross-validation score is introduced by \cite{green1993nonparametric}. Through the equation (\ref{fhy}), it is known that the value of the smoothing spline $\hat{f}$ depend linearly on the data $y_i$. Define the matrix $A(\lambda)$, which is a map vector of observed values $y_i$ to predicted values $\hat{f}(t_i)$. Then we have
 \begin{equation}\label{crossvalidationmatrixA}
 \hat{\mathbf{f}}=A(\lambda)\mathbf{y}
 \end{equation}
-and the following lemma.
+and the following Lemma.
 \begin{lemma}\label{cvlema}
 The cross-validation score satisfies
 \begin{equation}
@@ -283,27 +313,31 @@ The cross-validation score satisfies
 where $\hat{f}$ is the spline smoother calculated from the full data set $\{(t_i,y_i)\}$ with smoothing parameter $\lambda$.
 \end{lemma}
 
-For a Tractor spline and its RSS function, there are two parameters $\lambda$ and $\gamma$ to be estimated for. Therefore, the objective function (\ref{originalcv}) becomes
+For a Tractor spline and its MSE function, there are two parameters $\lambda$ and $\gamma$ to be estimated for. Therefore, the objective function (\ref{originalcv}) becomes
+\begin{align*}
+\frac{1}{n-1}\sum_{j \neq i}\left( y_j-f(t_j) \right)^2+\frac{\gamma^*}{n-1}\sum_{j \neq i} \left( v_j-f'(t_j) \right)^2+ \int \lambda^*(t) \left( f'' \right)^2dt,
+\end{align*}
+which is equivalent to 
 \begin{align}
-\sum_{j \neq i}\left( y_j-f(t_j) \right)^2+\sum_{j \neq i} \left( v_j-f'(t_j) \right)^2+ \int \lambda(t) \left( f'' \right)^2dt,
+\frac{1}{n}\sum_{j \neq i}\left( y_j-f(t_j) \right)^2+\frac{\gamma}{n}\sum_{j \neq i} \left( v_j-f'(t_j) \right)^2+ \int \lambda(t) \left( f'' \right)^2dt,
 \end{align}
-and the cross-validation score function is
+$\gamma=\frac{n-1}{n}\gamma^*$, $\lambda(t)=\frac{n-1}{n}\lambda^*(t)$ and the cross-validation score function is
 \begin{align}
 \mbox{CV}(\lambda,\gamma)=\frac{1}{n}\sum_{i=1}^{n}\left( y_i-\hat{f}^{(-i)}(t_i,\lambda,\gamma) \right) ^2.
 \end{align}
 
-For a Tractor spline, the parameter $\hat{\theta}=(B^\top B+\gamma C^\top C+\Omega_\lambda)^{-1}(B^\top\mathbf{y}+\gamma C^\top\mathbf{v})$ gives us
+For a Tractor spline, the parameter $\hat{\theta}=(B^\top B+\gamma C^\top C+n\Omega_\lambda)^{-1}(B^\top\mathbf{y}+\gamma C^\top\mathbf{v})$ gives us
 \begin{equation}
 \begin{split}
- \hat{\mathbf{f}}&=B\hat{\theta}=B(B^\top B+\gamma C^\top C+\Omega_\lambda)^{-1}B^\top\mathbf{y}+B(B^\top B+\gamma C^\top C+\Omega_\lambda)^{-1}C^\top\mathbf{v}\\&=S\mathbf{y}+\gamma T\mathbf{v},
+ \hat{\mathbf{f}}&=B\hat{\theta}=B(B^\top B+\gamma C^\top C+n\Omega_\lambda)^{-1}B^\top\mathbf{y}+B(B^\top B+\gamma C^\top C+n\Omega_\lambda)^{-1}C^\top\mathbf{v}\\&=S\mathbf{y}+\gamma T\mathbf{v},
  \end{split}
  \end{equation}
  \begin{equation}
  \begin{split}
-\hat{\mathbf{f}}'&=C\hat{\theta}=C(B^\top B+\gamma C^\top C+\Omega_\lambda)^{-1}B^\top\mathbf{y}+C(B^\top B+\gamma C^\top C+\Omega_\lambda)^{-1}C^\top\mathbf{v}\\&=U\mathbf{y}+\gamma V\mathbf{v}.
+\hat{\mathbf{f}}'&=C\hat{\theta}=C(B^\top B+\gamma C^\top C+n\Omega_\lambda)^{-1}B^\top\mathbf{y}+C(B^\top B+\gamma C^\top C+n\Omega_\lambda)^{-1}C^\top\mathbf{v}\\&=U\mathbf{y}+\gamma V\mathbf{v}.
  \end{split}
 \end{equation}
-From lemma \ref{cvlema}, we can prove the following theorem.
+From Lemma \ref{cvlema}, we can prove the following theorem.
 \begin{theorem}\label{tractorsplinecvscore}
 The cross-validation score of a Tractor spline satisfies
 \begin{equation}\label{tractorcv}
@@ -312,7 +346,7 @@ The cross-validation score of a Tractor spline satisfies
 where $\hat{f}$ is the Tractor spline smoother calculated from the full data set $\{(t_i,y_i,v_i)\}$ with smoothing parameter $\lambda$ and $\gamma$.
 \end{theorem}
 
-The proof of Theorem \ref{tractorsplinecvscore} follows immediately from a lemma, and gives an expression for the deleted residuals $y_i-\hat{f}^{(-i)}(t_i)$ and $v_i-\hat{f}'^{(-i)}(t_i)$ in terms of $y_i-\hat{f}(t_i)$ and $v_i-\hat{f}'(t_i)$ respectively. 
+The proof of Theorem \ref{tractorsplinecvscore} follows immediately from a Lemma, and gives an expression for the deleted residuals $y_i-\hat{f}^{(-i)}(t_i)$ and $v_i-\hat{f}'^{(-i)}(t_i)$ in terms of $y_i-\hat{f}(t_i)$ and $v_i-\hat{f}'(t_i)$ respectively. 
 
 \begin{lemma} \label{cvlemma}
 For fixed $\lambda,\gamma$ and $i$, denote $\mathbf{f}^{(-i)}$ by the vector with components $f_j^{(-i)}=\hat{f}^{(-i)}(t_j,\lambda,\gamma)$,  $\mathbf{f}'^{(-i)}$ by the vector with components $f_j'^{(-i)}=\hat{f}'^{(-i)}(t_j,\lambda,\gamma)$, and define vectors $\mathbf{y}^*$ and $\mathbf{v}^*$ by 
@@ -328,8 +362,8 @@ v_i^*=\hat{f}'^{(-i)}(t_i) &\mbox{otherwise}
 \end{align}
 Then
 \begin{align}
-\mathbf{\hat{f}}^{(-i)}&=S\mathbf{y}^*+\gamma T\mathbf{v}^*\\
-\mathbf{\hat{f}}'^{(-i)}&=U\mathbf{y}^*+\gamma V\mathbf{v}^*
+\mathbf{\hat{f}}^{(-i)}&=S\mathbf{y}_i^*+\gamma T\mathbf{v}_i^*\\
+\mathbf{\hat{f}}'^{(-i)}&=U\mathbf{y}_i^*+\gamma V\mathbf{v}_i^*
 \end{align}
 \end{lemma}
 
@@ -358,11 +392,11 @@ where $\varepsilon_f\sim N(0,\sigma_f/SNR)$ and $\varepsilon_g\sim N(0,\sigma_g/
 
 For Tractor spline, we have two parameters $\lambda$ and $\gamma$ to optimize. To evaluate the performance of the velocity term in objective function (\ref{tractorsplineObjective}) and the adjusted penalty term in (\ref{adjustedpenalty}), the parameter $\gamma$ is set as 0 in one reconstruction of Tractor spline, whose objective function and solution become
 \begin{equation}\label{ofgamma0}
-J[f]_{\gamma=0}=\sum_{i=1}^{n} (f(t_i)-y_i)^2 +\sum_{i=1}^{n-1} \lambda_i\int_{t_i}^{t_{i+1}} (f'')^2 dt,
+J[f]_{\gamma=0}= \frac{1}{n} \sum_{i=1}^{n} (f(t_i)-y_i)^2 +\sum_{i=1}^{n-1} \lambda_i\int_{t_i}^{t_{i+1}} (f'')^2 dt,
 \end{equation}
 and
 \begin{equation}\label{thetahat0}
-\hat{\theta}_{\gamma=0}=(\mathbf{B}^\top\mathbf{B}+\Omega_{\lambda})^{-1}\mathbf{B}^\top\mathbf{y}
+\hat{\theta}_{\gamma=0}=(\mathbf{B}^\top\mathbf{B}+n\Omega_{\lambda})^{-1}\mathbf{B}^\top\mathbf{y}
 \end{equation}
 and the adjusted penalty term in (\ref{adjustedpenalty}) was removed from another reconstruction, noted as "Tractor spline without APT". Figure \ref{num1} to \ref{num4} display the original (velocity), generated position, wavelet with two different threshold methods, P-spline and three kinds of Tractor spline fitted functions. The parameters $\lambda$ and $\gamma$ of a Tractor spline are automatically selected from formula (\ref{tractorcv}) by $\textsf{optim}$ function in $R$ \cite{nelder1965simplex}.
 
@@ -664,7 +698,7 @@ By comparing, we can see that all these methods can rebuild up the skeleton of g
 \end{figure}
 
 
-Figure \ref{numpenalty} shows the estimated penalty values $\lambda(t)=\frac{(\Delta t)^3}{(\Delta d)^2}\lambda$. The figures in the left column illustrate the values of the penalty term at different intervals, the figures in the right column are the observations and reconstructed trajectory. Bigger black dots present larger penalty values. It can be seen that $\lambda(t)$ adapts to the smoothness pattern of position and will be large where a long time gap may occur. The details of how this penalty function works will be explained in next subsection.
+Figure \ref{numpenalty} shows the estimated penalty values $\lambda(t)=\frac{(\Delta t)^3}{(\Delta d)^2}\lambda$ at SNR=7. The figures in the left column illustrate the values of the penalty term at different intervals, the figures in the right column are the observations and reconstructed trajectory. Bigger black dots present larger penalty values. It can be seen that $\lambda(t)$ adapts to the smoothness pattern of position and will be large where a long time gap may occur. The details of how this penalty function works will be explained in next subsection. Figure \ref{TractorsplineSNR3} illustrates the reconstructions of Tractor spline at SNR=3.
 
 
 %\begin{figure}
@@ -726,14 +760,14 @@ The results are shown in table \ref{mse3200} and \ref{tmse3200}. All of these me
 	\setlength\tabcolsep{1.5pt}
 	\begin{tabular}{|c|c|c|c|c|c|c|c|}
 \hline	MSE ($10^{-4}$)   & SNR & TS & TS$_{\footnotesize\gamma=0}$ & TS$_{\footnotesize APT=0}$  & P-spline & Wavelet(sure)& Wavelet(Bayes)\\ \hline
-\textit{Blocks}    & 7   &  16.49 & 15.99 & 16.69 & 16.14  & \textbf{15.39} & 16.68 \\ \hline
-\textit{Blocks}    & 3   &  89.80 & 89.79 & 89.83  &\textbf{88.27}& 98.35 & 90.24 \\ \hline
-\textit{Bumps}     & 7   & 4.40  & 4.19 & 4.55 & 4.33 & \textbf{4.18} & 4.59 \\ \hline
-\textit{Bumps}     & 3   & 23.83 & 23.83 & 23.93 & \textbf{23.55} & 26.23 & 23.74 \\ \hline
-\textit{HeaviSine} & 7   & 4.16  & 4.01 &4.16 & 4.02 & \textbf{3.79} & 4.19 \\ \hline
-\textit{HeaviSine} & 3   & 22.52 & 22.52 & 22.65 & \textbf{22.02} & 23.53 & 22.07 \\ \hline
-\textit{Doppler}   & 7   & 1.15  & \textbf{1.07} & 1.10 & 1.15  & \textbf{1.07} & 1.13  \\ \hline
-\textit{Doppler}   & 3   & 5.97  & \textbf{5.94} &6.28 & 6.05  & 6.85 & 6.29  \\ \hline
+\textit{Blocks}    & 7   &  16.53& 15.99 & 16.69 & 16.14  & \textbf{15.39} & 16.68 \\ \hline
+\textit{Blocks}    & 3   &  89.79 & \textbf{87.64} & 89.94  & 88.27 & 98.35 & 90.24 \\ \hline
+\textit{Bumps}     & 7   & 4.40 & 4.19 & 4.55 & 4.33 & \textbf{4.18} & 4.59 \\ \hline
+\textit{Bumps}     & 3   & 23.93 & \textbf{23.19} & 24.10 & 23.55 & 26.23 & 23.74 \\ \hline
+\textit{HeaviSine} & 7   & 4.16 & 4.01 &4.16 & 4.02 & \textbf{3.79} & 4.19 \\ \hline
+\textit{HeaviSine} & 3   & 22.63 & \textbf{22.19} & 22.65 & 22.02 & 23.53 & 22.07 \\ \hline
+\textit{Doppler}   & 7   & 1.15 & \textbf{1.07} & 1.10 & 1.15  & \textbf{1.07} & 1.13  \\ \hline
+\textit{Doppler}   & 3   & 6.27 & \textbf{5.94} &6.28 & 6.05  & 6.85 & 6.29  \\ \hline
 	\end{tabular}
 \end{table}
  %\end{sidewaystable}
@@ -745,20 +779,20 @@ The results are shown in table \ref{mse3200} and \ref{tmse3200}. All of these me
 	\setlength\tabcolsep{1.5pt}
 	\begin{tabular}{|c|c| c| c| c|c|c|c|}
 \hline	TMSE ($10^{-6}$)  & SNR & TS & TS$_{\footnotesize\gamma=0}$ & TS$_{\footnotesize APT=0}$  & P-spline & Wavelet(sure) & Wavelet(Bayes)\\ \hline
-		\textit{Blocks}    & 7   & \textbf{5.62} & 54.25 &  28.68   & 54.76   & 201.02   & 182.12   \\ \hline
-		\textit{Blocks}    & 3   & \textbf{16.97} & 152.33 & 15.34  & 171.59   & 1138.08  & 712.36  \\ \hline
-		\textit{Bumps}     & 7  & \textbf{0.89} & 23.44  & 21.10     & 24.21 & 71.71 & 69.26 \\ \hline
-		\textit{Bumps}     & 3  & \textbf{4.75} & 77.76  & 8.96     & 77.52 & 330.77 & 238.79 \\ \hline
-		\textit{HeaviSine} & 7 & \textbf{3.33}& 7.80  & 1.56     & 9.54   & 55.37  &44.88  \\ \hline
-		\textit{HeaviSine} & 3 & \textbf{4.38}& 33.53 & 8.48 & 34.26 & 240.72& 110.49\\ \hline
-		\textit{Doppler}   & 7   & 1.28 & 6.67  & \textbf{1.08}   &  8.26   & 14.87  & 12.01  \\ \hline
-		\textit{Doppler}   & 3   & \textbf{7.01} & 22.14  & 8.25   & 19.95  & 81.48  & 50.33   \\ \hline
+		\textit{Blocks}    & 7   & \textbf{1.75} & 54.25 &  28.68   & 54.76   & 201.02   & 182.12   \\ \hline
+		\textit{Blocks}    & 3   & \textbf{16.44} & 152.5 & 30.76  & 171.59   & 1138.08  & 712.36  \\ \hline
+		\textit{Bumps}     & 7  & \textbf{1.64} & 23.44  & 21.10     & 24.21 & 71.71 & 69.26 \\ \hline
+		\textit{Bumps}     & 3  & \textbf{8.51} & 77.78  &37.12     & 77.52 & 330.77 & 238.79 \\ \hline
+		\textit{HeaviSine} & 7 & \textbf{1.53}& 7.80  & 1.56     & 9.54   & 55.37  &44.88  \\ \hline
+		\textit{HeaviSine} & 3 & \textbf{8.21}& 33.56  & 8.49 & 34.26 & 240.72& 110.49\\ \hline
+		\textit{Doppler}   & 7   & 1.51& 6.67  & \textbf{1.08}   &  8.26   & 14.87  & 12.01  \\ \hline
+		\textit{Doppler}   & 3   & \textbf{8.10} & 22.14  & 8.25   & 19.95    &81.48  &50.33   \\ \hline
 	\end{tabular}	
 \end{table}
 %\end{sidewaystable}
 
 
-\subsection{Residuals Analysis}
+\subsection{Residual Analysis}
 
 The simulated data is generated by equations (\ref{tractorsplinegeneratefunctions}) and the SNRs are set at 7 and 3 separately to compare the performances of different algorithms. All of the algorithms can reconstruct the true trajectory from noisy data and return acceptable MSE values, though Tractor spline returns the least TMSE in most of the circumstances. 
 
@@ -793,7 +827,7 @@ In this section, we apply the proposed Tractor spline to real dataset, which is 
 
 In a 2 or higher $d$-dimensional curve nonparametric regression, consider the general form of a length $n$ time series data points $\{t_1,p_1,s_1\}, \ldots, \{t_n,p_n,s_n\}$, such that $a \leq t_1<t_2< \cdots < t_n \leq b$, $p_i$ and $s_i$ are $d$-dimensional vectors contain position and velocity information at time $i$ respectively. The positive piecewise constant function $\lambda(t) = \lambda_i$ on each interval $t_i \leq t<t_{i+1}, t_0=a, t_{n+1}=b$.  Then the function $f:[a,b]\rightarrow \mathbb{R}^d$ with $\gamma>0$ is a Tractor spline in the $d$-dimensional space if it is the solution to the generic form of the objective function: 
 \begin{equation}\label{tractorsplineObjective2D}
-J[f]=  \sum_{i=1}^{n} \lVert f(t_i)-p_i\rVert_d^2 + \gamma \sum_{i=1}^{n} \lVert f'(t_i)-s_i \rVert_d^2 +\sum_{i=0}^{n} \lambda_i\int_{t_i}^{t_{i+1}} \lVert f''(t)\rVert_d^2 dt. 
+J[f]= \frac{1}{n} \sum_{i=1}^{n} \lVert f(t_i)-p_i\rVert_d^2 + \frac{\gamma}{n} \sum_{i=1}^{n} \lVert f'(t_i)-s_i \rVert_d^2 +\sum_{i=0}^{n} \lambda_i\int_{t_i}^{t_{i+1}} \lVert f''(t)\rVert_d^2 dt. 
 \end{equation}
 
 
@@ -1046,7 +1080,7 @@ In the adjusted penalty term, $\Delta d$ is the Euclidean distance $\Delta_d(p_1
 %\end{figure}
 The penalty function $\lambda(t)$ of a 2-dimensional reconstruction is shared by $x$ and $y$ axes and presented in figure \ref{2dpenalty}. The complete penalty term is 
 \begin{equation*}
-\theta_x^\top\Omega_{\lambda(t)}\theta_x + \theta_y^\top\Omega_{\lambda(t)}\theta_y.
+n\theta_x^\top\Omega_{\lambda_d,\lambda_u}\theta_x + n\theta_y^\top\Omega_{\lambda_d,\lambda_u}\theta_y.
 \end{equation*}
 Similarly, most of the large penalty values appear at long-time-gap knots and turning points. A histogram plot of penalty function shows that most of the values are small and only a couple of them are large. 
 \begin{figure}

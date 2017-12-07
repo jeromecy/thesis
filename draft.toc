@@ -14,12 +14,12 @@
 \contentsline {section}{\numberline {2.3}Parameter Selection and Cross-Validation}{26}
 \contentsline {section}{\numberline {2.4}Simulation Study}{28}
 \contentsline {subsection}{\numberline {2.4.1}Numerical Examples}{28}
-\contentsline {subsection}{\numberline {2.4.2}Evaluation}{34}
-\contentsline {subsection}{\numberline {2.4.3}Residuals Analysis}{34}
-\contentsline {section}{\numberline {2.5}Application on Real Dataset}{38}
-\contentsline {subsection}{\numberline {2.5.1}1-Dimensional Trajectory}{39}
-\contentsline {subsection}{\numberline {2.5.2}2-Dimension Trajectory}{45}
-\contentsline {section}{\numberline {2.6}Conclusion and Discussion}{47}
+\contentsline {subsection}{\numberline {2.4.2}Evaluation}{30}
+\contentsline {subsection}{\numberline {2.4.3}Residual Analysis}{37}
+\contentsline {section}{\numberline {2.5}Application on Real Dataset}{37}
+\contentsline {subsection}{\numberline {2.5.1}1-Dimensional Trajectory}{41}
+\contentsline {subsection}{\numberline {2.5.2}2-Dimension Trajectory}{44}
+\contentsline {section}{\numberline {2.6}Conclusion and Discussion}{48}
 \contentsline {chapter}{\numberline {3}Tractor Spline as Bayes Estimate}{49}
 \contentsline {section}{\numberline {3.1}Introduction}{49}
 \contentsline {section}{\numberline {3.2}Polynomial Smoothing Splines on $[0, 1]$ as Bayes Estimates}{51}
@@ -79,25 +79,26 @@
 \contentsline {chapter}{Appendices}{143}
 \setcounter {tocdepth}{1}
 \begingroup \let \l@chapter \l@section \let \l@section \l@subsection 
-\contentsline {chapter}{\numberline {A}Proofs of Tractor Spline Theorems}{144}
-\contentsline {section}{\numberline {A.1}Penalty Matrix in (2.16\hbox {})}{144}
-\contentsline {section}{\numberline {A.2}Proof of Theorem 1\hbox {}}{145}
-\contentsline {section}{\numberline {A.3}Proof of Theorem 2\hbox {}}{145}
-\contentsline {section}{\numberline {A.4}Proof of Lemma 2\hbox {}}{148}
-\contentsline {section}{\numberline {A.5}Proof of Theorem 3\hbox {}}{149}
-\contentsline {section}{\numberline {A.6}Residuals Analysis}{150}
-\contentsline {chapter}{\numberline {B}Calculations And Figures of Adaptive Sequential MCMC}{153}
-\contentsline {section}{\numberline {B.1}Linear Simulation Calculations}{153}
-\contentsline {section}{\numberline {B.2}OU-Process Calculation}{156}
-\contentsline {section}{\numberline {B.3}Covariance Matrix in Details}{162}
-\contentsline {section}{\numberline {B.4}Real Data Implementation}{164}
-\contentsline {section}{\numberline {B.5}Comparison Between Batch and Sliding Window Methods}{168}
-\contentsline {section}{\numberline {B.6}Parameter Evolution Visualization}{170}
-\contentsline {chapter}{\numberline {C}A Spin-off Outcome: Data Simplification Method}{174}
-\contentsline {section}{\numberline {C.1}Introduction}{174}
-\contentsline {section}{\numberline {C.2}Simplification Algorithm}{175}
-\contentsline {section}{\numberline {C.3}Evaluation}{176}
-\contentsline {section}{\numberline {C.4}Numerical Study}{177}
-\contentsline {section}{\numberline {C.5}Conclusion}{181}
+\contentsline {chapter}{\numberline {A}Proofs And Figures of Tractor Spline Theorems}{144}
+\contentsline {section}{\numberline {A.1}Penalty Matrix in (2.12\hbox {})}{145}
+\contentsline {section}{\numberline {A.2}Proof of Theorem 1\hbox {}}{146}
+\contentsline {section}{\numberline {A.3}Proof of Theorem 2\hbox {}}{146}
+\contentsline {section}{\numberline {A.4}Proof of Lemma 2\hbox {}}{149}
+\contentsline {section}{\numberline {A.5}Proof of Theorem 3\hbox {}}{150}
+\contentsline {section}{\numberline {A.6}Reconstructions at SNR=3}{151}
+\contentsline {section}{\numberline {A.7}Residual Analysis of Simulations}{151}
+\contentsline {chapter}{\numberline {B}Calculations And Figures of Adaptive Sequential MCMC}{155}
+\contentsline {section}{\numberline {B.1}Linear Simulation Calculations}{155}
+\contentsline {section}{\numberline {B.2}OU-Process Calculation}{158}
+\contentsline {section}{\numberline {B.3}Covariance Matrix in Details}{164}
+\contentsline {section}{\numberline {B.4}Real Data Implementation}{166}
+\contentsline {section}{\numberline {B.5}Comparison Between Batch and Sliding Window Methods}{170}
+\contentsline {section}{\numberline {B.6}Parameter Evolution Visualization}{172}
+\contentsline {chapter}{\numberline {C}A Spin-off Outcome: Data Simplification Method}{176}
+\contentsline {section}{\numberline {C.1}Introduction}{176}
+\contentsline {section}{\numberline {C.2}Simplification Algorithm}{177}
+\contentsline {section}{\numberline {C.3}Evaluation}{178}
+\contentsline {section}{\numberline {C.4}Numerical Study}{179}
+\contentsline {section}{\numberline {C.5}Conclusion}{183}
 \endgroup 
-\contentsline {chapter}{\hbox to\@tempdima {\hfil }References}{181}
+\contentsline {chapter}{\hbox to\@tempdima {\hfil }References}{183}
