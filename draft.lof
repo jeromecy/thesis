@@ -42,18 +42,18 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A.1}{\ignorespaces Reconstructions of generated \textit {Blocks}, \textit {Bumps}, \textit {HeaviSine} and \textit {Doppler} functions by Tractor spline at SNR=3. The penalty values $\lambda (t)$ in Tractor spline are projected into reconstructions. The blacks dots are the measurements. The bigger blacks dots indicate the larger penalty values.\relax }}{151}
-\contentsline {figure}{\numberline {A.2}{\ignorespaces ACF of residuals at SNR level of 7.\relax }}{152}
-\contentsline {figure}{\numberline {A.3}{\ignorespaces ACF of residuals at SNR level of 3.\relax }}{153}
-\contentsline {figure}{\numberline {A.4}{\ignorespaces Residuals of 2-dimensional real data reconstruction \relax }}{154}
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Reconstructions of generated \textit {Blocks}, \textit {Bumps}, \textit {HeaviSine} and \textit {Doppler} functions by Tractor spline at SNR=3. The penalty values $\lambda (t)$ in Tractor spline are projected into reconstructions. The blacks dots are the measurements. The bigger blacks dots indicate the larger penalty values.\relax }}{152}
+\contentsline {figure}{\numberline {A.2}{\ignorespaces ACF of residuals at SNR level of 7.\relax }}{153}
+\contentsline {figure}{\numberline {A.3}{\ignorespaces ACF of residuals at SNR level of 3.\relax }}{154}
+\contentsline {figure}{\numberline {A.4}{\ignorespaces Residuals of 2-dimensional real data reconstruction \relax }}{155}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {B.1}{\ignorespaces Running the same amount of time and taking the same length of data, the step size $\epsilon =2.5$ returns the highest ESSUT value and generates more effective samples with a lower correlation. \relax }}{167}
-\contentsline {figure}{\numberline {B.2}{\ignorespaces Impacts of data length on optimal parameter. There is an obvious trend on the estimation against length of data in estimation process. \relax }}{168}
-\contentsline {figure}{\numberline {B.3}{\ignorespaces Comparison of $\alpha _1$, $\alpha _2$, EffUT and ESSUT between batch MCMC (orange) and sliding window MCMC (green). \relax }}{170}
-\contentsline {figure}{\numberline {B.4}{\ignorespaces Comparison of parameters estimation between batch MCMC (orange) and sliding window MCMC (green). \relax }}{171}
-\contentsline {figure}{\numberline {B.4}{\ignorespaces Parameters Evolution Visualization. The correlation among parameters does not change two much. The parameters are considered static. \relax }}{175}
+\contentsline {figure}{\numberline {B.1}{\ignorespaces Running the same amount of time and taking the same length of data, the step size $\epsilon =2.5$ returns the highest ESSUT value and generates more effective samples with a lower correlation. \relax }}{168}
+\contentsline {figure}{\numberline {B.2}{\ignorespaces Impacts of data length on optimal parameter. There is an obvious trend on the estimation against length of data in estimation process. \relax }}{169}
+\contentsline {figure}{\numberline {B.3}{\ignorespaces Comparison of $\alpha _1$, $\alpha _2$, EffUT and ESSUT between batch MCMC (orange) and sliding window MCMC (green). \relax }}{171}
+\contentsline {figure}{\numberline {B.4}{\ignorespaces Comparison of parameters estimation between batch MCMC (orange) and sliding window MCMC (green). \relax }}{172}
+\contentsline {figure}{\numberline {B.4}{\ignorespaces Parameters Evolution Visualization. The correlation among parameters does not change two much. The parameters are considered static. \relax }}{176}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {C.1}{\ignorespaces Synchronized Euclidean Distance\relax }}{179}
-\contentsline {figure}{\numberline {C.2}{\ignorespaces C.2a\hbox {} indicates that the errors are measured at fixed sampling rate as sum of perpendicular distance chords. C.2b\hbox {} indicates that the errors are measured at fixed sampling rates as sum of time-synchronous distance chords.\relax }}{179}
-\contentsline {figure}{\numberline {C.3}{\ignorespaces A segment start from time $t=2\tmspace +\thinmuskip {.1667em}000$ to $3\tmspace +\thinmuskip {.1667em}000$, recorded by GPS units. $\blacktriangle $ indicates that the boom is not-operating. $\bullet $ indicates that the boom is operating. Figure C.3a\hbox {}, the trajectory connected by raw data with 27 points. Figure C.3b\hbox {}, the trajectory connected by simplified data with Douglas-Peucker algorithm with 24 points. Figure C.3c\hbox {}, the trajectory connected by simplified data with proposed simplification algorithm with 23 points.\relax }}{181}
-\contentsline {figure}{\numberline {C.4}{\ignorespaces Trajectory fitted by Kalman Filter. The mean squared errors of raw data, DP and proposed algorithm are 26.8922, 23.9788 and 23.9710 respectively.\relax }}{182}
+\contentsline {figure}{\numberline {C.1}{\ignorespaces Synchronized Euclidean Distance\relax }}{180}
+\contentsline {figure}{\numberline {C.2}{\ignorespaces C.2a\hbox {} indicates that the errors are measured at fixed sampling rate as sum of perpendicular distance chords. C.2b\hbox {} indicates that the errors are measured at fixed sampling rates as sum of time-synchronous distance chords.\relax }}{180}
+\contentsline {figure}{\numberline {C.3}{\ignorespaces A segment start from time $t=2\tmspace +\thinmuskip {.1667em}000$ to $3\tmspace +\thinmuskip {.1667em}000$, recorded by GPS units. $\blacktriangle $ indicates that the boom is not-operating. $\bullet $ indicates that the boom is operating. Figure C.3a\hbox {}, the trajectory connected by raw data with 27 points. Figure C.3b\hbox {}, the trajectory connected by simplified data with Douglas-Peucker algorithm with 24 points. Figure C.3c\hbox {}, the trajectory connected by simplified data with proposed simplification algorithm with 23 points.\relax }}{182}
+\contentsline {figure}{\numberline {C.4}{\ignorespaces Trajectory fitted by Kalman Filter. The mean squared errors of raw data, DP and proposed algorithm are 26.8922, 23.9788 and 23.9710 respectively.\relax }}{183}
