@@ -9,16 +9,16 @@ The $i$-th $\Omega^{(i)}$ is a $2n \times 2n$ bandwidth four symmetric matrix an
 \begin{align}
 \Omega_{2i-1,2i-1}^{(i)} & =\int_{t_{i}}^{t_{i+1}} \frac{d^2 h_{00}^{(i)}(t)}{dt^2}  \frac{d^2 h_{00}^{(i)}(t)}{dt^2} dt=\frac{12}{\Delta_i^3}\\
 \Omega_{2i-1,2i}^{(i)} &=\int_{t_{i}}^{t_{i+1}} \frac{d^2 h_{00}^{(i)}(t)}{dt^2}  \frac{d^2 h_{10}^{(i)}(t)}{dt^2} dt=\frac{6}{\Delta_i^2}\\
-\Omega_{2i-1,2i+1}^{(i)} &=\int_{t_{i}}^{t_{i+1}} \frac{d^2 h_{00}^{(i)}(t)}{dt^2}  \frac{d^2 h_{01}^{(i+1)}(t)}{dt^2} dt=\frac{-12}{\Delta_i^3}\\
-\Omega_{2i-1,2i+2}^{(i)} &=\int_{t_{i}}^{t_{i+1}} \frac{d^2 h_{00}^{(i)}(t)}{dt^2}  \frac{d^2 h_{11}^{(i+1)}(t)}{dt^2} dt=\frac{6}{\Delta_i^2}\\
+\Omega_{2i-1,2i+1}^{(i)} &=\int_{t_{i}}^{t_{i+1}} \frac{d^2 h_{00}^{(i)}(t)}{dt^2}  \frac{d^2 h_{01}^{(i)}(t)}{dt^2} dt=\frac{-12}{\Delta_i^3}\\
+\Omega_{2i-1,2i+2}^{(i)} &=\int_{t_{i}}^{t_{i+1}} \frac{d^2 h_{00}^{(i)}(t)}{dt^2}  \frac{d^2 h_{11}^{(i)}(t)}{dt^2} dt=\frac{6}{\Delta_i^2}\\
 \Omega_{2i,2i}^{(i)} &=\int_{t_{i}}^{t_{i+1}} \frac{d^2 h_{10}^{(i)}(t)}{dt^2}  \frac{d^2 h_{10}^{(i)}(t)}{dt^2} dt=\frac{4}{\Delta_i} \\
-\Omega_{2i,2i+1}^{(i)} &=\int_{t_{i}}^{t_{i+1}} \frac{d^2 h_{10}^{(i)}(t)}{dt^2}  \frac{d^2 h_{01}^{(i+1)}(t)}{dt^2} dt=\frac{-6}{\Delta_i^2}\\
-\Omega_{2i,2i+2}^{(i)} &=\int_{t_{i}}^{t_{i+1}} \frac{d^2 h_{10}^{(i)}(t)}{dt^2}  \frac{d^2 h_{11}^{(i+1)}(t)}{dt^2} dt=\frac{2}{\Delta_i}\\
-\Omega_{2i+1,2i+1}^{(i)} &=\int_{t_{i}}^{t_{i+1}} \frac{d^2 h_{01}^{(i+1)}(t)}{dt^2}  \frac{d^2 h_{01}^{(i+1)}(t)}{dt^2} dt=\frac{12}{\Delta_i^3}\\
-\Omega_{2i+1,2i+2}^{(i)} &=\int_{t_{i}}^{t_{i+1}} \frac{d^2 h_{01}^{(i+1)}(t)}{dt^2}  \frac{d^2 h_{11}^{(i+1)}(t)}{dt^2} dt=\frac{-6}{\Delta_i^2}\\
-\Omega_{2i+2,2i+2}^{(i)} &=\int_{t_{i}}^{t_{i+1}} \frac{d^2 h_{11}^{(i+1)}(t)}{dt^2}  \frac{d^2 h_{11}^{(i+1)}(t)}{dt^2} dt=\frac{4}{\Delta_i}
+\Omega_{2i,2i+1}^{(i)} &=\int_{t_{i}}^{t_{i+1}} \frac{d^2 h_{10}^{(i)}(t)}{dt^2}  \frac{d^2 h_{01}^{(i)}(t)}{dt^2} dt=\frac{-6}{\Delta_i^2}\\
+\Omega_{2i,2i+2}^{(i)} &=\int_{t_{i}}^{t_{i+1}} \frac{d^2 h_{10}^{(i)}(t)}{dt^2}  \frac{d^2 h_{11}^{(i)}(t)}{dt^2} dt=\frac{2}{\Delta_i}\\
+\Omega_{2i+1,2i+1}^{(i)} &=\int_{t_{i}}^{t_{i+1}} \frac{d^2 h_{01}^{(i)}(t)}{dt^2}  \frac{d^2 h_{01}^{(i)}(t)}{dt^2} dt=\frac{12}{\Delta_i^3}\\
+\Omega_{2i+1,2i+2}^{(i)} &=\int_{t_{i}}^{t_{i+1}} \frac{d^2 h_{01}^{(i)}(t)}{dt^2}  \frac{d^2 h_{11}^{(i)}(t)}{dt^2} dt=\frac{-6}{\Delta_i^2}\\
+\Omega_{2i+2,2i+2}^{(i)} &=\int_{t_{i}}^{t_{i+1}} \frac{d^2 h_{11}^{(i)}(t)}{dt^2}  \frac{d^2 h_{11}^{(i)}(t)}{dt^2} dt=\frac{4}{\Delta_i}
 \end{align}
-where $\Delta_i=T_{i+1}-T_i$ and $i=1,2,\ldots,n-1$. Then 
+where $\Delta_i=t_{i+1}-t_i$ and $i=1,2,\ldots,n-1$. Then 
 \begin{equation*}
 \mathbf{\Omega}=\sum_{i=1}^{n-1}\lambda_i\Omega^{(i)}
 \end{equation*}
