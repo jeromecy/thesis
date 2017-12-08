@@ -144,7 +144,7 @@ a_{2n-1,2n-2} & a_{2n-1,2n-1} & 1\\
 \end{vmatrix}\\
 =& a_{22}a_{44}\cdots a_{2n-4,2n-4} (a_{2n-2,2n-1}a_{2n,2n-2}-a_{2n,2n-1}a_{2n-2,2n-2}) \neq 0.
 \end{align*}
-With the conclusion of Lemma \ref{basiscontinuousLemma}, $N_1(t),\ldots,N_{2n}(t)$  are linearly independent on interval $[t_1, t_n]$.
+With the conclusion of Lemma \ref{basiscontinuousLemma}, $N_1(t),\ldots,N_{2n}(t)$  are linearly independent on the entire interval $[t_1, t_n]$.
 
 Secondly, we will prove that basis functions represent any cubic function on each interval $[t_i, t_{i+1}]$. Due to the definition of cubic spline, on interval $[t_i, t_{i+1}]$, a cubic spline $g(t)$ can be written in the form of
 \begin{eqnarray}
@@ -177,7 +177,7 @@ where coefficients are
 \frac{2\theta_{2i-1}}{(t_{i+1}-t_{i})^3} +\frac{\theta_{2i}}{(t_{i+1}-t_{i})^2} -\frac{2\theta_{2i+1}}{(t_{i+1}-t_{i})^3} +\frac{\theta_{2i+2}}{(t_{i+1}-t_{i})^2}=d_i
 \end{cases}
 \end{align*}
-The resulting can always be solved for $\theta_{2i-1}, \theta_{2i},\theta_{2i+1},\theta_{2i+2}$ in terms of $a_i,b_i,c_i,d_i$ on interval $[t_i, t_{i+1}]$. So cubic spline on each interval can be represented by basis functions. \\
+The results can always be solved for $\theta_{2i-1}, \theta_{2i},\theta_{2i+1},\theta_{2i+2}$ in terms of $a_i,b_i,c_i,d_i$ on interval $[t_i, t_{i+1}]$. So cubic spline on each interval can be represented by basis functions. \\
 
 Finally, we will prove basis functions are continuous on $[t_1, t_n]$. For any knot $t_i$, where $t_1< t_i <t_n$, it is known that $f(t_i)=\theta_{2i-1}$. Moreover, 
 \begin{align*}
@@ -188,28 +188,36 @@ As a result,
 \begin{align*}
 \lim\limits_{t\rightarrow t_i^+} f(t) =\lim\limits_{t\rightarrow t_i^-} f(t) =f(t),
 \end{align*}
-$f(t)$ is continuous at knots, and then continuous on whole interval $[t_1,t_n]$.
+$f(t)$ is continuous at joint knots, and then continuous on whole interval $[t_1,t_n]$.
 
-Consequently, $f(t)$ is a continuous cubic spline on interval $[t_1,t_n]$, then $f(t)$ has continuous first and second derivatives.
+Consequently, $f(t)$ is a continuous cubic spline represented by basis functions $N_1(t),\ldots,N_{2n}(t)$ on the entire interval $[t_1,t_n]$. 
 \end{proof}
 
 
 \section{Proof of Lemma \ref{cvlemma}}
 \begin{proof}
-For any spline $f$ and a given $\lambda(t)$, 
-\begin{equation}
-\begin{split}
-&\frac{1}{n}\sum_{j=1}^{n}\left(y_j^*-f(t_j)\right)^2+\frac{\gamma}{n} \sum_{j=1}^{n}\left(v_j^*-f'(t_j)\right)^2+\int\lambda(t) f''^2 \\
-\geq&\frac{1}{n}\sum_{j\neq i}^{n}\left(y_j^*-f(t_j)\right)^2+\frac{\gamma}{n} \sum_{j\neq i}^{n}\left(v_j^*-f'(t_j)\right)^2+\int\lambda(t) f''^2\\
-\geq&\frac{1}{n}\sum_{j\neq i}^{n}\left(y_j^*-\hat{f}^{(-i)}(t_j)\right)^2+\frac{\gamma}{n} \sum_{j\neq i}^{n}\left(v_j^*-\hat{f}'^{(-i)}(t_j)\right)^2+\int\lambda(t) \hat{f}^{(-i)''2}\\
-=&\frac{1}{n}\sum_{j=1}^{n}\left(y_j^*-\hat{f}^{(-i)}(t_j)\right)^2+\frac{\gamma}{n} \sum_{j=1}^{n}\left(v_j^*-\hat{f}'^{(-i)}(t_j)\right)^2+\int\lambda(t) \hat{f}^{(-i)''2}
-\end{split}
-\end{equation}
-by the definition of $\hat{f}^{(-i)}$, $\hat{f}'^{(-i)}$ and the fact that $y_i^*=\hat{f}^{(-i)}(t_i)$, $v_i^*=\hat{f}'^{(-i)}(t_i)$. It follows that $\hat{f}^{(-i)}$ is the minimizer of the MSE function (\ref{tractorsplineObjective}), so that
-\begin{align}
+For any smooth curve $f$ with $\mathbf{y}^*$, we have 
+\begin{align*}
+&\frac{1}{n} \sum_{j=1}^n\left(y_j^*-f(t_j)\right)^2+\frac{\gamma}{n} \sum_{j=1}^n\left(v_j^*-f'(t_j)\right)^2+\sum_{j=1}^{n} \lambda_j\int_{t_j}^{t_{j+1}} f''^2dt \\
+\geq &\frac{1}{n} \sum_{j\neq i}\left(y_j^*-f(t_j)\right)^2+\frac{\gamma}{n} \sum_{j\neq i}\left(v_j^*-f'(t_j)\right)^2+\sum_{j=1}^{n} \lambda_j\int_{t_j}^{t_{j+1}} f''^2dt\\
+\geq &\frac{1}{n}\sum_{j\neq i}\left(y_j^*-\hat{f}^{(-i)}(t_j)\right)^2+\frac{\gamma}{n} \sum_{j\neq i}\left(v_j^*-\hat{f}'^{(-i)}(t_j)\right)^2+\sum_{j=1}^{n} \lambda_j\int_{t_j}^{t_{j+1}}  \left(\hat{f}^{''(-i)}\right)^2dt\\
+= &\frac{1}{n}\sum_{j=1}^{n}\left(y_j^*-\hat{f}^{(-i)}(t_j)\right)^2+\frac{\gamma}{n} \sum_{j=1}^{n}\left(v_j^*-\hat{f}'^{(-i)}(t_j)\right)^2+\sum_{j=1}^{n} \lambda_j\int_{t_j}^{t_{j+1}}  \left(\hat{f}^{''(-i)}\right)^2dt\\
+\end{align*}
+%For any spline $f$ and a given $\lambda(t)$, 
+%\begin{equation}
+%\begin{split}
+%&\frac{1}{n}\sum_{j=1}^{n}\left(y_j^*-f(t_j)\right)^2+\frac{\gamma}{n} \sum_{j=1}^{n}\left(v_j^*-f'(t_j)\right)^2+\int\lambda(t) f''^2 \\
+%\geq&\frac{1}{n}\sum_{j\neq i}^{n}\left(y_j^*-f(t_j)\right)^2+\frac{\gamma}{n} \sum_{j\neq i}^{n}\left(v_j^*-f'(t_j)\right)^2+\int\lambda(t) f''^2\\
+%\geq&\frac{1}{n}\sum_{j\neq i}^{n}\left(y_j^*-\hat{f}^{(-i)}(t_j)\right)^2+\frac{\gamma}{n} \sum_{j\neq i}^{n}\left(v_j^*-\hat{f}'^{(-i)}(t_j)\right)^2+\int\lambda(t) \hat{f}^{(-i)''2}\\
+%=&\frac{1}{n}\sum_{j=1}^{n}\left(y_j^*-\hat{f}^{(-i)}(t_j)\right)^2+\frac{\gamma}{n} \sum_{j=1}^{n}\left(v_j^*-\hat{f}'^{(-i)}(t_j)\right)^2+\int\lambda(t) \hat{f}^{(-i)''2}
+%\end{split}
+%\end{equation}
+by the definition of $\mathbf{\hat{f}}^{(-i)}$, $\mathbf{\hat{f}}'^{(-i)}$ and the fact that $y_i^*=\hat{f}^{(-i)}(t_i)$, $v_i^*=\hat{f}'^{(-i)}(t_i)$. It follows that $\hat{f}^{(-i)}$ is the minimizer of the objective function (\ref{tractorsplineObjective}), so that
+\begin{align*}
 \mathbf{\hat{f}}^{(-i)}&=S\mathbf{y}^*+\gamma T\mathbf{v}^*\\
 \mathbf{\hat{f}}'^{(-i)}&=U\mathbf{y}^*+\gamma V\mathbf{v}^*
-\end{align}
+\end{align*}
+as required.
 \end{proof}
 
 
@@ -233,18 +241,18 @@ Additionally,
 =&(\hat{f}'(t_i)-v_i)+U_{ii}(\hat{f}^{(-i)}(t_i)-y_i)+\gamma V_{ii}(\hat{f}'^{(-i)}(t_i)-v_i).
 \end{split}
 \end{equation}
-Then
+Thus 
 \begin{equation}\label{th3proofeq2}
 \hat{f}'^{(-i)}(t_i)-v_i = \frac{\hat{f}'(t_i)-v_i}{1-\gamma V_{ii}}+ \frac{U_{ii}(\hat{f}^{(-i)}(t_i)-y_i)}{1-\gamma V_{ii}}.
 \end{equation}
-After substituting equation (\ref{th3proofeq2}) into (\ref{th3proofeq1}), we get
-\begin{equation}
+By substituting equation (\ref{th3proofeq2}) to (\ref{th3proofeq1}), we get
+\begin{equation*}
 \hat{f}^{(-i)}(t_i)-y_i=\frac{\hat{f}(t_i)-y_i+\gamma \frac{T_{ii}}{1-\gamma V_{ii}}(\hat{f}'(t_i)-v_i)}{1-S_{ii}-\gamma\frac{T_{ii}}{1-\gamma V_{ii}}U_{ii}}.
-\end{equation}
-Then
-\begin{equation}
-CV(\lambda,\gamma)=\frac{1}{n}\sum_{i=1}^{n}\frac{\hat{f}(t_i)-y_i+\gamma \frac{T_{ii}}{1-\gamma V_{ii}}(\hat{f}'(t_i)-v_i)}{1-S_{ii}-\gamma\frac{T_{ii}}{1-\gamma V_{ii}}U_{ii}}.
-\end{equation}
+\end{equation*}
+Consequently, 
+\begin{equation*}
+CV(\lambda,\gamma)=\frac{1}{n}\sum_{i=1}^{n}\left( \frac{\hat{f}(t_i)-y_i+\gamma \frac{T_{ii}}{1-\gamma V_{ii}}(\hat{f}'(t_i)-v_i)}{1-S_{ii}-\gamma\frac{T_{ii}}{1-\gamma V_{ii}}U_{ii}}\right)^2.
+\end{equation*}
 \end{proof}
 
 

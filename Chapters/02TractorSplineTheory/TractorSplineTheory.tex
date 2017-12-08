@@ -155,8 +155,7 @@ h_{11}^{(n-1)} & \mbox{if $t<t_n$}\\
 
 %The following theorem proves the new generated functions are basis on the entire interval $[a,b]$.
 \begin{theorem}\label{basisindependent}
-On $[t_1,t_n]$, the functions $N_1,\ldots,N_{2n}$ provide a basis for the set of functions which are continuous, have continuous first derivatives and are 
-cubic on each open interval $(t_i,t_{i+1})$, where $i=1, \ldots, n-1$.
+On $[t_1,t_n]$, the functions $N_1,\ldots,N_{2n}$ provide a set of basis functions for the set of functions which are cubic on each interval $[t_i,t_{i+1}]$, $i=1, \ldots, n-1$, and continuous at joint knots, thus it is continuous on the entire interval $[t_1,t_n]$.
 \end{theorem}
 The proof of theorem \ref{basisindependent} is in appendix \ref{AppendixBasisproof}.
 %Then $N_1(t), \ldots, N_{2n}(t)$ are $2n$ basis functions on the interval $[a,b]$. 
@@ -286,47 +285,38 @@ The problem of choosing the smoothing parameter is ubiquitous in curve estimatio
 
 Assuming that the random errors have zero mean, the true regression curve $f(t)$ has the property that, if an observation $y$ is taken at a point $t$, the value $f(t)$ is the best predictor of $y$ in terms of returning a small value of $(y-f(t))^2$. 
 
-Now, focus on an observation $y_i$ at point $t_i$ as being a new observation by omitting it from the set of data, which are used to estimate $\hat{f}$. Denote by $\hat{f}^{(-i)}(t,\lambda)$ the estimated function from the remaining data, where $\lambda$ is the smoothing parameter. Then $\hat{f}^{(-i)}(t,\lambda)$ minimizing 
-\begin{equation*} %\label{originalcv}
-\frac{1}{n-1}\sum_{j \neq i}\left(y_j-f(t_j) \right)^2+\lambda^* \int (f'')^2dt
-\end{equation*}
-is equivalent of minimizing 
+Now, focus on an observation $y_i$ at point $t_i$ as being a new observation by omitting it from the set of data, which are used to estimate $\hat{f}$. Denote by $\hat{f}^{(-i)}(t,\lambda)$ the estimated function from the remaining data, where $\lambda$ is the smoothing parameter. Then $\hat{f}^{(-i)}(t,\lambda)$ is the minimizer of  
 \begin{equation}\label{originalcv}
 \frac{1}{n}\sum_{j \neq i}\left(y_j-f(t_j) \right)^2+\lambda\int (f'')^2dt,
 \end{equation}
-and $\lambda=\frac{n-1}{n}\lambda^*$ can be quantified by cross-validation score function
-\begin{equation}
+and can be quantified by the cross-validation score function
+\begin{equation*}
 \mbox{CV}(\lambda)=\frac{1}{n}\sum_{i=1}^{n}\left(  y_i-\hat{f}^{(-i)}(t_i,\lambda)\right) ^2.
-\end{equation}
-The basis idea of cross-validation is to choose the value of $\lambda$ that minimizes $\mbox{CV}(\lambda)$ \cite{green1993nonparametric}. 
+\end{equation*}
+The basis idea of the cross-validation is to choose the value of $\lambda$ that minimizes $\mbox{CV}(\lambda)$ \cite{green1993nonparametric}. 
 
-An efficient way to calculate cross-validation score is introduced by \cite{green1993nonparametric}. Through the equation (\ref{fhy}), it is known that the value of the smoothing spline $\hat{f}$ depend linearly on the data $y_i$. Define the matrix $A(\lambda)$, which is a map vector of observed values $y_i$ to predicted values $\hat{f}(t_i)$. Then we have
-\begin{equation}\label{crossvalidationmatrixA}
+An efficient way to calculate the cross-validation score is introduced by \cite{green1993nonparametric}. Through the equation (\ref{fhy}), it is known that the value of the smoothing spline $\hat{f}$ depend linearly on the data $y_i$. Define the matrix $A(\lambda)$, which is a map vector of observed values $y_i$ to predicted values $\hat{f}(t_i)$. Then we have
+\begin{equation*}\label{crossvalidationmatrixA}
 \hat{\mathbf{f}}=A(\lambda)\mathbf{y}
-\end{equation}
-and the following Lemma.
+\end{equation*}
+and the following lemma.
 \begin{lemma}\label{cvlema}
 The cross-validation score satisfies
-\begin{equation}
+\begin{equation*}
 \mbox{CV}(\lambda)=\frac{1}{n} \sum_{i=1}^n \left(\frac{y_i-\hat{f}(t_i)}{1-A_{ii}(\lambda)}\right)^2
-\end{equation}
+\end{equation*}
 where $\hat{f}$ is the spline smoother calculated from the full data set $\{(t_i,y_i)\}$ with smoothing parameter $\lambda$.
 \end{lemma}
 
-For a Tractor spline and its MSE function, there are two parameters $\lambda$ and $\gamma$ to be estimated for. Therefore, the objective function (\ref{originalcv}) becomes
-\begin{align*}
-\frac{1}{n-1}\sum_{j \neq i}\left( y_j-f(t_j) \right)^2+\frac{\gamma^*}{n-1}\sum_{j \neq i} \left( v_j-f'(t_j) \right)^2+ \int \lambda^*(t) \left( f'' \right)^2dt,
-\end{align*}
-which is equivalent to 
+For a Tractor spline and its MSE function, there are two parameters $\lambda(t)$ and $\gamma$ to be estimated for. Therefore, $\hat{f}^{(-i)}(t,\lambda)$ is the minimizer of  
 \begin{align}
 \frac{1}{n}\sum_{j \neq i}\left( y_j-f(t_j) \right)^2+\frac{\gamma}{n}\sum_{j \neq i} \left( v_j-f'(t_j) \right)^2+ \int \lambda(t) \left( f'' \right)^2dt,
 \end{align}
-$\gamma=\frac{n-1}{n}\gamma^*$, $\lambda(t)=\frac{n-1}{n}\lambda^*(t)$ and the cross-validation score function is
+and the cross-validation score function is
 \begin{align}
-\mbox{CV}(\lambda,\gamma)=\frac{1}{n}\sum_{i=1}^{n}\left( y_i-\hat{f}^{(-i)}(t_i,\lambda,\gamma) \right) ^2.
+\mbox{CV}\left(\lambda(t),\gamma\right)=\frac{1}{n}\sum_{i=1}^{n}\left( y_i-\hat{f}^{(-i)}\left(t_i,\lambda(t),\gamma\right) \right) ^2.
 \end{align}
-
-For a Tractor spline, the parameter $\hat{\theta}=(B^\top B+\gamma C^\top C+n\Omega_\lambda)^{-1}(B^\top\mathbf{y}+\gamma C^\top\mathbf{v})$ gives us
+Additionally, it is known that the parameter $\hat{\theta}=(B^\top B+\gamma C^\top C+n\Omega_\lambda)^{-1}(B^\top\mathbf{y}+\gamma C^\top\mathbf{v})$ and will give us the following form 
 \begin{equation}
 \begin{split}
  \hat{\mathbf{f}}&=B\hat{\theta}=B(B^\top B+\gamma C^\top C+n\Omega_\lambda)^{-1}B^\top\mathbf{y}+B(B^\top B+\gamma C^\top C+n\Omega_\lambda)^{-1}C^\top\mathbf{v}\\&=S\mathbf{y}+\gamma T\mathbf{v},
@@ -337,33 +327,33 @@ For a Tractor spline, the parameter $\hat{\theta}=(B^\top B+\gamma C^\top C+n\Om
 \hat{\mathbf{f}}'&=C\hat{\theta}=C(B^\top B+\gamma C^\top C+n\Omega_\lambda)^{-1}B^\top\mathbf{y}+C(B^\top B+\gamma C^\top C+n\Omega_\lambda)^{-1}C^\top\mathbf{v}\\&=U\mathbf{y}+\gamma V\mathbf{v}.
  \end{split}
 \end{equation}
-From Lemma \ref{cvlema}, we can prove the following theorem.
+From Lemma \ref{cvlema}, we can prove the following theorem: 
 \begin{theorem}\label{tractorsplinecvscore}
 The cross-validation score of a Tractor spline satisfies
 \begin{equation}\label{tractorcv}
-\mbox{CV}(\lambda,\gamma)=\frac{1}{n}\sum_{i=1}^{n} \left( \frac{\hat{f}(t_i)-y_i+\gamma \frac{T_{ii}}{1-\gamma V_{ii}}(\hat{f}'(t_i)-v_i)}{1-S_{ii}-\gamma\frac{T_{ii}}{1-\gamma V_{ii}}U_{ii}} \right)^2
+\mbox{CV}\left(\lambda(t),\gamma\right)=\frac{1}{n}\sum_{i=1}^{n} \left( \frac{\hat{f}(t_i)-y_i+\gamma \frac{T_{ii}}{1-\gamma V_{ii}}(\hat{f}'(t_i)-v_i)}{1-S_{ii}-\gamma\frac{T_{ii}}{1-\gamma V_{ii}}U_{ii}} \right)^2
 \end{equation}
-where $\hat{f}$ is the Tractor spline smoother calculated from the full data set $\{(t_i,y_i,v_i)\}$ with smoothing parameter $\lambda$ and $\gamma$.
+where $\hat{f}$ is the Tractor spline smoother calculated from the full data set $\{(t_i,y_i,v_i)\}$ with smoothing parameter $\lambda(t)$ and $\gamma$.
 \end{theorem}
 
-The proof of Theorem \ref{tractorsplinecvscore} follows immediately from a Lemma, and gives an expression for the deleted residuals $y_i-\hat{f}^{(-i)}(t_i)$ and $v_i-\hat{f}'^{(-i)}(t_i)$ in terms of $y_i-\hat{f}(t_i)$ and $v_i-\hat{f}'(t_i)$ respectively. 
+The proof of Theorem \ref{tractorsplinecvscore} follows immediately from a lemma, and gives an expression for the deleted residuals $y_i-\hat{f}^{(-i)}(t_i)$ and $v_i-\hat{f}'^{(-i)}(t_i)$ in terms of $y_i-\hat{f}(t_i)$ and $v_i-\hat{f}'(t_i)$ respectively. 
 
 \begin{lemma} \label{cvlemma}
-For fixed $\lambda,\gamma$ and $i$, denote $\mathbf{f}^{(-i)}$ by the vector with components $f_j^{(-i)}=\hat{f}^{(-i)}(t_j,\lambda,\gamma)$,  $\mathbf{f}'^{(-i)}$ by the vector with components $f_j'^{(-i)}=\hat{f}'^{(-i)}(t_j,\lambda,\gamma)$, and define vectors $\mathbf{y}^*$ and $\mathbf{v}^*$ by 
+For fixed $\lambda(t),\gamma$ and $i$, denote $\mathbf{f}^{(-i)}$ by the vector with components $f_j^{(-i)}=\hat{f}^{(-i)}\left(t_j,\lambda(t),\gamma\right)$,  $\mathbf{f}'^{(-i)}$ by the vector with components $f_j'^{(-i)}=\hat{f}'^{(-i)}\left(t_j,\lambda(t),\gamma\right)$, and define vectors $\mathbf{y}^*$ and $\mathbf{v}^*$ by 
 \begin{align}
 \begin{cases}
 y_j^*=y_j &j \neq i\\
 y_i^*=\hat{f}^{(-i)}(t_i) &\mbox{otherwise}
-\end{cases},\\
+\end{cases}\\
 \begin{cases}
 v_j^*=v_j &j \neq i\\
 v_i^*=\hat{f}'^{(-i)}(t_i) &\mbox{otherwise}
-\end{cases}.
+\end{cases}
 \end{align}
 Then
 \begin{align}
-\mathbf{\hat{f}}^{(-i)}&=S\mathbf{y}_i^*+\gamma T\mathbf{v}_i^*\\
-\mathbf{\hat{f}}'^{(-i)}&=U\mathbf{y}_i^*+\gamma V\mathbf{v}_i^*
+\mathbf{\hat{f}}^{(-i)}&=S\mathbf{y}^*+\gamma T\mathbf{v}^*\\
+\mathbf{\hat{f}}'^{(-i)}&=U\mathbf{y}^*+\gamma V\mathbf{v}^*
 \end{align}
 \end{lemma}
 
