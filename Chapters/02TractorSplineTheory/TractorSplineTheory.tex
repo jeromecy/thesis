@@ -239,13 +239,18 @@ Here the linear operator $\mathbf{H}_\xi$ is a symmetric, positive semidefinite 
 it is easily to prove that $\mathbf{T}_{\lambda,\gamma}=\mathbf{B}\mathbf{R}\mathbf{R}^\top\mathbf{C}^\top$ and $\mathbf{U}_{\lambda,\gamma}=\mathbf{C}\mathbf{R}\mathbf{R}^\top\mathbf{B}^\top$, then we will have 
  $\mathbf{T}_{\lambda,\gamma}= \mathbf{U}_{\lambda,\gamma}^\top$. When $\lambda=\gamma=0$, the matrix $\mathbf{S}_{\lambda_0,\gamma_0}=\mathbf{B}(\mathbf{B}^\top\mathbf{B})^{-1}\mathbf{B}^\top$ is idempotent.  
 
-For sufficient cases of $\lambda(t)$ and $\gamma$, Tractor spline has the following property:
+
+\begin{corollary}\label{TractorsplineCorollary}
+If $f(t)$ is the Tractor spline on the entire interval $[t_1,t_n]$, for sufficient cases of $\lambda(t)$ and $\gamma$, $f(t)$ has the following property:
 \begin{itemize}
 \item if $\lambda(t)$ is a piecewise constant and $\gamma \neq 0$, then $f$ and $f'$ are continuous, $f''$ is piecewise linear but not continuous at knots;
 \item if $\lambda(t)$ is a piecewise constant and $\gamma = 0$, the same as above;
 \item if $\lambda(t)=\lambda $ is a constant and $\gamma \neq 0$, the same as above;
 \item if $\lambda(t)=\lambda $ is a constant and $\gamma = 0$, then $f$, $f'$ are continuous, $f''$ is piecewise linear and continuous at knots.
 \end{itemize}
+\end{corollary}
+
+The proof of Corollary \ref{TractorsplineCorollary} is in appendix \ref{proofofCorollary}. 
 
 %Then we take some sample knots $\mathbf{y}^{(new)}$ with the same size of $\mathbf{y}$ from $\hat{\mathbf{f}}$ and reconstruct the spline function. It is easily seen that
 % \begin{equation}

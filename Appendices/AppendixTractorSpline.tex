@@ -195,28 +195,48 @@ Consequently, $f(t)$ is a continuous cubic spline represented by basis functions
 
 
 
-\section{Proof of Tractor Spline Properties}
+\section{Proof of Corollary \ref{TractorsplineCorollary}}\label{proofofCorollary}
 \begin{proof}
 By setting $\gamma\to 0$, the velocity information $v$ is taken away. The degrees of freedom of parameters decreases from $2n$ to $n$. Hence, there exists an $n\times 2n$ matrix $Q_\lambda$ restricting $n$ degrees of freedom of $\hat{\theta}$ and satisfying $Q_\lambda\hat{\theta}=0$.
 
-It is easily seen that the matrices $B$ and $C$ having the following property that 
+It is easily seen that the matrices $B$ and $C$ have the following property:  
 \begin{align*}
 & BB^\top=CC^\top=I_n, \\
 & C^\top CB^\top=B^\top BC^\top=0.
 \end{align*}
-Denoting $G=B^\top B+ \gamma C^\top C +n\Omega_\lambda$ and given $\hat{\theta} =(B^\top B+ \gamma C^\top C +n\Omega_\lambda)^{-1}(B^\top y+\gamma C^\top v)$, we have $G\hat{\theta}=B^\top y+\gamma C^\top v$ and 
+Denoting $G=B^\top B+ \gamma C^\top C +n\Omega_\lambda$ and giving $\hat{\theta} =(B^\top B+ \gamma C^\top C +n\Omega_\lambda)^{-1}(B^\top y+\gamma C^\top v)$, we will have $G\hat{\theta}=B^\top y+\gamma C^\top v$ and 
 \begin{align*}
 & BG\hat{\theta}=y+\gamma BC^\top v\\
 & CG\hat{\theta}=CB^\top y+\gamma v.
 \end{align*}
-Further, $C^\top CG=nC^\top C\Omega_\lambda$, which is the matrix consisting of the even rows of $\Omega_\lambda$. 
+Therefore, $C^\top CG\hat{\theta}=C^\top (CB^\top y+\gamma v) = \gamma C^\top v$. If by setting $\gamma=0$, then we will have $Q_\lambda = C^\top CG$, which consists of the even rows of $\Omega_\lambda$.
 
-For $1<i<n$, 
+%For $1<i<n$, 
+%\begin{align*}
+%&\lambda_i\frac{6}{\Delta_i^2}\theta_{2i-3}+\lambda_i\frac{2}{\Delta_i}\theta_{2i-2}+\left( \lambda_i\frac{-6}{\Delta_i^2}+ \lambda_{i+1}\frac{6}{\Delta_{i+1}^2} \right) \theta_{2i-1} \\
+%+ & \left( \lambda_i\frac{4}{\Delta_i} + \lambda_{i+1}\frac{4}{\Delta_{i+1}}\right)\theta_{2i} 
+%+ \lambda_{i+1}\frac{-16}{\Delta_{i+1}^2}\theta_{2i+1} +  \lambda_{i+1}\frac{2}{\Delta_{i+1}}\theta_{2i+2}
+%\end{align*}
+
+By integrating by parts and using properties of the basis functions at the knots, one can get the even rows of $-\Omega^{(i)}$, which are 
 \begin{align*}
-&\lambda_i\frac{6}{\Delta_i^2}\theta_{2i-3}+\lambda_i\frac{2}{\Delta_i}\theta_{2i-2}+\left( \lambda_i\frac{-6}{\Delta_i^2}+ \lambda_{i+1}\frac{6}{\Delta_{i+1}^2} \right) \theta_{2i-1} \\
-+ & \left( \lambda_i\frac{4}{\Delta_i} + \lambda_{i+1}\frac{4}{\Delta_{i+1}}\right)\theta_{2i} 
-+ \lambda_{i+1}\frac{-16}{\Delta_{i+1}^2}\theta_{2i+1} +  \lambda_{i+1}\frac{2}{\Delta_{i+1}}\theta_{2i+2}
+-\Omega^{(i)}_{2i,2i-1}&=N''_{2i-1}(t_i^+) - N''_{2i-1}(t_i^-)  \\
+-\Omega^{(i)}_{2i,2i}&=N''_{2i}(t_i^+) - N''_{2i}(t_i^-)  \\
+-\Omega^{(i)}_{2i,2i+1}&=N''_{2i+1}(t_i^+) - N''_{2i+1}(t_i^-) \\
+-\Omega^{(i)}_{2i,2i+2}&=N''_{2i+2}(t_i^+) - N''_{2i+2}(t_i^-) \\
+-\Omega^{(i)}_{2i+2,2i-1}&=N''_{2i-1}(t_{i+1}^+) - N''_{2i-1}(t_{i+1}^-) \\
+-\Omega^{(i)}_{2i+2,2i}&=N''_{2i}(t_{i+1}^+) - N''_{2i}(t_{i+1}^-) \\
+-\Omega^{(i)}_{2i+2,2i+1}&=N''_{2i+1}(t_{i+1}^+) - N''_{2i+1}(t_{i+1}^-) \\
+-\Omega^{(i)}_{2i+2,2i+2}&=N''_{2i+2}(t_{i+1}^+) - N''_{2i+2}(t_i^-) 
 \end{align*}
+Thus 
+\begin{equation*}
+Q_\lambda = nC^\top C\Omega_\lambda = nC^\top C\sum_i\lambda_i \Omega^{(i)}.
+\end{equation*}
+Consequently, if and only if $\lambda$ is constant, $Q_\lambda\hat{\theta}=-\lambda\left( f''(t_i^+)-f''(t_i^-)\right)=0$, for $i=1,\ldots,n$, otherwise $Q_\lambda\theta=0$ is true but does not represent $f''(t_i^+)-f''(t_i^-)$. 
+
+As a result, $f''(t)$ is continuous at knots $t_i$ if $\lambda(t)$ is constant and $\gamma=0$. 
+
 
 \end{proof}
 
