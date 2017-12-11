@@ -37,8 +37,8 @@
 \contentsline {figure}{\numberline {5.13}{\ignorespaces Comparison of acceptance rates $\alpha _1$, $\alpha _2$, EffUT and ESSUT between not-updating-mean and updating-mean methods. Black solid dots $\bullet $ indicate values obtained from not-updating-mean method and black solid triangular $\blacktriangle $ indicate values obtained from updating-mean method. The acceptance rates of the updating-mean method are more stable and effective samples are larger in unit computation time. \relax }}{128}
 \contentsline {figure}{\numberline {5.14}{\ignorespaces Visualization of the parameters correlation matrix, which is found in learning phase. \relax }}{130}
 \contentsline {figure}{\numberline {5.15}{\ignorespaces Trace plots of $\theta $ from learning phase after taking 1\tmspace +\thinmuskip {.1667em}000 burn-in samples out from 5\tmspace +\thinmuskip {.1667em}000. \relax }}{131}
-\contentsline {figure}{\numberline {5.16}{\ignorespaces Position and velocity for $X$ and $Y$ found by combined batch and sequential methods. \relax }}{132}
-\contentsline {figure}{\numberline {5.17}{\ignorespaces Zoom in on estimations. For each estimation $\mathaccentV {hat}05E{X}_i (i=1,\dots ,t)$, there is a error circle around it. \relax }}{132}
+\contentsline {figure}{\numberline {5.16}{\ignorespaces Estimations of $X$ and $Y$ found by combined batch and sequential methods. The black line is the estimation by batch method and the blue line is the sequential MCMC filtering estimation. Red dots are the measurements.\relax }}{132}
+\contentsline {figure}{\numberline {5.17}{\ignorespaces Zoom in on estimations. For each estimation $\mathaccentV {hat}05E{X}_i (i=1,\dots ,t)$, there is a error circle around it. \relax }}{133}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
