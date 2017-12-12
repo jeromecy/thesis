@@ -101,7 +101,7 @@ y_{1:t}^\top \Sigma_{YY}^{-1} y_{1:t} &= (L^{-1}By_{1:t})^\top(L^{-1}\Sigma_{XX}
 \end{align}
 From the objective function (\ref{M1}), the posterior distribution of $\theta$ is 
 \begin{align*}
-p(\theta \mid y_{1:t}) &\propto p(y_{1:t}\mid\theta)p(\theta) \propto e^{-\frac{1}{2} y_{1:t} \Sigma_{YY}^{-1} y_{1:t} } \sqrt{\det \Sigma_{YY}^{-1}} p(\theta).
+p(\theta \mid y_{1:t}) &\propto p(y_{1:t}\mid\theta)p(\theta) \propto \exp\left( -\frac{1}{2} y_{1:t} \Sigma_{YY}^{-1} y_{1:t} \right) \sqrt{\det \Sigma_{YY}^{-1}} p(\theta).
 \end{align*}
 Then, by taking natural logarithm on the posterior of $\theta$ and using the useful solutions in equations (\ref{sigmayy01}) and (\ref{sigmayy02}), we will have
 \begin{align}
@@ -700,7 +700,7 @@ where $B_t$ is a $t\times t$ diagonal matrix with elements $\frac{1}{\sigma^2}$.
 
 To use the algorithm \ref{algoonevarible}, similarly with section \ref{sectionlogParameter}, we firstly need to find the posterior distribution of $\theta$ with observations $y_{1:t}$, which in fact is 
 \begin{equation*}
-p(\theta \mid Y) \propto p(Y\mid\theta)p(\theta) \propto e^{-\frac{1}{2} Y \Sigma_{YY}^{-1} Y } \sqrt{\det \Sigma_{YY}^{-1}} p(\theta).
+p(\theta \mid Y) \propto p(Y\mid\theta)p(\theta) \propto \exp\left( -\frac{1}{2} Y \Sigma_{YY}^{-1} Y \right) \sqrt{\det \Sigma_{YY}^{-1}} p(\theta).
 \end{equation*}
 By taking natural logarithm on the posterior of $\theta$ and using the useful solutions in equations (\ref{sigmayy01}) and (\ref{sigmayy02}), we have 
 \begin{equation}\label{simuOUlogL}
@@ -910,7 +910,7 @@ To find the log-posterior distribution of $X_{1:t}$ and $Y_{1:t}$, we start from
 \end{align*}
 By using Choleski decomposition and similar technical solution, second term in the integrated objective function is 
 \begin{align*}
-p(\theta \mid Y) &\propto p(Y\mid\theta)p(\theta) \propto e^{-\frac{1}{2} Y \Sigma_{YY}^{-1} Y } \sqrt{\det \Sigma_{YY}^{-1}} P(\theta).
+p(\theta \mid Y) &\propto p(Y\mid\theta)p(\theta) \propto \exp\left( -\frac{1}{2} Y \Sigma_{YY}^{-1} Y \right) \sqrt{\det \Sigma_{YY}^{-1}} P(\theta).
 \end{align*}
 Then, by taking natural logarithm on the posterior of $\theta$ and using the useful solutions in equations (\ref{sigmayy01}) and (\ref{sigmayy02}), we will have
 \begin{align}\label{logL}

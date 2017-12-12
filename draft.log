@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.5)  12 DEC 2017 15:18
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.5)  12 DEC 2017 17:59
 entering extended mode
 **draft.tex
 (C:\Users\zcao\Documents\Latex\Thesis\draft.tex
@@ -598,7 +598,13 @@ subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
 \c@algocf=\count160
 \algocf@algoframe=\box56
 \algocf@algobox=\box57
-) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\pgf\frontendlayer\tikz.sty"
+) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\romannum\romannum.sty"
+Package: romannum 2009/09/03 v1.0b roman numerals
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\stdclsdv\stdclsdv.sty"
+Package: stdclsdv 2009/09/04 v1.1a Sectional divisions
+))
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\pgf\frontendlayer\tikz.sty"
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\pgf\basiclayer\pgf.sty"
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\pgf\utilities\pgfrcs.sty"
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\pgf\utilities\pgfutil-common.te
@@ -916,18 +922,18 @@ File: tikzlibrarybackgrounds.code.tex 2013/07/18 v3.0.0 (rcs-revision 1.3)
 \c@corollary=\count182
 
 (C:\Users\zcao\Documents\Latex\Thesis\draft.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 100.
+LaTeX Font Info:    ... okay on input line 100.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 100.
+LaTeX Font Info:    ... okay on input line 100.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 100.
+LaTeX Font Info:    ... okay on input line 100.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 100.
+LaTeX Font Info:    ... okay on input line 100.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 100.
+LaTeX Font Info:    ... okay on input line 100.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 100.
+LaTeX Font Info:    ... okay on input line 100.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -955,17 +961,17 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
  ABD: EveryShipout initializing macros
 \c__siunitx_mathsf_int=\count189
-LaTeX Font Info:    Try loading font information for U+msa on input line 98.
+LaTeX Font Info:    Try loading font information for U+msa on input line 100.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 98.
+LaTeX Font Info:    Try loading font information for U+msb on input line 100.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 98.
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 100.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\jknappen\ursfs.fd"
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
@@ -1041,29 +1047,20 @@ Overfull \hbox (9.639pt too wide) in paragraph at lines 66--66
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-Underfull \vbox (badness 1629) has occurred while \output is active []
-
- [4]
-[5] [6] [7]
-Underfull \vbox (badness 1242) has occurred while \output is active []
-
- [8]
-[9]
-Overfull \hbox (5.68484pt too wide) in paragraph at lines 253--254
+[4] [5] [6] [7] [8] [9]
+Overfull \hbox (5.68484pt too wide) in paragraph at lines 252--253
 []\OT1/cmr/m/n/12 A generic PF firstly gen-er-ates $\OML/cmm/m/it/12 N$ \OT1/cm
 r/m/n/12 uni-formly weighted ran-dom mea-sure-ments $\OMS/cmsy/m/n/12 f\OML/cmm
 /m/it/12 x[]; []\OMS/cmsy/m/n/12 g$
  []
 
-[10] [11] [12] [13] [14]) [15] [16
-
-
-]
+[10] [11] [12] [13] [14] [15]) [16]
 Chapter 2.
 
 (C:\Users\zcao\Documents\Latex\Thesis\Chapters/02TractorSplineTheory/TractorSpl
 ineTheory.tex [17
+
+
 
 ] [18] [19] [20] [21]
 <Chapters/02TractorSplineTheory/plot/pptbasisplot2.pdf, id=145, 722.7pt x 542.0
@@ -2272,35 +2269,28 @@ Underfull \vbox (badness 2035) has occurred while \output is active []
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[69] [70] [71] [72] [73] [74] [75]
+[69] [70] [71] [72]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[76]
+[73] [74] [75] [76]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [77]
+[77]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[78]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [79]
-[80] [81]
+[78] [79] [80]
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 596.
- [82] [83]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 595.
+ [81] [82] [83]
 <Chapters/04Filtering/plot/LWchain100.pdf, id=838, 844.15375pt x 597.23125pt>
 File: Chapters/04Filtering/plot/LWchain100.pdf Graphic file (type pdf)
 
 <use Chapters/04Filtering/plot/LWchain100.pdf>
 Package pdftex.def Info: Chapters/04Filtering/plot/LWchain100.pdf used on input
- line 678.
+ line 677.
 (pdftex.def)             Requested size: 202.87111pt x 143.5298pt.
 
 <Chapters/04Filtering/plot/STchain100.pdf, id=839, 844.15375pt x 597.23125pt>
@@ -2308,7 +2298,7 @@ File: Chapters/04Filtering/plot/STchain100.pdf Graphic file (type pdf)
 
 <use Chapters/04Filtering/plot/STchain100.pdf>
 Package pdftex.def Info: Chapters/04Filtering/plot/STchain100.pdf used on input
- line 682.
+ line 681.
 (pdftex.def)             Requested size: 202.87111pt x 143.5298pt.
 
 <Chapters/04Filtering/plot/PLchain100.pdf, id=840, 844.15375pt x 597.23125pt>
@@ -2316,21 +2306,21 @@ File: Chapters/04Filtering/plot/PLchain100.pdf Graphic file (type pdf)
 
 <use Chapters/04Filtering/plot/PLchain100.pdf>
 Package pdftex.def Info: Chapters/04Filtering/plot/PLchain100.pdf used on input
- line 686.
+ line 685.
 (pdftex.def)             Requested size: 202.87111pt x 143.5298pt.
 
 <Chapters/04Filtering/plot/MCMCchain100.pdf, id=841, 844.15375pt x 597.23125pt>
 File: Chapters/04Filtering/plot/MCMCchain100.pdf Graphic file (type pdf)
 <use Chapters/04Filtering/plot/MCMCchain100.pdf>
 Package pdftex.def Info: Chapters/04Filtering/plot/MCMCchain100.pdf used on inp
-ut line 690.
+ut line 689.
 (pdftex.def)             Requested size: 202.87111pt x 143.5298pt.
 
 <Chapters/04Filtering/plot/MCMCchain300.pdf, id=842, 844.15375pt x 597.23125pt>
 File: Chapters/04Filtering/plot/MCMCchain300.pdf Graphic file (type pdf)
 <use Chapters/04Filtering/plot/MCMCchain300.pdf>
 Package pdftex.def Info: Chapters/04Filtering/plot/MCMCchain300.pdf used on inp
-ut line 694.
+ut line 693.
 (pdftex.def)             Requested size: 202.87111pt x 143.5298pt.
 
 <Chapters/04Filtering/plot/MCMCchainVary.pdf, id=843, 844.15375pt x 597.23125pt
@@ -2338,7 +2328,7 @@ ut line 694.
 File: Chapters/04Filtering/plot/MCMCchainVary.pdf Graphic file (type pdf)
  <use Chapters/04Filtering/plot/MCMCchainVary.pdf>
 Package pdftex.def Info: Chapters/04Filtering/plot/MCMCchainVary.pdf used on in
-put line 698.
+put line 697.
 (pdftex.def)             Requested size: 202.87111pt x 143.5298pt.
 
 
@@ -2350,10 +2340,10 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 File: Chapters/04Filtering/plot/CompMCMCboxplotALL.pdf Graphic file (type pdf)
  <use Chapters/04Filtering/plot/CompMCMCboxplotALL.pdf>
 Package pdftex.def Info: Chapters/04Filtering/plot/CompMCMCboxplotALL.pdf used 
-on input line 707.
+on input line 706.
 (pdftex.def)             Requested size: 418.96547pt x 296.41866pt.
 
-Overfull \hbox (16.18433pt too wide) in paragraph at lines 707--715
+Overfull \hbox (16.18433pt too wide) in paragraph at lines 706--714
  [] 
  []
 
@@ -2366,7 +2356,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 File: Chapters/04Filtering/plot/plotlyFilterCompX2.png Graphic file (type png)
  <use Chapters/04Filtering/plot/plotlyFilterCompX2.png>
 Package pdftex.def Info: Chapters/04Filtering/plot/plotlyFilterCompX2.png used 
-on input line 721.
+on input line 720.
 (pdftex.def)             Requested size: 441.01772pt x 262.55635pt.
 
 
@@ -4124,10 +4114,10 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 26633 strings out of 493706
- 588026 string characters out of 3142169
- 550534 words of memory out of 3000000
- 29306 multiletter control sequences out of 15000+200000
+ 26713 strings out of 493706
+ 589341 string characters out of 3142169
+ 550830 words of memory out of 3000000
+ 29378 multiletter control sequences out of 15000+200000
  31642 words of font info for 125 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  55i,21n,67p,10391b,1027s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -4163,7 +4153,7 @@ mtt12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmt
 t8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/m
 sam10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbol
 s/msbm10.pfb>
-Output written on draft.pdf (224 pages, 10737467 bytes).
+Output written on draft.pdf (224 pages, 10738158 bytes).
 PDF statistics:
  2756 PDF objects out of 2984 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

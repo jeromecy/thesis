@@ -1275,6 +1275,13 @@
   publisher = {SIAM}
 }
 
+@BOOK{guzzi2016data,
+  title = {Data Assimilation: Mathematical Concepts and Instructive Examples},
+  publisher = {Springer},
+  year = {2016},
+  author = {Guzzi, Rodolfo}
+}
+
 @ARTICLE{gyorgy2014unscented,
   author = {Gy{\"o}rgy, Katalin and Kelemen, Andr{\'a}s and D{\'a}vid, L{\'a}szl{\'o}},
   title = {Unscented Kalman filters and Particle Filter methods for nonlinear
@@ -1719,6 +1726,14 @@
   pages = {335--346},
   number = {2},
   publisher = {Oxford University Press}
+}
+
+@ARTICLE{kokkala2016particle,
+  author = {Kokkala, Juho and others},
+  title = {Particle and Sigma-Point Methods for State and Parameter Estimation
+	in Nonlinear Dynamic Systems},
+  year = {2016},
+  publisher = {Aalto University}
 }
 
 @INPROCEEDINGS{komoriya1989trajectory,

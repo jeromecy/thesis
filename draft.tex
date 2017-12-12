@@ -18,6 +18,8 @@
 \usepackage{subcaption}
 \usepackage[toc,page]{appendix}
 \usepackage[ruled,vlined,linesnumbered,resetcount,algochapter]{algorithm2e}
+\usepackage{romannum}
+
 
 % % % % % % % % %  tikz package % % % % % % % %
 \usepackage{tikz}
@@ -153,11 +155,11 @@
   \let\protect\l@section\protect\l@subsection
 }
 \makeatother
- \chapter{Proofs And Figures of Tractor Spline Theorems}
+ \chapter{Proofs And Figures of Tractor Spline Theorems}\label{appendTS}
 \input{Appendices/AppendixTractorSpline}
- \chapter{Calculations And Figures of Adaptive Sequential MCMC}
+ \chapter{Calculations And Figures of Adaptive Sequential MCMC}\label{appendMCMC}
   \input{Appendices/AppendixMCMC}
- \chapter{A Spin-off Outcome: Data Simplification Method}
+ \chapter{A Spin-off Outcome: Data Simplification Method}\label{appendSimp}
   \input{Chapters/06Spinoff/GPSsimp}
 \addtocontents{toc}{\endgroup}
 \end{appendices}
