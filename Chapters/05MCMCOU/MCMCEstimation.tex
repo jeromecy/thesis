@@ -219,11 +219,11 @@ If $\alpha \geq 1$, the new state is accepted. Otherwise, the new state is accep
 
 
 
-Here comes an issues of how to choose $q(\cdot\mid x^{(t)})$. The most widely used subclass of MCMC algorithms is based around the Random Walk Metropolis (RWM). The RWM updating scheme was first applied by Metropolis \cite{metropolis1953equation} and proceeds as follows. Given a current value of the $d$-dimensional Markov chain $x^{(t)}$, a new value $x'$ is obtained by proposing a jump $\epsilon = \mid  x' - x^{(t)}\mid  $ from the pre-specified Lebesgue density 
+Here comes an issues of how to choose $q(\cdot\mid x^{(t)})$. The most widely used subclass of MCMC algorithms is based around the Random Walk Metropolis (RWM). The RWM updating scheme was first applied by Metropolis \cite{metropolis1953equation} and proceeds as follows. Given a current value of the $d$-dimensional Markov chain $x^{(t)}$, a new value $x'$ is obtained by proposing a jump $\epsilon = \lvert x' - x^{(t)} \rvert  $ from the pre-specified Lebesgue density 
 \begin{equation}\label{stepsizeep}
 \tilde{\gamma}(\epsilon^\star;\lambda) = \frac{1}{\lambda^d}\gamma \left( \frac{\epsilon^\star}{\lambda} \right),
 \end{equation}
-with $\gamma(\epsilon) = \gamma(-\epsilon)$ for all $\epsilon$. Here $\lambda>0$ governs the overall size of the proposed jump and plays a crucial role in determining the efficiency of any algorithm. In a random walk, the proposal density function $q(\cdot)$ can be chosen for some suitable normal distribution, and hence $q(x'\mid x^{(t)})=N(x'\mid x^{(t)},\epsilon^2)$ and $q(x^{(t)}\mid x')=N(x^{(t)}\mid x',\epsilon^2)$ cancel in the above equation (\ref{alphabalance}) \cite{sherlock2016adaptive}. Therefore, to decide whether to accept the new state, we compute the quantity
+with $\gamma(\epsilon) = \gamma(-\epsilon)$ for all $\epsilon$. Here, the positive $\lambda$ governs the overall distance of the proposed jump and plays a crucial role in determining the efficiency of any algorithm. In a random walk, the proposal density function $q(\cdot)$ can be chosen for some suitable normal distribution, and hence $q(x'\mid x^{(t)})=N(x'\mid x^{(t)},\epsilon^2)$ and $q(x^{(t)}\mid x')=N(x^{(t)}\mid x',\epsilon^2)$ cancel in the above equation (\ref{alphabalance}) \cite{sherlock2016adaptive}. Therefore, to decide whether to accept the new state, we compute the quantity
 \begin{equation}
 \alpha=\min \left\lbrace 1,\frac{\pi(x') q( x^{(t)}\mid x') }{\pi(x^{(t)})  q( x'\mid x^{(t)} ) }  \right\rbrace= \min \left\lbrace 1,\frac{\pi(x')  }{\pi(x^{(t)}) }  \right\rbrace.
 \end{equation}
@@ -483,7 +483,7 @@ where $B$ is a $t\times t$ diagonal matrix with elements $\frac{1}{\sigma^2}$. T
 
 In formula (\ref{M1}), the parameter posterior is estimated with observation data $y_{1:t}$. By using the algorithm \ref{algoonevarible}, although it may take a longer time, we will achieve a precise estimation. Similarly with section \ref{sectionlogParameter}, from the objective function, the posterior distribution of $\theta$ is 
 \begin{equation*}
-p(\theta \mid Y) \propto p(Y\mid\theta)p(\theta) \propto e^{-\frac{1}{2} Y \Sigma_{YY}^{-1} Y } \sqrt{\det \Sigma_{YY}^{-1}} p(\theta).
+p(\theta \mid Y) \propto p(Y\mid\theta)p(\theta) \propto \exp\left( {-\frac{1}{2} Y \Sigma_{YY}^{-1} Y } \right) \sqrt{\det \Sigma_{YY}^{-1}} p(\theta).
 \end{equation*}
 Then, by taking natural logarithm on the posterior of $\theta$ and using the useful solutions in equations (\ref{sigmayy01}) and (\ref{sigmayy02}), we will have
 \begin{equation}\label{linearlogL}
