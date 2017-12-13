@@ -16,9 +16,9 @@ Alternatively, global simplification algorithms have an overview of all tracked 
 Intuitively, the global simplification algorithms can be applied on off-line data analyses and local simplification algorithms will perform better on on-line or real-time track simplification. However, a pertinent algorithm is required in our case. 
 
 
-In our case, a GPS log is a sequence time series points $p_i \in P$, $P=\{ p_1,p_2, \ldots, p_n \}$. Each GPS point $p_i$ contains information of time mark, latitude, longitude and semantic information of velocity, heading direction and boom status, which can be written in form of
+In our case, a GPS log is a sequence time series points $p_i \in P$, $P=\left\lbrace p_1,p_2, \ldots, p_n \right\rbrace$. Each GPS point $p_i$ contains information of time mark, latitude, longitude and semantic information of velocity, heading direction and boom status, which can be written in form of
 \begin{equation}
-T=\{p_t=[x_t,y_t,v_t,\theta_t,b_t] \mid t \in \mathbb{R} \}.
+T=\left\lbrace p_t=[x_t,y_t,v_t,\theta_t,b_t] \mid t \in \mathbb{R} \right\rbrace.
 \end{equation}
 Sequentially connect these points will give us a trajectory of a moving vehicle.
 Particularly, a tractor working on an orchard generates two kinds of boom status information: operating and not operating. This information is recorded by GPS units and is indicated by $b=1$ for operating and $b=0$ for not-operating.
@@ -245,8 +245,8 @@ P_k^-&=AP_{k-1}A^\top+Q
 \end{align*}
 where $\hat{x}_k^-$ is a priori state estimate, $\hat{x}_k$ is a posteriori state estimate, $A$ is status transition matrix, $P_k^-$ is a priori estimate for error covariance, $u_k$ is an input parameter and $Q$ is process noise covariance. When a new observation comes into the data stream, KF update and corrects its estimation by: 
 \begin{align*}
-K_k&=P_k^-H^\top (HP_k^-H^\top+R)^{-1} \\
-\hat{x}_k&=\hat{x}_k^-+K_k(z_k-H\hat{x}_k^-) \\
+K_k&=P_k^-H^\top \left(HP_k^-H^\top+R\right)^{-1} \\
+\hat{x}_k&=\hat{x}_k^-+K_k\left(z_k-H\hat{x}_k^-\right) \\
 P_k&=(I-K_kH)P_k^-
 \end{align*}
 where $K_k$ is the Kalman gain matrix, $z_k$ is the observed data.

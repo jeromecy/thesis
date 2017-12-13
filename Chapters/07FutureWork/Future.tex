@@ -17,7 +17,7 @@ L_2(y,f(t)) = \frac{1}{2}\left(y-f(t)\right)^2,
 \end{equation*}
 and the best trained $f^*$ is 
 \begin{equation*}
-f^* = \arg_{f}\min E_{t,y}L_2(y,f(t))).
+f^* = \arg_{f}\min E_{t,y}\lbrack L_2\left(y,f\right)\rbrack.
 \end{equation*}
 To find $f^*$, it is reducing the loss $\tilde{y}_i=y_i-F_{m-1}(t_i)$ recursively. Consequently, the 
 \begin{equation*}
@@ -28,7 +28,7 @@ is the sum of some basic learners $h_m(t,\alpha)$. $m=1,\ldots,M$ determines the
 
 On-line boosting algorithms are given by \cite{babenko2009family} and \cite{beygelzimer2015online}. It is assumed that the loss over the entire training data can be expressed as a sum of the loss for each point $t_i$, that is $L(f(t,y))=\sum_i L(f(t_i,y_i))$. Instead of computing the gradient of the entire loss, the gradient is computed with respect to just one data point. Furthermore, by adding additional regularization term will help to smooth the final learned weights to avoid over-fitting in a penalized regression problem \cite{chen2016xgboost}. 
 
-Accordingly, the Tractor spline $f^*(t)$ is a sum of several weak learners $f_m(t)$, each of which has $2N$ parameters $\theta_m=\{\theta_m^{(1)},\ldots,\theta_m^{(2N)}\}$. The optimal $\theta^*$ is found by 
+Accordingly, the Tractor spline $f^*(t)$ is a sum of several weak learners $f_m(t)$, each of which has $2N$ parameters $\theta_m=\left\lbrace \theta_m^{(1)},\ldots,\theta_m^{(2N)}\right\rbrace$. The optimal $\theta^*$ is found by 
 \begin{equation*}
 \theta^*=\sum_{m=0}^{M}\theta_m,
 \end{equation*}
@@ -43,14 +43,14 @@ As a result, after $M$ iterations, $\theta^*$ is convergence and $f^*(t,y,\theta
 In Chapter \ref{ChapterGPR}, the Bayes estimate of Tractor spline with correlated errors is given. The extended GCV serves to find the optimal parameters for the estimate. Whereas, the extended GCV is only applicable for trivial Tractor spline, where $\lambda(t)$ is a constant. 
 
 
-In \cite{opsomer2001nonparametric} and \cite{wang1998smoothing}, the authors present a few extensions of the generalized maximum likelihood (GML), generalized cross-validation (GCV) and unbiased risk (UBR) methods to find optimal parameters for smoothing spline ANOVA models when observations are correlated. These algorithms in applied on conventional polynomial smoothing spine, but not on Tractor spline. Suppose the errors of the observations $y$ and $v$ are $\varepsilon_y\sim N(0,\sigma^2W^{-1})$ and $\varepsilon_v\sim N(0,\tau^2U^{-1})$ with unknown parameters $\sigma^2$ and $\tau^2$, I hope to find general solutions, similarly to GML, GCV and UBR, to tune the parameters for Tractor spline returning least true mean squared errors. 
+In \cite{opsomer2001nonparametric} and \cite{wang1998smoothing}, the authors present a few extensions of the generalized maximum likelihood (GML), generalized cross-validation (GCV) and unbiased risk (UBR) methods to find optimal parameters for smoothing spline ANOVA models when observations are correlated. These algorithms in applied on conventional polynomial smoothing spine, but not on Tractor spline. Suppose the errors of the observations $y$ and $v$ are $\varepsilon_y\sim N\left(0,\sigma^2W^{-1}\right)$ and $\varepsilon_v\sim N\left(0,\tau^2U^{-1}\right)$ with unknown parameters $\sigma^2$ and $\tau^2$, I hope to find general solutions, similarly to GML, GCV and UBR, to tune the parameters for Tractor spline returning least true mean squared errors. 
 
 
 
 
 \subsection*{Informative Proposals}
 
-In Chapter \ref{ChapterMCMC}, the proposed adaptive MCMC algorithm draws samples of $\theta=\{\gamma,\xi^2,\lambda^2,\sigma^2,\tau^2\}$ from $N(m,C)$, where the information of $m$ and $C$ are learned from a self-tuning learning phase. For each $\theta^{(i)}$, it generates a paired mean and variance $\{\mu_t^{(i)},\Sigma_t^{(i)}\}$ for mixture Gaussian $x_t$. 
+In Chapter \ref{ChapterMCMC}, the proposed adaptive MCMC algorithm draws samples of $\theta=\left\lbrace\gamma,\xi^2,\lambda^2,\sigma^2,\tau^2\right\rbrace$ from $N(m,C)$, where the information of $m$ and $C$ are learned from a self-tuning learning phase. For each $\theta^{(i)}$, it generates a paired mean and variance $\left\lbrace\mu_t^{(i)},\Sigma_t^{(i)}\right\rbrace$ for mixture Gaussian $x_t$. 
 
 In the sampling step of real data application, the mechanic boom status is not incorporated, which may provide useful information. Like the penalty parameter $\lambda$ being classified by $\lambda_d$ and $\lambda_u$ according to boom status, the MCMC sampler may use this information to propose $\theta$ with different strategies, such as different step sizes, different $m$s and $C$s. In this way, the parameter $\theta$ is classified by $\theta_u$ and $\theta_d$. 
 
@@ -65,7 +65,7 @@ In the sampling step of real data application, the mechanic boom status is not i
 
 In several references, Grid-based methods have been proved that it provides an optimal recursion of the filtered density $p(x_t\mid y_{1:t})$ if the state-space is discrete and consists of a finite number of states \cite{ristic2004beyond}, \cite{stroud2016bayesian}, \cite{arulampalam2002tutorial} and \cite{hartmann2016grid}. 
 
-In the application of real time series dataset, the model is supposed as an OU-process containing five unknown parameters. With the idea of grid-based algorithm, the 5-dimension parameter space $\mathbb{R}^5$ can be initialized by spanning $\theta_0^{(i)}$ with equal weights $w_0=\{\frac{1}{N},\frac{1}{N},\frac{1}{N},\frac{1}{N},\frac{1}{N}\}$ at time $t=0$, where $i=1,\ldots,N$. When a new observation $Y_t=\{y_t,v_t\}$ comes into the system, the weights for each parameter in each subspace are updated via $w_t\propto p(Y_t\mid \theta,Y_{1:t-1})w_{t-1}$. 
+In the application of real time series dataset, the model is supposed as an OU-process containing five unknown parameters. With the idea of grid-based algorithm, the 5-dimension parameter space $\mathbb{R}^5$ can be initialized by spanning $\theta_0^{(i)}$ with equal weights $w_0=\left\lbrace\frac{1}{N},\frac{1}{N},\frac{1}{N},\frac{1}{N},\frac{1}{N}\right\rbrace$ at time $t=0$, where $i=1,\ldots,N$. When a new observation $Y_t=\left\lbrace y_t,v_t\right\rbrace$ comes into the system, the weights for each parameter in each subspace are updated via $w_t\propto p(Y_t\mid \theta,Y_{1:t-1})w_{t-1}$. 
 
 However, the grid-based MCMC may not be practical for a higher $n$-dimensional space, which requires $\BigO{N^n}$ computation cost per MCMC step. 
 
@@ -76,9 +76,9 @@ Parallel computing is a type of computation in which many calculations or the ex
 
 Parallel MCMC is using this technology to deploy the computation and run samplers on multi-core CPU. Approaches for parallel MCMC are either by implementing parallelization within a single chain or by running multiple chains \cite{wu2012parallel}. It is useful for computing complex Bayesian models, which do not only lead to a dramatic speedup in computing but can also be used to optimize model parameters in complex Bayesian models.
 
-A simple parallel Monte Carlo estimation of $\E(p(\theta))$ proceeds in the following way \cite{kontoghiorghes2005handbook}. Suppose there amount to $k$ CPU cores to generate $N$ samples. Thus, on each CPU there are $m=N/k$ samples on average. A master process passes $m$ to each slave process $i$, $i=1,\ldots,k$. At each slave process, it generates $m$ samples for $\theta_i^{(m)}$ and passes middle-result $S_i$ back to the master process. At last, the master process computes the final result by 
+A simple parallel Monte Carlo estimation of $\E\lbrack p(\theta)\rbrack$ proceeds in the following way \cite{kontoghiorghes2005handbook}. Suppose there amount to $k$ CPU cores to generate $N$ samples. Thus, on each CPU there are $m=N/k$ samples on average. A master process passes $m$ to each slave process $i$, $i=1,\ldots,k$. At each slave process, it generates $m$ samples for $\theta_i^{(m)}$ and passes middle-result $S_i$ back to the master process. At last, the master process computes the final result by 
 \begin{equation*}
-\E(p(\theta))=\frac{\sum_i S_i}{N}. 
+\E\lbrack p(\theta)\rbrack=\frac{\sum_i S_i}{N}. 
 \end{equation*}
 
 Therefore, parallel MCMC is using MCMC sampler scheme to draw samples on multi-cores simultaneously. A naive yet natural approach to parallel MCMC is simply to generate several independent Markov chains on different

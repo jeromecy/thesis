@@ -34,7 +34,7 @@ The assumption Markovian keeps the current state $x_t$ only depending on the pre
 \begin{array}{cccccccccc}\cdots &\to &x_{t-1}&\to &x_{t}&\to &x_{t+1}&\to &\cdots &{\text{truth}}\\  &&\downarrow &&\downarrow &&\downarrow && &\\ \cdots&&y_{t-1}&&y_{t}&&y_{t+1}&&\cdots &{\text{observation}}\end{array}
 \end{align*}
 
-In applications, the process functions $G_t$ and $F_t$ contain one or more unknown parameters that need to be estimated \cite{de1988likelihood} and the goal is to estimate the true states on sequential observations $y_1, \ldots, y_t$. Then it becomes to estimate the joint density of $p(x_{1:t},\theta \mid y_{1:t})$, where $x_{1:t} = \{x_1, x_2, \ldots, x_t \}$ are the hidden states and $y_{1:t} = \{y_1, y_2, \ldots, y_t \}$ are the observed outcomes and $\theta$ is a set of unknown parameters. 
+In applications, the process functions $G_t$ and $F_t$ contain one or more unknown parameters that need to be estimated \cite{de1988likelihood} and the goal is to estimate the true states on sequential observations $y_1, \ldots, y_t$. Then it becomes to estimate the joint density of $p(x_{1:t},\theta \mid y_{1:t})$, where $x_{1:t} = \left\lbrace x_1, x_2, \ldots, x_t \right\rbrace$ are the hidden states and $y_{1:t} = \left\lbrace y_1, y_2, \ldots, y_t \right\rbrace$ are the observed outcomes and $\theta$ is a set of unknown parameters. 
 
 
 \subsection*{Contents}
@@ -70,8 +70,8 @@ where the normalization $p(y_t \mid  y_{1:t-1})=\int p(y_t \mid x_t )p(x_t \mid 
 
 Imagine that the state-space is partitioned as many parts, in which the particles are filled according to some probability measure. The higher probability, the denser the particles are concentrated. Suppose the particles $x_k^{(1)}, \ldots, x_k^{(N)}$ at time $k$ are drawn from the target probability density function $p(x)$, then these particles are used to estimate the expectation and variance of $f(x)$ by
 \begin{align*}
-\E(f(x)) &= \int_a^bf(x)p(x)dx\\
-\Var(f(x)) &= \E\left[ f(x)-\E(f(x)) \right]^2p(x)dx.
+\E\lbrack f(x) \rbrack &= \int_a^bf(x)p(x)dx\\
+\Var\lbrack f(x)\rbrack &= \E\lbrack f(x)-\E\left( f(x)\right) \rbrack^2p(x)dx.
 \end{align*}
 Back to our target, the posterior distribution or density is empirically represented by a weighted sum of samples $x_k^{(1)}, \ldots, x_k^{(N)}$  
 \begin{equation}\label{rawParticleFilter}
@@ -79,7 +79,7 @@ Back to our target, the posterior distribution or density is empirically represe
 \end{equation}
 where $f(x)=\delta (x_k-x_k^{(i)})$ is Dirac delta function. Hence, a continuous variable is approximated by a discrete one with a random support. When $N$ is sufficiently large, $\hat{p}(x_k\mid y_{1:t})$ was treated by particle filter as the true posterior $p(x_k\mid y_{1:t})$. By this approximation, the filtering problem becomes to get the expectation of current status 
 \begin{align*}
-\E\left(f(x_k)\right) &\approx \int f(x_k)\hat{p}(x_k\mid y_{1:t})dx_k \\
+\E\lbrack f(x_k)\rbrack &\approx \int f(x_k)\hat{p}(x_k\mid y_{1:t})dx_k \\
  & =\frac{1}{N} \sum_{i=1}^N\int f(x_k) \delta (x_k-x_k^{(i)}) dx_k\\
  & = \frac{1}{N}\sum_{i=1}^Nf\left(x_k^{(i)}\right).
 \end{align*}
@@ -92,21 +92,21 @@ However, the posterior distribution is unknown and impossible to sample from the
 
 It is common to sample from an easy-to-implement distribution, the so-called proposal distribution $q(x\mid y)$, hence
 \begin{align*}
-\E\left(f(x)\right) &= \int f(x_t )\frac{p(x_t \mid y_{1:t})}{q(x_t \mid y_{1:t})} q(x_t \mid y_{1:t})dx_x\\
+\E\lbrack f(x) \rbrack &= \int f(x_t )\frac{p(x_t \mid y_{1:t})}{q(x_t \mid y_{1:t})} q(x_t \mid y_{1:t})dx_x\\
 &= \int f(x_t )\frac{p(x_t )p(y_{1:t}\mid x_t )}{p(y_{1:t})q(x_t \mid y_{1:t})} q(x_t \mid y_{1:t})dx_x\\
 &= \int f(x_t )\frac{W_t (x_t )}{p(y_{1:t})} q(x_t \mid y_{1:t})dx_x,
 \end{align*}
 where $W_t (x_t )=\frac{p(x_t )p(y_{1:t}\mid x_t )}{q(x_t \mid y_{1:t})} \propto \frac{p(x_t \mid y_{1:t})}{q(x_t \mid y_{1:t})}$. Because $p(y_{1:t})=\int p(y_{1:t}\mid x_t )p(x_t )dx_t $, so the above equation can be rewritten as
 \begin{align*}
-\E\left(f(x)\right) &= \frac{1}{p(y_{1:t})}\int f(x_t )W_t (x_t )q(x_t \mid y_{1:t})dx_t \\
+\E\lbrack f(x)\rbrack&= \frac{1}{p(y_{1:t})}\int f(x_t )W_t (x_t )q(x_t \mid y_{1:t})dx_t \\
 &= \frac{ \int f(x_t )W_t (x_t )q(x_t \mid y_{1:t})dx_t  }{\int p(y_{1:t}\mid x_t )p(x_t )dx_t } \\
 &= \frac{ \int f(x_t )W_t (x_t )q(x_t \mid y_{1:t})dx_t  }{\int W_t (x_t )q(x_t \mid y_{1:t})dx_t } \\
 &= \frac{\E_{q(x_t \mid y_{1:t})}[W_t (x_t )f(x_t )]}{\E_{q(x_t \mid y_{1:t})}[W_t (x_t )]}.
 \end{align*}
-To solve the above equation, we can use Monte Carlo method by drawing samples $\{x_t^{(i)}\}$ from $q(x_t \mid y_{1:t})$ and get its expectation, which is approximated by 
+To solve the above equation, we can use Monte Carlo method by drawing samples $\left\lbrace x_t^{(i)}\right\rbrace$ from $q(x_t \mid y_{1:t})$ and get its expectation, which is approximated by 
 \begin{align}\label{PFexpectation}
 \begin{split}
-\E\left(f(x_t )\right) &\approx \frac{\frac{1}{N} \sum_{i=1}^{N} W_t\left(x_t^{(i)}\right)f\left(x_t^{(i)}\right)} {\frac{1}{N} \sum_{i=1}^{N} W_t\left(x_t^{(i)}\right)}\\
+\E\lbrack f(x_t )\rbrack &\approx \frac{\frac{1}{N} \sum_{i=1}^{N} W_t\left(x_t^{(i)}\right)f\left(x_t^{(i)}\right)} {\frac{1}{N} \sum_{i=1}^{N} W_t\left(x_t^{(i)}\right)}\\
 &= \sum_{i=1}^{N} \tilde{W}_t\left(x_t^{(i)}\right)f\left(x_t^{(i)}\right),
 \end{split}
 \end{align}
@@ -123,9 +123,9 @@ p(x_{0:t}\mid y_{1:t}) &= \frac{p(y_t \mid x_{0:t},y_{1:t-1})p(x_{0:t}\mid y_{1:
 \end{align*}
 the recursive form of the weights are
 \begin{align*}
-W_t^{(i)} &\propto \frac{p(x_{0:t}^{(i)}\mid y_{1:t})}{q(x_{0:t}^{(i)}\mid y_{1:t})}\\
-&= \frac{ p(y_{1:t}\mid x_{0:t}^{(i)}) p(x_{t}^{(i)}\mid x_{t-1}^{(i)})  p(x_{0:t-1}^{(i)}\mid y_{1:t-1})}   { q(x_{t}^{(i)}\mid x_{0:t-1}^{(i)},y_{t})  q(x_{0:t-1}^{(i)}\mid y_{1:t-1}) } \\
-&= W_{t-1}^{(i)} \frac{ p(y_{1:t}\mid x_{0:t}^{(i)}) p(x_{t}^{(i)}\mid x_{t-1}^{(i)}) }   {q(x_{t}^{(i)}\mid x_{0:t-1}^{(i)},y_{t})}.
+W_t^{(i)} &\propto \frac{p\left(x_{0:t}^{(i)}\mid y_{1:t}\right)}{q\left(x_{0:t}^{(i)}\mid y_{1:t}\right)}\\
+&= \frac{ p\left(y_{1:t}\mid x_{0:t}^{(i)}\right) p\left(x_{t}^{(i)}\mid x_{t-1}^{(i)}\right)  p\left(x_{0:t-1}^{(i)}\mid y_{1:t-1}\right)}   { q\left(x_{t}^{(i)}\mid x_{0:t-1}^{(i)},y_{t}\right)  q\left(x_{0:t-1}^{(i)}\mid y_{1:t-1}\right) } \\
+&= W_{t-1}^{(i)} \frac{ p\left(y_{1:t}\mid x_{0:t}^{(i)}\right) p\left(x_{t}^{(i)}\mid x_{t-1}^{(i)}\right) }   {q\left(x_{t}^{(i)}\mid x_{0:t-1}^{(i)},y_{t}\right)}.
 \end{align*}
 
 \subsection{Sequential Importance Sampling and Resampling}
@@ -136,16 +136,16 @@ q(x_t \mid  x_{0:t-1},y_{1:t})=q(x_t \mid  x_{t-1},y_t ),
 \end{align*}
 the importance weights $W_t^{(i)}$ can be updated recursively via 
 \begin{align*}
-W_t^{(i)} &\propto W_{t-1}^{(i)} \frac{ p(y_t \mid x_t^{(i)}) p(x_{t}^{(i)}\mid x_{t-1}^{(i)}) }   {q(x_{t}^{(i)}\mid x_{t-1}^{(i)},y_{t})}.
+W_t^{(i)} &\propto W_{t-1}^{(i)} \frac{ p\left(y_t \mid x_t^{(i)}\right) p\left(x_{t}^{(i)}\mid x_{t-1}^{(i)}\right) }   {q\left(x_{t}^{(i)}\mid x_{t-1}^{(i)},y_{t}\right)}.
 \end{align*}
 
 The problem of SIS filter is that the distribution of importance weights becomes more and more skewed as time increases. Hence, after several iterations, only few particles have non-zero importance weights. This phenomenon is called \textit{weight degeneracy} or \textit{sample impoverishment} \cite{smcmip2011}.
 
 The effective sample size $\textit{N}_{\textit{\tiny eff}}$ is suggested to monitor how bad the degeneration is, which is
 \begin{align*}
-\textit{N}_{\textit{\tiny eff}}=\frac{N}{1+\Var(w_t^{*(i)})},
+\textit{N}_{\textit{\tiny eff}}=\frac{N}{1+\Var\left(w_t^{*(i)}\right)},
 \end{align*}
-where $w_t^{*(i)}=\frac{p(x_t^{(i)}\mid y_{1:t})}{q(x_t^{(i)}\mid x_{t-1}^{(i)},y_{1:t})}$. The more different between the biggest weight and smallest weight, the worse the degeneration is. In practice, the effective sample size is approximated by
+where $w_t^{*(i)}=\frac{p\left(x_t^{(i)}\mid y_{1:t}\right)}{q\left(x_t^{(i)}\mid x_{t-1}^{(i)},y_{1:t}\right)}$. The more different between the biggest weight and smallest weight, the worse the degeneration is. In practice, the effective sample size is approximated by
 \begin{align*}
 \hat{N}_{\textit{\tiny eff}}\approx \frac{1}{\sum_{i=1}^{N}\left(w_t^{(i)}\right)^2}.
 \end{align*}
@@ -163,20 +163,20 @@ where $n_i$ represents how many times the new particles $x_t^{(j)}$ were duplica
 
 Then the process of SIS particle filter with resampling is summarized in following Algorithm \ref{algorithmSIS}. 
 %\begin{itemize}
-%\item Initial particles when $t=0$. For $i=1, \ldots, N$, draw samples $\{x_0^{(i)}\}$ from $p(x_0)$.
+%\item Initial particles when $t=0$. For $i=1, \ldots, N$, draw samples $\left\lbrace x_0^{(i)}\right\rbrace$ from $p(x_0)$.
 %\item For $t=1,2,\ldots$, run the process recursively
 %\begin{itemize}
-%\item Importance sampling: draw sample $\{\tilde{x}_t^{(i)}\}_{i=1}^N$ from $q(x_t \mid y_{1:t})$, calculate their weights $\tilde{w}_t^{(i)}$ and normalize them.
-%\item Resampling: Resample $\{\tilde{x}_t^{(i)}, \tilde{w}_t^{(i)}\}$ and get a new set $\{x_t^{(i)},\frac{1}{N}\}$.
+%\item Importance sampling: draw sample $\left\lbrace \tilde{x}_t^{(i)}\right\rbrace_{i=1}^N$ from $q(x_t \mid y_{1:t})$, calculate their weights $\tilde{w}_t^{(i)}$ and normalize them.
+%\item Resampling: Resample $\left\lbrace \tilde{x}_t^{(i)}, \tilde{w}_t^{(i)}\right\rbrace$ and get a new set $\left\lbrace x_t^{(i)},\frac{1}{N}\right\rbrace$.
 %\item Output the status at time $t$: $\hat{x}_t =\sum_{i=1}^{N}\tilde{x}_t^{(i)}\tilde{w}_t^{(i)}$.
 %\end{itemize}
 %\end{itemize}
 \begin{algorithm}[h]
 \SetAlgoLined 
 %\KwResutt{Write here the resutt }
-Initialization: Initial particles when $t=0$. For $i=1, \ldots, N$, draw samples $\{x_0^{(i)}\}$ from $p(x_0)$.\\
-\For{$t=1,2,\ldots, n$} {Importance sampling: draw sample $\{\tilde{x}_t^{(i)}\}_{i=1}^N$ from $q(x_t \mid y_{1:t})$, calculate their weights $\tilde{w}_t^{(i)}$ and normalize them. \\
-Resampling: Resample $\{\tilde{x}_t^{(i)}, \tilde{w}_t^{(i)}\}$ and get a new set $\{x_t^{(i)},\frac{1}{N}\}$.\\
+Initialization: Initial particles when $t=0$. For $i=1, \ldots, N$, draw samples $\lbrace x_0^{(i)}\rbrace$ from $p(x_0)$.\\
+\For{$t=1,2,\ldots, n$} {Importance sampling: draw sample $\left\lbrace \tilde{x}_t^{(i)}\right\rbrace_{i=1}^N$ from $q(x_t \mid y_{1:t})$, calculate their weights $\tilde{w}_t^{(i)}$ and normalize them. \\
+Resampling: Resample $\left\lbrace \tilde{x}_t^{(i)}, \tilde{w}_t^{(i)}\right\rbrace$ and get a new set $\left\lbrace x_t^{(i)},\frac{1}{N}\right\rbrace$.\\
 Output the status at time $t$: $\hat{x}_t =\sum_{i=1}^{N}\tilde{x}_t^{(i)}\tilde{w}_t^{(i)}$.}
  \caption{Sampling and Importance Sampling.}\label{algorithmSIS}
 \end{algorithm}
@@ -184,14 +184,14 @@ Output the status at time $t$: $\hat{x}_t =\sum_{i=1}^{N}\tilde{x}_t^{(i)}\tilde
 
 In SIR, if we choose
 \begin{align*}
-q(x_t^{(i)}\mid x_{t-1}^{(i)},y_t ) = p(x_t^{(i)}\mid x_{t-1}^{(i)}),
+q\left(x_t^{(i)}\mid x_{t-1}^{(i)},y_t\right) = p\left(x_t^{(i)}\mid x_{t-1}^{(i)}\right),
 \end{align*}
 the weights become
 \begin{align*}
-w_t^{(i)}&\propto w_{t-1}^{(i)}\frac{ p(y_t \mid x_{t}^{(i)}) p(x_t^{(i)}\mid x_{t-1}^{(i)}) }{q(x_t^{(i)}\mid x_{t-1}^{(i)},y_t ) }\\
-&\propto w_{t-1}^{(i)}p(y_t \mid x_{t}^{(i)}).
+w_t^{(i)}&\propto w_{t-1}^{(i)}\frac{ p\left(y_t \mid x_{t}^{(i)}\right) p\left(x_t^{(i)}\mid x_{t-1}^{(i)}\right)}{q\left(x_t^{(i)}\mid x_{t-1}^{(i)},y_t \right)}\\
+&\propto w_{t-1}^{(i)}p\left(y_t \mid x_{t}^{(i)}\right).
 \end{align*}
-Because $w_{t-1}^{(i)}=\frac{1}{N}$, thus we have $w_t^{(i)} \propto p(y_t \mid x_{t}^{(i)})$ and
+Because $w_{t-1}^{(i)}=\frac{1}{N}$, thus we have $w_t^{(i)} \propto p\left(y_t \mid x_{t}^{(i)}\right)$ and
 \begin{align*}
 w=\frac{1}{\sqrt{2\pi\Sigma}}\exp\left(-\frac{1}{2} (y_{\mbox{\tiny true}}-y)\Sigma^{-1}(y_{\mbox{\tiny true}}-y)\right).
 \end{align*}
@@ -208,23 +208,23 @@ The \textit{auxiliary particle filter} (APF) was first introduced by \cite{pitt1
 
 At each step, the algorithm draws a sample of the particle index $i$, which will be propagated from $t-1$ into the $t$, on the mixture in (\ref{PFexpectation}). These indexes are auxiliary variables only used as an intermediary step, hence the name of the algorithm \cite{pitt1999filtering}. Thus, the task becomes to sample from the joint density $p(x_t,i\mid y_{1:t})$. Define 
 \begin{equation}
-p(x_t,i\mid y_{1:t})\propto p(y_t\mid x_t)p(x_t\mid x_{t-1}^{(i)})w_{t-1}^{(i)}, 
+p(x_t,i\mid y_{1:t})\propto p(y_t\mid x_t)p\left(x_t\mid x_{t-1}^{(i)}\right) w_{t-1}^{(i)}, 
 \end{equation}
 and define $\mu_t^{(i)}$ as some characterization of $x_t\mid x_{t-1}$, which suggested by the author could be mean, mode, a sample and so on, then the joint density can be approximated by  
 \begin{equation}
-\pi(x_t,i\mid y_{1:t})\propto p(y_t\mid \mu_t^{(i)})p(x_t\mid x_{t-1}^{(i)})w_{t-1}^{(i)}, 
+\pi\left(x_t,i\mid y_{1:t}\right)\propto p\left(y_t\mid \mu_t^{\left(i\right)}\right)p\left(x_t\mid x_{t-1}^{\left(i\right)}\right)w_{t-1}^{\left(i\right)}, 
 \end{equation}
 with weights
 \begin{equation*}
-w_t^{(i)}\propto \frac{ p(y_t\mid x_t^{(i)})  }{  p(y_t\mid\mu_t^{k(i)})   }.
+w_t^{\left(i\right)}\propto \frac{ p\left(y_t\mid x_t^{\left(i\right)}\right)  }{  p\left(y_t\mid\mu_t^{k\left(i\right)}\right)   }.
 \end{equation*}
 This auxiliary variable based SIR requires only the ability to propagate and evaluate the likelihood, just as the original SIR suggestion of \cite{gordon1993novel}.  
 
-The main idea behind the APF is modifying the original sequence of target distributions to guide particles in promising regions, can be extended outside the filtering framework \cite{JOHANSEN20081498}. It is also recommended in the literature \cite{liu2008monte} that the particles can be resampled not according to the normalized weights $w_t^{\mbox{\tiny SISR}}(x_{1:t})=\frac{p(x_{1:t})}{ p(x_{1:t-1}q(x_t\mid x_{1:t-1})  }$  but according to a generic score function $w_t(x_{1:t})>0$ at time t
+The main idea behind the APF is modifying the original sequence of target distributions to guide particles in promising regions, can be extended outside the filtering framework \cite{JOHANSEN20081498}. It is also recommended in the literature \cite{liu2008monte} that the particles can be resampled not according to the normalized weights $w_t^{\mbox{\tiny SISR}}(x_{1:t})=\frac{p(x_{1:t})}{ p(x_{1:t-1}q(x_t\mid x_{1:t-1})  }$  but according to a generic score function $w_t(x_{1:t})>0$ at time $t$
 \begin{equation*}
-w_t(x_{1:t}) = g(w_t^{\mbox{\tiny SISR}}(x_{1:t})),
+w_t(x_{1:t}) = g\left(w_t^{\mbox{\tiny SISR}}(x_{1:t})\right),
 \end{equation*}
-where $g: \mathbb{R}^+\rightarrow \mathbb{R}^+$ is a monotonously increasing function, such as $g(x)=x^\alpha$, where $0<\alpha\leq 1$. 
+where $g: \mathbb{R}^+\mapsto \mathbb{R}^+$ is a monotonously increasing function, such as $g(x)=x^\alpha$, where $0<\alpha\leq 1$. 
 
 
 
@@ -276,7 +276,7 @@ As we discussed before, the a filtering problem is to find the posterior distrib
 \begin{equation}
 p(x_t\mid y_{1:t}) \propto \int p(y_t\mid x_t)p(x_t\mid x_{t-1})p(x_{t-1}\mid y_{1:t-1})dx_{t-1}. 
 \end{equation} 
-In particle filter, the posterior is approximated by particles $x_t^{(1)},\ldots,x_t^{(N)}$ in equation (\ref{rawParticleFilter}). A MCMC procedure is designed using (\ref{rawParticleFilter}) as the target distribution with a proposal distribution of $q(x_t\mid x_t^{(i)})$. Therefore, like MCMC, the desired approximation $\hat{p}(x_t\mid y_{1:t})$ is obtained by storing every accepted samples after the initial burn-in iterations \cite{septier2009mcmc}. The drawback is excessive computation occurs as the number of particles increases at each iteration. 
+In particle filter, the posterior is approximated by particles $x_t^{(1)},\ldots,x_t^{(N)}$ in equation (\ref{rawParticleFilter}). A MCMC procedure is designed using (\ref{rawParticleFilter}) as the target distribution with a proposal distribution of $q\left(x_t\mid x_t^{(i)}\right)$. Therefore, like MCMC, the desired approximation $\hat{p}(x_t\mid y_{1:t})$ is obtained by storing every accepted samples after the initial burn-in iterations \cite{septier2009mcmc}. The drawback is excessive computation occurs as the number of particles increases at each iteration. 
 
 To avoid this issue, an MCMC-based particle algorithm in \cite{pang2008models} considers the joint posterior distribution of $x_t$ and $x_{t-1}$:
 \begin{equation}
@@ -285,8 +285,8 @@ p(x_t,x_{t-1}\mid y_{1:t})\propto p(y_t\mid x_t)p(x_t\mid x_{t-1})p(x_{t-1}\mid 
 which becomes the new target distribution. At the $i$th sampling iteration, the joint $x_k$ and $x_{k-1}$ was proposed in a Metropolis-Hastings sampling step. After that, a refinement Metropolis-within-Gibbs step update $x_k$ and $x_{k-1}$ individually. Hence, the algorithm is summarized in Algorithm \ref{algorithmMCMCParticle}:
 %\begin{itemize}
 %\item Initialize particles $x_0^{(1)},\ldots,x_0^{(N)}$.
-%\item Propose $\{x_k^*,x_{k-1}^*\}\sim q_1(x_k,x_{k-1}\mid x_{k}^{(i-1)},x_{k-1}^{(i-1)})$.
-%\item Accept $\{x_k^*,x_{k-1}^*\}$ with probability $\alpha_1=\min\lbrace 1, \frac{ p(x_k^*,x_{k-1}^*\mid y_{1:t} )  }{ p(x_k^{(i-1)},x_{k-1}^{(i-1)}\mid y_{1:t} )  }  \frac{ q_1(x_k^{(i-1)},x_{k-1}^{(i-1)}\mid x_k^*,x_{k-1}^*)  }{ q_1(x_k^*,x_{k-1}^* \mid x_k^{(i-1)},x_{k-1}^{(i-1)})  }   \rbrace$
+%\item Propose $\left\lbrace x_k^*,x_{k-1}^*\right\rbrace\sim q_1(x_k,x_{k-1}\mid x_{k}^{(i-1)},x_{k-1}^{(i-1)})$.
+%\item Accept $\left\lbrace x_k^*,x_{k-1}^*\right\rbrace$ with probability $\alpha_1=\min\lbrace 1, \frac{ p(x_k^*,x_{k-1}^*\mid y_{1:t} )  }{ p(x_k^{(i-1)},x_{k-1}^{(i-1)}\mid y_{1:t} )  }  \frac{ q_1(x_k^{(i-1)},x_{k-1}^{(i-1)}\mid x_k^*,x_{k-1}^*)  }{ q_1(x_k^*,x_{k-1}^* \mid x_k^{(i-1)},x_{k-1}^{(i-1)})  }   \rbrace$
 %\item Propose $x_{k-1}^*\sim q_2(x_{k-1}\mid  x_k^{(i)},x_{k-1}^{(i)}  )$
 %\item Accept $x_{k-1}^*$ with probability $\alpha_2 = \min \lbrace 1, \frac{ p(x_{k-1}^*\mid x_k^{(i)},y_{1:t}) }{  p(x_{k-1}^{(i)}\mid x_{k}^{(i)},y_{1:t})  }  \frac{ q_2(x_{k-1}^{(i)} \mid x_{k-1}^*, x_k^{(i)} ) }{ q_2(x_{k-1}^*\mid x_{k}^{(i)},x_{k-1}^{(i)})    } \rbrace$
 %\item Propose $x_k^* \sim q_3(x_k\mid x_k^{(i)}, x_{k-1}^{(i)})$
@@ -302,14 +302,14 @@ which becomes the new target distribution. At the $i$th sampling iteration, the 
 Initialization: Initialize particles $x_0^{(j)}, j =1, \ldots,N$. \\
 \For{$k = 1,\ldots,t$}{
 \For{$i = 1,\ldots,M$}{
-Propose $\{x_k^*,x_{k-1}^*\}\sim q_1(x_k,x_{k-1}\mid x_{k}^{(i-1)},x_{k-1}^{(i-1)})$. \\
-Accept $\{x_k^*,x_{k-1}^*\}$ with probability $\alpha_1=\min\lbrace 1, \frac{ p(x_k^*,x_{k-1}^*\mid y_{1:t} )  }{ p(x_k^{(i-1)},x_{k-1}^{(i-1)}\mid y_{1:t} )  }  \frac{ q_1(x_k^{(i-1)},x_{k-1}^{(i-1)}\mid x_k^*,x_{k-1}^*)  }{ q_1(x_k^*,x_{k-1}^* \mid x_k^{(i-1)},x_{k-1}^{(i-1)})  }   \rbrace$\\
-Propose $x_{k-1}^*\sim q_2(x_{k-1}\mid  x_k^{(i)},x_{k-1}^{(i)}  )$ \\
-Accept $x_{k-1}^{(i)} = x_{k-1}^*$ with probability $\alpha_2 = \min \lbrace 1, \frac{ p(x_{k-1}^*\mid x_k^{(i)},y_{1:t}) }{  p(x_{k-1}^{(i)}\mid x_{k}^{(i)},y_{1:t})  }  \frac{ q_2(x_{k-1}^{(i)} \mid x_{k-1}^*, x_k^{(i)} ) }{ q_2(x_{k-1}^*\mid x_{k}^{(i)},x_{k-1}^{(i)})    } \rbrace$. \\
-Propose $x_k^* \sim q_3(x_k\mid x_k^{(i)}, x_{k-1}^{(i)})$. \\
+Propose $\left\lbrace x_k^*,x_{k-1}^*\right\rbrace\sim q_1\left(x_k,x_{k-1}\mid x_{k}^{\left(i-1\right)},x_{k-1}^{\left(i-1\right)}\right)$. \\
+Accept $\left\lbrace x_k^*,x_{k-1}^*\right\rbrace$ with probability $\alpha_1=\min\lbrace 1, \frac{ p\left(x_k^*,x_{k-1}^*\mid y_{1:t} \right)  }{ p\left(x_k^{\left(i-1\right)},x_{k-1}^{\left(i-1\right)}\mid y_{1:t} \right)  }  \frac{ q_1\left(x_k^{\left(i-1\right)},x_{k-1}^{\left(i-1\right)}\mid x_k^*,x_{k-1}^*\right)  }{ q_1\left(x_k^*,x_{k-1}^* \mid x_k^{\left(i-1\right)},x_{k-1}^{\left(i-1\right)}\right)  }   \rbrace$\\
+Propose $x_{k-1}^*\sim q_2\left(x_{k-1}\mid  x_k^{(i)},x_{k-1}^{(i)}  \right)$ \\
+Accept $x_{k-1}^{(i)} = x_{k-1}^*$ with probability $\alpha_2 = \min \lbrace 1, \frac{ p\left(x_{k-1}^*\mid x_k^{(i)},y_{1:t}\right) }{  p\left(x_{k-1}^{(i)}\mid x_{k}^{(i)},y_{1:t}\right)  }  \frac{ q_2\left(x_{k-1}^{(i)} \mid x_{k-1}^*, x_k^{(i)} \right) }{ q_2\left(x_{k-1}^*\mid x_{k}^{(i)},x_{k-1}^{(i)}\right)    } \rbrace$. \\
+Propose $x_k^* \sim q_3\left(x_k\mid x_k^{(i)}, x_{k-1}^{(i)}\right)$. \\
 Accept $x_{k}^{(i)} =x_k^*$ with probability $\alpha_3 =\min \lbrace 1,
-\frac{ p(x_{k}^*\mid x_{k-1}^{(i)},y_{1:t}) }{  p(x_{k}^{(i)}\mid x_{k-1}^{(i)},y_{1:t})  }  \frac{ q_3(x_{k}^{(i)} \mid x_{k}^*, x_{k-1}^{(i)} ) }{ q_3(x_{k}^*\mid x_{k}^{(i)},x_{k-1}^{(i)}) }  \rbrace$.\\
-After burn-in points, keep $x_k^{(j)}= x_k^{(i)}$ as new particles for approximating $p(x_k\mid y_{1:k})$.\\
+\frac{ p\left(x_{k}^*\mid x_{k-1}^{(i)},y_{1:t}\right) }{  p\left(x_{k}^{(i)}\mid x_{k-1}^{(i)},y_{1:t}\right)  }  \frac{ q_3\left(x_{k}^{(i)} \mid x_{k}^*, x_{k-1}^{(i)} \right) }{ q_3\left(x_{k}^*\mid x_{k}^{(i)},x_{k-1}^{(i)}\right) }  \rbrace$.\\
+After burn-in points, keep $x_k^{\left(j\right)}= x_k^{(i)}$ as new particles for approximating $p\left(x_k\mid y_{1:k}\right)$.\\
 }
 }
  \caption{MCMC-Based Particle Algorithm.}\label{algorithmMCMCParticle}
@@ -341,7 +341,7 @@ through maximize the likelihood function without introducing any bias or control
 \theta_{n+1} = \theta_n+\varepsilon_{n+1}.
 \end{align*}
 The artificial noise $\varepsilon_{t+1}\sim N(0,W_{t+1})$ is specified by a covariance matrix $W_{t+1}$. With this noise, SMC can now be applied to approximate $p(x_{1:t},\theta\mid y_{1:t})$. A related kernel density estimation method proposes a kernel density estimate of the target \cite{liu2001combined} \begin{align*}
-\hat{p}(\theta\mid y_{1:t}) = \frac{1}{N}\sum M(\theta-\theta_n^{(i)}). 
+\hat{p}(\theta\mid y_{1:t}) = \frac{1}{N}\sum M\left(\theta-\theta_n^{(i)}\right). 
 \end{align*} 
 At time $t+1$, the samples obtain a new set of particles. 
 
@@ -361,8 +361,8 @@ p(x_{t-l+1:t},\theta\mid y_{1:t}) &=\int p(x_{t-l+1,t},\theta \mid x_{0:t-l},y_{
 \end{align*}
 Therefore, we can firstly draw some samples $x_{0:t-l}^{(i)}$ from $p(x_{0:t-l}\mid y_{1:t-1})$, which is approximately the same as $p(x_{0:t-l}\mid y_{1:t})$ and $i=1,\ldots,M$. Then, use these samples to estimate states and parameter by 
 \begin{align*}
-x_{t-l+1} &\sim p(x_{t-l+1}\mid x_{0:t-l}^{(i)},\theta,y_{t-l+1:t}),\\
-\theta &\sim p(\theta \mid x_{0:t-l}^{(i)},x_{t-l+1},y_{t-l+1:t}),
+x_{t-l+1} &\sim p\left(x_{t-l+1}\mid x_{0:t-l}^{(i)},\theta,y_{t-l+1:t}\right),\\
+\theta &\sim p\left(\theta \mid x_{0:t-l}^{(i)},x_{t-l+1},y_{t-l+1:t}\right),
 \end{align*}
 with two-step Gibbs sampler. The algorithm is summarized in the following. 
 %\begin{itemize}
@@ -379,13 +379,13 @@ Initialization: Set $\theta^{(i)}=\theta_0$ as initial values, $i=1,\ldots,N$.  
 Burn-In: \For{$k = 1,\ldots, l$}{
 \For{$i=1,\ldots,N$}{Initialize $\theta = \theta^{(i)}$. \\
 Generate $x_{0:k}\sim p(x_{0:k}\mid \theta,y_{1:k})$ and $\theta \sim p(\theta\mid x_{0:k},y_{1:k})$.\\
-After a few iterations, achieve a set of $\{ \tilde{x}_{0:k}^{(i)},\theta^{(i)}\}$. 
+After a few iterations, achieve a set of $\left\lbrace  \tilde{x}_{0:k}^{(i)},\theta^{(i)}\right\rbrace$. 
 }
 }
 Sequential Updating: \For{$k=l+1,\ldots,t$}{
 \For{$i=1,\ldots,N$}{initialize $\theta = \theta^{(i)}$.\\
-Generate $x_{k-l+1:k}\sim p(x_{k-l+1:k}\mid \tilde{x}_{k-l}^{(i)},\theta,y_{k-l+1,k})$ and $\theta \sim p(\theta\mid \tilde{x}_{0:k-l}^{(i)},x_{k-l+1:k},y_{1:k})$. \\
-Achieve a set of $\{ \tilde{x}_{k-l+1}^{(i)},\theta^{(i)}\}$ and leave $\tilde{x}_{0:k-l}^{(i)}$ unchanged.
+Generate $x_{k-l+1:k}\sim p\left(x_{k-l+1:k}\mid \tilde{x}_{k-l}^{(i)},\theta,y_{k-l+1,k}\right)$ and $\theta \sim p\left(\theta\mid \tilde{x}_{0:k-l}^{(i)},x_{k-l+1:k},y_{1:k}\right)$. \\
+Achieve a set of $\left\lbrace  \tilde{x}_{k-l+1}^{(i)},\theta^{(i)}\right\rbrace$ and leave $\tilde{x}_{0:k-l}^{(i)}$ unchanged.
 }
 }
  \caption{Practical Filtering Algorithm.}\label{algorithmPraticalFilter}
@@ -413,27 +413,27 @@ The speed and accuracy of this algorithm depend on the choice of sample size $M$
 
 Particles degeneracy is inevitable in SMC. A method in Section \ref{ArtificialNoise} reduces the degeneracy by adding artificial noise to the parameters, however, that will also lead to the variance of estimates. \cite{liu2001combined} use a kernel smoothing approximation combined with a neat shrinkage idea to kill over-dispersion. 
 
-At time $t$, suppose we have particles $\{x_t^{(i)}\}$ and associated weights $\{w_t^{(i)}\}$, $i=1,\ldots,N$, Bayes' theorem tells us that approximation to the posterior distribution $p(x_{t+1}\mid y_{1:t+1})$ at time $t+1$ of the state is 
+At time $t$, suppose we have particles $\left\lbrace x_t^{(i)}\right\rbrace$ and associated weights $\left\lbrace w_t^{(i)}\right\rbrace$, $i=1,\ldots,N$, Bayes' theorem tells us that approximation to the posterior distribution $p(x_{t+1}\mid y_{1:t+1})$ at time $t+1$ of the state is 
 \begin{equation*}
-p(x_{t+1} \mid y_{1:t+1}) \propto \sum_{i=1}^{N} w_t^{(i)} p(x_{t+1} \mid x_t^{(i)})p(y_{t+1}\mid x_{t+1}).
+p(x_{t+1} \mid y_{1:t+1}) \propto \sum_{i=1}^{N} w_t^{(i)} p\left(x_{t+1} \mid x_t^{(i)}\right)p\left(y_{t+1}\mid x_{t+1}\right).
 \end{equation*}
 However, variance increases through over $t$ by the Gaussian mixture. In \cite{west1993mixture}, the author is a smooth kernel density 
 \begin{equation}\label{LiuandWestDensity}
-p(\theta\mid y_{1:t})\approx \sum_{i=1}^{N}w_t^{(i)} N(\theta\mid m_t^{(i)},h^2V_t)
+p(\theta\mid y_{1:t})\approx \sum_{i=1}^{N}w_t^{(i)} N\left(\theta\mid m_t^{(i)},h^2V_t\right)
 \end{equation}
-to against the sample dispersion. Because $N(\cdot\mid m,C)$ is a multivariate normal density with mean $m$ and covariance matrix $C$, so the above density (\ref{LiuandWestDensity}) is a mixture of $N(\theta\mid m_t^{(i)},h^2V_t)$ distribution weighted by the sample weights $w_t^{(i)}$. Without this shrinkage approach, the standard kernel locations would be $m_t^{(i)}=\theta_t^{(i)}$, by which there is an over dispersed kernel density, because of $(1=h^2)V_t$ is always large than $V_t$. $\theta_t$ indicates the samples are from the time $t$ posterior, not time-varying. 
+to against the sample dispersion. Because $N(\cdot\mid m,C)$ is a multivariate normal density with mean $m$ and covariance matrix $C$, so the above density (\ref{LiuandWestDensity}) is a mixture of $N\left(\theta\mid m_t^{(i)},h^2V_t\right)$ distribution weighted by the sample weights $w_t^{(i)}$. Without this shrinkage approach, the standard kernel locations would be $m_t^{(i)}=\theta_t^{(i)}$, by which there is an over dispersed kernel density, because of $(1=h^2)V_t$ is always large than $V_t$. $\theta_t$ indicates the samples are from the time $t$ posterior, not time-varying. 
 
 To correct it, the idea of shrinkage kernel is 
 \begin{equation}
 m_t^{(i)}=\alpha \theta_t^{(i)} + (1-\alpha)\bar{\theta}_t,
 \end{equation}
-where $\alpha=\sqrt{1-h^2}$ and $h>0$ is the smoothing parameter and the covariance is $V_t=\sum_{i=1}^{N}\frac{ (\theta_t^{(i)}-\bar{\theta}_t )(\theta_t^{(i)}-\bar{\theta}_t  )^\top}{N}$. Consequently, the resulting normal mixture retains the mean $\bar{\theta}_t$ and now has the correct covariance $V_t$, hence the over dispersion is trivially corrected \cite{liu2001combined}. 
+where $\alpha=\sqrt{1-h^2}$ and $h>0$ is the smoothing parameter and the covariance is $V_t=\sum_{i=1}^{N}\frac{ \left(\theta_t^{(i)}-\bar{\theta}_t \right)\left(\theta_t^{(i)}-\bar{\theta}_t\right)^\top}{N}$. Consequently, the resulting normal mixture retains the mean $\bar{\theta}_t$ and now has the correct covariance $V_t$, hence the over dispersion is trivially corrected \cite{liu2001combined}. 
 
 A general algorithm is summarized bellow: 
 %\begin{itemize}
 %\item{Step 1.} Identify the prior estimation of $(x_t,\theta)$ by $(\mu_{t+1}^{(i)},m_t^{(i)})$, where
 %$\mu_{t+1}^{(i)}=\E (x_{t+1}\mid x_t^{(i)},\theta_t^{(i)})$, and $m_t^{(i)}=\alpha \theta_t^{(i)} + (1-\alpha)\bar{\theta}_t$.
-%\item{Step 2.} Sample an auxiliary integer index $k$ from $\{1,\ldots,N\}$ with probability proportional to $g_{t+1}^{(i)}\propto w_t^{(i)}p(y_{t+1}\mid \mu_{t+1}^{(i)},m_t^{(i)})$.
+%\item{Step 2.} Sample an auxiliary integer index $k$ from $\left\lbrace 1,\ldots,N\right\rbrace$ with probability proportional to $g_{t+1}^{(i)}\propto w_t^{(i)}p(y_{t+1}\mid \mu_{t+1}^{(i)},m_t^{(i)})$.
 %\item{Step 3.} Sample a new parameter vector $\theta_{t+1}^{(k)}$ from $N(\theta_{t+1}\mid m_t^{(k)},h^2V_t)$.
 %\item{Step 4.} Sample current state vector $x_{t+1}^{(k)}$ from $p(x_{t+1}\mid x_t^{(k)},\theta_{t+1}^{(k)})$.
 %\item{Step 5.} Evaluate weight $w_{t+1}^{(k)}\propto \frac{ p(y_{t+1}\mid x_{t+1}^{(k)},\theta_{t+1}^{(k)}) }{ p(y_{t+1}\mid \mu_{t+1}^{(k)},m_t^{(k)})   }$ and normalize it. 
@@ -445,7 +445,7 @@ A general algorithm is summarized bellow:
 \For{$k=1,\ldots,t$}{
 \For{$i=1,\ldots,N$}{Identify the prior estimation of $(x_k,\theta)$ by $(\mu_{k+1}^{(i)},m_k^{(i)})$, where
 $\mu_{k+1}^{(i)}=\E (x_{k+1}\mid x_k^{(i)},\theta_k^{(i)})$, and $m_k^{(i)}=\alpha \theta_k^{(i)} + (1-\alpha)\bar{\theta}_k$. \\
-Sample an auxiliary integer index $I$ from $\{1,\ldots,N\}$ with probability proportional to $g_{k+1}^{(i)}\propto w_k^{(i)}p(y_{k+1}\mid \mu_{k+1}^{(i)},m_k^{(i)})$.\\
+Sample an auxiliary integer index $I$ from $\left\lbrace 1,\ldots,N\right\rbrace$ with probability proportional to $g_{k+1}^{(i)}\propto w_k^{(i)}p(y_{k+1}\mid \mu_{k+1}^{(i)},m_k^{(i)})$.\\
 Sample a new parameter vector $\theta_{k+1}^{(I)}$ from $N(\theta_{k+1}\mid m_k^{(I)},h^2V_k)$.\\
 Sample current state vector $x_{k+1}^{(I)}$ from $p(x_{k+1}\mid x_k^{(I)},\theta_{k+1}^{(I)})$.\\
 Evaluate weights $\tilde{w}_{k+1}^{(i)}\propto \frac{ p(y_{k+1}\mid x_{k+1}^{(I)},\theta_{k+1}^{(I)}) }{ p(y_{k+1}\mid \mu_{k+1}^{(I)},m_k^{(I)})   }$
@@ -465,7 +465,7 @@ The Storvik filter is summarized bellow:
 %\begin{itemize}
 %\item{Step 1.} Sample $x_{t+1}^{(i)}$ from $p(x_{t+1}\mid x_{t}^{(i)},y_{1:t+1},\theta^{(i)} )$
 %\item{Step 2.} Calculate weights $w_{t+1} \propto p(y_{t+1}\mid x_{t+1}^{(i)}, \theta^{(i)})$ and normalize it by $w_{t+1}^{(i)}=\frac{ w_{t+1}^{(i)} }{ \sum w_{t+1}^{(i)}}$
-%\item{Step 3.} Re-sample $\{ \theta_{t+1}^{(i)},x_{t+1}^{(i)},s_{t+1}^{(i)}  \}$ according to $w_{t+1}$
+%\item{Step 3.} Re-sample $\left\lbrace  \theta_{t+1}^{(i)},x_{t+1}^{(i)},s_{t+1}^{(i)}  \right\rbrace$ according to $w_{t+1}$
 %\item{Step 4.} Update sufficient statistics $s_{t+1}^{(i)}=S(s_{t}^{(i)},x_{t+1},y_{t+1})$ 
 %\item{Step 5.} Sample $\theta^{(i)}$ from $p(\theta\mid s_{t+1}^{(i)})$
 %\end{itemize}
@@ -474,11 +474,11 @@ The Storvik filter is summarized bellow:
 %\KwResutt{Write here the resutt }
 \For{$k=1,\ldots,t$}{
 \For{$i=1,\ldots,N$}{
-Sample $x_{k}^{(i)}$ from $p(x_{k}\mid x_{k-1}^{(i)},y_{1:k},\theta^{(i)} )$. \\
-Calculate weights $\tilde{w}_{k} \propto p(y_{k}\mid x_{k}^{(i)}, \theta^{(i)})$ and normalize it by $w_{k}^{(i)}=\frac{ \tilde{w}_{k}^{(i)} }{ \sum \tilde{w}_{k}^{(i)}}$.\\
-Re-sample $\{ \theta_{k}^{(i)},x_{k}^{(i)},s_{k}^{(i)}  \}$ according to $w_{k}$.\\
-Update sufficient statistics $s_{k}^{(i)}=S(s_{k-1}^{(i)},x_{k},y_{k})$.\\
-Sample $\theta^{(i)}$ from $p(\theta\mid s_{k}^{(i)})$.
+Sample $x_{k}^{(i)}$ from $p\left(x_{k}\mid x_{k-1}^{(i)},y_{1:k},\theta^{(i)} \right)$. \\
+Calculate weights $\tilde{w}_{k} \propto p\left(y_{k}\mid x_{k}^{(i)}, \theta^{(i)}\right)$ and normalize it by $w_{k}^{(i)}=\frac{ \tilde{w}_{k}^{(i)} }{ \sum \tilde{w}_{k}^{(i)}}$.\\
+Re-sample $\left\lbrace  \theta_{k}^{(i)},x_{k}^{(i)},s_{k}^{(i)}  \right\rbrace$ according to $w_{k}$.\\
+Update sufficient statistics $s_{k}^{(i)}=S\left(s_{k-1}^{(i)},x_{k},y_{k}\right)$.\\
+Sample $\theta^{(i)}$ from $p\left(\theta\mid s_{k}^{(i)}\right)$.
 }
 }
 \caption{Storvik Filter.}\label{algorithmStFilter}
@@ -489,10 +489,10 @@ Sample $\theta^{(i)}$ from $p(\theta\mid s_{k}^{(i)})$.
 
 \textit{Particle Learning}, proposed by \cite{carvalho2010particle}, uses the similar sufficient statistics as Storvik filter does, in which the set of sufficient statistics is used for parameters estimation only. As an extension to the mixture Kalman filter \cite{chen2000mixture}, Particle Learning allows parameters learning throughout the process and utilize a resampling propagate framework together with a set of particles that includes a set of sufficient statistics (if it is available) for the states. 
 
-By denoting $s_t$ and $s_t^x$ the sufficient statistics for the parameter and state respectively, the updating rules are satisfied: $s_t=S(s_{t-1},x_t,y_t)$ and $s_t^x=K(s_{t-1}^x,\theta,y_t)$, where $K(\cdot)$ is the Kalman filter recursions. In Particle Learning, the prior to sampling from the proposal distribution uses a predictive likelihood and takes $y_{t+1}$ into account \cite{vieira2016online}. This algorithm is summarized as following: 
+By denoting $s_t$ and $s_t^x$ the sufficient statistics for the parameter and state respectively, the updating rules are satisfied: $s_t=S(s_{t-1},x_t,y_t)$ and $s_t^x=K\left(s_{t-1}^x,\theta,y_t\right)$, where $K(\cdot)$ is the Kalman filter recursions. In Particle Learning, the prior to sampling from the proposal distribution uses a predictive likelihood and takes $y_{t+1}$ into account \cite{vieira2016online}. This algorithm is summarized as following: 
 
 %\begin{itemize}
-%\item{Step 1.} Resample $\{\tilde{z}_t^{(i)}\}_{i=1}^N=(\tilde{s}_t^{x(i)},\tilde{s}_t^{(i)},\tilde{\theta}^{(i)})$ from $p(z_t\mid s_t^x,s_t,\theta)$ with weight $w\propto p(y_{t+1}\mid s_{t}^x,\theta)$.
+%\item{Step 1.} Resample $\left\lbrace \tilde{z}_t^{(i)}\right\rbrace_{i=1}^N=(\tilde{s}_t^{x(i)},\tilde{s}_t^{(i)},\tilde{\theta}^{(i)})$ from $p(z_t\mid s_t^x,s_t,\theta)$ with weight $w\propto p(y_{t+1}\mid s_{t}^x,\theta)$.
 %\item{Step 2.} Draw $x_{t+1}^{(i)}$ from $p(x_{t+1}\mid \tilde{s}_t^x,\tilde{\theta},y_{1:t+1})$. 
 %\item{Step 3.} Update sufficient statistics  $s_{t+1}=S(\tilde{s}_{t}, x_{t+1},y_{t+1})$.
 %\item{Step 4.} Sample $\theta^{(i)}$ from $p(\theta \mid  s_{t+1})$.
@@ -503,11 +503,11 @@ By denoting $s_t$ and $s_t^x$ the sufficient statistics for the parameter and st
 %\KwResutt{Write here the resutt }
 \For{$k=1,\ldots,t$}{
 \For{$i=1,\ldots,N$}{
-Re-sample $\tilde{z}_k^{(i)}=(\tilde{s}_k^{x(i)},\tilde{s}_k^{(i)},\tilde{\theta}^{(i)})$ from $p(z_k\mid s_k^x,s_k,\theta)$ with weight $w\propto p(y_{k+1}\mid s_{k}^x,\theta)$.\\
-Draw $x_{k+1}^{(i)}$ from $p(x_{k+1}\mid \tilde{s}_k^x,\tilde{\theta},y_{1:k+1})$. \\
-Update sufficient statistics  $s_{k+1}=S(\tilde{s}_{k}, x_{k+1},y_{k+1})$. \\
-Sample $\theta^{(i)}$ from $p(\theta \mid  s_{k+1})$. \\
-Update $s_{k+1}^x = K(s_{k}^x,\theta,y_{k+1})$.
+Re-sample $\tilde{z}_k^{\left(i\right)}=\left(\tilde{s}_k^{x\left(i\right)},\tilde{s}_k^{\left(i\right)},\tilde{\theta}^{\left(i\right)}\right)$ from $p\left(z_k\mid s_k^x,s_k,\theta\right)$ with weight $w\propto p\left(y_{k+1}\mid s_{k}^x,\theta\right)$.\\
+Draw $x_{k+1}^{\left(i\right)}$ from $p\left(x_{k+1}\mid \tilde{s}_k^x,\tilde{\theta},y_{1:k+1}\right)$. \\
+Update sufficient statistics  $s_{k+1}=S\left(\tilde{s}_{k}, x_{k+1},y_{k+1}\right)$. \\
+Sample $\theta^{\left(i\right)}$ from $p\left(\theta \mid  s_{k+1}\right)$. \\
+Update $s_{k+1}^x = K\left(s_{k}^x,\theta,y_{k+1}\right)$.
 }
 }
 \caption{Particle Learning Algorithm.}\label{algorithmPL}
@@ -540,13 +540,13 @@ p(\theta\mid y_{1:t+1}) & \propto p( y_{1:t+1}\mid\theta)p(\theta) \\
 
 The ensemble Kalman filter is used to find (\ref{jointposteriorterm1}), which is the state inference. The estimated Kalman gain is 
 \begin{equation*}
-\hat{K}_{t+1}(\theta) = F_{t+1}(\theta)\hat{P}_{t+1}^f(\theta)F_{t+1}(\theta)^\top \hat{\Sigma}_{t+1}(\theta)^{-1},
+\hat{K}_{t+1}(\theta) = F_{t+1}(\theta)\hat{P}_{t+1}^f(\theta)F_{t+1}^\top(\theta) \hat{\Sigma}_{t+1}^{-1}(\theta),
 \end{equation*}
 where $F_{t+1}$ is the observation map. The posterior ensemble at time $t+1$ based on parameter $\theta$ is
 \begin{equation}\label{ensembleKalmanForecast}
-x_{t+1}^{(i)} = x_{t+1}^{f(i)}+\hat{K}_{t+1}(\theta)(y_{t+1}+v_{t+1}^{(i)}+F_{t+1}(\theta)x_{t+1}^{f(i)}), 
+x_{t+1}^{(i)} = x_{t+1}^{f(i)}+\hat{K}_{t+1}(\theta)\left(y_{t+1}+v_{t+1}^{(i)}+F_{t+1}(\theta)x_{t+1}^{f(i)}\right), 
 \end{equation}
-where $\{x_{t}^{(i)}\}_1^N$ is an ensemble of states representing the filtering distribution at time $t$. $x_{t+1}^{f(i)}$ is the forecast ensemble from the forward map by $x_{t+1}^{f(i)} = x_{t+1}^{p(i)} +w_{t+1}^{(i)}= G(x_{t}^{(i)})+w_{t+1}^{(i)}$. For the second term (\ref{jointposteriorterm2}), the author \cite{stroud2016bayesian} proposed a feasible likelihood approximation by a multivariate Gaussian distribution \cite{mitchell2000adaptive} for high-dimensional states: 
+where $\left\lbrace x_{t}^{(i)}\right\rbrace_1^N$ is an ensemble of states representing the filtering distribution at time $t$. $x_{t+1}^{f(i)}$ is the forecast ensemble from the forward map by $x_{t+1}^{f(i)} = x_{t+1}^{p(i)} +w_{t+1}^{(i)}= G(x_{t}^{(i)})+w_{t+1}^{(i)}$. For the second term (\ref{jointposteriorterm2}), the author \cite{stroud2016bayesian} proposed a feasible likelihood approximation by a multivariate Gaussian distribution \cite{mitchell2000adaptive} for high-dimensional states: 
 \begin{equation}\label{esembleKalmanLikeli}
 p(y_{t+1}\mid\theta,y_{1:t})\propto \left| \hat{\Sigma}_t(\theta)  \right|^{-\frac{1}{2}} \exp \left( -\frac{1}{2} \hat{e}_{t+1}(\theta)^\top \hat{\Sigma}_t(\theta)^{-1} \hat{e}_{t+1}(\theta) \right),
 \end{equation}
@@ -554,7 +554,7 @@ where $\hat{e}_{t+1}(\theta) = y_{t+1}-F_{t+1}(\theta)\hat{a}_{t+1}$, and $\hat{
 
 To find $p(\theta\mid Y_{1:t})$, a generic way is using normal approximation, where the posterior density  is given by 
 \begin{equation*}
-p(\theta\mid y_{1:t}) \propto \exp \left(  -\frac{1}{2}(\theta-m_t)^\top C_t^{-1}(\theta-m_t  \right).
+p(\theta\mid y_{1:t}) \propto \exp \left(  -\frac{1}{2}(\theta-m_t)^\top C_t^{-1}(\theta-m_t) \right).
 \end{equation*}
 A grid-based representation is writing the posterior in the way that $p(\theta\mid y_{1:t}) \propto p(y_t\mid\theta,y_{1:t-1})p(\theta\mid y_{1:t-1})$ and update the recursion weights by $\pi_{t,k}\propto p(y_{t}\mid\theta,y_{1:t-1})\pi_{t,k-1}$. 
 
@@ -574,7 +574,7 @@ To summarize it up, the complete algorithm is in the following
 Initialize samples $\theta^{(i)}\sim p(\theta)$ and $x_1^{(i)}\sim N(x_0,P_0)$, $i=1,\ldots,N$. \\
 \For{$k=1,\ldots,t$}{
 \For{$i=1,\ldots,N$}{
-Propagate. $x_k^{p(i)} = G(x_{k-1}^{(i)})$.\\
+Propagate. $x_k^{p(i)} = G\left(x_{k-1}^{(i)}\right)$.\\
 Approximate likelihood function by (\ref{esembleKalmanLikeli}).\\
 Update. Draw $\theta$ either use normal approximation or grid-based approximation to find (\ref{jointposteriorterm2}). \\
 Draw $\theta^{(i)}\sim p(\theta\mid y_{1:k})$.\\
@@ -598,7 +598,7 @@ The classical \textit{expectation maximization} (EM) algorithm \cite{dempster197
 \item{E-step}:   Compute  $Q(\theta_k,\theta)=\int \ln p_\theta(x_{0:t},y_{1:t})p_{\theta_k}(x_{0:t}\mid y_{1:t}) dx_{0:t}$. 
 \item{M-step}: Update the parameter $\theta_k$ by $\theta_{k+1}=\arg \max Q(\theta_k,\theta)$.
 \end{itemize}
-Then $\{l(\theta_k)_k\}$ generated by the EM is a non-decreasing sequence.  
+Then $\left\lbrace l(\theta_k)_k\right\rbrace$ generated by the EM is a non-decreasing sequence.  
 
 A straightforward \textit{on-line EM} algorithm uses SMC method to maximize $l(\theta)$. However, it requires estimating sufficient statistics base on joint probability distributions whose dimension is increasing over time and has a computational load of $\mathit{O}(N^2)$ per time step \cite{kantas2009overview}.  To circumvent this problem, \cite{andrieu2005line} proposed a pseudo-likelihood function for finite state-space models. 
 
@@ -627,7 +627,7 @@ The advantage of this algorithm is that it only requires an approximation of the
 %x_t &= x_{t-1} + \epsilon, \\
 %y_t & = \alpha + \beta x_t + \omega, 
 %\end{align*}
-%where $\epsilon\sim N(0,\tau)$ and $\omega\sim N(0,\sigma)$. Particularly, the initial value $x_0\sim N(m_0,C_0)$ is supposed to be known. $\sigma^2$ and $\tau^2$ are supposed to be \textit{Inverse Gamma} distributed with two parameters $(a_0,A_0)$ and $(b_0,B_0)$ respectively. Therefore, the unknown parameter $\theta$ is a set of $\{\alpha,\beta,\sigma^2,\tau^2\}$. 
+%where $\epsilon\sim N(0,\tau)$ and $\omega\sim N(0,\sigma)$. Particularly, the initial value $x_0\sim N(m_0,C_0)$ is supposed to be known. $\sigma^2$ and $\tau^2$ are supposed to be \textit{Inverse Gamma} distributed with two parameters $(a_0,A_0)$ and $(b_0,B_0)$ respectively. Therefore, the unknown parameter $\theta$ is a set of $\left\lbrace \alpha,\beta,\sigma^2,\tau^2\right\rbrace$. 
 
 In this section, we are comparing the performance of Liu and West's filter (LW), Storvik filter (St), Particle Learning (PL) and the proposed sequential MCMC Algorithm \ref{algorithmslidingwindow} in Section \ref{SectionHighDimensionalOU} by a simple dynamic linear model, see example \cite{liu2001combined}. Explicitly, the model is 
 \begin{align*}
@@ -635,32 +635,32 @@ y_t&=F x_t+\epsilon_t,\\
 x_t&=\phi x_{t-1}+w_t,\\
 x_0&\sim N(m_0,C_0),
 \end{align*}
-where $\epsilon_t\sim N(0,\sigma^2)$ and $w_t\sim N(0,\tau^2)$, $x_t$ are hidden status and $y_t$ are observations. Assuming that $F=1$, $\sigma^2=1$ and $\tau^2=1$. The initial value $x_0=0$. $\theta = \phi$ a single static parameter without unobserved state variable. 
+where $\epsilon_t\sim N\left(0,\sigma^2\right)$ and $w_t\sim N\left(0,\tau^2\right)$, $x_t$ are hidden status and $y_t$ are observations. Assuming that $F=1$, $\sigma^2=1$ and $\tau^2=1$. The initial value $x_0=0$. $\theta = \phi$ a single static parameter without unobserved state variable. 
 
-A length of 897 simulated data set was generated from this $\mathit{AR}(1)$ model at $\phi=0.8$. First of all, we should find the sufficient statistics for Storvik filter and Particle Learning. For Particle Learning, the sufficient statistics $s_t^x$ for state $x$ and $s_t$ for parameter $\phi$ are satisfying the updating rules $s_t^x=K(s_{t-1}^x,\phi ,y_t)$ and $s_t=S(s_{t-1},x_t,y_t)$ respectively. Because of the assumption, the Kalman observation map is $H_k=1$ and the variances are normal distributed. Thus, the Kalman gain is $K=1$. For details, the Particle Learning algorithm runs as : 
+A length of 897 simulated data set was generated from this $\mathit{AR}\left(1\right)$ model at $\phi=0.8$. First of all, we should find the sufficient statistics for Storvik filter and Particle Learning. For Particle Learning, the sufficient statistics $s_t^x$ for state $x$ and $s_t$ for parameter $\phi$ are satisfying the updating rules $s_t^x=K\left(s_{t-1}^x,\phi ,y_t\right)$ and $s_t=S\left(s_{t-1},x_t,y_t\right)$ respectively. Because of the assumption, the Kalman observation map is $H_k=1$ and the variances are normal distributed. Thus, the Kalman gain is $K=1$. For details, the Particle Learning algorithm runs as : 
 \begin{itemize}
-\item Step 1. Resample $\{\tilde{z}_t^{(i)}\}_{i=1}^N=(\tilde{s}_t^{x(i)},\tilde{s}_t^{(i)},\tilde{\phi }^{(i)})$ from $p(z_t\mid s_t^x,s_t,\phi )$ with weight $w\propto p(y_{t+1}\mid s_{t}^x,\phi )$. It is found that \begin{equation*}
-p(y_{t+1}\mid s_{t}^x,\phi ) \propto \exp \left(-\frac{1}{2}(y_{t+1}-\phi  x_{t})^2 \right).
+\item Step 1. Resample $\left\lbrace \tilde{z}_t^{\left(i\right)}\right\rbrace_{i=1}^N=\left(\tilde{s}_t^{x\left(i\right)},\tilde{s}_t^{\left(i\right)},\tilde{\phi }^{\left(i\right)}\right)$ from $p\left(z_t\mid s_t^x,s_t,\phi \right)$ with weight $w\propto p\left(y_{t+1}\mid s_{t}^x,\phi \right)$. It is found that \begin{equation*}
+p\left(y_{t+1}\mid s_{t}^x,\phi \right) \propto \exp \left(-\frac{1}{2}\left(y_{t+1}-\phi  x_{t}\right)^2 \right).
 \end{equation*}
-\item Step 2. Draw $x_{t+1}^{(i)}$ from $p(x_{t+1}\mid \tilde{s}_t^x,\tilde{\phi },y_{1:t+1})$. 
+\item Step 2. Draw $x_{t+1}^{\left(i\right)}$ from $p\left(x_{t+1}\mid \tilde{s}_t^x,\tilde{\phi },y_{1:t+1}\right)$. 
 \begin{align*}
-p(x_{t+1}\mid \tilde{z}_t^{(i)},y_{1:t+1}) &= p(x_{t+1}\mid s_t^x,\phi,y_{1:t+1}) \propto p(x_{t+1},y_{1:t+1}\mid s_t^x,\phi)\\
-& \propto p(x_{t+1}\mid s_t^x,\phi)p(y_{t+1}\mid x_{t+1},s_t^x,\phi) \\
-&= N(x_{t+1}\mid \phi x_t,1)N(y_{t+1}\mid x_{t+1},1)\\
-&= N\left(x_{t+1}\mid \frac{1}{2}(y_{t+1}+\phi x_t),\frac{1}{\sqrt{2}}\right)
+p\left(x_{t+1}\mid \tilde{z}_t^{\left(i\right)},y_{1:t+1}\right) &= p\left(x_{t+1}\mid s_t^x,\phi,y_{1:t+1}\right) \propto p\left(x_{t+1},y_{1:t+1}\mid s_t^x,\phi\right)\\
+& \propto p\left(x_{t+1}\mid s_t^x,\phi\right)p\left(y_{t+1}\mid x_{t+1},s_t^x,\phi\right) \\
+&= N\left(x_{t+1}\mid \phi x_t,1\right)N\left(y_{t+1}\mid x_{t+1},1\right)\\
+&= N\left(x_{t+1}\mid \frac{1}{2}\left(y_{t+1}+\phi x_t\right),\frac{1}{\sqrt{2}}\right)
 \end{align*}
-\item Step 3. Update sufficient statistics  $s_{t+1}=S(\tilde{s}_{t}, x_{t+1},y_{t+1})$.
+\item Step 3. Update sufficient statistics  $s_{t+1}=S\left(\tilde{s}_{t}, x_{t+1},y_{t+1}\right)$.
 \begin{align*}
 s_{t+1,1} &= x_{t+1} \\
 s_{t+1,2} &= x_tx_{t+1}+s_{t,2} = x_ts_{t,1}+s_{t,2} \\
 s_{t+1,3} &= x_{t}^2 + s_{t,3} = s_{t,1}^2 + s_{t,3} .
 \end{align*}
-\item Step 4. Sampling $\phi $ from $p(\phi  \mid  s_{t+1})$.
+\item Step 4. Sampling $\phi $ from $p\left(\phi  \mid  s_{t+1}\right)$.
 \begin{align*}
-p(\phi  \mid  x_{1:t+1},y_{1:t+1}) & \propto p(x_{1:t+1},y_{1:t+1}\mid \phi )p(\phi )\propto p(x_{1:t+1}\mid \phi )p(\phi )\\
+p\left(\phi  \mid  x_{1:t+1},y_{1:t+1}\right) & \propto p\left(x_{1:t+1},y_{1:t+1}\mid \phi \right)p\left(\phi \right)\propto p\left(x_{1:t+1}\mid \phi \right)p\left(\phi \right)\\
 &= N\left( \phi \mid  \frac{s_{t+1,2}}{s_{t+1,3}},\frac{1}{s_{t+1,3}} \right).
 \end{align*}
-\item Step 5. Update from $s_{t}^x$ to $s_{t+1}^x$ via $s_{t+1}^x = K(s_{t}^x,\phi ,y_{t+1})$.
+\item Step 5. Update from $s_{t}^x$ to $s_{t+1}^x$ via $s_{t+1}^x = K\left(s_{t}^x,\phi ,y_{t+1}\right)$.
 \end{itemize}
 
 

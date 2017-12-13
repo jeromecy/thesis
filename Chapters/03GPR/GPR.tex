@@ -15,13 +15,13 @@
 %
 %Gaussian processes are useful in statistical modeling, benefiting from properties inherited from the normal. For example, if a random process is modeled as a Gaussian process, the distributions of various derived quantities can be obtained explicitly. Such quantities include the average value of the process over a range of times and the error in estimating the average using sample values at a small set of times.
 
-A Hilbert space is a real or complex inner product space with respect to the distance function induced by the inner product \cite{dieudonne2013foundations}. Particularly, the Hilbert space $\mathcal{L}_2[0,1]$ is a set of square integrable functions $f(t):[0,1]\rightarrow\mathbb{R}$, where all functions satisfy 
+A Hilbert space is a real or complex inner product space with respect to the distance function induced by the inner product \cite{dieudonne2013foundations}. Particularly, the Hilbert space $\mathcal{L}_2[0,1]$ is a set of square integrable functions $f(t):[0,1]\mapsto \mathbb{R}$, where all functions satisfy 
 \begin{equation*}
-\mathcal{L}_2[0,1] =\lbrace f:\int_0^1f^2dt <\infty \rbrace
+\mathcal{L}_2[0,1] =\left\lbrace f:\int_0^1f^2dt <\infty \right\rbrace
 \end{equation*}
 with an inner product $\langle f,g\rangle=\int_0^1fgdt$. 
 
-Consider a regression problem with observations $y_i = f(t_i)+\varepsilon_i$, $i=1,\ldots,n$, consisting \iid normal noises $\varepsilon_i\sim N(0,\sigma^2)$ in the space $C^{(m)}[0,1]=\{ f:f^{(m)}\in \mathit{L}_2[0,1] \}$. The classic nonparametric or semi-parametric regression is a function that minimizes the following penalized least square functional 
+Consider a regression problem with observations $y_i = f(t_i)+\varepsilon_i$, $i=1,\ldots,n$, consisting \iid Gaussian noises $\varepsilon_i\sim N(0,\sigma^2)$ in the space $\mathcal{C}^{(m)}[0,1]=\left\lbrace  f:f^{(m)}\in \mathit{L}_2[0,1] \right\rbrace$. The classic nonparametric or semi-parametric regression is a function that minimizes the following penalized least square functional 
 \begin{equation}\label{GaussianProcessGeneralObjective}
 \frac{1}{n}\sum_{i=1}^{n}\left( y_i-f(t_i) \right)^2 + \lambda \int_{0}^{1} \left( f^{(m)}\right)^2dt, 
 \end{equation}
@@ -53,11 +53,11 @@ A smoothing polynomial spline is uniquely the smoothest function that achieves a
 f(t)=\sum_{\nu=1}^m d_\nu \phi_\nu(t)+\sum_{i=1}^n c_iR_1(t,t_i).
 \end{equation}
 %where $\phi_\nu (t)=\frac{t^{\nu-1}}{(\nu-1)!}$, $\nu=1, \ldots, m$. 
-where $\{\phi_\nu(t)\}$ is a set of basis functions of space $\mathcal{H}_0$ and $R(\cdot,\cdot)$ is the reproducing kernel in $\mathcal{H}_1$. 
+where $\left\lbrace \phi_\nu(t)\right\rbrace$ is a set of basis functions of space $\mathcal{H}_0$ and $R(\cdot,\cdot)$ is the reproducing kernel in $\mathcal{H}_1$. 
 
 
 
-\subsection{Reproducing Kernel Hilbert Space $\mathcal{H}^{(m)}[0,1]$}
+\subsection{Reproducing Kernel Hilbert Space on $[0,1]$}
 
 For any $f\in \mathcal{C}^{(m)}[0,1]$, its standard Taylor expansion is  
 \begin{equation}
@@ -79,10 +79,10 @@ Suppose $R$ is a symmetric, positive definite kernel on a set $X$. Then, there i
 \end{theorem}
 \begin{theorem}\cite{gu2013smoothing}\label{theoremKernel}
 If the reproducing kernel $R$ of a space $\mathcal{H}$ on domain $X$ can
-be decomposed into $R = R_0 + R_1$, where $R_0$ and $R_1$ are both non-negative definite, $R_0(x, \cdot),R1(x,\cdot) \in \mathcal{H}$, for $ \forall x \in X$, and $\langle R_0(x, \cdot),R_1(y, \cdot) \rangle= 0$, for $\forall x, y \in X$, then the spaces $\mathcal{H}_0$ and $\mathcal{H}_1$ corresponding respectively to $R_0$ and $R_1$ form a tensor sum decomposition of $\mathcal{H}$. Conversely, if $R_0$ and $R_1$ are both  nonnegative definite and $\mathcal{H}_0 \cap \mathcal{H}_1 =\{0\}$, then $\mathcal{H} =\mathcal{H}_0 \oplus \mathcal{H}_1$ has a reproducing kernel $R = R_0 + R_1$.
+be decomposed into $R = R_0 + R_1$, where $R_0$ and $R_1$ are both non-negative definite, $R_0(x, \cdot),R1(x,\cdot) \in \mathcal{H}$, for $ \forall x \in X$, and $\langle R_0(x, \cdot),R_1(y, \cdot) \rangle= 0$, for $\forall x, y \in X$, then the spaces $\mathcal{H}_0$ and $\mathcal{H}_1$ corresponding respectively to $R_0$ and $R_1$ form a tensor sum decomposition of $\mathcal{H}$. Conversely, if $R_0$ and $R_1$ are both  nonnegative definite and $\mathcal{H}_0 \cap \mathcal{H}_1 =\left\lbrace 0\right\rbrace$, then $\mathcal{H} =\mathcal{H}_0 \oplus \mathcal{H}_1$ has a reproducing kernel $R = R_0 + R_1$.
 \end{theorem}
 
-According to theorem \ref{theoremRKHS}, the Hilbert space associated with $R$ can be constructed as containing all finite linear combinations of the form $\sum a_iR(t_i,\cdot)$, and their limits under the norm induced by the inner product $\langle R(s,\cdot),R(t,\cdot) \rangle = R(s,t)$. As for theorem \ref{theoremKernel}, it is easy to verify that $R_0$ corresponds to the space of polynomials $\mathcal{H}_0 =\{f:f^{(m)}=0\}$ with an inner product $\langle f, g \rangle_0 = \sum_{\nu=0}^{m-1} f^{(\nu)}(0)g^{(\nu)}(0)$ and $R_1$ corresponds to the orthogonal complement of $\mathcal{H}_0$, that is $\mathcal{H}_1 =\{  f:f^{(\nu)}(0)=0,\nu = 0, \ldots,m-1, \int_{0}^{1}(f^{(m)})^2dt <\infty  \}$ with an inner product $\langle f, g\rangle_1 = \int_{0}^{1}f^{(m)}g^{(m)}dt $. 
+According to Theorem \ref{theoremRKHS}, the Hilbert space associated with $R(\cdot)$ can be constructed as containing all finite linear combinations of the form $\sum a_iR(t_i,\cdot)$, and their limits under the norm induced by the inner product $\langle R(s,\cdot),R(t,\cdot) \rangle = R(s,t)$. As for Theorem \ref{theoremKernel}, it is easy to verify that $R_0$ corresponds to the space of polynomials $\mathcal{H}_0 =\left\lbrace f:f^{(m)}=0\right\rbrace$ with an inner product $\langle f, g \rangle_0 = \sum_{\nu=0}^{m-1} f^{(\nu)}(0)g^{(\nu)}(0)$ and $R_1$ corresponds to the orthogonal complement of $\mathcal{H}_0$, that is $\mathcal{H}_1 =\left\lbrace   f:f^{(\nu)}(0)=0,\nu = 0, \ldots,m-1, \int_{0}^{1}(f^{(m)})^2dt <\infty  \right\rbrace$ with an inner product $\langle f, g\rangle_1 = \int_{0}^{1}f^{(m)}g^{(m)}dt $. 
 
 
 
@@ -95,34 +95,34 @@ Because it is possible to interpret the smoothing spline regression estimator as
 
 Indeed, it can be found that for each $f=f_0+f_1$ on $[0,1]$ with $f_0$ and $f_1$, it has independent Gaussian priors with zero means and covariances, which have the following property that 
 \begin{align*}
-\E (f_0(s)f_0(t)) &= \tau^2 R_0(s,t)=\tau^2 \sum_{\nu=0}^{m-1}\frac{s^\nu}{\nu!}\frac{t^\nu}{\nu!}, \\
-\E (f_1(s)f_1(t)) &= bR_1(s,t) = b\int_{0}^{1} \frac{(s-u)_+^{m-1}}{(m-1)!} \frac{(t-u)_+^{m-1}}{(m-1)!},
+\E \lbrack f_0(s)f_0(t)\rbrack  &= \tau^2 R_0(s,t)=\tau^2 \sum_{\nu=0}^{m-1}\frac{s^\nu}{\nu!}\frac{t^\nu}{\nu!}, \\
+\E \lbrack f_1(s)f_1(t) \rbrack &= bR_1(s,t) = b\int_{0}^{1} \frac{(s-u)_+^{m-1}}{(m-1)!} \frac{(t-u)_+^{m-1}}{(m-1)!},
 \end{align*}
-where $R_0$ and $R_1$ are from (\ref{GaussianProcessKernelR}). Because of the observations are normally distributed as $y_i\sim N(f(t_i),\sigma^2)$, then the joint distribution for $\mathbf{y} = \{y_1,\ldots,y_n\}$ and $f(t)$ is normal with zero mean and the following covariance matrix 
+where $R_0$ and $R_1$ are from (\ref{GaussianProcessKernelR}). Because of the observations are normally distributed as $y_i\sim N(f(t_i),\sigma^2)$, then the joint distribution for $\mathbf{y} = \left\lbrace y_1,\ldots,y_n\right\rbrace$ and $f(t)$ is normal with zero mean and the following covariance matrix 
 \begin{align*}\Cov (\mathbf{f},\mathbf{y}) = 
 \begin{bmatrix}
 bQ+\tau SS^\top+\sigma^2 I & b\xi +\tau^2 S\phi \\
 b\xi^\top + \tau^2\phi^\top S^\top & bR_1(t,t) +\tau^2\phi^\top \phi
 \end{bmatrix},
 \end{align*}
-where $\{Q_{i,j}\}_{n\times n}=R_1(t_i,t_j)$, $\{S_{i,\nu}\}_{n\times m}=t_i^{\nu-1}/(\nu-1)!$, $\{\xi_{i,1}\}_{n\times 1}=R_1(t_i,t)$ and $\{\phi_{\nu,1}\}_{m\times 1}=t^{\nu-1}/(\nu-1)!$. 
+where $\left\lbrace Q_{i,j}\right\rbrace_{n\times n}=R_1(t_i,t_j)$, $\left\lbrace S_{i,\nu}\right\rbrace_{n\times m}=t_i^{\nu-1}/(\nu-1)!$, $\left\lbrace \xi_{i,1}\right\rbrace_{n\times 1}=R_1(t_i,t)$ and $\left\lbrace \phi_{\nu,1}\right\rbrace_{m\times 1}=t^{\nu-1}/(\nu-1)!$. 
 Consequently, the posterior is 
 \begin{equation}
 \begin{split}
-\E (f(t)\mid\mathbf{y}) &= (b\xi^\top +\tau \phi^\top s^\top)(bQ+\tau^2 SS^\top+\sigma^2I)^{-1}\mathbf{y} \\
-&= \xi^\top(Q+\rho SS^\top+n\lambda I)^{-1}\mathbf{y}+ \phi^\top\rho S^\top(Q+\rho SS^\top +n\lambda I)^{-1}\mathbf{y},
+\E \lbrack f(t)\mid\mathbf{y}\rbrack &= \left(b\xi^\top +\tau \phi^\top s^\top\right)\left(bQ+\tau^2 SS^\top+\sigma^2I\right)^{-1}\mathbf{y} \\
+&= \xi^\top\left(Q+\rho SS^\top+n\lambda I\right)^{-1}\mathbf{y}+ \phi^\top\rho S^\top\left(Q+\rho SS^\top +n\lambda I\right)^{-1}\mathbf{y},
 \end{split}
 \end{equation}
-where $\rho = \tau^2/b$ and $n\lambda=\sigma^2/b$. Furthermore, by denoting $M=Q+n\lambda I$, \cite{gu2013smoothing} gives that, when $\rho\rightarrow \infty$, the posterior mean is in the form $\E\left(f(t)\mid y_{1:n}\right) = \xi^\top\mathbf{c}+\phi^\top\mathbf{d}$ with coefficients
+where $\rho = \tau^2/b$ and $n\lambda=\sigma^2/b$. Furthermore, by denoting $M=Q+n\lambda I$, \cite{gu2013smoothing} gives that, when $\rho\rightarrow \infty$, the posterior mean is in the form $\E\lbrack f(t)\mid y_{1:n}\rbrack = \xi^\top\mathbf{c}+\phi^\top\mathbf{d}$ with coefficients
 \begin{align}
-\mathbf{c}&=(M^{-1}-M^{-1}S(S^\top M^{-1}S)^{-1}S^\top M^{-1})\mathbf{y},\\
-\mathbf{d}&=(S^\top M^{-1}S)^{-1}S^\top M^{-1}\mathbf{y}.
+\mathbf{c}&=\left(M^{-1}-M^{-1}S\left(S^\top M^{-1}S\right)^{-1}S^\top M^{-1}\right)\mathbf{y},\\
+\mathbf{d}&=\left(S^\top M^{-1}S\right)^{-1}S^\top M^{-1}\mathbf{y}.
 \end{align}
 
 \begin{theorem}\cite{gu2013smoothing}
-The polynomial smoothing spline of (\ref{GaussianProcessGeneralObjective}) is the posterior mean of $f = f_0 +f_1$, where $f_0$ diffuses in span $\{t^{\nu-1}, \nu= 1, \ldots , m\}$ and $f_1$ has a Gaussian process prior with mean zero and a covariance function
+The polynomial smoothing spline of (\ref{GaussianProcessGeneralObjective}) is the posterior mean of $f = f_0 +f_1$, where $f_0$ diffuses in span $\left\lbrace t^{\nu-1}, \nu= 1, \ldots , m\right\rbrace$ and $f_1$ has a Gaussian process prior with mean zero and a covariance function
 \begin{equation*}
-bR_1(s,t) = b\int_{0}^{1} \frac{(s-u)_+^{m-1}}{(m-1)!} \frac{(t-u)_+^{m-1}}{(m-1)!},
+bR_1(s,t) = b\int_{0}^{1} \frac{\left(s-u\right)_+^{m-1}}{(m-1)!} \frac{\left(t-u\right)_+^{m-1}}{(m-1)!},
 \end{equation*}
 for $b=\sigma^2/n\lambda$. 
 \end{theorem}
@@ -133,16 +133,16 @@ for $b=\sigma^2/n\lambda$.
 
 Gaussian processes are the extension of multivariate Gaussian to infinite-sized collections of real value variables, any finite number of which have a joint Gaussian distribution \cite{rasmussen2006gaussian}. Gaussian process regression is a probability distribution over functions. It is fully defined by its mean $m(t)$ and covariance $K(s,t)$ function as 
 \begin{align*}
-m(t)&=\E [f(t)] \\
-K(s,t)&=\E \lbrack (f(s)-m(s)) (f(t)-m(t))\rbrack,
+m(t)&=\E \lbrack f(t)\rbrack \\
+K(s,t)&=\E \lbrack \left(f(s)-m(s)\right) \left(f(t)-m(t)\right)\rbrack,
 \end{align*}
 where $s$ and $t$ are two variables. A function $f$ distributed as such is denoted in form of 
 \begin{equation*}
-f \sim GP(m(t),K(s,t)).
+f \sim GP\left(m(t),K(s,t) \right).
 \end{equation*}
 Usually the mean function is assumed to be zero everywhere. 
 
-Given a set of input variables $\mathbf{t} = \{t_1,\ldots,t_n\}$ for function $f(t)$ and the output $\mathbf{y}=f(\mathbf{t})+\varepsilon$ with \iid  Gaussian noise $\varepsilon$ of variance $\sigma_n^2$,  we can use the above definition to predict the value of the function $f_*=f(t_*)$ at a particular input $t_*$. As the noisy observations becoming
+Given a set of input variables $\mathbf{t} = \left\lbrace t_1,\ldots,t_n\right\rbrace$ for function $f(t)$ and the output $\mathbf{y}=f(\mathbf{t})+\varepsilon$ with \iid  Gaussian noise $\varepsilon$ of variance $\sigma_n^2$,  we can use the above definition to predict the value of the function $f_*=f(t_*)$ at a particular input $t_*$. As the noisy observations becoming
 \begin{equation*} %\label{GaussianProcessCovDef}
 \Cov (y_p,y_q) = K(t_p,t_q)+\sigma_n^2 \delta_{pq}
 \end{equation*}
@@ -160,12 +160,12 @@ K(t_*,\mathbf{t}) & K(t_*,t_*)
 \end{equation}
 The posterior distribution over the predicted value is obtained by conditioning on the observed data
 \begin{equation*}
-f_* \mid  \mathbf{y},\mathbf{t},t_* \sim N(\bar{f_*},\Cov (f_*))
+f_* \mid  \mathbf{y},\mathbf{t},t_* \sim N\left(\bar{f_*},\Cov (f_*)\right)
 \end{equation*}
 where 
 \begin{align}
-\bar{f_*}&=\E [f_* \mid  \mathbf{y},\mathbf{t},t_* ]=K(t_*,\mathbf{t})[K(\mathbf{t},\mathbf{t})+\sigma_n^2I]^{-1}\mathbf{y},\\
-\Cov(f_*)&=K(t_*,t_*)-K(t_*,\mathbf{t})[K(\mathbf{t},\mathbf{t})+\sigma_n^2I]^{-1}K(\mathbf{t},t_*).
+\bar{f_*}&=\E \left( f_* \mid  \mathbf{y},\mathbf{t},t_*\right) = K(t_*,\mathbf{t})\left( K(\mathbf{t},\mathbf{t})+\sigma_n^2\right) ^{-1}\mathbf{y},\\
+\Cov(f_*)&=K(t_*,t_*)-K(t_*,\mathbf{t})\left( K(\mathbf{t},\mathbf{t})+\sigma_n^2I\right) ^{-1}K(\mathbf{t},t_*).
 \end{align}
 Therefore, it can seen that the Bayesian estimation of a smoothing spline is a special format of Gaussian process regression with diffuse prior and the covariance matrix $R(s,t)$. 
 
@@ -183,24 +183,24 @@ However, the Bayes estimate for a polynomial smoothing spline requires fixed int
 In the following, we are going to prove that this kind of trivial Tractor spline is corresponding to Bayes estimate in a particular reproducing kernel Hilbert space. 
 
 
-\subsection{Reproducing Kernel Hilbert Space $\mathcal{C}_{\footnotesize p.w.}^{2}[0,1]$}
+\subsection{Reproducing Kernel Hilbert Space $\mathcal{C}_{\footnotesize p.w.}^{(2)}[0,1]$}
 
-The space $C^{(m)}[0,1]=\{ f:f^{(m)}\in \mathit{L}_2[0,1] \}$ is a set of functions $f$ whose $m$th derivatives are square integrable on the domain $[0,1]$. For a tractor spline, it only requires $m=2$. In fact, its second derivative is piecewise linear but is not necessarily continuous at joint knots. Besides, only if $\lambda(t)$ is constant and $\gamma=0$, the second derivative is piecewise linear and continuous at joint knots. Here we are introducing the space 
+The space $\mathcal{C}^{(m)}[0,1]=\left\lbrace  f:f^{(m)}\in \mathit{L}_2[0,1] \right\rbrace$ is a set of functions $f$ whose $m$th derivatives are square integrable on the domain $[0,1]$. For a tractor spline, it only requires $m=2$. In fact, its second derivative is piecewise linear but is not necessarily continuous at joint knots. Besides, only if $\lambda(t)$ is constant and $\gamma=0$, the second derivative is piecewise linear and continuous at joint knots. Here we are introducing the space 
 \begin{equation*}
-\mathcal{C}_{\footnotesize p.w.}^{2}[0,1]=\{f: f''\in \mathit{L}_2[0,1], f,f' \mbox{ are continuous and } f'' \mbox{ is piecewise linear}\},
+\mathcal{C}_{\footnotesize p.w.}^{(2)}[0,1]=\left\lbrace f: f''\in \mathit{L}_2[0,1], f,f' \mbox{ are continuous and } f'' \mbox{ is piecewise linear}\right\rbrace,
 \end{equation*}
 in which the second derivative of any function $f$ is not necessarily continuous. 
 
 
-Given a sequence of paired data $\{(t_1,y_1,v_1),\ldots, (t_n,y_n,v_n) \}$, the the minimizer of 
+Given a sequence of paired data $\left\lbrace (t_1,y_1,v_1),\ldots, (t_n,y_n,v_n) \right\rbrace$, the the minimizer of 
 \begin{equation}\label{maineq}
 \frac{1}{n}\sum_{i=1}^{n}(y_i-f(t_i))^2+\frac{\gamma}{n}\sum_{i=1}^{n}(v_i-f'(t_i))^2+\lambda \int_{0}^{1}f''^2dt
 \end{equation}
-in the space $\mathcal{C}_{\footnotesize p.w.}^{2}[0,1]$ is a Tractor spline. Equipped with an appropriate inner product
+in the space $\mathcal{C}_{\footnotesize p.w.}^{(2)}[0,1]$ is a Tractor spline. Equipped with an appropriate inner product
 \begin{equation}\label{TractorSplineInnerProduct}
 \langle f,g \rangle=f(0) g(0)+f'(0) g'(0)+\int_{0}^{1}f''g''dx,
 \end{equation}
-the space $\mathcal{C}_{\footnotesize p.w.}^{2}[0,1]$ is made a reproducing kernel Hilbert space. In fact, the representer $R_s(\cdot)$ is 
+the space $\mathcal{C}_{\footnotesize p.w.}^{(2)}[0,1]$ is made a reproducing kernel Hilbert space. In fact, the representer $R_s(\cdot)$ is 
 \begin{equation}\label{kerneleq}
 R_s(t)=1+st+\int_{0}^{1} (s-u)_+(t-u)_+du.
 \end{equation}
@@ -212,15 +212,15 @@ R_1(s,t)&=\int_{0}^{1} (s-u)_+(t-u)_+du
 are both non-negative definite themselves.
 
 
-According to Theorem \ref{theoremKernel}, $R_0$ can correspond the space of polynomials $\mathcal{H}_0=\{f:f''=0\}$ with an inner product $\langle f,g \rangle_0= f(0)g(0)+f'(0)g'(0)$, and $R_1$ corresponds the orthogonal complement of $\mathcal{H}_0$
+According to Theorem \ref{theoremKernel}, $R_0$ can correspond the space of polynomials $\mathcal{H}_0=\left\lbrace f:f''=0\right\rbrace$ with an inner product $\langle f,g \rangle_0= f(0)g(0)+f'(0)g'(0)$, and $R_1$ corresponds the orthogonal complement of $\mathcal{H}_0$
 \begin{equation*}
-\mathcal{H}_1=\{f:f(0)=0, f'(0)=0, \int_{0}^{1}f''^2dt<\infty\}
+\mathcal{H}_1=\left\lbrace f:f(0)=0, f'(0)=0, \int_{0}^{1}f''^2dt<\infty\right\rbrace
 \end{equation*}
-with inner product $\langle f,g \rangle_1=\int_{0}^{1}f''g''dt$. Thus, $\mathcal{H}_0$ and $\mathcal{H}_1$ are two subspaces of the $\mathcal{C}_{\footnotesize p.w.}^{2}[0,1]$, and the reproducing kernel is $R_s(\cdot) = R_0(s,\cdot)+R_1(s,\cdot)$.
+with inner product $\langle f,g \rangle_1=\int_{0}^{1}f''g''dt$. Thus, $\mathcal{H}_0$ and $\mathcal{H}_1$ are two subspaces of the $\mathcal{C}_{\footnotesize p.w.}^{(2)}[0,1]$, and the reproducing kernel is $R_s(\cdot) = R_0(s,\cdot)+R_1(s,\cdot)$.
 
 
-Define a new notation $\dot{R}(s,t)=\frac{\partial R}{\partial s}(s,t)=\frac{\partial R_0}{\partial s}(s,t)+\frac{\partial R_1}{\partial s}(s,t)=t+\int_0^s(t-u)_+du$. Obviously $\dot{R}_s(t) \in \mathcal{C}_{\footnotesize p.w.}^{2}[0,1]$. Additionally, we have $\dot{R}_s(0)=0, \dot{R}'_s(0)=\frac{\partial \dot{R}_s}{\partial t}(0)=1$, and $ \dot{R}''_s(t)=\begin{cases}
-0 & s\leq t \\ 1 & s>t \end{cases}$. Then, for any $f\in \mathcal{C}_{\footnotesize p.w.}^{2}[0,1]$, we have 
+Define a new notation $\dot{R}(s,t)=\frac{\partial R}{\partial s}(s,t)=\frac{\partial R_0}{\partial s}(s,t)+\frac{\partial R_1}{\partial s}(s,t)=t+\int_0^s(t-u)_+du$. Obviously $\dot{R}_s(t) \in \mathcal{C}_{\footnotesize p.w.}^{(2)}[0,1]$. Additionally, we have $\dot{R}_s(0)=0, \dot{R}'_s(0)=\frac{\partial \dot{R}_s}{\partial t}(0)=1$, and $ \dot{R}''_s(t)=\begin{cases}
+0 & s\leq t \\ 1 & s>t \end{cases}$. Then, for any $f\in \mathcal{C}_{\footnotesize p.w.}^{(2)}[0,1]$, we have 
 \begin{equation*}
 \langle \dot{R}_s,f\rangle =\dot{R}_s(0)f(0)+\dot{R}'_s(0)f'(0)+\int_0^1\dot{R}''_s f''	 du=f'(0)+\int_0^t f''du=f'(t).
 \end{equation*}
@@ -230,7 +230,7 @@ Define a new notation $\dot{R}(s,t)=\frac{\partial R}{\partial s}(s,t)=\frac{\pa
 %
 %Given the sample points $t_j, j=1, \ldots, n$ in equation $(\ref{maineq})$ and noting that the space
 %\begin{equation}
-%\mathcal{A}=\{f: f=\sum_{j=1}^{n}\alpha_jR_1(t_j,\cdot)+\sum_{j=1}^{n}\beta_j\dot{R}_1(t_j,\cdot)\} 
+%\mathcal{A}=\left\lbrace f: f=\sum_{j=1}^{n}\alpha_jR_1(t_j,\cdot)+\sum_{j=1}^{n}\beta_j\dot{R}_1(t_j,\cdot)\right\rbrace 
 %\end{equation}
 %is a closed linear subspace of $\mathcal{H}_*$. Then $f  \in \mathcal{C}_{\footnotesize p.w.}^2[0,1]$ can be written as
 %\begin{equation}\label{GaussianProcessFunctionF}
@@ -239,12 +239,12 @@ Define a new notation $\dot{R}(s,t)=\frac{\partial R}{\partial s}(s,t)=\frac{\pa
 %where $\mathbf{d},\mathbf{c}$ and $\mathbf{b}$ are coefficients, and $\rho(t) \in \mathcal{H}_* \ominus \mathcal{A}$. 
 It can be seen that the first term $\dot{R}_0=t\in \mathcal{H}_0$, and the space spanned by the second term $\dot{R}_1=\int_0^s(t-u)_+du$, denoted as $\mathcal{\dot{H}}$, is a subspace of $\mathcal{H}_1$, and $\mathcal{\dot{H}} \ominus \mathcal{H}_1\neq \emptyset$. Given the sample points $t_j, j=1, \ldots, n$, in equation $(\ref{maineq})$ and noting that the space
 \begin{equation*}
-\mathcal{A}=\{f: f=\sum_{j=1}^{n}\alpha_jR_1(t_j,\cdot)+\sum_{j=1}^{n}\beta_j\dot{R}_1(t_j,\cdot)\} 
+\mathcal{A}=\left\lbrace f: f=\sum_{j=1}^{n}\alpha_jR_1(t_j,\cdot)+\sum_{j=1}^{n}\beta_j\dot{R}_1(t_j,\cdot)\right\rbrace 
 \end{equation*}
-is a closed linear subspace of $\mathcal{H}_1$. Then, we have a new space $\mathcal{H}_*=\mathcal{\dot{H}} \cup \mathcal{A}$. Thus, the two new sub spaces in $\mathcal{C}_{\footnotesize p.w.}^2[0,1]$ are $\mathcal{H}_0$ and $\mathcal{H}_*$.
+is a closed linear subspace of $\mathcal{H}_1$. Then, we have a new space $\mathcal{H}_*=\mathcal{\dot{H}} \cup \mathcal{A}$. Thus, the two new sub spaces in $\mathcal{C}_{\footnotesize p.w.}^{(2)}[0,1]$ are $\mathcal{H}_0$ and $\mathcal{H}_*$.
 
 
-For any $f  \in \mathcal{C}_{\footnotesize p.w.}^2[0,1]$, it can be written as 
+For any $f\in\mathcal{C}_{\footnotesize p.w.}^{(2)}[0,1]$, it can be written as 
 \begin{equation}\label{GaussianProcessFunctionF}
 f(t)=d_1+d_2t+\sum_{j=1}^{n}c_jR_1(t_j,t)+\sum_{i=j}^{n}b_j\dot{R}_1(t_j,\cdot) +\rho(t)
 \end{equation}
@@ -256,17 +256,17 @@ where $\mathbf{d},\mathbf{c}$ and $\mathbf{b}$ are coefficients, and $\rho(t) \i
 +&\lambda \int_0^1 \left( \sum_{j=1}^{n}c_jR''_1(t_j,t)+\sum_{j=1}^{n}b_j\dot{R}''_1(t_j,t)+\rho''(t)\right)^2dt
 \end{split}
 \end{equation}
-Because of orthogonality, $\rho(t_i) = (R_1(t_i,\cdot),\rho)=0$, $\rho'(t_i) = (\dot{R}_1(t_i,\cdot),\rho')=0$, $i=1,\ldots,n$. By denoting that 
+Because of orthogonality, $\rho(t_i) = \left(R_1(t_i,\cdot),\rho\right)=0$, $\rho'(t_i) = \left(\dot{R}_1(t_i,\cdot),\rho'\right)=0$, $i=1,\ldots,n$. By denoting that 
 \begin{align*}
-S&=\{S_{ij} \}_{n\times 2}=\begin{bmatrix}1 & t_i \end{bmatrix} ,& Q&=\{Q_{ij} \}_{n\times n}= R_1(t_j,t_i), & P&=\{P_{ij} \}_{n\times n}= \dot{R}_1(t_j,t_i), \\
-S'&=\{S'_{ij} \}_{n\times 2}=\begin{bmatrix} 0 & 1 \end{bmatrix} ,& Q'&=\{Q'_{ij} \}_{n\times n}= R_1'(t_j,t_i), & P'&=\{P'_{ij} \}_{n\times n}= \dot{R}_1'(t_j,t_i). 
+S&=\left\lbrace S_{ij} \right\rbrace_{n\times 2}=\begin{bmatrix}1 & t_i \end{bmatrix} ,& Q&=\left\lbrace Q_{ij} \right\rbrace_{n\times n}= R_1(t_j,t_i), & P&=\left\lbrace P_{ij} \right\rbrace_{n\times n}= \dot{R}_1(t_j,t_i), \\
+S'&=\left\lbrace S'_{ij} \right\rbrace_{n\times 2}=\begin{bmatrix} 0 & 1 \end{bmatrix} ,& Q'&=\left\lbrace Q'_{ij} \right\rbrace_{n\times n}= R_1'(t_j,t_i), & P'&=\left\lbrace P'_{ij} \right\rbrace_{n\times n}= \dot{R}_1'(t_j,t_i). 
 \end{align*}
 and noting that $\int_0^1R''_1(t_i,t)R''_1(t_j,t)dt=R_1(t_i,t_j)$, $\int_0^1R''_1(t_i,t)\dot{R}''_1(t_j,t)dt=\int_0^{v}(t_i-t)dt=\dot{R}_1(t_j,t_i)$, and $\int_0^1\dot{R}''_1(t_i,t)\dot{R}''_1(t_j,t)dt=\int_0^{v}1dt=\dot{R}'_1(t_i,t_j)$, where $v=\mbox{min}(t_i,t_j)$, the above equation (\ref{GassianProcessRawequation}) can be written as 
 \begin{equation}\label{matriteq}
 \begin{split}
-(\mathbf{y}-S\mathbf{d}-Q\mathbf{c}-P\mathbf{b})^\top (\mathbf{y}-S\mathbf{d}-Q\mathbf{c}-P\mathbf{b})+\\
-\gamma(\mathbf{v}-S'\mathbf{d}-Q'\mathbf{c}-P'\mathbf{b})^\top (\mathbf{v}-S'\mathbf{d}-Q'\mathbf{c}-P'\mathbf{b})\\
-+n\lambda (\mathbf{c}^\top Q\mathbf{c} + 2\mathbf{c}^\top P\mathbf{b}+ \mathbf{b}^\top P'\mathbf{b})+n\lambda(\rho,\rho).
+\left(\mathbf{y}-S\mathbf{d}-Q\mathbf{c}-P\mathbf{b}\right)^\top \left(\mathbf{y}-S\mathbf{d}-Q\mathbf{c}-P\mathbf{b}\right)+\\
+\gamma\left(\mathbf{v}-S'\mathbf{d}-Q'\mathbf{c}-P'\mathbf{b}\right)^\top \left(\mathbf{v}-S'\mathbf{d}-Q'\mathbf{c}-P'\mathbf{b}\right)\\
++n\lambda \left(\mathbf{c}^\top Q\mathbf{c} + 2\mathbf{c}^\top P\mathbf{b}+ \mathbf{b}^\top P'\mathbf{b}\right)+n\lambda\left(\rho,\rho\right).
 \end{split}
 \end{equation}
 Note that $\rho$ only appears in the third term and is minimized at $\rho=0$. Hence, a tractor spline resides in the space $\mathcal{H}_0\oplus \mathcal{H}_*$ of finite dimension. Thus, the solution to $(\ref{maineq})$ is computed via the minimization of the first three terms in $(\ref{matriteq})$ with respect to $\mathbf{d}$, $\mathbf{c}$ and $\mathbf{b}$.
@@ -276,29 +276,29 @@ Note that $\rho$ only appears in the third term and is minimized at $\rho=0$. He
 \subsection{Posterior of Bayes Estimates}
 
 
-Now in the model $y=f(t)+\varepsilon_1$, $\varepsilon_1 \sim N(0,\sigma^2)$, and $v=f '(t)+\varepsilon_2$, $\varepsilon_2\sim N(0, \frac{\sigma^2}{\gamma})$, according to equation $(\ref{GaussianProcessFunctionF})$, for $f(t) \in \mathcal{C}_{\footnotesize p.w.}^{2}[0,1]$, we have 
+Now in the model $y=f(t)+\varepsilon_1$, $\varepsilon_1 \sim N(0,\sigma^2)$, and $v=f '(t)+\varepsilon_2$, $\varepsilon_2\sim N\left(0, \frac{\sigma^2}{\gamma}\right)$, according to equation $(\ref{GaussianProcessFunctionF})$, for $f(t) \in \mathcal{C}_{\footnotesize p.w.}^{(2)}[0,1]$, we have 
 \begin{equation}
 f(t)=(d_1+d_2t)+\sum_{i=1}^{n}c_iR_1(t_i,t)+\sum_{i=1}^{n}b_i\dot{R}_1(t_i,t).
 \end{equation}
-The covariance functions for $y,v$ and $f , f '$ are
+The covariance functions for $y,v$ and $f , f '$ are \small
 \begin{align*}
-\E (f(s)f (t))&=\tau^2R_0(s,t)+\beta R_1(s,t) & \E (f(s)f '(t))&=\tau^2R_0'(s,t)+\beta R_1'(s,t) \\
-\E (f '(s)f (t))&=\tau^2\dot{R}_0(s,t)+\beta\dot{R}_1(s,t) & \E (f '(s)f '(t))&=\tau^2\dot{R}'_0(s,t)+\beta\dot{R}'_1(s,t) \\
+\E\lbrack f(s)f (t)\rbrack &=\tau^2R_0(s,t)+\beta R_1(s,t) & \E \lbrack f(s)f '(t)\rbrack&=\tau^2R_0'(s,t)+\beta R_1'(s,t) \\
+\E\lbrack f '(s)f (t)\rbrack&=\tau^2\dot{R}_0(s,t)+\beta\dot{R}_1(s,t) & \E\lbrack f '(s)f '(t)\rbrack&=\tau^2\dot{R}'_0(s,t)+\beta\dot{R}'_1(s,t) \\
 %\begin{split}
 %\E (y_i,y_j)&=\tau^2R_0(s_i,s_j)+\beta R_1(s_i,s_j)\\ &+\sigma^2\delta_{ij} \end{split}  & \begin{split}
 %\E (v_i,v_j)&=\tau^2\dot{R}'_0(s_i,s_j)+\beta\dot{R}'_1(s_i,s_j) \\&+\frac{\sigma^2}{\gamma}\delta_{ij}\end{split} \\ 
-\footnotesize \E (y_i,y_j)=\tau^2 & R_0(s_i,s_j)+\beta R_1(s_i,s_j)+\sigma^2\delta_{ij}   & 
-\E (v_i,v_j)=\tau^2&\dot{R}'_0(s_i,s_j)+\beta\dot{R}'_1(s_i,s_j) +\frac{\sigma^2}{\gamma}\delta_{ij} \\ 
+\footnotesize \E\lbrack y_i,y_j\rbrack=\tau^2 & R_0(s_i,s_j)+\beta R_1(s_i,s_j)+\sigma^2\delta_{ij}   & 
+\E \lbrack v_i,v_j\rbrack=\tau^2&\dot{R}'_0(s_i,s_j)+\beta\dot{R}'_1(s_i,s_j) +\frac{\sigma^2}{\gamma}\delta_{ij} \\ 
 \normalsize
-\E (v_i,y_j)&=\tau^2\dot{R}_0(s_i,s_j)+\beta \dot{R}_1(s_i,s_j) &
-\E (y_i,v_j)&=\tau^2R_0'(s_i,s_j)+\beta R_1'(s_i,s_j)\\
-\E (y_i,f(s))&=\tau^2 R_0(s_i,s)+\beta R_1(s_i,s)  & \E (y_i,f '(s))&=\tau^2 R'_0(s_i,s)+\beta R'_1(s_i,s)  \\
-\E (v_i,f(s))&=\tau^2 \dot{R}_0(s_i,s)+\beta \dot{R}_1(s_i,s) & \E (v_i,f '(s))&=\tau^2\dot{R}'_0(s_i,s)+\beta \dot{R}'_1(s_i,s)
+\E\lbrack v_i,y_j\rbrack&=\tau^2\dot{R}_0(s_i,s_j)+\beta \dot{R}_1(s_i,s_j) &
+\E\lbrack y_i,v_j\rbrack&=\tau^2R_0'(s_i,s_j)+\beta R_1'(s_i,s_j)\\
+\E\lbrack y_i,f(s)\rbrack&=\tau^2 R_0(s_i,s)+\beta R_1(s_i,s)  & \E\lbrack y_i,f '(s)\rbrack&=\tau^2 R'_0(s_i,s)+\beta R'_1(s_i,s)  \\
+\E\lbrack v_i,f(s)\rbrack&=\tau^2 \dot{R}_0(s_i,s)+\beta \dot{R}_1(s_i,s) & \E\lbrack v_i,f '(s)\rbrack&=\tau^2\dot{R}'_0(s_i,s)+\beta \dot{R}'_1(s_i,s)
 \end{align*}
-where $R(s,t)$ is taken from $(\ref{kerneleq})$. 
+\normalsize where $R(s,t)$ is taken from $(\ref{kerneleq})$. 
 
 
-Observing $y_i\sim N(f (t_i),\sigma^2)$ and $v_i\sim N(f (t_i),\frac{\sigma^2}{\gamma})$, $i=1,\ldots,n$, the joint distribution of $\mathbf{y},\mathbf{v}$ and $f(t)$ is normal with mean zero and a covariance matrix can be found. The posterior mean of $f(t)$ is 
+Observing $y_i\sim N\left(f (t_i),\sigma^2\right)$ and $v_i\sim N\left(f (t_i),\frac{\sigma^2}{\gamma}\right)$, $i=1,\ldots,n$, the joint distribution of $\mathbf{y},\mathbf{v}$ and $f(t)$ is normal with mean zero and a covariance matrix can be found. The posterior mean of $f(t)$ is 
 \begin{align}\label{GPrhoeq}\footnotesize
 \begin{split}
 \E (f \mid  \mathbf{\mathbf{y}},\mathbf{v}) & =
@@ -328,8 +328,8 @@ Observing $y_i\sim N(f (t_i),\sigma^2)$ and $v_i\sim N(f (t_i),\frac{\sigma^2}{\
 \end{bmatrix}^{-1}\begin{bmatrix}
 \mathbf{y}\\\mathbf{v}
 \end{bmatrix}\\
-&=(\phi^\top \rho 
-\begin{bmatrix} S\\ S' \end{bmatrix}^\top + \begin{bmatrix} \xi^\top & \psi^\top\end{bmatrix})
+&=\left(\phi^\top \rho 
+\begin{bmatrix} S\\ S' \end{bmatrix}^\top + \begin{bmatrix} \xi^\top & \psi^\top\end{bmatrix}\right)
 \left(\rho\begin{bmatrix} S \\ S' \end{bmatrix}^\top \begin{bmatrix} S \\ S' \end{bmatrix}+
 \begin{bmatrix} Q+n\lambda I& P\\
 Q'& P'+\frac{n\lambda}{\gamma}I\end{bmatrix}\right) ^{-1}
@@ -343,36 +343,36 @@ where $\phi$ is $2 \times 1$ matrix with entry $1$ and $t$, $\xi$ is $n\times 1$
 \begin{lemma}\label{GPLemma}
 	Suppose $M$ is symmetric and nonsingular and $T$ is of full column rank. 
 	\begin{align*}
-	&\lim\limits_{\rho \rightarrow \infty}(\rho TT^\top+M)^{-1}=M^{-1}-M^{-1}T(T^\top M^{-1}T)^{-1}T^\top M^{-1},\\
-	&\lim\limits_{\rho \rightarrow \infty}\rho T^\top(\rho TT^\top+M)^{-1}=(T^\top M^{-1}T)^{-1}T^\top M^{-1}.
+	&\lim\limits_{\rho \rightarrow \infty}\left(\rho TT^\top+M\right)^{-1}=M^{-1}-M^{-1}T\left(T^\top M^{-1}T\right)^{-1}T^\top M^{-1},\\
+	&\lim\limits_{\rho \rightarrow \infty}\rho T^\top\left(\rho TT^\top+M\right)^{-1}=\left(T^\top M^{-1}T\right)^{-1}T^\top M^{-1}.
 	\end{align*}
 \end{lemma}
 
 Setting $\rho \rightarrow \infty$ in equation $(\ref{GPrhoeq})$ and applying Lemma $\ref{GPLemma}$, the posterior mean $\E (f(x)\mid \mathbf{y},\mathbf{v})$ is in the form $f  = \mathbf{\phi}^\top \mathbf{d}+\mathbf{\xi}^\top \mathbf{c}+\mathbf{\psi}^\top \mathbf{b}$, with the coefficients given by
 \begin{align*} 
-\mathbf{d}&=(T^\top M^{-1}T)^{-1}T^\top M^{-1}\begin{bmatrix}\mathbf{y} \\ \mathbf{v} \end{bmatrix},\\
-\begin{bmatrix}\mathbf{c}\\\mathbf{b}\end{bmatrix} &=
-(M^{-1}-M^{-1}T(T^\top M^{-1} T)^{-1}T^\top M^{-1})\begin{bmatrix}\mathbf{y}\\ \mathbf{v} \end{bmatrix},
-\end{align*} where $T=\begin{bmatrix} S\\S' \end{bmatrix}$ and $M=\begin{bmatrix}
-Q+n\lambda I& P\\
+\mathbf{d}&=\left(T^\top M^{-1}T\right)^{-1}T^\top M^{-1}\begin{bmatrix}\mathbf{y} \\ \mathbf{v} \end{bmatrix},\\
+\begin{bmatrix}\mathbf{c}\\ \mathbf{b}\end{bmatrix} &=
+\left(M^{-1}-M^{-1}T\left(T^\top M^{-1} T\right)^{-1}T^\top M^{-1}\right)\begin{bmatrix}\mathbf{y}\\ \mathbf{v} \end{bmatrix},
+\end{align*} 
+where $T=\begin{bmatrix} S\\S' \end{bmatrix}$ and $M=\begin{bmatrix} Q+n\lambda I& P\\
 Q'& P'+\frac{n\lambda}{\gamma}I
 \end{bmatrix}$.
 
 It is easy to verify that $\mathbf{d},\mathbf{c},\mathbf{b}$ are the solutions to
 \begin{align*}
 &\begin{cases}
-S^\top (S\mathbf{d} +Q\mathbf{c}+P\mathbf{b}-\mathbf{y}) +\gamma S'^\top( S'\mathbf{b}+ P^\top \mathbf{c}+S'^\top P'\mathbf{b}-\mathbf{v})=0, \\
-Q(S\mathbf{d}+(Q+n\lambda I)\mathbf{c}+P\mathbf{b}-\mathbf{y}) + P ( \gamma S' \mathbf{b} +  \gamma P^\top \mathbf{c}+ (\gamma P'+n\lambda I) \mathbf{b}- \gamma \mathbf{v})=0, \\
-P^\top (S\mathbf{d}+(Q+n\lambda I) \mathbf{c} +P\mathbf{b}-\mathbf{y})+P'(\gamma S'\mathbf{b}+P^\top \mathbf{c}+(\gamma P'+n\lambda I)\mathbf{b}- \gamma\mathbf{v})=0. \\
+S^\top \left(S\mathbf{d} +Q\mathbf{c}+P\mathbf{b}-\mathbf{y}\right) +\gamma S'^\top\left( S'\mathbf{b}+ P^\top \mathbf{c}+S'^\top P'\mathbf{b}-\mathbf{v}\right)=0, \\
+Q\left(S\mathbf{d}+\left(Q+n\lambda I\right)\mathbf{c}+P\mathbf{b}-\mathbf{y}\right) + P \left( \gamma S' \mathbf{b} + \gamma P^\top \mathbf{c}+ \left(\gamma P'+n\lambda I\right) \mathbf{b}- \gamma \mathbf{v}\right)=0, \\
+P^\top \left(S\mathbf{d}+\left(Q+n\lambda I\right) \mathbf{c} +P\mathbf{b}-\mathbf{y}\right)+P'\left(\gamma S'\mathbf{b}+P^\top \mathbf{c}+\left(\gamma P'+n\lambda I\right)\mathbf{b}- \gamma\mathbf{v}\right)=0. \\
 \end{cases}
 \end{align*}
 Finally we obtain the following theorem: 
 \begin{theorem}
 The Tractor smoothing spline of (\ref{maineq}) is the posterior
-mean of $f=f_0+f_1 + \dot{f}_1$, where $f_0$ diffuses in span $\{ 1,t\}$ and $f_1$ has a Gaussian process prior with mean zero and a covariance 
+mean of $f=f_0+f_1 + \dot{f}_1$, where $f_0$ diffuses in span $\left\lbrace  1,t\right\rbrace$ and $f_1$ has a Gaussian process prior with mean zero and a covariance 
 \begin{align*}
-\Cov (f_1,f_1)   &= R_1(s,t)   =\beta \int_{0}^{1} (s-u)_+(t-u)_+du, \\
-\Cov (\dot{f}_1,f_1)  &= \dot{R}(s,t) =\beta (t+\int_0^s(t-u)_+du ),
+\Cov \left(f_1,f_1\right)   &= R_1\left(s,t\right)   =\beta \int_{0}^{1} \left(s-u\right)_+\left(t-u\right)_+du, \\
+\Cov \left(\dot{f}_1,f_1\right)  &= \dot{R}\left(s,t\right) =\beta \left(t+\int_0^s\left(t-u\right)_+du \right),
 \end{align*}
 functions for $\beta = \sigma^2/n\lambda$.
 \end{theorem}
@@ -388,13 +388,13 @@ In most of the studies on polynomial smoothing splines, the random errors are as
 \cite{diggle1989spline} extended GCV for choosing the degree of smoothing spline to accommodate an autocorrelated error sequence, by which the smoothing parameter and autocorrelation parameters are estimated simultaneously.  \cite{kohn1992nonparametric} proposed an algorithm to evaluate the cross-validation functions, whose autocorrelated errors are modeled by an autoregressive moving average. \cite{wang1998smoothing} extend GML and unbiased risk (UBR), other than GCV, to estimate the smoothing parameters and correlation parameters simultaneously. In this section, we are exploring the extended GCV for Tractor spline with correlated errors. 
 
 
-First of all, consider observations $y=f(t)+\varepsilon_1$ and $v=f'(t)+\varepsilon_2$, where $\varepsilon_1\sim N(0,\sigma^2W^{-1})$, $\varepsilon_2\sim N(0,\frac{\sigma^2}{\gamma}U^{-1})$ with variance parameter $\sigma^2$. The Tractor spline $\hat{f}$ with correlated errors in space $\mathcal{C}_{p.w}^2[0,1]$ is the minimizer of 
+First of all, consider observations $y=f(t)+\varepsilon_1$ and $v=f'(t)+\varepsilon_2$, where $\varepsilon_1\sim N\left(0,\sigma^2W^{-1}\right)$, $\varepsilon_2\sim N\left(0,\frac{\sigma^2}{\gamma}U^{-1}\right)$ with variance parameter $\sigma^2$. The Tractor spline $\hat{f}$ with correlated errors in space $\mathcal{C}_{p.w}^{(2)}[0,1]$ is the minimizer of 
 \begin{equation}
-\frac{1}{n}(\mathbf{y}-\mathbf{f})^\top W(\mathbf{y}-\mathbf{f})+\frac{\gamma}{n}(\mathbf{v}-\mathbf{f}')^\top U(\mathbf{v}-\mathbf{f}')+\lambda\int_0^1(f'')^2dt.
+\frac{1}{n}\left(\mathbf{y}-\mathbf{f}\right)^\top W\left(\mathbf{y}-\mathbf{f}\right)+\frac{\gamma}{n}\left(\mathbf{v}-\mathbf{f}'\right)^\top U\left(\mathbf{v}-\mathbf{f}'\right)+\lambda\int_0^1\left(f''\right)^2dt.
 \end{equation}
-Because $f=\sum_{i=1}^{2n}\theta_iN_i(t)$ is a linear combination of basis functions, extended to the solution with covariance matrices, the coefficients is found by 
+Because $f=\sum_{i=1}^{2n}\theta_iN_i\left(t\right)$ is a linear combination of basis functions, extended to the solution with covariance matrices, the coefficients is found by 
 \begin{equation}
-\hat{\theta}=(B^\top W B+ \gamma C^\top UC+n\Omega_\lambda)^{-1}(B^\top W \mathbf{y}+\gamma C^\top U\mathbf{v}).
+\hat{\theta}=\left(B^\top W B+ \gamma C^\top UC+n\Omega_\lambda\right)^{-1}\left(B^\top W \mathbf{y}+\gamma C^\top U\mathbf{v}\right).
 \end{equation}
 Furthermore, in Gaussian process regression, the covariance matrix with correlated variances becomes 
 $M=\begin{bmatrix}
@@ -411,14 +411,13 @@ Followed by the approximation $S_{ii}\approx\frac{1}{n}\tr(S)$, $T_{ii}\approx\f
 \begin{equation*}
 \mbox{GCV}(\lambda,\gamma)=\frac{1}{n}\sum_{i=1}^{n}\left( \frac{\hat{f}(t_i)-y_i+ \frac{\gamma\tr(T)/n}{1-\gamma \tr(V)/n}(\hat{f}'(t_i)-v_i)}{1-\tr(S)/n-\frac{\gamma\tr(T)/n}{1-\gamma \tr(V)/n} \tr(U)/n} \right)^2,
 \end{equation*}
-which may provide further computational savings since it requires finding the trace rather than the individual diagonal entries of the hat matrix. Hence, it can be written in the form of
+which may provide further computational savings since it requires finding the trace rather than the individual diagonal entries of the hat matrix. Hence, it can be written in the form of \footnotesize
 \begin{equation*}
-\mbox{GCV}(\lambda,\gamma)=\frac{(\mathbf{\hat{f}}-\mathbf{y})^\top (\mathbf{\hat{f}}-\mathbf{y})+\frac{2\tr(\gamma T)}{\tr(I-\gamma V)}(\mathbf{\hat{f}}-\mathbf{y})^\top (\mathbf{\hat{f}}'-\mathbf{v}) + \left( \frac{\tr(\gamma T)}{\tr(I-\gamma V)} \right)^2 (\mathbf{\hat{f}}'-\mathbf{v})^\top (\mathbf{\hat{f}}'-\mathbf{v})}{\left( \tr(I-S-\frac{\tr(\gamma T)}{\tr(I-\gamma V)}U) \right)^2}.
-\end{equation*}
-A natural extension to the above GCV for tractor spine with correlated errors is
+\mbox{GCV}(\lambda,\gamma)=\frac{\left(\mathbf{\hat{f}}-\mathbf{y}\right)^\top \left(\mathbf{\hat{f}}-\mathbf{y}\right) + \frac{2\tr\left(\gamma T\right)}{\tr\left(I-\gamma V\right)}\left(\mathbf{\hat{f}}-\mathbf{y}\right)^\top \left(\mathbf{\hat{f}}'-\mathbf{v}\right) + \left( \frac{\tr(\gamma T)}{\tr(I-\gamma V)} \right)^2 \left(\mathbf{\hat{f}}'-\mathbf{v}\right)^\top \left(\mathbf{\hat{f}}'-\mathbf{v}\right)}{\left( \tr(I-S-\frac{\tr(\gamma T)}{\tr(I-\gamma V)}U) \right)^2}.
+\end{equation*} \normalsize
+A natural extension to the above GCV for tractor spine with correlated errors is \scriptsize
 \begin{equation}
-\footnotesize
-\mbox{GCV}(\lambda,\gamma)=\frac{(\mathbf{\hat{f}}-\mathbf{y})^\top W(\mathbf{\hat{f}}-\mathbf{y})+\frac{2\tr(\gamma T)}{\tr(I-\gamma V)}(\mathbf{\hat{f}}-\mathbf{y})^\top W^{1/2}U^{\top 1/2}(\mathbf{\hat{f}}'-\mathbf{v}) + \left( \frac{\tr(\gamma T)}{\tr(I-\gamma V)} \right)^2 (\mathbf{\hat{f}}'-\mathbf{v})^\top U(\mathbf{\hat{f}}'-\mathbf{v})}{\left( \tr(I-S-\frac{\tr(\gamma T)}{\tr(I-\gamma V)}U) \right)^2}.
+\mbox{GCV}\left(\lambda,\gamma\right)=\frac{\left(\mathbf{\hat{f}}-\mathbf{y}\right)^\top W\left(\mathbf{\hat{f}}-\mathbf{y}\right)+\frac{2\tr\left(\gamma T\right)}{\tr\left(I-\gamma V\right)}\left(\mathbf{\hat{f}}-\mathbf{y}\right)^\top W^{1/2}U^{\top 1/2}\left(\mathbf{\hat{f}}'-\mathbf{v}\right) + \left( \frac{\tr\left(\gamma T\right)}{\tr\left(I-\gamma V\right)} \right)^2 \left(\mathbf{\hat{f}}'-\mathbf{v}\right)^\top U\left(\mathbf{\hat{f}}'-\mathbf{v}\right)}{\left( \tr\left(I-S-\frac{\tr\left(\gamma T\right)}{\tr\left(I-\gamma V\right)}U\right) \right)^2}.
 \end{equation}
 \normalsize
 
@@ -428,14 +427,14 @@ The GCV is used for finding the unknown constant parameter $\lambda$, instead of
 
 \section{A Numeric Simulation}
 
-Consider a 100-length even spaced simulation data on $[0,1]$ and the model $f(t)=\sin(2\pi t)$, $f'(t)=\cos(2\pi t)$. Given parameters $\sigma^2=0.01$, $\gamma=0.02$ and covariance matrices $W$, $U$, then the simulated observation is 
+Consider a length of 100 even spaced simulation data on $[0,1]$ and the model $f(t)=\sin(2\pi t)$, $f'(t)=\cos(2\pi t)$. Given parameters $\sigma^2=0.01$, $\gamma=0.02$ and covariance matrices $W$, $U$, then the simulated observation is 
 \begin{align}
 \begin{cases}
 y_i =f(t_i)+\varepsilon_{i}^{(1)}, \\
 v_i =f'(t_i)+\varepsilon_{i}^{(2)}, 
 \end{cases}
 \end{align}
-where $\varepsilon^{(1)}\sim N(0,\sigma^2W^{-1})$, $\varepsilon^{(2)}\sim N(0,\frac{\sigma^2}{\gamma}U^{-1})$ , $0\leq t_1 < \cdots < t_n \leq 1$. 
+where $\varepsilon^{(1)}\sim N\left(0,\sigma^2W^{-1}\right)$, $\varepsilon^{(2)}\sim N\left(0,\frac{\sigma^2}{\gamma}U^{-1}\right)$ , $0\leq t_1 < \cdots < t_n \leq 1$. 
 
 With the same parameter found by GCV, Tractor spline and its Bayes estimate return the same reconstruction. However, because we are using constant $\lambda$ rather than a piecewise $\lambda(t)$, the trivial Tractor spline might not be the optimal solution compared with the one consisting an adaptive penalty term in Section \ref{SectionTractorSpline}. 
 
