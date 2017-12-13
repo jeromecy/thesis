@@ -34,7 +34,7 @@ Further, \cite{wahba1978improper} showed that a Bayesian version of this problem
 Based on the correspondence, \cite{craven1978smoothing} proposed an generalized cross-validation estimate for the minimizer $f_\lambda$. The estimate $\hat{\lambda}$ is the minimizer of the function where the trace of matrix $A(\lambda)$ in (\ref{crossvalidationmatrixA}) is incorporated. It is also able to establish an optimal convergence property for their estimator when the number of observations in a fixed interval tends to infinity \cite{wecker1983signal}. A high efficient algorithm to optimize generalized cross-validation and generalized maximum likelihood scores with multiple smoothing parameters via the Newton method was proposed by \cite{gu1991minimizing}. This algorithm can also be applied to the maximum likelihood and the restricted maximum likelihood estimation. The behavior of the optimal regularization parameter in the method of regularization was investigated by \cite{wahba1990optimal}. 
 
 
-In this chapter, it is proved that the Tractor spline can be estimated by a Bayesian approach in second-derivative-piecewise-continuous Reproducing Kernel Hilbert Space. The GCV is used to find the optimal parameters for Tractor spline. 
+In this chapter, it is proved that the Tractor spline can be estimated by a Bayesian approach in second-derivative-piecewise-continuous reproducing kernel Hilbert space. The GCV is used to find the optimal parameters for Tractor spline. 
 
 
 
@@ -176,7 +176,7 @@ Therefore, it can seen that the Bayesian estimation of a smoothing spline is a s
 \section{Tractor Spline as Bayes Estimate}
 
 
-Recall the definition of Tractor spline introduced in Chapter \ref{SectionTractorSpline}. It is the solution to the objective function (\ref{tractorsplineObjective}), where an extra term for $f'(t)-v$ and an extra parameter $\gamma$ are incorporated. The penalty parameter $\lambda(t)$ is a function varying on different domains. If $\lambda(t)=\lambda$ is constant and $\gamma=0$, the Tractor spline degenerate to a conventional cubic smoothing spline consisting of a set of given basis functions.  
+Recall the definition of Tractor spline introduced in Section \ref{SectionTractorSpline}. It is the solution to the objective function (\ref{tractorsplineObjective}), where an extra term for $f'(t)-v$ and an extra parameter $\gamma$ are incorporated. The penalty parameter $\lambda(t)$ is a function varying on different domains. If $\lambda(t)=\lambda$ is constant and $\gamma=0$, the Tractor spline degenerate to a conventional cubic smoothing spline consisting of a set of given basis functions.  
 
 However, the Bayes estimate for a polynomial smoothing spline requires fixed interval on $[0,1]$ and the penalty parameter is constant. For the first constraint, without loss of generality, an arbitrary interval $[a,b]$ can be transformed to $[0,1]$. For the second constraint, it is assumed that $\lambda(t)$ stays the same constant in each subinterval of $[0,1]$ and name the solution "trivial Tractor spline".  In this section, I still call it the "Tractor spline" for sake of simplicity. 
 
@@ -437,7 +437,7 @@ v_i =f'(t_i)+\varepsilon_{i}^{(2)},
 \end{align}
 where $\varepsilon^{(1)}\sim N(0,\sigma^2W^{-1})$, $\varepsilon^{(2)}\sim N(0,\frac{\sigma^2}{\gamma}U^{-1})$ , $0\leq t_1 < \cdots < t_n \leq 1$. 
 
-With the same parameter found by GCV, Tractor spline and its Bayes estimate return the same reconstruction. However, because we are using constant $\lambda$ rather than a piecewise $\lambda(t)$, the trivial Tractor spline might not be the optimal solution compared with the one consisting an adaptive penalty term in section \ref{SectionTractorSpline}. 
+With the same parameter found by GCV, Tractor spline and its Bayes estimate return the same reconstruction. However, because we are using constant $\lambda$ rather than a piecewise $\lambda(t)$, the trivial Tractor spline might not be the optimal solution compared with the one consisting an adaptive penalty term in Section \ref{SectionTractorSpline}. 
 
 \begin{figure}[h]
 \centering
@@ -450,7 +450,7 @@ With the same parameter found by GCV, Tractor spline and its Bayes estimate retu
 
 \section{Conclusion}
 
-In this Chapter, we take a review of the work that has been done in the last few decades for the relationship between polynomial smoothing spline and the Bayes estimates. With improper priors, the two methods are corresponding to each other. In fact, smoothing spline is a particular case of Gaussian process regression. By following the work done by \cite{gu2013smoothing}, we find the Bayes estimate for Tractor spline with a constant penalty parameter $\lambda$.  However, it is a particular scenario of Tractor spline whose $\lambda(t)$ varying on domains. So the trivial Tractor spline might not be an optimal solution. Additionally, we give the formula of GCV for Tractor spline with correlated errors on $y$ and $v$. 
+In this chapter, we take a review of the work that has been done in the last few decades for the relationship between polynomial smoothing spline and the Bayes estimates. With improper priors, the two methods are corresponding to each other. In fact, smoothing spline is a particular case of Gaussian process regression. By following the work done by \cite{gu2013smoothing}, we find the Bayes estimate for Tractor spline with a constant penalty parameter $\lambda$.  However, it is a particular scenario of Tractor spline whose $\lambda(t)$ varying on domains. So the trivial Tractor spline might not be an optimal solution. Additionally, we give the formula of GCV for Tractor spline with correlated errors on $y$ and $v$. 
 
 
 A further work is to find the Bayes estimate for the real Tractor spline with a piecewise penalty term $\lambda(t)$. Besides GCV, other methods, such as EM and UBR are worth being invested in further research. 

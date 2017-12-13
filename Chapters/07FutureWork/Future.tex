@@ -63,7 +63,7 @@ In the sampling step of real data application, the mechanic boom status is not i
 
 \subsection*{Grid-based MCMC}
 
-In several references, Grid-based methods have been proved that it provides an optimal recursion of the filtered density $p(x_t\mid y_{1:t})$ if the state space is discrete and consists of a finite number of states \cite{ristic2004beyond}, \cite{stroud2016bayesian}, \cite{arulampalam2002tutorial} and \cite{hartmann2016grid}. 
+In several references, Grid-based methods have been proved that it provides an optimal recursion of the filtered density $p(x_t\mid y_{1:t})$ if the state-space is discrete and consists of a finite number of states \cite{ristic2004beyond}, \cite{stroud2016bayesian}, \cite{arulampalam2002tutorial} and \cite{hartmann2016grid}. 
 
 In the application of real time series dataset, the model is supposed as an OU-process containing five unknown parameters. With the idea of grid-based algorithm, the 5-dimension parameter space $\mathbb{R}^5$ can be initialized by spanning $\theta_0^{(i)}$ with equal weights $w_0=\{\frac{1}{N},\frac{1}{N},\frac{1}{N},\frac{1}{N},\frac{1}{N}\}$ at time $t=0$, where $i=1,\ldots,N$. When a new observation $Y_t=\{y_t,v_t\}$ comes into the system, the weights for each parameter in each subspace are updated via $w_t\propto p(Y_t\mid \theta,Y_{1:t-1})w_{t-1}$. 
 

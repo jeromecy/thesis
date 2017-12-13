@@ -333,7 +333,7 @@ tune the Markov chain parameters can be found at \cite{roberts2009examples}.
 %
 %\subsection*{Hamiltonian Monte Carlo}
 %
-%The \textit{Hamiltonian Monte Carlo} (HMC), devised by \cite{duane1987hybrid} as hybrid Monte Carlo, is using Hamiltonian dynamics to produce distant proposals for the Metropolis algorithm in order to avoid slow exploration of the state space that results from the diffusive behavior of simple random walk proposals \cite{neal2011mcmc}. In practice, the HMC sampler is more efficient for sampling in high-dimensional distributions than MH.
+%The \textit{Hamiltonian Monte Carlo} (HMC), devised by \cite{duane1987hybrid} as hybrid Monte Carlo, is using Hamiltonian dynamics to produce distant proposals for the Metropolis algorithm in order to avoid slow exploration of the state-space that results from the diffusive behavior of simple random walk proposals \cite{neal2011mcmc}. In practice, the HMC sampler is more efficient for sampling in high-dimensional distributions than MH.
 %
 %
 %The key feature of HMC is the Hamiltonian system equation as follows: 
@@ -403,7 +403,7 @@ tune the Markov chain parameters can be found at \cite{roberts2009examples}.
 
 \subsection*{Other Monte Carlo Algorithms}
 
-The \textit{Hamiltonian Monte Carlo} (HMC), devised by \cite{duane1987hybrid} as hybrid Monte Carlo, is using Hamiltonian dynamics to produce distant proposals for the Metropolis algorithm in order to avoid slow exploration of the state space that results from the diffusive behavior of simple random walk proposals \cite{neal2011mcmc}. In practice, the HMC sampler is more efficient for sampling in high-dimensional distributions than MH.
+The \textit{Hamiltonian Monte Carlo} (HMC), devised by \cite{duane1987hybrid} as hybrid Monte Carlo, is using Hamiltonian dynamics to produce distant proposals for the Metropolis algorithm in order to avoid slow exploration of the state-space that results from the diffusive behavior of simple random walk proposals \cite{neal2011mcmc}. In practice, the HMC sampler is more efficient for sampling in high-dimensional distributions than MH.
 
 The key feature of HMC is the Hamiltonian system equation as follows: 
 \begin{equation*}
@@ -459,13 +459,13 @@ In Chapter \ref{ChapterTS}, I propose an adaptive smoothing spline method based 
 
 In Chapter \ref{ChapterGPR}, the Bayesian estimation form of the Tractor spline is given. It is proved that the Bayesian estimate is corresponding to a trivial Tractor spline  in the reproducing kernel Hilbert space $\mathcal{C}_{\mbox{\footnotesize p.w.}}^2[0,1]$, where the second-derivative is piecewise-continuous.  An extended GCV is used to find the optimal parameters for the Bayesian estimate. 
 
-In Chapter \ref{ChapterFR}, I give a brief overview of existing methods for sequential state and parameters inference. Basic concepts and popular algorithms on sequential state estimation are introduced firstly. Furthermore, the algorithms that can estimate combined unknown state and parameters are brought into a separate section. Numerical comparison studies are given at the end of this chapter. 
+In Chapter \ref{ChapterFR}, I give a brief overview of existing methods for sequential state and parameter inference. Basic concepts and popular algorithms on sequential state estimation are introduced firstly. Furthermore, the algorithms that can estimate combined unknown state and parameter are brought into a separate section. Numerical comparison studies are given at the end of this chapter. 
 
-In Chapter \ref{ChapterMCMC}, it is using a random walk Metropolis-Hastings algorithm in a learning phase to learn the mean of covariance of the parameters space. After that, the information is implemented in the estimation phase, where an adaptive Delayed-Acceptance Metropolis-Hastings algorithm is proposed for estimating the posterior distribution of combined states and parameters. To remain a high running efficiency, a sliding window approach, in which way historical data is cut off when new observations come into the data stream, is used to improve the sampling speed. This algorithm is applied to irregularly sampled time series data and implemented in real GPS data set. 
+In Chapter \ref{ChapterMCMC}, it is using a random walk Metropolis-Hastings algorithm in a learning phase to learn the mean of covariance of the parameters space. After that, the information is implemented in the estimation phase, where an adaptive Delayed-Acceptance Metropolis-Hastings algorithm is proposed for estimating the posterior distribution of combined state and parameter. To remain a high running efficiency, a sliding window approach, in which way historical data is cut off when new observations come into the data stream, is used to improve the sampling speed. This algorithm is applied to irregularly sampled time series data and implemented in real GPS data set. 
 
-The proof of Theorems, details of equation calculations, and results of simulation studies are all presented in appendices. For details, the appendix \ref{appendTS} includes Tractor spline related theorems, lemmas, calculations and figures. In appendix \ref{appendMCMC}, the proposed adaptive sequential MCMC related works and outcomes are illustrated, including details of the recursive form calculation, tables and figures of parameters comparison and so on. 
+The proof of Theorems, details of equation calculations, and results of simulation studies are all presented in appendices. For details, the Appendix \ref{appendTS} includes Tractor spline related theorems, lemmas, calculations and figures. In Appendix \ref{appendMCMC}, the proposed adaptive sequential MCMC related works and outcomes are illustrated, including details of the recursive form calculation, tables and figures of parameters comparison and so on. 
 
-A spin-off outcome is presented in appendix \ref{appendSimp}. It is a data simplification method used for reducing the size of a dataset and saving storage costs without losing important information.
+A spin-off outcome is presented in Appendix \ref{appendSimp}. It is a data simplification method used for reducing the size of a dataset and saving storage costs without losing important information.
 
 Finally, the list of references is at the end of this thesis.
 

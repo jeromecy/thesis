@@ -2,9 +2,9 @@
 
 \section{Linear Simulation Calculations}\label{linearcalculation}
 
-\subsection*{Forecast} 
+\subsection*{The Forecast Distribution} 
 
-Calculating the log-posterior of parameters requires finding out the forecast distribution of $p(y_{1:t}\mid y_{1:t-1},\theta)$. A general way is using the joint distribution of $y_{t}$ and $y_{1:t-1}$, which is $p(y_{1:t}\mid \theta)\sim N(0,\Sigma_{YY})$ and following the procedure in section \ref{sectionforecast} to work out the inverse matrix of a multivariate normal distribution. For example, one may find the inverse of the covariance matrix 
+Calculating the log-posterior of parameters requires finding out the forecast distribution of $p(y_{1:t}\mid y_{1:t-1},\theta)$. A general way is using the joint distribution of $y_{t}$ and $y_{1:t-1}$, which is $p(y_{1:t}\mid \theta)\sim N(0,\Sigma_{YY})$ and following the procedure in Section \ref{sectionforecast} to work out the inverse matrix of a multivariate normal distribution. For example, one may find the inverse of the covariance matrix 
 \begin{align*}
 \Sigma_{YY}^{-1} = B(I-A^{-1}B) =\frac{1}{\sigma^4}(\sigma^2 I-A^{-1}) \triangleq \frac{1}{\sigma^4} \left[\begin{matrix} 
 Z_{t} & b_{t} \\
@@ -91,7 +91,7 @@ where $K_1=\frac{\sigma^4}{\sigma^2+\tau^2+L^2\phi^2}$.
 
 
 
-\subsection*{Estimation}
+\subsection*{The Estimation Distribution}
 
 As introduced before, $p(x_t \mid y_{1:t})$ is a mixture Gaussian distribution with given $\theta$ and its mean and variance can be found by 
 \begin{align}
@@ -124,7 +124,7 @@ By substituting them into the equation (\ref{linearmu}) and (\ref{linearsigma}),
 
 \section{OU-Process Calculation}\label{OUcalculation}
 
-\subsection*{Forecast}
+\subsection*{The Forecast Distribution}
 We are now using the capital letter $Y$ to represent the joint $\{y,v\}$ and $Y_{1:t} = \{y_1,v_1,y_2,v_2,\cdots, y_t, v_t \}$, $Y_{t+1} = \{y_{t+1}, v_{t+1}\}$. It is known that 
 \begin{align*}
 p(Y_{1:t},\theta) &\sim N\left( 0,\Sigma_{YY}^{(t)} \right)\\
@@ -307,7 +307,7 @@ and $K_1 =B_1^{-1} - A_1^{-1} = \begin{bmatrix}
 
 
 
-\subsection*{Estimation}
+\subsection*{The Estimation Distribution}
 
 Because of the joint distribution (\ref{jointmatrix}), one can find the best estimation with a given $\theta$ by
 \begin{align*}
@@ -655,5 +655,5 @@ where $C_t = \frac{ (1-e^{-\gamma\Delta_t})^2 }{\gamma^2\sigma_t^{(x)2}}  + \fra
 \includegraphics[width=0.3\textwidth,height=0.2\textheight]{Chapters/05MCMCOU/plots/paraEvolution/corMatrix46.pdf}
 \includegraphics[width=0.3\textwidth,height=0.2\textheight]{Chapters/05MCMCOU/plots/paraEvolution/corMatrix47.pdf}
 \includegraphics[width=0.3\textwidth,height=0.2\textheight]{Chapters/05MCMCOU/plots/paraEvolution/corMatrix48.pdf}
-\caption{Parameters Evolution Visualization. The correlation among parameters does not change two much. The parameters are considered static. }
+\caption{Parameter Evolution Visualization. The correlation among parameters does not change two much. The parameters are considered static. }
 \end{figure}
