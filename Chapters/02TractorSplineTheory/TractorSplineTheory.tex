@@ -221,15 +221,15 @@ a generalized ridge regression. Therefore, the fitted smoothing spline is given 
 A smoothing spline with parameters $\lambda(t)$ and $\gamma$ is an example of a linear smoother \cite{esl2009}. This is because the estimated parameters in equation (\ref{thetahat}) are a linear combination of $y_i$ and $v_i$. Denote by $\hat{\mathbf{f}}$ and $\hat{\mathbf{f}'}$ the $2n$ vector of fitted values $\hat{f}(t_i)$ and $\hat{f'}(t_i)$ at the training points $t_i$. Then
 \begin{equation}
 \begin{split}
-\hat{\mathbf{f}} =\mathbf{B}\left(\mathbf{B}^\top\mathbf{B}+\gamma\mathbf{C}^\top\mathbf{C}+n\mathbf{\Omega}_{\lambda}\right)^{-1}\left(\mathbf{B}^\top\mathbf{y}+\gamma\mathbf{C}^\top\mathbf{v}\right)\\
-\triangleq \mathbf{S}_{\lambda,\gamma}\mathbf{y}+\gamma\mathbf{T}_{\lambda,\gamma}\mathbf{v} 
+\hat{\mathbf{f}} =&\mathbf{B}\left(\mathbf{B}^\top\mathbf{B}+\gamma\mathbf{C}^\top\mathbf{C}+n\mathbf{\Omega}_{\lambda}\right)^{-1}\left(\mathbf{B}^\top\mathbf{y}+\gamma\mathbf{C}^\top\mathbf{v}\right)\\
+\triangleq & \mathbf{S}_{\lambda,\gamma}\mathbf{y}+\gamma\mathbf{T}_{\lambda,\gamma}\mathbf{v} 
 \end{split}
 \end{equation}
 \begin{equation}
 \begin{split}
 \hat{\mathbf{f}'}
-=\mathbf{C}\left(\mathbf{B}^\top\mathbf{B}+\gamma\mathbf{C}^\top\mathbf{C}+n\mathbf{\Omega}_{\lambda}\right)^{-1}\left(\mathbf{B}^\top\mathbf{y}+\gamma\mathbf{C}^\top\mathbf{v}\right)\\
-\triangleq\mathbf{U}_{\lambda,\gamma}\mathbf{y}+\gamma\mathbf{V}_{\lambda,\gamma}\mathbf{v}
+=&\mathbf{C}\left(\mathbf{B}^\top\mathbf{B}+\gamma\mathbf{C}^\top\mathbf{C}+n\mathbf{\Omega}_{\lambda}\right)^{-1}\left(\mathbf{B}^\top\mathbf{y}+\gamma\mathbf{C}^\top\mathbf{v}\right)\\
+\triangleq&\mathbf{U}_{\lambda,\gamma}\mathbf{y}+\gamma\mathbf{V}_{\lambda,\gamma}\mathbf{v}
 \end{split}
 \end{equation}
 The fitted $\hat{\mathbf{f}}$ and $\hat{\mathbf{f}'}$ are linear in $\mathbf{y}$ and $\mathbf{v}$, and the finite linear operators $\mathbf{S}_{\lambda,\gamma}, \mathbf{T}_{\lambda,\gamma}, \mathbf{U}_{\lambda,\gamma}$ and $\mathbf{V}_{\lambda,\gamma}$ are known as the smoother matrices. One consequence of this linearity is that the recipe for producing $\hat{\mathbf{f}}$ and $\hat{\mathbf{f}'}$ from $\mathbf{y}$ and $\mathbf{v}$, do not depend on $\mathbf{y}$ and $\mathbf{v}$ themselves; $\mathbf{S}_{\lambda,\gamma}, \mathbf{T}_{\lambda,\gamma}, \mathbf{U}_{\lambda,\gamma}$ and $\mathbf{V}_{\lambda,\gamma}$ depend only on $t_i,\lambda(t)$ and $\gamma$.
@@ -294,7 +294,7 @@ where  $t_i\leq t < t_{i+1}$. Eventually, in the objective function, there is on
 The problem of choosing the smoothing parameter is ubiquitous in curve estimation, and there are two different philosophical approaches to this question. The first one is to regard the free choice of smoothing parameter as an advantageous feature of the procedure. The other one is to find the parameter automatically by the data \cite{green1993nonparametric}. We prefer the latter one, use data to train our model and find the best parameters. The most well-known method is cross-validation.
 
 
-Assuming that the random errors have zero mean, the true regression curve $f(t)$ has the property that, if an observation $y$ is taken at a point $t$, the value $f(t)$ is the best predictor of $y$ in terms of returning a small value of $\left(y-f(t)\right)^2$. 
+Assuming that mean of the random errors is zero, the true regression curve $f(t)$ has the property that, if an observation $y$ is taken away at a point $t$, the value $f(t)$ is the best predictor of $y$ in terms of returning a least value of $\left(y-f(t)\right)^2$. 
 
 Now, focus on an observation $y_i$ at point $t_i$ as being a new observation by omitting it from the set of data, which are used to estimate $\hat{f}$. Denote by $\hat{f}^{(-i)}(t,\lambda)$ the estimated function from the remaining data, where $\lambda$ is the smoothing parameter. Then $\hat{f}^{(-i)}\left(t,\lambda\right)$ is the minimizer of  
 \begin{equation}\label{originalcv}
@@ -399,7 +399,7 @@ and
 \begin{equation}\label{thetahat0}
 \hat{\theta}_{\gamma=0}=\left(\mathbf{B}^\top\mathbf{B}+n\Omega_{\lambda}\right)^{-1}\mathbf{B}^\top\mathbf{y}
 \end{equation}
-and the adjusted penalty term in (\ref{adjustedpenalty}) was removed from another reconstruction, noted as "Tractor spline without APT". Figure \ref{num1} to \ref{num4} display the original (velocity), generated position, wavelet with two different threshold methods, P-spline and three kinds of Tractor spline fitted functions. The parameters $\lambda$ and $\gamma$ of a Tractor spline are automatically selected from formula (\ref{tractorcv}) by $\textsf{optim}$ function in $R$ \cite{nelder1965simplex}.
+and the adjusted penalty term in (\ref{adjustedpenalty}) was removed from another reconstruction, noted as "Tractor spline without APT". Figure \ref{num1} to \ref{num4} display the original (velocity), generated position, wavelet with two different threshold methods, P-spline and three kinds of Tractor spline fitted functions. The parameters $\lambda$ and $\gamma$ of a Tractor spline are automatically selected with the formula (\ref{tractorcv}) by $\textsf{optim}$ function in $R$ \cite{nelder1965simplex}.
 
 
 %\begin{figure}
@@ -760,15 +760,15 @@ The results are shown in table \ref{mse3200} and \ref{tmse3200}. All of these me
  	\caption{MSE. Mean squared errors of different methods. The numbers in bold indicate the smallest error among these methods under the same level. The difference is not significant.}\label{mse3200}
 	\setlength\tabcolsep{1.5pt}
 	\begin{tabular}{|c|c|c|c|c|c|c|c|}
-\hline	MSE ($10^{-4}$)   & SNR & TS & TS$_{\footnotesize\gamma=0}$ & TS$_{\footnotesize APT=0}$  & P-spline & Wavelet(sure)& Wavelet(Bayes)\\ \hline
-\textit{Blocks}    & 7   &  16.53& 15.99 & 16.69 & 16.14  & \textbf{15.39} & 16.68 \\ \hline
-\textit{Blocks}    & 3   &  89.79 & \textbf{87.64} & 89.94  & 88.27 & 98.35 & 90.24 \\ \hline
-\textit{Bumps}     & 7   & 4.40 & 4.19 & 4.55 & 4.33 & \textbf{4.18} & 4.59 \\ \hline
-\textit{Bumps}     & 3   & 23.93 & \textbf{23.19} & 24.10 & 23.55 & 26.23 & 23.74 \\ \hline
-\textit{HeaviSine} & 7   & 4.16 & 4.01 &4.16 & 4.02 & \textbf{3.79} & 4.19 \\ \hline
-\textit{HeaviSine} & 3   & 22.63 & \textbf{22.19} & 22.65 & 22.02 & 23.53 & 22.07 \\ \hline
-\textit{Doppler}   & 7   & 1.15 & \textbf{1.07} & 1.10 & 1.15  & \textbf{1.07} & 1.13  \\ \hline
-\textit{Doppler}   & 3   & 6.27 & \textbf{5.94} &6.28 & 6.05  & 6.85 & 6.29  \\ \hline
+\hline	MSE $\left(10^{-4}\right)$   & SNR & TS & TS$_{\footnotesize\gamma=0}$ & TS$_{\footnotesize APT=0}$  & P-spline & Wavelet(sure)& Wavelet(Bayes)\\ \hline
+\multirow{2}{*}{\textit{Blocks}}     & 7   &  16.53& 15.99 & 16.69 & 16.14  & \textbf{15.39} & 16.68 \\ \cline{2-8}
+       & 3   &  89.79 & \textbf{87.64} & 89.94  & 88.27 & 98.35 & 90.24 \\ \hline
+\multirow{2}{*}{\textit{Bumps}}     & 7   & 4.40 & 4.19 & 4.55 & 4.33 & \textbf{4.18} & 4.59 \\ \cline{2-8}
+      & 3   & 23.93 & \textbf{23.19} & 24.10 & 23.55 & 26.23 & 23.74 \\ \hline
+\multirow{2}{*}{\textit{HeaviSine}}  & 7   & 4.16 & 4.01 &4.16 & 4.02 & \textbf{3.79} & 4.19 \\ \cline{2-8}
+     & 3   & 22.63 & \textbf{22.19} & 22.65 & 22.02 & 23.53 & 22.07 \\ \hline
+\multirow{2}{*}{\textit{Doppler}}    & 7   & 1.15 & \textbf{1.07} & 1.10 & 1.15  & \textbf{1.07} & 1.13  \\ \cline{2-8}
+      & 3   & 6.27 & \textbf{5.94} &6.28 & 6.05  & 6.85 & 6.29  \\ \hline
 	\end{tabular}
 \end{table}
  %\end{sidewaystable}
@@ -779,15 +779,16 @@ The results are shown in table \ref{mse3200} and \ref{tmse3200}. All of these me
 	\caption{TMSE. True mean squared errors of different methods. The numbers in bold indicate the smallest error among these methods under the same level. The proposed Tractor spline returns the smallest TMSE among all the methods under the same level except for $\textit{Doppler}$ with SNR=7. The differences are significant. }\label{tmse3200}
 	\setlength\tabcolsep{1.5pt}
 	\begin{tabular}{|c|c| c| c| c|c|c|c|}
-\hline	TMSE ($10^{-6}$)  & SNR & TS & TS$_{\footnotesize\gamma=0}$ & TS$_{\footnotesize APT=0}$  & P-spline & Wavelet(sure) & Wavelet(Bayes)\\ \hline
-		\textit{Blocks}    & 7   & \textbf{1.75} & 54.25 &  28.68   & 54.76   & 201.02   & 182.12   \\ \hline
-		\textit{Blocks}    & 3   & \textbf{16.44} & 152.5 & 30.76  & 171.59   & 1138.08  & 712.36  \\ \hline
-		\textit{Bumps}     & 7  & \textbf{1.64} & 23.44  & 21.10     & 24.21 & 71.71 & 69.26 \\ \hline
-		\textit{Bumps}     & 3  & \textbf{8.51} & 77.78  &37.12     & 77.52 & 330.77 & 238.79 \\ \hline
-		\textit{HeaviSine} & 7 & \textbf{1.53}& 7.80  & 1.56     & 9.54   & 55.37  &44.88  \\ \hline
-		\textit{HeaviSine} & 3 & \textbf{8.21}& 33.56  & 8.49 & 34.26 & 240.72& 110.49\\ \hline
-		\textit{Doppler}   & 7   & 1.51& 6.67  & \textbf{1.08}   &  8.26   & 14.87  & 12.01  \\ \hline
-		\textit{Doppler}   & 3   & \textbf{8.10} & 22.14  & 8.25   & 19.95    &81.48  &50.33   \\ \hline
+\hline	TMSE $\left(10^{-6}\right)$  & SNR & TS & TS$_{\footnotesize\gamma=0}$ & TS$_{\footnotesize APT=0}$  & P-spline & Wavelet(sure) & Wavelet(Bayes)\\ \hline
+		
+\multirow{2}{*}{\textit{Blocks}}  & 7   & \textbf{1.75} & 54.25 &  28.68   & 54.76   & 201.02   & 182.12   \\ \cline{2-8}
+	     & 3   & \textbf{16.44} & 152.5 & 30.76  & 171.59   & 1138.08  & 712.36  \\ \hline
+\multirow{2}{*}{\textit{Bumps}}     & 7  & \textbf{1.64} & 23.44  & 21.10     & 24.21 & 71.71 & 69.26 \\ \cline{2-8}
+        & 3  & \textbf{8.51} & 77.78  &37.12     & 77.52 & 330.77 & 238.79 \\ \hline
+\multirow{2}{*}{\textit{HeaviSine}}  & 7 & \textbf{1.53}& 7.80  & 1.56     & 9.54   & 55.37  &44.88  \\ \cline{2-8}
+      & 3 & \textbf{8.21}& 33.56  & 8.49 & 34.26 & 240.72& 110.49\\ \hline
+\multirow{2}{*}{\textit{Doppler}}    & 7   & 1.51& 6.67  & \textbf{1.08}   &  8.26   & 14.87  & 12.01  \\ \cline{2-8}
+    & 3   & \textbf{8.10} & 22.14  & 8.25   & 19.95    &81.48  &50.33   \\ \hline
 	\end{tabular}	
 \end{table}
 %\end{sidewaystable}
@@ -802,20 +803,33 @@ Table \ref{tablecompareSNR} is comparing the capability of Tractor spline in ret
 \begin{table}
 	\centering
     \caption{Retrieved SNR. Tractor spline effectively retrieves the SNR, which is calculated by $\sigma_{\hat{f}} / \sigma_{(\hat{f}-y)}$. }\label{tablecompareSNR}
-	\begin{tabular}{|c|c|c|c|}
-\hline	         SNR              & predefined  value & from $f$ & from Tractor spline $\hat{f}$ \\ \hline
-		\textit{Blocks}    & 7   & 6.9442    &  6.9485     \\ \hline
-		\textit{Blocks}    & 3   &  2.9761   &  2.9817   \\ \hline
-		\textit{Bumps}     & 7  & 6.9442    &  6.9548  \\ \hline
-		\textit{Bumps}     & 3  & 2.9761    &   2.9953 	   \\ \hline
-		\textit{HeaviSine} & 7 & 6.9442    &   6.9207   \\ \hline
-		\textit{HeaviSine} & 3 & 2.9761    &   2.9706  \\ \hline
-		\textit{Doppler}   & 7   & 6.9442   &  6.8757   \\ \hline
-		\textit{Doppler}   & 3   & 2.9761   &  2.9625   \\ \hline
-	\end{tabular}	
-
+	\begin{tabular}{|c|C{3cm}|C{3cm}|C{3cm}|}
+\hline	 SNR   & predefined value & generated $f$ & Tractor spline $\hat{f}$ \\ \hline
+\multirow{2}{*}{\textit{Blocks}}  & 7   & 6.9442    &  6.9485     \\ \cline{2-4}
+		   & 3   &  2.9761   &  2.9817   \\ \hline
+\multirow{2}{*}{\textit{Bumps}}    & 7  & 6.9442    &  6.9548  \\ \cline{2-4}
+		   & 3  & 2.9761    &   2.9953 	   \\ \hline
+\multirow{2}{*}{\textit{HeaviSine}}  & 7 & 6.9442    &   6.9207   \\ \cline{2-4}
+		  & 3 & 2.9761    &   2.9706  \\ \hline
+\multirow{2}{*}{\textit{Doppler}}     & 7   & 6.9442   &  6.8757   \\ \cline{2-4}
+		  & 3   & 2.9761   &  2.9625   \\ \hline
+	\end{tabular}
 \end{table}
 
+
+%\begin{table}
+%	\centering
+%    \caption{Retrieved SNR. Tractor spline effectively retrieves the SNR, which is calculated by $\sigma_{\hat{f}} / \sigma_{(\hat{f}-y)}$. }\label{tablecompareSNR}
+%\begin{tabular}{|c|c|l|c|l|c|l|} 
+%\hline   & \multicolumn{2}{c|}{predefined}  & \multicolumn{2}{c|}{ from $f$ }  & \multicolumn{2}{c|}{from Tractor spline $\hat{f}$}  \\ \hline
+%\multirow{2}{*}{blocks} & \multicolumn{2}{c|}{7} & \multicolumn{2}{c|}{7} & \multicolumn{2}{c|}{7} \\ \cline{2-7} 
+%                        & \multicolumn{2}{c|}{3} & \multicolumn{2}{c|}{3} & \multicolumn{2}{c|}{3} \\ \hline
+%\multirow{2}{*}{Bumps}       & \multicolumn{2}{c|}{}  & \multicolumn{2}{c|}{}  & \multicolumn{2}{c|}{}  \\ \cline{2-7} 
+%                        & \multicolumn{2}{c|}{}  & \multicolumn{2}{c|}{}  & \multicolumn{2}{c|}{}  \\ \hline
+%\multirow{2}{*}{HeaviSine}       & \multicolumn{2}{c|}{}  & \multicolumn{2}{c|}{}  & \multicolumn{2}{c|}{}  \\ \cline{2-7} 
+%                        & \multicolumn{2}{c|}{}  & \multicolumn{2}{c|}{}  & \multicolumn{2}{c|}{}  \\ \hline
+%\end{tabular}
+%\end{table}
 
 Further analysis in figures \ref{tractorsplineSNR7acf} and \ref{tractorsplineSNR3acf} shows that the residuals from Tractor splines are independent. 
 
@@ -832,7 +846,7 @@ J[f]= \frac{1}{n} \sum_{i=1}^{n} \lVert f(t_i)-p_i\rVert_d^2 + \frac{\gamma}{n} 
 \end{equation}
 
 
-Particularly, the GPS data is recorded in a 2-dimensional form, in which scenario $d=2$. Hence, in the following application, we split the 2-dimensional function $f(x,y)$ into two sub functions $f_x(t)$ on $x$-axis and $f_y(t)$ on $y$-axis with respect to time $t$. Compared with other parameters, choosing time $t$ to be the parameter has some advantages: (\romannum{1}) The expressions of all the constraints are simpler \cite{zhang2013cubic}; (\romannum{2}) It can be simply applied from 2-dimension to 3-dimension by adding an extra $z$-axis. Without of generality, a dataset in a higher dimensional space can be projected into several sub-spaces, such as $p=\left\lbrace x,y,z,\ldots \right\rbrace$ and $s=\left\lbrace u,v,w,\ldots \right\rbrace$. 
+Particularly, the GPS data is recorded in a 2-dimensional form, in which scenario $d=2$. Hence, in the following application, we split the 2-dimensional function $f(x,y)$ into two sub functions $f_x(t)$ on $x$-axis and $f_y(t)$ on $y$-axis with respect to time $t$. Compared with other parameters, choosing time $t$ to be the parameter has some advantages: (\romannum{1}) the expressions of all the constraints are simpler \cite{zhang2013cubic}; (\romannum{2}) it can be simply applied from 2-dimension to 3-dimension by adding an extra $z$-axis. Without loss of generality, a dataset in a higher dimensional space can be projected into several sub-spaces, such as $p=\left\lbrace x,y,z,\ldots \right\rbrace$ and $s=\left\lbrace u,v,w,\ldots \right\rbrace$. 
 
 
 Thereafter, at first, we convert the longitude and latitude information from a 3D sphere to 2D surface by Universal Transverse Mercator coordinate system (UTM) and then project the speed $s$ into $u$ and $v$ on $x$-axis and $y$-axis respectively by 

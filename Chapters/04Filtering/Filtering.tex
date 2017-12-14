@@ -141,15 +141,15 @@ W_t^{(i)} &\propto W_{t-1}^{(i)} \frac{ p\left(y_t \mid x_t^{(i)}\right) p\left(
 
 The problem of SIS filter is that the distribution of importance weights becomes more and more skewed as time increases. Hence, after several iterations, only few particles have non-zero importance weights. This phenomenon is called \textit{weight degeneracy} or \textit{sample impoverishment} \cite{smcmip2011}.
 
-The effective sample size $\textit{N}_{\textit{\tiny eff}}$ is suggested to monitor how bad the degeneration is, which is
+The effective sample size $\textit{N}_{\textit{\scriptsize eff}}$ is suggested to monitor how bad the degeneration is, which is
 \begin{align*}
-\textit{N}_{\textit{\tiny eff}}=\frac{N}{1+\Var\left(w_t^{*(i)}\right)},
+\textit{N}_{\textit{\scriptsize eff}}=\frac{N}{1+\Var\left(w_t^{*(i)}\right)},
 \end{align*}
 where $w_t^{*(i)}=\frac{p\left(x_t^{(i)}\mid y_{1:t}\right)}{q\left(x_t^{(i)}\mid x_{t-1}^{(i)},y_{1:t}\right)}$. The more different between the biggest weight and smallest weight, the worse the degeneration is. In practice, the effective sample size is approximated by
 \begin{align*}
-\hat{N}_{\textit{\tiny eff}}\approx \frac{1}{\sum_{i=1}^{N}\left(w_t^{(i)}\right)^2}.
+\hat{N}_{\textit{\scriptsize eff}}\approx \frac{1}{\sum_{i=1}^{N}\left(w_t^{(i)}\right)^2}.
 \end{align*}
-If the value of $\textit{N}_{\textit{\tiny eff}}$ is less than some threshold, some procedure should be used to avoid a worse degeneration. There are two ways one can do: choose an appropriate probability density function for importance sampling, or use resampling after SIS. 
+If the value of $\textit{N}_{\textit{\scriptsize eff}}$ is less than some threshold, some procedure should be used to avoid a worse degeneration. There are two ways one can do: choose an appropriate probability density function for importance sampling, or use resampling after SIS. 
 
 The idea of resampling is keeping the same size of particles, replacing the low weights particles with new ones. As discussed before, 
 \begin{align*}
@@ -193,7 +193,7 @@ w_t^{(i)}&\propto w_{t-1}^{(i)}\frac{ p\left(y_t \mid x_{t}^{(i)}\right) p\left(
 \end{align*}
 Because $w_{t-1}^{(i)}=\frac{1}{N}$, thus we have $w_t^{(i)} \propto p\left(y_t \mid x_{t}^{(i)}\right)$ and
 \begin{align*}
-w=\frac{1}{\sqrt{2\pi\Sigma}}\exp\left(-\frac{1}{2} (y_{\mbox{\tiny true}}-y)\Sigma^{-1}(y_{\mbox{\tiny true}}-y)\right).
+w=\frac{1}{\sqrt{2\pi\Sigma}}\exp\left(-\frac{1}{2} (y_{\mbox{\scriptsize true}}-y)\Sigma^{-1}(y_{\mbox{\scriptsize true}}-y)\right).
 \end{align*}
 
 However, SMC methods are suffering some drawbacks. At any time point $k (k<t)$, if $t-k$ is too large, the approximation to marginal $p(x_k\mid y_{1:t})$ is likely to be rather poor as the successive resampling steps deplete the number of distinct particle co-ordinates $x_k$ \cite{andrieu2010particle}, which is also the difficulty of approximating $p(\theta,x_{1:t}\mid y_{1:t})$ with SMC algorithms 
@@ -640,7 +640,7 @@ x_0&\sim N(m_0,C_0),
 where $\varepsilon_t\sim N\left(0,\sigma^2\right)$ and $w_t\sim N\left(0,\tau^2\right)$, $x_t$ are hidden status and $y_t$ are observations. Assuming that $F=1$, $\sigma^2=1$ and $\tau^2=1$. The initial value $x_0=0$. $\theta = \phi$ a single static parameter without unobserved state variable. 
 
 A length of 897 simulated data set was generated from this $\mathit{AR}\left(1\right)$ model at $\phi=0.8$. First of all, we should find the sufficient statistics for Storvik filter and Particle Learning. For Particle Learning, the sufficient statistics $s_t^x$ for state $x$ and $s_t$ for parameter $\phi$ are satisfying the updating rules $s_t^x=K\left(s_{t-1}^x,\phi ,y_t\right)$ and $s_t=S\left(s_{t-1},x_t,y_t\right)$ respectively. Because of the assumption, the Kalman observation map is $H_k=1$ and the variances are normal distributed. Thus, the Kalman gain is $K=1$. For details, the Particle Learning algorithm runs as : 
-\begin{itemize}
+\begin{itemize}\itemsep0em 
 \item Step 1. Resample $\left\lbrace \tilde{z}_t^{\left(i\right)}\right\rbrace_{i=1}^N=\left(\tilde{s}_t^{x\left(i\right)},\tilde{s}_t^{\left(i\right)},\tilde{\phi }^{\left(i\right)}\right)$ from $p\left(z_t\mid s_t^x,s_t,\phi \right)$ with weight $w\propto p\left(y_{t+1}\mid s_{t}^x,\phi \right)$. It is found that \begin{equation*}
 p\left(y_{t+1}\mid s_{t}^x,\phi \right) \propto \exp \left(-\frac{1}{2}\left(y_{t+1}-\phi  x_{t}\right)^2 \right).
 \end{equation*}
@@ -762,7 +762,7 @@ The estimations for $x_t$ from $t=300$ to $897$ are very close and hard to tell 
 In this chapter, we take a brief overview of existing sequential state estimation and combined state and parameter estimation. The particle filter is an efficient method for state estimation, although the particles impoverishment is inevitable. Extended to this method, researchers are working on killing particles degeneracy and several accomplishments have been achieved. A new challenge is estimating the unknown parameters. In no doubt, for complex stochastic processes and dynamics, both Bayesian and Frequentist methods are working well. One may refer to \cite{wakefield2013bayesian} for further discussion between Bayesian and Frequentist methods and implementation. 
 
 As a summary, most of the research issues for filtering and parameter estimation focused on 
-\begin{itemize}
+\begin{itemize}\itemsep0em 
 \item Choices of resampling scheme to kill particles degeneracy, such as Liu and West's filter.
 \item Exploration of an efficient sampling algorithm, such as Metropolis-Hastings sampler and related sampling algorithms. 
 \item Exploration of accurate estimation with low variances in higher dimensional space. 

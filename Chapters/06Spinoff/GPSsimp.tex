@@ -35,7 +35,7 @@ To move further, here are two concepts that will be useful to understand the sim
 \section{Simplification Algorithm}
 
 The first two steps are designed to reduce some errors caused by misoperation and GPS units bugs.
-\begin{itemize}
+\begin{itemize}\itemsep0em
 \item Merging Phase. If the length of a segment composed of consecutive boom operating or not-operating points is less than a threshold, merge this one into its backward segment. 
 \item Removing Phase. If two or more data points have duplicated time mark, remove the latter ones. 
 \end{itemize}
@@ -43,7 +43,7 @@ Now only two types of segment points are left in GPS log, boom operating, and no
 
 The following algorithm is based on the relationship between a candidate point $p_i$ and its neighboring points $p_{i-1}$ and $p_{i+1}$, and the importance of the $p_i$ in the segment where it belongs to, $i=2,\ldots,n-1$. 
 
-\begin{itemize}
+\begin{itemize}\itemsep0em
 \item Rule 1. The candidate point $p_i$ is retained if it is not linear predictable or cannot be used for linear predicting. With the velocity information $v_{i-1}, v_i$ at point $p_{i-1}, p_i$ and time differences $\Delta t_{i-1} = \lvert t_{i}-t_{i-1} \rvert,\Delta t_{i} = \lvert t_{i+1}-t_{i}\rvert$, an estimated position can be calculated by $\hat{p}_i=\Delta t_{i-1} p_{i-1}$, $\hat{p}_{i+1}=\Delta t_{i} p_{i}$. If the distance $\lvert \hat{p}_i-p_i\rvert$ or $\lvert \hat{p}_{i+1}-p_{i+1}\rvert$ is less than a threshold, then the point $p_i$ is not linear predictable or cannot be used for linear predicting.
 
 \item Rule 2. Select a candidate point $p_i$. Retain this point if the distance between $p_i$ and $p_{i-1}$ is greater than the threshold $d$, where $d$ is the mean distances of these points $p_{i-1}, p_i, \ldots, p_{i+k}$ with same boom status $b_{i-1}=b_i=\cdots=b_{i+k}$. 
@@ -238,7 +238,7 @@ Another way to calculate the difference between a GPS trace and its compressed v
 
 \section{Numerical Study}
 
-In the numerical simulation study, we are using \textit{Kalman filter} (KF) to fit the trajectory after data simplification. The KF equations describe the prediction step in the following way: 
+In the numerical simulation study, we are using \textit{Kalman filter} (KF) to fit the trajectory after data simplification. The KF equations describe the prediction step in such a following way: 
 \begin{align*}
 \hat{x}_k^-&=A\hat{x}_{k-1}+Bu_k \\
 P_k^-&=AP_{k-1}A^\top+Q
@@ -259,12 +259,12 @@ Table \ref{DataSimpCompTable} describes the results after being simplified by DP
 \begin{table}
 \centering
 \caption{Comparison between raw data and simplified data}
-\label{DataSimpCompTable}
-\begin{tabular}{|l|c|c|c|}
+\label{DataSimpCompTable}\footnotesize
+\begin{tabular}{|c|c|c|c|}
 \hline 
   & \textbf{Original Data} & \textbf{DP Algorithm} & \textbf{Proposed Algorithm}  \\
 \hline 
-\textbf{Points Left} & 1021   & 847   & 847 \\
+\textbf{Remaining Points} & 1021   & 847   & 847 \\
 \hline 
 \textbf{Tracked Distances}(m)  & 74041.31     & 74038.33    & 74012.56     \\
 \hline 
@@ -272,7 +272,7 @@ Table \ref{DataSimpCompTable} describes the results after being simplified by DP
 \hline 
 \end{tabular}
 \end{table}
-
+\normalsize
 
 \begin{figure}
 \centering
@@ -301,17 +301,17 @@ Table \ref{DataSimpCompTable} describes the results after being simplified by DP
 \centering
 \begin{subfigure}[t]{0.47\textwidth}
 \includegraphics[width=\linewidth]{Chapters/06Spinoff/plot/ggRawKF2.pdf}
-\caption{Fitted Kalman Filter with raw data}
+\caption{Fitted Kalman filter with raw data}
 \end{subfigure}
  \begin{subfigure}[t]{0.47\textwidth}
 \includegraphics[width=\linewidth]{Chapters/06Spinoff/plot/ggDPKF2.pdf}
-\caption{Fitted Kalman Filter with simplified data by DP}
+\caption{Fitted Kalman filter with simplified data by DP}
 \end{subfigure}
  \begin{subfigure}[t]{0.47\textwidth}
 \includegraphics[width=\linewidth]{Chapters/06Spinoff/plot/ggSPKF2.pdf}
-\caption{Fitted Kalman Filter with simplified data by proposed algorithm}
+\caption{Fitted Kalman filter with simplified data by proposed algorithm}
 \end{subfigure}
-\caption{Trajectory fitted by Kalman Filter. The mean squared errors of raw data, DP and proposed algorithm are 26.8922, 23.9788 and 23.9710 respectively.}\label{DataSimpKFTra}
+\caption{Trajectory fitted by Kalman filter. The mean squared errors of raw data, DP and proposed algorithm are 26.8922, 23.9788 and 23.9710 respectively.}\label{DataSimpKFTra}
 \end{figure}
 
 \pagebreak
