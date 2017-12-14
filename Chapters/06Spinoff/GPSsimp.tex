@@ -21,7 +21,7 @@ In our case, a GPS log is a sequence time series points $p_i \in P$, $P=\left\lb
 T=\left\lbrace p_t=[x_t,y_t,v_t,\theta_t,b_t] \mid t \in \mathbb{R} \right\rbrace.
 \end{equation}
 Sequentially connect these points will give us a trajectory of a moving vehicle.
-Particularly, a tractor working on an orchard generates two kinds of boom status information: operating and not operating. This information is recorded by GPS units and is indicated by $b=1$ for operating and $b=0$ for not-operating.
+Particularly, a tractor working on an orchard generates two kinds of boom status information: operating and not-operating. This information is recorded by GPS units and is indicated by $b=1$ for operating and $b=0$ for not-operating.
 
 
 To move further, here are two concepts that will be useful to understand the simplification scheme.
@@ -238,7 +238,7 @@ Another way to calculate the difference between a GPS trace and its compressed v
 
 \section{Numerical Study}
 
-In the numerical simulation study, we are using \textit{Kalman Filter} (KF) to fit the trajectory after data simplification. The KF equations describe the prediction step in the following way: 
+In the numerical simulation study, we are using \textit{Kalman filter} (KF) to fit the trajectory after data simplification. The KF equations describe the prediction step in the following way: 
 \begin{align*}
 \hat{x}_k^-&=A\hat{x}_{k-1}+Bu_k \\
 P_k^-&=AP_{k-1}A^\top+Q
@@ -252,23 +252,23 @@ P_k&=(I-K_kH)P_k^-
 where $K_k$ is the Kalman gain matrix, $z_k$ is the observed data.
 
 
-The original data set has 1\,021 rows, each of them contains latitude, longitude, velocity, bearing (heading direction) and boom status. Douglas-Peucker Algorithm, with distance threshold $0.205$m, retained 847 points. The proposed algorithm, given a predictable distance $5$m and heading direction changing threshold $\ang{30}$, returns the same amount of simplified points. Under the same circumstance, we calculated SED and other information. 
+The original data set contains 1\,021 rows, including latitude, longitude, velocity, bearing (heading direction) and boom status. Douglas-Peucker Algorithm, with distance threshold $0.205$m, retained 847 points. The proposed algorithm, given a predictable distance $5$m and heading direction changing threshold $\ang{30}$, returns the same amount of simplified points. Under the same circumstance, we calculated SED and other information. 
 
 Table \ref{DataSimpCompTable} describes the results after being simplified by DP algorithm and the proposed algorithm. Figure \ref{DataSimpRawTra} demonstrates the simplified raw data and figure \ref{DataSimpKFTra} is the fitted trajectories by KF. 
 
 \begin{table}
 \centering
-\caption{Comparison between raw data and simplifying algorithms}
+\caption{Comparison between raw data and simplified data}
 \label{DataSimpCompTable}
 \begin{tabular}{|l|c|c|c|}
 \hline 
   & \textbf{Original Data} & \textbf{DP Algorithm} & \textbf{Proposed Algorithm}  \\
 \hline 
-\textbf{Points Left} & 1021              & 847         & 847         \\
+\textbf{Points Left} & 1021   & 847   & 847 \\
 \hline 
 \textbf{Tracked Distances}(m)  & 74041.31     & 74038.33    & 74012.56     \\
 \hline 
-\textbf{SED} (m)    & NA        & 1316.715    & 607.9587   \\
+\textbf{SED} ($m$)    & \textit{NA}    & 1316.715    & 607.9587   \\
 \hline 
 \end{tabular}
 \end{table}
@@ -294,7 +294,7 @@ Table \ref{DataSimpCompTable} describes the results after being simplified by DP
 \end{tikzpicture}
 \caption{Simplified trajectory by proposed algorithm}\label{ggSPTrac}
 \end{subfigure}
-\caption{A segment start from time $t=2\,000$ to $3\,000$, recorded by GPS units. $\blacktriangle$ indicates that the boom is not-operating. $\bullet$ indicates that the boom is operating. Figure \ref{ggRawTrac}, the trajectory connected by raw data with 27 points. Figure \ref{ggDPTrac}, the trajectory connected by simplified data with Douglas-Peucker algorithm with 24 points. Figure \ref{ggSPTrac}, the trajectory connected by simplified data with proposed simplification algorithm with 23  points.}\label{DataSimpRawTra}
+\caption{A segment start from time $t=2\,000$ to $3\,000$, recorded by GPS units. $\blacktriangle$ indicates that the boom is not operating. $\bullet$ indicates that the boom is operating. Figure \ref{ggRawTrac}, the trajectory connected by raw data with 27 points. Figure \ref{ggDPTrac}, the trajectory connected by simplified data with Douglas-Peucker algorithm with 24 points. Figure \ref{ggSPTrac}, the trajectory connected by simplified data with proposed simplification algorithm with 23  points.}\label{DataSimpRawTra}
 \end{figure}
 
 \begin{figure}

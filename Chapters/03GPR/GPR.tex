@@ -48,7 +48,7 @@ A spline is a numeric function that is piecewise-defined by polynomial functions
 
 
 
-A smoothing polynomial spline is uniquely the smoothest function that achieves a given degree of fidelity to a particular data set \cite{whittaker1922new}. In deed, the minimizer of function (\ref{GaussianProcessGeneralObjective}) is the curve estimate $\hat{f}(t)$ over all spline functions $f(t)$ with $m-1$ continuous derivatives fitting observed data in the space $\mathcal{C}^{(m)}[0,1]$. In fact, \cite{kimeldorf1971some},  \cite{kimeldorf1970correspondence}  prove that the minimizer $f_\lambda$ of function (\ref{GaussianProcessGeneralObjective}) has the form 
+A smoothing polynomial spline is uniquely the smoothest function that achieves a given degree of fidelity to a particular data set \cite{whittaker1922new}. In deed, the minimizer of function (\ref{GaussianProcessGeneralObjective}) is the curve estimate $\hat{f}(t)$ over all spline functions $f(t)$ with $m-1$ continuous derivatives fitting observed data in the space $\mathcal{C}^{(m)}[0,1]$. In fact, \cite{kimeldorf1971some},  \cite{kimeldorf1970correspondence}  prove that the minimizer $f_\lambda$ of function (\ref{GaussianProcessGeneralObjective}) has the following form 
 \begin{equation}
 f(t)=\sum_{\nu=1}^m d_\nu \phi_\nu(t)+\sum_{i=1}^n c_iR_1(t,t_i).
 \end{equation}
@@ -400,10 +400,10 @@ Furthermore, in Gaussian process regression, the covariance matrix with correlat
 $M=\begin{bmatrix}
 Q+n\lambda W& P\\
 Q'& P'+\frac{n\lambda}{\gamma}U
-\end{bmatrix}$ and the rest remains the same. 
+\end{bmatrix}$ and the rest stays the same. 
 
 
-Recall the leave-one-out cross-validation score of a Tractor spline is 
+Recall the leave-one-out cross-validation score of a Tractor spline, 
 \begin{equation*}
 \mbox{LOOCV}(\lambda,\gamma)=\frac{1}{n}\sum_{i=1}^{n}\left( \frac{\hat{f}(t_i)-y_i+\frac{\gamma T_{ii}}{1-\gamma V_{ii}}(\hat{f}'(t_i)-v_i)}{1-S_{ii}-\frac{\gamma T_{ii}}{1-\gamma V_{ii}}U_{ii}} \right)^2.
 \end{equation*}

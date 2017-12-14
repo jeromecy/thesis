@@ -27,8 +27,9 @@
 
 \tikzset{
     right angle quadrant/.code={
-        \pgfmathsetmacro\quadranta{{1,1,-1,-1}[#1-1]}     % Arrays for selecting quadrant
-        \pgfmathsetmacro\quadrantb{{1,-1,-1,1}[#1-1]}},
+    \pgfmathsetmacro\quadranta{{1,1,-1,-1}[#1-1]}     % Arrays for selecting quadrant
+    \pgfmathsetmacro\quadrantb{{1,-1,-1,1}[#1-1]}
+    },
     right angle quadrant=1, % Make sure it is set, even if not called explicitly
     right angle length/.code={\def\rightanglelength{#1}},   % Length of symbol
     right angle length=2ex, % Make sure it is set...
@@ -61,10 +62,10 @@
 \newcommand{\diag}[1]{\text{diag}\left\{#1\right\}}
 \renewcommand{\Re}{\operatorname{Re}}
 \renewcommand{\Im}{\operatorname{Im}}
+\renewcommand{\labelenumi}{(\roman{enumi})}
 
 %\newcommand{\TODO}[1]{\textcolor{red}{\bf{[#1]}}}
 %\newcommand{\EDITED}[1]{\textcolor{blue}{\bf{[#1]}}}
-
 \newtheorem{lemma}{Lemma}
 \newtheorem{theorem}{Theorem}
 \newtheorem{corollary}{Corollary}

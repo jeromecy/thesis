@@ -83,8 +83,12 @@ and
 \bar{\mu}_{t}      &= 0-\sigma^4 K_t^{-1}b_t^\top \left(Z-b_tK_t^{-1}b_t^\top\right)^{-1} \sigma^{-4} \left(Z-b_tK_t^{-1}b_t^\top\right) y_{1:t-1} \\
 					 & =-K_t^{-1}b_t^\top y_{1:t-1} \\
 					 & = \frac{\phi}{\sigma^2}K_{t-1}\bar{\mu}_{t-1} + \phi \left(1 - \frac{K_{t-1}}{\sigma^2}\right)y_{t-1}, \\
-\bar{\Sigma}_{t} &= \sigma^4\left(K_t-b_t^\top Z^{-1}b_t\right)^{-1}- \sigma^4K_t^{-1}b_t^\top \left(Z_t-b_tK_t^{-1}b_t^\top\right)^{-1} \left(Z_t-b_tK_t^{-1}b_t^\top\right)Z_t^{-1}b_t\left(K_t-b_t^\top Z_t^{-1}b_t\right)^{-1}\\
-                     & = \sigma^4\left(I-K_t^{-1}b_t^\top Z_t^{-1}b_t\right)\left(K_t-b_t^\top Z_t^{-1}b_t\right)^{-1} \\
+\begin{split}
+\bar{\Sigma}_{t} &= \sigma^4\left(K_t-b_t^\top Z^{-1}b_t\right)^{-1}\\ 
+&\hphantom{+t-} - \sigma^4K_t^{-1}b_t^\top \left(Z_t-b_tK_t^{-1}b_t^\top\right)^{-1} 
+ \left(Z_t-b_tK_t^{-1}b_t^\top\right)Z_t^{-1}b_t\left(K_t-b_t^\top Z_t^{-1}b_t\right)^{-1}
+\end{split}
+\\  & = \sigma^4\left(I-K_t^{-1}b_t^\top Z_t^{-1}b_t\right)\left(K_t-b_t^\top Z_t^{-1}b_t\right)^{-1} \\
                      & = \sigma^4K_{t}^{-1},
 \end{align*}
 where $K_1=\frac{\sigma^4}{\sigma^2+\tau^2+L^2\phi^2}$.
@@ -344,7 +348,7 @@ where
 \bar{\mu}_{t+1}^{\left(X\right)} & = C_{t+1}^\top A^{-1}BY =C_{t+1}^\top L^{-\top}W,\\
 \bar{\Sigma}_{t+1}^{\left(X\right)} & =C_{t+1}^\top A^{-1}C_{t+1} =U_{t+1}^\top U_{t+1},
 \end{align*}
-and $U_{t+1} = L^{-1} C_{t+1} = \mbox{solve}\left(L,C_{t+1}\right)$.
+and $U_{t+1} = L^{-1} C_{t+1}$. %$= \mbox{solve}\left(L,C_{t+1}\right)$.
 
 The filtering distribution of the state with given parameters is $p\left(X_t\mid Y_{1:t}, \theta \right)$. To find its form, one can use the joint distribution of $X_{t+1}$ and $Y_{1:t+1}$, which is $p\left(X_{t+1}, Y_{1:t+1}  \mid  \theta\right)\sim N\left(0,\Gamma\right)$, where
 \begin{equation*}
@@ -511,10 +515,10 @@ where $C_t = \frac{ \left(1-e^{-\gamma\Delta_t}\right)^2 }{\gamma^2\sigma_t^{\le
 
 \begin{table}[h]
 \centering
-\caption{Parameter estimation by running the whole surface learning and DA-MH processes with different length of data}
+\caption{Parameter estimation by running the whole surface learning and DA MH processes with different length of data}
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|}
 \hline
-\textbf{Length} & \textbf{Time} & $\gamma$ & $\xi^2$ & $\lambda^2$ & $\sigma^2$ & $\tau^2$ & $\alpha_1$ & $\alpha_2$ &$x$ & $v_x$ &$y$&$v_y$\\ \hline
+\textbf{Length} & \textbf{Time} & $\gamma$ & $\xi^2$ & $\lambda^2$ & $\sigma^2$ & $\tau^2$ & $\alpha_1$ & $\alpha_2$ &$x$ & $u$ &$y$&$v$\\ \hline
 \textbf{Obs}    & -             & -              & -            & -              & -               & -             & -           & -           & -339.0569  & 0.0413      & -100.2065  & 1.1825      \\ \hline
 \textbf{600}    & 85.96         & 0.0113         & 0.6521       & 0.0066         & 0.1231          & 0.3173        & 0.0536      & 0.7873      & -339.0868  & 0.4331      & -100.1498  & -0.7498     \\ \hline
 \textbf{570}    & 85.72         & 0.0116         & 0.6770       & 0.0068         & 0.1271          & 0.3104        & 0.0542      & 0.7638      & -339.0872  & 0.4292      & -100.1476  & -0.7356     \\ \hline

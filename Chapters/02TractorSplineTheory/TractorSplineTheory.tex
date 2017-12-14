@@ -76,20 +76,20 @@ Using Hermite interpolation on an arbitrary interval $[t_i,t_{i+1} ) $, the cubi
 \begin{align}\label{hermitebasis1}
 & h_{00}^{\left(i\right)}\left(t\right)=
 \begin{cases}
-2\left(\frac{t-t_{i}}{t_{i+1}-t_{i}}\right)^3-3\left(\frac{t-t_{i}}{t_{i+1}-t_{i}}\right)^2+1 \hphantom{1} & t_i\leq t<t_{i+1} \\ 
+2\left(\frac{t-t_{i}}{t_{i+1}-t_{i}}\right)^3-3\left(\frac{t-t_{i}}{t_{i+1}-t_{i}}\right)^2+1 & t_i\leq t<t_{i+1} \\ 
 0 & \mbox{otherwise}
 \end{cases}, \\
 & h_{10}^{\left(i\right)}\left(t\right)=\begin{cases}
-\frac{\left(t-t_{i}\right)^3}{\left(t_{i+1}-t_{i}\right)^2}-2\frac{\left(t-t_{i}\right)^2}{t_{i+1}-t_{i}}+\left(t-t_{i}\right)   & t_i\leq t<t_{i+1} \\ 
+\frac{\left(t-t_{i}\right)^3}{\left(t_{i+1}-t_{i}\right)^2}-2\frac{\left(t-t_{i}\right)^2}{t_{i+1}-t_{i}}+\left(t-t_{i}\right)  \hphantom{.}  & t_i\leq t<t_{i+1} \\ 
 0 &   \mbox{otherwise}
 \end{cases},\\
 & h_{01}^{\left(i\right)}\left(t\right)=
 \begin{cases}
--2\left(\frac{t-t_i}{t_{i+1}-t_i}\right)^3+3\left(\frac{t-t_i}{t_{i+1}-t_i}\right)^2 \hphantom{+1.} & t_i\leq t<t_{i+1} \\ 
+-2\left(\frac{t-t_i}{t_{i+1}-t_i}\right)^3+3\left(\frac{t-t_i}{t_{i+1}-t_i}\right)^2 \hphantom{+} & t_i\leq t<t_{i+1} \\ 
 0 &   \mbox{otherwise}
 \end{cases},\\
 & h_{11}^{\left(i\right)}\left(t\right)=\begin{cases}
-\frac{\left(t-t_i\right)^3}{\left(t_{i+1}-t_i\right)^2}-\frac{\left(t-t_i\right)^2}{t_{i+1}-t_i}  \hphantom{+t-123-}  & t_i\leq t<t_{i+1} \\ 
+\frac{\left(t-t_i\right)^3}{\left(t_{i+1}-t_i\right)^2}-\frac{\left(t-t_i\right)^2}{t_{i+1}-t_i}  \hphantom{+t-+123-}  & t_i\leq t<t_{i+1} \\ 
 0 &   \mbox{otherwise}
 \end{cases}.
 \end{align}
@@ -168,13 +168,19 @@ where $\left\lbrace \theta_k\right\rbrace_{k=1}^{2n}$ are parameters.
 Figure \ref{basisfigure} presents two basis functions on an arbitrary interval $[t_i, t_{i+2} )$ where they are continuous and differential. At the interior joint knot $t_i$, basis functions in the previous and following interval share the same position $y_i$ and velocity $v_i$. 
 \begin{figure}[h] 
 \centering
-%\includegraphics[width=0.6\textwidth, height=4.5cm]{Chapters/02TractorSplineTheory/plot/ggbasistk}
-\includegraphics[width=0.6\textwidth, height=5cm]{Chapters/02TractorSplineTheory/plot/pptbasisplot2.pdf}
-%\small 
-\caption{The two basis functions $N_{2i+1}$ and $N_{2i+2}$ on an arbitrary interval $[t_i, t_{i+2})$. It is apparently that these basis functions are continuous on this interval and have continuous first derivatives.}
-\label{basisfigure}
+\begin{tikzpicture}
+    \node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=0.7\textwidth,height=5cm]{Chapters/02TractorSplineTheory/plot/ggbasis.pdf}};
+    \begin{scope}[
+        x={(image.south east)},
+        y={(image.north west)}
+    ]
+    \node [black, font=\bfseries] at (0.08,-0.02) {$t_i$};
+    \node [black, font=\bfseries] at (0.52,-0.02) {$t_{i+1}$};
+    \node [black, font=\bfseries] at (0.95,-0.02) {$t_{i+2}$};
+    \end{scope}
+\end{tikzpicture}
+\caption{The two basis functions $N_{2i+1}$ (upper) and $N_{2i+2}$ (lower) on an arbitrary interval $[t_i, t_{i+2})$. Apparently, the basis functions are continuous on the interval and have continuous first derivatives.}\label{basisfigure}
 \end{figure}
-
 
 From the definition of basis functions, it can be seen that at a joint knot of two neighbor intervals, Hermite spline basis functions share the same $y_i$ and $v_i$. With this property, we construct Tractor spline basis functions. There are two parameters at each joint knots and 4 at the start and end knots. Hence, the degrees of freedom for parameters is $2n-4+4=2n$. However $2(n-2)$ constraints are added to the joint knots, at which the spline have continuous first and second derivatives. Additional two constraints are added to the starting and ending knots to keep their first derivatives continuous. Consequently, parameters' the degrees of freedom is 2. 
 
@@ -183,7 +189,7 @@ From the definition of basis functions, it can be seen that at a joint knot of t
 
 Basis functions have been defined in the previous subsection, therefore the Tractor spline $f(t)$ on $[a,b]$, where $a \leq t_1 < t_2< \cdots < t_{n-1}<t_n \leq b$, can be found by minimizing  objective function (\ref{tractorsplineObjective}), which reduces to
 \begin{equation}\label{tractormse}
-\text{MSE}(\theta, \lambda,\gamma) = (\mathbf{y}-\mathbf{B}\theta)^\top (\mathbf{y}-\mathbf{B}\theta) +\gamma (\mathbf{v}-\mathbf{C}\theta)^\top (\mathbf{v}-\mathbf{C}\theta)+n \theta^\top\mathbf{\Omega}_{\lambda}\theta,
+\text{MSE}(\theta, \lambda,\gamma) = \left(\mathbf{y}-\mathbf{B}\theta\right)^\top \left(\mathbf{y}-\mathbf{B}\theta\right) +\gamma \left(\mathbf{v}-\mathbf{C}\theta\right)^\top \left(\mathbf{v}-\mathbf{C}\theta\right)+n \theta^\top\mathbf{\Omega}_{\lambda}\theta,
 \end{equation}
 where $\left\lbrace \mathbf{B}\right\rbrace_{ij} = N_j(t_i)$ , $\left\lbrace \mathbf{C}\right\rbrace_{ij} = N'_j(t_i)$ and $\left\lbrace \Omega_{2n}^{(i)} \right\rbrace_{jk}=\int_{t_i}^{t_{i+1}}\lambda_i N''_j(t)N''_k(t)dt$. After substituting the series observation $t_1, \ldots, t_n$ into basis functions, we get $N_1(t_1)=1, N_1(t_2)=0, \ldots, N_{2i-1}(t_{i})=1, N_{2i}(t_{i})=0, \ldots, N_{2n-1}(t_n)=1, N_{2n}(t_n)=0$; and into first derivative of basis functions, we get $N'_1(t_1)=0, N_1'(t_2)=1, \ldots, N_{2i-1}'(t_{i})=0, N_{2i}'(t_{i})=1, \ldots, N_{2n-1}'(t_n)=0, N_{2n}'(t_n)=1$. That means the matrices $\mathbf{B}$ and $\mathbf{C}$ in MSE equation (\ref{tractormse}) are $n \times 2n$ dimensional and the elements are
 \begin{align}
@@ -196,11 +202,11 @@ where $\left\lbrace \mathbf{B}\right\rbrace_{ij} = N_j(t_i)$ , $\left\lbrace \ma
 0, & \mbox{otherwise}
 \end{cases}
 \end{align}
-where $i=1, \ldots, n$, $j=1,\ldots,2n$ and $k=1,\ldots,2n$. The $i$-th $\Omega^{(i)}$ on the interval $[t_i,t_{i+1}]$ is a $2n \times 2n$ matrix and $\Omega^{(n)}$ does not exist. Its detail is in Appendix \ref{PenaltyTermDetails}. As a result, the penalty term is
+where $i=1, \ldots, n$, $j=1,\ldots,2n$ and $k=1,\ldots,2n$. The $i$-th $\Omega^{(i)}$ on the interval $[t_i,t_{i+1}]$ is a $2n \times 2n$ matrix and $\Omega^{(n)}$ does not exist. Its detail is in Appendix \ref{PenaltyTermDetails}. As a result, the penalty term is a bandwidth four matrix written in such a way:
 \begin{equation}
-\mathbf{\Omega}_\lambda=\sum_{i=1}^{n-1}\lambda_i\Omega^{(i)},
+\mathbf{\Omega}_\lambda=\sum_{i=1}^{n-1}\lambda_i\Omega^{(i)}.
 \end{equation}
-which is a bandwidth four matrix.
+
 
 
 The solution to (\ref{tractormse}) is easily seen to be
@@ -242,12 +248,12 @@ it is easily to prove that $\mathbf{T}_{\lambda,\gamma}=\mathbf{B}\mathbf{R}\mat
 
 \begin{corollary}\label{TractorsplineCorollary}
 If $f(t)$ is the Tractor spline on the entire interval $[t_1,t_n]$, for sufficient cases of $\lambda(t)$ and $\gamma$, $f(t)$ has the following property:
-\begin{itemize}
-\item if $\lambda(t)$ is a piecewise constant and $\gamma \neq 0$, then $f$ and $f'$ are continuous, $f''$ is piecewise linear but not continuous at knots;
-\item if $\lambda(t)$ is a piecewise constant and $\gamma = 0$, the same as above;
-\item if $\lambda(t)=\lambda $ is a constant and $\gamma \neq 0$, the same as above;
-\item if $\lambda(t)=\lambda $ is a constant and $\gamma = 0$, then $f$, $f'$ are continuous, $f''$ is piecewise linear and continuous at knots.
-\end{itemize}
+\begin{enumerate}\itemsep0em 
+\item if $\lambda(t)$ is piecewise constant and $\gamma \neq 0$, then $f$ and $f'$ are continuous, $f''$ is piecewise linear but not continuous at knots;
+\item if $\lambda(t)$ is piecewise constant and $\gamma = 0$, the same as above;
+\item if $\lambda(t)=\lambda $ is constant on the entire interval and $\gamma \neq 0$, the same as above;
+\item if $\lambda(t)=\lambda $ is constant on the entire interval and $\gamma = 0$, then $f$, $f'$ are continuous, $f''$ is piecewise linear and continuous at knots.
+\end{enumerate}
 \end{corollary}
 
 The proof of Corollary \ref{TractorsplineCorollary} is in Appendix \ref{proofofCorollary}. 
@@ -272,13 +278,13 @@ The proof of Corollary \ref{TractorsplineCorollary} is in Appendix \ref{proofofC
 
 To get the reconstructed trajectory in a multi-dimensional space, one can use the Tractor spline to find the trajectory in each dimension separately and then combine them together for a higher dimension, such as 2D and 3D. Typically, the data are not regularly sampled in time. Due to the property of Hermite spline, the combination of a multi-dimensional reconstruction for irregular time difference dataset will bring some issues.  Image the situation that a vehicle is moving along the $x$-axis, but stays unchanged on its $y$ position. By fitting $\mathbf{x}$ and $\mathbf{u}$, the Tractor spline $f_x(t)$ will give us the best fit which returns smallest errors to the objective function. While with the same parameter $\lambda(t)$ and $\gamma$, $f_y(t)$ returns a cubic curve, where it should give us a straight line as we expected. Moreover, in some circumstances, with time increasing $\mathbf{f}$ and $\mathbf{f}'$ remain the same, or change slightly. In this situation, the Hermite spline will return wiggles in each dimension and curves in combined two dimensions. 
 
-To get a reliable reconstruction, we introduce an adjusted penalty term $\frac{(\Delta t_i)^\alpha}{(\Delta d_i)^\beta}$, where $\alpha \ge 0$ and $\beta \ge 0$, to the penalty function $\lambda(t)$, in which the Tractor spline is penalized by its real difference of $\Delta d_i$ and $\Delta t_i$ for each interval $[t_i, t_{i+1}]$. With this term, when either $\mathbf{u}$ for $x$ or $\mathbf{v}$ for $y$ goes down or equals to 0, it will make sure that the penalty function will be large enough and returns a straight line rather than a curve on this domain. Because of the unit of the penalty term is $m^2/t^3$, to keep the same scale, $\alpha$ and $\beta$ in the adjusted penalty term are chosen as $3$ and $2$ respectively. From the physical point of view, the term is the reciprocal of the product of velocity and acceleration. Either velocity or acceleration goes to zero, the moving object should either stop, which returns a straight line through time on $x$ or $y$ axes and a dot on the higher dimension or keep moving with the same speed, which returns a linear instead of a curved path. 
+To get a reliable reconstruction, we introduce an adjusted penalty term $\frac{\left(\Delta t_i\right)^\alpha}{\left(\Delta d_i\right)^\beta}$, where $\alpha \ge 0$ and $\beta \ge 0$, to the penalty function $\lambda(t)$, in which the Tractor spline is penalized by its real difference of $\Delta d_i$ and $\Delta t_i$ for each interval $[t_i, t_{i+1}]$. With this term, when either $\mathbf{u}$ for $x$ or $\mathbf{v}$ for $y$ goes down or equals to 0, it will make sure that the penalty function will be large enough and returns a straight line rather than a curve on this domain. Because of the unit of the penalty term is $m^2/t^3$, to keep the same scale, $\alpha$ and $\beta$ in the adjusted penalty term are chosen as $3$ and $2$ respectively. From the physical point of view, the term is the reciprocal of the product of velocity and acceleration. Either velocity or acceleration goes to zero, the moving object should either stop, which returns a straight line through time on $x$ or $y$ axes and a dot on the higher dimension or keep moving with the same speed, which returns a linear instead of a curved path. 
 
-Consequently, the final form of the penalty function is 
+Thus, the final form of the penalty function is 
 \begin{equation}\label{adjustedpenalty}
 \lambda(t)=\frac{\left(\Delta t_i\right)^3}{\left(\Delta d_i\right)^2}\lambda,
 \end{equation}
-where  $t_i\leq t < t_{i+1}$. Eventually, in objective function, there is one parameter $\lambda$ controlling the curvature of Tractor spline on different domains, and another one $\gamma$ controlling the residuals of velocity. 
+where  $t_i\leq t < t_{i+1}$. Eventually, in the objective function, there is one parameter $\lambda$ controlling the curvature of Tractor spline on different domains, and another one $\gamma$ controlling the residuals of velocity. 
 
 
 
@@ -321,7 +327,7 @@ and the cross-validation score function is
 \begin{align}
 \mbox{CV}\left(\lambda(t),\gamma\right)=\frac{1}{n}\sum_{i=1}^{n}\left( y_i-\hat{f}^{(-i)}\left(t_i,\lambda(t),\gamma\right) \right) ^2.
 \end{align}
-Additionally, it is known that the parameter $\hat{\theta}=(B^\top B+\gamma C^\top C+n\Omega_\lambda)^{-1}(B^\top\mathbf{y}+\gamma C^\top\mathbf{v})$ and will give us the following form \small
+Additionally, it is known that the parameter $\hat{\theta}=\left(B^\top B+\gamma C^\top C+n\Omega_\lambda\right)^{-1}\left(B^\top\mathbf{y}+\gamma C^\top\mathbf{v}\right)$ and will give us the following form \small
 \begin{equation}
 \begin{split}
  \hat{\mathbf{f}}&=B\hat{\theta}=B\left(B^\top B+\gamma C^\top C+n\Omega_\lambda\right)^{-1}B^\top\mathbf{y}+B\left(B^\top B+\gamma C^\top C+n\Omega_\lambda\right)^{-1} C^\top\mathbf{v}\\&=S\mathbf{y}+\gamma T\mathbf{v},
@@ -826,10 +832,10 @@ J[f]= \frac{1}{n} \sum_{i=1}^{n} \lVert f(t_i)-p_i\rVert_d^2 + \frac{\gamma}{n} 
 \end{equation}
 
 
-Particularly, the GPS data is recorded in a 2-dimensional form, in which scenario $d=2$. Hence, in the following application, we split the 2-dimensional function $f(x,y)$ into two sub functions $f_x(t)$ on $x$-axis and $f_y(t)$ on $y$-axis with respect to time $t$. Compared with other parameters, choosing time $t$ to be the parameter has some advantages: 1. The expressions of all the constraints are simpler \cite{zhang2013cubic}; 2. It can be simply applied from 2-dimension to 3-dimension by adding an extra $z$-axis. Without of generality, a dataset in a higher dimensional space can be projected into several sub-spaces, such as $p=\left\lbrace x,y,z,\ldots \right\rbrace$ and $s=\left\lbrace u,v,w,\ldots \right\rbrace$. 
+Particularly, the GPS data is recorded in a 2-dimensional form, in which scenario $d=2$. Hence, in the following application, we split the 2-dimensional function $f(x,y)$ into two sub functions $f_x(t)$ on $x$-axis and $f_y(t)$ on $y$-axis with respect to time $t$. Compared with other parameters, choosing time $t$ to be the parameter has some advantages: (\romannum{1}) The expressions of all the constraints are simpler \cite{zhang2013cubic}; (\romannum{2}) It can be simply applied from 2-dimension to 3-dimension by adding an extra $z$-axis. Without of generality, a dataset in a higher dimensional space can be projected into several sub-spaces, such as $p=\left\lbrace x,y,z,\ldots \right\rbrace$ and $s=\left\lbrace u,v,w,\ldots \right\rbrace$. 
 
 
-Thereafter, at first, we convert the longitude and latitude information from a 3D sphere to 2D surface by Universal Transverse Mercator coordinate system (UTM) and then project the velocity $s$ into $u$ and $v$ on $x$-axis and $y$-axis respectively by 
+Thereafter, at first, we convert the longitude and latitude information from a 3D sphere to 2D surface by Universal Transverse Mercator coordinate system (UTM) and then project the speed $s$ into $u$ and $v$ on $x$-axis and $y$-axis respectively by 
 \begin{align}
 u &=s\cdot \sin \left(\omega\frac{\pi}{180}\right),\\
 v &= s\cdot \cos \left(\omega\frac{\pi}{180}\right),
