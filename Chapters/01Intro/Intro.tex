@@ -216,7 +216,7 @@ Besides the SIS processes, a resampling step, also known as a selection step, is
 The common feature of SIS and SIR is that both of these methods are based on importance sampling and updating samples weights recursively. The difference is that in SIR, the resampling step is always performed. Whereas, in SIS, resampling is only taken when needed. 
 
 
-The most successful application of importance sampling with resampling algorithm is \textit{Particle filter} (PF). PF randomly generates a cloud of points and push these points through the computation process. It is a recursive implementation of the Monte Carlo approaches \cite{doucet2009tutorial}. 
+\textit{Particle filter} (PF) is the most successful application of importance sampling with resampling algorithm. It randomly generates a cloud of points and push these points through the computation process. It is a recursive implementation of the Monte Carlo approaches \cite{doucet2009tutorial}. 
 
 
 A generic PF firstly generates $N$ uniformly weighted random measurements $\left\lbrace x_{t-1}^{(i)},\frac{1}{N} \right\rbrace$ at time $t-1$. Once a new observation $y_t$ comes into the system, the weights will be updated recursively by involving the likelihood function $p(y_t\mid x_t^{(i)})$ and propagation function $p(x_t^{(i)}\mid x_{t-1}^{(i)})$. In fact, it is the SIS step. To monitor how bad is the weight degeneracy, a suggested measurement \textit{effective sample size} was introduced in \cite{kong1994sequential}. It is the reciprocal of the sum of squared weights in the form of 
