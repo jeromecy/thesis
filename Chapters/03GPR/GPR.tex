@@ -183,11 +183,11 @@ However, the Bayes estimate for a polynomial smoothing spline requires fixed int
 In the following, we are going to prove that this kind of trivial Tractor spline is corresponding to Bayes estimate in a particular reproducing kernel Hilbert space. 
 
 
-\subsection{Reproducing Kernel Hilbert Space $\mathcal{C}_{\scriptsize p.w.}^{(2)}[0,1]$}
+\subsection{Reproducing Kernel Hilbert Space $\mathcal{C}_{\mbox{\scriptsize p.w.}}^{(2)}[0,1]$}
 
 The space $\mathcal{C}^{(m)}[0,1]=\left\lbrace  f:f^{(m)}\in \mathit{L}_2[0,1] \right\rbrace$ is a set of functions $f$ whose $m$th derivatives are square integrable on the domain $[0,1]$. For a tractor spline, it only requires $m=2$. In fact, its second derivative is piecewise linear but is not necessarily continuous at joint knots. Besides, only if $\lambda(t)$ is constant and $\gamma=0$, the second derivative is piecewise linear and continuous at joint knots. Here we are introducing the space 
 \begin{equation*}
-\mathcal{C}_{\scriptsize p.w.}^{(2)}[0,1]=\left\lbrace f: f''\in \mathit{L}_2[0,1], f,f' \mbox{ are continuous and } f'' \mbox{ is piecewise linear}\right\rbrace,
+\mathcal{C}_{\mbox{\scriptsize p.w.}}^{(2)}[0,1]=\left\lbrace f: f''\in \mathit{L}_2[0,1], f,f' \mbox{ are continuous and } f'' \mbox{ is piecewise linear}\right\rbrace,
 \end{equation*}
 in which the second derivative of any function $f$ is not necessarily continuous. 
 
@@ -196,11 +196,11 @@ Given a sequence of paired data $\left\lbrace (t_1,y_1,v_1),\ldots, (t_n,y_n,v_n
 \begin{equation}\label{maineq}
 \frac{1}{n}\sum_{i=1}^{n}(y_i-f(t_i))^2+\frac{\gamma}{n}\sum_{i=1}^{n}(v_i-f'(t_i))^2+\lambda \int_{0}^{1}f''^2dt
 \end{equation}
-in the space $\mathcal{C}_{\scriptsize p.w.}^{(2)}[0,1]$ is a Tractor spline. Equipped with an appropriate inner product
+in the space $\mathcal{C}_{\mbox{\scriptsize p.w.}}^{(2)}[0,1]$ is a Tractor spline. Equipped with an appropriate inner product
 \begin{equation}\label{TractorSplineInnerProduct}
 \langle f,g \rangle=f(0) g(0)+f'(0) g'(0)+\int_{0}^{1}f''g''dx,
 \end{equation}
-the space $\mathcal{C}_{\scriptsize p.w.}^{(2)}[0,1]$ is made a reproducing kernel Hilbert space. In fact, the representer $R_s(\cdot)$ is 
+the space $\mathcal{C}_{\mbox{\scriptsize p.w.}}^{(2)}[0,1]$ is made a reproducing kernel Hilbert space. In fact, the representer $R_s(\cdot)$ is 
 \begin{equation}\label{kerneleq}
 R_s(t)=1+st+\int_{0}^{1} (s-u)_+(t-u)_+du.
 \end{equation}
@@ -216,23 +216,23 @@ According to Theorem \ref{theoremKernel}, $R_0$ can correspond the space of poly
 \begin{equation*}
 \mathcal{H}_1=\left\lbrace f:f(0)=0, f'(0)=0, \int_{0}^{1}f''^2dt<\infty\right\rbrace
 \end{equation*}
-with inner product $\langle f,g \rangle_1=\int_{0}^{1}f''g''dt$. Thus, $\mathcal{H}_0$ and $\mathcal{H}_1$ are two subspaces of the $\mathcal{C}_{\scriptsize p.w.}^{(2)}[0,1]$, and the reproducing kernel is $R_s(\cdot) = R_0(s,\cdot)+R_1(s,\cdot)$.
+with inner product $\langle f,g \rangle_1=\int_{0}^{1}f''g''dt$. Thus, $\mathcal{H}_0$ and $\mathcal{H}_1$ are two subspaces of the $\mathcal{C}_{\mbox{\scriptsize p.w.}}^{(2)}[0,1]$, and the reproducing kernel is $R_s(\cdot) = R_0(s,\cdot)+R_1(s,\cdot)$.
 
 
-Define a new notation $\dot{R}(s,t)=\frac{\partial R}{\partial s}(s,t)=\frac{\partial R_0}{\partial s}(s,t)+\frac{\partial R_1}{\partial s}(s,t)=t+\int_0^s(t-u)_+du$. Obviously $\dot{R}_s(t) \in \mathcal{C}_{\scriptsize p.w.}^{(2)}[0,1]$. Additionally, we have $\dot{R}_s(0)=0, \dot{R}'_s(0)=\frac{\partial \dot{R}_s}{\partial t}(0)=1$, and $ \dot{R}''_s(t)=\begin{cases}
-0 & s\leq t \\ 1 & s>t \end{cases}$. Then, for any $f\in \mathcal{C}_{\scriptsize p.w.}^{(2)}[0,1]$, we have 
+Define a new notation $\dot{R}(s,t)=\frac{\partial R}{\partial s}(s,t)=\frac{\partial R_0}{\partial s}(s,t)+\frac{\partial R_1}{\partial s}(s,t)=t+\int_0^s(t-u)_+du$. Obviously $\dot{R}_s(t) \in \mathcal{C}_{\mbox{\scriptsize p.w.}}^{(2)}[0,1]$. Additionally, we have $\dot{R}_s(0)=0, \dot{R}'_s(0)=\frac{\partial \dot{R}_s}{\partial t}(0)=1$, and $ \dot{R}''_s(t)=\begin{cases}
+0 & s\leq t \\ 1 & s>t \end{cases}$. Then, for any $f\in \mathcal{C}_{\mbox{\scriptsize p.w.}}^{(2)}[0,1]$, we have 
 \begin{equation*}
 \langle \dot{R}_s,f\rangle =\dot{R}_s(0)f(0)+\dot{R}'_s(0)f'(0)+\int_0^1\dot{R}''_s f''	 du=f'(0)+\int_0^t f''du=f'(t).
 \end{equation*}
 % % % % % % % % % % % % % % % %  Old version, space H* might be wrong % % % % %
 % % % % % % % % % % % % % % % %
-%It can be seen that the first term $\dot{R}_0=t\in \mathcal{H}_0$, and the space spanned by the second term $\dot{R}_1=\int_0^s(t-u)_+du$, denoted as $\mathcal{\dot{H}}$, is not in $\mathcal{H}_1$, but $\mathcal{\dot{H}} \cap \mathcal{H}_1\neq \emptyset$. Then we have a new space $\mathcal{H}_*=\mathcal{\dot{H}} \cup \mathcal{H}_1$. Thus, the two new sub spaces in $\mathcal{C}_{\scriptsize p.w.}^2[0,1]$ are $\mathcal{H}_0$ and $\mathcal{H}_*$.
+%It can be seen that the first term $\dot{R}_0=t\in \mathcal{H}_0$, and the space spanned by the second term $\dot{R}_1=\int_0^s(t-u)_+du$, denoted as $\mathcal{\dot{H}}$, is not in $\mathcal{H}_1$, but $\mathcal{\dot{H}} \cap \mathcal{H}_1\neq \emptyset$. Then we have a new space $\mathcal{H}_*=\mathcal{\dot{H}} \cup \mathcal{H}_1$. Thus, the two new sub spaces in $\mathcal{C}_{\mbox{\scriptsize p.w.}}^2[0,1]$ are $\mathcal{H}_0$ and $\mathcal{H}_*$.
 %
 %Given the sample points $t_j, j=1, \ldots, n$ in equation $(\ref{maineq})$ and noting that the space
 %\begin{equation}
 %\mathcal{A}=\left\lbrace f: f=\sum_{j=1}^{n}\alpha_jR_1(t_j,\cdot)+\sum_{j=1}^{n}\beta_j\dot{R}_1(t_j,\cdot)\right\rbrace 
 %\end{equation}
-%is a closed linear subspace of $\mathcal{H}_*$. Then $f  \in \mathcal{C}_{\scriptsize p.w.}^2[0,1]$ can be written as
+%is a closed linear subspace of $\mathcal{H}_*$. Then $f  \in \mathcal{C}_{\mbox{\scriptsize p.w.}}^2[0,1]$ can be written as
 %\begin{equation}\label{GaussianProcessFunctionF}
 %f(t)=d_1+d_2t+\sum_{j=1}^{n}c_jR_1(t_j,t)+\sum_{i=j}^{n}b_j\dot{R}_1(t_j,\cdot) +\rho(t)
 %\end{equation}
@@ -241,10 +241,10 @@ It can be seen that the first term $\dot{R}_0=t\in \mathcal{H}_0$, and the space
 \begin{equation*}
 \mathcal{A}=\left\lbrace f: f=\sum_{j=1}^{n}\alpha_jR_1(t_j,\cdot)+\sum_{j=1}^{n}\beta_j\dot{R}_1(t_j,\cdot)\right\rbrace 
 \end{equation*}
-is a closed linear subspace of $\mathcal{H}_1$. Then, we have a new space $\mathcal{H}_*=\mathcal{\dot{H}} \cup \mathcal{A}$. Thus, the two new sub spaces in $\mathcal{C}_{\scriptsize p.w.}^{(2)}[0,1]$ are $\mathcal{H}_0$ and $\mathcal{H}_*$.
+is a closed linear subspace of $\mathcal{H}_1$. Then, we have a new space $\mathcal{H}_*=\mathcal{\dot{H}} \cup \mathcal{A}$. Thus, the two new sub spaces in $\mathcal{C}_{\mbox{\scriptsize p.w.}}^{(2)}[0,1]$ are $\mathcal{H}_0$ and $\mathcal{H}_*$.
 
 
-For any $f\in\mathcal{C}_{\scriptsize p.w.}^{(2)}[0,1]$, it can be written as 
+For any $f\in\mathcal{C}_{\mbox{\scriptsize p.w.}}^{(2)}[0,1]$, it can be written as 
 \begin{equation}\label{GaussianProcessFunctionF}
 f(t)=d_1+d_2t+\sum_{j=1}^{n}c_jR_1(t_j,t)+\sum_{i=j}^{n}b_j\dot{R}_1(t_j,\cdot) +\rho(t)
 \end{equation}
@@ -276,7 +276,7 @@ Note that $\rho$ only appears in the third term and is minimized at $\rho=0$. He
 \subsection{Posterior of Bayes Estimates}
 
 
-Now in the model $y=f(t)+\varepsilon_1$, $\varepsilon_1 \sim N(0,\sigma^2)$, and $v=f '(t)+\varepsilon_2$, $\varepsilon_2\sim N\left(0, \frac{\sigma^2}{\gamma}\right)$, according to equation $(\ref{GaussianProcessFunctionF})$, for $f(t) \in \mathcal{C}_{\scriptsize p.w.}^{(2)}[0,1]$, we have 
+Now in the model $y=f(t)+\varepsilon_1$, $\varepsilon_1 \sim N(0,\sigma^2)$, and $v=f '(t)+\varepsilon_2$, $\varepsilon_2\sim N\left(0, \frac{\sigma^2}{\gamma}\right)$, according to equation $(\ref{GaussianProcessFunctionF})$, for $f(t) \in \mathcal{C}_{\mbox{\scriptsize p.w.}}^{(2)}[0,1]$, we have 
 \begin{equation}
 f(t)=(d_1+d_2t)+\sum_{i=1}^{n}c_iR_1(t_i,t)+\sum_{i=1}^{n}b_i\dot{R}_1(t_i,t).
 \end{equation}

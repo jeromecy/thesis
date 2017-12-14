@@ -141,15 +141,15 @@ W_t^{(i)} &\propto W_{t-1}^{(i)} \frac{ p\left(y_t \mid x_t^{(i)}\right) p\left(
 
 The problem of SIS filter is that the distribution of importance weights becomes more and more skewed as time increases. Hence, after several iterations, only few particles have non-zero importance weights. This phenomenon is called \textit{weight degeneracy} or \textit{sample impoverishment} \cite{smcmip2011}.
 
-The effective sample size $\textit{N}_{\textit{\scriptsize eff}}$ is suggested to monitor how bad the degeneration is, which is
+The effective sample size $N_{\mbox{\scriptsize eff}}$ is suggested to monitor how bad the degeneration is, which is
 \begin{align*}
-\textit{N}_{\textit{\scriptsize eff}}=\frac{N}{1+\Var\left(w_t^{*(i)}\right)},
+N_{\mbox{\scriptsize eff}}=\frac{N}{1+\Var\left(w_t^{*(i)}\right)},
 \end{align*}
 where $w_t^{*(i)}=\frac{p\left(x_t^{(i)}\mid y_{1:t}\right)}{q\left(x_t^{(i)}\mid x_{t-1}^{(i)},y_{1:t}\right)}$. The more different between the biggest weight and smallest weight, the worse the degeneration is. In practice, the effective sample size is approximated by
 \begin{align*}
-\hat{N}_{\textit{\scriptsize eff}}\approx \frac{1}{\sum_{i=1}^{N}\left(w_t^{(i)}\right)^2}.
+\hat{N}_{\mbox{\scriptsize eff}}\approx \frac{1}{\sum_{i=1}^{N}\left(w_t^{(i)}\right)^2}.
 \end{align*}
-If the value of $\textit{N}_{\textit{\scriptsize eff}}$ is less than some threshold, some procedure should be used to avoid a worse degeneration. There are two ways one can do: choose an appropriate probability density function for importance sampling, or use resampling after SIS. 
+If the value of $N_{\mbox{\scriptsize eff}}$ is less than some threshold, some procedure should be used to avoid a worse degeneration. There are two ways one can do: choose an appropriate probability density function for importance sampling, or use resampling after SIS. 
 
 The idea of resampling is keeping the same size of particles, replacing the low weights particles with new ones. As discussed before, 
 \begin{align*}

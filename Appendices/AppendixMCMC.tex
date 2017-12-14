@@ -6,20 +6,22 @@
 
 Calculating the log-posterior of parameters requires finding out the forecast distribution of $p\left(y_{1:t}\mid y_{1:t-1},\theta\right)$. A general way is using the joint distribution of $y_{t}$ and $y_{1:t-1}$, which is $p\left(y_{1:t}\mid \theta\right)\sim N\left(0,\Sigma_{YY}\right)$ and following the procedure in Section \ref{sectionforecast} to work out the inverse matrix of a multivariate normal distribution. For example, one may find the inverse of the covariance matrix 
 \begin{align*}
-\Sigma_{YY}^{-1} = B\left(I-A^{-1}B\right) =\frac{1}{\sigma^4}\left(\sigma^2 I-A^{-1}\right) \triangleq \frac{1}{\sigma^4} \left[\begin{matrix} 
+\Sigma_{YY}^{-1} = B\left(I-A^{-1}B\right) =\frac{1}{\sigma^4}\left(\sigma^2 I-A^{-1}\right) \triangleq \frac{1}{\sigma^4}
+\begin{bmatrix} 
 Z_{t} & b_{t} \\
 b_{t}^\top & K_{t}
-\end{matrix} \right].
+\end{bmatrix}.
 \end{align*}
 Therefore, the original form of this covariance is 
-\begin{align*} \Sigma_{YY} =\sigma^4 \left[ \begin{matrix}
+\begin{align*} \Sigma_{YY} =\sigma^4 
+\begin{bmatrix}
 \left(Z-bK^{-1}b^\top\right)^{-1} & -Z^{-1}b\left(K-b^\top Z^{-1}b\right)^{-1}\\
 -K^{-1}b^\top \left(Z-bK^{-1}b^\top\right)^{-1} & \left(K-b^\top Z^{-1}b\right)^{-1}
-\end{matrix}\right].
+\end{bmatrix}.
 \end{align*}
 For sake of simplicity, here we are using $Z$ to represent the $t\times t$ matrix $Z_{t}$, $b$ to represent the $t \times 1$ vector  $b_{t}$  and $K$ to represent the $1\times 1$ constant $K_{t}$. By denoting $C_{t}^\top = \begin{bmatrix} 0 & \cdots & 0 & 1\end{bmatrix}$ and post-multiplying $\Sigma_{YY}^{-1}$, it gives us 
 \begin{equation}
-\Sigma_{YY}^{-1} C_{t}= \frac{1}{\sigma^4}\left(\sigma^2 I-A^{-1}\right) C_{t}= \frac{1}{\sigma^4} \left[\begin{matrix} b_{t} \\ K_{t} \end{matrix} \right].
+\Sigma_{YY}^{-1} C_{t}= \frac{1}{\sigma^4}\left(\sigma^2 I-A^{-1}\right) C_{t}= \frac{1}{\sigma^4} \begin{bmatrix} b_{t} \\ K_{t} \end{bmatrix}.
 \end{equation} 
 
 By using the formula, one can find a recursive way to update $K_{t}$ and $b_{t-1}$, which are 
@@ -112,13 +114,13 @@ To find $\mu_i$ and $\Sigma_i$, we will use the joint distribution of $x_{t}$ an
 \end{equation*}
 Because of 
 \begin{align*}
-C_{t}^\top A_{t}^{-1} = \left[\begin{matrix} - b_{t}^\top & \sigma^2- K_{t} \end{matrix} \right],
+C_{t}^\top A_{t}^{-1} = \begin{bmatrix} - b_{t}^\top & \sigma^2- K_{t} \end{bmatrix},
 \end{align*}
 thus, for any given $\theta_i$, $x_{t}\mid y_{1:t},\theta_i \sim N\left(\mu_{t}^{\left(x\right)},\sigma_{t}^{\left(x\right)2}\right)$, where
 \begin{align*}
 \mu_i  &= \phi \hat{x}_{t-1} +  C_{t}^\top \left(A-B\right)^{-1}B \left(I-A^{-1}B\right)y_{1:t}\\
                       &= \phi \hat{x}_{t-1} +  C_{t}^\top A^{-1}B y_{1:t} \\ &= \phi \hat{x}_{t-1} +  \frac{1}{\sigma^2}C_{t}^\top A^{-1} y_{1:t}\\
-                      &=0+  \frac{1}{\sigma^2}\left[\begin{matrix} - b_{t}^\top & \sigma^2- K_{t} \end{matrix} \right]  \left[\begin{matrix} y_{1:t-1} \\ y_{t} \end{matrix} \right] \\
+                      &=0+  \frac{1}{\sigma^2}\begin{bmatrix} - b_{t}^\top & \sigma^2- K_{t} \end{bmatrix} \begin{bmatrix} y_{1:t-1} \\ y_{t} \end{bmatrix}  \\
                       &= - \frac{1}{\sigma^2}b_{t-1}^\top y_{1:t-1}+\left(1-\frac{K_{t}}{\sigma^2}\right)y_{t}\\
                       &=\frac{K_{t}\bar{\mu}_{t}}{\sigma^2}+\left(1-\frac{K_{t}}{\sigma^2}\right)y_{t} \\
 \Sigma_i&=C_{t}^\top\left(A-B\right)^{-1}C_{t}-  C_{t}^\top\left(A-B\right)^{-1}  B\left(I-A^{-1}B\right) \left(A-B\right)^{-1}C_{t}\\
@@ -166,10 +168,10 @@ b_{t+1}^\top & K_{t+1}
 B_t & 0 \\ 0 & B_1\end{bmatrix}
 \end{align*}
 where $Z_{t+1}$ is a $2t \times 2t$ matrix, $ b_{t+1} $ is a $2t \times 2$ matrix and $K_{t+1}$ is a $2 \times 2$ matrix. Thus by taking its inverse again, we will get 
-\begin{align*} \footnotesize \Sigma_{YY}^{\left(t+1\right)}= \left[ \begin{matrix}
+\begin{align*} \footnotesize \Sigma_{YY}^{\left(t+1\right)}= \begin{bmatrix}
 B_t^{-1} \left(Z_{t+1}-b_{t+1}K_{t+1}^{-1}b_{t+1}^\top\right)^{-1}B_t^{-1}  & - B_t^{-1}  Z_{t+1}^{-1}b_{t+1}\left(K_{t+1}-b_{t+1}^\top Z_{t+1}^{-1}b_{t+1}\right)^{-1}B_1^{-1} \\
 -B_1^{-1}  K_{t+1}^{-1}b_{t+1}^\top \left(Z_{t+1}-b_{t+1}K_{t+1}^{-1}b_{t+1}^\top\right)^{-1}B_t^{-1}  & B_1^{-1}  \left(K_{t+1}-b_{t+1}^\top Z_{t+1}^{-1}b_{t+1}\right)^{-1}B_1^{-1} 
-\end{matrix}\right].
+\end{bmatrix}.
 \end{align*}
 
 It is easy to find the relationship between $A_{t+1}$ and  $A_{t}$ in the Sherman-Morrison-Woodbury form, which is 
@@ -356,7 +358,7 @@ The filtering distribution of the state with given parameters is $p\left(X_t\mid
 \end{equation*}
 Because of 
 \begin{align*}
-C_{t+1}^\top A_{t+1}^{-1} = \left[\begin{matrix} - b_{t+1}^\top & B_1^{-1}- K_{t+1} \end{matrix} \right],
+C_{t+1}^\top A_{t+1}^{-1} = \begin{bmatrix} - b_{t+1}^\top & B_1^{-1}- K_{t+1} \end{bmatrix},
 \end{align*}
 then $X_{t+1}\mid Y_{1:t+1},\theta \sim N\left(\bar{\mu}_{t+1}^{\left(X\right)},\bar{\sigma}_{t+1}^{\left(X\right)2}\right)$, where
 \begin{align*}

@@ -376,7 +376,7 @@ Then
 
 In this section, we examine the visual quality of the proposed method with four functions: \textit{Blocks}, \textit{Bumps}, \textit{HeaviSine} and \textit{Doppler}, which have been used in \cite{donoho1994ideal}, \cite{donoho1995adapting} and \cite{abramovich1998wavelet} because of their caricature features in imaging, spectroscopy and other scientific signal processing. However it is unfair for Tractor spline fitting "jump" position in \textit{Blocks} and \textit{Bumps} function because it fits position and velocity simultaneously and these points imply infinite first derivative in original functions, which are impossible for vehicles or individuals. In terms of this issue, we treat these functions as velocity, and use noise free points to generate accurate position data, then add noises back to them.
 
-For calculating consideration, we use $n=1024$ \cite{nason2010wavelet}. Because all noises are randomly generated, for the convenience of reinitialization and repeatable comparison, we set random seed at 2016. The noises are \iid zero-mean Gaussian distributed with standard deviation regarding to signal-to-noise ratio (SNR), which specifies the ratio of the standard deviation of the function to the standard deviation of the simulated errors. Explicitly, if the standard deviation of the true signal $f$ is $\sigma_f$, the simulated data will be $f+\varepsilon$, where the simulated error  $\varepsilon \sim N(0,\sigma_f/SNR)$. 
+For calculating consideration, we use $n=1024$ \cite{nason2010wavelet}. Because of all noises are randomly generated, for the convenience of reinitialization and repeatable comparison, we set random seed at 2016. The noises are \iid zero-mean Gaussian distributed with standard deviation regarding to signal-to-noise ratio (SNR), which specifies the ratio of the standard deviation of the function to the standard deviation of the simulated errors. Explicitly, if the standard deviation of the true signal $f$ is $\sigma_f$, the simulated data will be $f+\varepsilon$, where the simulated error  $\varepsilon \sim N(0,\sigma_f/SNR)$. 
 
 Therefore, if the original function $g(t)$ is treated as velocity function $f'(t)=g(t)$, thus by setting initial position $y_0=0$, acceleration $a_0=0$ and using the following formula 
 \begin{equation}\label{generateVelocity}
@@ -894,7 +894,7 @@ To fit the real data, we bring the parameter $\lambda_d$ to our model. Then, we 
 
 \subsection{1-Dimensional Trajectory}
 
-We treat $x$ and $y$ position separately and compare how velocity information in objective function (\ref{tractorsplineObjective}) and the adjusted penalty term in equation (\ref{adjustedpenalty}) work in our model. All parameters in fitted Tractor spline are automatically selected by cross-validation by equation (\ref{tractorcv}). Figure \ref{1dx} and figure \ref{1dy} compare the results of fitted methods on $x$ and $y$ axes. P-spline gives over-fitting on $x$ axis reconstruction and not applicable on $y$ axis due to errors. Wavelet(sure) misses some key points at corners when a tractor tries to turn around. Tractor spline without adjusted penalty term presents less fitting at time gap knots, where time marks keep increasing while position stays the same and velocity is 0. If we take the last knot $p_k$ before and the first knot $p_{k+1}$ after the time gap, Hermite spline basis will use $y_k, v_k, y_{k+1}$ and $v_{k+1}$ to build up a cubic spline, even though the velocity information is not useful. That is why we got a curve rather than a straight line. Wavelet(BayesThresh), Tractor spline without velocity and proposed Tractor spline give acceptable results.
+We treat $x$ and $y$ position separately and compare how the velocity information and the adjusted penalty term of equation (\ref{adjustedpenalty}) work in our model. All parameters in fitted Tractor spline are automatically selected by cross-validation by equation (\ref{tractorcv}). Figure \ref{1dx} and figure \ref{1dy} compare the results of fitted methods on $x$ and $y$ axes. P-spline gives over-fitting on $x$ axis reconstruction and not applicable on $y$ axis due to errors. Wavelet(sure) misses some key points at corners when a tractor tries to turn around. Tractor spline without adjusted penalty term presents less fitting at time gap knots, where time marks keep increasing while position stays the same and velocity is 0. If we take the last knot $p_k$ before and the first knot $p_{k+1}$ after the time gap, Hermite spline basis will use $y_k, v_k, y_{k+1}$ and $v_{k+1}$ to build up a cubic spline, even though the velocity information is not useful. That is why we got a curve rather than a straight line. Wavelet(BayesThresh), Tractor spline without velocity and proposed Tractor spline give acceptable results.
 
 
 Table \ref{1dxymse} illustrates the MSE of all methods on both $x$ and $y$ axes. The proposed Tractor spline returns the least errors among all methods.
@@ -982,8 +982,6 @@ Table \ref{1dxymse} illustrates the MSE of all methods on both $x$ and $y$ axes.
 \caption{Fitted data points on $y$ axis. Figure \ref{ggRealdataYPSpline} Fitted P-spline is not applicable on $y$ axis as the matrix is not invertible. Figure \ref{ggRealdataYSure} Fitted by wavelet ($\textit{sure}$) algorithm. At some turning points, it gives over-fitting. Figure \ref{ggRealdataYBayes} Fitted by wavelet ($\textit{BayesThresh}$) algorithm is much better than wavelet ($\textit{sure}$). Figure \ref{ggRealdataYTractorGamma} Fitted by Tractor spline without velocity information. The reconstruction is good to get the original trajectory. Figure \ref{ggRealdataYTractorAPT} Fitted by Tractor spline without adjusted penalty term. It gives less fitting at boom-not-operating. Figure \ref{ggRealdataYTractor} Fitted by proposed method. It fits all data points in a good way.}\label{1dy}
  \end{figure}
 
-
-
 %\begin{sidewaystable}
 \begin{table}
 \caption{Mean squared error. Tractor spline returns smallest errors among all these methods. P-spline was unable to reconstruct the $y$ trajectory as the original dataset contains 0 $\Delta_y$.} \label{1dxymse}
@@ -999,7 +997,6 @@ Table \ref{1dxymse} illustrates the MSE of all methods on both $x$ and $y$ axes.
  \end{center}
 \end{table}
 %\end{sidewaystable} 
-
 
 The penalty function of the proposed Tractor spline is
 \begin{equation}\label{penaltylamb}
@@ -1127,7 +1124,7 @@ Even though the mean squared errors of a Tractor spline is not the least compari
 
 In parameter selection, the cross-validation only focuses on the errors of $f$ ignoring that in $f'$. So the reconstruction of $f'$ is not as smooth as that of $f$, which does not affect trajectory reconstruction. A drawback of Tractor spline is that the computing time in finding local minimal CV score is higher than using B-spline. If there is an efficient way to compute matrix inverse, the calculation speed will be much faster. So in the simulation and application studies, we try to optimize our coding to make it run as faster as possible.
 
-Another potential application of Tractor spline is on vessel monitoring system. This system is a fisheries surveillance that allows environmental and fisheries regulatory organization to track and monitor the activities of fishing vessels. The system calculates the position of the moving object and sends a data report to shore-side users. This information includes time, latitude and longitude positions. However, due to weak signals, the tracking system may lose useful information. The Tractor spline can help to reconstruct the whole trajectory for a fishery vessel and use it to analyze its performance. For example, a larger penalty value indicates a stop on the sea inferring that the vessel is casting nets; a smaller penalty value indicates the vessel is moving normally. 
+Another potential application of Tractor spline is on vessel monitoring system. The system is a fisheries surveillance that allows environmental and fisheries regulatory organization to track and monitor the activities of fishing vessels. The system calculates the position of the moving object and sends a data report to shore-side users. This information includes time, latitude and longitude positions. However, due to weak signals, the tracking system may lose useful information. The Tractor spline can help to reconstruct the whole trajectory for a fishery vessel and to analyze its behavior. For example, a larger penalty value indicates stops on the sea inferring that the vessel is casting nets; a smaller penalty value indicates the vessel is moving normally. 
 
-After all, there is a wide range of applications for Tractor spline in real life. A future work is how to implement Tractor spline on-line to get instant estimations and how to make it run faster. 
+After all, there is a wide range of applications for Tractor spline in real life. A future work is to implement Tractor spline on-line for instant estimation and to make it run faster. 
 

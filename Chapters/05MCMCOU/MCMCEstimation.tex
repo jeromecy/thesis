@@ -387,7 +387,7 @@ In equation (\ref{stepsizeep}), the jump size $\epsilon$ determines the efficien
 \end{figure}
 
 
-Plenty of work has been done in determining the efficiency of Metropolis-Hastings algorithm in recent years. Gelman, Roberts, and Gilks \cite{gelman1996efficient} work with algorithms consisting of a single Metropolis move (not multi-variable-at-a-time), and obtain many interesting results for the $d$-dimensional spherical multivariate normal problem with symmetric proposal distributions, including that the optimal scale is approximately $2.4/\sqrt{d}$ times the scale of target distribution, which implies optimal acceptance rates of $0.44$ for $d = 1$ and $0.23$ for $d\rightarrow \infty$ \cite{gilks1995markov}. Roberts and Rosenthal (2001) \cite{roberts2001optimal} evaluate scalings that are optimal (in the sense of integrated autocorrelation times) asymptotically in the number of components. They find that an acceptance rate of 0.234 is optimal in many random walk Metropolis situations, but their studies are also restricted to algorithms that consist of only a single step in each iteration, and in any case, they conclude that acceptance rates between 0.15 and 0.5 do not cost much efficiency. Other researchers \cite{roberts1997weak} \cite{bedard2007weak}, \cite{beskos2009optimal}, \cite{sherlock2009optimal}, \cite{sherlock2013optimal} have been tackled for various shapes of target on choosing the optimal scale of the RWM proposal and led to the similar rule: choose the scale so that the acceptance rate is approximately 0.234. Although nearly all of the theoretical results are based upon limiting arguments in high dimension, the rule of thumb appears to be applicable even in relatively low dimensions \cite{sherlock2010random}. 
+Plenty of work has been done in determining the efficiency of Metropolis-Hastings algorithm in recent years. Gelman, Roberts, and Gilks \cite{gelman1996efficient} work with algorithms consisting of a single Metropolis move (not multi-variable-at-a-time), and obtain many interesting results for the $d$-dimensional spherical multivariate normal problem with symmetric proposal distributions, including that the optimal scale is approximately $2.4/\sqrt{d}$ times the scale of target distribution, which implies optimal acceptance rates of $0.44$ for $d = 1$ and $0.23$ for $d\rightarrow \infty$ \cite{gilks1995markov}. Roberts and Rosenthal (2001) \cite{roberts2001optimal} evaluate scalings that are optimal (in the sense of integrated autocorrelation times) asymptotically in the number of components. They find that an acceptance rate of 0.234 is optimal in many random walk Metropolis situations, but their studies are also restricted to algorithms that consist of only a single step in each iteration, and in any case, they conclude that acceptance rates between 0.15 and 0.5 do not cost much efficiency. Other researchers \cite{roberts1997weak}, \cite{bedard2007weak}, \cite{beskos2009optimal}, \cite{sherlock2009optimal}, \cite{sherlock2013optimal} have been tackled for various shapes of target on choosing the optimal scale of the RWM proposal and led to the similar rule: choose the scale so that the acceptance rate is approximately 0.234. Although nearly all of the theoretical results are based upon limiting arguments in high dimension, the rule of thumb appears to be applicable even in relatively low dimensions \cite{sherlock2010random}. 
 
 
 
@@ -518,20 +518,21 @@ Buy using Algorithm \ref{algoonevarible} and aiming the optimal acceptance rate 
 
 Calculating the log-posterior of parameters requires finding out the forecast distribution of $p(y_{1:t}\mid y_{1:t-1},\theta)$. A general way is using the joint distribution of $y_{t}$ and $y_{1:t-1}$, which is $p(y_{1:t}\mid \theta)\sim N(0,\Sigma_{YY})$, and following the procedure in Section \ref{sectionforecast} to work out the inverse matrix of a multivariate normal distribution. For example, one may find the inverse of the covariance matrix 
 \begin{align*}
-\Sigma_{YY}^{-1} = B_t(I-A_t^{-1}B_t) =\frac{1}{\sigma^4}(\sigma^2 I_t-A_t^{-1}) \triangleq \frac{1}{\sigma^4} \left[\begin{matrix} 
+\Sigma_{YY}^{-1} = B_t(I-A_t^{-1}B_t) =\frac{1}{\sigma^4}(\sigma^2 I_t-A_t^{-1}) \triangleq \frac{1}{\sigma^4} 
+\begin{bmatrix} 
 Z_{t} & b_{t} \\
 b_{t}^\top & K_{t}
-\end{matrix} \right].
+\end{bmatrix}.
 \end{align*}
 Therefore, the original form of this covariance is 
-\begin{align*} \Sigma_{YY} =\sigma^4 \left[ \begin{matrix}
+\begin{align*} \Sigma_{YY} =\sigma^4 \begin{bmatrix}
 \left(Z_t-b_tK_t^{-1}b_t^\top\right)^{-1} & -Z_t^{-1}b_t\left(K_t-b_t^\top Z_t^{-1}b_t\right)^{-1}\\
 -K_t^{-1}b_t^\top \left(Z_t-b_tK_t^{-1}b_t^\top\right)^{-1} & \left(K_t-b_t^\top Z_t^{-1}b_t\right)^{-1}
-\end{matrix}\right].
+\end{bmatrix}. 
 \end{align*}
 By denoting $C_{t}^\top = \begin{bmatrix} 0 & \cdots & 0 & 1\end{bmatrix}$ and post-multiplying $\Sigma_{YY}^{-1}$, we will have  
 \begin{equation}\label{beforeSMformula}
-\Sigma_{YY}^{-1} C_{t}= \frac{1}{\sigma^4}\left(\sigma^2 I-A^{-1} \right)C_{t}= \frac{1}{\sigma^4} \left[\begin{matrix} b_{t} \\ K_{t} \end{matrix} \right].
+\Sigma_{YY}^{-1} C_{t}= \frac{1}{\sigma^4}\left(\sigma^2 I-A^{-1} \right)C_{t}= \frac{1}{\sigma^4} \begin{bmatrix} b_{t} \\ K_{t} \end{bmatrix}.
 \end{equation} 
 
 
@@ -591,7 +592,7 @@ To find $\mu_{ti}^{(x)}$ and $\Var(x_t)_i$, we will use the joint distribution o
 \end{equation*}
 Because of 
 \begin{align*}
-C_{t}^\top A_{t}^{-1} = \left[\begin{matrix} - b_{t}^\top & \sigma^2- K_{t} \end{matrix} \right],
+C_{t}^\top A_{t}^{-1} = \begin{bmatrix} - b_{t}^\top & \sigma^2- K_{t} \end{bmatrix},
 \end{align*}
 thus, for any given $\theta$, we have $\hat{x}_{t}\mid y_{1:t},\theta \sim N\left( \mu_{t}^{(x)},\Var(x_t) \right)$, where
 \begin{align}
@@ -671,7 +672,7 @@ To run simulations, we firstly generate irregular time lag sequence $\left\lbrac
 
 Similarly, we can get the joint distribution for $x_{0:t}$ and $y_{1:t}$ 
 \begin{equation*}
-\left[ \begin{matrix} x\\y  \end{matrix}\bigg\rvert \theta \right]
+\begin{bmatrix} \begin{matrix} x\\y \end{matrix} \bigg\rvert \theta \end{bmatrix}
 \sim N\left(0, \Sigma  \right),
 \end{equation*}
 from the precision matrix 
@@ -957,10 +958,11 @@ b_{t}^\top & K_{t}
 B_{t-1} & 0 \\ 0 & B_1\end{bmatrix}
 \end{align*}
 where $Z_{t}$ is a $2t \times 2t$ matrix, $ b_{t} $ is a $2t \times 2$ matrix and $K_{t}$ is a $2 \times 2$ matrix. Thus,by taking its inverse again, we will get 
-\begin{align*} \Sigma_{YY}^{\left(t\right)}= \left[ \begin{matrix}
+\begin{align*} 
+\Sigma_{YY}^{\left(t\right)}= \begin{bmatrix}
 B_{t-1}^{-1} \left(Z_{t}-b_{t}K_{t}^{-1}b_{t}^\top\right)^{-1}B_{t-1}^{-1}  & - B_{t-1}^{-1}  Z_{t}^{-1}b_{t}\left(K_{t}-b_{t}^\top Z_{t}^{-1}b_{t}\right)^{-1}B_1^{-1} \\
 -B_1^{-1}  K_{t}^{-1}b_{t}^\top \left(Z_{t}-b_{t}K_{t}^{-1}b_{t}^\top\right)^{-1}B_{t-1}^{-1}  & B_1^{-1}  \left(K_{t}-b_{t}^\top Z_{t}^{-1}b_{t}\right)^{-1}B_1^{-1} 
-\end{matrix}\right].
+\end{bmatrix}.
 \end{align*}
 
 It is easy to find the relationship between $A_{t}$ and  $A_{t}$ in the Sherman-Morrison-Woodbury form, which is 
@@ -1249,7 +1251,7 @@ The next question is how to choose an appropriate $L$. The length of data used i
     \includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/simudataOUlengthessut.pdf}
     \caption{ESSUT against data length}
 \end{subfigure}
-\caption{Comparison efficiency (Eff), efficiency in unit time (EffUT), effective sample size (ESS) and effective sample size in unit time (ESSUT) against the different length of data. Increasing data length does not significantly improve the efficiency and ESSUT.}\label{compareLengthData}
+\caption{Comparison of efficiency (Eff), efficiency in unit time (EffUT), effective sample size (ESS) and effective sample size in unit time (ESSUT) against the different length of data. Increasing data length does not significantly improve the efficiency and ESSUT.}\label{compareLengthData}
 \end{figure}
 In addition, from a practical point of view, the observation error $\sigma$ should be kept at a reasonable level, let's say $50cm$, and the computation time should be as less as possible. To reach that level, $L=100$ is an appropriate choice. For a one-dimensional linear model, $L$ can be chosen larger and that does not change too much. If the data up to time $t$ is less than or equal to the chosen $L$, the whole data set is used in learning $\theta$ and estimating $X_t$. 
 
@@ -1416,7 +1418,7 @@ Since a cheap surrogate $\hat{\pi}(\cdot)$ for the true $\pi(\cdot)$ is found in
 
 \section{Discussion and Future Work}
 
-In this chapter, we are using the a self-tuning one-variable-at-a-time Metropolis-Hastings Random Walk to learn the parameter hyper space for a linear state-space model.  Starting from the joint covariance and distribution of $X$ and $Y$, we have a recursive way to update the mean and covariance sequentially. After getting the cheap approximation posterior distribution,DA MH algorithm accelerates the estimating process. The advantage of this algorithm is that it is easily to understand and implement in practice. Contrast, Particle Learning algorithm is high efficient but the sufficient statistics are not available all the time . 
+In this chapter, we are using the a self-tuning one-variable-at-a-time Metropolis-Hastings Random Walk to learn the parameter hyper space for a linear state-space model.  Starting from the joint covariance and distribution of $X$ and $Y$, we have a recursive way to update the mean and covariance sequentially. After getting the cheap approximation posterior distribution,DA MH algorithm accelerates the estimating process. The advantage of this algorithm is that it is easily to understand and implement in practice. By contrast, Particle Learning algorithm is highly efficient, however, the sufficient statistics are not available at all time . 
 
 Some future work can be done on inferring state from precious movement with other kinetic information, not just with diffusive  velocity. Besides, I am more interested in increasing the efficiency and accuracy of MCMC method. 
 
