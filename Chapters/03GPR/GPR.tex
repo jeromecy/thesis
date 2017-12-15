@@ -34,7 +34,7 @@ Further, \cite{wahba1978improper} showed that a Bayesian version of this problem
 Based on the correspondence, \cite{craven1978smoothing} proposed an generalized cross-validation estimate for the minimizer $f_\lambda$. The estimate $\hat{\lambda}$ is the minimizer of the function where the trace of matrix $A(\lambda)$ in (\ref{crossvalidationmatrixA}) is incorporated. It is also able to establish an optimal convergence property for their estimator when the number of observations in a fixed interval tends to infinity \cite{wecker1983signal}. A high efficient algorithm to optimize generalized cross-validation and generalized maximum likelihood scores with multiple smoothing parameters via the Newton method was proposed by \cite{gu1991minimizing}. This algorithm can also be applied to the maximum likelihood and the restricted maximum likelihood estimation. The behavior of the optimal regularization parameter in the method of regularization was investigated by \cite{wahba1990optimal}. 
 
 
-In this chapter, it is proved that the Tractor spline can be estimated by a Bayesian approach in second-derivative-piecewise-continuous reproducing kernel Hilbert space. The GCV is used to find the optimal parameters for Tractor spline. 
+In this chapter, it is proved that the V-spline can be estimated by a Bayesian approach in second-derivative-piecewise-continuous reproducing kernel Hilbert space. The GCV is used to find the optimal parameters for V-spline. 
 
 
 
@@ -173,19 +173,19 @@ Therefore, it can seen that the Bayesian estimation of a smoothing spline is a s
 
 
 
-\section{Tractor Spline as Bayes Estimate}
+\section{V-Spline as Bayes Estimate}
 
 
-Recall the definition of Tractor spline introduced in Section \ref{SectionTractorSpline}. It is the solution to the objective function (\ref{tractorsplineObjective}), where an extra term for $f'(t)-v$ and an extra parameter $\gamma$ are incorporated. The penalty parameter $\lambda(t)$ is a function varying on different domains. If $\lambda(t)=\lambda$ is constant and $\gamma=0$, the Tractor spline degenerate to a conventional cubic smoothing spline consisting of a set of given basis functions.  
+Recall the definition of V-spline introduced in Section \ref{SectionTractorSpline}. It is the solution to the objective function (\ref{tractorsplineObjective}), where an extra term for $f'(t)-v$ and an extra parameter $\gamma$ are incorporated. The penalty parameter $\lambda(t)$ is a function varying on different domains. If $\lambda(t)=\lambda$ is constant and $\gamma=0$, the V-spline degenerate to a conventional cubic smoothing spline consisting of a set of given basis functions.  
 
-However, the Bayes estimate for a polynomial smoothing spline requires fixed interval on $[0,1]$ and the penalty parameter is constant. For the first constraint, without loss of generality, an arbitrary interval $[a,b]$ can be transformed to $[0,1]$. For the second constraint, it is assumed that $\lambda(t)$ stays the same constant in each subinterval of $[0,1]$ and name the solution "trivial Tractor spline".  In this section, I still call it the "Tractor spline" for sake of simplicity. 
+However, the Bayes estimate for a polynomial smoothing spline requires fixed interval on $[0,1]$ and the penalty parameter is constant. For the first constraint, without loss of generality, an arbitrary interval $[a,b]$ can be transformed to $[0,1]$. For the second constraint, it is assumed that $\lambda(t)$ stays the same constant in each subinterval of $[0,1]$ and name the solution "trivial V-spline".  In this section, I still call it the "V-spline" for sake of simplicity. 
 
-In the following, we are going to prove that this kind of trivial Tractor spline is corresponding to Bayes estimate in a particular reproducing kernel Hilbert space. 
+In the following, we are going to prove that this kind of trivial V-spline is corresponding to Bayes estimate in a particular reproducing kernel Hilbert space. 
 
 
 \subsection{Reproducing Kernel Hilbert Space $\mathcal{C}_{\mbox{\scriptsize p.w.}}^{(2)}[0,1]$}
 
-The space $\mathcal{C}^{(m)}[0,1]=\left\lbrace  f:f^{(m)}\in \mathit{L}_2[0,1] \right\rbrace$ is a set of functions $f$ whose $m$th derivatives are square integrable on the domain $[0,1]$. For a tractor spline, it only requires $m=2$. In fact, its second derivative is piecewise linear but is not necessarily continuous at joint knots. Besides, only if $\lambda(t)$ is constant and $\gamma=0$, the second derivative is piecewise linear and continuous at joint knots. Here we are introducing the space 
+The space $\mathcal{C}^{(m)}[0,1]=\left\lbrace  f:f^{(m)}\in \mathit{L}_2[0,1] \right\rbrace$ is a set of functions $f$ whose $m$th derivatives are square integrable on the domain $[0,1]$. For a V-spline, it only requires $m=2$. In fact, its second derivative is piecewise linear but is not necessarily continuous at joint knots. Besides, only if $\lambda(t)$ is constant and $\gamma=0$, the second derivative is piecewise linear and continuous at joint knots. Here we are introducing the space 
 \begin{equation*}
 \mathcal{C}_{\mbox{\scriptsize p.w.}}^{(2)}[0,1]=\left\lbrace f: f''\in \mathit{L}_2[0,1], f,f' \mbox{ are continuous and } f'' \mbox{ is piecewise linear}\right\rbrace,
 \end{equation*}
@@ -196,7 +196,7 @@ Given a sequence of paired data $\left\lbrace (t_1,y_1,v_1),\ldots, (t_n,y_n,v_n
 \begin{equation}\label{maineq}
 \frac{1}{n}\sum_{i=1}^{n}(y_i-f(t_i))^2+\frac{\gamma}{n}\sum_{i=1}^{n}(v_i-f'(t_i))^2+\lambda \int_{0}^{1}f''^2dt
 \end{equation}
-in the space $\mathcal{C}_{\mbox{\scriptsize p.w.}}^{(2)}[0,1]$ is a Tractor spline. Equipped with an appropriate inner product
+in the space $\mathcal{C}_{\mbox{\scriptsize p.w.}}^{(2)}[0,1]$ is a V-spline. Equipped with an appropriate inner product
 \begin{equation}\label{TractorSplineInnerProduct}
 \langle f,g \rangle=f(0) g(0)+f'(0) g'(0)+\int_{0}^{1}f''g''dx,
 \end{equation}
@@ -246,7 +246,7 @@ is a closed linear subspace of $\mathcal{H}_1$. Then, we have a new space $\math
 
 For any $f\in\mathcal{C}_{\mbox{\scriptsize p.w.}}^{(2)}[0,1]$, it can be written as 
 \begin{equation}\label{GaussianProcessFunctionF}
-f(t)=d_1+d_2t+\sum_{j=1}^{n}c_jR_1(t_j,t)+\sum_{i=j}^{n}b_j\dot{R}_1(t_j,\cdot) +\rho(t)
+f(t)=d_1+d_2t+\sum_{j=1}^{n}c_jR_1(t_j,t)+\sum_{j=1}^{n}b_j\dot{R}_1(t_j,\cdot) +\rho(t)
 \end{equation}
 where $\mathbf{d},\mathbf{c}$ and $\mathbf{b}$ are coefficients, and $\rho(t) \in \mathcal{H}_1 \ominus \mathcal{H}_*$. Thus, by substituting to the equation $(\ref{maineq})$, it can be written as 
 \begin{equation}\label{GassianProcessRawequation}
@@ -269,11 +269,17 @@ and noting that $\int_0^1R''_1(t_i,t)R''_1(t_j,t)dt=R_1(t_i,t_j)$, $\int_0^1R''_
 +n\lambda \left(\mathbf{c}^\top Q\mathbf{c} + 2\mathbf{c}^\top P\mathbf{b}+ \mathbf{b}^\top P'\mathbf{b}\right)+n\lambda\left(\rho,\rho\right).
 \end{split}
 \end{equation}
-Note that $\rho$ only appears in the third term and is minimized at $\rho=0$. Hence, a tractor spline resides in the space $\mathcal{H}_0\oplus \mathcal{H}_*$ of finite dimension. Thus, the solution to $(\ref{maineq})$ is computed via the minimization of the first three terms in $(\ref{matriteq})$ with respect to $\mathbf{d}$, $\mathbf{c}$ and $\mathbf{b}$.
+Note that $\rho$ only appears in the third term and is minimized at $\rho=0$. Hence, a V-spline resides in the space $\mathcal{H}_0\oplus \mathcal{H}_*$ of finite dimension. Thus, the solution to $(\ref{maineq})$ is computed via the minimization of the first three terms in $(\ref{matriteq})$ with respect to $\mathbf{d}$, $\mathbf{c}$ and $\mathbf{b}$.
 
 
 
 \subsection{Posterior of Bayes Estimates}
+
+
+Consider the independent observations $y_i\sim N\left(f(t_i),\sigma^2 \right)$ and $v_i\sim N\left(f'(t_i),\frac{\sigma^2}{\gamma} \right)$, with a prior $f\sim N(0,\beta I)$, it is easy to see that the posterior mean of $f$ is the minimizer of 
+\begin{equation*}
+\frac{1}{\sigma^2} \sum_{i=1}^{n}\left(y_i-f(t_i)\right)^2+\frac{\gamma}{\sigma^2} \sum_{i=1}^{n}\left(v_i-f'(t_i)\right)^2 + \frac{1}{\beta} \sum_{t\in [0,1]}f^2(t).
+\end{equation*}
 
 
 Now in the model $y=f(t)+\varepsilon_1$, $\varepsilon_1 \sim N(0,\sigma^2)$, and $v=f '(t)+\varepsilon_2$, $\varepsilon_2\sim N\left(0, \frac{\sigma^2}{\gamma}\right)$, according to equation $(\ref{GaussianProcessFunctionF})$, for $f(t) \in \mathcal{C}_{\mbox{\scriptsize p.w.}}^{(2)}[0,1]$, we have 
@@ -298,7 +304,7 @@ The covariance functions for $y,v$ and $f , f '$ are \small
 \normalsize where $R(s,t)$ is taken from $(\ref{kerneleq})$. 
 
 
-Observing $y_i\sim N\left(f (t_i),\sigma^2\right)$ and $v_i\sim N\left(f (t_i),\frac{\sigma^2}{\gamma}\right)$, $i=1,\ldots,n$, the joint distribution of $\mathbf{y},\mathbf{v}$ and $f(t)$ is normal with mean zero and a covariance matrix can be found. The posterior mean of $f(t)$ is 
+Observing $y_i\sim N\left(f (t_i),\sigma^2\right)$ and $v_i\sim N\left(f (t_i),\frac{\sigma^2}{\gamma}\right)$, $i=1,\ldots,n$, the joint distribution of $\mathbf{y},\mathbf{v}$ and $f(t)$ is normal with mean zero and a covariance matrix can be found. The posterior mean of $f(t)$ is seen to be 
 \begin{align}\label{GPrhoeq}\footnotesize
 \begin{split}
 \E (f \mid  \mathbf{\mathbf{y}},\mathbf{v}) & =
@@ -338,7 +344,7 @@ Q'& P'+\frac{n\lambda}{\gamma}I\end{bmatrix}\right) ^{-1}
 + \begin{bmatrix} \xi^\top & \psi^\top\end{bmatrix}\left(\rho T^\top T+M\right) ^{-1} \begin{bmatrix}\mathbf{y}\\ \mathbf{v} \end{bmatrix}
 \end{split}
 \end{align}\normalsize
-where $\phi$ is $2 \times 1$ matrix with entry $1$ and $t$, $\xi$ is $n\times 1$ matrix with $i$th entry $R(t_i,t)$, $T^\top =\begin{bmatrix} S & S' \end{bmatrix}$ and $\psi$ is $n\times 1$ matrix with $i$th entry  $\dot{R}(t_i,t)$, $\rho=\tau^2/\beta$ and $n\lambda =\sigma^2/\beta$. 
+where $\phi$ is $2 \times 1$ matrix with entry $1$ and $t$, $\xi$ is $n\times 1$ matrix with $i$th entry $R(t_i,t)$, $T^\top =\begin{bmatrix} S^\top & S'^\top \end{bmatrix}$ and $\psi$ is $n\times 1$ matrix with $i$th entry  $\dot{R}(t_i,t)$, $\rho=\tau^2/\beta$ and $n\lambda =\sigma^2/\beta$. 
 
 \begin{lemma}\label{GPLemma}
 	Suppose $M$ is symmetric and nonsingular and $T$ is of full column rank. 
@@ -348,7 +354,7 @@ where $\phi$ is $2 \times 1$ matrix with entry $1$ and $t$, $\xi$ is $n\times 1$
 	\end{align*}
 \end{lemma}
 
-Setting $\rho \rightarrow \infty$ in equation $(\ref{GPrhoeq})$ and applying Lemma $\ref{GPLemma}$, the posterior mean $\E (f(x)\mid \mathbf{y},\mathbf{v})$ is in the form $f  = \mathbf{\phi}^\top \mathbf{d}+\mathbf{\xi}^\top \mathbf{c}+\mathbf{\psi}^\top \mathbf{b}$, with the coefficients given by
+Setting $\rho \rightarrow \infty$ in equation $(\ref{GPrhoeq})$ and applying Lemma $\ref{GPLemma}$, the posterior mean $\E (f(t)\mid \mathbf{y},\mathbf{v})$ is $\hat{f}  = \mathbf{\phi}^\top \mathbf{d}+\mathbf{\xi}^\top \mathbf{c}+\mathbf{\psi}^\top \mathbf{b}$, with the coefficients given by
 \begin{align*} 
 \mathbf{d}&=\left(T^\top M^{-1}T\right)^{-1}T^\top M^{-1}\begin{bmatrix}\mathbf{y} \\ \mathbf{v} \end{bmatrix},\\
 \begin{bmatrix}\mathbf{c}\\ \mathbf{b}\end{bmatrix} &=
@@ -368,27 +374,27 @@ P^\top \left(S\mathbf{d}+\left(Q+n\lambda I\right) \mathbf{c} +P\mathbf{b}-\math
 \end{align*}
 Finally we obtain the following theorem: 
 \begin{theorem}
-The Tractor smoothing spline of (\ref{maineq}) is the posterior
-mean of $f=f_0+f_1 + \dot{f}_1$, where $f_0$ diffuses in span $\left\lbrace  1,t\right\rbrace$ and $f_1$ has a Gaussian process prior with mean zero and a covariance 
+The smoothing V-spline of (\ref{maineq}) is the posterior
+mean of $f=f_0+f_1 + \dot{f}_1$, where $f_0$ diffuses in span $\left\lbrace 1,t\right\rbrace$ and $f_1$, $\dot{f}_1$ have Gaussian process priors with mean zero and covariance functions
 \begin{align*}
 \Cov \left(f_1,f_1\right)   &= R_1\left(s,t\right)   =\beta \int_{0}^{1} \left(s-u\right)_+\left(t-u\right)_+du, \\
-\Cov \left(\dot{f}_1,f_1\right)  &= \dot{R}\left(s,t\right) =\beta \left(t+\int_0^s\left(t-u\right)_+du \right),
+\Cov \left(\dot{f}_1,f_1\right)  &= \dot{R}\left(s,t\right) =\beta \left(t+\int_0^s\left(t-u\right)_+du \right)
 \end{align*}
-functions for $\beta = \sigma^2/n\lambda$.
+for $\beta = \sigma^2/n\lambda$.
 \end{theorem}
 
 
 
-\section{Tractor Spline with Correlated Random Errors}
+\section{V-Spline with Correlated Random Errors}
 
 
 In most of the studies on polynomial smoothing splines, the random errors are assumed being independent. In contrast, in applications, observations are often correlated, such as time series data and spatial data. It is known that the correlation greatly affects the selection of smoothing parameters, which are critical to the performance of smoothing spline estimates \cite{wang1998smoothing}.  The parameter selection methods, such as generalized maximum likelihood (GML), generalized cross-validation (GCV), underestimate smoothing parameters when data are correlated. 
 
 
-\cite{diggle1989spline} extended GCV for choosing the degree of smoothing spline to accommodate an autocorrelated error sequence, by which the smoothing parameter and autocorrelation parameters are estimated simultaneously.  \cite{kohn1992nonparametric} proposed an algorithm to evaluate the cross-validation functions, whose autocorrelated errors are modeled by an autoregressive moving average. \cite{wang1998smoothing} extend GML and unbiased risk (UBR), other than GCV, to estimate the smoothing parameters and correlation parameters simultaneously. In this section, we are exploring the extended GCV for Tractor spline with correlated errors. 
+\cite{diggle1989spline} extended GCV for choosing the degree of smoothing spline to accommodate an autocorrelated error sequence, by which the smoothing parameter and autocorrelation parameters are estimated simultaneously.  \cite{kohn1992nonparametric} proposed an algorithm to evaluate the cross-validation functions, whose autocorrelated errors are modeled by an autoregressive moving average. \cite{wang1998smoothing} extend GML and unbiased risk (UBR), other than GCV, to estimate the smoothing parameters and correlation parameters simultaneously. In this section, we are exploring the extended GCV for V-spline with correlated errors. 
 
 
-First of all, consider observations $y=f(t)+\varepsilon_1$ and $v=f'(t)+\varepsilon_2$, where $\varepsilon_1\sim N\left(0,\sigma^2W^{-1}\right)$, $\varepsilon_2\sim N\left(0,\frac{\sigma^2}{\gamma}U^{-1}\right)$ with variance parameter $\sigma^2$. The Tractor spline $\hat{f}$ with correlated errors in space $\mathcal{C}_{p.w}^{(2)}[0,1]$ is the minimizer of 
+First of all, consider observations $y=f(t)+\varepsilon_1$ and $v=f'(t)+\varepsilon_2$, where $\varepsilon_1\sim N\left(0,\sigma^2W^{-1}\right)$, $\varepsilon_2\sim N\left(0,\frac{\sigma^2}{\gamma}U^{-1}\right)$ with variance parameter $\sigma^2$. The V-spline $\hat{f}$ with correlated errors in space $\mathcal{C}_{p.w}^{(2)}[0,1]$ is the minimizer of 
 \begin{equation}
 \frac{1}{n}\left(\mathbf{y}-\mathbf{f}\right)^\top W\left(\mathbf{y}-\mathbf{f}\right)+\frac{\gamma}{n}\left(\mathbf{v}-\mathbf{f}'\right)^\top U\left(\mathbf{v}-\mathbf{f}'\right)+\lambda\int_0^1\left(f''\right)^2dt.
 \end{equation}
@@ -403,11 +409,11 @@ Q'& P'+\frac{n\lambda}{\gamma}U
 \end{bmatrix}$ and the rest stays the same. 
 
 
-Recall the leave-one-out cross-validation score of a Tractor spline, 
+Recall the leave-one-out cross-validation score of a V-spline, 
 \begin{equation*}
 \mbox{LOOCV}(\lambda,\gamma)=\frac{1}{n}\sum_{i=1}^{n}\left( \frac{\hat{f}(t_i)-y_i+\frac{\gamma T_{ii}}{1-\gamma V_{ii}}(\hat{f}'(t_i)-v_i)}{1-S_{ii}-\frac{\gamma T_{ii}}{1-\gamma V_{ii}}U_{ii}} \right)^2.
 \end{equation*}
-Followed by the approximation $S_{ii}\approx\frac{1}{n}\tr(S)$, $T_{ii}\approx\frac{1}{n}\tr(T)$, $U_{ii}\approx\frac{1}{n}\tr(U)$ and $V_{ii}\approx\frac{1}{n}\tr(V)$ \cite{syed2011review}, the Tractor spline GCV will be 
+Followed by the approximation $S_{ii}\approx\frac{1}{n}\tr(S)$, $T_{ii}\approx\frac{1}{n}\tr(T)$, $U_{ii}\approx\frac{1}{n}\tr(U)$ and $V_{ii}\approx\frac{1}{n}\tr(V)$ \cite{syed2011review}, the V-spline GCV will be 
 \begin{equation*}
 \mbox{GCV}(\lambda,\gamma)=\frac{1}{n}\sum_{i=1}^{n}\left( \frac{\hat{f}(t_i)-y_i+ \frac{\gamma\tr(T)/n}{1-\gamma \tr(V)/n}(\hat{f}'(t_i)-v_i)}{1-\tr(S)/n-\frac{\gamma\tr(T)/n}{1-\gamma \tr(V)/n} \tr(U)/n} \right)^2,
 \end{equation*}
@@ -415,14 +421,14 @@ which may provide further computational savings since it requires finding the tr
 \begin{equation*}
 \mbox{GCV}(\lambda,\gamma)=\frac{\left(\mathbf{\hat{f}}-\mathbf{y}\right)^\top \left(\mathbf{\hat{f}}-\mathbf{y}\right) + \frac{2\tr\left(\gamma T\right)}{\tr\left(I-\gamma V\right)}\left(\mathbf{\hat{f}}-\mathbf{y}\right)^\top \left(\mathbf{\hat{f}}'-\mathbf{v}\right) + \left( \frac{\tr(\gamma T)}{\tr(I-\gamma V)} \right)^2 \left(\mathbf{\hat{f}}'-\mathbf{v}\right)^\top \left(\mathbf{\hat{f}}'-\mathbf{v}\right)}{\left( \tr(I-S-\frac{\tr(\gamma T)}{\tr(I-\gamma V)}U) \right)^2}.
 \end{equation*} \normalsize
-A natural extension to the above GCV for tractor spine with correlated errors is \scriptsize
+A natural extension to the above GCV for V-spline with correlated errors is \scriptsize
 \begin{equation}
 \mbox{GCV}\left(\lambda,\gamma\right)=\frac{\left(\mathbf{\hat{f}}-\mathbf{y}\right)^\top W\left(\mathbf{\hat{f}}-\mathbf{y}\right)+\frac{2\tr\left(\gamma T\right)}{\tr\left(I-\gamma V\right)}\left(\mathbf{\hat{f}}-\mathbf{y}\right)^\top W^{1/2}U^{\top 1/2}\left(\mathbf{\hat{f}}'-\mathbf{v}\right) + \left( \frac{\tr\left(\gamma T\right)}{\tr\left(I-\gamma V\right)} \right)^2 \left(\mathbf{\hat{f}}'-\mathbf{v}\right)^\top U\left(\mathbf{\hat{f}}'-\mathbf{v}\right)}{\left( \tr\left(I-S-\frac{\tr\left(\gamma T\right)}{\tr\left(I-\gamma V\right)}U\right) \right)^2}.
 \end{equation}
 \normalsize
 
 
-The GCV is used for finding the unknown constant parameter $\lambda$, instead of a piecewise $\lambda(t)$ at different intervals, and the parameter $\gamma$. The structure of covariance matrices $W$ and $U$ is supposed to be known. If the errors are independent, in which way $W$ and $U$ become identity matrices, the solution $\hat{f}$ degenerate to a conventional Tractor spline with constant $\lambda$ through over the entire interval $[0,1]$.  
+The GCV is used for finding the unknown constant parameter $\lambda$, instead of a piecewise $\lambda(t)$ at different intervals, and the parameter $\gamma$. The structure of covariance matrices $W$ and $U$ is supposed to be known. If the errors are independent, in which way $W$ and $U$ become identity matrices, the solution $\hat{f}$ degenerate to a conventional V-spline with constant $\lambda$ through over the entire interval $[0,1]$.  
 
 
 \section{A Numeric Simulation}
@@ -436,23 +442,23 @@ v_i =f'(t_i)+\varepsilon_{i}^{(2)},
 \end{align}
 where $\varepsilon^{(1)}\sim N\left(0,\sigma^2W^{-1}\right)$, $\varepsilon^{(2)}\sim N\left(0,\frac{\sigma^2}{\gamma}U^{-1}\right)$ , $0\leq t_1 < \cdots < t_n \leq 1$. 
 
-With the same parameter found by GCV, Tractor spline and its Bayes estimate return the same reconstruction. However, because we are using constant $\lambda$ rather than a piecewise $\lambda(t)$, the trivial Tractor spline might not be the optimal solution compared with the one consisting an adaptive penalty term in Section \ref{SectionTractorSpline}. 
+With the same parameter found by GCV, V-spline and its Bayes estimate return the same reconstruction. However, because we are using constant $\lambda$ rather than a piecewise $\lambda(t)$, the trivial V-spline might not be the optimal solution compared with the one consisting an adaptive penalty term in Section \ref{SectionTractorSpline}. 
 
 \begin{figure}[h]
 \centering
 %\includegraphics[width=0.8\textwidth]{Chapters/03GPR/plot/sim_cov} 
 \includegraphics[width=0.8\textwidth,height=8cm]{Chapters/03GPR/plot/ggsim_cov} 
- \caption{Comparing (trivial) Tractor spline and its Bayes estimate. Two methods are corresponding to each other. In this figure, black dots indicate observations and solid line stands for the reconstruction. The Tractor spline and its posterior $\E(f(t) \mid \mathbf{y}, \mathbf{v})$ of Bayes estimate give the same results. }
+ \caption{Comparing (trivial) V-spline and its Bayes estimate. Two methods are corresponding to each other. In this figure, black dots indicate observations and solid line stands for the reconstruction. The V-spline and its posterior $\E(f(t) \mid \mathbf{y}, \mathbf{v})$ of Bayes estimate give the same results. }
 \end{figure}
 
 
 
 \section{Conclusion}
 
-In this chapter, we take a review of the work that has been done in the last few decades for the relationship between polynomial smoothing spline and the Bayes estimates. With improper priors, the two methods are corresponding to each other. In fact, smoothing spline is a particular case of Gaussian process regression. By following the work done by \cite{gu2013smoothing}, we find the Bayes estimate for Tractor spline with a constant penalty parameter $\lambda$.  However, it is a particular scenario of Tractor spline whose $\lambda(t)$ varying on domains. So the trivial Tractor spline might not be an optimal solution. Additionally, we give the formula of GCV for Tractor spline with correlated errors on $y$ and $v$. 
+In this chapter, we take a review of the work that has been done in the last few decades for the relationship between polynomial smoothing spline and the Bayes estimates. With improper priors, the two methods are corresponding to each other. In fact, smoothing spline is a particular case of Gaussian process regression. By following the work done by \cite{gu2013smoothing}, we find the Bayes estimate for V-spline with a constant penalty parameter $\lambda$.  However, it is a particular scenario of V-spline whose $\lambda(t)$ varying on domains. So the trivial V-spline might not be an optimal solution. Additionally, we give the formula of GCV for V-spline with correlated errors on $y$ and $v$. 
 
 
-A further work is to find the Bayes estimate for the real Tractor spline with a piecewise penalty term $\lambda(t)$. Besides GCV, other methods, such as EM and UBR are worth being invested in further research. 
+A further work is to find the Bayes estimate for the real V-spline with a piecewise penalty term $\lambda(t)$. Besides GCV, other methods, such as EM and UBR are worth being invested in further research. 
 
 
 

@@ -187,7 +187,7 @@ Differently, from the target equation (\ref{objecfun}), the state inference cont
 \begin{equation}\label{mixtureGaussian}
 p(x_t \mid y_{1:t}) = \int p(x_t\mid y_{1:t},\theta) p(\theta\mid y_{1:t})d\theta \dot{=} \frac{1}{N}\sum_{i=1}^{N}p\left(x_{t}\mid\theta^{(i)},y_{1:t}\right). 
 \end{equation}
-Suppose $x_t\mid y_{1:t},\theta_i \sim N\left( \mu_{ti}^{(x)},\Var(x_t)_i \right)$ is found from equation (\ref{generalmux}) and (\ref{generalSigx}) for each $\theta_i$, then its mean is 
+Suppose $x_t\mid y_{1:t},\theta_i \sim N\left( \mu_{ti}^{(x)},\Var(x_{ti}) \right)$ is found from equation (\ref{generalmux}) and (\ref{generalSigx}) for each $\theta_i$, then its mean is 
 \begin{equation}\label{mixturemean}
 \mu_t^{(x)} = \frac{1}{N} \sum_i \mu_{ti}^{(x)} 
 \end{equation}
@@ -195,7 +195,7 @@ and  the unconditional variance of $x_t$, by law of total variance, is
 \begin{equation}\label{mixturevariance}
 \begin{split}
 \Var(x_t) &= \E\lbrack \Var(x_t\mid y_{1:t},\theta)\rbrack + \Var\lbrack \E(x_t\mid y_{1:t},\theta)\rbrack \\
-&= \frac{1}{N} \sum_i \left( \mu_{ti}^{(x)}  \mu_{ti}^{(x)\top} +\Var(x_t)_i\right) -\frac{1}{N^2} \left(  \sum_i  \mu_{ti}^{(x)} \right) \left( \sum_i \mu_{ti}^{(x)} \right) ^\top.
+&= \frac{1}{N} \sum_i \left( \mu_{ti}^{(x)}  \mu_{ti}^{(x)\top} +\Var(x_{ti})\right) -\frac{1}{N^2} \left(  \sum_i  \mu_{ti}^{(x)} \right) \left( \sum_i \mu_{ti}^{(x)} \right) ^\top.
 \end{split}
 \end{equation}
 
@@ -582,11 +582,11 @@ Consequently
 where $Z \sim N\left(0, I(\varepsilon)\right)$ is independent and identically distributed and drawn from a zero-mean normal distribution with variance $ I(\varepsilon)$. Moreover, the mixture Gaussian distribution $p(x_t \mid y_{1:t})$ can be found by 
 \begin{align}
 \mu_t^{(x)} &= \frac{1}{N} \sum_i \mu_{ti}^{(x)} \label{linearmu}  \\
-\Var(x_t) &= \frac{1}{N} \sum_i \left( \mu_{ti}^{(x)}  \mu_{ti}^{(x)\top} +\Var(x_t)_i\right) -\frac{1}{N^2} \left(  \sum_i  \mu_{ti}^{(x)} \right) \left( \sum_i \mu_{ti}^{(x)} \right) ^\top.\label{linearsigma} 
+\Var(x_t) &= \frac{1}{N} \sum_i \left( \mu_{ti}^{(x)}  \mu_{ti}^{(x)\top} +\Var(x_{ti})\right) -\frac{1}{N^2} \left(  \sum_i  \mu_{ti}^{(x)} \right) \left( \sum_i \mu_{ti}^{(x)} \right) ^\top.\label{linearsigma} 
 \end{align}
 
 
-To find $\mu_{ti}^{(x)}$ and $\Var(x_t)_i$, we will use the joint distribution of $x_{t}$ and $y_{1:t}$, which is $p(x_{t}, y_{1:t}  \mid  \theta)\sim N(0,\Gamma)$ and 
+To find $\mu_{ti}^{(x)}$ and $\Var(x_{ti})$, we will use the joint distribution of $x_{t}$ and $y_{1:t}$, which is $p(x_{t}, y_{1:t}  \mid  \theta)\sim N(0,\Gamma)$ and 
 \begin{equation*}
 \Gamma=\begin{bmatrix} C_{t}^\top(A_t-B_t)^{-1}C_{t} & C_{t}^\top(A_t-B_t)^{-1}\\(A_t-B_t)^{-1}C_{t} & (I_t-A_t^{-1}B_t)^{-1}B_t^{-1} \end{bmatrix}.
 \end{equation*}
@@ -756,7 +756,7 @@ Additionally, as introduced in Section \ref{generalEstDistr}, the best estimatio
 where $W = L^{-1}B_{t}y_{1:t-1}$, and the mixture Gaussian distribution for $p(x_t \mid y_{1:t})$ is 
 \begin{align}
 \mu_t^{(x)} &= \frac{1}{N} \sum_i \mu_{ti}^{(x)}  \\
-\Var(x_t) &= \frac{1}{N} \sum_i \left( \mu_{ti}^{(x)}  \mu_{ti}^{(x)\top} +\Var(x_t)_i\right) -\frac{1}{N^2} \left(  \sum_i  \mu_{ti}^{(x)} \right) \left( \sum_i \mu_{ti}^{(x)} \right) ^\top,
+\Var(x_t) &= \frac{1}{N} \sum_i \left( \mu_{ti}^{(x)}  \mu_{ti}^{(x)\top} +\Var(x_{ti})\right) -\frac{1}{N^2} \left(  \sum_i  \mu_{ti}^{(x)} \right) \left( \sum_i \mu_{ti}^{(x)} \right) ^\top,
 \end{align}
 The same as we did in Section \ref{sectionlinearRecursive}, for any given $\theta$, we have $\hat{x}_{t}\mid y_{1:t},\theta \sim N\left( \mu_{t}^{(x)},\Var(x_t) \right)$, where
 \begin{align*}

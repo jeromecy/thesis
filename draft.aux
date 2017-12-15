@@ -153,7 +153,7 @@
 \citation{magid2006spline}
 \citation{dubins1957curves}
 \citation{yang2010analytical}
-\@writefile{toc}{\contentsline {chapter}{\numberline {2}Adaptive Smoothing Tractor Spline for Trajectory Reconstruction}{17}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {2}Adaptive Smoothing V-Spline for Trajectory Reconstruction}{17}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
@@ -185,7 +185,7 @@
 \citation{liu2010data}
 \newlabel{objective}{{2.3}{19}}
 \citation{donoho1994ideal}
-\@writefile{toc}{\contentsline {section}{\numberline {2.2}Tractor spline}{20}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.2}V-Spline}{20}}
 \newlabel{SectionTractorSpline}{{2.2}{20}}
 \newlabel{tractorsplineObjective}{{2.5}{20}}
 \newlabel{TractorSplineTheorem}{{1}{21}}
@@ -238,15 +238,15 @@
 \newlabel{num4}{{2.5}{33}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.4.2}Evaluation}{34}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.4.3}Residual Analysis}{34}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.6}{\ignorespaces Distribution of the penalty values $\lambda (t)$ in Tractor spline. Figures on the left side indicate the values varying in intervals. On the right side, these values are projected into reconstructions. The bigger the blacks dots present, the larger the penalty values are.\relax }}{36}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.6}{\ignorespaces Distribution of the penalty values $\lambda (t)$ in V-spline. Figures on the left side indicate the values varying in intervals. On the right side, these values are projected into reconstructions. The bigger the blacks dots present, the larger the penalty values are.\relax }}{36}}
 \newlabel{numpenalty}{{2.6}{36}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.7}{\ignorespaces Estimated velocity functions by Tractor spline. The velocity is generated from the original simulation functions by equation (2.33\hbox {})\relax }}{36}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.7}{\ignorespaces Estimated velocity functions by V-spline. The velocity is generated from the original simulation functions by equation (2.33\hbox {})\relax }}{36}}
 \newlabel{numvtractor}{{2.7}{36}}
 \@writefile{lot}{\contentsline {table}{\numberline {2.1}{\ignorespaces MSE. Mean squared errors of different methods. The numbers in bold indicate the smallest error among these methods under the same level. The difference is not significant.\relax }}{37}}
 \newlabel{mse3200}{{2.1}{37}}
-\@writefile{lot}{\contentsline {table}{\numberline {2.2}{\ignorespaces TMSE. True mean squared errors of different methods. The numbers in bold indicate the smallest error among these methods under the same level. The proposed Tractor spline returns the smallest TMSE among all the methods under the same level except for $\textit  {Doppler}$ with SNR=7. The differences are significant. \relax }}{37}}
+\@writefile{lot}{\contentsline {table}{\numberline {2.2}{\ignorespaces TMSE. True mean squared errors of different methods. The numbers in bold indicate the smallest error among these methods under the same level. The proposed V-spline returns the smallest TMSE among all the methods under the same level except for $\textit  {Doppler}$ with SNR=7. The differences are significant. \relax }}{37}}
 \newlabel{tmse3200}{{2.2}{37}}
-\@writefile{lot}{\contentsline {table}{\numberline {2.3}{\ignorespaces Retrieved SNR. Tractor spline effectively retrieves the SNR, which is calculated by $\sigma _{\mathaccentV {hat}05E{f}} / \sigma _{(\mathaccentV {hat}05E{f}-y)}$. \relax }}{38}}
+\@writefile{lot}{\contentsline {table}{\numberline {2.3}{\ignorespaces Retrieved SNR. V-spline effectively retrieves the SNR, which is calculated by $\sigma _{\mathaccentV {hat}05E{f}} / \sigma _{(\mathaccentV {hat}05E{f}-y)}$. \relax }}{38}}
 \newlabel{tablecompareSNR}{{2.3}{38}}
 \@writefile{toc}{\contentsline {section}{\numberline {2.5}Application on Real Dataset}{38}}
 \newlabel{splineapplication}{{2.5}{38}}
@@ -263,7 +263,7 @@
 \newlabel{sub@gg512PointsY}{{d}{40}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2.8}{\ignorespaces Original data points. Figure 2.8a\hbox {} is th original positions recorded by GPS units. Circle points means the boom is not operating; cross points means it is operating. Figure 2.8b\hbox {} is the line-based trajectory by simply connecting all points sequentially with straight lines. Figure 2.8c\hbox {} is the original $x$ position. Figure 2.8d\hbox {} is the original $y$ positions.\relax }}{40}}
 \newlabel{original512}{{2.8}{40}}
-\@writefile{lot}{\contentsline {table}{\numberline {2.4}{\ignorespaces Mean squared error. Tractor spline returns smallest errors among all these methods. P-spline was unable to reconstruct the $y$ trajectory as the original dataset contains 0 $\Delta _y$.\relax }}{41}}
+\@writefile{lot}{\contentsline {table}{\numberline {2.4}{\ignorespaces Mean squared error. V-spline returns smallest errors among all these methods. P-spline was unable to reconstruct the $y$ trajectory as the original dataset contains 0 $\Delta _y$.\relax }}{41}}
 \newlabel{1dxymse}{{2.4}{41}}
 \newlabel{penaltylamb}{{2.42}{41}}
 \newlabel{ggRealdataXPSpline}{{2.9a}{42}}
@@ -278,7 +278,7 @@
 \newlabel{sub@ggRealdataXTractorAPT}{{e}{42}}
 \newlabel{ggRealdataXTractor}{{2.9f}{42}}
 \newlabel{sub@ggRealdataXTractor}{{f}{42}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.9}{\ignorespaces Fitted data points on $x$ axis. Figure 2.9a\hbox {} Fitted by P-spline, which gives over-fitting on these points and misses some information. Figure 2.9b\hbox {} Fitted by wavelet ($\textit  {sure}$) algorithm. At some turning points, it gives over-fitting. Figure 2.9c\hbox {} Fitted by wavelet ($\textit  {BayesThresh}$) algorithm. It fits better than ($\textit  {sure}$) and the result is close to the proposed method. Figure 2.9d\hbox {} Fitted by Tractor spline without velocity information. The reconstruction is good to get the original trajectory. Figure 2.9e\hbox {} Fitted by Tractor spline without adjusted penalty term. It gives less fitting at boom-not-operating points because of a large time gap. Figure 2.9f\hbox {} Fitted by proposed method. It fits all data points in a good way.\relax }}{42}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.9}{\ignorespaces Fitted data points on $x$ axis. Figure 2.9a\hbox {} Fitted by P-spline, which gives over-fitting on these points and misses some information. Figure 2.9b\hbox {} Fitted by wavelet ($\textit  {sure}$) algorithm. At some turning points, it gives over-fitting. Figure 2.9c\hbox {} Fitted by wavelet ($\textit  {BayesThresh}$) algorithm. It fits better than ($\textit  {sure}$) and the result is close to the proposed method. Figure 2.9d\hbox {} Fitted by V-spline without velocity information. The reconstruction is good to get the original trajectory. Figure 2.9e\hbox {} Fitted by V-spline without adjusted penalty term. It gives less fitting at boom-not-operating points because of a large time gap. Figure 2.9f\hbox {} Fitted by proposed method. It fits all data points in a good way.\relax }}{42}}
 \newlabel{1dx}{{2.9}{42}}
 \newlabel{ggRealdataYPSpline}{{2.10a}{43}}
 \newlabel{sub@ggRealdataYPSpline}{{a}{43}}
@@ -292,13 +292,13 @@
 \newlabel{sub@ggRealdataYTractorAPT}{{e}{43}}
 \newlabel{ggRealdataYTractor}{{2.10f}{43}}
 \newlabel{sub@ggRealdataYTractor}{{f}{43}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.10}{\ignorespaces Fitted data points on $y$ axis. Figure 2.10a\hbox {} Fitted P-spline is not applicable on $y$ axis as the matrix is not invertible. Figure 2.10b\hbox {} Fitted by wavelet ($\textit  {sure}$) algorithm. At some turning points, it gives over-fitting. Figure 2.10c\hbox {} Fitted by wavelet ($\textit  {BayesThresh}$) algorithm is much better than wavelet ($\textit  {sure}$). Figure 2.10d\hbox {} Fitted by Tractor spline without velocity information. The reconstruction is good to get the original trajectory. Figure 2.10e\hbox {} Fitted by Tractor spline without adjusted penalty term. It gives less fitting at boom-not-operating. Figure 2.10f\hbox {} Fitted by proposed method. It fits all data points in a good way.\relax }}{43}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.10}{\ignorespaces Fitted data points on $y$ axis. Figure 2.10a\hbox {} Fitted P-spline is not applicable on $y$ axis as the matrix is not invertible. Figure 2.10b\hbox {} Fitted by wavelet ($\textit  {sure}$) algorithm. At some turning points, it gives over-fitting. Figure 2.10c\hbox {} Fitted by wavelet ($\textit  {BayesThresh}$) algorithm is much better than wavelet ($\textit  {sure}$). Figure 2.10d\hbox {} Fitted by V-spline without velocity information. The reconstruction is good to get the original trajectory. Figure 2.10e\hbox {} Fitted by V-spline without adjusted penalty term. It gives less fitting at boom-not-operating. Figure 2.10f\hbox {} Fitted by proposed method. It fits all data points in a good way.\relax }}{43}}
 \newlabel{1dy}{{2.10}{43}}
 \newlabel{penaltyxyggXYLine}{{2.11a}{44}}
 \newlabel{sub@penaltyxyggXYLine}{{a}{44}}
 \newlabel{penaltyxyggXYPath}{{2.11b}{44}}
 \newlabel{sub@penaltyxyggXYPath}{{b}{44}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.11}{\ignorespaces The penalty value $\lambda (t)$ of the Tractor spline on $x$ and $y$ axes. Red dots are the measurements $\mathbf  {y}$. The bigger red dots in figure 2.11b\hbox {} indicate larger penalty values. It can be seen that most of large penalty values occur at turnings, where the tractor likely slows down and takes breaks. \relax }}{44}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.11}{\ignorespaces The penalty value $\lambda (t)$ of the V-spline on $x$ and $y$ axes. Red dots are the measurements $\mathbf  {y}$. The bigger red dots in figure 2.11b\hbox {} indicate larger penalty values. It can be seen that most of large penalty values occur at turnings, where the tractor likely slows down and takes breaks. \relax }}{44}}
 \newlabel{penaltyxygg}{{2.11}{44}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2.12}{\ignorespaces Combined reconstruction on $x$ and $y$. Red dots are the measurements $\mathbf  {y}$. The bigger size it is, the larger penalty value it indicates. \relax }}{45}}
 \newlabel{1DCombinedXY}{{2.12}{45}}
@@ -315,7 +315,7 @@
 \citation{kim2004smoothing}
 \citation{schoenberg1964spline}
 \citation{hastie1990generalized}
-\@writefile{toc}{\contentsline {chapter}{\numberline {3}Tractor Spline as Bayes Estimate}{49}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {3}V-Spline as Bayes Estimate}{49}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
@@ -354,7 +354,7 @@
 \citation{rasmussen2006gaussian}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2.3}Polynomial Smoothing Spline as Bayes Estimates}{53}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2.4}Gaussian Process Regression}{54}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.3}Tractor Spline as Bayes Estimate}{55}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.3}V-Spline as Bayes Estimate}{55}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}Reproducing Kernel Hilbert Space $\mathcal  {C}_{\unhbox \voidb@x \hbox {\relax \fontsize  {8}{9.5}\selectfont  p.w.}}^{(2)}[0,1]$}{55}}
 \newlabel{maineq}{{3.12}{55}}
 \newlabel{TractorSplineInnerProduct}{{3.13}{55}}
@@ -369,12 +369,12 @@
 \citation{diggle1989spline}
 \citation{kohn1992nonparametric}
 \citation{wang1998smoothing}
-\@writefile{toc}{\contentsline {section}{\numberline {3.4}Tractor Spline with Correlated Random Errors}{59}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.4}V-Spline with Correlated Random Errors}{59}}
 \citation{syed2011review}
 \citation{gu2013smoothing}
 \@writefile{toc}{\contentsline {section}{\numberline {3.5}A Numeric Simulation}{61}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.6}Conclusion}{61}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Comparing (trivial) Tractor spline and its Bayes estimate. Two methods are corresponding to each other. In this figure, black dots indicate observations and solid line stands for the reconstruction. The Tractor spline and its posterior $\mathrm  {E}(f(t) \mid \mathbf  {y}, \mathbf  {v})$ of Bayes estimate give the same results. \relax }}{62}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Comparing (trivial) V-spline and its Bayes estimate. Two methods are corresponding to each other. In this figure, black dots indicate observations and solid line stands for the reconstruction. The V-spline and its posterior $\mathrm  {E}(f(t) \mid \mathbf  {y}, \mathbf  {v})$ of Bayes estimate give the same results. \relax }}{62}}
 \citation{cappe2009inference}
 \citation{smcmip2011}
 \citation{elliott1995estimation}
@@ -742,7 +742,7 @@
 \@writefile{toc}{\contentsline {chapter}{Appendices}{145}}
 \@writefile{toc}{\setcounter {tocdepth}{1}}
 \@writefile{toc}{\begingroup \let \l@chapter \l@section \let \l@section \l@subsection }
-\@writefile{toc}{\contentsline {chapter}{\numberline {A}Proofs And Figures of Tractor Spline Theorems}{146}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {A}Proofs And Figures of V-Spline Theorems}{146}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
@@ -763,7 +763,7 @@
 \newlabel{th3proofeq1}{{A.6.1}{153}}
 \newlabel{th3proofeq2}{{A.6.3}{153}}
 \@writefile{toc}{\contentsline {section}{\numberline {A.7}Reconstructions at SNR=3}{154}}
-\@writefile{lof}{\contentsline {figure}{\numberline {A.1}{\ignorespaces Reconstructions of generated \textit  {Blocks}, \textit  {Bumps}, \textit  {HeaviSine} and \textit  {Doppler} functions by Tractor spline at SNR=3. The penalty values $\lambda (t)$ in Tractor spline are projected into reconstructions. The blacks dots are the measurements. The bigger blacks dots indicate the larger penalty values.\relax }}{154}}
+\@writefile{lof}{\contentsline {figure}{\numberline {A.1}{\ignorespaces Reconstructions of generated \textit  {Blocks}, \textit  {Bumps}, \textit  {HeaviSine} and \textit  {Doppler} functions by V-spline at SNR=3. The penalty values $\lambda (t)$ in V-spline are projected into reconstructions. The blacks dots are the measurements. The bigger blacks dots indicate the larger penalty values.\relax }}{154}}
 \newlabel{TractorsplineSNR3}{{A.1}{154}}
 \@writefile{toc}{\contentsline {section}{\numberline {A.8}Residual Analysis of Simulations}{154}}
 \@writefile{lof}{\contentsline {figure}{\numberline {A.2}{\ignorespaces ACF of residuals at SNR level of 7.\relax }}{155}}

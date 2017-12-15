@@ -5,9 +5,9 @@
 \contentsline {section}{\numberline {1.4}Bayesian Filtering}{6}
 \contentsline {section}{\numberline {1.5}Markov Chain Monte Carlo Methods}{11}
 \contentsline {section}{\numberline {1.6}Outline of Thesis}{15}
-\contentsline {chapter}{\numberline {2}Adaptive Smoothing Tractor Spline for Trajectory Reconstruction}{17}
+\contentsline {chapter}{\numberline {2}Adaptive Smoothing V-Spline for Trajectory Reconstruction}{17}
 \contentsline {section}{\numberline {2.1}Introduction}{17}
-\contentsline {section}{\numberline {2.2}Tractor spline}{20}
+\contentsline {section}{\numberline {2.2}V-Spline}{20}
 \contentsline {subsection}{\numberline {2.2.1}Basis Functions}{21}
 \contentsline {subsection}{\numberline {2.2.2}Solution to The Objective Function}{23}
 \contentsline {subsection}{\numberline {2.2.3}Adjusted Penalty Term and Parameter Function}{25}
@@ -20,17 +20,17 @@
 \contentsline {subsection}{\numberline {2.5.1}1-Dimensional Trajectory}{39}
 \contentsline {subsection}{\numberline {2.5.2}2-Dimensional Trajectory}{45}
 \contentsline {section}{\numberline {2.6}Conclusion and Discussion}{47}
-\contentsline {chapter}{\numberline {3}Tractor Spline as Bayes Estimate}{49}
+\contentsline {chapter}{\numberline {3}V-Spline as Bayes Estimate}{49}
 \contentsline {section}{\numberline {3.1}Introduction}{49}
 \contentsline {section}{\numberline {3.2}Polynomial Smoothing Splines on $[0, 1]$ as Bayes Estimates}{51}
 \contentsline {subsection}{\numberline {3.2.1}Polynomial Smoothing Spline}{51}
 \contentsline {subsection}{\numberline {3.2.2}Reproducing Kernel Hilbert Space on $[0,1]$}{52}
 \contentsline {subsection}{\numberline {3.2.3}Polynomial Smoothing Spline as Bayes Estimates}{53}
 \contentsline {subsection}{\numberline {3.2.4}Gaussian Process Regression}{54}
-\contentsline {section}{\numberline {3.3}Tractor Spline as Bayes Estimate}{55}
+\contentsline {section}{\numberline {3.3}V-Spline as Bayes Estimate}{55}
 \contentsline {subsection}{\numberline {3.3.1}Reproducing Kernel Hilbert Space $\mathcal {C}_{\unhbox \voidb@x \hbox {\relax \fontsize {8}{9.5}\selectfont p.w.}}^{(2)}[0,1]$}{55}
 \contentsline {subsection}{\numberline {3.3.2}Posterior of Bayes Estimates}{57}
-\contentsline {section}{\numberline {3.4}Tractor Spline with Correlated Random Errors}{59}
+\contentsline {section}{\numberline {3.4}V-Spline with Correlated Random Errors}{59}
 \contentsline {section}{\numberline {3.5}A Numeric Simulation}{61}
 \contentsline {section}{\numberline {3.6}Conclusion}{61}
 \contentsline {chapter}{\numberline {4}An Overview of On-line State and Parameter Estimation}{63}
@@ -79,7 +79,7 @@
 \contentsline {chapter}{Appendices}{145}
 \setcounter {tocdepth}{1}
 \begingroup \let \l@chapter \l@section \let \l@section \l@subsection 
-\contentsline {chapter}{\numberline {A}Proofs And Figures of Tractor Spline Theorems}{146}
+\contentsline {chapter}{\numberline {A}Proofs And Figures of V-Spline Theorems}{146}
 \contentsline {section}{\numberline {A.1}Penalty Matrix in (2.12\hbox {})}{147}
 \contentsline {section}{\numberline {A.2}Proof of Theorem 1\hbox {}}{148}
 \contentsline {section}{\numberline {A.3}Proof of Theorem 2\hbox {}}{148}
