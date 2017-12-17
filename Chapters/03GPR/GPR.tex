@@ -55,6 +55,7 @@ f(t)=\sum_{\nu=1}^m d_\nu \phi_\nu(t)+\sum_{i=1}^n c_iR_1(t,t_i).
 %where $\phi_\nu (t)=\frac{t^{\nu-1}}{(\nu-1)!}$, $\nu=1, \ldots, m$. 
 where $\left\lbrace \phi_\nu(t)\right\rbrace$ is a set of basis functions of space $\mathcal{H}_0$ and $R(\cdot,\cdot)$ is the reproducing kernel in $\mathcal{H}_1$. 
 
+Additionally, the coefficients $c_i$ and $d_\nu$ might be changed when different $\phi_\nu$ and $R_1$ are used, but the function estimate remains the same regardless of the choices of $\phi_\nu$ and $R_1$ \cite{gu2013smoothing}.
 
 
 \subsection{Reproducing Kernel Hilbert Space on $[0,1]$}
@@ -89,17 +90,17 @@ According to Theorem \ref{theoremRKHS}, the Hilbert space associated with $R(\cd
 
 
 
-\subsection{Polynomial Smoothing Spline as Bayes Estimates}
+\subsection{Polynomial Smoothing Splines as Bayes Estimates}
 
-Because it is possible to interpret the smoothing spline regression estimator as a Bayes estimate when the mean function $r(\cdot)$ is given an improper prior distribution \cite{wahba1990spline} \cite{berlinet2011reproducing}, therefore, we will find that the posterior mean of $f=f_0+f_1$ on $[0,1]$ with proper priors is the polynomial smoothing  spline of (\ref{GaussianProcessGeneralObjective}). 
+Because it is possible to interpret the smoothing spline regression estimator as a Bayes estimate when the mean function $r(\cdot)$ is given an improper prior distribution \cite{wahba1990spline}, \cite{berlinet2011reproducing}. Therefore, we will find that the posterior mean of $f=f_0+f_1$ on $[0,1]$ with proper priors is the polynomial smoothing  spline of (\ref{GaussianProcessGeneralObjective}). 
 
-Indeed, it can be found that for each $f=f_0+f_1$ on $[0,1]$ with $f_0$ and $f_1$, it has independent Gaussian priors with zero means and covariances, which have the following property that 
+In fact, it can be found that for each $f=f_0+f_1$ on $[0,1]$, with $f_0$ and $f_1$ having independent Gaussian priors with zero means and covariances, it satisfies: 
 \begin{align*}
 \E \lbrack f_0(s)f_0(t)\rbrack  &= \tau^2 R_0(s,t)=\tau^2 \sum_{\nu=0}^{m-1}\frac{s^\nu}{\nu!}\frac{t^\nu}{\nu!}, \\
 \E \lbrack f_1(s)f_1(t) \rbrack &= bR_1(s,t) = b\int_{0}^{1} \frac{(s-u)_+^{m-1}}{(m-1)!} \frac{(t-u)_+^{m-1}}{(m-1)!},
 \end{align*}
 where $R_0$ and $R_1$ are from (\ref{GaussianProcessKernelR}). Because of the observations are normally distributed as $y_i\sim N(f(t_i),\sigma^2)$, then the joint distribution for $\mathbf{y} = \left\lbrace y_1,\ldots,y_n\right\rbrace$ and $f(t)$ is normal with zero mean and the following covariance matrix 
-\begin{align*}\Cov (\mathbf{f},\mathbf{y}) = 
+\begin{align*}\Cov (f,\mathbf{y}) = 
 \begin{bmatrix}
 bQ+\tau SS^\top+\sigma^2 I & b\xi +\tau^2 S\phi \\
 b\xi^\top + \tau^2\phi^\top S^\top & bR_1(t,t) +\tau^2\phi^\top \phi
@@ -278,15 +279,16 @@ Note that $\rho$ only appears in the third term and is minimized at $\rho=0$. He
 
 Consider the independent observations $y_i\sim N\left(f(t_i),\sigma^2 \right)$ and $v_i\sim N\left(f'(t_i),\frac{\sigma^2}{\gamma} \right)$, with a prior $f\sim N(0,\beta I)$, it is easy to see that the posterior mean of $f$ is the minimizer of 
 \begin{equation*}
-\frac{1}{\sigma^2} \sum_{i=1}^{n}\left(y_i-f(t_i)\right)^2+\frac{\gamma}{\sigma^2} \sum_{i=1}^{n}\left(v_i-f'(t_i)\right)^2 + \frac{1}{\beta} \sum_{t\in [0,1]}f^2(t).
+\frac{1}{\sigma^2} \sum_{i=1}^{n}\left(y_i-f(t_i)\right)^2+\frac{\gamma}{\sigma^2} \sum_{i=1}^{n}\left(v_i-f'(t_i)\right)^2 + \frac{1}{\beta} \sum_{t\in [0,1]}f^2(t),
 \end{equation*}
+and defines a shrinkage estimate being shrunk toward zero. 
 
-
-Now in the model $y=f(t)+\varepsilon_1$, $\varepsilon_1 \sim N(0,\sigma^2)$, and $v=f '(t)+\varepsilon_2$, $\varepsilon_2\sim N\left(0, \frac{\sigma^2}{\gamma}\right)$, according to equation $(\ref{GaussianProcessFunctionF})$, for $f(t) \in \mathcal{C}_{\mbox{\scriptsize p.w.}}^{(2)}[0,1]$, we have 
+%Now in the model $y=f(t)+\varepsilon_1$, $\varepsilon_1 \sim N(0,\sigma^2)$, and $v=f '(t)+\varepsilon_2$, $\varepsilon_2\sim N\left(0, \frac{\sigma^2}{\gamma}\right)$, 
+According to equation $(\ref{GaussianProcessFunctionF})$, let $f(t) \in \mathcal{C}_{\mbox{\scriptsize p.w.}}^{(2)}[0,1]$, has the prior distribution 
 \begin{equation}
-f(t)=(d_1+d_2t)+\sum_{i=1}^{n}c_iR_1(t_i,t)+\sum_{i=1}^{n}b_i\dot{R}_1(t_i,t).
+f(t)=(d_1+d_2t)+\sum_{i=1}^{n}c_iR_1(t_i,t)+\sum_{i=1}^{n}b_i\dot{R}_1(t_i,t),
 \end{equation}
-The covariance functions for $y,v$ and $f , f '$ are \small
+where $d\sim N(0,\tau^2I)$. The covariance functions for $y,v$ and $f , f '$ are \small
 \begin{align*}
 \E\lbrack f(s)f (t)\rbrack &=\tau^2R_0(s,t)+\beta R_1(s,t) & \E \lbrack f(s)f '(t)\rbrack&=\tau^2R_0'(s,t)+\beta R_1'(s,t) \\
 \E\lbrack f '(s)f (t)\rbrack&=\tau^2\dot{R}_0(s,t)+\beta\dot{R}_1(s,t) & \E\lbrack f '(s)f '(t)\rbrack&=\tau^2\dot{R}'_0(s,t)+\beta\dot{R}'_1(s,t) \\
@@ -301,7 +303,7 @@ The covariance functions for $y,v$ and $f , f '$ are \small
 \E\lbrack y_i,f(s)\rbrack&=\tau^2 R_0(s_i,s)+\beta R_1(s_i,s)  & \E\lbrack y_i,f '(s)\rbrack&=\tau^2 R'_0(s_i,s)+\beta R'_1(s_i,s)  \\
 \E\lbrack v_i,f(s)\rbrack&=\tau^2 \dot{R}_0(s_i,s)+\beta \dot{R}_1(s_i,s) & \E\lbrack v_i,f '(s)\rbrack&=\tau^2\dot{R}'_0(s_i,s)+\beta \dot{R}'_1(s_i,s)
 \end{align*}
-\normalsize where $R(s,t)$ is taken from $(\ref{kerneleq})$. 
+\normalsize where $R(s,t)$ is taken from $(\ref{kerneleq})$ and $\beta$ is fixed. 
 
 
 Observing $y_i\sim N\left(f (t_i),\sigma^2\right)$ and $v_i\sim N\left(f (t_i),\frac{\sigma^2}{\gamma}\right)$, $i=1,\ldots,n$, the joint distribution of $\mathbf{y},\mathbf{v}$ and $f(t)$ is normal with mean zero and a covariance matrix can be found. The posterior mean of $f(t)$ is seen to be 
