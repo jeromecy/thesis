@@ -27,7 +27,7 @@ where $\Delta_i=t_{i+1}-t_i$ and $i=1,2,\ldots,n-1$. Then
 \section{Proof of Theorem \ref{TractorSplineTheorem}}\label{AppendixTractorSplineProof}
 
 \begin{proof}
-%The proof is based on Ex. 5.7 of \cite{esl2009}, and is essentially a proof by contradiction. If $g:[a,b]\to \mathbb{R}$ is a proposed minimizer, then we can construct a cubic spline $f(t)$ that agrees with $g(t)$ and its first derivatives at $t_1,\ldots,t_n$, and is component-wise linear on $[a, t_1]$ and $[t_n, b]$. This means the first two terms of the objective function will be the same for $f(t)$ and $g(t)$. We now show that the curvature penalty ...
+%The proof is based on Ex. 5.7 of \citep{esl2009}, and is essentially a proof by contradiction. If $g:[a,b]\to \mathbb{R}$ is a proposed minimizer, then we can construct a cubic spline $f(t)$ that agrees with $g(t)$ and its first derivatives at $t_1,\ldots,t_n$, and is component-wise linear on $[a, t_1]$ and $[t_n, b]$. This means the first two terms of the objective function will be the same for $f(t)$ and $g(t)$. We now show that the curvature penalty ...
 If $g:[a,b]\mapsto \mathbb{R}$ is a proposed minimizer, construct a cubic spline $f(t)$ that agrees with $g(t)$ and its first derivatives at $t_1,\ldots,t_n$, and is component-wise linear on $[a, t_1]$ and $[t_n, b]$. Let $h(t) = g(t)-f(t)$. Then, for $i = 1,\dots ,n-1$, 
 \begin{align*}
 \int_{t_i}^{t_{i+1}}f''(t)h''(t)dt &=f''(t)h'(t) \bigg\rvert_{t_i}^{t_{i+1}}-\int_{t_i}^{t_{i+1}}f'''(t)h'(t)dt \\
@@ -49,7 +49,7 @@ Furthermore, equality of the curvature penalty term only holds if $g(t) = f(t)$.
 
 \section{Proof of Theorem \ref{basisindependent}}\label{AppendixBasisproof}
 
-To prove Theorem \ref{basisindependent}, we are introducing a lemma given by \cite{Peng1983linear} in the first place. 
+To prove Theorem \ref{basisindependent}, we are introducing a lemma given by \citep{Peng1983linear} in the first place. 
 
 \begin{lemma}\label{basiscontinuousLemma}
 Functions $N_1(t),N_2(t),\ldots,N_n(t)$ on interval $[a,b]$, if they are linear dependent, the necessary and sufficient condition is for any $c_1,c_2,\ldots,c_n \in [a,b]$, the determinant $D(c_1,c_2,\ldots,c_n)=0$; if they are linear independent, the necessary and sufficient condition is that there exist $c_1,c_2,\ldots,c_n \in [a,b]$, so that the determinant $D(c_1,c_2,\cdots,c_n) \neq 0$, where 

@@ -3,50 +3,49 @@
 
 GPS devices are widely used for tracking individuals and vehicles. The position and velocity of moving objects are determined by GPS units and can be used in batch and on-line estimation of trajectories. 
 
-TracMap application. 
+The TracMap company, located in New Zealand and USA, uses GPS display units for precision farming in agriculture, horticulture, viticulture and aviation. The GPS units guide the drivers to the right paddock, orchard or specific row that require maintenance, showing them where the hazards are on the way. Besides, the operation data is collected and sent back to a remote server by the these units. 
+
+%Use of GPS receivers for obtaining geographic information of trajectories has been carried out with different aims. The Kansas Department of Transportation has used GPS data to assist with the collection of highway attributes of the state highway system \citep{ben2004geometric}.  A specific vehicle can be used to collect data for making maps for highway navigation systems \citep{Atkinson2004}. It can be used in studying the traffic congestion as well and combing through Geographic Information System \citep{taylor2000integration}. 
+
+Given a sequence of position vectors in a tracking system, the simplest way of constructing the complete trajectory of a moving object is by connecting positions with a sequence of lines, known as line-based trajectory representation \citep{agarwal2003indexing}. Vehicles with an omnidirectional drive or a differential drive can actually follow such a path in a drive-and-turn fashion, though it is highly inefficient \citep{gloderer2010spline} and this kind of non-smooth motion can cause slippage and over-actuation \citep{magid2006spline}. By contrast, most vehicles typically return smooth trajectories without sharp turns. 
+
+Several methods have been investigated to solve this issue. One of them uses the minimal length path that is continuously differentiable and consists of line segments or arcs of circles, with no more than three segments or arcs between successive positions \citep{dubins1957curves}. This method is called Dubins curve and has been extended to other more complex vehicle models but is still limited to line segments and arcs of circles \citep{yang2010analytical}. However, there are still curvature discontinuities at the junctions between lines and arcs, leading to yaw angle errors \citep{wang2017curvature}. 
+
+Spline methods have been developed to overcome these issues and to construct smooth trajectories.  \cite{magid2006spline} proposed a path-planning algorithm based on splines. The main objective of the method is the smoothness of the path, not a shortest or minimum-time path. A curve-based method uses a parametric cubic function $P(t)=a_0+a_1t+a_2t^2+a_3t^3$ to obtain a spline that passes through any given sequence of joint position-velocity paired points $(y_1, v_1), (y_2, v_2), \ldots, (y_n,v_n)$ \citep{yu2004curve}. More generally, a B-spline gives a closed-form expression for the trajectory with continuous second derivatives and goes through the points smoothly while ignoring outliers, see \eg \citep{komoriya1989trajectory, ben2004geometric}. It is flexible and has minimal support with respect to a given degree, smoothness, and domain partition. \cite{gasparetto2007new} use fifth-order B-splines to compose the overall trajectory, allowing one to set kinematic constraints on the motion, expressed as the velocity, acceleration, and jerk. In computer (or computerized) numerical control (CNC), \cite{erkorkmaz2001high} presented a quintic spline trajectory generation algorithm connecting a series of reference knots that produces continuous position, velocity, and acceleration profiles. \cite{yang2010analytical} proposed an efficient and analytical continuous curvature path-smoothing algorithm based on parametric cubic B\'{e}zier curves. Their method can fit ordered sequential points smoothly. 
 
 
-%Use of GPS receivers for obtaining geographic information of trajectories has been carried out with different aims. The Kansas Department of Transportation has used GPS data to assist with the collection of highway attributes of the state highway system \cite{ben2004geometric}.  A specific vehicle can be used to collect data for making maps for highway navigation systems \cite{Atkinson2004}. It can be used in studying the traffic congestion as well and combing through Geographic Information System \cite{taylor2000integration}. 
-
-Given a sequence of position vectors in a tracking  system, the simplest way of constructing the complete trajectory of a moving object is by connecting positions with a sequence of lines (line-based trajectory representation) \cite{agarwal2003indexing}. Vehicles with an omnidirectional drive or a differential drive can actually follow such a path in a drive-and-turn fashion, though it is highly inefficient \cite{gloderer2010spline} and this kind of non-smooth motion can cause slippage and over-actuation \cite{magid2006spline}. By contrast, most vehicles typically return smooth trajectories without sharp turns. 
-
-Several methods have been investigated to solve this issue. One of them uses the minimal length path that is continuously differentiable and consists of line segments or arcs of circles, with no more than three segments or arcs between successive positions \cite{dubins1957curves}. This method is called Dubins curve and has been extended to other more complex vehicle models but is still limited to line segments and arcs of circles \cite{yang2010analytical}. However, there are still curvature discontinuities at the junctions between lines and arcs, leading to yaw angle errors (\cite{wang2017curvature}). 
-
-Spline methods have been developed to overcome these issues and to construct smooth trajectories.  In 2006, \cite{magid2006spline} proposed a path-planning algorithm based on splines. The main objective of the method is the smoothness of the path, not a shortest or minimum-time path. A curve-based method uses a parametric cubic function $P(t)=a_0+a_1t+a_2t^2+a_3t^3$ to obtain a spline that passes through any given sequence of joint position-velocity paired points $(y_1, v_1), (y_2, v_2), \ldots, (y_n,v_n)$ \cite{yu2004curve}. More generally, a B-spline gives a closed-form expression for the trajectory with continuous second derivatives and goes through the points smoothly while ignoring outliers, see \eg \cite{komoriya1989trajectory}, \cite{ben2004geometric}. It is flexible and has minimal support with respect to a given degree, smoothness, and domain partition. \cite{gasparetto2007new} use fifth-order B-splines to compose the overall trajectory, allowing one to set kinematic constraints on the motion, expressed as the velocity, acceleration, and jerk. In computer (or computerized) numerical control (CNC), \cite{erkorkmaz2001high} presented a quintic spline trajectory generation algorithm connecting a series of reference knots that produces continuous position, velocity, and acceleration profiles. \cite{yang2010analytical} proposed an efficient and analytical continuous curvature path-smoothing algorithm based on parametric cubic B\'{e}zier curves. Their method can fit ordered sequential points smoothly. 
-
-
-However, a parametric approach only captures features contained in the preconceived class of functions (\cite{yao2005functional}) and increases model bias. To avoid this, nonparametric methods have been developed. Rather than giving specified parameters, it is desired to reconstruct the trajectory $f(t)$ from the data $y(t_i)\equiv y_i$, $i=1, \ldots, n$ (\cite{craven1978smoothing}). Smoothing spline estimates of $f(t)$ appear as a solution to the following minimization problem: find $\hat{f} \in \mathcal{C}^{(2)}[a,b]$ that minimizes the penalized residual sum of squares:
+However, a parametric approach only captures features contained in the preconceived class of functions \citep{yao2005functional} and increases model bias. To avoid this, nonparametric methods have been developed. Rather than giving specified parameters, it is desired to reconstruct the trajectory $f(t)$ from the data $y(t_i)\equiv y_i$, $i=1, \ldots, n$, \citep{craven1978smoothing}. Smoothing spline estimates of $f(t)$ appear as a solution to the following minimization problem: find $\hat{f} \in \mathcal{C}^{(2)}[a,b]$ that minimizes the penalized residual sum of squares:
 \begin{equation}\label{smoothingob}
 \mbox{RSS}=\sum_{i=1}^{n}\left(  y_i-f(t_i)\right)^2+\lambda\int_{a}^{b} \left(f''(t)\right)^2dt
 \end{equation}
-for a pre-specified value $\lambda>0$ (\cite{aydin2012smoothing}). In equation (\ref{smoothingob}), the first term is a residual sum of squares and penalizes lack of fit. The second term is a roughness penalty term weighted by a smoothing parameter $\lambda$, which varies from 0 to $+\infty$ and establishes a trade-off between interpolation and a straight line. The roughness penalty term is a formalization of a mechanical device: if a thin piece of flexible wood, called a spline, is bent to the shape of the curve $f$, then the leading term in the strain energy is proportional to $\int f''^2$; see \eg \cite{green1993nonparametric}. The reconstruction cost, equation (\ref{smoothingob}), is determined not only by its goodness-of-fit to the data quantified by the residual sum of squares but also by its roughness (\cite{schwarz2012geodesy}). For a given $\lambda$, minimizing equation (\ref{smoothingob}) will give the best compromise between smoothness and goodness-of-fit. Notice that the first term in equation (\ref{smoothingob}) depends only on the values of $f$ at $t_i, i=1, \ldots, n$. \cite{green1993nonparametric} show that the function that minimizes the objective function for fixed values of $f(t_i)$ is a cubic spline: an interpolation of points via a continuous piecewise cubic function, with continuous first and second derivatives. The continuity requirements uniquely determine the interpolating spline, except at the boundaries (\cite{sealfon2005smoothing}).
+for a pre-specified value $\lambda>0$ \citep{aydin2012smoothing}. In equation (\ref{smoothingob}), the first term is a residual sum of squares and penalizes lack of fit. The second term is a roughness penalty term weighted by a smoothing parameter $\lambda$, which varies from 0 to $+\infty$ and establishes a trade-off between interpolation and a straight line. The roughness penalty term is a formalization of a mechanical device: if a thin piece of flexible wood, called a spline, is bent to the shape of the curve $f$, then the leading term in the strain energy is proportional to $\int f''^2$; see \eg \citep{green1993nonparametric}. The reconstruction cost, equation (\ref{smoothingob}), is determined not only by its goodness-of-fit to the data quantified by the residual sum of squares but also by its roughness \citep{schwarz2012geodesy}. For a given $\lambda$, minimizing equation (\ref{smoothingob}) will give the best compromise between smoothness and goodness-of-fit. Notice that the first term in equation (\ref{smoothingob}) depends only on the values of $f$ at $t_i, i=1, \ldots, n$. \cite{green1993nonparametric} show that the function that minimizes the objective function for fixed values of $f(t_i)$ is a cubic spline: an interpolation of points via a continuous piecewise cubic function, with continuous first and second derivatives. The continuity requirements uniquely determine the interpolating spline, except at the boundaries \citep{sealfon2005smoothing}.
 
 
 \cite{zhang2013cubic} propose Hermite interpolation on each interval to fit position, velocity and acceleration with kinematic constraints. Their trajectory formulation is a combination of several cubic splines on every interval or, alternatively, is a single function found by minimizing 
 \begin{equation}
 p\sum_{i=1}^{n}\lvert y_i-f(t_i) \rvert^2+(1-p)\int \lvert f''(t) \rvert^2dt,
 \end{equation}
-where $p$ is a smoothing parameter (\cite{castro2006geometric}). 
+where $p$ is a smoothing parameter \citep{castro2006geometric}. 
 
 
 
-%Due to the noise generated from observation units, one can use regression methods to find the best reconstruction returning the smallest sum squared errors among all the sequences. Consider a regression model $y_i=f(t_i)+\epsilon_i$, where $a \leq t_1 < \cdots < t_n \leq b$ and $f \in \mathical{C}^{(2)}[a,b]$ is an unknown smooth function, $(\epsilon_i)_{i=1}^n \sim N(0,\sigma^2)$ are random errors. In a classical parametric regression, $f$ is assumed having the form $f(x,\beta)$, which is known up to the data estimated parameters $\beta$ \cite{kim2004smoothing}. When $f(x,\beta)$ is linear in $\beta$, we will have a standard linear model. 
+%Due to the noise generated from observation units, one can use regression methods to find the best reconstruction returning the smallest sum squared errors among all the sequences. Consider a regression model $y_i=f(t_i)+\epsilon_i$, where $a \leq t_1 < \cdots < t_n \leq b$ and $f \in \mathical{C}^{(2)}[a,b]$ is an unknown smooth function, $(\epsilon_i)_{i=1}^n \sim N(0,\sigma^2)$ are random errors. In a classical parametric regression, $f$ is assumed having the form $f(x,\beta)$, which is known up to the data estimated parameters $\beta$ \citep{kim2004smoothing}. When $f(x,\beta)$ is linear in $\beta$, we will have a standard linear model. 
 
 
 
 
-A conventional smoothing spline is controlled by one single parameter, which controls the smoothness of the spline on the whole domain. A natural extension is to allow the smoothing parameter to vary as a function of the independent variable, adapting to the change of roughness in different domains (\cite{silverman1985some}, \cite{donoho1995wavelet}). The objective function is now of the form 
+A conventional smoothing spline is controlled by one single parameter, which controls the smoothness of the spline on the whole domain. A natural extension is to allow the smoothing parameter to vary as a function of the independent variable, adapting to the change of roughness in different domains \citep{silverman1985some, donoho1995wavelet}. The objective function is now of the form 
 \begin{equation}\label{objective}
 \sum_{i=1}^{n}\left(y_i-f(t_i) \right)^2+\int\lambda(t) \left( f''(t)\right)^2 dt.
 \end{equation}
 
 
-Similar to the conventional smoothing spline problem, one has to choose the penalty function $\lambda(t)$. The fundamental idea of nonparametric smoothing is to let the data choose the amount of smoothness, which consequently decides the model complexity (\cite{gu1998model}). When $\lambda$ is constant, most methods focus on data-driven criteria, such as cross-validation (CV), generalized cross-validation (GCV) (\cite{craven1978smoothing}) and generalized maximum likelihood (GML) (\cite{wahba1985comparison}). Allowing the smoothing parameter to be a function poses additional challenges, though  \cite{liu2010data} were able to extend GML to adaptive smoothing splines.
+Similar to the conventional smoothing spline problem, one has to choose the penalty function $\lambda(t)$. The fundamental idea of nonparametric smoothing is to let the data choose the amount of smoothness, which consequently decides the model complexity \citep{gu1998model}. When $\lambda$ is constant, most methods focus on data-driven criteria, such as cross-validation (CV), generalized cross-validation (GCV) \citep{craven1978smoothing} and generalized maximum likelihood (GML) \citep{wahba1985comparison}. Allowing the smoothing parameter to be a function poses additional challenges, though \cite{liu2010data} were able to extend GML to adaptive smoothing splines.
 
 
-In this chapter, an adaptive smoothing spline called the V-spline is proposed that uses modified Hermite spline basis functions to obtain a reconstruction of $f$ and $f'$ from noisy paired position data $\mathbf{y}=\left\lbrace y_1,\ldots,y_n\right\rbrace$ and velocity data $\mathbf{v}=\left\lbrace v_1,\ldots,v_n\right\rbrace$. Rather than only using residuals $f(t_i)-y_i$, extra residuals  $f'(t_i)-v_i$ and a new parameter $\gamma$ are included in the objective function. The parameter $\gamma$ controls the degree to which the velocity information is used in the reconstruction. In this way, the spline keeps a balance between position and velocity. An advanced cross-validation formula is given for the V-spline parameters. It is shown that the new spline performs well on simulated signal data \textit{Blocks}, \textit{Bumps}, \textit{HeaviSine} and \textit{Doppler} (\cite{donoho1994ideal}). Finally, an application of the V-spline to a set of 2-dimensional real data is given. 
+In this chapter, an adaptive smoothing spline called the V-spline is proposed that uses modified Hermite spline basis functions to obtain a reconstruction of $f$ and $f'$ from noisy paired position data $\mathbf{y}=\left\lbrace y_1,\ldots,y_n\right\rbrace$ and velocity data $\mathbf{v}=\left\lbrace v_1,\ldots,v_n\right\rbrace$. Rather than only using residuals $f(t_i)-y_i$, extra residuals  $f'(t_i)-v_i$ and a new parameter $\gamma$ are included in the objective function. The parameter $\gamma$ controls the degree to which the velocity information is used in the reconstruction. In this way, the spline keeps a balance between position and velocity. An advanced cross-validation formula is given for the V-spline parameters. It is shown that the new spline performs well on simulated signal data \textit{Blocks}, \textit{Bumps}, \textit{HeaviSine} and \textit{Doppler} \citep{donoho1994ideal}. Finally, an application of the V-spline to a set of 2-dimensional real data is given. 
 
-%Errors comes from the GPS units and individuals' behaviors, which bring unreliable data and less precise results. %\cite{castro2006geometric}
+%Errors comes from the GPS units and individuals' behaviors, which bring unreliable data and less precise results. %\citep{castro2006geometric}
 
 \section{V-Spline}\label{SectionTractorSpline}
 
@@ -68,7 +67,7 @@ For $n\geq2$, the objective function $J[f]$ is minimized by a cubic spline that 
 \end{theorem}
 The solution to the objective function (\ref{tractorsplineObjective}) is named \textit{V-spline}, coming from the incorporation with velocity information and applications on vehicle and vessel tracking. The proof of Theorem \ref{TractorSplineTheorem} is in Appendix \ref{AppendixTractorSplineProof}. 
 
-%In the following, we split the 2D function $f(x,y)$ into two sub functions $f_x(t)$ on $x$-axis and $f_y(t)$ on $y$-axis with respect to time $t$. Compared with other parameters, choosing time $t$ to be the parameter has some advantages: 1. The expressions of all the constraints are simpler \cite{zhang2013cubic}; 2. It can be simply applied from 2-dimension to 3-dimension by adding an extra $z$-axis.  
+%In the following, we split the 2D function $f(x,y)$ into two sub functions $f_x(t)$ on $x$-axis and $f_y(t)$ on $y$-axis with respect to time $t$. Compared with other parameters, choosing time $t$ to be the parameter has some advantages: 1. The expressions of all the constraints are simpler \citep{zhang2013cubic}; 2. It can be simply applied from 2-dimension to 3-dimension by adding an extra $z$-axis.  
 
 \subsection{Basis Functions}
 Suppose there is a time series sequence of observed dataset $a\leq t_1<t_2<\cdots<t_n \leq b$. The function $f(t)$ %(stands for $f_y(t)$)
@@ -220,7 +219,7 @@ a generalized ridge regression. Therefore, the fitted smoothing spline is given 
 \hat{f}(t)=\sum_{k=1}^{2n}N_k(t)\hat{\theta}_k
 \end{equation}
 
-A smoothing spline with parameters $\lambda(t)$ and $\gamma$ is an example of a linear smoother \cite{esl2009}. This is because the estimated parameters in equation (\ref{thetahat}) are a linear combination of $y_i$ and $v_i$. Denote by $\hat{\mathbf{f}}$ and $\hat{\mathbf{f}'}$ the $2n$ vector of fitted values $\hat{f}(t_i)$ and $\hat{f'}(t_i)$ at the training points $t_i$. Then
+A smoothing spline with parameters $\lambda(t)$ and $\gamma$ is an example of a linear smoother \citep{esl2009}. This is because the estimated parameters in equation (\ref{thetahat}) are a linear combination of $y_i$ and $v_i$. Denote by $\hat{\mathbf{f}}$ and $\hat{\mathbf{f}'}$ the $2n$ vector of fitted values $\hat{f}(t_i)$ and $\hat{f'}(t_i)$ at the training points $t_i$. Then
 \begin{equation}
 \begin{split}
 \hat{\mathbf{f}} =&\mathbf{B}\left(\mathbf{B}^\top\mathbf{B}+\gamma\mathbf{C}^\top\mathbf{C}+n\mathbf{\Omega}_{\lambda}\right)^{-1}\left(\mathbf{B}^\top\mathbf{y}+\gamma\mathbf{C}^\top\mathbf{v}\right)\\
@@ -240,7 +239,7 @@ Suppose in a traditional least squares fitting, $\mathbf{B}_\xi$ is $N \times M$
 \begin{align}\label{fhy}
 \hat{\mathbf{f}}=\mathbf{B}_\xi\left(\mathbf{B}^\top_\xi\mathbf{B}_\xi\right)^{-1}\mathbf{B}_\xi\mathbf{y}=\mathbf{H}_\xi\mathbf{y}
 \end{align}
-Here the linear operator $\mathbf{H}_\xi$ is a symmetric, positive semidefinite matrices, and $\mathbf{H}_\xi\mathbf{H}_\xi=\mathbf{H}_\xi$ (idempotent) \cite{esl2009}. In our case, it is easily seen that $\mathbf{S}_{\lambda,\gamma}, \mathbf{T}_{\lambda,\gamma}, \mathbf{U}_{\lambda,\gamma}$ and $\mathbf{V}_{\lambda,\gamma}$ are symmetric, positive semidefinite matrices as well. Additionally, by Cholesky decomposition
+Here the linear operator $\mathbf{H}_\xi$ is a symmetric, positive semidefinite matrices, and $\mathbf{H}_\xi\mathbf{H}_\xi=\mathbf{H}_\xi$ (idempotent) \citep{esl2009}. In our case, it is easily seen that $\mathbf{S}_{\lambda,\gamma}, \mathbf{T}_{\lambda,\gamma}, \mathbf{U}_{\lambda,\gamma}$ and $\mathbf{V}_{\lambda,\gamma}$ are symmetric, positive semidefinite matrices as well. Additionally, by Cholesky decomposition
 \begin{equation}
 \left(\mathbf{B}^\top\mathbf{B}+\gamma\mathbf{C}^\top\mathbf{C}+n\mathbf{\Omega}_{\lambda}\right)^{-1}=\mathbf{R}\mathbf{R}^\top,
 \end{equation}
@@ -293,7 +292,7 @@ where  $t_i\leq t < t_{i+1}$. Eventually, in the objective function, there is on
 
 \section{Parameter Selection and Cross-Validation}
 
-The problem of choosing the smoothing parameter is ubiquitous in curve estimation, and there are two different philosophical approaches to this question. The first one is to regard the free choice of smoothing parameter as an advantageous feature of the procedure. The other one is to find the parameter automatically by the data \cite{green1993nonparametric}. We prefer the latter one, use data to train our model and find the best parameters. The most well-known method is cross-validation.
+The problem of choosing the smoothing parameter is ubiquitous in curve estimation, and there are two different philosophical approaches to this question. The first one is to regard the free choice of smoothing parameter as an advantageous feature of the procedure. The other one is to find the parameter automatically by the data \citep{green1993nonparametric}. We prefer the latter one, use data to train our model and find the best parameters. The most well-known method is cross-validation.
 
 
 Assuming that mean of the random errors is zero, the true regression curve $f(t)$ has the property that, if an observation $y$ is taken away at a point $t$, the value $f(t)$ is the best predictor of $y$ in terms of returning a least value of $\left(y-f(t)\right)^2$. 
@@ -306,9 +305,9 @@ and can be quantified by the cross-validation score function
 \begin{equation*}
 \mbox{CV}(\lambda)=\frac{1}{n}\sum_{i=1}^{n}\left(  y_i-\hat{f}^{(-i)}(t_i,\lambda)\right) ^2.
 \end{equation*}
-The basis idea of the cross-validation is to choose the value of $\lambda$ that minimizes $\mbox{CV}(\lambda)$ \cite{green1993nonparametric}. 
+The basis idea of the cross-validation is to choose the value of $\lambda$ that minimizes $\mbox{CV}(\lambda)$ \citep{green1993nonparametric}. 
 
-An efficient way to calculate the cross-validation score is introduced by \cite{green1993nonparametric}. Through the equation (\ref{fhy}), it is known that the value of the smoothing spline $\hat{f}$ depend linearly on the data $y_i$. Define the matrix $A(\lambda)$, which is a map vector of observed values $y_i$ to predicted values $\hat{f}(t_i)$. Then we have
+An efficient way to calculate the cross-validation score is introduced by \citep{green1993nonparametric}. Through the equation (\ref{fhy}), it is known that the value of the smoothing spline $\hat{f}$ depend linearly on the data $y_i$. Define the matrix $A(\lambda)$, which is a map vector of observed values $y_i$ to predicted values $\hat{f}(t_i)$. Then we have
 \begin{equation*}\label{crossvalidationmatrixA}
 \hat{\mathbf{f}}=A(\lambda)\mathbf{y}
 \end{equation*}
@@ -376,9 +375,9 @@ Then
 
 \subsection{Numerical Examples}
 
-In this section, we examine the visual quality of the proposed method with four functions: \textit{Blocks}, \textit{Bumps}, \textit{HeaviSine} and \textit{Doppler}, which have been used in \cite{donoho1994ideal}, \cite{donoho1995adapting} and \cite{abramovich1998wavelet} because of their caricature features in imaging, spectroscopy and other scientific signal processing. However it is unfair for V-spline fitting "jump" position in \textit{Blocks} and \textit{Bumps} function because it fits position and velocity simultaneously and these points imply infinite first derivative in original functions, which are impossible for vehicles or individuals. In terms of this issue, we treat these functions as velocity, and use noise free points to generate accurate position data, then add noises back to them.
+In this section, we examine the visual quality of the proposed method with four functions: \textit{Blocks}, \textit{Bumps}, \textit{HeaviSine} and \textit{Doppler}, which have been used in \citep{donoho1994ideal, donoho1995adapting, abramovich1998wavelet} because of their caricature features in imaging, spectroscopy and other scientific signal processing. However it is unfair for V-spline fitting "jump" position in \textit{Blocks} and \textit{Bumps} function because it fits position and velocity simultaneously and these points imply infinite first derivative in original functions, which are impossible for vehicles or individuals. In terms of this issue, we treat these functions as velocity, and use noise free points to generate accurate position data, then add noises back to them.
 
-For calculating consideration, we use $n=1024$ \cite{nason2010wavelet}. Because of all noises are randomly generated, for the convenience of reinitialization and repeatable comparison, we set random seed at 2016. The noises are \iid zero-mean Gaussian distributed with standard deviation regarding to signal-to-noise ratio (SNR), which specifies the ratio of the standard deviation of the function to the standard deviation of the simulated errors. Explicitly, if the standard deviation of the true signal $f$ is $\sigma_f$, the simulated data will be $f+\varepsilon$, where the simulated error  $\varepsilon \sim N(0,\sigma_f/SNR)$. 
+For calculating consideration, we use $n=1024$ \citep{nason2010wavelet}. Because of all noises are randomly generated, for the convenience of reinitialization and repeatable comparison, we set random seed at 2016. The noises are \iid zero-mean Gaussian distributed with standard deviation regarding to signal-to-noise ratio (SNR), which specifies the ratio of the standard deviation of the function to the standard deviation of the simulated errors. Explicitly, if the standard deviation of the true signal $f$ is $\sigma_f$, the simulated data will be $f+\varepsilon$, where the simulated error  $\varepsilon \sim N(0,\sigma_f/SNR)$. 
 
 Therefore, if the original function $g(t)$ is treated as velocity function $f'(t)=g(t)$, thus by setting initial position $y_0=0$, acceleration $a_0=0$ and using the following formula 
 \begin{equation}\label{generateVelocity}
@@ -391,7 +390,7 @@ y_i &= f(t_i) + \varepsilon_f, \\
 v_i &= g(t_i) + \varepsilon_g,
 \end{split}
 \end{align}
-where $\varepsilon_f\sim N(0,\sigma_f/SNR)$ and $\varepsilon_g\sim N(0,\sigma_g/SNR)$. The value of SNR can be chosen 7 or 3. For wavelet transform reconstructions, we use the threshold policy of \textit{sure} and \textit{BayesThresh} with levels $l=4, \ldots, 9$, see  \cite{donoho1995adapting} and \cite{abramovich1998wavelet}. A semi-parametric regression model with spatially adaptive penalized splines (\textit{P-spline}) is added in comparison, see \cite{krivobokova2008fast} \cite{ruppert2003semiparametric}.
+where $\varepsilon_f\sim N(0,\sigma_f/SNR)$ and $\varepsilon_g\sim N(0,\sigma_g/SNR)$. The value of SNR can be chosen 7 or 3. For wavelet transform reconstructions, we use the threshold policy of \textit{sure} and \textit{BayesThresh} with levels $l=4, \ldots, 9$, see  \citep{donoho1995adapting, abramovich1998wavelet}. A semi-parametric regression model with spatially adaptive penalized splines (\textit{P-spline}) is added in comparison, see \citep{krivobokova2008fast, ruppert2003semiparametric}.
 
 For V-spline, we have two parameters $\lambda$ and $\gamma$ to optimize. To evaluate the performance of the velocity term in objective function (\ref{tractorsplineObjective}) and the adjusted penalty term in (\ref{adjustedpenalty}), the parameter $\gamma$ is set as 0 in one reconstruction of V-spline, whose objective function and solution become
 \begin{equation}\label{ofgamma0}
@@ -401,7 +400,7 @@ and
 \begin{equation}\label{thetahat0}
 \hat{\theta}_{\gamma=0}=\left(\mathbf{B}^\top\mathbf{B}+n\Omega_{\lambda}\right)^{-1}\mathbf{B}^\top\mathbf{y}
 \end{equation}
-and the adjusted penalty term in (\ref{adjustedpenalty}) was removed from another reconstruction, noted as "V-spline without APT". Figure \ref{num1} to \ref{num4} display the original (velocity), generated position, wavelet with two different threshold methods, P-spline and three kinds of V-spline fitted functions. The parameters $\lambda$ and $\gamma$ of a V-spline are automatically selected with the formula (\ref{tractorcv}) by $\textsf{optim}$ function in $R$ \cite{nelder1965simplex}.
+and the adjusted penalty term in (\ref{adjustedpenalty}) was removed from another reconstruction, noted as "V-spline without APT". Figure \ref{num1} to \ref{num4} display the original (velocity), generated position, wavelet with two different threshold methods, P-spline and three kinds of V-spline fitted functions. The parameters $\lambda$ and $\gamma$ of a V-spline are automatically selected with the formula (\ref{tractorcv}) by $\textsf{optim}$ function in $R$ \citep{nelder1965simplex}.
 
 
 %\begin{figure}
@@ -460,7 +459,7 @@ and the adjusted penalty term in (\ref{adjustedpenalty}) was removed from anothe
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBlocksTractor.pdf}
-    \caption{Reconstruction by proposed V-spline}
+    \caption{Reconstruction by the proposed V-spline}
     \end{subfigure}
 \caption{Numerical example: $\textit{Blocks}$. Comparison of different reconstruction methods with simulated data.}\label{num1}
  \end{figure}
@@ -523,7 +522,7 @@ and the adjusted penalty term in (\ref{adjustedpenalty}) was removed from anothe
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBumpsTractor.pdf}
-    \caption{Reconstruction by proposed V-spline}
+    \caption{Reconstruction by the proposed V-spline}
     \end{subfigure}
 \caption{Numerical example: $\textit{Bumps}$. Comparison of different reconstruction methods with simulated data.}\label{num2}
  \end{figure}
@@ -588,7 +587,7 @@ and the adjusted penalty term in (\ref{adjustedpenalty}) was removed from anothe
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSineTractor.pdf}
-    \caption{Reconstruction by proposed V-spline}
+    \caption{Reconstruction by the proposed V-spline}
     \end{subfigure}
 \caption{Numerical example: $\textit{HeaviSine}$. Comparison of different reconstruction methods with simulated data.}\label{num3}
  \end{figure}
@@ -652,7 +651,7 @@ and the adjusted penalty term in (\ref{adjustedpenalty}) was removed from anothe
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggDopplerTractor.pdf}
-    \caption{Reconstruction by proposed V-spline.}
+    \caption{Reconstruction by the proposed V-spline.}
     \end{subfigure}
 \caption{Numerical example: $\textit{Doppler}$. Comparison of different reconstruction methods with simulated data}\label{num4}
  \end{figure}
@@ -752,7 +751,7 @@ To examine the performance of the V-spline, we conduct a evaluation by comparing
 \end{align}
 
 
-%Besides the four function in previous subsection, we introduce two more functions as the author did in \cite{liu2010data}: Sin-141 and Sin-1414. The function Sin-141 is divided into three equal length intervals $B_1\oplus B_2 \oplus B_3$ on $[0,1]$ with signal generated by $sin(6\pi t)I\left\lbrace t\in (B_1,B_3)\right\rbrace + sin(24\pi t)I(t\in B_2)$, where $I(\cdot)$ is the indicator function. Sin-1414 is divided into four equal length intervals $B_1\oplus B_2 \oplus B_3 \oplus B_4$ on $[0,1]$ with signal generated by $sin(6\pi t)I\left\lbrace t\in (B_1,B_3)\right\rbrace + sin(24\pi t)I(t\in B_2,B_4)$
+%Besides the four function in previous subsection, we introduce two more functions as the author did in \citep{liu2010data}: Sin-141 and Sin-1414. The function Sin-141 is divided into three equal length intervals $B_1\oplus B_2 \oplus B_3$ on $[0,1]$ with signal generated by $sin(6\pi t)I\left\lbrace t\in (B_1,B_3)\right\rbrace + sin(24\pi t)I(t\in B_2)$, where $I(\cdot)$ is the indicator function. Sin-1414 is divided into four equal length intervals $B_1\oplus B_2 \oplus B_3 \oplus B_4$ on $[0,1]$ with signal generated by $sin(6\pi t)I\left\lbrace t\in (B_1,B_3)\right\rbrace + sin(24\pi t)I(t\in B_2,B_4)$
 
 The results are shown in table \ref{mse3200} and \ref{tmse3200}. All of these methods have good performances in fitting noisy data. The differences of mean squared error between these methods are not significant, as can be seen from table \ref{mse3200}. The proposed method is not the best among these simulations according to MSE. However, from table \ref{tmse3200}, V-spline returns the smallest true mean squared errors. The difference is significant, that means the reconstruction from V-spline is closer to the true trajectory. 
  
@@ -842,13 +841,13 @@ Further analysis in figures \ref{tractorsplineSNR7acf} and \ref{tractorsplineSNR
 
 In this section, we apply the proposed V-spline to real dataset, which is recorded by a GPS unit mounted on a tractor. The original dataset contains the information about time marks, longitude, latitude, velocity, bearing (in degrees,  heading to North) and boom status. 
 
-In a 2 or higher $d$-dimensional curve nonparametric regression, consider the general form of a length $n$ time series data points $\left\lbrace t_1,p_1,s_1\right\rbrace, \ldots, \left\lbrace t_n,p_n,s_n\right\rbrace$, such that $a \leq t_1<t_2< \cdots < t_n \leq b$, $p_i$ and $s_i$ are $d$-dimensional vectors contain position and velocity information at time $i$ respectively. The positive piecewise constant function $\lambda(t) = \lambda_i$ on each interval $t_i \leq t<t_{i+1}, t_0=a, t_{n+1}=b$.  Then the function $f:[a,b]\mapsto\mathbb{R}^d$ with $\gamma>0$ is a V-spline in the $d$-dimensional space if it is the solution to the generic form of the objective function: 
+In a two or higher $d$-dimensional curve nonparametric regression, consider the general form of a length $n$ time series data points $\left\lbrace t_1,p_1,s_1\right\rbrace, \ldots, \left\lbrace t_n,p_n,s_n\right\rbrace$, such that $a \leq t_1<t_2< \cdots < t_n \leq b$, $p_i$ and $s_i$ are $d$-dimensional vectors contain position and velocity information at time $i$ respectively. The positive piecewise constant function $\lambda(t) = \lambda_i$ on each interval $t_i \leq t<t_{i+1}, t_0=a, t_{n+1}=b$.  Then the function $f:[a,b]\mapsto\mathbb{R}^d$ with $\gamma>0$ is a V-spline in the $d$-dimensional space if it is the solution to the generic form of the objective function: 
 \begin{equation}\label{tractorsplineObjective2D}
 J[f]= \frac{1}{n} \sum_{i=1}^{n} \lVert f(t_i)-p_i\rVert_d^2 + \frac{\gamma}{n} \sum_{i=1}^{n} \lVert f'(t_i)-s_i \rVert_d^2 +\sum_{i=0}^{n} \lambda_i\int_{t_i}^{t_{i+1}} \lVert f''(t)\rVert_d^2 dt. 
 \end{equation}
 
 
-Particularly, the GPS data is recorded in a 2-dimensional form, in which scenario $d=2$. Hence, in the following application, we split the 2-dimensional function $f(x,y)$ into two sub functions $f_x(t)$ on $x$-axis and $f_y(t)$ on $y$-axis with respect to time $t$. Compared with other parameters, choosing time $t$ to be the parameter has some advantages: (\romannum{1}) the expressions of all the constraints are simpler \cite{zhang2013cubic}; (\romannum{2}) it can be simply applied from 2-dimension to 3-dimension by adding an extra $z$-axis. Without loss of generality, a dataset in a higher dimensional space can be projected into several sub-spaces, such as $p=\left\lbrace x,y,z,\ldots \right\rbrace$ and $s=\left\lbrace u,v,w,\ldots \right\rbrace$. 
+Particularly, the GPS data is recorded in a 2-dimensional form, in which scenario $d=2$. Hence, in the following application, we split the 2-dimensional function $f(x,y)$ into two sub functions $f_x(t)$ on $x$-axis and $f_y(t)$ on $y$-axis with respect to time $t$. Compared with other parameters, choosing time $t$ to be the parameter has some advantages: (\romannum{1}) the expressions of all the constraints are simpler \citep{zhang2013cubic}; (\romannum{2}) it can be simply applied from 2-dimension to 3-dimension by adding an extra $z$-axis. Without loss of generality, a dataset in a higher dimensional space can be projected into several sub-spaces, such as $p=\left\lbrace x,y,z,\ldots \right\rbrace$ and $s=\left\lbrace u,v,w,\ldots \right\rbrace$. 
 
 
 Thereafter, at first, we convert the longitude and latitude information from a 3D sphere to 2D surface by Universal Transverse Mercator coordinate system (UTM) and then project the speed $s$ into $u$ and $v$ on $x$-axis and $y$-axis respectively by 
@@ -1126,7 +1125,7 @@ Even though the mean squared errors of a V-spline is not the least comparing wit
 
 In parameter selection, the cross-validation only focuses on the errors of $f$ ignoring that in $f'$. So the reconstruction of $f'$ is not as smooth as that of $f$, which does not affect trajectory reconstruction. A drawback of V-spline is that the computing time in finding local minimal CV score is higher than using B-spline. If there is an efficient way to compute matrix inverse, the calculation speed will be much faster. So in the simulation and application studies, we try to optimize our coding to make it run as faster as possible.
 
-Another potential application of V-spline is on vessel monitoring system. The system is a fisheries surveillance that allows environmental and fisheries regulatory organization to track and monitor the activities of fishing vessels. The system calculates the position of the moving object and sends a data report to shore-side users. This information includes time, latitude and longitude positions. However, due to weak signals, the tracking system may lose useful information. The V-spline can help to reconstruct the whole trajectory for a fishery vessel and to analyze its behavior. For example, a larger penalty value indicates stops on the sea inferring that the vessel is casting nets; a smaller penalty value indicates the vessel is moving normally. 
+Another potential application of V-spline is to vessel monitoring system. The system is a fisheries surveillance that allows environmental and fisheries regulatory organization to track and monitor the activities of fishing vessels. The system calculates the position of the moving object and sends a data report to shore-side users. This information includes time, latitude and longitude positions. However, due to weak signals, the tracking system may lose useful information. The V-spline can help to reconstruct the whole trajectory for a fishery vessel and to analyze its behavior. For example, a larger penalty value indicates stops on the sea inferring that the vessel is casting nets; a smaller penalty value indicates the vessel is moving normally. 
 
 After all, there is a wide range of applications for V-spline in real life. A future work is to implement V-spline on-line for instant estimation and to make it run faster. 
 

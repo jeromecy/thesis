@@ -4,26 +4,26 @@
 As the development of the technology of science and real life, the "big data" challenge becomes ubiquitous. Classical methods, such as MCMC, are normally suitable and good at handling a batch of data forecasting and analyzing. However, for big data and instant updating data stream, more robust and efficient methods are required. 
 
 
-Alternative approaches, such as Sequential Monte Carlo, for on-line updating and estimating are well studied in scientific literature and prevalent in academic research in the last decades. When it embraced with  state-space model, which is a popular class of time series models that have found numerous of applications in fields as diverse as statistics, ecology, econometrics, engineering and environmental sciences \cite{cappe2009inference} \cite{smcmip2011} \cite{elliott1995estimation} \cite{cargnoni1997bayesian}, it allows us to establish complex linear and nonlinear Bayesian estimations in time series patterns \cite{vieira2016online}. 
+Alternative approaches, such as Sequential Monte Carlo, for on-line updating and estimating are well studied in scientific literature and prevalent in academic research in the last decades. When it embraced with  state-space model, which is a popular class of time series models that have found numerous of applications in fields as diverse as statistics, ecology, econometrics, engineering and environmental sciences \citep{cappe2009inference, smcmip2011, elliott1995estimation, cargnoni1997bayesian}, it allows us to establish complex linear and nonlinear Bayesian estimations in time series patterns \citep{vieira2016online}. 
 
 
 \subsection*{State-Space Model}
 
-State-space models are models that rely on the concept of state variables. If we describe a system as an operator mapping from the space of inputs to the space of outputs, then we may need the entire input-output history of the system together with the planned input in order to compute the future output values \cite{hangos2006analysis}. In an alternative way, by using new information at time $t$ containing all the past information up to the current state and initial conditions to get the current output is possible, which is known as a sequential method. A genetic state-space model consists of two sets of equations: state equation and output equation. The state equation describes the evolution of the true input and state variables sequentially as a function and passes the variable one after one, generally, with some noises. The output equation catches the input values and interprets it out by an algebraic equation. A general state-space model has the form of 
+State-space models are models that rely on the concept of state variables. If we describe a system as an operator mapping from the space of inputs to the space of outputs, then we may need the entire input-output history of the system together with the planned input in order to compute the future output values \citep{hangos2006analysis}. In an alternative way, by using new information at time $t$ containing all the past information up to the current state and initial conditions to get the current output is possible, which is known as a sequential method. A genetic state-space model consists of two sets of equations: state equation and output equation. The state equation describes the evolution of the true input and state variables sequentially as a function and passes the variable one after one, generally, with some noises. The output equation catches the input values and interprets it out by an algebraic equation. A general state-space model has the form of 
 \begin{align}\label{statemodel1}
 \mbox{State equation } x_t &= G_t(x_{t-1})+w_t,\\
 \label{statemodel2}
 \mbox{Output equation } y_t &=F_t(x_t)+\varepsilon_t
 \end{align}
-with an initial state $x_0$, where $w_t$ and $\varepsilon_t$ are noise terms. $x_t$ are true status variables and $y_t$ are output values. Many researchers have been interested in this model and its application because of its good property. It can be used to model univariate or multivariate time series and can be applied to a system that exhibits non-stationarity, structural changes, and irregular patterns \cite{petris2009dynamic}.
+with an initial state $x_0$, where $w_t$ and $\varepsilon_t$ are noise terms. $x_t$ are true status variables and $y_t$ are output values. Many researchers have been interested in this model and its application because of its good property. It can be used to model univariate or multivariate time series and can be applied to a system that exhibits non-stationarity, structural changes, and irregular patterns \citep{petris2009dynamic}.
 
 The most simple and important system is given by Gaussian linear state-space models, also known by dynamic linear models (DLM), which defines a very general class of non-stationary time series models. First of all, the model is linear, that means $G_t$ and $F_t$ are linear processes and satisfy linearity property. Secondly, it is specified by a normal prior distribution for the $p$-dimensional state vector at initial state $t=0$, 
 \begin{align*}
 x_0 \sim N_p(m_0,C_0)
 \end{align*} 
-and two independent zero-mean normal distributed noises $\epsilon_t \sim N_p(0,V_t)$ and $w_t \sim N_p(0,W_t)$ \cite{petris2009dynamic}. The celebrated Kalman filter is a particular algorithm that is used to solve state-space models in the linear case. This was first derived by Kalman \cite{kalman1960new}.
+and two independent zero-mean normal distributed noises $\epsilon_t \sim N_p(0,V_t)$ and $w_t \sim N_p(0,W_t)$ \citep{petris2009dynamic}. The celebrated Kalman filter is a particular algorithm that is used to solve state-space models in the linear case. This was first derived by Kalman \citep{kalman1960new}.
 
-%In a nonlinear state-space model, the process $G_t$ and $F_t$ are no longer linear functions and the situation becomes more complicated. Here gives a simple nonlinear example of such a model, which has been used extensively in the literature for benchmarking numerical filtering techniques \cite{kitagawa1996monte} \cite{west1993mixture} \cite{gordon1993novel} assuming the sequence is Markovian.
+%In a nonlinear state-space model, the process $G_t$ and $F_t$ are no longer linear functions and the situation becomes more complicated. Here gives a simple nonlinear example of such a model, which has been used extensively in the literature for benchmarking numerical filtering techniques \citep{kitagawa1996monte, west1993mixture, gordon1993novel} assuming the sequence is Markovian.
 %\begin{align*}
 %x_t &= \frac{x_{t-1}}{2} +25\frac{x_{t-1}}{1+x_{t-1}^2}+8\cos(1.2t)+u_t\\
 %y_t &= \frac{x_{t}^2}{20}+v_t,
@@ -34,7 +34,7 @@ The assumption Markovian keeps the current state $x_t$ only depending on the pre
 \begin{array}{cccccccccc}\cdots &\to &x_{t-1}&\to &x_{t}&\to &x_{t+1}&\to &\cdots &{\text{truth}}\\  &&\downarrow &&\downarrow &&\downarrow && &\\ \cdots&&y_{t-1}&&y_{t}&&y_{t+1}&&\cdots &{\text{observation}}\end{array}
 \end{align*}
 
-In applications, the process functions $G_t$ and $F_t$ contain one or more unknown parameters that need to be estimated \cite{de1988likelihood} and the goal is to estimate the true states on sequential observations $y_1, \ldots, y_t$. Then it becomes to estimate the joint density of $p(x_{1:t},\theta \mid y_{1:t})$, where $x_{1:t} = \left\lbrace x_1, x_2, \ldots, x_t \right\rbrace$ are the hidden states and $y_{1:t} = \left\lbrace y_1, y_2, \ldots, y_t \right\rbrace$ are the observed outcomes and $\theta$ is a set of unknown parameters. 
+In applications, the process functions $G_t$ and $F_t$ contain one or more unknown parameters that need to be estimated \citep{de1988likelihood} and the goal is to estimate the true states on sequential observations $y_1, \ldots, y_t$. Then it becomes to estimate the joint density of $p(x_{1:t},\theta \mid y_{1:t})$, where $x_{1:t} = \left\lbrace x_1, x_2, \ldots, x_t \right\rbrace$ are the hidden states and $y_{1:t} = \left\lbrace y_1, y_2, \ldots, y_t \right\rbrace$ are the observed outcomes and $\theta$ is a set of unknown parameters. 
 
 
 \subsection*{Contents}
@@ -53,7 +53,7 @@ The following sections, we explore state filters that are not restricted by assu
 
 \subsection{Sequential Monte Carlo Method}
 
-The use of \textit{Monte Carlo} methods for filtering can be traced back to the pioneering contributions of  \cite{handschin1969monte} and  \cite{handschin1970monte}. These researchers tried to use an importance sampling paradigm to approximate the target distributions and. Later on, an importance sampling algorithms were implemented sequentially in the filtering context. This algorithm is named \textit{sequential importance sampling}, often abbreviated SIS, and has been known since the early 1970s. Limited by the power of computers and suffering from sample impoverishment or weight degeneracy, the SIS did not develop well until 1993. Gordon used this a technique based on sampling and importance sampling methods to find the best state estimation  \cite{gordon1993novel}. A particle filter algorithm was proposed to allow rejuvenation of the set of samples by duplicating the samples with high importance weights and, on the contrary, removing samples with low weights \cite{cappe2009inference}. Since then, sequential Monte Carlo (SMC) methods have been applied in many different fields including but not limited to computer vision, signal processing, control, econometrics, finance, robotics, and statistics \cite{smcmip2011}  \cite{ristic2004beyond}.
+The use of \textit{Monte Carlo} methods for filtering can be traced back to the pioneering contributions of \citep{handschin1969monte, handschin1970monte}. These researchers tried to use an importance sampling paradigm to approximate the target distributions and. Later on, an importance sampling algorithms were implemented sequentially in the filtering context. This algorithm is named \textit{sequential importance sampling}, often abbreviated SIS, and has been known since the early 1970s. Limited by the power of computers and suffering from sample impoverishment or weight degeneracy, the SIS did not develop well until 1993. Gordon used this a technique based on sampling and importance sampling methods to find the best state estimation \citep{gordon1993novel}. A particle filter algorithm was proposed to allow rejuvenation of the set of samples by duplicating the samples with high importance weights and, on the contrary, removing samples with low weights \citep{cappe2009inference}. Since then, sequential Monte Carlo (SMC) methods have been applied in many different fields including but not limited to computer vision, signal processing, control, econometrics, finance, robotics, and statistics \citep{smcmip2011, ristic2004beyond}.
 
 In the state-space model, a generic particle filter estimates the posterior distribution of the hidden states using the observation measurement process. The filtering problem is to estimate sequentially the values of the hidden states $x_t$ given the values of the observation process $y_{1:t}$ at any time $t$. In another word, it is to find the value of $p(x_t  \mid  y_{1:t})$. The process is divided into two steps: prediction and updating. In the prediction step, the assumption of Markov chain is the current status $x_t $ only depends on the previous one $x_{t-1}$. Then we can calculate the probability of $x_t$ by 
 \begin{align*}
@@ -66,7 +66,7 @@ In the updating step, once $p(x_t \mid y_{1:t-1})$ is known, $p(x_t \mid y_{1:t}
 p(x_t \mid y_{1:t})=&\frac{p(y_t \mid x_t ,y_{1:t-1})p(x_{t}\mid y_{1:t-1})}{p(y_t \mid  y_{1:t-1})} \\
 =&\frac{p(y_t \mid x_t )p(x_{t}\mid y_{1:t-1})}{p(y_t \mid  y_{1:t-1})},
 \end{align*}
-where the normalization $p(y_t \mid  y_{1:t-1})=\int p(y_t \mid x_t )p(x_t \mid  y_{1:t-1}) dx_t $ \cite{arulampalam2002tutorial}.
+where the normalization $p(y_t \mid  y_{1:t-1})=\int p(y_t \mid x_t )p(x_t \mid  y_{1:t-1}) dx_t $ \citep{arulampalam2002tutorial}.
 
 Imagine that the state-space is partitioned as many parts, in which the particles are filled according to some probability measure. The higher probability, the denser the particles are concentrated. Suppose the particles $x_k^{(1)}, \ldots, x_k^{(N)}$ at time $k$ are drawn from the target probability density function $p(x)$, then these particles are used to estimate the expectation and variance of $f(x)$ by
 \begin{align*}
@@ -139,7 +139,7 @@ the importance weights $W_t^{(i)}$ can be updated recursively via
 W_t^{(i)} &\propto W_{t-1}^{(i)} \frac{ p\left(y_t \mid x_t^{(i)}\right) p\left(x_{t}^{(i)}\mid x_{t-1}^{(i)}\right) }   {q\left(x_{t}^{(i)}\mid x_{t-1}^{(i)},y_{t}\right)}.
 \end{align*}
 
-The problem of SIS filter is that the distribution of importance weights becomes more and more skewed as time increases. Hence, after several iterations, only few particles have non-zero importance weights. This phenomenon is called \textit{weight degeneracy} or \textit{sample impoverishment} \cite{smcmip2011}.
+The problem of SIS filter is that the distribution of importance weights becomes more and more skewed as time increases. Hence, after several iterations, only few particles have non-zero importance weights. This phenomenon is called \textit{weight degeneracy} or \textit{sample impoverishment} \citep{smcmip2011}.
 
 The effective sample size $N_{\mbox{\scriptsize eff}}$ is suggested to monitor how bad the degeneration is, which is
 \begin{align*}
@@ -196,8 +196,8 @@ Because $w_{t-1}^{(i)}=\frac{1}{N}$, thus we have $w_t^{(i)} \propto p\left(y_t 
 w=\frac{1}{\sqrt{2\pi\Sigma}}\exp\left(-\frac{1}{2} (y_{\mbox{\scriptsize true}}-y)\Sigma^{-1}(y_{\mbox{\scriptsize true}}-y)\right).
 \end{align*}
 
-However, SMC methods are suffering some drawbacks. At any time point $k (k<t)$, if $t-k$ is too large, the approximation to marginal $p(x_k\mid y_{1:t})$ is likely to be rather poor as the successive resampling steps deplete the number of distinct particle co-ordinates $x_k$ \cite{andrieu2010particle}, which is also the difficulty of approximating $p(\theta,x_{1:t}\mid y_{1:t})$ with SMC algorithms 
-\cite{andrieu1999sequential} \cite{fearnhead2002markov} \cite{storvik2002particle}. 
+However, SMC methods are suffering some drawbacks. At any time point $k (k<t)$, if $t-k$ is too large, the approximation to marginal $p(x_k\mid y_{1:t})$ is likely to be rather poor as the successive resampling steps deplete the number of distinct particle co-ordinates $x_k$ \citep{andrieu2010particle}, which is also the difficulty of approximating $p(\theta,x_{1:t}\mid y_{1:t})$ with SMC algorithms 
+\citep{andrieu1999sequential, fearnhead2002markov, storvik2002particle}. 
 
 
 
@@ -206,7 +206,7 @@ However, SMC methods are suffering some drawbacks. At any time point $k (k<t)$, 
 
 The \textit{auxiliary particle filter} (APF) was first introduced by \cite{pitt1999filtering} as an extension of SIR to perform inference in state-space model. The author uses the idea of stratification into particle filter to solve particle degeneracy by pre-selecting particles before propagation. 
 
-At each step, the algorithm draws a sample of the particle index $i$, which will be propagated from $t-1$ into the $t$, on the mixture in (\ref{PFexpectation}). These indexes are auxiliary variables only used as an intermediary step, hence the name of the algorithm \cite{pitt1999filtering}. Thus, the task becomes to sample from the joint density $p(x_t,i\mid y_{1:t})$. Define 
+At each step, the algorithm draws a sample of the particle index $i$, which will be propagated from $t-1$ into the $t$, on the mixture in (\ref{PFexpectation}). These indexes are auxiliary variables only used as an intermediary step, hence the name of the algorithm \citep{pitt1999filtering}. Thus, the task becomes to sample from the joint density $p(x_t,i\mid y_{1:t})$. Define 
 \begin{equation}
 p(x_t,i\mid y_{1:t})\propto p(y_t\mid x_t)p\left(x_t\mid x_{t-1}^{(i)}\right) w_{t-1}^{(i)}, 
 \end{equation}
@@ -216,11 +216,11 @@ and define $\mu_t^{(i)}$ as some characterization of $x_t\mid x_{t-1}$, which su
 \end{equation}
 with weights
 \begin{equation*}
-w_t^{\left(i\right)}\propto \frac{ p\left(y_t\mid x_t^{\left(i\right)}\right)  }{  p\left(y_t\mid\mu_t^{k\left(i\right)}\right)   }.
+w_t^{\left(i\right)}\propto \frac{ p\left(y_t\mid x_t^{\left(i\right)}\right) }{ p\left(y_t\mid\mu_t^{k\left(i\right)}\right) }.
 \end{equation*}
 This auxiliary variable based SIR requires only the ability to propagate and evaluate the likelihood, just as the original SIR suggestion of \cite{gordon1993novel}.  
 
-The main idea behind the APF is modifying the original sequence of target distributions to guide particles in promising regions, can be extended outside the filtering framework \cite{JOHANSEN20081498}. It is also recommended in the literature \cite{liu2008monte} that the particles can be resampled not according to the normalized weights $w_t^{\mbox{\tiny SISR}}(x_{1:t})=\frac{p(x_{1:t})}{ p(x_{1:t-1}q(x_t\mid x_{1:t-1})  }$  but according to a generic score function $w_t(x_{1:t})>0$ at time $t$
+The main idea behind the APF is modifying the original sequence of target distributions to guide particles in promising regions, can be extended outside the filtering framework \citep{JOHANSEN20081498}. It is also recommended in the literature \citep{liu2008monte} that the particles can be resampled not according to the normalized weights $w_t^{\mbox{\tiny SISR}}(x_{1:t})=\frac{p(x_{1:t})}{ p(x_{1:t-1}q(x_t\mid x_{1:t-1})  }$  but according to a generic score function $w_t(x_{1:t})>0$ at time $t$
 \begin{equation*}
 w_t(x_{1:t}) = g\left(w_t^{\mbox{\tiny SISR}}(x_{1:t})\right),
 \end{equation*}
@@ -233,7 +233,7 @@ where $g: \mathbb{R}^+\mapsto \mathbb{R}^+$ is a monotonously increasing functio
 
 SMC method is effective for exploring the sequence of posteriors distribution  $\pi(x_t\mid\theta) = p(x_t\mid y_{1:t},\theta)$, where the static parameters are treated as known. An inference about $\pi_{t-1}$ is used to draw an inference on $\pi_t$ by SIS and resampling. Its interest is focusing on $x_t$ instead of the whole path $x_{0:t}$, that is the filtering problem. However, this algorithm evolves weighting and resampling a population of $N$ particles, $x_t^{(1)},\ldots,x_t^{(N)}$, so that at each time $t$ they are properly weighted samples from $\pi(x_t \mid \theta)$. Additionally, it is not practicable on huge size datasets, due to numerous iterations in the sampling process. 
 
-As a complementary solution, \textit{sequential particle filter} method was proposed by Nicolas \cite{chopin2002sequential} in the first part of his doctorate thesis. Instead, sequential particle filter is using preliminary explorations of partial distribution $\pi(\theta\mid y_{1:k})$ $(k<t)$. The concept is: an inference of $\pi(\theta)$ is drawn from the first $k$ observations, named as learning phase, and it is updated through importance sampling to incorporate the following $l$ observations, named as updating phase, \cite{chopin2002sequential}.  This method is the \textit{iterated batch importance sampling} (IBIS) algorithm, which is used for the recursive exploration of the sequence of the parameter posterior distributions $\pi(\theta)$. It updates a population of $N$ particles for $\theta$, $\theta^{(1)}, \ldots, \theta^{(N)}$, so that at each time $t$ they are a properly weighted sample from $\pi(\theta)$. The algorithm includes occasional MCMC steps for rejuvenating the current population of particles of $\theta$  to prevent the number of distinct from decreasing over time. 
+As a complementary solution, \textit{sequential particle filter} method was proposed by \cite{chopin2002sequential} in the first part of his doctorate thesis. Instead, sequential particle filter is using preliminary explorations of partial distribution $\pi(\theta\mid y_{1:k})$ $(k<t)$. The concept is: an inference of $\pi(\theta)$ is drawn from the first $k$ observations, named as learning phase, and it is updated through importance sampling to incorporate the following $l$ observations, named as updating phase, \citep{chopin2002sequential}.  This method is the \textit{iterated batch importance sampling} (IBIS) algorithm, which is used for the recursive exploration of the sequence of the parameter posterior distributions $\pi(\theta)$. It updates a population of $N$ particles for $\theta$, $\theta^{(1)}, \ldots, \theta^{(N)}$, so that at each time $t$ they are a properly weighted sample from $\pi(\theta)$. The algorithm includes occasional MCMC steps for rejuvenating the current population of particles of $\theta$  to prevent the number of distinct from decreasing over time. 
 
 In a batch mode, we are assuming that the parameter $\theta$ is static. When the first $k$ observations become available, we can find the posterior distribution $\pi(\theta\mid y_{1:k})$. After that, with length of $l (<\infty)$ observations coming into data stream, the posterior becomes $\pi(\theta\mid y_{1:k+l})$ and it is likely to be similar with $\pi(\theta\mid y_{1:k})$.  Hence, a set of proper re-weighted particles by the incremental weight is 
 \begin{align*}
@@ -267,18 +267,18 @@ The algorithm stops at $k=t$, where the particle system targets the distribution
 
 \subsection{MCMC-Based Particle Algorithm}
 
-It is discussed that the sequential Monte Carlo approaches are powerful methodologies to cope with large data set recursively, but unfortunately, they are inefficient when apply to high dimensional problems \cite{septier2009mcmc}.  An alternative set of powerful stochastic algorithms that allow us to solve most of Bayesian computational problems is MCMC method. However, as dataset becomes larger and larger, it requires numerous computing in the process. 
+It is discussed that the sequential Monte Carlo approaches are powerful methodologies to cope with large data set recursively, but unfortunately, they are inefficient when apply to high dimensional problems \citep{septier2009mcmc}.  An alternative set of powerful stochastic algorithms that allow us to solve most of Bayesian computational problems is MCMC method. However, as dataset becomes larger and larger, it requires numerous computing in the process. 
 
-A natural extension is whether there exists a sequential MCMC method to diversify the degenerate particle population thus improving the empirical approximation for multi-target tracking or high dimensional space. Luckily, sequential approaches using MCMC were proposed in \cite{berzuini1997dynamic}, in which the author combines MCMC with importance resampling to sequentially update the posterior distribution. 
-Other discussions, such as \cite{khan2005mcmc}, \cite{golightly2006bayesian} and \cite{pang2008models}, are using either resampling nor importance sampling. 
+A natural extension is whether there exists a sequential MCMC method to diversify the degenerate particle population thus improving the empirical approximation for multi-target tracking or high dimensional space. Luckily, sequential approaches using MCMC is proposed by \cite{berzuini1997dynamic}, in which the author combines MCMC with importance resampling to sequentially update the posterior distribution. 
+Other discussions, such as \citep{khan2005mcmc, golightly2006bayesian, pang2008models}, are using either resampling nor importance sampling. 
 
 As we discussed before, the a filtering problem is to find the posterior distribution recursively, like 
 \begin{equation}
 p(x_t\mid y_{1:t}) \propto \int p(y_t\mid x_t)p(x_t\mid x_{t-1})p(x_{t-1}\mid y_{1:t-1})dx_{t-1}. 
 \end{equation} 
-In particle filter, the posterior is approximated by particles $x_t^{(1)},\ldots,x_t^{(N)}$ in equation (\ref{rawParticleFilter}). A MCMC procedure is designed using (\ref{rawParticleFilter}) as the target distribution with a proposal distribution of $q\left(x_t\mid x_t^{(i)}\right)$. Therefore, like MCMC, the desired approximation $\hat{p}(x_t\mid y_{1:t})$ is obtained by storing every accepted samples after the initial burn-in iterations \cite{septier2009mcmc}. The drawback is excessive computation occurs as the number of particles increases at each iteration. 
+In particle filter, the posterior is approximated by particles $x_t^{(1)},\ldots,x_t^{(N)}$ in equation (\ref{rawParticleFilter}). A MCMC procedure is designed using (\ref{rawParticleFilter}) as the target distribution with a proposal distribution of $q\left(x_t\mid x_t^{(i)}\right)$. Therefore, like MCMC, the desired approximation $\hat{p}(x_t\mid y_{1:t})$ is obtained by storing every accepted samples after the initial burn-in iterations \citep{septier2009mcmc}. The drawback is excessive computation occurs as the number of particles increases at each iteration. 
 
-To avoid this issue, an MCMC-based particle algorithm in \cite{pang2008models} considers the joint posterior distribution of $x_t$ and $x_{t-1}$:
+To avoid this issue, an MCMC-based particle algorithm in \citep{pang2008models} considers the joint posterior distribution of $x_t$ and $x_{t-1}$:
 \begin{equation}
 p(x_t,x_{t-1}\mid y_{1:t})\propto p(y_t\mid x_t)p(x_t\mid x_{t-1})p(x_{t-1}\mid y_{1:t-1}),
 \end{equation}
@@ -315,14 +315,14 @@ After burn-in points, keep $x_k^{\left(j\right)}= x_k^{(i)}$ as new particles fo
  \caption{MCMC-Based Particle Algorithm}\label{algorithmMCMCParticle}
 \end{algorithm}
 
-In \cite{septier2009multiple}, the authors discussed some attractive features of genetic algorithms and simulated annealing into the framework of MCMC based particle scheme. One may refer to the paper for details. 
+\cite{septier2009multiple} discuss some attractive features of genetic algorithms and simulated annealing into the framework of MCMC based particle scheme. One may refer to the paper for details. 
 
 
 
 
 \section{On-line State and Parameter Estimation}\label{sectionStateandPara}
 
-The state transition density and the conditional likelihood function depend not only upon the dynamic state $x_t$, but also on a static parameter vector $\theta$, which will be stressed by use of the notations $f(x_t \mid x_{t-1},\theta)$ and $g(y_t\mid x_t,\theta)$. Putting the algorithms on-line means to update the parameters and states instantly as new observations coming into the data stream. For Bayesian dynamic models, however, the most natural option consists in treating the unknown parameter $\theta$, using the state-space representation, as a component of the state which lacks dynamic evolution, also referred to as a static parameter \cite{cappe2007overview}. The standard SMC is deficient for on-line parameter estimation. As a result of the successive resampling steps, after a certain time $t$, the approximation $\hat{p}(\theta\mid y_{1:t})$ will only contain a single unique value for $\theta$. In other words, SMC approximation of the marginalized parameter posterior distribution is represented by a single Dirac delta function. It also causes error accumulation in successive Monte Carlo (MC) steps grows exponentially or polynomially in time \cite{kantas2009overview}. 
+The state transition density and the conditional likelihood function depend not only upon the dynamic state $x_t$, but also on a static parameter vector $\theta$, which will be stressed by use of the notations $f(x_t \mid x_{t-1},\theta)$ and $g(y_t\mid x_t,\theta)$. Putting the algorithms on-line means to update the parameters and states instantly as new observations coming into the data stream. For Bayesian dynamic models, however, the most natural option consists in treating the unknown parameter $\theta$, using the state-space representation, as a component of the state which lacks dynamic evolution, also referred to as a static parameter \citep{cappe2007overview}. The standard SMC is deficient for on-line parameter estimation. As a result of the successive resampling steps, after a certain time $t$, the approximation $\hat{p}(\theta\mid y_{1:t})$ will only contain a single unique value for $\theta$. In other words, SMC approximation of the marginalized parameter posterior distribution is represented by a single Dirac delta function. It also causes error accumulation in successive Monte Carlo (MC) steps grows exponentially or polynomially in time \citep{kantas2009overview}. 
 
 Therefore, in this section, we are introducing some methods that will estimate combined state and parameter by either jointly estimating of state and parameter or by marginalizing the parameter using sufficient statistics. 
 
@@ -336,11 +336,12 @@ Some methods are trying to solve the posterior distribution $p(\theta \mid y_{1:
 \begin{equation}
 p(\theta \mid y_{1:t}) \propto p(y_{1:t} \mid \theta ) p(\theta )
 \end{equation}
-through maximize the likelihood function without introducing any bias or controlling the bias in states propagation. A pragmatic approach to reduce parameter sample degeneracy and error accumulation in successive MC approximations is to adding an artificial dynamic equation on $\theta$ \cite{higuchi2001self} \cite{kitagawa1998self}, which gives
+through maximize the likelihood function without introducing any bias or controlling the bias in states propagation. A pragmatic approach to reduce parameter sample degeneracy and error accumulation in successive MC approximations is to adding an artificial dynamic equation on $\theta$, \citep{higuchi2001self, kitagawa1998self}, which gives
 \begin{align*}
 \theta_{n+1} = \theta_n+\varepsilon_{n+1}.
 \end{align*}
-The artificial noise $\varepsilon_{t+1}\sim N(0,W_{t+1})$ is specified by a covariance matrix $W_{t+1}$. With this noise, SMC can now be applied to approximate $p(x_{1:t},\theta\mid y_{1:t})$. A related kernel density estimation method proposes a kernel density estimate of the target \cite{liu2001combined} \begin{align*}
+The artificial noise $\varepsilon_{t+1}\sim N(0,W_{t+1})$ is specified by a covariance matrix $W_{t+1}$. With this noise, SMC can now be applied to approximate $p(x_{1:t},\theta\mid y_{1:t})$. A related kernel density estimation method proposes a kernel density estimate of the target \citep{liu2001combined} 
+\begin{align*}
 \hat{p}(\theta\mid y_{1:t}) = \frac{1}{N}\sum M\left(\theta-\theta_n^{(i)}\right). 
 \end{align*} 
 At time $t+1$, the samples obtain a new set of particles. 
@@ -348,7 +349,7 @@ At time $t+1$, the samples obtain a new set of particles.
 
 \subsection{Practical Filtering}
 
-A \textit{fixed-lag approach} to filtering and sequential parameter learning was proposed in \cite{polson2008practical}. Its key idea is to express the filtering distribution as a mixture of lag-smoothing distributions and to implement it sequentially. 
+A \textit{fixed-lag approach} to filtering and sequential parameter learning was proposed in \citep{polson2008practical}. Its key idea is to express the filtering distribution as a mixture of lag-smoothing distributions and to implement it sequentially. 
 
 With a fixed-lag $l$, the state filtering and parameter learning require the sequence of the joint distribution $p(x_t,\theta\mid y_{1:t})$, which implies the desired filtering distribution $p(x_t\mid y_{1:t})$ being marginalized as 
 \begin{equation*}
@@ -391,12 +392,12 @@ Achieve a set of $\left\lbrace  \tilde{x}_{k-l+1}^{(i)},\theta^{(i)}\right\rbrac
  \caption{Practical Filtering Algorithm}\label{algorithmPraticalFilter}
 \end{algorithm}
 
-The speed and accuracy of this algorithm depend on the choice of sample size $M$ and the lag $l$, which is difficult, and there is a non-vanishing bias that is difficult to quantify \cite{polson2008practical} \cite{kantas2009overview}.
+The speed and accuracy of this algorithm depend on the choice of sample size $M$ and the lag $l$, which is difficult, and there is a non-vanishing bias that is difficult to quantify \citep{polson2008practical, kantas2009overview}.
 
 
 
 
-%A MCMC kernel with invariant density $p(x_{1:t},\theta\mid y_{1:t})$ is used in SMC algorithm. This method was firstly used in an on-line Bayesian parameter estimation, where the author in \cite{andrieu1999sequential} were using
+%A MCMC kernel with invariant density $p(x_{1:t},\theta\mid y_{1:t})$ is used in SMC algorithm. This method was firstly used in an on-line Bayesian parameter estimation, where the author in \citep{andrieu1999sequential} were using
 %\begin{align*}
 %K_n(x_{1:t}',\theta'\mid x_{1:t},\theta) = \delta_{x_{1:t}}(x_{1:t} ')p(\theta'\mid x_{1:t},y_{1:t}),
 %\end{align*}
@@ -417,7 +418,7 @@ At time $t$, suppose we have particles $\left\lbrace x_t^{(i)}\right\rbrace$ and
 \begin{equation*}
 p(x_{t+1} \mid y_{1:t+1}) \propto \sum_{i=1}^{N} w_t^{(i)} p\left(x_{t+1} \mid x_t^{(i)}\right)p\left(y_{t+1}\mid x_{t+1}\right).
 \end{equation*}
-However, variance increases through over $t$ by the Gaussian mixture. In \cite{west1993mixture}, the author is utilizing a smooth kernel density 
+However, variance increases through over $t$ by the Gaussian mixture. In \citep{west1993mixture}, the author is utilizing a smooth kernel density 
 \begin{equation}\label{LiuandWestDensity}
 p(\theta\mid y_{1:t})\approx \sum_{i=1}^{N}w_t^{(i)} N\left(\theta\mid m_t^{(i)},h^2V_t\right)
 \end{equation}
@@ -429,7 +430,7 @@ m_t^{(i)}=\alpha \theta_t^{(i)} + (1-\alpha)\bar{\theta}_t,
 \end{equation}
 where $\alpha=\sqrt{1-h^2}$ and $h>0$ is the smoothing parameter.
 %and the covariance is $V_t=\sum_{i=1}^{N}\frac{ \left(\theta_t^{(i)}-\bar{\theta}_t \right)\left(\theta_t^{(i)}-\bar{\theta}_t\right)^\top}{N}$. 
-Consequently, the resulting normal mixture retains the mean $\bar{\theta}_t$ and now has the correct covariance $V_t$, hence the over dispersion is trivially corrected \cite{liu2001combined}. 
+Consequently, the resulting normal mixture retains the mean $\bar{\theta}_t$ and now has the correct covariance $V_t$, hence the over dispersion is trivially corrected \citep{liu2001combined}. 
 
 A general algorithm is summarized bellow: 
 %\begin{itemize}
@@ -461,7 +462,7 @@ Normalize weights: $w_{k+1}^{(i)} = \frac{\tilde{w}_{k+1}^{(i)}}{\sum \tilde{w}_
 \subsection{Storvik Filter}
 
 
-\textit{Storvik filter}, presented in \cite{storvik2002particle}, is assuming that the posterior $p(\theta\mid x_{0:t},y_{1:t})$ depends on a low dimensional set of sufficient statistics $s_t$ with an associated recursive update via $s_t=S(s_{t-1},x_t,y_t)$. This approach is based on marginalizing the static parameters out of the posterior distribution, in which only the state vector needs to be considered, and aiming at reducing the particle impoverishment. It can be thought of as an extension of particle filters with additional steps of updating sufficient statistics and sampling parameters sequentially \cite{lopes2011particle}. In particular, models for which the underlying process is Gaussian and linear in the parameters can be handled by this approach \cite{storvik2002particle}. Furthermore, some other observational distributions with unknown parameters can be handled by this approach but subject to unavailable sufficient statistics. 
+\textit{Storvik filter}, presented in \citep{storvik2002particle}, is assuming that the posterior $p(\theta\mid x_{0:t},y_{1:t})$ depends on a low dimensional set of sufficient statistics $s_t$ with an associated recursive update via $s_t=S(s_{t-1},x_t,y_t)$. This approach is based on marginalizing the static parameters out of the posterior distribution, in which only the state vector needs to be considered, and aiming at reducing the particle impoverishment. It can be thought of as an extension of particle filters with additional steps of updating sufficient statistics and sampling parameters sequentially \citep{lopes2011particle}. In particular, models for which the underlying process is Gaussian and linear in the parameters can be handled by this approach \citep{storvik2002particle}. Furthermore, some other observational distributions with unknown parameters can be handled by this approach but subject to unavailable sufficient statistics. 
 
 The Storvik filter is summarized bellow:
 %\begin{itemize}
@@ -489,9 +490,9 @@ Sample $\theta^{(i)}$ from $p\left(\theta\mid s_{k}^{(i)}\right)$.
 
 \subsection{Particle Learning}
 
-\textit{Particle Learning}, proposed by \cite{carvalho2010particle}, uses the similar sufficient statistics as Storvik filter does, in which the set of sufficient statistics is used for parameters estimation only. As an extension to the mixture Kalman filter \cite{chen2000mixture}, Particle Learning allows parameters learning throughout the process and utilize a resampling propagate framework together with a set of particles that includes a set of sufficient statistics (if it is available) for the states. 
+\textit{Particle Learning}, proposed by \cite{carvalho2010particle}, uses the similar sufficient statistics as Storvik filter does, in which the set of sufficient statistics is used for parameters estimation only. As an extension to the mixture Kalman filter \citep{chen2000mixture}, Particle Learning allows parameters learning throughout the process and utilize a resampling propagate framework together with a set of particles that includes a set of sufficient statistics (if it is available) for the states. 
 
-By denoting $s_t$ and $s_t^x$ the sufficient statistics for the parameter and state respectively, the updating rules are satisfied: $s_t=S(s_{t-1},x_t,y_t)$ and $s_t^x=K\left(s_{t-1}^x,\theta,y_t\right)$, where $K(\cdot)$ is the Kalman filter recursions. In Particle Learning, the prior to sampling from the proposal distribution uses a predictive likelihood and takes $y_{t+1}$ into account \cite{vieira2016online}. This algorithm is summarized as following: 
+By denoting $s_t$ and $s_t^x$ the sufficient statistics for the parameter and state respectively, the updating rules are satisfied: $s_t=S(s_{t-1},x_t,y_t)$ and $s_t^x=K\left(s_{t-1}^x,\theta,y_t\right)$, where $K(\cdot)$ is the Kalman filter recursions. In Particle Learning, the prior to sampling from the proposal distribution uses a predictive likelihood and takes $y_{t+1}$ into account \citep{vieira2016online}. This algorithm is summarized as following: 
 
 %\begin{itemize}
 %\item{Step 1.} Resample $\left\lbrace \tilde{z}_t^{(i)}\right\rbrace_{i=1}^N=(\tilde{s}_t^{x(i)},\tilde{s}_t^{(i)},\tilde{\theta}^{(i)})$ from $p(z_t\mid s_t^x,s_t,\theta)$ with weight $w\propto p(y_{t+1}\mid s_{t}^x,\theta)$.
@@ -517,10 +518,10 @@ Update $s_{k+1}^x = K\left(s_{k}^x,\theta,y_{k+1}\right)$.
 
 \subsection{Adaptive Ensemble Kalman Filter}
 
-Storvik filter and Particle learning algorithms are efficient in some ways,  however, the drawbacks are obvious. One of them is that the sufficient statistics are not always available, or hard to find, for complex models. They are trying to reduce the problem of particle impoverishment, although in practice they did not solve the problem completely \cite{chopin2010particle}. An ensemble Kalman filter method was proposed for sequential state and parameter estimation \cite{stroud2016bayesian}. It is fully Bayesian and propagates the joint posterior density of states and parameters through over the process. 
+Storvik filter and Particle learning algorithms are efficient in some ways,  however, the drawbacks are obvious. One of them is that the sufficient statistics are not always available, or hard to find, for complex models. They are trying to reduce the problem of particle impoverishment, although in practice they did not solve the problem completely \citep{chopin2010particle}. An ensemble Kalman filter method was proposed for sequential state and parameter estimation \citep{stroud2016bayesian}. It is fully Bayesian and propagates the joint posterior density of states and parameters through over the process. 
 
 
-The ensemble Kalman filter, which is an extension to the standard Kalman filter \cite{kalman1960new}, is an approximate filtering method introduced in the geophysics literature by \cite{evensen1994sequential}. Instead of working with the entire distribution, the ensemble Kalman filter stores propagates and updates an ensemble of vectors that approximates the state distribution \cite{katzfuss2016understanding}. 
+The ensemble Kalman filter, which is an extension to the standard Kalman filter, is an approximate filtering method introduced in the geophysics literature by \cite{evensen1994sequential}. Instead of working with the entire distribution, the ensemble Kalman filter stores propagates and updates an ensemble of vectors that approximates the state distribution \citep{katzfuss2016understanding}. 
 
 
 Recall that an on-line combined parameters and state estimation relies on the decomposition of the joint posterior distribution 
@@ -548,7 +549,7 @@ where $F_{t+1}$ is the observation map. The posterior ensemble at time $t+1$ bas
 \begin{equation}\label{ensembleKalmanForecast}
 x_{t+1}^{(i)} = x_{t+1}^{f(i)}+\hat{K}_{t+1}(\theta)\left(y_{t+1}+v_{t+1}^{(i)}+F_{t+1}(\theta)x_{t+1}^{f(i)}\right), 
 \end{equation}
-where $\left\lbrace x_{t}^{(i)}\right\rbrace_1^N$ is an ensemble of states representing the filtering distribution at time $t$. $x_{t+1}^{f(i)}$ is the forecast ensemble from the forward map by $x_{t+1}^{f(i)} = x_{t+1}^{p(i)} +w_{t+1}^{(i)}= G\left(x_{t}^{(i)}\right)+w_{t+1}^{(i)}$. For the second term (\ref{jointposteriorterm2}), the author \cite{stroud2016bayesian} proposed a feasible likelihood approximation by a multivariate Gaussian distribution \cite{mitchell2000adaptive} for high-dimensional states: 
+where $\left\lbrace x_{t}^{(i)}\right\rbrace_1^N$ is an ensemble of states representing the filtering distribution at time $t$. $x_{t+1}^{f(i)}$ is the forecast ensemble from the forward map by $x_{t+1}^{f(i)} = x_{t+1}^{p(i)} +w_{t+1}^{(i)}= G\left(x_{t}^{(i)}\right)+w_{t+1}^{(i)}$. For the second term (\ref{jointposteriorterm2}),  \cite{stroud2016bayesian} propose a feasible likelihood approximation by a multivariate Gaussian distribution \citep{mitchell2000adaptive} for high-dimensional states: 
 \begin{equation}\label{esembleKalmanLikeli}
 p(y_{t+1}\mid\theta,y_{1:t})\propto \left| \hat{\Sigma}_t(\theta)  \right|^{-\frac{1}{2}} \exp \left( -\frac{1}{2} \hat{e}_{t+1}(\theta)^\top \hat{\Sigma}_t(\theta)^{-1} \hat{e}_{t+1}(\theta) \right),
 \end{equation}
@@ -587,7 +588,7 @@ Draw posterior ensemble using (\ref{ensembleKalmanForecast}).
 \caption{Adaptive Ensemble Kalman Filter}\label{algorithmEnKF}
 \end{algorithm}
 
-This algorithm works well when $\theta$ is small and the parameter in the forward map $G(\cdot)$ is known. If the forward map parameter is not known and has a high correlation with the state, the author suggests that it can be combined with the state augmentation \cite{anderson2001ensemble} and this algorithm is still working. 
+This algorithm works well when $\theta$ is small and the parameter in the forward map $G(\cdot)$ is known. If the forward map parameter is not known and has a high correlation with the state, the author suggests that it can be combined with the state augmentation \citep{anderson2001ensemble} and this algorithm is still working. 
 
 
 
@@ -595,14 +596,14 @@ This algorithm works well when $\theta$ is small and the parameter in the forwar
 
 Bayesian estimation requires the posterior distribution of $p(\theta\mid y_{1:t})$, where the $\theta$ is treated as a random variable. By contrast, maximum likelihood estimation is looking for a value $\hat{\theta}$, which maximum the likelihood $p(y_{1:t}\mid \theta)$. 
 
-The classical \textit{expectation maximization} (EM) algorithm \cite{dempster1977maximum} for maximizing $l(\theta)$ is a two step procedure: 
+The classical \textit{expectation maximization} (EM) algorithm \citep{dempster1977maximum} for maximizing $l(\theta)$ is a two step procedure: 
 \begin{itemize}
 \item{E-step}:   Compute  $Q(\theta_k,\theta)=\int \ln p_\theta(x_{0:t},y_{1:t})p_{\theta_k}(x_{0:t}\mid y_{1:t}) dx_{0:t}$. 
 \item{M-step}: Update the parameter $\theta_k$ by $\theta_{k+1}=\arg \max Q(\theta_k,\theta)$.
 \end{itemize}
 Then $\left\lbrace l(\theta_k)_k\right\rbrace$ generated by the EM is a non-decreasing sequence.  
 
-A straightforward \textit{on-line EM} algorithm uses SMC method to maximize $l(\theta)$. However, it requires estimating sufficient statistics base on joint probability distributions whose dimension is increasing over time and has a computational load of $\mathit{O}(N^2)$ per time step \cite{kantas2009overview}.  To circumvent this problem, \cite{andrieu2005line} proposed a pseudo-likelihood function for finite state-space models. 
+A straightforward \textit{on-line EM} algorithm uses SMC method to maximize $l(\theta)$. However, it requires estimating sufficient statistics base on joint probability distributions whose dimension is increasing over time and has a computational load of $\mathit{O}(N^2)$ per time step \citep{kantas2009overview}.  To circumvent this problem, \cite{andrieu2005line} propose a pseudo-likelihood function for finite state-space models. 
 
 Assuming that the process is stationary, give a time lag $L\geq 1$ and any $k\geq 1$, $x_{1:t}$ and $y_{1:t}$ are sliced to $X_k= x_{kL+1:(k+1)L}$ and $Y_k=  y_{kL+1:(k+1)L}$. For example: $X_1= x_{L+1:2L}$ consisting of $L$ data. Further, the joint distribution of $p(X_k,Y_k)$ is 
 \begin{equation}
@@ -612,17 +613,17 @@ The likelihood of a block $Y_k$ of observations is given by
 \begin{equation}
 p(Y_k) = \int p\left(X_k,Y_k\right)dX_k,
 \end{equation}
-and the log pseudo-likelihood for $m$ slices is $\sum_{k=0}^{m-1}\ln p(Y_k)$  \cite{andrieu2005line}.
+and the log pseudo-likelihood for $m$ slices is $\sum_{k=0}^{m-1}\ln p(Y_k)$  \citep{andrieu2005line}.
 
 
-The advantage of this algorithm is that it only requires an approximation of the fixed dimensional distribution $p(X_k\mid Y_k)$ and don't suffer degeneracy for small $L$ \cite{kantas2009overview}. The disadvantage is that it only applies to stationary distribution, and can be observed empirically that the algorithm might converge to incorrect values and even sometimes drift away from the correct values as $t$ increases \cite{andrieu2010particle}.  
+The advantage of this algorithm is that it only requires an approximation of the fixed dimensional distribution $p(X_k\mid Y_k)$ and don't suffer degeneracy for small $L$ \citep{kantas2009overview}. The disadvantage is that it only applies to stationary distribution, and can be observed empirically that the algorithm might converge to incorrect values and even sometimes drift away from the correct values as $t$ increases \citep{andrieu2010particle}.  
 
 
 
 
 \section{Simulation Study}\label{sectionFilterreviewSimulation}
 
-%In this section, we are comparing the performance of Liu and West's filter, Storvik filter, particle learning and adaptive ensemble Kalman filter by a first-order dynamic linear model, see example 4 of \cite{lopes2011particle}. 
+%In this section, we are comparing the performance of Liu and West's filter, Storvik filter, particle learning and adaptive ensemble Kalman filter by a first-order dynamic linear model, see example 4 of \citep{lopes2011particle}. 
 
 %Explicitly, the model is in the following form of 
 %\begin{align*}
@@ -631,7 +632,7 @@ The advantage of this algorithm is that it only requires an approximation of the
 %\end{align*}
 %where $\epsilon\sim N(0,\tau)$ and $\omega\sim N(0,\sigma)$. Particularly, the initial value $x_0\sim N(m_0,C_0)$ is supposed to be known. $\sigma^2$ and $\tau^2$ are supposed to be \textit{Inverse Gamma} distributed with two parameters $(a_0,A_0)$ and $(b_0,B_0)$ respectively. Therefore, the unknown parameter $\theta$ is a set of $\left\lbrace \alpha,\beta,\sigma^2,\tau^2\right\rbrace$. 
 
-In this section, we are comparing the performance of Liu and West's filter (LW), Storvik filter (St), Particle Learning (PL) and the proposed sequential MCMC Algorithm \ref{algorithmslidingwindow} in Section \ref{SectionHighDimensionalOU} by a simple dynamic linear model, see example \cite{liu2001combined}. Explicitly, the model is 
+In this section, we are comparing the performance of Liu and West's filter (LW), Storvik filter (St), Particle Learning (PL) and the proposed sequential MCMC Algorithm \ref{algorithmslidingwindow} in Section \ref{SectionHighDimensionalOU} by a simple dynamic linear model, see example \citep{liu2001combined}. Explicitly, the model is 
 \begin{align*}
 y_t&=F x_t+\varepsilon_t,\\
 x_t&=\phi x_{t-1}+w_t,\\
@@ -759,7 +760,7 @@ The estimations for $x_t$ from $t=300$ to $897$ are very close and hard to tell 
 
 \section{Conclusion}
 
-In this chapter, we take a brief overview of existing sequential state estimation and combined state and parameter estimation. The particle filter is an efficient method for state estimation, although the particles impoverishment is inevitable. Extended to this method, researchers are working on killing particles degeneracy and several accomplishments have been achieved. A new challenge is estimating the unknown parameters. In no doubt, for complex stochastic processes and dynamics, both Bayesian and Frequentist methods are working well. One may refer to \cite{wakefield2013bayesian} for further discussion between Bayesian and Frequentist methods and implementation. 
+In this chapter, we take a brief overview of existing sequential state estimation and combined state and parameter estimation. The particle filter is an efficient method for state estimation, although the particles impoverishment is inevitable. Extended to this method, researchers are working on killing particles degeneracy and several accomplishments have been achieved. A new challenge is estimating the unknown parameters. In no doubt, for complex stochastic processes and dynamics, both Bayesian and Frequentist methods are working well. One may refer to \citep{wakefield2013bayesian} for further discussion between Bayesian and Frequentist methods and implementation. 
 
 As a summary, most of the research issues for filtering and parameter estimation focused on 
 \begin{itemize}\itemsep0em 
@@ -768,7 +769,7 @@ As a summary, most of the research issues for filtering and parameter estimation
 \item Exploration of accurate estimation with low variances in higher dimensional space. 
 \end{itemize}
 
-Subject to pages and time, some algorithms are not included in this chapter. For more information and interests, readers can refer to unscented Kalman filter \cite{wan2000unscented} and its related algorithms for non-linear estimation, particle MCMC \cite{andrieu2010particle} for off-line Bayesian estimation and on-line gradient approach \cite{poyiadjis2005maximum} for parameter estimation. 
+Subject to pages and time, some algorithms are not included in this chapter. For more information and interests, readers can refer to unscented Kalman filter \citep{wan2000unscented} and its related algorithms for non-linear estimation, particle MCMC \citep{andrieu2010particle} for off-line Bayesian estimation and on-line gradient approach \citep{poyiadjis2005maximum} for parameter estimation. 
 
 
 
