@@ -1,29 +1,12 @@
-This is BibTeX, Version 0.99dThe top-level auxiliary file: draft.aux
+This is BibTeX, Version 0.99d (TeX Live 2017)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: draft.aux
 The style file: otago.bst
+Reallocated field_info (elt_size=4) to 10865 items from 5000.
 Database file #1: thesis.bib
-Too many commas in name 1 of "Atkinson, A.D. , Sanjoé, J.J." for entry Atkinson2004
-while executing---line 1587 of file otago.bst
-Too many commas in name 1 of "Atkinson, A.D. , Sanjoé, J.J." for entry Atkinson2004
-while executing---line 1587 of file otago.bst
-Too many commas in name 1 of "Atkinson, A.D. , Sanjoé, J.J." for entry Atkinson2004
-while executing---line 1587 of file otago.bst
-Too many commas in name 1 of "Atkinson, A.D. , Sanjoé, J.J." for entry Atkinson2004
-while executing---line 1632 of file otago.bst
-Too many commas in name 1 of "Atkinson, A.D. , Sanjoé, J.J." for entry Atkinson2004
-while executing---line 1632 of file otago.bst
-Too many commas in name 1 of "Atkinson, A.D. , Sanjoé, J.J." for entry Atkinson2004
-while executing---line 1632 of file otago.bst
-Too many commas in name 1 of "Atkinson, A.D. , Sanjoé, J.J." for entry Atkinson2004
-while executing---line 1632 of file otago.bst
 Warning--can't use both author and editor fields in smcmip2011
 Warning--no number and no volume in atchade2009adaptive
 Warning--page numbers missing in atchade2009adaptive
-Too many commas in name 1 of "Atkinson, A.D. , Sanjoé, J.J." for entry Atkinson2004
-while executing---line 1669 of file otago.bst
-Too many commas in name 1 of "Atkinson, A.D. , Sanjoé, J.J." for entry Atkinson2004
-while executing---line 1669 of file otago.bst
-Too many commas in name 1 of "Atkinson, A.D. , Sanjoé, J.J." for entry Atkinson2004
-while executing---line 1669 of file otago.bst
 Warning--no number and no volume in bar1993estimation
 Warning--page numbers missing in bar1993estimation
 Warning--no number and no volume in bedard2007weak
@@ -105,4 +88,45 @@ Warning--no number and no volume in west1993mixture
 Warning--no journal in wolberg1988cubic
 Warning--no number and no volume in wolberg1988cubic
 Warning--page numbers missing in wolberg1988cubic
-(There were 10 error messages)
+You've used 255 entries,
+            2855 wiz_defined-function locations,
+            1916 strings with 44688 characters,
+and the built_in function-call counts, 180033 in all, are:
+= -- 15228
+> -- 13100
+< -- 56
++ -- 3958
+- -- 4490
+* -- 15959
+:= -- 32612
+add.period$ -- 796
+call.type$ -- 255
+change.case$ -- 1588
+chr.to.int$ -- 255
+cite$ -- 339
+duplicate$ -- 4999
+empty$ -- 10994
+format.name$ -- 5182
+if$ -- 33685
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 295
+newline$ -- 1271
+num.names$ -- 2550
+pop$ -- 1420
+preamble$ -- 1
+purify$ -- 3371
+quote$ -- 0
+skip$ -- 5284
+stack$ -- 0
+substring$ -- 9845
+swap$ -- 1716
+text.length$ -- 56
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 4680
+warning$ -- 84
+while$ -- 2565
+width$ -- 0
+write$ -- 3398
+(There were 84 warnings)
