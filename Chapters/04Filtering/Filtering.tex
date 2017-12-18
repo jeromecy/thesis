@@ -39,7 +39,7 @@ In applications, the process functions $G_t$ and $F_t$ contain one or more unkno
 
 \subsection*{Contents}
 
-In this chapter, I give an overview of existing methods for sequential state and parameter inference. In Section \ref{sectionFiltering}, the concepts and popular algorithms of sequential state estimation are introduced. These algorithms are the fundamental of advanced methods. In Section \ref{sectionStateandPara}, we will have a look at on-line algorithms that can estimate both unknown state and parameter in different ways. In Section \ref{sectionFilterreviewSimulation}, I will finally analyze these methods numerically and compare them with a proposed Algorithm \ref{algorithmslidingwindow} in Section \ref{SectionHighDimensionalOU} with simulated data. 
+In this chapter, an overview of existing methods for sequential state and parameter inference is given with discussions and a numerical study. In Section \ref{sectionFiltering}, the concepts and popular algorithms of sequential state estimation are introduced. These algorithms are the fundamental of advanced methods. In Section \ref{sectionStateandPara}, we will have a look at on-line algorithms that can estimate both unknown state and parameter in different ways. In Section \ref{sectionFilterreviewSimulation}, a numerical study is to analyze and compare the performances of these methods, including the proposed Algorithm \ref{algorithmslidingwindow} in Section \ref{SectionHighDimensionalOU}. 
 
 
 
@@ -702,7 +702,7 @@ Notice that the proposed sliding window MCMC algorithm requires using a few data
 \includegraphics[width=\textwidth]{Chapters/04Filtering/plot/MCMCchainVary.pdf}
  \caption{MCMC with varying-length}
    \end{subfigure}
-\caption{Trace plots. Repeatedly running 50 times. Cutting off the first \textbf{300} data. It is apparent that all these algorithms converge to the true parameter (black horizontal line) along time. St, PL and MCMC-vary have a narrower range. MCMC-100 has a higher variability and MCMC-vary has the least. The more data incorporated in the estimation phase the better approximation to be obtained. }\label{FilterRiewComparesion01}
+\caption{Trace plots. Repeatedly running 50 times with cutting off the first \textbf{300} data. It is apparent that all these algorithms converge to the true parameter (black horizontal line) along time. St, PL and MCMC-vary have a narrower range. MCMC-100 has a higher variability and MCMC-vary has the least. The more data incorporated in the estimation phase the better approximation to be obtained. }\label{FilterRiewComparesion01}
 \end{figure}
 
  

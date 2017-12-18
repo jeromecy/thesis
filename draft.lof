@@ -18,7 +18,7 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Comparing (trivial) V-spline and its Bayes estimate. Two methods are corresponding to each other. In this figure, black dots indicate observations and solid line stands for the reconstruction. The V-spline and its posterior $\mathrm {E}(f(t) \mid \mathbf {y}, \mathbf {v})$ of Bayes estimate give the same results. \relax }}{62}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Trace plots. Repeatedly running 50 times. Cutting off the first \textbf {300} data. It is apparent that all these algorithms converge to the true parameter (black horizontal line) along time. St, PL and MCMC-vary have a narrower range. MCMC-100 has a higher variability and MCMC-vary has the least. The more data incorporated in the estimation phase the better approximation to be obtained. \relax }}{87}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Trace plots. Repeatedly running 50 times with cutting off the first \textbf {300} data. It is apparent that all these algorithms converge to the true parameter (black horizontal line) along time. St, PL and MCMC-vary have a narrower range. MCMC-100 has a higher variability and MCMC-vary has the least. The more data incorporated in the estimation phase the better approximation to be obtained. \relax }}{87}
 \contentsline {figure}{\numberline {4.2}{\ignorespaces Box-plots comparison of all the algorithms. The proposed MCMC algorithm is more stable than other filters.\relax }}{88}
 \contentsline {figure}{\numberline {4.3}{\ignorespaces The filtering for $x_{300:897}$ is competitive. These algorithms return close estimations. \relax }}{89}
 \addvspace {10\p@ }

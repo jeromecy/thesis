@@ -42,7 +42,7 @@ by minimizing which, the best estimation $\hat{f}$ can be found. This approach m
 Similar to the conventional smoothing spline problem, one has to choose the penalty function $\lambda(t)$. The fundamental idea of nonparametric smoothing is to let the data choose the amount of smoothness, which consequently decides the model complexity \cite{gu1998model}. Most methods focus on data-driven criteria, such as cross-validation (CV), generalized cross-validation (GCV) \cite{craven1978smoothing} and generalized maximum likelihood (GML) \cite{wahba1985comparison}. A new challenge is posed that the smoothing parameter becomes a function and is varying in domains. The structure of this penalty function controls the complexity of each domain and the whole final model. \cite{liu2010data} proposed to approximate the penalty function with an indicator and extended the generalized likelihood to the adaptive smoothing spline.
 
 
-In this chapter, I propose an adaptive smoothing spline method based on Hermite spline basis functions to obtain a reconstruction of $f$ and $f'$ from $n$ paired time series noisy data $\mathbf{y}=\left\lbrace y_1,\ldots,y_n\right\rbrace$ and $\mathbf{v}=\left\lbrace v_1,\ldots,v_n\right\rbrace$. Rather than only using residuals of $f(t_i)-y_i$, an extra residuals of $f'(t_i)-v_i$ with a new parameter $\gamma$ in our objective function is included. In this way, the spline keeps a balance between position and velocity. By using new basis functions, the new smoothing spline is reconstructed on the whole interval $\left[a,b\right]$. Derived from the new objective function, an advanced cross-validation formula for both $f(t)$ and $f'(t)$ is given. It is shown that the new spline performs well on simulated signal data \textit{Blocks}, \textit{Bumps}, \textit{HeaviSine} and \textit{Doppler} \cite{donoho1994ideal}. At the end of this chapter, an application of this smoothing spline on a set of 2-dimensional real data is given. It obtains a better reconstruction. This method can be used in either getting the true signal from noisy data or reconstructing the trajectory of a moving object. 
+In this chapter, an adaptive smoothing V-spline using modified Hermite spline basis functions is proposed to obtain a reconstruction of $f$ and $f'$ from $n$ paired time series noisy data $\mathbf{y}=\left\lbrace y_1,\ldots,y_n\right\rbrace$ and $\mathbf{v}=\left\lbrace v_1,\ldots,v_n\right\rbrace$. Rather than only using residuals of $f(t_i)-y_i$, an extra residuals of $f'(t_i)-v_i$ with a new parameter $\gamma$ in our objective function is included. In this way, the spline keeps a balance between position and velocity. By using new basis functions, the new smoothing spline is reconstructed on the whole interval $\left[a,b\right]$. Derived from the new objective function, an advanced cross-validation formula for both $f(t)$ and $f'(t)$ is given. It is shown that the new spline performs well on simulated signal data \textit{Blocks}, \textit{Bumps}, \textit{HeaviSine} and \textit{Doppler} \cite{donoho1994ideal}. At the end of this chapter, an application of this smoothing spline on a set of 2-dimensional real data is given. It obtains a better reconstruction. This method can be used in either getting the true signal from noisy data or reconstructing the trajectory of a moving object. 
 
 %Errors comes from the GPS units and individuals' behaviors, which bring unreliable data and less precise results. %\cite{castro2006geometric}
 
@@ -757,10 +757,10 @@ The results are shown in table \ref{mse3200} and \ref{tmse3200}. All of these me
 %\begin{sidewaystable}
  \begin{table}
  	\centering
- 	\caption{MSE. Mean squared errors of different methods. The numbers in bold indicate the smallest error among these methods under the same level. The difference is not significant.}\label{mse3200}
+ 	\caption{MSE. Mean squared errors of different methods. The numbers in bold indicate the least error among these methods under the same level. The difference is not significant.}\label{mse3200}
 	\setlength\tabcolsep{1.5pt}
-	\begin{tabular}{|c|c|c|c|c|c|c|c|}
-\hline	MSE $\left(10^{-4}\right)$   & SNR & TS & TS$_{\footnotesize\gamma=0}$ & TS$_{\footnotesize APT=0}$  & P-spline & Wavelet(sure)& Wavelet(Bayes)\\ \hline
+	\begin{tabular}{|c|c|C{1.9cm}|C{1.9cm}|C{1.9cm}|C{1.9cm}|C{1.9cm}|C{1.9cm}|}
+\hline	MSE $\left(10^{-4}\right)$   & SNR & V-spline & VS$_{\footnotesize\gamma=0}$ & VS$_{\scriptsize \mbox{APT=0}}$   & P-spline & W(sure)& W(Bayes)\\ \hline
 \multirow{2}{*}{\textit{Blocks}}     & 7   &  16.53& 15.99 & 16.69 & 16.14  & \textbf{15.39} & 16.68 \\ \cline{2-8}
        & 3   &  89.79 & \textbf{87.64} & 89.94  & 88.27 & 98.35 & 90.24 \\ \hline
 \multirow{2}{*}{\textit{Bumps}}     & 7   & 4.40 & 4.19 & 4.55 & 4.33 & \textbf{4.18} & 4.59 \\ \cline{2-8}
@@ -776,10 +776,10 @@ The results are shown in table \ref{mse3200} and \ref{tmse3200}. All of these me
 %\begin{sidewaystable} 
 \begin{table}
 	\centering
-	\caption{TMSE. True mean squared errors of different methods. The numbers in bold indicate the smallest error among these methods under the same level. The proposed V-spline returns the smallest TMSE among all the methods under the same level except for $\textit{Doppler}$ with SNR=7. The differences are significant. }\label{tmse3200}
+	\caption{TMSE. True mean squared errors of different methods. The numbers in bold indicate the least error among these methods under the same level. The proposed V-spline returns the smallest TMSE among all the methods under the same level except for $\textit{Doppler}$ with SNR=7. The differences are significant. }\label{tmse3200}
 	\setlength\tabcolsep{1.5pt}
-	\begin{tabular}{|c|c| c| c| c|c|c|c|}
-\hline	TMSE $\left(10^{-6}\right)$  & SNR & TS & TS$_{\footnotesize\gamma=0}$ & TS$_{\footnotesize APT=0}$  & P-spline & Wavelet(sure) & Wavelet(Bayes)\\ \hline
+	\begin{tabular}{|c|c|C{1.9cm}|C{1.9cm}|C{1.9cm}|C{1.9cm}|C{1.9cm}|C{1.9cm}|}
+\hline	TMSE $\left(10^{-6}\right)$  & SNR & V-spline & VS$_{\footnotesize\gamma=0}$ & VS$_{\scriptsize \mbox{APT=0}}$   & P-spline & W(sure) &  W(Bayes)\\ \hline
 		
 \multirow{2}{*}{\textit{Blocks}}  & 7   & \textbf{1.75} & 54.25 &  28.68   & 54.76   & 201.02   & 182.12   \\ \cline{2-8}
 	     & 3   & \textbf{16.44} & 152.5 & 30.76  & 171.59   & 1138.08  & 712.36  \\ \hline
@@ -988,9 +988,9 @@ Table \ref{1dxymse} illustrates the MSE of all methods on both $x$ and $y$ axes.
 % \centering
 	\setlength\tabcolsep{1.5pt}
 \begin{center}
- 	\begin{tabular}{|c|c|c|c|c|c|c|}
+ 	\begin{tabular}{|c|C{2cm}|C{2cm}|C{2cm}|C{2cm}|C{2cm}|C{2cm}|}
  		\hline
- 		MSE   &  TS & TS$_{\gamma=0}$ & TS$_{APT=0}$   & P-spline & Wavelet(sure) & Wavelet(Bayes)\\ \hline
+ 		MSE   &  V-spline & VS$_{\gamma=0}$ & VS$_{\scriptsize \mbox{APT=0}}$  & P-spline &  W(sure) & W(Bayes)\\ \hline 
 	\textit{$x$}   &  \textbf{0.2046} & 0.2830 & 0.3298     & 2860.5480   & 256.0494  & 6.2959  \\ \hline
 	\textit{$y$}   &  \textbf{0.0020} & 0.3062 & 0.3115     & \textit{NA} & 1960.2220 & 19.3330  \\ \hline
  	\end{tabular}
@@ -1116,7 +1116,7 @@ The following figure \ref{complete2DXY} is a complete reconstruction from the wh
 
 \section{Conclusion and Discussion}
 
-In this chapter, I propose a V-spline model, which is the solution to the objective function consisting of both position and velocity information. The adjusted penalty function adapts to complicated curvatures. In a high $d$-dimensional space, V-spline can be projected into sub-spaces with respect to $t$ and combined each solution together as a final. This method performs better when we know $p$ and $s$ information than other methods. 
+In this chapter, a V-spline model is proposed to solve the objective function, which is consisting of both position and velocity information. The adjusted penalty function adapts to complicated curvatures. In a high $d$-dimensional space, V-spline can be projected into sub-spaces with respect to $t$ and combined each solution together as a final. This method performs better when we know $p$ and $s$ information than other methods. 
 
 Additionally, the reconstruction of a V-spline contains $4\times (n-1)$ parameters if we have $n$ knots. By adding $2\times (n-2)$ constraints, the original function, and its first derivative are continuous at each interior knots, the degrees of freedom will be $4\times (n-1)-2\times (n-2)=2n$. Because there are $n$ position and $n$ velocity points, thus we do not need to specify more parameters or add more constraints to the model. 
 

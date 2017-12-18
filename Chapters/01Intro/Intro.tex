@@ -63,7 +63,7 @@ Hence, the cost of the equation (\ref{introSmoothingOb}) is determined not only 
 
 
 %\section{Parameter Selection}
-\section{Cross-Validation Parameter Selection}
+\section{Parameter Selection}
 
 As discussed in the previous section, the determination of an optimal smoothing parameter $\lambda$ in the interval $(0,+\infty)$ was found to be an underlying complication and the fundamental idea of nonparametric smoothing is to let the data choose the amount of smoothness, which consequently decides the model complexity \cite{gu1998model}. Various studies for selecting an appropriate smoothing parameter are developed and compared in literatures. Most of these methods are focusing on data driven criteria, such as cross-validation (CV), generalized cross-validation (GCV) \cite{craven1978smoothing} and generalized maximum likelihood (GML) \cite{wahba1985comparison} and recently developed methods, such as improved Akaike information criterion (AIC) \cite{hurvich1998smoothing}, exact risk approaches \cite{wand1997exact} and so on. See \eg \cite{craven1978smoothing}, \cite{hardle1988far}, \cite{hardle1990applied}, \cite{wahba1990spline},  \cite{green1993nonparametric}, \cite{cantoni2001resistant} \cite{aydin2013smoothing}.  
 
@@ -421,15 +421,13 @@ Four recommendations for the choices of $h\left(x,x'\right)$ including a scaled 
 
 
 
-\section{Outline of Thesis}
+\section{Thesis Outline}
 
-The structure of this thesis is organized in the following order. 
-
-In Chapter \ref{ChapterTS}, I propose an adaptive smoothing spline method based on \textit{Hermite spline} basis functions to obtain a reconstruction of $f$ and $f'$ from noisy data $y_{1:n}$ and $v_{1:n}$. Instead of minimizing the residuals of $f(t_i)-y_i$ only, the residuals of $f'(t_i)-v_i$ with a new parameter $\gamma$ are consisted in the new objective function. A modified leave-one-out cross-validation algorithm is used for find the optimal parameters. Numerical simulation and real data implementation are given after theoretical methodology. 
+In Chapter \ref{ChapterTS}, an adaptive smoothing V-spline method, which is based on \textit{Hermite spline} basis functions, is proposed to obtain a reconstruction of $f$ and $f'$ from noisy data $y_{1:n}$ and $v_{1:n}$. Instead of minimizing the residuals of $f(t_i)-y_i$ only, the residuals of $f'(t_i)-v_i$ with a new parameter $\gamma$ are consisted in the new objective function. A modified leave-one-out cross-validation algorithm is used for find the optimal parameters. Numerical simulation and real data implementation are given after theoretical methodology. 
 
 In Chapter \ref{ChapterGPR}, the Bayesian estimation form of the V-spline is given. It is proved that the Bayesian estimate is corresponding to a trivial V-spline  in the reproducing kernel Hilbert space $\mathcal{C}_{\mbox{\scriptsize p.w.}}^{(2)}[0,1]$, where the second-derivative is piecewise-continuous.  An extended GCV is used to find the optimal parameters for the Bayesian estimate. 
 
-In Chapter \ref{ChapterFR}, I give a brief overview of existing methods for sequential state and parameter inference. Basic concepts and popular algorithms on sequential state estimation are introduced firstly. Furthermore, the algorithms that can estimate combined unknown state and parameter are brought into a separate section. A numerical comparison of different methods is given at the end of this chapter. 
+In Chapter \ref{ChapterFR}, it is to give a comprehensive overview of existing methods for sequential state and parameter inference. Basic concepts and popular algorithms on sequential state estimation are introduced firstly. Furthermore, the algorithms that can estimate combined unknown state and parameter are brought into a separate section. A numerical comparison of different methods is given at the end of this chapter. 
 
 In Chapter \ref{ChapterMCMC}, it is using a random walk Metropolis-Hastings algorithm in a learning phase to learn the mean of covariance of the parameters space. After that, the information is implemented in the estimation phase, where an adaptive Delayed-Acceptance Metropolis-Hastings algorithm is proposed for estimating the posterior distribution of combined state and parameter. To remain a high running efficiency, a sliding window approach, in which way historical data is cut off when new observations come into the data stream, is used to improve the sampling speed. This algorithm is applied to irregularly sampled time series data and implemented in real GPS data set. 
 

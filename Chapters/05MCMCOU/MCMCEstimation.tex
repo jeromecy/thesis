@@ -9,7 +9,7 @@ Jonathan proposed in \cite{stroud2016bayesian} an SMC algorithm by using ensembl
 
 
 
-In this chapter, I propose an adaptive Delayed-Acceptance Metropolis-Hastings algorithm to estimate the posterior distribution for combined state and parameter with two phases. In the learning phase, a self-tuning random walk Metropolis-Hastings sampler is used to learn the parameter mean and covariance structure. In the estimation phase, the parameter mean and covariance structure informs the proposed mechanism and is also used in a delayed-acceptance algorithm, which greatly improves sampling efficiency. Information on the resulting state of the system is given by a Gaussian mixture. To keep the algorithm a higher computing efficiency for on-line estimation, it is suggested to cut off historical data and to use a fixed length of data up to the current state, like a window sliding along time. At the end of this chapter, an application of this algorithm on irregularly sampled GPS time series data is presented. 
+In this chapter, an adaptive Delayed-Acceptance Metropolis-Hastings algorithm is proposed to estimate the posterior distribution for combined state and parameter with two phases. In the learning phase, a self-tuning random walk Metropolis-Hastings sampler is used to learn the parameter mean and covariance structure. In the estimation phase, the parameter mean and covariance structure informs the proposed mechanism and is also used in a delayed-acceptance algorithm, which greatly improves sampling efficiency. Information on the resulting state of the system is given by a Gaussian mixture. To keep the algorithm a higher computing efficiency for on-line estimation, it is suggested to cut off historical data and to use a fixed length of data up to the current state, like a window sliding along time. At the end of this chapter, an application of this algorithm on irregularly sampled GPS time series data is presented. 
 
 %
 %For a generalized linear model, one may want to use Kalman Filter \cite{kalman1960new} to filter out the best state estimation from noisy signals, which is known as an optimal estimator returns a minimum mean-square error for linear model \cite{li2004recursibility}. 
@@ -230,7 +230,7 @@ If the proposed value is accepted it becomes the next current value $x^{(t+1)}= 
 
 \subsection{Self-tuning Metropolis-Hastings Algorithm}
 
-In this section, I propose a self-tuning MH algorithm with one-variable-at-a-time Random Walk, which automatically tunes the step sizes on its own to gain the target acceptance rates, to estimate the structure of parameters in a $d$-dimensional space. Suppose the parameters are independent, the idea of this algorithm is that in each iteration, only one parameter is proposed and the others remain to be changed. After sampling, take $n$ samples out of the total amount of $N$ as new sequences. In figure \ref{randomwalk}, examples of different proposing methods are compared. 
+In this section, a self-tuning MH algorithm, which automatically tunes the step sizes by one-variable-at-a-time Random Walk to gain the target acceptance rates, is proposed to estimate the structure of parameters in a $d$-dimensional space. Suppose the parameters are independent, the idea of this algorithm is that in each iteration, only one parameter is proposed and the others remain to be changed. After sampling, take $n$ samples out of the total amount of $N$ as new sequences. In figure \ref{randomwalk}, examples of different proposing methods are compared. 
 \begin{figure}[h]
 \centering
  \begin{subfigure}[b]{0.32\textwidth}
@@ -1313,7 +1313,7 @@ So far, the complete algorithm is summarized in the following Algorithm \ref{alg
 \begin{algorithm}[h]
 \SetAlgoLined 
 %\KwResutt{Write here the resutt }
-Initialization: Set up $L$, \textit{threshold} and  \textit{cut off} criteria. \\
+Initialization: Set up $L$, \textit{threshold} and  \textit{cutting-off} criteria. \\
 Learning process: Estimate $\theta$ with $p\left(\theta\mid Y_{1:\min \left\lbrace t,L\right\rbrace } \right) \propto p\left(Y_{1:\min \left\lbrace t,L\right\rbrace } \mid \theta \right)p\left(\theta \right)$ by one-variable-at-a-time Random Walk Metropolis-Hastings algorithm gaining the target acceptance rates and find out the structure of $\theta\sim N\left(\mu,\Sigma\right)$ and the approximation $\hat{\pi}\left(\cdot\right)$. \label{algorithmlearningsurface}\\
 Estimate $X_{ \max\left\lbrace 1,t-L+1 \right\rbrace :\min \left\lbrace t,L\right\rbrace }$ with $Y_{ \max\left\lbrace 1,t-L+1 \right\rbrace :\min \left\lbrace t,L\right\rbrace }$: \For{$i$ from 1 to $N$}{ \label{algorithmestimaiton}
 Propose $\theta_i^*$ from $N\left(\theta_i\mid\mu,\Sigma\right)$, accept it with probability $\alpha_1=\min\left\lbrace  1,\frac{\hat{\pi}\left(\theta_i^*\right)q\left(\theta_i, \theta_i^*\right)}{\hat{\pi}\left(\theta_i\right)q\left(\theta_i^*, \theta_i\right)}  \right\rbrace$ and go to next step; otherwise go to step \ref{algorithmDA}.\label{algorithmDA}\\
@@ -1321,7 +1321,7 @@ Accept $\theta_i^*$ with probability $\alpha_2=\min \left\lbrace  1,\frac{\pi\le
 Calculate $\mu_i^{\left(t\right)},\Sigma_i^{\left(t\right)}$ for $X_t$ and $\mu_i^{\left(t+s\right)},\Sigma_i^{\left(t+s\right)}$ for $X_{t+s}$.\\
 }
 Calculate $\mu_X^{\left(t\right)} = \frac{1}{N} \sum_i \mu_i^{\left(t\right)}$, $\Var\lbrack X^{\left(t\right)}\rbrack = \frac{1}{N} \sum_i \left(\mu_i^{\left(t\right)} \mu_i^{\left(t\right)\top} +\Sigma_i\right) -\frac{1}{N^2} \left(\sum_i  \mu_i^{\left(t\right)}\right) \left(\sum_i \mu_i^{\left(t\right)}\right)^\top$ and $\mu_X^{\left(t+s\right)}$, $\Var\lbrack X^{\left(t+s\right)}\rbrack$ with the same formula.  \\
-Check \textit{threshold} and  \textit{cut off} criteria. \uIf{\textit{threshold} is TRUE}{Update $\theta\sim N\left(\mu,\Sigma\right)$}\uElseIf{ \textit{cut off} is TRUE}{Stop process. }
+Check \textit{threshold} and  \textit{cutting-off} criteria. \uIf{\textit{threshold} is TRUE}{Update $\theta\sim N\left(\mu,\Sigma\right)$}\uElseIf{ \textit{cutting-off} is TRUE}{Stop process. }
 \Else{ Go to next step.}
 Shift the window by setting $t = t+1$ and go back to step \ref{algorithmestimaiton}.
  \caption{Sliding Window MCMC}\label{algorithmslidingwindow}

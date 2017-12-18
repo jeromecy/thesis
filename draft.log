@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.5)  17 DEC 2017 13:50
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.5)  18 DEC 2017 12:43
 entering extended mode
 **draft.tex
 (C:\Users\zcao\Documents\Latex\Thesis\draft.tex
@@ -995,21 +995,32 @@ Overfull \hbox (0.45131pt too wide) in paragraph at lines 10--107
 space, or by marginal-
  []
 
-[6] (C:\Users\zcao\Documents\Latex\Thesis\Acknowledgements.tex [7
+[6] (C:\Users\zcao\Documents\Latex\Thesis\Acknowledgements.tex
+Overfull \hbox (3.2139pt too wide) in paragraph at lines 3--4
+[]\OT1/cmr/m/n/12 Secondly, I would like to ap-pre-ci-ate my co-supervisor Pro-
+fes-sor David Bryant
+ []
 
 
-]) [8]
-(C:\Users\zcao\Documents\Latex\Thesis\draft.toc [9
+Overfull \hbox (13.96367pt too wide) in paragraph at lines 3--4
+\OT1/cmr/m/n/12 for his great help in my re-search progress and care-ful read-i
+ng of the manuscript.
+ []
+
+[7
+
+
+]) [8] (C:\Users\zcao\Documents\Latex\Thesis\draft.toc [9
 
 
 
 ] [10])
 \tf@toc=\write4
- [11] [12
+ [11]
+[12
 
 
-]
-(C:\Users\zcao\Documents\Latex\Thesis\draft.lot)
+] (C:\Users\zcao\Documents\Latex\Thesis\draft.lot)
 \tf@lot=\write5
  [13
 
@@ -1701,16 +1712,21 @@ LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 76
 3.
 
 
-LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 76
-3.
+LaTeX Font Warning: Command \scriptsize invalid in math mode on input line 763.
 
-
-LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 78
-2.
 
 
 LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 78
 2.
+
+
+LaTeX Font Warning: Command \scriptsize invalid in math mode on input line 782.
+
+
+
+Overfull \hbox (4.8669pt too wide) in paragraph at lines 781--793
+ [][] 
+ []
 
 [34] [35 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/02TractorSplineTheory/p
 lot/ggplot/ggBlocksPenaltyBar.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapte
@@ -1895,6 +1911,11 @@ File: Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataYTractor.pdf Graphic
 Package pdftex.def Info: Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataY
 Tractor.pdf used on input line 979.
 (pdftex.def)             Requested size: 198.45345pt x 99.22237pt.
+
+
+LaTeX Font Warning: Command \scriptsize invalid in math mode on input line 993.
+
+
 
 <Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXPenaltyLine2.pdf, id=563
 , 844.15375pt x 597.23125pt>
@@ -4050,7 +4071,7 @@ les (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt12.pfb><C:/Program File
 s (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt8.pfb><C:/Program Files (
 x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Program File
 s (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on draft.pdf (226 pages, 10734785 bytes).
+Output written on draft.pdf (226 pages, 10735009 bytes).
 PDF statistics:
  2757 PDF objects out of 2984 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
