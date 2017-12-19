@@ -27,11 +27,11 @@ Some form of interpolation is an obvious approach to trajectory reconstruction. 
 
 A number of splines are commonly in use, see \eg \citep{esl2009}. The B-spline, short for basis spline, gives a closed-form expression for the trajectory with continuous second derivatives and goes through the points smoothly while ignoring outliers, see \eg \citep{komoriya1989trajectory, ben2004geometric}. It is flexible and has minimal support with respect to a given degree, smoothness, and domain partition. Once the knots are given, it is easy to compute the B-spline recursively for any desired degree of the polynomial \citep{de1978practical, cox1982practical}. An attractive feature of the B-spline is its flexibility for univariate regression and its appealing simplicity of the method is explained in \citep{dierckx1995curve, eilers1996flexible}. For example,  \cite{gasparetto2007new} use a fifth-order B-spline to compose the overall trajectory. Almost every spline can be represented as a B-spline. 
 
-Another widely used spline is the piecewise cubic spline, which is continuous on an interval $[a,b]$ and has continuous first and second derivatives \citep{wolberg1988cubic}. Let $f(t)$ denote a trajectory reconstruction, i.e. the location of the vehicle at time $t$. For the piecewise cubic spline,  
+Another widely used spline is the piecewise cubic spline, which is continuous on an interval $[a,b]$ and has continuous first and second derivatives \citep{wolberg1988cubic}. Let $f(t)$ denote a trajectory reconstruction, \ie the location of the vehicle at time $t$. For the piecewise cubic spline,  
 \begin{equation*}
 f(t)=d_i(t-t_i)^3+c_i(t-t_i)^2+b_i(t-t_i)+a_i,
 \end{equation*}
-on the subinterval $[t_i,t_{i+1})$ with given coefficients $d_i, c_i, b_i$ and $a_i$, $i=1,2,\ldots,m$. The coefficients are chose in such a way that $f$ and its first and second derivatives are continuous at each knot $t_i$. If the second and third derivatives of $f$ are zero at $a$ and $b$, $f$ is said to be a natural cubic spline and these conditions are called the \textit{natural boundary conditions}  \citep{green1993nonparametric}. 
+on the subinterval $[t_i,t_{i+1})$ with given coefficients $d_i, c_i, b_i$ and $a_i$, $i=1,2,\ldots,n$. The coefficients are chose in such a way that $f$ and its first and second derivatives are continuous at each knot $t_i$. If the second and third derivatives of $f$ are zero at $a$ and $b$, $f$ is said to be a natural cubic spline and these conditions are called the \textit{natural boundary conditions}  \citep{green1993nonparametric}. 
 
 
 To find the best estimation $\hat{f}(t)$ going through observation $y_i$, $i=1,\ldots,n$, one can use regression methods returning the least residual sum of squares among all the sequences. Consider a model $y_i=f(t_i)+\varepsilon_i$ with random errors $\left\lbrace \varepsilon_i\right\rbrace_{i=1}^n \sim N(0,\sigma^2)$ in space $\mathit{C}^{(m)}[a,b]$, the classical parametric regression assumes that $f$ has the form of $f(t,\beta)$, which is known up to the data estimated parameters $\beta$ \citep{kim2004smoothing}. When $f(t,\beta)$ is linear in $\beta$, we will have a standard linear model. 
@@ -65,7 +65,7 @@ Hence, the cost of the equation (\ref{introSmoothingOb}) is determined not only 
 
 \section{Parameter Selection}
 
-As discussed in the previous section, the determination of an optimal smoothing parameter $\lambda$ in the interval $(0,+\infty)$ was found to be an underlying complication and the fundamental idea of nonparametric smoothing is to let the data choose the amount of smoothness, which consequently decides the model complexity \citep{gu1998model}. Various studies for selecting an appropriate smoothing parameter are developed and compared in literatures. Most of these methods are focusing on data driven criteria, such as cross-validation (CV), generalized cross-validation (GCV) \citep{craven1978smoothing} and generalized maximum likelihood (GML) \citep{wahba1985comparison} and recently developed methods, such as improved Akaike information criterion (AIC) \citep{hurvich1998smoothing}, exact risk approaches \citep{wand1997exact} and so on. See \eg \citep{craven1978smoothing, hardle1988far, hardle1990applied, wahba1990spline, green1993nonparametric, cantoni2001resistant, aydin2013smoothing}.  
+As discussed in the previous section, the determination of an optimal smoothing parameter $\lambda$ in the interval $(0,+\infty)$ was found to be an underlying complication and the fundamental idea of nonparametric smoothing is to let the data choose the amount of smoothness, which consequently decides the model complexity \citep{gu1998model}. Various studies for selecting an appropriate smoothing parameter are developed and compared in literatures. Most of these methods are focusing on data driven criteria, such as cross-validation (CV), generalized cross-validation (GCV) \citep{craven1978smoothing} and generalized maximum likelihood (GML) \citep{wahba1985comparison} and recently developed methods, such as improved Akaike information criterion (AIC) \citep{hurvich1998smoothing}, exact risk approaches \citep{wand1997exact} and so on. See \eg \citep{craven1978smoothing, hardle1988far, hardle1990applied, wahba1990spline, green1993nonparametric, cantoni2001resistant, aydin2013smoothing} for details.  
 
 
 %\subsection*{Cross-Validation}
@@ -187,7 +187,7 @@ A more generic algorithm is introduced in the following section.
 
 \subsection*{Monte Carlo Filter}
 
-\textit{Monte Carlo filter}, \citep{chen2003bayesian},  is a class of Monte Carlo approaches. The power of these approaches is that they can numerically and efficiently handle integration and optimization problems. 
+\textit{Monte Carlo filter} is a class of Monte Carlo approaches \citep{chen2003bayesian}. The power of these approaches is that they can numerically and efficiently handle integration and optimization problems. 
 
 The important advantage of Monte Carlo is that a large number of posterior moments can be estimated at a reasonable computational effort and that estimates of the numerical accuracy of these results are obtained in a simple way \citep{kloek1978bayesian}. \textit{Sequential Monte Carlo} method is using Monte Carlo approaches to estimate and to compute recursively. One of the attractive merits is in the fact that they allow on-line estimation by combining the powerful Monte Carlo sampling methods with Bayesian inference at an expense of reasonable computational cost \citep{chen2003bayesian}. 
 
@@ -205,10 +205,10 @@ In terms of getting good samples of $x_t^{(i)}$, which can be used for represent
 \begin{equation*}
 W_t^{(i)} \propto W_{t-1}^{(i)} \frac{ p\left(y_t \mid x_t^{(i)}\right) p\left(x_{t}^{(i)}\mid x_{t-1}^{(i)}\right) }{q\left(x_{t}^{(i)}\mid x_{t-1}^{(i)},y_{t}\right)}
 \end{equation*}
-with an appropriate chosen \textit{proposal distribution} $q(x_{t}\mid  x_{t-1},y_{t})$. It is also called \textit{importance density} or \textit{important function}, \citep{chen2003bayesian}. 
+with an appropriate chosen \textit{proposal distribution} $q(x_{t}\mid  x_{t-1},y_{t})$. It is also called \textit{importance density} or \textit{important function}  \citep{chen2003bayesian}. 
 
 
-Nevertheless, the SIS makes samples skewed that only a few samples have proper weights as time increases and most of them have small but positive weights. This phenomenon is often called \textit{weight degeneracy} or \textit{sample impoverishment}, \citep{green1995reversible, berzuini1997dynamic}. 
+Nevertheless, the SIS makes samples skewed that only a few samples have proper weights as time increases and most of them have small but positive weights. This phenomenon is often called \textit{weight degeneracy} or \textit{sample impoverishment} \citep{green1995reversible, berzuini1997dynamic}. 
 
 
 Besides the SIS processes, a resampling step, also known as a selection step, is trying to eliminate the samples with small weights and duplicate the samples with large weights in a principled way \citep{rubin2004multiple, tanner1987calculation}. This method is named \textit{sampling and importance resampling} (SIR). Suppose samples with associated weights are $\left\lbrace x_t^{(i)},W_t^{(i)}\right\rbrace$, a resampling step is executed by generating new samples $\tilde{x}_t^{(i)}$ according to normalized weights $\tilde{W}_t^{(i)}$. It is pointed out that the resampling step does not prevent weights degeneracy but improve further calculation. 
@@ -387,7 +387,7 @@ which is consisting of potential energy $U(x)$ with a $d$-dimensional momentum v
 Compared with MH sampler, the HMC has a higher efficiency in most of the high-dimensional cases. It is incorporating not only with energy $U(x)$ but also with a gradient. In this way, HMC explores a larger area and converges to balance faster. 
 
 
-The \textit{Zig-Zag Monte Carlo} is using a continuous-time piecewise zig-zag process to increase the sampling efficiency \citep{bierkens2016piecewise}. It is an application of the Curie-Weiss model, \citep{turitsyn2011irreversible}, in high dimension and provides a practically efficient sampling scheme for sampling in the big data regime with some remarkable properties \citep{bierkens2017limit}. 
+The \textit{Zig-Zag Monte Carlo} is using a continuous-time piecewise zig-zag process to increase the sampling efficiency \citep{bierkens2016piecewise}. It is an application of the Curie-Weiss model in high dimension and provides a practically efficient sampling scheme for sampling in the big data regime with some remarkable properties \citep{turitsyn2011irreversible, bierkens2017limit}. 
 
 Given a target density $\pi(\cdot)$, the Zig-Zag process $f(x,\theta)$ is defined in a $d \otimes 2$ space $\mathcal{E}$. $x$ is in the $d$-dimensional topological subspace and $\theta$ is in a binary discrete $\left\lbrace -1,1\right\rbrace_d$ subspace denoting the flipping statues. The switching rate $\lambda(x,\theta)$ agrees with the target distribution $\pi(\cdot)$ in a certain way and is defined as $\lambda(x,\theta) = \max \left\lbrace 0,\theta U'(x) \right\rbrace +\gamma(x)$, where $U'(x)  = \lambda(x,\theta) - \lambda(x,-\theta)$. Then, the Zig-Zag operator $L$ is 
 \begin{equation*}

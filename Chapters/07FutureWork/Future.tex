@@ -7,7 +7,7 @@ In this thesis, two main practical algorithms are proposed: the adaptive V-splin
 V-spline is an advanced smoothing spline algorithm returning least true mean squared errors. However, to implement this algorithm on-line needs feasible solutions. One of them probably is combining spline method and gradient boosting algorithm. 
 
 
-In machine learning application, it is best to build a non-parametric regression or classification model from the data itself. A connection between the statistical framework and machine learning is the gradient-descent based formulation of boosting methods, which was derived by \citep{freund1995desicion}, \citep{friedman2001greedy}. The gradient boosting algorithm is a powerful machine-learning technique that has shown considerable success in a wide range of practical applications, particularly in machine learning competitions on \textit{Kaggle}. 
+In machine learning application, it is best to build a non-parametric regression or classification model from the data itself. A connection between the statistical framework and machine learning is the gradient-descent based formulation of boosting methods, which was derived by \cite{freund1995desicion, friedman2001greedy}. The gradient boosting algorithm is a powerful machine-learning technique that has shown considerable success in a wide range of practical applications, particularly in machine learning competitions on \textit{Kaggle}. 
 
 
 The motivation of gradient boosting algorithms is combining weak learners together as a strong leaner, which keeps minimizing the target loss function. 
@@ -26,7 +26,7 @@ f_m(t) = f_{m-1}(t)+ \rho_mh(t,\alpha_m),
 is the sum of some basic learners $h_m(t,\alpha)$. $m=1,\ldots,M$ determines the complexity of the solution. 
 
 
-On-line boosting algorithms are given by \citep{babenko2009family} and \citep{beygelzimer2015online}. It is assumed that the loss over the entire training data can be expressed as a sum of the loss for each point $t_i$, that is $L(f(t,y))=\sum_i L(f(t_i,y_i))$. Instead of computing the gradient of the entire loss, the gradient is computed with respect to just one data point. Furthermore, by adding additional regularization term will help to smooth the final learned weights to avoid over-fitting in a penalized regression problem \citep{chen2016xgboost}. 
+On-line boosting algorithms are given by \cite{babenko2009family, beygelzimer2015online}. It is assumed that the loss over the entire training data can be expressed as a sum of the loss for each point $t_i$, that is $L(f(t,y))=\sum_i L(f(t_i,y_i))$. Instead of computing the gradient of the entire loss, the gradient is computed with respect to just one data point. Furthermore, by adding additional regularization term will help to smooth the final learned weights to avoid over-fitting in a penalized regression problem \citep{chen2016xgboost}. 
 
 Accordingly, the V-spline $f^*(t)$ is a sum of several weak learners $f_m(t)$, each of which has $2N$ parameters $\theta_m=\left\lbrace \theta_m^{(1)},\ldots,\theta_m^{(2N)}\right\rbrace$. The optimal $\theta^*$ is found by 
 \begin{equation*}
@@ -43,7 +43,7 @@ As a result, after $M$ iterations, $\theta^*$ is convergence and $f^*(t,y,\theta
 In Chapter \ref{ChapterGPR}, the Bayes estimate of V-spline with correlated errors is given. The extended GCV serves to find the optimal parameters for the estimate. Whereas, the extended GCV is only applicable for trivial V-spline, where $\lambda(t)$ is constant. 
 
 
-In \citep{opsomer2001nonparametric} and \citep{wang1998smoothing}, the authors present a few extensions of the generalized maximum likelihood (GML), generalized cross-validation (GCV) and unbiased risk (UBR) methods to find optimal parameters for smoothing spline ANOVA models when observations are correlated. These algorithms in applied on conventional polynomial smoothing spline, but not on V-spline. Suppose the errors of the observations $y$ and $v$ are $\varepsilon_y\sim N\left(0,\sigma^2W^{-1}\right)$ and $\varepsilon_v\sim N\left(0,\tau^2U^{-1}\right)$ with unknown parameters $\sigma^2$ and $\tau^2$, I hope to find general solutions, similarly to GML, GCV and UBR, to tune the parameters for V-spline returning least true mean squared errors. 
+\cite{opsomer2001nonparametric, wang1998smoothing} present a few extensions of the generalized maximum likelihood (GML), generalized cross-validation (GCV) and unbiased risk (UBR) methods to find optimal parameters for smoothing spline ANOVA models when observations are correlated. These algorithms in applied on conventional polynomial smoothing spline, but not on V-spline. Suppose the errors of the observations $y$ and $v$ are $\varepsilon_y\sim N\left(0,\sigma^2W^{-1}\right)$ and $\varepsilon_v\sim N\left(0,\tau^2U^{-1}\right)$ with unknown parameters $\sigma^2$ and $\tau^2$, I hope to find general solutions, similarly to GML, GCV and UBR, to tune the parameters for V-spline returning least true mean squared errors. 
 
 
 
@@ -63,7 +63,7 @@ In the sampling step of real data application, the mechanic boom status is not i
 
 \subsection*{Grid-based MCMC}
 
-In several references, Grid-based methods have been proved that it provides an optimal recursion of the filtered density $p(x_t\mid y_{1:t})$ if the state-space is discrete and consists of a finite number of states \citep{ristic2004beyond}, \citep{stroud2016bayesian}, \citep{arulampalam2002tutorial} and \citep{hartmann2016grid}. 
+In several references, Grid-based methods have been proved that it provides an optimal recursion of the filtered density $p(x_t\mid y_{1:t})$ if the state-space is discrete and consists of a finite number of states \citep{ristic2004beyond, stroud2016bayesian, arulampalam2002tutorial, hartmann2016grid}. 
 
 In the application of real time series dataset, the model is supposed as an OU-process containing five unknown parameters. With the idea of grid-based algorithm, the 5-dimension parameter space $\mathbb{R}^5$ can be initialized by spanning $\theta_0^{(i)}$ with equal weights $w_0=\left\lbrace\frac{1}{N},\frac{1}{N},\frac{1}{N},\frac{1}{N},\frac{1}{N}\right\rbrace$ at time $t=0$, where $i=1,\ldots,N$. When a new observation $Y_t=\left\lbrace y_t,v_t\right\rbrace$ comes into the system, the weights for each parameter in each subspace are updated via $w_t\propto p(Y_t\mid \theta,Y_{1:t-1})w_{t-1}$. 
 
@@ -82,9 +82,9 @@ A simple parallel Monte Carlo estimation of $\E\lbrack p(\theta)\rbrack$ proceed
 \end{equation*}
 
 Therefore, parallel MCMC is using MCMC sampler scheme to draw samples on multi-cores simultaneously. A naive yet natural approach to parallel MCMC is simply to generate several independent Markov chains on different
-processors and then combine the results appropriately \citep{bradford1996markov} \citep{gelman1992inference}. Or, alternatively, develop parallelism within a single chain. Suppose there are $k$ CPU cores. Give initial values $\theta_i^{(0)}$ for each core. Concurrently update $\theta$ chains by a predetermined MCMC sampler with $p(\theta\mid y_{1:t})$ on each slave process. Computes summary statistics for the updated $\theta_i^{(0: N)}$ and passes back to the master process. Finally, achieve a sequence of $\theta$ of length $kN$ \citep{wu2012parallel}. 
+processors and then combine the results appropriately \citep{bradford1996markov, gelman1992inference}. Or, alternatively, develop parallelism within a single chain. Suppose there are $k$ CPU cores. Give initial values $\theta_i^{(0)}$ for each core. Concurrently update $\theta$ chains by a predetermined MCMC sampler with $p(\theta\mid y_{1:t})$ on each slave process. Computes summary statistics for the updated $\theta_i^{(0: N)}$ and passes back to the master process. Finally, achieve a sequence of $\theta$ of length $kN$ \citep{wu2012parallel}. 
 
-A further weighted parallel MCMC and parallelization approach to the Gibbs sampler is proposed by \citep{vanderwerken2013parallel}.
+A further weighted parallel MCMC and parallelization approach to the Gibbs sampler is proposed by \cite{vanderwerken2013parallel}.
 
 Consequently, the parallel MCMC is a potential alternative approach of sliding window MCMC in Chapter \ref{ChapterMCMC} to improve the computation speed in high dimensional space. 
 
