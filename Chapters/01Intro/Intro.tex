@@ -3,34 +3,35 @@
 \section{Background}
 
 
-The Global Positioning System (abbreviated as GPS) is a space-based navigation system consisting of a network of 24 satellites placed in space in six different 12-hour orbital paths \citep{agrawal2015introduction}, so that at least five of them are in view from every point on the globe \citep{kaplan2005understanding, bajaj2002gps}. With these satellites, a GPS receiver sends geographic information to them and triangulate its location on the ground, such as longitude, latitude, and elevation. These receivers are using passive locating technology, by which they can receive signals without transmitting any data. It is perhaps the most widely publicized location-sensing system providing an excellent lateration framework for determining geographic positions \citep{hightower2001location}. Offered free of charge and accessible worldwide, GPS is used in plenty applications in military and general public, including aircraft tracking, vehicle navigation, robot localization, surveying, astronomy, and so on. 
+The \textit{Global Positioning System} (abbreviated as GPS) is a space-based navigation system consisting of a network of 24 satellites placed in space in six different 12-hour orbital paths \citep{agrawal2015introduction}, so that at least five of them are in view from every point on the globe \citep{kaplan2005understanding, bajaj2002gps}. A GPS device receives signals from these satellites and triangulates its location in terms of longitude, latitude, and elevation. GPS is the most widely known location-sensing system providing an excellent framework for determining geographic positions \citep{hightower2001location}. Offered free of charge and accessible worldwide, GPS has a vast number of applications, including aircraft tracking, vehicle navigation, robot localization, surveying, astronomy, and so on. 
 
-For a moving vehicle, it is often mounted with a GPS unit that communicates with these satellites and records position, speed, and direction of traveling information. With this kind of information, a maneuvering target tracking system becomes available and useful. This tracking system can be used to reduce the cost by knowing in real-time the current location of a vehicle, such as a truck or a bus \citep{chadil2008real}, and also be useful for Intelligent Transportation System (ITS) \citep{mcdonald2006intelligent}. For instance, it can be used in probe cars to measure real-time traffic data to identify the congesting area. In particular, an orchardist is able to follow the trajectory and motion patterns of tractors, which are working on an orchard or vineyard, and monitor their working status with the tracking system. 
+GPS units in vehicles typically record position, speed, and direction of travel. With this information, a target tracking system becomes available and useful. Such a tracking system can be used to reduce costs by knowing in real-time the current location of a vehicle, such as a truck or a bus \citep{chadil2008real}, with applications to  Intelligent Transportation Systems (ITS) \citep{mcdonald2006intelligent}. It can also be used to measure real-time traffic data and to identify congestion areas. In farming applications, a tracking system allows the location and operational status of farm vehicles to be monitored remotely. 
 
-
+Given time series data from a vehicle-mounted GPS unit, an important question is how to infer the trajectory of the vehicle. This is known as trajectory reconstruction and is the motivating question of this thesis. 
 
 %It is suggested that the smoothing spline fitting through the measured values reflecting the movements is an alternative approach. Even though fitting a univariate local linear trend model using a Kalman filter is equivalent to fitting a cubic spline, see \citep{eubank2004simple, durbin2012time}, the latter algorithm overcomes the current limitation and can approximate data points throughout the whole process. 
-It is suggested that the smoothing spline fitting through the measured values reflecting the movements is an excellent approach, see \citep{eubank2004simple, durbin2012time} for details. This algorithm can approximate data points throughout the whole process. 
 
 
 \section{Smoothing Spline Based Reconstruction}
 
+Smoothing spline approaches are natural solutions to trajectory reconstruction, see 
+\eg \citep{eubank2004simple, durbin2012time} for details. 
 
-Starting from interpolation, the simplest way of connecting a set of sequences $(t_1,y_1),\ldots, (t_n,y_n)$ is by straight line segments. Known as piecewise linear interpolation. Apparently, sharp turnings occur at joint knots. A smooth path is expected and more common in real life application. A single polynomial function goes through the entire interval, such as B\'ezier curve, is not as flexible as a combination of several polynomials, each of which is defined on subintervals and joint at certain knots. This kind of piecewise polynomial interpolation is called a \textit{spline}. 
+Some form of interpolation is an obvious approach to trajectory reconstruction. The simplest method, piecewise linear interpolation, connects successive locations by straight lines. Clearly, this interpolation implies abrupt changes in velocity at the join knots. Smooth trajectories are more common in real life applications. A single polynomial function that is defined on the entire interval, such as B\'ezier curve, is not as flexible as a piecewise combination of polynomials, each of which is defined on a subinterval. The polynomials are joined at the endpoints of their subintervals -- these endpoints are termed \textit{knots}. This kind of piecewise polynomial interpolation is called a \textit{spline}. 
 
-The core idea of splines is to augment the vector of inputs $T$ with additional variables, then use linear models in this space of derived input features. Adding constraints to construct basis functions $h_i(t), i = 1, 2,\ldots, n$, a linear basis expansion in $T$ is represented as
-\begin{equation*}
-f(t)=\sum_{i=1}^n \theta_i h_i(t).
-\end{equation*}
-The key step of a spline interpolation is the choice of basis functions. Once the $h_i(t)$ have been determined, the models are linear in the variables space. 
+%The core idea of splines is to augment the vector of inputs $T$ with additional variables, then use linear models in this space of derived input features. Adding constraints to construct basis functions $h_i(t), i = 1, 2,\ldots, m$, a linear basis expansion in $T$ is represented as
+%\begin{equation*}
+%f(t)=\sum_{i=1}^m \theta_i h_i(t).
+%\end{equation*}
+%The key step of a spline interpolation is the choice of basis functions. Once the $h_i(t)$ have been determined, the models are linear in the variables space. 
 
-Several kinds of splines were introduced by \cite{esl2009}. One of them is B-spline, short for basis spline, which is constructed from polynomial pieces and joint at knots. B-spline has a closed-form expression of positions and allows continuity between the curve segments and goes through the points smoothly with ignoring the outliers, see \eg \citep{komoriya1989trajectory,ben2004geometric}. It is flexible and has minimal support with respect to a given degree, smoothness, and domain partition. Once the knots are given, it is easy to compute B-spline recursively for any desired degree of the polynomial \citep{de1978practical, cox1982practical}. Basic simplicity of the idea is explained in \citep{dierckx1995curve,eilers1996flexible}. The attractive feature of B-spline is its flexibility for univariate regression. For example,  \cite{gasparetto2007new} is using a fifth-order B-spline to compose the overall trajectory with a set of paired data. Roughly speaking, every spline can be represented by B-spline basis. 
+A number of splines are commonly in use, see \eg \citep{esl2009}. The B-spline, short for basis spline, gives a closed-form expression for the trajectory with continuous second derivatives and goes through the points smoothly while ignoring outliers, see \eg \citep{komoriya1989trajectory, ben2004geometric}. It is flexible and has minimal support with respect to a given degree, smoothness, and domain partition. Once the knots are given, it is easy to compute the B-spline recursively for any desired degree of the polynomial \citep{de1978practical, cox1982practical}. An attractive feature of the B-spline is its flexibility for univariate regression and its appealing simplicity of the method is explained in \citep{dierckx1995curve, eilers1996flexible}. For example,  \cite{gasparetto2007new} use a fifth-order B-spline to compose the overall trajectory. Almost every spline can be represented as a B-spline. 
 
-Another widely used spline is piecewise cubic spline, which is continuous on interval $[a,b]$ and its first and second derivatives are continues as well \citep{wolberg1988cubic}. For example, consider the model in the following form 
+Another widely used spline is the piecewise cubic spline, which is continuous on an interval $[a,b]$ and has continuous first and second derivatives \citep{wolberg1988cubic}. Let $f(t)$ denote a trajectory reconstruction, i.e. the location of the vehicle at time $t$. For the piecewise cubic spline,  
 \begin{equation*}
 f(t)=d_i(t-t_i)^3+c_i(t-t_i)^2+b_i(t-t_i)+a_i,
 \end{equation*}
-for given coefficients $d_i, c_i, b_i$ and $a_i$, where $t_i\leq t\leq t_{i+1}$, $i=1,2,\ldots,n$. $f$ is a cubic spline on $[a,b]$ if (\romannum{1}) on each intervals $f$ is a polynomial; (\romannum{2}) the polynomial pieces fit together at knots $t_i$ in such a way that $f$ itself, its first and second derivatives are continuous at each $t_i$. If the second and third derivatives of $f$ are zero at $a$ and $b$, $f$ is said to be a natural cubic spline and these conditions are called the \textit{natural boundary conditions}, \citep{green1993nonparametric}. 
+on the subinterval $[t_i,t_{i+1})$ with given coefficients $d_i, c_i, b_i$ and $a_i$, $i=1,2,\ldots,m$. The coefficients are chose in such a way that $f$ and its first and second derivatives are continuous at each knot $t_i$. If the second and third derivatives of $f$ are zero at $a$ and $b$, $f$ is said to be a natural cubic spline and these conditions are called the \textit{natural boundary conditions}  \citep{green1993nonparametric}. 
 
 
 To find the best estimation $\hat{f}(t)$ going through observation $y_i$, $i=1,\ldots,n$, one can use regression methods returning the least residual sum of squares among all the sequences. Consider a model $y_i=f(t_i)+\varepsilon_i$ with random errors $\left\lbrace \varepsilon_i\right\rbrace_{i=1}^n \sim N(0,\sigma^2)$ in space $\mathit{C}^{(m)}[a,b]$, the classical parametric regression assumes that $f$ has the form of $f(t,\beta)$, which is known up to the data estimated parameters $\beta$ \citep{kim2004smoothing}. When $f(t,\beta)$ is linear in $\beta$, we will have a standard linear model. 
@@ -186,7 +187,7 @@ A more generic algorithm is introduced in the following section.
 
 \subsection*{Monte Carlo Filter}
 
-\textit{Monte Carlo filter, chen2003bayesian},  is a class of Monte Carlo approaches. The power of these approaches is that they can numerically and efficiently handle integration and optimization problems. 
+\textit{Monte Carlo filter}, \citep{chen2003bayesian},  is a class of Monte Carlo approaches. The power of these approaches is that they can numerically and efficiently handle integration and optimization problems. 
 
 The important advantage of Monte Carlo is that a large number of posterior moments can be estimated at a reasonable computational effort and that estimates of the numerical accuracy of these results are obtained in a simple way \citep{kloek1978bayesian}. \textit{Sequential Monte Carlo} method is using Monte Carlo approaches to estimate and to compute recursively. One of the attractive merits is in the fact that they allow on-line estimation by combining the powerful Monte Carlo sampling methods with Bayesian inference at an expense of reasonable computational cost \citep{chen2003bayesian}. 
 
@@ -204,7 +205,7 @@ In terms of getting good samples of $x_t^{(i)}$, which can be used for represent
 \begin{equation*}
 W_t^{(i)} \propto W_{t-1}^{(i)} \frac{ p\left(y_t \mid x_t^{(i)}\right) p\left(x_{t}^{(i)}\mid x_{t-1}^{(i)}\right) }{q\left(x_{t}^{(i)}\mid x_{t-1}^{(i)},y_{t}\right)}
 \end{equation*}
-with an appropriate chosen \textit{proposal distribution} $q(x_{t}\mid  x_{t-1},y_{t})$. It is also called \textit{importance density} or \textit{important function}, \cite{chen2003bayesian}. 
+with an appropriate chosen \textit{proposal distribution} $q(x_{t}\mid  x_{t-1},y_{t})$. It is also called \textit{importance density} or \textit{important function}, \citep{chen2003bayesian}. 
 
 
 Nevertheless, the SIS makes samples skewed that only a few samples have proper weights as time increases and most of them have small but positive weights. This phenomenon is often called \textit{weight degeneracy} or \textit{sample impoverishment}, \citep{green1995reversible, berzuini1997dynamic}. 
