@@ -8,7 +8,7 @@ The state-space model, which is a popular class of time series models, has found
 
 \subsection*{State-Space Model}
 
-State-space models are models that rely on the concept of state variables. If we describe a system as an operator mapping from the space of inputs to the space of outputs, then we may need the entire input-output history of the system together with the planned input in order to compute the future output values \citep{hangos2006analysis}. Alternatively, a sequential method builds on past data and the initial conditions by incorporating new information when it arrives. A generic state-space model consists of two sets of equations: state equation and output equation. The state equation describes the evolution of the true input and state variables sequentially as a function and passes the variable one after one, generally, with some noises. The output equation catches the input values and interprets it out by an algebraic equation. A general state-space model has the form of 
+State-space models are models that rely on the concept of state variables. If we describe a system as an operator mapping from the space of inputs to the space of outputs, then we may need the entire input-output history of the system together with the planned input in order to compute the future output values \citep{hangos2006analysis}. Alternatively, a sequential method builds on past data and the initial conditions by incorporating new information when it arrives. A generic state-space model consists of two sets of equations: state equation and output equation. The state equation describes the evolution of the true input and state variables sequentially as a function and passes the variable one after one, generally, with some noise. The output equation catches the input values and interprets it out by an algebraic equation. A general state-space model has the form of 
 \begin{align}\label{statemodel1}
 \mbox{State equation } x_t &= G_t(x_{t-1})+w_t,\\
 \label{statemodel2}
@@ -20,7 +20,7 @@ The most simple and important system is given by Gaussian linear state-space mod
 \begin{align*}
 x_0 \sim N_p(m_0,C_0)
 \end{align*} 
-and two independent zero-mean normal distributed noises $\epsilon_t \sim N_p(0,V_t)$ and $w_t \sim N_p(0,W_t)$ \citep{petris2009dynamic}. The celebrated Kalman filter is a particular algorithm that is used to solve state-space models in the linear case. This was first derived by \cite{kalman1960new}.
+and two independent zero-mean normal distributed noise $\epsilon_t \sim N_p(0,V_t)$ and $w_t \sim N_p(0,W_t)$ \citep{petris2009dynamic}. The celebrated Kalman filter is a particular algorithm that is used to solve state-space models in the linear case. This was first derived by \cite{kalman1960new}.
 
 %In a nonlinear state-space model, the process $G_t$ and $F_t$ are no longer linear functions and the situation becomes more complicated. Here gives a simple nonlinear example of such a model, which has been used extensively in the literature for benchmarking numerical filtering techniques \citep{kitagawa1996monte, west1993mixture, gordon1993novel} assuming the sequence is Markovian.
 %\begin{align*}

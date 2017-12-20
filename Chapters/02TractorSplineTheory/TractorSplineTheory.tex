@@ -380,15 +380,15 @@ Then
 
 \subsection{Numerical Examples}
 
-In this section, we examine the visual quality of the proposed method with four functions: \textit{Blocks}, \textit{Bumps}, \textit{HeaviSine} and \textit{Doppler}, which have been used in \citep{donoho1994ideal, donoho1995adapting, abramovich1998wavelet} because of their caricature features in imaging, spectroscopy and other scientific signal processing. However it is unfair for V-spline fitting "jump" position in \textit{Blocks} and \textit{Bumps} function because it fits position and velocity simultaneously and these points imply infinite first derivative in original functions, which are impossible for vehicles or individuals. In terms of this issue, we treat these functions as velocity, and use noise free points to generate accurate position data, then add noises back to them.
+In this section, we examine the visual quality of the proposed method with four functions: \textit{Blocks}, \textit{Bumps}, \textit{HeaviSine} and \textit{Doppler}, which have been used in \citep{donoho1994ideal, donoho1995adapting, abramovich1998wavelet} because of their caricature features in imaging, spectroscopy and other scientific signal processing. However it is unfair for V-spline fitting ``jump'' position in \textit{Blocks} and \textit{Bumps} function because it fits position and velocity simultaneously and these points imply infinite first derivative in original functions, which are impossible for vehicles or individuals. In terms of this issue, we treat these functions as velocity, and use noise free points to generate accurate position data, then add noise to them.
 
-For calculating consideration, we use $n=1024$ \citep{nason2010wavelet}. Because of all noises are randomly generated, for the convenience of reinitialization and repeatable comparison, we set random seed at 2016. The noises are \iid zero-mean Gaussian distributed with standard deviation regarding to signal-to-noise ratio (SNR), which specifies the ratio of the standard deviation of the function to the standard deviation of the simulated errors. Explicitly, if the standard deviation of the true signal $f$ is $\sigma_f$, the simulated data will be $f+\varepsilon$, where the simulated error  $\varepsilon \sim N(0,\sigma_f/SNR)$. 
+For calculating consideration, we use $n=1024$ \citep{nason2010wavelet}. Because of all noise are randomly generated, for the convenience of reinitialization and repeatable comparison, we set random seed at 2016. The noise is \iid zero-mean Gaussian distributed with standard deviation regarding to signal-to-noise ratio (SNR), which specifies the ratio of the standard deviation of the function to the standard deviation of the simulated errors. Explicitly, if the standard deviation of the true signal $f$ is $\sigma_f$, the simulated data will be $f+\varepsilon$, where the simulated error  $\varepsilon \sim N(0,\sigma_f/SNR)$. 
 
 If the original function $g(t)$ is treated as velocity function $f'(t)=g(t)$, thus by setting initial position $y_0=0$, acceleration $a_0=0$ and using the following formula 
 \begin{equation}\label{generateVelocity}
 f(t_{i+1})=f(t_i)+\left(g(t_i)+g(t_{i+1}) \right)\frac{t_{i+1}-t_i}{2}
 \end{equation}
-for calculating position information, we can generate simulated data. Further, we add some \iid  zero-mean $\varepsilon$ noises with SNR to them to get the measurements by 
+for calculating position information, we can generate simulated data. Further, we add some \iid  zero-mean $\varepsilon$ noise with SNR to them to get the measurements by 
 \begin{align}\label{tractorsplinegeneratefunctions}
 \begin{split}
 y_i &= f(t_i) + \varepsilon_f, \\
@@ -405,7 +405,7 @@ and
 \begin{equation}\label{thetahat0}
 \hat{\theta}_{\gamma=0}=\left(\mathbf{B}^\top\mathbf{B}+n\Omega_{\lambda}\right)^{-1}\mathbf{B}^\top\mathbf{y}
 \end{equation}
-and the adjusted penalty term in \eqref{adjustedpenalty} was removed from another reconstruction, noted as "V-spline without APT". Figure \ref{num1} to \ref{num4} display the original (velocity), generated position, wavelet with two different threshold methods, P-spline and three kinds of V-spline fitted functions. The parameters $\lambda$ and $\gamma$ of a V-spline are automatically selected with the formula \eqref{tractorcv} by $\textsf{optim}$ function in $R$ \citep{nelder1965simplex}.
+and the adjusted penalty term in \eqref{adjustedpenalty} was removed from another reconstruction, noted as ``V-spline without APT''. Figure \ref{num1} to \ref{num4} display the original (velocity), generated position, wavelet with two different threshold methods, P-spline and three kinds of V-spline fitted functions. The parameters $\lambda$ and $\gamma$ of a V-spline are automatically selected with the formula \eqref{tractorcv} by $\textsf{optim}$ function in $R$ \citep{nelder1965simplex}.
 
 
 %\begin{figure}
