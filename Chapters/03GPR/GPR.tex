@@ -32,7 +32,7 @@ A polynomial smoothing spline of degree $2m-1$ is a piecewise polynomial of the 
 
 \subsection{Polynomial Smoothing Spline}
 
-A spline is a numeric function that is piecewise-defined by polynomial functions, and which possesses a high degree of smoothness at the places where the polynomial pieces connect (known as knots) \citep{judd1998numerical, chen2009feedback}. Suppose we are given observed data $(t_1,y_1),(t_2,y_2), \ldots, (t_n,y_n)$ in the interval $[0,1]$, satisfying $0< t_1< t_2 < \cdots <t_n < 1$, a piecewise polynomial function $f(t)$ can be obtained by dividing the interval into contiguous intervals $(t_1,t_2),\ldots,(t_{n-1},t_n)$ and represented by a separate polynomial on each interval. For any continuous $f\in \mathcal{C}^{(m)}[0,1]$, it can be represented in a linear combination of basis functions $h_m(t)$ as $f(t) =\sum_{m=1}^{M}\beta_mh_m(t)$, where $\beta_m$ are coefficients \citep{ellis2009}. It is just like every vector in a vector space can be represented as a linear combination of basis vectors. 
+A spline is a numeric function that is piecewise-defined by polynomial functions, which possesses a high degree of smoothness at the places where the polynomial pieces connect (known as knots) \citep{judd1998numerical, chen2009feedback}. Suppose we are given observed data $(t_1,y_1),(t_2,y_2), \ldots, (t_n,y_n)$ in the interval $[0,1]$, satisfying $0< t_1< t_2 < \cdots <t_n < 1$, a piecewise polynomial function $f(t)$ can be obtained by dividing the interval into contiguous intervals $(t_1,t_2),\ldots,(t_{n-1},t_n)$ and represented by a separate polynomial on each interval. For any continuous $f\in \mathcal{C}^{(m)}[0,1]$, it can be represented in a linear combination of basis functions $h_m(t)$ as $f(t) =\sum_{m=1}^{M}\beta_mh_m(t)$, where $\beta_m$ are coefficients \citep{ellis2009}. It is just like every vector in a vector space can be represented as a linear combination of basis vectors. 
 
 
 
@@ -377,10 +377,10 @@ for $\beta = \sigma^2/n\lambda$.
 \section{V-Spline with Correlated Random Errors}
 
 
-In most of the studies on polynomial smoothing splines, the random errors are assumed being independent. In contrast, in applications, observations are often correlated, such as time series data and spatial data. It is known that the correlation greatly affects the selection of smoothing parameters, which are critical to the performance of smoothing spline estimates \citep{wang1998smoothing}.  The parameter selection methods, such as generalized maximum likelihood (GML), generalized cross-validation (GCV), underestimate smoothing parameters when data are correlated. 
+In most of the studies on polynomial smoothing splines, the random errors are assumed being independent. By contrast,  observations are often correlated in applications, such as time series data and spatial data. It is known that the correlation greatly affects the selection of smoothing parameters, which are critical to the performance of smoothing spline estimates \citep{wang1998smoothing}.  The parameter selection methods, such as generalized maximum likelihood (GML), generalized cross-validation (GCV), underestimate smoothing parameters when data are correlated. 
 
 
-\cite{diggle1989spline} extend GCV for choosing the degree of smoothing spline to accommodate an autocorrelated error sequence, by which the smoothing parameter and autocorrelation parameters are estimated simultaneously.  \cite{kohn1992nonparametric} propose an algorithm to evaluate the cross-validation functions, whose autocorrelated errors are modeled by an autoregressive moving average. \cite{wang1998smoothing} extend GML and unbiased risk (UBR), other than GCV, to estimate the smoothing parameters and correlation parameters simultaneously. In this section, we are exploring the extended GCV for V-spline with correlated errors. 
+\cite{diggle1989spline} extend GCV for choosing the degree of smoothing spline to accommodate an autocorrelated error sequence, by which the smoothing parameter and autocorrelation parameters are estimated simultaneously.  \cite{kohn1992nonparametric} propose an algorithm to evaluate the cross-validation functions, whose autocorrelated errors are modeled by an autoregressive moving average. \cite{wang1998smoothing} extend GML and unbiased risk (UBR), other than GCV, to estimate the smoothing parameters and correlation parameters simultaneously. In this section, we explore the extended GCV for V-spline with correlated errors. 
 
 
 First of all, consider observations $y=f(t)+\varepsilon_1$ and $v=f'(t)+\varepsilon_2$, where $\varepsilon_1\sim N\left(0,\sigma^2W^{-1}\right)$, $\varepsilon_2\sim N\left(0,\frac{\sigma^2}{\gamma}U^{-1}\right)$ with variance parameter $\sigma^2$. The V-spline $\hat{f}$ with correlated errors in space $\mathcal{C}_{p.w}^{(2)}[0,1]$ is the minimizer of 
@@ -402,7 +402,7 @@ Recall the leave-one-out cross-validation score of a V-spline,
 \begin{equation*}
 \mbox{LOOCV}(\lambda,\gamma)=\frac{1}{n}\sum_{i=1}^{n}\left( \frac{\hat{f}(t_i)-y_i+\frac{\gamma T_{ii}}{1-\gamma V_{ii}}(\hat{f}'(t_i)-v_i)}{1-S_{ii}-\frac{\gamma T_{ii}}{1-\gamma V_{ii}}U_{ii}} \right)^2.
 \end{equation*}
-Followed by the approximation $S_{ii}\approx\frac{1}{n}\tr(S)$, $T_{ii}\approx\frac{1}{n}\tr(T)$, $U_{ii}\approx\frac{1}{n}\tr(U)$ and $V_{ii}\approx\frac{1}{n}\tr(V)$ \citep{syed2011review}, the V-spline GCV will be 
+Followed by the approximation $S_{ii}\approx\frac{1}{n}\tr(S)$, $T_{ii}\approx\frac{1}{n}\tr(T)$, $U_{ii}\approx\frac{1}{n}\tr(U)$ and $V_{ii}\approx\frac{1}{n}\tr(V)$ \citep{syed2011review}, the GCV for the V-spline will be 
 \begin{equation*}
 \mbox{GCV}(\lambda,\gamma)=\frac{1}{n}\sum_{i=1}^{n}\left( \frac{\hat{f}(t_i)-y_i+ \frac{\gamma\tr(T)/n}{1-\gamma \tr(V)/n}(\hat{f}'(t_i)-v_i)}{1-\tr(S)/n-\frac{\gamma\tr(T)/n}{1-\gamma \tr(V)/n} \tr(U)/n} \right)^2,
 \end{equation*}
@@ -417,12 +417,12 @@ A natural extension to the above GCV for V-spline with correlated errors is \scr
 \normalsize
 
 
-The GCV is used for finding the unknown constant parameter $\lambda$, instead of a piecewise $\lambda(t)$ at different intervals, and the parameter $\gamma$. The structure of covariance matrices $W$ and $U$ is supposed to be known. If the errors are independent, in which way $W$ and $U$ become identity matrices, the solution $\hat{f}$ degenerate to a conventional V-spline with constant $\lambda$ through over the entire interval $[0,1]$.  
+The GCV is used for finding the unknown constant parameter $\lambda$, instead of a piecewise constant $\lambda(t)$ at different intervals, and the parameter $\gamma$. The structures of covariance matrices $W$ and $U$ are assumed known. If the errors are independent, in which way $W$ and $U$ become identity matrices, the solution $\hat{f}$ degenerates to a conventional V-spline with constant $\lambda$ through over the entire interval $[0,1]$.  
 
 
 \section{A Numeric Simulation}
 
-Consider a length of 100 even spaced simulation data on $[0,1]$ and the model $f(t)=\sin(2\pi t)$, $f'(t)=\cos(2\pi t)$. Given parameters $\sigma^2=0.01$, $\gamma=0.02$ and covariance matrices $W$, $U$, then the simulated observation is 
+Consider a length of 100 even spaced simulation data on $[0,1]$ and the model $f(t)=\sin(2\pi t)$, $f'(t)=\cos(2\pi t)$. With given parameters $\sigma^2=0.01$, $\gamma=0.02$ and covariance matrices $W$, $U$, the simulated data  is generated from  
 \begin{align}
 \begin{cases}
 y_i =f(t_i)+\varepsilon_{i}^{(1)}, \\
@@ -444,7 +444,7 @@ With the same parameter found by GCV, V-spline and its Bayes estimate return the
 
 \section{Conclusion}
 
-In this chapter, we take a review of the work that has been done in the last few decades for the relationship between polynomial smoothing spline and the Bayes estimates. With improper priors, the two methods correspond to each other. In fact, the smoothing spline is a particular case of Gaussian process regression. By following the work done by \cite{gu2013smoothing}, we find the Bayes estimate for a trivial V-spline with a constant penalty parameter $\lambda$. Additionally, we give the formula of GCV for V-spline with correlated errors on $y$ and $v$. 
+In this chapter, we take a review of the work that has been done for the relationship between polynomial smoothing spline and the Bayes estimates. With improper priors, the two methods correspond to each other. In fact, the smoothing spline is a particular case of Gaussian process regression. By following the work done by \cite{gu2013smoothing}, we find the Bayes estimate for a trivial V-spline with a constant penalty parameter $\lambda$. Additionally, we give the formula of GCV for V-spline with correlated errors on $y$ and $v$. 
 
 
 In order to find the Bayes estimate for the real V-spline with a piecewise penalty term $\lambda(t)$, we conjecture that the methods discussed in this chapter can be extended using the inner product 

@@ -754,14 +754,14 @@ $\frac{1}{n}\sum_i(\hat{x}_i-x_i)^2$ & 0.5745 & 0.5739 & 0.5737 & 0.5875&  0.574
 
 From figure \ref{FilterRiewComparesion01}, it can be seen that the former three algorithms converge to the true parameter $\phi$ at similar speeds along the time $t$. LW filter has a larger distance to the true parameter comparing with St and PL filters. The proposed MCMC with 100 length data in estimation phase has the largest variance. By setting a longer length $L$, the proposed adaptive MCMC becomes stable. 
 
-The estimations for $x_t$ from $t=300$ to $897$ are very close and the differences are hard to tell visually. From table \ref{FilterRiewComparesionTable}, we can see that, by repeatedly running 50 simulations, the proposed MCMC algorithm is more stable in estimating parameter $\phi$ as it has the lowest standard error (SE) among all the algorithms. The MSE of all the algorithms on estimating $x$ is on the similar levels. 
+The estimations for $x_t$ from $t=300$ to $897$ are very close and the differences are hard to tell visually. From table \ref{FilterRiewComparesionTable}, we can see that, by repeatedly running 50 simulations, the proposed MCMC algorithm is more stable in estimating parameter $\phi$ as it has the lowest standard error (SE) among all the algorithms. The MSE of all the algorithms on estimating $x$ is on the similar level.  
 
 
 \section{Conclusion}
 
-In this chapter, we take a brief overview of existing sequential state estimation methods and combined state and parameter estimation methods. The particle filter is an efficient algorithm for state estimation, although the particles impoverishment is inevitable. Extended to this method, researchers are working on killing particles degeneracy and several accomplishments have been achieved. A new challenge is estimating the unknown parameters. In no doubt, for complex stochastic processes and dynamics, both Bayesian and Frequentist methods are working well. One may refer to \citep{wakefield2013bayesian} for further discussion between Bayesian and Frequentist methods and implementation. 
+In this chapter, we take an overview of existing sequential state estimation methods and combined state and parameter estimation methods. The particle filter is an efficient algorithm for state estimation, although the particles impoverishment is inevitable. Extended to this method, researchers are working on killing particles degeneracy and several accomplishments have been achieved. A new challenge is estimating the unknown parameters. In no doubt, for complex stochastic processes and dynamics, both Bayesian and Frequentist methods are working well. One refer to \citep{wakefield2013bayesian} for further discussions between Bayesian and Frequentist methods and implementation. 
 
-As a summary, most of the research issues for filtering and parameter estimation focused on 
+As a summary, most of the research issues for filtering and parameter estimation focus on 
 \begin{itemize}\itemsep0em 
 \item Choices of resampling scheme to kill particles degeneracy, such as Liu and West's filter.
 \item Exploration of an efficient sampling algorithm, such as Metropolis-Hastings sampler and related sampling algorithms. 
