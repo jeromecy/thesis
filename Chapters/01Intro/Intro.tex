@@ -15,7 +15,7 @@ Given time series data from a vehicle-mounted GPS unit, an important question is
 \section{Smoothing Spline Based Reconstruction}
 
 Smoothing spline approaches are natural solutions to trajectory reconstruction, see 
-\eg \citep{eubank2004simple, durbin2012time} for details. 
+\eg \citep{eubank2004simple} and \citep{durbin2012time} for details. 
 
 Some form of interpolation is an obvious approach to trajectory reconstruction. The simplest method, piecewise linear interpolation, connects successive locations by straight lines. Clearly, this interpolation implies abrupt changes in velocity at the join points. Smooth trajectories are more common in real life applications. A single polynomial function that is defined on the entire interval, such as B\'ezier curve, is not as flexible as a piecewise combination of polynomials, each of which is defined on a subinterval. The polynomials are jodined at the endpoints of their subintervals -- these endpoints are termed \textit{knots}. This kind of piecewise polynomial interpolation is called a \textit{spline}. 
 
@@ -25,7 +25,7 @@ Some form of interpolation is an obvious approach to trajectory reconstruction. 
 %\end{equation*}
 %The key step of a spline interpolation is the choice of basis functions. Once the $h_i(t)$ have been determined, the models are linear in the variables space. 
 
-A number of splines are commonly in use, see \citep{esl2009} for discussions. The B-spline, short for basis spline, gives a closed-form expression for the trajectory with continuous second derivatives and goes through the points smoothly while ignoring outliers \citep{komoriya1989trajectory, ben2004geometric}. It is flexible and has minimal support with respect to a given degree, smoothness, and domain partition. Once the knots are given, it is easy to compute the B-spline recursively for any desired degree of the polynomial \citep{de1978practical, cox1982practical}. An attractive feature of the B-spline is its flexibility for univariate regression and its appealing simplicity of the method is explained in \citep{dierckx1995curve, eilers1996flexible}. For example,  \cite{gasparetto2007new} use a fifth-order B-spline to compose the overall trajectory. Almost every spline can be represented as a B-spline. 
+A number of splines are commonly in use, see \citep{esl2009} for discussions. The B-spline, short for basis spline, gives a closed-form expression for the trajectory with continuous second derivatives and goes through the points smoothly while ignoring outliers \citep{komoriya1989trajectory, ben2004geometric}. It is flexible and has minimal support with respect to a given degree, smoothness, and domain partition. Once the knots are given, it is easy to compute the B-spline recursively for any desired degree of the polynomial \citep{de1978practical, cox1982practical}. An attractive feature of the B-spline is its flexibility for univariate regression and its appealing simplicity of the method is explained in \citep{dierckx1995curve, eilers1996flexible}. \cite{gasparetto2007new} use a fifth-order B-spline to compose the overall trajectory. Almost every spline can be represented as a B-spline. 
 
 Another widely used spline is the piecewise cubic spline, which is continuous on an interval $[a,b]$ and has continuous first and second derivatives \citep{wolberg1988cubic}. Let $f(t)$ denote a trajectory reconstruction, \ie the location of the vehicle at time $t$. For the piecewise cubic spline,  
 \begin{equation*}
@@ -37,11 +37,11 @@ on the subinterval $[t_j,t_{j+1})$ with given coefficients $d_j, c_j, b_j$ and $
 Given observations $\left(t_i,y_i\right)$, $i=1,\ldots,n$ ($n\geq K$), one can use regression methods to estimate $f(t)$. Specifically, let $y_i=f(t_i)+\varepsilon_i$ with random errors $\left\lbrace \varepsilon_i\right\rbrace_{i=1}^n \sim N\left(0,\sigma^2\right)$. In the case of the natural cubic spline, where $f\in \mathit{C}^{(2)}[a,b]$, this leads to a standard linear parametric model \citep{kim2004smoothing}. 
 
 
-However, a parametric approach only captures features contained in the preconceived class of functions and increases model bias \citep{yao2005functional}. To avoid this, nonparametric methods have been developed. Rather than giving specified parameters, it is desired to reconstruct $f$ from the data $y(t_i)\equiv y_i$ itself  \citep{craven1978smoothing}. The estimates of polynomial smoothing splines appear as a solution to the following minimization problem: find $\hat{f} \in \mathit{C}^{(m)}[a,b]$ that minimizes the penalized residual sum of squares: 
+However, a parametric approach only captures features contained in the preconceived class of functions and increases model bias \citep{yao2005functional}. To improve the performances, nonparametric methods have been developed. Rather than giving specified parameters, it is desired to reconstruct $f$ from the data $y(t_i)\equiv y_i$ itself  \citep{craven1978smoothing}. The estimates of polynomial smoothing splines appear as a solution to the following minimization problem: find $\hat{f} \in \mathit{C}^{(m)}[a,b]$ that minimizes the penalized residual sum of squares: 
 \begin{equation}\label{introSmoothingOb}
-\mbox{RSS}=\sum_{i=1}^{n}\left(y_i-f(t_i)\right)^2+\lambda\int_a^b \left(f^{(m)}\right)^2 dt
+\mbox{RSS}=\sum_{i=1}^{n}\left(y_i-f(t_i)\right)^2+\lambda\int_a^b \left(f^{(m)}\right)^2dt, 
 \end{equation}
-for pre-specified value $\lambda(>0)$ \citep{aydin2012smoothing}. In the above equation, the first term is the residual sum squares controlling the lack of fit. The second term is the roughness penalty weighted by a smoothing parameter $\lambda$, which varies from $0$ to $+\infty$ and establishes a trade-off between interpolation and a  straight line fit in the following way: 
+for a pre-specified value $\lambda(>0)$ \citep{aydin2012smoothing}. In the above equation, the first term is the residual sum squares controlling the lack of fit. The second term is the roughness penalty weighted by a smoothing parameter $\lambda$, which varies from $0$ to $+\infty$ and establishes a trade-off between interpolation and a  straight line fit in the following way: 
 \begin{align*}\small 
 \begin{cases}
 \lambda = 0  & \mbox{$f$ can be any function that interpolates the data}\\
@@ -144,19 +144,21 @@ It is no doubt that in a conventional target tracking system, the most common me
 
 \subsection*{Kalman Filter}
 
-In a discrete-time linear system, the optimal Bayesian solution coincides with the least squares solution. The successful optimal one was given by \cite{kalman1960new}, the celebrated \textit{Kalman filter}. It is a set of mathematical equations that provides an efficient computational means to estimate the state of a process in a recursive way by minimizing the mean of the squared errors \citep{bishop2001introduction}. 
+In a discrete-time linear system, the optimal Bayesian solution coincides with the least squares solution. The successful optimal one was given by \cite{kalman1960new}, the famous \textit{Kalman filter}. It is a set of mathematical equations that provides an efficient computational means to estimate the state of a process in a recursive way by minimizing the mean of the squared errors \citep{bishop2001introduction}. 
 
-The Kalman filter recursively updates the estimated state by computing from the previous estimation and a new observation. In addition to eliminating the need for storing the entire past observed data, it is computationally more efficient than computing the estimate directly from the entire past observed data at each step of the filtering process \citep{haykin2001kalman}.  
+The Kalman filter recursively updates the estimated state by computing from the previous estimation and a new observation. Without the need for storing the entire past observed data, the Kalman filter computes more efficient than computing the estimate directly from the entire past observed data at each step of the filtering process \citep{haykin2001kalman}.  
 
 A detailed Kalman filter and its may variants can be found in \citep{chen2003bayesian, rhodes1971tutorial, kailath1981lectures, sorenson1985kalman}. \cite{tusell2011kalman} gives a review of some \textit{R} packages, which are used to fit data with Kalman filter methods. Besides, it is also shown that the Kalman filter can be derived within a Bayesian framework and reduces to a maximum posterior probability (MAP) solution, and can be easily extended to ML solution \citep{haykin2001kalman, guzzi2016data}. 
 
 Consider the following model 
 \begin{align}\label{introKFmodel}
-\begin{array}{cccccccccc}\cdots &\to &x_{t-1}&\to &x_{t}&\to &x_{t+1}&\to &\cdots &{\text{truth}}\\ &&\downarrow &&\downarrow &&\downarrow && &\\ \cdots&&y_{t-1}&&y_{t}&&y_{t+1}&&\cdots &{\text{observation}}\end{array}
+\begin{array}{cccccccccc}
+\cdots &\to &x_{t-1}&\to &x_{t}&\to &x_{t+1}&\to &\cdots &{\text{truth}}\\
+\cdots &&\downarrow &&\downarrow &&\downarrow && \cdots &\\ \cdots&&y_{t-1}&&y_{t}&&y_{t+1}&&\cdots &{\text{observation}}\end{array}
  \end{align}
 in which $x_t=F(x_{t-1})+\varepsilon_x$ is the true hidden state propagating through the transition matrix $F$ and $y_t=G(x_t)+\varepsilon_y$ is the observation measured by the measurement matrix $G$ of the system, where $\varepsilon$ indicates \iid noise in the model. 
 
-To estimate the filtering state $x_t$ from $y_{1:t}=\left\lbrace y_1,\ldots,y_t\right\rbrace$, Bayesian wants to maximize the posterior $p(x_t\mid y_{1:t})$ by marginalizing out all the previous measurements. Given the joint distribution of $p(x_t,x_{t-1},y_{1:t})$, Kalman filter supposes the expectation $\hat{x}_{t-1}$ and its variance $S_{t-1}$ are known and passing through the system by $\hat{x}_t=F\hat{x}_{t-1}$ and $S_t=FS_{t-1}F^\top + Q_t$. Because of the log-likelihood function is written in such a way that
+To estimate the filtering state $x_t$ from $y_{1:t}=\left\lbrace y_1,\ldots,y_t\right\rbrace$, Bayesian wants to maximize the posterior $p(x_t\mid y_{1:t})$ by marginalizing out all the previous measurements. Given the joint distribution of $p(x_t,x_{t-1},y_{1:t})$, Kalman filter supposes the expectation $\hat{x}_{t-1}$ and its variance $S_{t-1}$ are known and passing through the system by $\hat{x}_t=F\hat{x}_{t-1}$ and $S_t=FS_{t-1}F^\top + Q_t$. Because of the log-likelihood function is written in such way: 
 $\ln p(x_t\mid y_{1:t}) \propto \frac{1}{2}(y_t-Gx_t)^2-\frac{1}{2}(x_t-\hat{x}_{t-1})^2$,
 as a result, the solution is 
 \begin{equation*}
@@ -172,7 +174,7 @@ Further, compared with the filtering distribution $p(x_t\mid y_{1:t})$, the pred
 
 However, Kalman filter has a limitation that it does not apply to general non-linear model and non-Gaussian distributions. For a non-linear system, one can use the extended Kalman filter (EKF), which is widely used for solving nonlinear state estimation applications \citep{gelb1974applied, bar1993estimation}. The EKF uses Taylor expansion to construct linear approximations of nonlinear functions, therefore the state transition $f$ and observation $g$ do not have to be linear but to be differentiable. However, in the EKF process, these approximations can incur large errors in the true posterior mean and covariance of the transformed random variable \citep{wan2000unscented}. 
 
-Alternatively, the unscented Kalman filter (UKF) is a derivative-free method \citep{julier1997new, wan2000unscented, gyorgy2014unscented}. It uses the Kalman filter to create a normal distribution that approximates the result of a non-linear transformation numerically by seeing what happens to a few deliberately chosen points. The unscented transform is used to recursively estimating the equation \eqref{KalmanEstimation}, where the state random variable is redefined as the concatenation of the original state and noise variables. By contrast, Kalman filter does not require numerical approximations. 
+Alternatively, the unscented Kalman filter (UKF) is a derivative-free method \citep{julier1997new, wan2000unscented, gyorgy2014unscented}. It uses the Kalman filter to create a normal distribution that approximates the result of a non-linear transformation numerically by seeing what happens to a few deliberately chosen points. The unscented transform is used to recursively estimate the equation \eqref{KalmanEstimation}, where the state random variable is re-defined as the concatenation of the original state and noise variables. By contrast, Kalman filter does not require numerical approximations. 
 
 The performances of EKF and UKF are compared in a few references regarding to different kinds of aspects, such as \citep{chandrasekar2007comparison, laviola2003comparison, st2004comparison}. There is not an overall conclusion that which one performs better. 
 
@@ -237,7 +239,7 @@ Apparently, Bayesian filtering has become a broad topic involving many scientifi
 \section{Markov Chain Monte Carlo Methods}
 
 
-Schemes exist to counteract sample impoverishment, which incurs in particle filter \citep{ristic2004beyond}. One approach is to consider the states for the particles to be predetermined by the forward filter and then to obtain the smoothed estimates by recalculating the particles' weights via a recursion from the final to the first time step \citep{godsill2000methodology}. Another approach is to use a \textit{Markov chain Monte Carlo} (MCMC) move step \citep{carlin1992monte}. MCMC refers to constructing Markov chains that move in the space of the unobserved quantity of interest and produces a sequence of dependent samples from the posterior distribution. After the chain has been run long enough, the sequence of visited states may be used as an approximation to the posterior distribution \citep{kokkala2016particle}. 
+Schemes exist to counteract sample impoverishment, which incurs in particle filter \citep{ristic2004beyond}. One approach is to consider the states for the particles to be predetermined by the forward filter and then to obtain the smoothed estimates by recalculating the particles' weights via a recursion from the final to the first time step \citep{godsill2000methodology}. Another approach is to use a \textit{Markov chain Monte Carlo} (MCMC) move step \citep{carlin1992monte}. MCMC refers to constructing Markov chains that move in the unobserved quantity space and produce a sequence samples from the posterior distribution. After the chain has been run long enough, the sequence is considered as an approximation to the posterior distribution \citep{kokkala2016particle}. 
 
 
 MCMC methods are a set of powerful stochastic algorithms that allow us to solve most of these Bayesian computational problems when the data are available in batches \citep{andrieu1999sequential, green1995reversible, andrieu2001model}. They are based on sampling from probability distributions based on a Markov chain. If samples are unable to be drawn directly from a distribution $\pi(x)$, we can construct a Markov chain of samples from another distribution $\hat{\pi}(x)$ that is equilibrium to $\pi(x)$. If the chain is long enough, these samples of the chain can be used as a basis for summarizing features of $\pi(x)$ of interest \citep{smith1993bayesian}. This is a crucial property. See \eg \citep{cappe2009inference, liu2008monte} for details. 

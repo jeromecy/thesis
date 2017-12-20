@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.5)  20 DEC 2017 18:11
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.5)  20 DEC 2017 21:35
 entering extended mode
 **draft.tex
 (C:\Users\zcao\Documents\Latex\Thesis\draft.tex
@@ -2144,31 +2144,39 @@ Chapter 4.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[69] [70] [71]
+[69] [70] [71] [72]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[72] [73] [74] [75]
+[73] [74] [75]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[76] [77] [78]
+[76]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[79] [80]
+
+Underfull \vbox (badness 3439) has occurred while \output is active []
+
+ [77]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+[78]
+Underfull \vbox (badness 8075) has occurred while \output is active []
+
+ [79]
+[80] [81]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 600.
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 600.
- [81] [82]
-[83]
+
+[82] [83]
 <Chapters/04Filtering/plot/LWchain100.pdf, id=836, 844.15375pt x 597.23125pt>
 File: Chapters/04Filtering/plot/LWchain100.pdf Graphic file (type pdf)
 
@@ -2246,19 +2254,15 @@ on input line 725.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-Underfull \vbox (badness 1454) has occurred while \output is active []
-
- [84])
-[85] [86 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/04Filtering/plot/LWchai
-n100.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/04Filtering/plot/STcha
-in100.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/04Filtering/plot/PLch
-ain100.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/04Filtering/plot/MCM
-Cchain100.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/04Filtering/plot/
-MCMCchain300.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/04Filtering/pl
-ot/MCMCchainVary.pdf>] [87 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/04Fil
-tering/plot/CompMCMCboxplotALL.pdf>] [88 <C:/Users/zcao/Documents/Latex/Thesis/
-Chapters/04Filtering/plot/plotlyFilterCompX2.png (PNG copy)>]
+[84]) [85] [86 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/04Filtering/plot/
+LWchain100.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/04Filtering/plot
+/STchain100.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/04Filtering/plo
+t/PLchain100.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/04Filtering/pl
+ot/MCMCchain100.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/04Filtering
+/plot/MCMCchain300.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/04Filter
+ing/plot/MCMCchainVary.pdf>] [87 <C:/Users/zcao/Documents/Latex/Thesis/Chapters
+/04Filtering/plot/CompMCMCboxplotALL.pdf>] [88 <C:/Users/zcao/Documents/Latex/T
+hesis/Chapters/04Filtering/plot/plotlyFilterCompX2.png (PNG copy)>]
 Chapter 5.
 (C:\Users\zcao\Documents\Latex\Thesis\Chapters/05MCMCOU/MCMCEstimation.tex
 [89
@@ -2277,7 +2281,7 @@ ed $[]$
  []
 
 [92] [93]
-Overfull \hbox (10.65108pt too wide) in paragraph at lines 141--143
+Overfull \hbox (10.65108pt too wide) in paragraph at lines 142--144
 \OT1/cmr/m/n/12 So, from the above co-vari-ance ma-trix, we can find the mean a
 nd vari-ance of $\OML/cmm/m/it/12 p []$
  []
@@ -2288,7 +2292,7 @@ File: Chapters/05MCMCOU/plots/ggoneRW.pdf Graphic file (type pdf)
 
 <use Chapters/05MCMCOU/plots/ggoneRW.pdf>
 Package pdftex.def Info: Chapters/05MCMCOU/plots/ggoneRW.pdf used on input line
- 238.
+ 239.
 (pdftex.def)             Requested size: 141.12889pt x 95.8425pt.
 
 <Chapters/05MCMCOU/plots/ggindRW.pdf, id=921, 841.58556pt x 569.18506pt>
@@ -2296,7 +2300,7 @@ File: Chapters/05MCMCOU/plots/ggindRW.pdf Graphic file (type pdf)
 
 <use Chapters/05MCMCOU/plots/ggindRW.pdf>
 Package pdftex.def Info: Chapters/05MCMCOU/plots/ggindRW.pdf used on input line
- 243.
+ 244.
 (pdftex.def)             Requested size: 141.12889pt x 95.44873pt.
 
 <Chapters/05MCMCOU/plots/ggcorRW.pdf, id=922, 840.12883pt x 572.2694pt>
@@ -2304,17 +2308,17 @@ File: Chapters/05MCMCOU/plots/ggcorRW.pdf Graphic file (type pdf)
 
 <use Chapters/05MCMCOU/plots/ggcorRW.pdf>
 Package pdftex.def Info: Chapters/05MCMCOU/plots/ggcorRW.pdf used on input line
- 248.
+ 249.
 (pdftex.def)             Requested size: 141.12889pt x 96.13187pt.
 
-Underfull \hbox (badness 2050) in paragraph at lines 249--249
+Underfull \hbox (badness 2050) in paragraph at lines 250--250
 []\OT1/cmr/m/n/10.95 (c) |\OT1/cmr/m/n/10 Cor-re-lated Multi-variable-
  []
 
 [97 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/ggoneRW.pdf> 
 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/ggindRW.pdf> <C:/
 Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/ggcorRW.pdf>]
-Overfull \hbox (11.32918pt too wide) in paragraph at lines 304--305
+Overfull \hbox (11.32918pt too wide) in paragraph at lines 305--306
 []\OT1/cmr/m/n/12 The DA MH al-go-rithm pro-posed in (Chris-ten and Fox, 2005) 
 is a two-stage Metropolis-
  []
@@ -2325,7 +2329,7 @@ File: Chapters/05MCMCOU/plots/gglargechain.pdf Graphic file (type pdf)
 
 <use Chapters/05MCMCOU/plots/gglargechain.pdf>
 Package pdftex.def Info: Chapters/05MCMCOU/plots/gglargechain.pdf used on input
- line 370.
+ line 371.
 (pdftex.def)             Requested size: 141.12889pt x 95.76382pt.
 
 <Chapters/05MCMCOU/plots/gglargeacf.pdf, id=988, 843.02454pt x 570.19666pt>
@@ -2333,7 +2337,7 @@ File: Chapters/05MCMCOU/plots/gglargeacf.pdf Graphic file (type pdf)
 
 <use Chapters/05MCMCOU/plots/gglargeacf.pdf>
 Package pdftex.def Info: Chapters/05MCMCOU/plots/gglargeacf.pdf used on input l
-ine 371.
+ine 372.
 (pdftex.def)             Requested size: 141.12889pt x 95.45306pt.
 
 <Chapters/05MCMCOU/plots/ggsmallchain.pdf, id=989, 844.15375pt x 570.9262pt>
@@ -2341,7 +2345,7 @@ File: Chapters/05MCMCOU/plots/ggsmallchain.pdf Graphic file (type pdf)
 
 <use Chapters/05MCMCOU/plots/ggsmallchain.pdf>
 Package pdftex.def Info: Chapters/05MCMCOU/plots/ggsmallchain.pdf used on input
- line 375.
+ line 376.
 (pdftex.def)             Requested size: 141.12889pt x 95.44452pt.
 
 <Chapters/05MCMCOU/plots/ggsmallacf.pdf, id=990, 843.64348pt x 572.62743pt>
@@ -2349,7 +2353,7 @@ File: Chapters/05MCMCOU/plots/ggsmallacf.pdf Graphic file (type pdf)
 
 <use Chapters/05MCMCOU/plots/ggsmallacf.pdf>
 Package pdftex.def Info: Chapters/05MCMCOU/plots/ggsmallacf.pdf used on input l
-ine 376.
+ine 377.
 (pdftex.def)             Requested size: 141.12889pt x 95.79008pt.
 
 <Chapters/05MCMCOU/plots/ggbestchain.pdf, id=991, 841.11444pt x 571.88454pt>
@@ -2357,7 +2361,7 @@ File: Chapters/05MCMCOU/plots/ggbestchain.pdf Graphic file (type pdf)
 
 <use Chapters/05MCMCOU/plots/ggbestchain.pdf>
 Package pdftex.def Info: Chapters/05MCMCOU/plots/ggbestchain.pdf used on input 
-line 380.
+line 381.
 (pdftex.def)             Requested size: 141.12889pt x 95.95377pt.
 
 <Chapters/05MCMCOU/plots/ggbestacf.pdf, id=992, 842.6638pt x 572.84326pt>
@@ -2365,7 +2369,7 @@ File: Chapters/05MCMCOU/plots/ggbestacf.pdf Graphic file (type pdf)
 
 <use Chapters/05MCMCOU/plots/ggbestacf.pdf>
 Package pdftex.def Info: Chapters/05MCMCOU/plots/ggbestacf.pdf used on input li
-ne 381.
+ne 382.
 (pdftex.def)             Requested size: 141.12889pt x 95.93982pt.
 
 
@@ -2382,7 +2386,7 @@ n.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/ggsmallacf
 .pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/ggbestacf.p
 df>]
 [102] [103] [104]
-Overfull \hbox (4.114pt too wide) in paragraph at lines 492--493
+Overfull \hbox (4.114pt too wide) in paragraph at lines 493--494
 []\OT1/cmr/m/n/12 In a sim-ple lin-ear case, we are choos-ing the pa-ram-e-ter 
 $\OML/cmm/m/it/12  \OT1/cmr/m/n/12 = []$
  []
@@ -2392,7 +2396,7 @@ File: Chapters/05MCMCOU/plots/linear_phi.pdf Graphic file (type pdf)
 
 <use Chapters/05MCMCOU/plots/linear_phi.pdf>
 Package pdftex.def Info: Chapters/05MCMCOU/plots/linear_phi.pdf used on input l
-ine 499.
+ine 500.
 (pdftex.def)             Requested size: 141.12889pt x 94.47946pt.
 
 <Chapters/05MCMCOU/plots/linear_tau2.pdf, id=1102, 841.67574pt x 559.9475pt>
@@ -2400,7 +2404,7 @@ File: Chapters/05MCMCOU/plots/linear_tau2.pdf Graphic file (type pdf)
 
 <use Chapters/05MCMCOU/plots/linear_tau2.pdf>
 Package pdftex.def Info: Chapters/05MCMCOU/plots/linear_tau2.pdf used on input 
-line 503.
+line 504.
 (pdftex.def)             Requested size: 141.12889pt x 93.88255pt.
 
 <Chapters/05MCMCOU/plots/linear_sig2.pdf, id=1103, 844.15375pt x 557.92467pt>
@@ -2408,10 +2412,10 @@ File: Chapters/05MCMCOU/plots/linear_sig2.pdf Graphic file (type pdf)
 
 <use Chapters/05MCMCOU/plots/linear_sig2.pdf>
 Package pdftex.def Info: Chapters/05MCMCOU/plots/linear_sig2.pdf used on input 
-line 507.
+line 508.
 (pdftex.def)             Requested size: 141.12889pt x 93.27098pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 506--508
+Underfull \hbox (badness 10000) in paragraph at lines 507--509
 []
  []
 
@@ -2435,7 +2439,7 @@ pdf>]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 550.
+(amsmath)                 on input line 551.
 
 [107]
 <Chapters/05MCMCOU/plots/linearsimuXall.pdf, id=1179, 844.15375pt x 597.23125pt
@@ -2453,13 +2457,9 @@ File: Chapters/05MCMCOU/plots/gglinearestXt2.pdf Graphic file (type pdf)
 Package pdftex.def Info: Chapters/05MCMCOU/plots/gglinearestXt2.pdf used on inp
 ut line 612.
 (pdftex.def)             Requested size: 198.45662pt x 140.40404pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[108] [109 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/linear
-simuXall.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/ggl
-inearestXt2.pdf>]
+ [108 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/linearsimuX
+all.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/gglinear
+estXt2.pdf>] [109]
 <Chapters/05MCMCOU/plots/simudataOUdataview.pdf, id=1200, 844.15375pt x 597.231
 25pt>
 File: Chapters/05MCMCOU/plots/simudataOUdataview.pdf Graphic file (type pdf)
@@ -2573,7 +2573,10 @@ Overfull \hbox (9.04417pt too wide) in paragraph at lines 885--885
 [] 
  []
 
-[115] [116]
+[115]
+Underfull \vbox (badness 1789) has occurred while \output is active []
+
+ [116]
 Overfull \hbox (21.14098pt too wide) in paragraph at lines 972--981
 \OT1/cmr/m/n/12 where, in fact, $\OML/cmm/m/it/12 M[] \OT1/cmr/m/n/12 = [] = []
 $ and its in-verse is $\OML/cmm/m/it/12 M[] \OT1/cmr/m/n/12 = []$.
@@ -2702,7 +2705,7 @@ File: Chapters/05MCMCOU/plots/realdataestbiaslogDAnoupdate.pdf Graphic file (ty
 pe pdf)
  <use Chapters/05MCMCOU/plots/realdataestbiaslogDAnoupdate.pdf>
 Package pdftex.def Info: Chapters/05MCMCOU/plots/realdataestbiaslogDAnoupdate.p
-df used on input line 1270.
+df used on input line 1267.
 (pdftex.def)             Requested size: 198.45662pt x 133.95085pt.
 
 <Chapters/05MCMCOU/plots/realdataestbiaslogDAupdate.pdf, id=1451, 844.15375pt x
@@ -2711,7 +2714,7 @@ File: Chapters/05MCMCOU/plots/realdataestbiaslogDAupdate.pdf Graphic file (type
  pdf)
  <use Chapters/05MCMCOU/plots/realdataestbiaslogDAupdate.pdf>
 Package pdftex.def Info: Chapters/05MCMCOU/plots/realdataestbiaslogDAupdate.pdf
- used on input line 1274.
+ used on input line 1271.
 (pdftex.def)             Requested size: 198.45662pt x 133.78111pt.
 
 <Chapters/05MCMCOU/plots/realdataestbiaslogLnoupdate.pdf, id=1452, 843.8864pt x
@@ -2720,7 +2723,7 @@ File: Chapters/05MCMCOU/plots/realdataestbiaslogLnoupdate.pdf Graphic file (typ
 e pdf)
  <use Chapters/05MCMCOU/plots/realdataestbiaslogLnoupdate.pdf>
 Package pdftex.def Info: Chapters/05MCMCOU/plots/realdataestbiaslogLnoupdate.pd
-f used on input line 1278.
+f used on input line 1275.
 (pdftex.def)             Requested size: 198.45662pt x 133.70483pt.
 
 <Chapters/05MCMCOU/plots/realdataestbiaslogLupdate.pdf, id=1453, 844.15375pt x 
@@ -2729,7 +2732,7 @@ File: Chapters/05MCMCOU/plots/realdataestbiaslogLupdate.pdf Graphic file (type
 pdf)
  <use Chapters/05MCMCOU/plots/realdataestbiaslogLupdate.pdf>
 Package pdftex.def Info: Chapters/05MCMCOU/plots/realdataestbiaslogLupdate.pdf 
-used on input line 1282.
+used on input line 1279.
 (pdftex.def)             Requested size: 198.45662pt x 133.81337pt.
 
 
@@ -2742,7 +2745,7 @@ File: Chapters/05MCMCOU/plots/realdatacomparea1notupandup2.pdf Graphic file (ty
 pe pdf)
  <use Chapters/05MCMCOU/plots/realdatacomparea1notupandup2.pdf>
 Package pdftex.def Info: Chapters/05MCMCOU/plots/realdatacomparea1notupandup2.p
-df used on input line 1291.
+df used on input line 1288.
 (pdftex.def)             Requested size: 198.45662pt x 140.40404pt.
 
 <Chapters/05MCMCOU/plots/realdatacomparea2notupandup2.pdf, id=1455, 844.15375pt
@@ -2751,7 +2754,7 @@ File: Chapters/05MCMCOU/plots/realdatacomparea2notupandup2.pdf Graphic file (ty
 pe pdf)
  <use Chapters/05MCMCOU/plots/realdatacomparea2notupandup2.pdf>
 Package pdftex.def Info: Chapters/05MCMCOU/plots/realdatacomparea2notupandup2.p
-df used on input line 1295.
+df used on input line 1292.
 (pdftex.def)             Requested size: 198.45662pt x 140.40404pt.
 
 <Chapters/05MCMCOU/plots/realdatacompareeffutnotupandup2.pdf, id=1456, 844.1537
@@ -2761,7 +2764,7 @@ File: Chapters/05MCMCOU/plots/realdatacompareeffutnotupandup2.pdf Graphic file
 
 <use Chapters/05MCMCOU/plots/realdatacompareeffutnotupandup2.pdf>
 Package pdftex.def Info: Chapters/05MCMCOU/plots/realdatacompareeffutnotupandup
-2.pdf used on input line 1299.
+2.pdf used on input line 1296.
 (pdftex.def)             Requested size: 198.45662pt x 140.40404pt.
 
 <Chapters/05MCMCOU/plots/realdatacompareessutnotupandup2.pdf, id=1457, 844.1537
@@ -2771,26 +2774,14 @@ File: Chapters/05MCMCOU/plots/realdatacompareessutnotupandup2.pdf Graphic file
 
 <use Chapters/05MCMCOU/plots/realdatacompareessutnotupandup2.pdf>
 Package pdftex.def Info: Chapters/05MCMCOU/plots/realdatacompareessutnotupandup
-2.pdf used on input line 1303.
+2.pdf used on input line 1300.
 (pdftex.def)             Requested size: 198.45662pt x 140.40404pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-<Chapters/05MCMCOU/plots/realdatalearningcorMatrix.pdf, id=1458, 844.15375pt x 
-597.23125pt>
-File: Chapters/05MCMCOU/plots/realdatalearningcorMatrix.pdf Graphic file (type 
-pdf)
- <use Chapters/05MCMCOU/plots/realdatalearningcorMatrix.pdf>
-Package pdftex.def Info: Chapters/05MCMCOU/plots/realdatalearningcorMatrix.pdf 
-used on input line 1337.
-(pdftex.def)             Requested size: 352.81613pt x 227.62459pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 1454) has occurred while \output is active []
 
  [125 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/simudataOUl
 engtheff.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/sim
@@ -2801,12 +2792,25 @@ udataOUlengtheffut.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
+<Chapters/05MCMCOU/plots/realdatalearningcorMatrix.pdf, id=1509, 844.15375pt x 
+597.23125pt>
+File: Chapters/05MCMCOU/plots/realdatalearningcorMatrix.pdf Graphic file (type 
+pdf)
+ <use Chapters/05MCMCOU/plots/realdatalearningcorMatrix.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/realdatalearningcorMatrix.pdf 
+used on input line 1332.
+(pdftex.def)             Requested size: 352.81613pt x 227.62459pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
 <Chapters/05MCMCOU/plots/realdatalearninggam.pdf, id=1510, 844.15375pt x 560.61
 514pt>
 File: Chapters/05MCMCOU/plots/realdatalearninggam.pdf Graphic file (type pdf)
  <use Chapters/05MCMCOU/plots/realdatalearninggam.pdf>
 Package pdftex.def Info: Chapters/05MCMCOU/plots/realdatalearninggam.pdf used o
-n input line 1345.
+n input line 1340.
 (pdftex.def)             Requested size: 198.45662pt x 131.7959pt.
 
 <Chapters/05MCMCOU/plots/realdatalearningxi2.pdf, id=1511, 844.15375pt x 554.11
@@ -2814,7 +2818,7 @@ n input line 1345.
 File: Chapters/05MCMCOU/plots/realdatalearningxi2.pdf Graphic file (type pdf)
  <use Chapters/05MCMCOU/plots/realdatalearningxi2.pdf>
 Package pdftex.def Info: Chapters/05MCMCOU/plots/realdatalearningxi2.pdf used o
-n input line 1349.
+n input line 1344.
 (pdftex.def)             Requested size: 198.45662pt x 130.26854pt.
 
 <Chapters/05MCMCOU/plots/realdatalearninglab2.pdf, id=1512, 844.15375pt x 558.6
@@ -2822,7 +2826,7 @@ n input line 1349.
 File: Chapters/05MCMCOU/plots/realdatalearninglab2.pdf Graphic file (type pdf)
  <use Chapters/05MCMCOU/plots/realdatalearninglab2.pdf>
 Package pdftex.def Info: Chapters/05MCMCOU/plots/realdatalearninglab2.pdf used 
-on input line 1353.
+on input line 1348.
 (pdftex.def)             Requested size: 198.45662pt x 131.32602pt.
 
 <Chapters/05MCMCOU/plots/realdatalearningsig2.pdf, id=1513, 844.15375pt x 559.0
@@ -2830,7 +2834,7 @@ on input line 1353.
 File: Chapters/05MCMCOU/plots/realdatalearningsig2.pdf Graphic file (type pdf)
  <use Chapters/05MCMCOU/plots/realdatalearningsig2.pdf>
 Package pdftex.def Info: Chapters/05MCMCOU/plots/realdatalearningsig2.pdf used 
-on input line 1357.
+on input line 1352.
 (pdftex.def)             Requested size: 198.45662pt x 131.42323pt.
 
 <Chapters/05MCMCOU/plots/realdatalearningtau2.pdf, id=1514, 844.15375pt x 558.6
@@ -2838,27 +2842,24 @@ on input line 1357.
 File: Chapters/05MCMCOU/plots/realdatalearningtau2.pdf Graphic file (type pdf)
  <use Chapters/05MCMCOU/plots/realdatalearningtau2.pdf>
 Package pdftex.def Info: Chapters/05MCMCOU/plots/realdatalearningtau2.pdf used 
-on input line 1361.
+on input line 1356.
 (pdftex.def)             Requested size: 198.45662pt x 131.3451pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-Underfull \vbox (badness 3128) has occurred while \output is active []
-
- [126 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/realdataest
-biaslogDAnoupdate.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/
-plots/realdataestbiaslogDAupdate.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Cha
-pters/05MCMCOU/plots/realdataestbiaslogLnoupdate.pdf> <C:/Users/zcao/Documents/
-Latex/Thesis/Chapters/05MCMCOU/plots/realdataestbiaslogLupdate.pdf>]
+[126 <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/realdataestb
+iaslogDAnoupdate.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/p
+lots/realdataestbiaslogDAupdate.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chap
+ters/05MCMCOU/plots/realdataestbiaslogLnoupdate.pdf> <C:/Users/zcao/Documents/L
+atex/Thesis/Chapters/05MCMCOU/plots/realdataestbiaslogLupdate.pdf>]
 <Chapters/05MCMCOU/plots/realdatabatchPosition2.pdf, id=1614, 844.15375pt x 597
 .23125pt>
 File: Chapters/05MCMCOU/plots/realdatabatchPosition2.pdf Graphic file (type pdf
 )
  <use Chapters/05MCMCOU/plots/realdatabatchPosition2.pdf>
 Package pdftex.def Info: Chapters/05MCMCOU/plots/realdatabatchPosition2.pdf use
-d on input line 1372.
+d on input line 1367.
 (pdftex.def)             Requested size: 352.8155pt x 249.61426pt.
 
 <Chapters/05MCMCOU/plots/realdatabatchVelocity2.pdf, id=1615, 844.15375pt x 597
@@ -2867,7 +2868,7 @@ File: Chapters/05MCMCOU/plots/realdatabatchVelocity2.pdf Graphic file (type pdf
 )
  <use Chapters/05MCMCOU/plots/realdatabatchVelocity2.pdf>
 Package pdftex.def Info: Chapters/05MCMCOU/plots/realdatabatchVelocity2.pdf use
-d on input line 1373.
+d on input line 1368.
 (pdftex.def)             Requested size: 352.8155pt x 249.61426pt.
 
 
@@ -2879,7 +2880,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 File: Chapters/05MCMCOU/plots/realdataEstXYwithEr.pdf Graphic file (type pdf)
  <use Chapters/05MCMCOU/plots/realdataEstXYwithEr.pdf>
 Package pdftex.def Info: Chapters/05MCMCOU/plots/realdataEstXYwithEr.pdf used o
-n input line 1379.
+n input line 1374.
 (pdftex.def)             Requested size: 198.45662pt x 134.31206pt.
 
 <Chapters/05MCMCOU/plots/realdataestwitherror.pdf, id=1617, 844.15375pt x 571.3
@@ -2887,7 +2888,7 @@ n input line 1379.
 File: Chapters/05MCMCOU/plots/realdataestwitherror.pdf Graphic file (type pdf)
  <use Chapters/05MCMCOU/plots/realdataestwitherror.pdf>
 Package pdftex.def Info: Chapters/05MCMCOU/plots/realdataestwitherror.pdf used 
-on input line 1380.
+on input line 1375.
 (pdftex.def)             Requested size: 198.45662pt x 134.32669pt.
 
 
@@ -2910,7 +2911,7 @@ hPosition2.pdf> <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/r
 ealdatabatchVelocity2.pdf>] [132 <C:/Users/zcao/Documents/Latex/Thesis/Chapters
 /05MCMCOU/plots/realdataEstXYwithEr.pdf> <C:/Users/zcao/Documents/Latex/Thesis/
 Chapters/05MCMCOU/plots/realdataestwitherror.pdf>]
-Overfull \hbox (15.28728pt too wide) in paragraph at lines 1420--1421
+Overfull \hbox (15.28728pt too wide) in paragraph at lines 1415--1416
 []\OT1/cmr/m/n/12 In this chap-ter, we use the self-tuning one-variable-at-a-ti
 me Ran-dom Walk Metropolis-
  []
@@ -4029,10 +4030,10 @@ Missing character: There is no  in font cmti12!
 
 ] (C:\Users\zcao\Documents\Latex\Thesis\draft.aux) ) 
 Here is how much of TeX's memory you used:
- 26706 strings out of 493706
- 589340 string characters out of 3142169
- 551308 words of memory out of 3000000
- 29367 multiletter control sequences out of 15000+200000
+ 26707 strings out of 493706
+ 589373 string characters out of 3142169
+ 551320 words of memory out of 3000000
+ 29368 multiletter control sequences out of 15000+200000
  29707 words of font info for 116 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  55i,21n,67p,10391b,1027s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -4067,7 +4068,7 @@ les (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt12.pfb><C:/Program File
 s (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt8.pfb><C:/Program Files (
 x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Program File
 s (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on draft.pdf (224 pages, 10730552 bytes).
+Output written on draft.pdf (224 pages, 10730747 bytes).
 PDF statistics:
  2751 PDF objects out of 2984 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

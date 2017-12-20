@@ -57,46 +57,47 @@ where $x_{1:t}$ represents the hidden states $\left\lbrace x_0,x_1,\dots,x_t\rig
 A_t& -B_t \\ -B_t^\top & B_t
 \end{bmatrix}, 
 \end{align*}
-where $A_t$ is a $t \times t$ matrix of forward map hidden states, $B_t$ is a $t\times t$ matrix of observation errors up to time $t$. The structure of the matrices, such as bandwidth, sparse density, depending on the structure of the model. Temporally, we use $A$ and $B$ to represent the matrices  $A_t$ and $B_t$ here. Then, we may find the covariance matrix by calculating the inverse of the precision matrix 
+where $A_t$ is a $t \times t$ matrix of forward map hidden states, $B_t$ is a $t\times t$ matrix of observation errors up to time $t$. The structure of the matrices, such as bandwidth, sparse density, depending on the structure of the model. %Temporally, we use $A$ and $B$ to stand for the $A_t$ and $B_t$ here. 
+Then, we may find the covariance matrix by calculating the inverse of the precision matrix 
 \begin{align*}
 \Sigma &= \begin{bmatrix}
-\left(A-B^\top B^{-1}B\right) ^{-1} & -\left(A-B^\top B^{-1}B\right)^{-1}B^\top B^{-1}\\
-- B^{-1}B\left(A-B^\top B^{-1}B\right)^{-1} & \left(B-B^\top A^{-1}B\right) ^{-1}
+\left(A_t-B_t^\top B_t^{-1}B\right) ^{-1} & -\left(A_t-B_t^\top B_t^{-1}B_t\right)^{-1}B_t^\top B_t^{-1}\\
+- B_t^{-1}B_t\left(A_t-B_t^\top B_t^{-1}B_t\right)^{-1} & \left(B_t-B_t^\top A_t^{-1}B_t\right) ^{-1}
 \end{bmatrix} \\
 &= \begin{bmatrix}
-\left(A-B\right) ^{-1} & \left(A-B\right)^{-1}\\
-\left(A-B\right)^{-1} & \left(I- A^{-1}B\right) ^{-1}B^{-1}
+\left(A_t-B_t\right) ^{-1} & \left(A_t-B_t\right)^{-1}\\
+\left(A_t-B_t\right)^{-1} & \left(I_t- A_t^{-1}B_t\right) ^{-1}B_t^{-1}
 \end{bmatrix} \\
 &\triangleq \begin{bmatrix}
 \Sigma_{XX} & \Sigma_{XY} \\
 \Sigma_{YX}  &\Sigma_{YY} 
 \end{bmatrix}.
 \end{align*}
-Because of the covariance  $\Sigma_{YY} =  \left(I-A^{-1}B\right)^{-1}B^{-1}$, therefore the inverse is 
+Because of the covariance  $\Sigma_{YY} =  \left(I_t-A_t^{-1}B_t\right)^{-1}B_t^{-1}$, therefore the inverse is 
 \begin{align*}
-\Sigma_{YY}^{-1} &= B\left(I-A^{-1}B\right)= BA^{-1}\Sigma_{XX}^{-1}.
+\Sigma_{YY}^{-1} &= B_t\left(I_t-A_t^{-1}B_t\right)= B_tA_t^{-1}\Sigma_{XX}^{-1}.
 \end{align*}
-Given the Choleski decomposition $LL^\top = A$, we have
+Given the Choleski decomposition $L_tL_t^\top = A_t$, we have
 \begin{align*}
-\Sigma_{YY}^{-1} &=BL^{-\top}L^{-1}\Sigma_{XX}^{-1}\\
-&=\left(L^{-1}B\right)^\top\left(L^{-1}\Sigma_{XX}^{-1}\right) %\\
+\Sigma_{YY}^{-1} &=B_tL_t^{-\top}L_t^{-1}\Sigma_{XX}^{-1}\\
+&=\left(L_t^{-1}B_t\right)^\top\left(L_t^{-1}\Sigma_{XX}^{-1}\right) %\\
 %&=\mbox{solve}\left(L,B\right)^\top\mbox{solve}\left(L,\Sigma_{XX}^{-1}\right).
 \end{align*}
-More usefully, by given another Choleski decomposition $RR^\top=A-B=\Sigma_{XX}^{-1}$,
+More usefully, by given another Choleski decomposition $R_tR_t^\top=A_t-B_t=\Sigma_{XX}^{-1}$,
 \begin{align}\label{sigmayy01}
 %\begin{split}
 %Y^\top \Sigma_{YY}^{-1} Y &= \mbox{solve}\left(L,BY\right)^\top\mbox{solve}\left(L,\Sigma_{XX}^{-1}Y\right)\\
 %&\triangleq W^\top \mbox{solve}\left(L,\Sigma_{XX}^{-1}Y\right)\\
 %\end{split}\\
 \begin{split}
-y_{1:t}^\top \Sigma_{YY}^{-1} y_{1:t} &= \left(L^{-1}By_{1:t}\right)^\top\left(L^{-1}\Sigma_{XX}^{-1}y_{1:t}\right)\\
-&\triangleq W^\top \left(L^{-1}\Sigma_{XX}^{-1}y_{1:t}\right)\\
+y_{1:t}^\top \Sigma_{YY}^{-1} y_{1:t} &= \left(L_t^{-1}B_ty_{1:t}\right)^\top\left(L_t^{-1}\Sigma_{XX}^{-1}y_{1:t}\right)\\
+&\triangleq W_t^\top \left(L_t^{-1}\Sigma_{XX}^{-1}y_{1:t}\right)
 \end{split}
 \end{align}
 \begin{align}\label{sigmayy02}
 \begin{split}
-\det\Sigma_{YY}^{-1} &= \det B \det L^{-\top}\det L^{-1}\det R\det R^\top\\
-&= \det B\left(\det L^{-1}\right)^2\left(\det R\right)^2.
+\det\Sigma_{YY}^{-1} &= \det B_t \det L_t^{-\top}\det L_t^{-1}\det R_t\det R_t^\top\\
+&= \det B_t\left(\det L_t^{-1}\right)^2\left(\det R_t\right)^2.
 \end{split}
 \end{align}
 From the objective function \eqref{M1}, the posterior distribution of $\theta$ is 
@@ -105,7 +106,7 @@ p\left(\theta \mid y_{1:t}\right) &\propto p\left(y_{1:t}\mid\theta\right)p\left
 \end{align*}
 Then, by taking natural logarithm on the posterior of $\theta$ and using the useful solutions in equations \eqref{sigmayy01} and \eqref{sigmayy02}, we will have
 \begin{align}
-\ln L\left(\theta\right) &= -\frac{1}{2}y_{1:t}^\top\Sigma_{YY}^{-1}y_{1:t}+\frac{1}{2}\sum\ln\mbox{tr}\left(B\right)-\sum\ln\mbox{tr}\left(L\right)+\sum\ln\mbox{tr}\left(R\right) + \ln p\left(\theta\right).
+\ln L\left(\theta\right) &= -\frac{1}{2}y_{1:t}^\top\Sigma_{YY}^{-1}y_{1:t}+\frac{1}{2}\sum\ln\mbox{tr}\left(B_t\right)-\sum\ln\mbox{tr}\left(L_t\right)+\sum\ln\mbox{tr}\left(R_t\right) + \ln p\left(\theta\right).
 \end{align}
 
 
@@ -153,20 +154,20 @@ So, from the above covariance matrix, we can find the mean and variance of $p\le
 From the joint distribution \eqref{generaljointmatrix}, one can find the best estimation with a given $\theta$ by
 \begin{align*}
 \hat{x}_{1:t} \mid y_{1:t},\theta &\sim N \left( A_{t}^{-1}B_{t}y_{1:t}, A_{t}^{-1} \right) \\
-&\sim N(L^{-\top}L^{-1}B_{t}y_{1:t-1},L^{-\top}L^{-1})\\
-&\sim N(L^{-\top}W,L^{-\top}L^{-1}).
+&\sim N(L_t^{-\top}L_t^{-1}B_{t}y_{1:t-1},L^{-\top}L_t^{-1})\\
+&\sim N(L_t^{-\top}W_t,L^{-\top}L_t^{-1}).
 \end{align*}
 Consequently 
 \begin{align*}
-\hat{x}_{1:t} = L^{-\top}(W+Z),
+\hat{x}_{1:t} = L_t^{-\top}(W_t+Z_t),
 \end{align*}
-where $Z \sim N(0, I(\varepsilon))$ is independent and identically distributed and drawn from a zero-mean normal distribution with variance $ I(\varepsilon)$. 
+where $Z_t \sim N(0, I(\varepsilon)_{t})$ is independent and identically distributed and drawn from a zero-mean normal distribution with variance $I(\varepsilon)_{t}$. 
 
 For sole $x_{t}$, its joint distribution with $y_{1:t}$ is 
 \begin{align*}
 x_{t}, y_{1:t}\mid \theta \sim N\left( 0, \begin{bmatrix}
 C_{t}^\top(A_{t}-B_{t}) ^{-1}C_{t} & C_{t}^\top (A_{t}-B_{t})^{-1}\\
-(A_{t}-B_{t})^{-1}C_{t} & (I- A_{t}^{-1}B_{t}) ^{-1}B_{t}^{-1}
+(A_{t}-B_{t})^{-1}C_{t} & (I_t- A_{t}^{-1}B_{t}) ^{-1}B_{t}^{-1}
 \end{bmatrix} \right),
 \end{align*}
 where $C_t^\top = \begin{bmatrix}0 & \cdots & 0 & 1\end{bmatrix}$ helps to  achieve the last element in the matrix. Thus, the filtering distribution of the state is 
@@ -468,13 +469,13 @@ where $\theta = \left\lbrace \phi,\sigma,\tau\right\rbrace$, we should start fro
 0 & 0& \cdots &-\frac{1}{\sigma^2} & 0 & 0 & \cdots &  \frac{1}{\sigma^2}
 \end{bmatrix},
 \end{equation*}
-and denoted as $\Sigma^{-1}=\begin{bmatrix} A & -B \\ -B & B \end{bmatrix}$. Its inverse is the covariance matrix 
+and denoted as $\Sigma^{-1}=\begin{bmatrix} A_t & -B_t \\ -B_t & B_t \end{bmatrix}$. Its inverse is the covariance matrix 
 \begin{equation}
-\Sigma=\begin{bmatrix} (A-B)^{-1} &  (A-B)^{-1} \\ (A-B)^{-1} & (I-A^{-1}B)^{-1}B^{-1} \end{bmatrix} \triangleq \begin{bmatrix}
+\Sigma=\begin{bmatrix} (A_t-B_t)^{-1} &  (A_t-B_t)^{-1} \\ (A_t-B_t)^{-1} & (I_{t}-A_t^{-1}B_t)^{-1}B_t^{-1} \end{bmatrix} \triangleq \begin{bmatrix}
 \Sigma_{XX} & \Sigma_{XY}  \\ \Sigma_{YX} & \Sigma_{YY} 
 \end{bmatrix},
 \end{equation}
-where $B$ is a $t\times t$ diagonal matrix with elements $\frac{1}{\sigma^2}$. The covariance matrices $\Sigma_{XX} =  \left(A-B\right)^{-1}$ and $\Sigma_{YY}=\left(I-A^{-1}B\right)^{-1}B^{-1}$ are found. 
+where $B$ is a $t\times t$ diagonal matrix with elements $\frac{1}{\sigma^2}$. The covariance matrices $\Sigma_{XX} =  \left(A_t-B_t\right)^{-1}$ and $\Sigma_{YY}=\left(I_{t}-A_t^{-1}B_t\right)^{-1}B_t^{-1}$ are found. 
 
 
 
@@ -486,12 +487,12 @@ p(\theta \mid Y) \propto p(Y\mid\theta)p(\theta) \propto \exp\left( {-\frac{1}{2
 \end{equation*}
 Then, by taking natural logarithm on the posterior of $\theta$ and using the useful solutions in equations \eqref{sigmayy01} and \eqref{sigmayy02}, we will have
 \begin{equation}\label{linearlogL}
-\ln L(\theta) = -\frac{1}{2}Y^\top\Sigma_{YY}^{-1}Y+\frac{1}{2}\sum\ln\mbox{tr}(B)-\sum\ln\mbox{tr}(L)+\sum\ln\mbox{tr}(R) + \ln p(\theta).
+\ln L(\theta) = -\frac{1}{2}Y^\top\Sigma_{YY}^{-1}Y+\frac{1}{2}\sum\ln\mbox{tr}(B_t)-\sum\ln\mbox{tr}(L_t)+\sum\ln\mbox{tr}(R_t) + \ln p(\theta).
 \end{equation}
 
 In a simple linear case, we are choosing the parameter $\theta = \left\lbrace \phi=0.9,\tau^2=0.5,\sigma^2=1\right\rbrace$ as the author did in \citep{lopes2011particle} and using $n=500$ dataset, setting initial $L=0$. Instead of inferring $\tau$ and $\sigma$, we are estimating $\nu_1 = \ln \tau^2$ and $\nu_2 = \ln \sigma^2$ in the RW-MH to avoid singular proposals. After the process, the parameters can be transformed back to original scale. Therefore the new parameter  $\theta^* =  \left\lbrace \phi,\nu_1,\nu_2\right\rbrace = \left\lbrace \phi,\ln\tau^2,\ln\sigma^2\right\rbrace$. 
 
-Buy using Algorithm \ref{algoonevarible} and aiming the optimal acceptance rate at 0.44, after 10\,000 iterations we get the acceptance rates for each parameters are $\alpha_\phi = 0.4409, \alpha_{\nu_1}= 0.4289$ and $\alpha_{\nu_2}= 0.4505$, and the estimations are $\phi =0.8794, \nu_1= -0.6471$ and $\nu_2= -0.0639$ respectively. Thus, we have the cheap surrogate $\hat{\pi}(\cdot)$. Keep going to the DA MH with another 10\,000 iterations, the algorithm returns the best estimation with $\alpha_1=0.1896$ and $\alpha_2 = 0.8782$. In figure \ref{linearmarginplots}, the trace plots illustrates that the Markov chain of $\hat{\theta}$ is stably fluctuating around the true $\theta$. 
+By using Algorithm \ref{algoonevarible} and aiming the optimal acceptance rate at 0.44, after 10\,000 iterations we get the acceptance rates for each parameters are $\alpha_\phi = 0.4409, \alpha_{\nu_1}= 0.4289$ and $\alpha_{\nu_2}= 0.4505$, and the estimations are $\phi =0.8794, \nu_1= -0.6471$ and $\nu_2= -0.0639$ respectively. Thus, we have the cheap surrogate $\hat{\pi}(\cdot)$. Keep going to the DA MH with another 10\,000 iterations, the algorithm returns the best estimation with $\alpha_1=0.1896$ and $\alpha_2 = 0.8782$. In figure \ref{linearmarginplots}, the trace plots illustrates that the Markov chain of $\hat{\theta}$ is stably fluctuating around the true $\theta$. 
 
 \begin{figure}[h]
 \centering
@@ -517,7 +518,7 @@ Buy using Algorithm \ref{algoonevarible} and aiming the optimal acceptance rate 
 
 Calculating the log-posterior of parameters requires finding out the forecast distribution of $p(y_{1:t}\mid y_{1:t-1},\theta)$. A general way is to use the joint distribution of $y_{t}$ and $y_{1:t-1}$, which is $p(y_{1:t}\mid \theta)\sim N(0,\Sigma_{YY})$, and following the procedure in Section \ref{sectionforecast} to work out the inverse matrix of a multivariate normal distribution. For example, one may find the inverse of the covariance matrix 
 \begin{align*}
-\Sigma_{YY}^{-1} = B_t(I-A_t^{-1}B_t) =\frac{1}{\sigma^4}(\sigma^2 I_t-A_t^{-1}) \triangleq \frac{1}{\sigma^4} 
+\Sigma_{YY}^{-1} = B_t(I_t-A_t^{-1}B_t) =\frac{1}{\sigma^4}(\sigma^2 I_t-A_t^{-1}) \triangleq \frac{1}{\sigma^4} 
 \begin{bmatrix} 
 Z_{t} & b_{t} \\
 b_{t}^\top & K_{t}
@@ -531,7 +532,7 @@ and the original form of this covariance is
 \end{align*}
 By denoting $C_{t}^\top = \begin{bmatrix} 0 & \cdots & 0 & 1\end{bmatrix}$ and post-multiplying $\Sigma_{YY}^{-1}$, we will have  
 \begin{equation}\label{beforeSMformula}
-\Sigma_{YY}^{-1} C_{t}= \frac{1}{\sigma^4}\left(\sigma^2 I-A^{-1} \right)C_{t}= \frac{1}{\sigma^4} \begin{bmatrix} b_{t} \\ K_{t} \end{bmatrix}.
+\Sigma_{YY}^{-1} C_{t}= \frac{1}{\sigma^4}\left(\sigma^2 I_t-A_t^{-1} \right)C_{t}= \frac{1}{\sigma^4} \begin{bmatrix} b_{t} \\ K_{t} \end{bmatrix}.
 \end{equation} 
 
 
@@ -551,8 +552,7 @@ Suppose $A\in R^{n\times n}$ is an invertible square matrix and $u,v\in R^n$ are
 \end{equation}
 \end{theorem}
 
-
-By using the formula \eqref{SMformula}, one can find a recursive way to update $K_{t}$ and $b_{t-1}$, which is 
+By using the formula \eqref{SMformula}, one can update $K_{t}$ and $b_{t}$  in a recursive way that  
 \begin{align}
 K_{t}  &=\frac{\sigma^4}{\tau^2+\sigma^2+\phi^2(\sigma^2-K_{t-1})},\\
 b_{t} &= \begin{bmatrix}
@@ -571,14 +571,14 @@ where $K_1=\frac{\sigma^4}{\sigma^2+\tau^2+L^2\phi^2}$. For calculation details,
 
 As discussed in Section \ref{generalEstDistr}, from the joint distribution of $x_{1:t}$ and $y_{1:t}$, one can find the best estimation with a given $\theta$ by
 \begin{align*}
-\hat{x}_{1:t} \mid y_{1:t},\theta \sim N\left(L^{-\top}W,L^{-\top}L^{-1}\right),
+\hat{x}_{1:t} \mid y_{1:t},\theta \sim N\left(L_t^{-\top}W_t,L_t^{-\top}L_t^{-1}\right),
 \end{align*}
-where $W = L^{-1}B_{t}y_{1:t-1}$. 
+where $W_t = L_t^{-1}B_{t}y_{1:t-1}$. 
 Consequently 
 \begin{align*}
-\hat{x}_{1:t} = L^{-\top}(W+Z),
+\hat{x}_{1:t} = L_t^{-\top}(W_t+Z_t),
 \end{align*}
-where $Z \sim N\left(0, I(\varepsilon)\right)$ is independent and identically distributed and drawn from a zero-mean normal distribution with variance $ I(\varepsilon)$. Moreover, the mixture Gaussian distribution $p(x_t \mid y_{1:t})$ can be found by 
+where $Z_t \sim N\left(0, I(\varepsilon)_{t}\right)$ is independent and identically distributed and drawn from a zero-mean normal distribution with variance $ I(\varepsilon)_t$. Moreover, the mixture Gaussian distribution $p(x_t \mid y_{1:t})$ can be found by 
 \begin{align}
 \mu_t^{(x)} &= \frac{1}{N} \sum_i \mu_{ti}^{(x)} \label{linearmu}  \\
 \Var(x_t) &= \frac{1}{N} \sum_i \left( \mu_{ti}^{(x)}  \mu_{ti}^{(x)\top} +\Var(x_{ti})\right) -\frac{1}{N^2} \left(  \sum_i  \mu_{ti}^{(x)} \right) \left( \sum_i \mu_{ti}^{(x)} \right) ^\top.\label{linearsigma} 
@@ -706,7 +706,7 @@ p(\theta \mid Y) \propto p(Y\mid\theta)p(\theta) \propto \exp\left( -\frac{1}{2}
 \end{equation*}
 By taking natural logarithm on the posterior of $\theta$ and using the useful solutions in equations \eqref{sigmayy01} and \eqref{sigmayy02}, we have 
 \begin{equation}\label{simuOUlogL}
-\ln L(\theta) = -\frac{1}{2}Y^\top\Sigma_{YY}^{-1}Y+\frac{1}{2}\sum\ln\mbox{tr}(B)-\sum\ln\mbox{tr}(L)+\sum\ln\mbox{tr}(R) + \ln p(\theta).
+\ln L(\theta) = -\frac{1}{2}Y^\top\Sigma_{YY}^{-1}Y+\frac{1}{2}\sum\ln\mbox{tr}(B_t)-\sum\ln\mbox{tr}(L_t)+\sum\ln\mbox{tr}(R_t) + \ln p(\theta).
 \end{equation}
 Because of all parameters are positive, we are estimating $\nu_1=\ln\lambda$, $\nu_2=\ln\gamma^2$ and $\nu_3=\ln\sigma^2$ instead. When the estimation process is done, we can transform them back to the original scale by taking exponential. 
 
@@ -734,7 +734,7 @@ $\{ \gamma=0.4841, \lambda^2=0.1032, \sigma^2=0.9276\}$. In figure \ref{simuOUma
 
 \subsubsection*{Recursive Calculation and State Estimation}
 
-Follow the procedure in Section \ref{sectionforecast} and do similar calculation with Section \ref{sectionlinearRecursive}, one can find a recursive way to update $K_{t}$ and $b_{t-1}$, which are 
+Follow the procedure in Section \ref{sectionforecast} and do similar calculation with Section \ref{sectionlinearRecursive}, one can find the following recursive way to update $K_{t}$ and $b_{t}$: 
 \begin{align} \label{linearOUK}
 K_{t}  &=\frac{\sigma^4}{\tau_t^2+\sigma^2+\phi_t^2(\sigma^2-K_{t-1})},\\
 b_{t} &= \begin{bmatrix}
@@ -750,9 +750,9 @@ where $K_1=\frac{\sigma^4}{\sigma^2+\tau_1^2+L^2\phi_1^2}$.
 
 Additionally, as discussed in Section \ref{generalEstDistr}, the best estimation of $x_{1:t}$ with a given $\theta$ is 
 \begin{align*}
-\hat{x}_{1:t} \mid y_{1:t},\theta \sim N\left(L^{-\top}W,L^{-\top}L^{-1}\right),
+\hat{x}_{1:t} \mid y_{1:t},\theta \sim N\left(L_t^{-\top}W_t,L_t^{-\top}L_t^{-1}\right),
 \end{align*}
-where $W = L^{-1}B_{t}y_{1:t-1}$, and the mixture Gaussian distribution for $p(x_t \mid y_{1:t})$ is 
+where $W_t = L_t^{-1}B_{t}y_{1:t-1}$, and the mixture Gaussian distribution for $p(x_t \mid y_{1:t})$ is 
 \begin{align}
 \mu_t^{(x)} &= \frac{1}{N} \sum_i \mu_{ti}^{(x)}  \\
 \Var(x_t) &= \frac{1}{N} \sum_i \left( \mu_{ti}^{(x)}  \mu_{ti}^{(x)\top} +\Var(x_{ti})\right) -\frac{1}{N^2} \left(  \sum_i  \mu_{ti}^{(x)} \right) \left( \sum_i \mu_{ti}^{(x)} \right) ^\top,
@@ -888,15 +888,15 @@ where $B_t$ is a $2t\times 2t$ diagonal matrix of observation errors at time $t$
 \vdots & \vdots & \ddots & \vdots & \vdots \\
  \cdot  &  \cdot  & \cdot  & \frac{1}{\sigma^2}&  \cdot \\  \cdot  &  \cdot & \cdot  &  \cdot  & \frac{1}{\tau^2}
 \end{bmatrix}$. 
-In fact, the matrix $A_t$ is a $2t \times 2t$ bandwidth six sparse matrix at time $t$ in the process. For sake of simplicity, we use $A$ and $B$ to represent the matrices $A_t$ and $B_t$ here. Then, we may find the covariance matrix by calculating the inverse of the precision matrix as 
+In fact, the matrix $A_t$ is a $2t \times 2t$ bandwidth six sparse matrix at time $t$ in the process. Then, we may find the covariance matrix by calculating the inverse of the precision matrix as 
 \begin{align*}
 \Sigma &= \begin{bmatrix}
-\left(A-B^\top B^{-1}B\right) ^{-1} & -\left(A-B^\top B^{-1}B\right)^{-1}B^\top B^{-1}\\
-- B^{-1}B\left(A-B^\top B^{-1}B\right)^{-1} & \left(B-B^\top A^{-1}B\right) ^{-1}
+\left(A_t-B_t^\top B_t^{-1}B_t\right) ^{-1} & -\left(A_t-B_t^\top B_t^{-1}B_t\right)^{-1}B_t^\top B_t^{-1}\\
+- B_t^{-1}B_t\left(A_t-B_t^\top B_t^{-1}B_t\right)^{-1} & \left(B_t-B_t^\top A_t^{-1}B_t\right) ^{-1}
 \end{bmatrix} \\
 &= \begin{bmatrix}
-\left(A-B\right) ^{-1} & \left(A-B\right)^{-1}\\
-\left(A-B\right)^{-1} & \left(I- A^{-1}B\right) ^{-1}B^{-1}
+\left(A_t-B_t\right) ^{-1} & \left(A_t-B_t\right)^{-1}\\
+\left(A_t-B_t\right)^{-1} & \left(I- A_t^{-1}B_t\right) ^{-1}B_t^{-1}
 \end{bmatrix} \\
 &\triangleq \begin{bmatrix}
 \Sigma_{XX} & \Sigma_{XY} \\
@@ -909,7 +909,7 @@ A detailed structure of the covariance matrix $\Sigma_{XX} $ is presented in App
 
 To find the log-posterior distribution of $X_{1:t}$ and $Y_{1:t}$, we start from the joint distribution. Similarly, the inverse of the covariance matrix is 
 \begin{align*}
-\Sigma_{YY}^{-1} &= B(I-A^{-1}B)= BA^{-1}\Sigma_{XX}^{-1}.
+\Sigma_{YY}^{-1} &= B_t(I_t-A_t^{-1}B_t)= B_tA_t^{-1}\Sigma_{XX}^{-1}.
 \end{align*}
 By using Choleski decomposition and similar technical solution, second term in the integrated objective function is 
 \begin{align*}
@@ -917,7 +917,7 @@ p(\theta \mid Y) &\propto p(Y\mid\theta)p(\theta) \propto \exp\left( -\frac{1}{2
 \end{align*}
 Then, by taking natural logarithm on the posterior of $\theta$ and using the useful solutions in equations \eqref{sigmayy01} and \eqref{sigmayy02}, we will have
 \begin{align}\label{logL}
-\ln L(\theta) &= -\frac{1}{2}Y^\top\Sigma_{YY}^{-1}Y+\frac{1}{2}\sum\ln\mbox{tr}(B)-\sum\ln\mbox{tr}(L)+\sum\ln\mbox{tr}(R).
+\ln L(\theta) &= -\frac{1}{2}Y^\top\Sigma_{YY}^{-1}Y+\frac{1}{2}\sum\ln\mbox{tr}(B_t)-\sum\ln\mbox{tr}(L_t)+\sum\ln\mbox{tr}(R_t).
 \end{align}
 
 
@@ -931,7 +931,7 @@ p(Y_{1:t-1},\theta) &\sim N\left( 0,\Sigma_{YY}^{(t-1)} \right)\\
 p(Y_{t},Y_{1:t-1},\theta) &\sim N\left( 0,\Sigma_{YY}^{(t)} \right)\\
 p(Y_{t}\mid Y_{1:t},\theta) &\sim N\left( \bar{\mu}_{t},\bar{\Sigma}_{t} \right)
 \end{align*}
-where the covariance matrix of the joint distribution is $\Sigma_{YY}^{(t)} = \left(I_{t}-A_{t}^{-1}B_{t}\right)^{-1}B_{t}^{-1}$. Then, by taking its inverse, we will get
+where the covariance matrix of the joint distribution is $\Sigma_{YY}^{(t)} = \left(I_{t}-A_{t}^{-1}B_{t}\right)^{-1}B_{t}^{-1}$. Then, by taking its inverse, one can obtain 
 \begin{align*}
 \Sigma_{YY}^{(t) (-1)} = B_{t}(I_{t}-A_{t}^{-1}B_{t}).
 \end{align*}
@@ -943,7 +943,7 @@ To be clear, the matrix $B_{t}$ is short for the matrix $B_{t}(\sigma^2,\tau^2)$
 
 Because of $A_t$ is symmetric and invertible, $B_t$ is the diagonal matrix defined as above, therefore they have the following property 
 \begin{align*}
-& A_tB=A_t^\top B_t^\top = \left(B_tA_t\right)^\top, \\
+& A_tB_t=A_t^\top B_t^\top = \left(B_tA_t\right)^\top, \\
 & A_t^{-1}B_t = A_t^{-\top}B_t^\top = \left(B_tA_t^{-1}\right)^\top. 
 \end{align*}
 Followed up the form of $\Sigma_{YY}^{(t) (-1)}$, we can define that 
@@ -964,7 +964,7 @@ B_{t-1}^{-1} \left(Z_{t}-b_{t}K_{t}^{-1}b_{t}^\top\right)^{-1}B_{t-1}^{-1}  & - 
 \end{bmatrix}.
 \end{align*}
 
-It is easy to find the relationship between $A_{t}$ and  $A_{t}$ in the Sherman-Morrison-Woodbury form, which is 
+It is easy to find the relationship of $A_{t-1}$ and $A_{t}$ satisfies  
 \begin{align*} A_{t} = 
 \begin{bmatrix}
 A_{t-1} & \cdot & \cdot  \\ \cdot &\frac{1}{\sigma^2} &\cdot  \\ \cdot  & \cdot  & \frac{1}{\tau^2} 
@@ -977,24 +977,24 @@ A_{t-1} & 0 \\ 0 & B_1
 \end{bmatrix}$ 
 and its inverse is $M_{t}^{-1} =\begin{bmatrix}
 A_{t-1}^{-1} & 0 \\ 0 & B_1^{-1}
-\end{bmatrix}$. We may use Sherman-Morrison-Woodbury formula to find the inverse of $A_{t}$ in a recursive way, which is 
+\end{bmatrix}$. By using the Sherman-Morrison-Woodbury formula, one can find the inverse of $A_{t}$ in such a recursive way that 
 \begin{equation}
-A_{t}^{-1} = \left(M_{t}+U_{t}U_{t}^\top\right)^{-1}= M_{t}^{-1}-M_{t}^{-1}U_{t}\left(I+U_{t}^\top M_{t}^{-1}U_{t}\right)^{-1}U_{t}^\top M_{t}^{-1}.
+A_{t}^{-1} = \left(M_{t}+U_{t}U_{t}^\top\right)^{-1}= M_{t}^{-1}-M_{t}^{-1}U_{t}\left(I_t+U_{t}^\top M_{t}^{-1}U_{t}\right)^{-1}U_{t}^\top M_{t}^{-1}.
 \end{equation}
-Consequently, with some calculations, we will get 
+Consequently, after being simplified, it gives us 
 \begin{equation}\label{OUupdatingK}
-K_{t} =B_1^{-1}D_{t} \left(I+ S_{t}^\top \left(B_1^{-1} - K_{t-1}\right)  S_{t} +D_{t}^\top B_1^{-1}D_{t}  \right)^{-1}  D_{t}^\top B_1^{-1},
+K_{t} =B_1^{-1}D_{t} \left(I_t+ S_{t}^\top \left(B_1^{-1} - K_{t-1}\right)  S_{t} +D_{t}^\top B_1^{-1}D_{t}  \right)^{-1}  D_{t}^\top B_1^{-1},
 \end{equation}
 and
 \begin{align*}
 b_{t} = \begin{bmatrix}
 -b_{t-1} \\ B_1^{-1}-K_{t-1} 
-\end{bmatrix}  S_{t} \left(I+ S_{t}^\top \left(B_1^{-1} - K_{t-1}\right)  S_{t} +D_{t}^\top B_1^{-1}D_{t}  \right)^{-1} D_{t}^\top B_1^{-1}, 
+\end{bmatrix}  S_{t} \left(I_t+ S_{t}^\top \left(B_1^{-1} - K_{t-1}\right)  S_{t} +D_{t}^\top B_1^{-1}D_{t}  \right)^{-1} D_{t}^\top B_1^{-1}, 
 \end{align*}
-that are updating in a recursive way. As a result, one can achieve the following recursive updating formula for the mean and covariance matrix 
+by which, $K_t$ and $b_t$ are updated in a recursive way. As a result, one can obtain the following recursive updating formula for the mean and covariance matrix 
 \begin{align}
 \begin{split}
-\bar{\mu}_{t}&=\Phi_{t} K_{t-1}B_1\bar{\mu}_{t-1} + \Phi_{t} \left(I-K_{t-1}B_1\right)Y_{t-1}\\
+\bar{\mu}_{t}&=\Phi_{t} K_{t-1}B_1\bar{\mu}_{t-1} + \Phi_{t} \left(I_t-K_{t-1}B_1\right)Y_{t-1}\\
 \bar{\Sigma}_{t}&=\left(B_1K_{t}B_1\right)^{-1}
 \end{split}
 \end{align}
@@ -1012,13 +1012,13 @@ and $K_1 =B_1^{-1} - A_1^{-1} = \begin{bmatrix}
 
 Because of the joint distribution \eqref{jointmatrix}, one can find the best estimation with a given $\theta$ by
 \begin{equation*}
-X_{1:t} \mid Y_{1:t},\theta \sim N\left(L^{-\top}W,L^{-\top}L^{-1}\right),
+X_{1:t} \mid Y_{1:t},\theta \sim N\left(L_t^{-\top}W_t,L_t^{-\top}L_t^{-1}\right),
 \end{equation*}
 thus
 \begin{align*}
-\hat{X} _{1:t}= L^{-\top}\left(W+Z\right),
+\hat{X} _{1:t}= L_t^{-\top}\left(W_t+Z_t\right),
 \end{align*}
-where $Z \sim N\left(0, I(\sigma,\tau)\right)$.
+where $Z_t \sim N\left(0, I(\sigma,\tau)_t\right)$.
 
 For $X_{t}$, the joint distribution with $Y_{1:t}$ updated to time $t$ is 
 \begin{align*}
@@ -1035,17 +1035,17 @@ X_{t}\mid Y_{1:t},\theta \sim N\left(\mu_{t}^{\left(X\right)},\Sigma_{t}^{\left(
 \end{align*}
 where
 \begin{align*}
-\mu_{t}^{\left(X\right)} & = C_{t}^\top A^{-1}BY =C_{t}^\top L^{-\top}W,\\
-\Sigma_{t}^{\left(X\right)} & =C_{t}^\top A^{-1}C_{t} =U_{t}^\top U_{t},
+\mu_{t}^{\left(X\right)} & = C_{t}^\top A_t^{-1}B_tY_t =C_{t}^\top L_t^{-\top}W_t,\\
+\Sigma_{t}^{\left(X\right)} & =C_{t}^\top A_t^{-1}C_{t} =U_{t}^\top U_{t},
 \end{align*}
-and $U_{t} = L^{-1} C_{t}$.
+and $U_{t} = L_t^{-1} C_{t}$.
 %The filtering distribution of the state given parameters is $p\left(X_t\mid Y_{1:t}, \theta \right)$. To find its form, one can use the joint distribution of $X_{t}$ and $Y_{1:t}$, which is $p\left(X_{t}, Y_{1:t}  \mid  \theta\right)\sim N\left(0,\Gamma\right)$, where
 %\begin{equation*}
 %\Gamma=\begin{bmatrix} C_{t}^\top\left(A-B\right)^{-1}C_{t} & C_{t}^\top\left(A-B\right)^{-1}\\\left(A-B\right)^{-1}C_{t} & \left(I-A^{-1}B\right)^{-1}B^{-1} \end{bmatrix}.
 %\end{equation*}
 The recursive updating formula is  
 \begin{align}
-\mu_{t}^{\left(X\right)}  &=  K_{t}B_1\bar{\mu}_{t} + \left(I - B_1K_{t}\right)Y_{t}  \\
+\mu_{t}^{\left(X\right)}  &=  K_{t}B_1\bar{\mu}_{t} + \left(I_t- B_1K_{t}\right)Y_{t}  \\
 \Sigma_{t}^{\left(X\right)}  &=B_1^{-1}-K_{t}.
 \end{align}
 
@@ -1229,7 +1229,7 @@ Being inspired, we are not using the first $0$ to $n-1$ date and ignoring the la
 \begin{equation}
 p(X_{t}\mid Y_{t-L+1:t},\theta),
 \end{equation}
-where $t>L$. We name this method \textit{Sliding Window Sequential Parameter Learning Filter}. 
+where $t>L$. We name this method the \textit{Sliding Window Sequential Parameter Learning Filter}. 
 
 The next question is how to choose an appropriate $L$. The length of data used in MH and DA MH algorithms has an influence on the efficiency and accuracy of parameter learning and state estimation. Being tested on real data set, there is no doubt that the more data be in use, the more accurate the estimation is, and lower efficient is in computation. In table \ref{lengthofdatacompare}, one can see the pattern of parameters $\gamma,\xi,\tau$ follow the same trend with the choice of $L$ and $\sigma$ increases when $L$ decreases. Since estimation bias is inevitable, we are indeed to keep the bias as small as possible, and in the meantime, the higher efficiency and larger effective sample size are bonus items. In figure \ref{compareLengthData}, we can see that the efficiency and effective sample size is not varying along the sample size used in sampling algorithm, but in unit time, they are decreasing rapidly as data size increases. 
 \begin{figure}[h]
@@ -1258,11 +1258,8 @@ In addition, from a practical point of view, the observation error $\sigma$ shou
 For the true posterior, the algorithm requires a cheap estimation $\hat{\pi}(\cdot)$, which is found by one-variable-at-a-time Metropolis-Hastings algorithm. The advantage is getting a precise estimation of the parameter structure, and disadvantage is, obviously, lower efficiency. Luckily, we find that it is not necessary to run this MH every time when estimate a new state from $x_{t-1}$ to $x_t$. In fact, in the DA MH process, the cheap $\hat{\pi}$ does not vary too much in the filtering process with new data coming into the dataset. We may use this property in the algorithm. First of all, we use all available data from $1$ to $t$ with length up to $L$ to learn the structure of $\theta$ and find out the cheap approximation $\hat{\pi}$. Then, use DA MH to estimate the true posterior $\pi$ for $\theta$ and $x_t$. After that, extend dataset to $1:t+1$ if $t\leq L$ or shift the data window to $2:t+1$ if $t>L$ and run DA MH again to estimate $\theta$ and $x_{t+1}$. From figures \ref{batchwindowkeyfeature} and \ref{batchwindowparameter}, we can see that the main features and parameters in the estimating process between using batch and sliding window methods have not significant differences. 
 
 
-To avoid estimation bias in the algorithm, we are introducing \textit{threshold} and \textit{cut off} processes. \textit{threshold} means when a bias occurs in the algorithm, the cheap $\hat{\pi}$ may not be appropriate and a new one is needed. Thus, we have to update $\hat{\pi}$ with a latest data we have. A \textit{cut off} process stops the algorithm when a large $\Delta_t$ happens. A large time gap indicates the vehicle stops at some time point and it causes irregularity and bias. A smart way is stopping the process and waiting for new data coming in. By running testings on real data, the \textit{threshold} is chosen $\alpha_2<0.7$ and \textit{cut off} is $\Delta_t\geq 300$ seconds. These two values are on researchers' choice. From figures \ref{comparenotanupDAL} and \ref{comparenotanupfeatures}, we can see that by using the \textit{threshold}, we are efficiently avoiding bias and getting more effective samples. 
+To avoid estimation bias in the algorithm, we are introducing the \textit{threshold} criterion and a \textit{cutting-off} value. The \textit{threshold} criterion is used to test  a bias in the algorithm. In a certain circumstance, the cheap $\hat{\pi}$ is not accurate and is replaced by a new one $\hat{\pi}_{\mbox{\scriptsize new}}$. A \textit{cutting-off} procedure stops the algorithm when a large $\Delta_t$ occurs in the process. A large time gap indicates a break of the vehicle at a time point and it causes irregularity and bias. A smart way is to stop the process and to wait for new data coming in. By running testings on real data, the \textit{threshold} is chosen $\alpha_2<0.7$ and the \textit{cutting-off} value is set at $\Delta_t\geq 300$. For each time, if the acceptance rate $\alpha_2$ is less than $0.7$, we update the mean of $\hat{\pi}$ and remain the covariance unchanged. In fact, the mean of the estimation may vary upon the data we use but the covariance matrix does not change too much, as is shown in figure \ref{ParameterEvolutionVisualization}. Actually, these two values are on researchers' choices. Figures \ref{comparenotanupDAL} and \ref{comparenotanupfeatures} compare the performances of using and not using the \textit{threshold} criterion to update the mean of parameters. We can see that by using the \textit{threshold} criterion, we effectively avoid estimation bias and obtain more effective samples. 
 
-
-%Bias occurs in estimating log-posterior distribution of $\theta$ without updating-mean. 
-%Taking an arbitrary $k$, bias on surfaces. 
  
 \begin{figure}[h]
 \centering
@@ -1282,7 +1279,7 @@ To avoid estimation bias in the algorithm, we are introducing \textit{threshold}
 	\includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/realdataestbiaslogLupdate.pdf}
 	\caption{$\ln L$ surfaces of updating-mean}
 \end{subfigure}
-\caption{Comparison $\ln DA$ and $\ln L$ surfaces between not-updating-mean and updating-mean methods. It is obviously that the updating-mean method has dense log-surfaces indicating more effective samples.} \label{comparenotanupDAL}
+\caption{Comparison of $\ln DA$ and $\ln L$ surfaces between not-updating-mean and updating-mean methods. It is obviously that the updating-mean method has dense log-surfaces indicating more effective samples.} \label{comparenotanupDAL}
 \end{figure}
 
 \begin{figure}[h]
@@ -1308,10 +1305,8 @@ To avoid estimation bias in the algorithm, we are introducing \textit{threshold}
 
 
 So far, the complete algorithm is summarized in the following Algorithm \ref{algorithmslidingwindow}: 
-
 \begin{algorithm}[h]
 \SetAlgoLined 
-%\KwResutt{Write here the resutt }
 Initialization: Set up $L$, \textit{threshold} and  \textit{cutting-off} criteria. \\
 Learning process: Estimate $\theta$ with $p\left(\theta\mid Y_{1:\min \left\lbrace t,L\right\rbrace } \right) \propto p\left(Y_{1:\min \left\lbrace t,L\right\rbrace } \mid \theta \right)p\left(\theta \right)$ by one-variable-at-a-time Random Walk Metropolis-Hastings algorithm gaining the target acceptance rates and find out the structure of $\theta\sim N\left(\mu,\Sigma\right)$ and the approximation $\hat{\pi}\left(\cdot\right)$. \label{algorithmlearningsurface}\\
 Estimate $X_{ \max\left\lbrace 1,t-L+1 \right\rbrace :\min \left\lbrace t,L\right\rbrace }$ with $Y_{ \max\left\lbrace 1,t-L+1 \right\rbrace :\min \left\lbrace t,L\right\rbrace }$: \For{$i$ from 1 to $N$}{ \label{algorithmestimaiton}
@@ -1378,7 +1373,7 @@ Since a cheap surrogate $\hat{\pi}(\cdot)$ for the true $\pi(\cdot)$ is found in
 \centering
 \includegraphics[width=0.45\textwidth]{Chapters/05MCMCOU/plots/realdataEstXYwithEr.pdf}
 \includegraphics[width=0.45\textwidth]{Chapters/05MCMCOU/plots/realdataestwitherror.pdf}
-\caption{Zoom in on estimations. For each estimation $\hat{X}_i (i=1,\dots,t)$, there is a error circle around it. }
+\caption{Zoom in on estimations. For each estimation $\hat{X}_i (i=1,\dots,t)$, there is an error circle around it. }
 \end{figure}
 
 
@@ -1417,7 +1412,7 @@ Since a cheap surrogate $\hat{\pi}(\cdot)$ for the true $\pi(\cdot)$ is found in
 
 \section{Discussion and Future Work}
 
-In this chapter, we use the self-tuning one-variable-at-a-time Random Walk Metropolis-Hastings to learn the parameter hyper space for a linear state-space model. Starting from the joint covariance and distribution of $X$ and $Y$, we have a recursive way to update the mean and covariance sequentially. After getting the cheap approximation posterior distribution,DA MH algorithm accelerates the estimating process. The advantage of this algorithm is that it is easy to understand and implement in practice. By contrast, Particle Learning algorithm is highly efficient, however, the sufficient statistics are not available at all time . 
+In this chapter, we use the self-tuning one-variable-at-a-time Random Walk Metropolis-Hastings to learn the parameter hyper space for a linear state-space model. Starting from the joint covariance and distribution of $X$ and $Y$, we have a recursive way to update the mean and covariance sequentially. After getting the cheap approximation posterior distribution, DA MH algorithm accelerates the estimating process. The advantage of this algorithm is that it is easy to understand and implement in practice. By contrast, Particle Learning algorithm is highly efficient, however, the sufficient statistics are not available at all time . 
 
 Some future work can be done on inferring state from precious movement with other kinetic information, not just with diffusive  velocity. Besides, I am more interested in increasing the efficiency and accuracy of MCMC method. 
 

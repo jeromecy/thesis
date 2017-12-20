@@ -8,7 +8,7 @@ The state-space model, which is a popular class of time series models, has found
 
 \subsection*{State-Space Model}
 
-State-space models are models that rely on the concept of state variables. If we describe a system as an operator mapping from the space of inputs to the space of outputs, then we may need the entire input-output history of the system together with the planned input in order to compute the future output values \citep{hangos2006analysis}. Alternatively, a sequential method builds on past data and the initial conditions by incorporating new information when it arrives. A generic state-space model consists of two sets of equations: state equation and output equation. The state equation describes the evolution of the true input and state variables sequentially as a function and passes the variable one after one, generally, with some noise. The output equation catches the input values and interprets it out by an algebraic equation. A general state-space model has the form of 
+State-space models are models that rely on the concept of state variables. If we describe a system as an operator mapping from the space of inputs to the space of outputs, then we may need the entire input-output history of the system together with the planned input in order to compute the future output values \citep{hangos2006analysis}. Alternatively, a sequential method builds on past data and the initial conditions by incorporating new information when it arrives. A generic state-space model consists of two sets of equations: state equation and output equation. The state equation describes the evolution of the true input and state variables sequentially as a function and passes the variable one after one, generally, with some noise. The output equation catches the input values and interprets it out by an algebraic equation. A general state-space model has the following form 
 \begin{align}\label{statemodel1}
 \mbox{State equation } x_t &= G_t(x_{t-1})+w_t,\\
 \label{statemodel2}
@@ -30,7 +30,8 @@ and two independent zero-mean normal distributed noise $\epsilon_t \sim N_p(0,V_
 %where $u_t \sim N(0,\sigma_u^2)$, $v_t \sim N(0,\sigma_v^2)$, $\sigma_u^2=10$ and $\sigma_t^2=1$ are considered fixed and known. The initial state $x_0\sim N(0,10)$. 
 The assumption Markovian keeps the current state $x_t$ only depending on the previous one step $x_{t-1}$ and the observed $y_t$ depending on $x_t$. A state-space is shown in the diagram below:
 \begin{align*}
-\begin{array}{cccccccccc}\cdots &\to &x_{t-1}&\to &x_{t}&\to &x_{t+1}&\to &\cdots &{\text{truth}}\\  &&\downarrow &&\downarrow &&\downarrow && &\\ \cdots&&y_{t-1}&&y_{t}&&y_{t+1}&&\cdots &{\text{observation}}\end{array}
+\begin{array}{cccccccccc}\cdots &\to &x_{t-1}&\to &x_{t}&\to &x_{t+1}&\to &\cdots &{\text{truth}}\\  
+\cdots&&\downarrow &&\downarrow &&\downarrow && \cdots&\\ \cdots&&y_{t-1}&&y_{t}&&y_{t+1}&&\cdots &{\text{observation}}\end{array}
 \end{align*}
 
 In applications, the process functions $G_t$ and $F_t$ contain one or more unknown parameters that need to be estimated \citep{de1988likelihood} and the goal is to estimate the true states on sequential observations $y_1, \ldots, y_t$. Then it becomes to estimate the joint density of $p(x_{1:t},\theta \mid y_{1:t})$, where $x_{1:t} = \left\lbrace x_1, x_2, \ldots, x_t \right\rbrace$ are the hidden states and $y_{1:t} = \left\lbrace y_1, y_2, \ldots, y_t \right\rbrace$ are the observed outcomes and $\theta$ is a set of unknown parameters. 
@@ -60,12 +61,12 @@ p(x_t \mid y_{1:t-1})=&\int p(x_t ,x_{k-1}\mid y_{1:t-1}) dx_{t-1}\\
 =&\int p(x_t \mid x_{t-1},y_{1:t-1}) p(x_{t-1}\mid y_{1:t-1})dx_{t-1}\\
 =&\int p(x_t \mid x_{t-1}) p(x_{t-1}\mid y_{1:t-1})dx_{t-1}.
 \end{align*}
-In the updating step, once $p(x_t \mid y_{1:t-1})$ is known, $p(x_t \mid y_{1:t})$ can be found by
+Continuous, in the updating phase, $p(x_t \mid y_{1:t})$ is easily found, as long as $p(x_t \mid y_{1:t-1})$ is known, by
 \begin{align*}
 p(x_t \mid y_{1:t})=&\frac{p(y_t \mid x_t ,y_{1:t-1})p(x_{t}\mid y_{1:t-1})}{p(y_t \mid  y_{1:t-1})} \\
 =&\frac{p(y_t \mid x_t )p(x_{t}\mid y_{1:t-1})}{p(y_t \mid  y_{1:t-1})},
 \end{align*}
-where the normalization $p(y_t \mid  y_{1:t-1})=\int p(y_t \mid x_t )p(x_t \mid  y_{1:t-1}) dx_t $ \citep{arulampalam2002tutorial}.
+where $p(y_t \mid  y_{1:t-1})=\int p(y_t \mid x_t )p(x_t \mid  y_{1:t-1}) dx_t$ is  the normalization \citep{arulampalam2002tutorial}.
 
 Imagine that the state-space is partitioned as many parts, in which the particles are filled according to some probability measure. The higher probability, the denser the particles are concentrated. Suppose the particles $x_k^{(1)}, \ldots, x_k^{(N)}$ at time $k$ are drawn from the target probability density function $p(x)$, then these particles are used to estimate the expectation and variance of $f(x)$ by
 \begin{align*}
@@ -95,7 +96,7 @@ It is common to sample from an easy-to-implement distribution, the so-called pro
 &= \int f(x_t )\frac{p(x_t )p(y_{1:t}\mid x_t )}{p(y_{1:t})q(x_t \mid y_{1:t})} q(x_t \mid y_{1:t})dx_x\\
 &= \int f(x_t )\frac{W_t (x_t )}{p(y_{1:t})} q(x_t \mid y_{1:t})dx_x,
 \end{align*}
-where $W_t (x_t )=\frac{p(x_t )p(y_{1:t}\mid x_t )}{q(x_t \mid y_{1:t})} \propto \frac{p(x_t \mid y_{1:t})}{q(x_t \mid y_{1:t})}$. Because $p(y_{1:t})=\int p(y_{1:t}\mid x_t )p(x_t )dx_t $, so the above equation can be rewritten as
+where $W_t (x_t )=\frac{p(x_t )p(y_{1:t}\mid x_t )}{q(x_t \mid y_{1:t})} \propto \frac{p(x_t \mid y_{1:t})}{q(x_t \mid y_{1:t})}$. Because of $p(y_{1:t})=\int p(y_{1:t}\mid x_t )p(x_t )dx_t $, the above equation can be rewritten as
 \begin{align*}
 \E\lbrack f(x)\rbrack&= \frac{1}{p(y_{1:t})}\int f(x_t )W_t (x_t )q(x_t \mid y_{1:t})dx_t \\
 &= \frac{ \int f(x_t )W_t (x_t )q(x_t \mid y_{1:t})dx_t  }{\int p(y_{1:t}\mid x_t )p(x_t )dx_t } \\
@@ -129,7 +130,7 @@ W_t^{(i)} &\propto \frac{p\left(x_{0:t}^{(i)}\mid y_{1:t}\right)}{q\left(x_{0:t}
 
 \subsection{Sequential Importance Sampling and Resampling}
  
-In practice, we are interested in the current filtered estimate $p(x_t \mid y_{1:t})$ instead of $p(x_{0:t}\mid y_{1:t})$. Provided 
+In practice, we are more interested in the current estimation $p(x_t \mid y_{1:t})$ instead of $p(x_{0:t}\mid y_{1:t})$. Provided 
 \begin{align*}
 q(x_t \mid  x_{0:t-1},y_{1:t})=q(x_t \mid  x_{t-1},y_t ),
 \end{align*}
@@ -140,11 +141,11 @@ W_t^{(i)} &\propto W_{t-1}^{(i)} \frac{ p\left(y_t \mid x_t^{(i)}\right) p\left(
 
 The problem of SIS filter is that the distribution of importance weights becomes more and more skewed as time increases. Hence, after several iterations, only few particles have non-zero importance weights. This phenomenon is called \textit{weight degeneracy} or \textit{sample impoverishment} \citep{smcmip2011}.
 
-The effective sample size $N_{\mbox{\scriptsize eff}}$ is suggested to monitor how bad the degeneration is, which is
+The effective sample size $N_{\mbox{\scriptsize eff}}$ is suggested to monitor how bad the degeneration is, which is defined as 
 \begin{align*}
 N_{\mbox{\scriptsize eff}}=\frac{N}{1+\Var\left(w_t^{*(i)}\right)},
 \end{align*}
-where $w_t^{*(i)}=\frac{p\left(x_t^{(i)}\mid y_{1:t}\right)}{q\left(x_t^{(i)}\mid x_{t-1}^{(i)},y_{1:t}\right)}$. The more different between the biggest weight and smallest weight, the worse the degeneration is. In practice, the effective sample size is approximated by
+where $w_t^{*(i)}=\frac{p\left(x_t^{(i)}\mid y_{1:t}\right)}{q\left(x_t^{(i)}\mid x_{t-1}^{(i)},y_{1:t}\right)}$. The more difference of the biggest and smallest weights, the worse the degeneration is. In practice, the effective sample size is approximated by
 \begin{align*}
 \hat{N}_{\mbox{\scriptsize eff}}\approx \frac{1}{\sum_{i=1}^{N}\left(w_t^{(i)}\right)^2}.
 \end{align*}
@@ -173,7 +174,7 @@ Then the process of SIS particle filter with resampling is summarized in followi
 \begin{algorithm}[h]
 \SetAlgoLined 
 %\KwResutt{Write here the resutt }
-Initialization: Initial particles when $t=0$. For $i=1, \ldots, N$, draw samples $\lbrace x_0^{(i)}\rbrace$ from $p(x_0)$.\\
+Initialization: Initialize particles at $t=0$. For $i=1, \ldots, N$, draw samples $\lbrace x_0^{(i)}\rbrace$ from $p(x_0)$.\\
 \For{$t=1,2,\ldots, n$} {Importance sampling: draw sample $\left\lbrace \tilde{x}_t^{(i)}\right\rbrace_{i=1}^N$ from $q(x_t \mid y_{1:t})$, calculate their weights $\tilde{w}_t^{(i)}$ and normalize them. \\
 Resampling: Resample $\left\lbrace \tilde{x}_t^{(i)}, \tilde{w}_t^{(i)}\right\rbrace$ and get a new set $\left\lbrace x_t^{(i)},\frac{1}{N}\right\rbrace$.\\
 Output the status at time $t$: $\hat{x}_t =\sum_{i=1}^{N}\tilde{x}_t^{(i)}\tilde{w}_t^{(i)}$.}
@@ -354,7 +355,7 @@ With a fixed-lag $l$, the state filtering and parameter learning require the seq
 \begin{equation*}
 p(x_t\mid y_{1:t}) = \int p(x_{t-l+1:t}\mid y_{1:t}) dx_{t-l+1:t-1},
 \end{equation*}
-and the parameter posterior distribution $p(\theta\mid y_{1:t})$. Arguing that the approximation that draws from $p(x_{0:t-l}\mid y_{1:t-1})$ are approximate draws from $p(x_{0:t-l}\mid y_{1:t})$, the state filtering with static parameter $\theta$ is 
+and the posterior distribution of the parameter $p(\theta\mid y_{1:t})$. Arguing that the approximation that draws from $p(x_{0:t-l}\mid y_{1:t-1})$ are approximate draws from $p(x_{0:t-l}\mid y_{1:t})$, the state filtering with static parameter $\theta$ is 
 \begin{align*}
 p(x_{t-l+1:t},\theta\mid y_{1:t}) &=\int p(x_{t-l+1,t},\theta \mid x_{0:t-l},y_{1:t}) dp(x_{0:t-l}\mid y_{1:t}) \\
 &\approx \int p(x_{t-l+1,t},\theta \mid x_{0:t-l},y_{1:t}) dp(x_{0:t-l}\mid y_{1:t-1}).
@@ -461,7 +462,7 @@ Normalize weights: $w_{k+1}^{(i)} = \frac{\tilde{w}_{k+1}^{(i)}}{\sum \tilde{w}_
 \subsection{Storvik Filter}
 
 
-\textit{Storvik filter}, proposed by \cite{storvik2002particle}, is assuming that the posterior $p(\theta\mid x_{0:t},y_{1:t})$ depends on a low dimensional set of sufficient statistics $s_t$ with an associated recursive update via $s_t=S(s_{t-1},x_t,y_t)$. This approach is based on marginalizing the static parameters out of the posterior distribution, in which only the state vector needs to be considered, and aiming at reducing the particle impoverishment. It can be thought of as an extension of particle filters with additional steps of updating sufficient statistics and sampling parameters sequentially \citep{lopes2011particle}. In particular, models for which the underlying process is Gaussian and linear in the parameters can be handled by this approach \citep{storvik2002particle}. Furthermore, some other observational distributions with unknown parameters can be handled by this approach but subject to unavailable sufficient statistics. 
+\textit{Storvik filter}, proposed by \cite{storvik2002particle}, is assuming that the posterior $p(\theta\mid x_{0:t},y_{1:t})$ depends on a low dimensional set of sufficient statistics $s_t$ with an associated recursive update via $s_t=S(s_{t-1},x_t,y_t)$. This approach is based on marginalizing the static parameters out of the posterior distribution, in which only the state vector needs to be considered, and aiming at reducing the particle impoverishment. It can be thought of as an extension of particle filters with additional steps of updating sufficient statistics and sampling parameters sequentially \citep{lopes2011particle}. In particular, models for which the underlying process is Gaussian and linear in the parameters can be handled by this approach \citep{storvik2002particle}. Moreover, some observational distributions with unknown parameters can also be handled by this approach but subject to unavailable sufficient statistics. 
 
 The Storvik filter is summarized bellow:
 %\begin{itemize}
@@ -491,8 +492,7 @@ Sample $\theta^{(i)}$ from $p\left(\theta\mid s_{k}^{(i)}\right)$.
 
 \cite{carvalho2010particle} propose the  \textit{Particle Learning} that uses the similar sufficient statistics as Storvik filter does, in which the set of sufficient statistics is used for parameters estimation only. As an extension to the mixture Kalman filter \citep{chen2000mixture}, Particle Learning allows parameters learning throughout the process and utilize a resampling propagate framework together with a set of particles that includes a set of sufficient statistics (if it is available) for the states. 
 
-By denoting $s_t$ and $s_t^x$ the sufficient statistics for the parameter and state respectively, the updating rules are satisfied: $s_t=S(s_{t-1},x_t,y_t)$ and $s_t^x=K\left(s_{t-1}^x,\theta,y_t\right)$, where $K(\cdot)$ is the Kalman filter recursions. In Particle Learning, the prior to sampling from the proposal distribution uses a predictive likelihood and takes $y_{t+1}$ into account \citep{vieira2016online}. This algorithm is summarized as following: 
-
+By denoting $s_t$ and $s_t^x$ the sufficient statistics for the parameter and state respectively, the updating rules are satisfied: $s_t=S(s_{t-1},x_t,y_t)$ and $s_t^x=K\left(s_{t-1}^x,\theta,y_t\right)$, where $K(\cdot)$ is the Kalman filter recursions. In Particle Learning, the prior to sampling from the proposal distribution uses a predictive likelihood and takes $y_{t+1}$ into account \citep{vieira2016online}. This algorithm is summarized in the following: 
 %\begin{itemize}
 %\item{Step 1.} Resample $\left\lbrace \tilde{z}_t^{(i)}\right\rbrace_{i=1}^N=(\tilde{s}_t^{x(i)},\tilde{s}_t^{(i)},\tilde{\theta}^{(i)})$ from $p(z_t\mid s_t^x,s_t,\theta)$ with weight $w\propto p(y_{t+1}\mid s_{t}^x,\theta)$.
 %\item{Step 2.} Draw $x_{t+1}^{(i)}$ from $p(x_{t+1}\mid \tilde{s}_t^x,\tilde{\theta},y_{1:t+1})$. 
@@ -517,7 +517,7 @@ Update $s_{k+1}^x = K\left(s_{k}^x,\theta,y_{k+1}\right)$.
 
 \subsection{Adaptive Ensemble Kalman Filter}
 
-Storvik filter and Particle learning algorithms are efficient in some ways,  however, the drawbacks are obvious. One of them is that the sufficient statistics are not always available, or hard to find, for complex models. They are trying to reduce the problem of particle impoverishment, although in practice they did not solve the problem completely \citep{chopin2010particle}. An ensemble Kalman filter method was proposed for sequential state and parameter estimation \citep{stroud2016bayesian}. It is fully Bayesian and propagates the joint posterior density of states and parameters through over the process. 
+Storvik filter and Particle learning algorithms are efficient in some ways,  however, the drawbacks are obvious. One of them is that the sufficient statistics are not always available, or hard to find, for complex models. They are trying to reduce the problem of particle impoverishment, although in practice they did not solve the problem completely \citep{chopin2010particle}. A Bayesian adaptive ensemble Kalman filter method was proposed for sequential state and parameter estimation by \cite{stroud2016bayesian}. This method is fully Bayesian and propagates the joint posterior density of states and parameters through over the process. 
 
 
 The ensemble Kalman filter, which is an extension to the standard Kalman filter, is an approximate filtering method introduced in the geophysics literature by \cite{evensen1994sequential}. Instead of working with the entire distribution, the ensemble Kalman filter stores propagates and updates an ensemble of vectors that approximates the state distribution \citep{katzfuss2016understanding}. 
@@ -558,7 +558,7 @@ To find $p(\theta\mid y_{1:t})$, a generic way is using a normal approximation, 
 \begin{equation*}
 p(\theta\mid y_{1:t}) \propto \exp \left(  -\frac{1}{2}(\theta-m_t)^\top C_t^{-1}(\theta-m_t) \right).
 \end{equation*}
-A grid-based representation is writing the posterior in the way that $p(\theta\mid y_{1:t}) \propto p(y_t\mid\theta,y_{1:t-1})p(\theta\mid y_{1:t-1})$ and update the recursion weights by $\pi_{t,k}\propto p(y_{t}\mid\theta,y_{1:t-1})\pi_{t,k-1}$. 
+A grid-based representation is writing the posterior in the way that $p(\theta\mid y_{1:t}) \propto p(y_t\mid\theta,y_{1:t-1})p(\theta\mid y_{1:t-1})$.  The recursion weights can be updated by $\pi_{t,k}\propto p(y_{t}\mid\theta,y_{1:t-1})\pi_{t,k-1}$. 
 
 To summarize it up, the complete algorithm is in the following 
 %\begin{itemize}
@@ -759,7 +759,7 @@ The estimations for $x_t$ from $t=300$ to $897$ are very close and the differenc
 
 \section{Conclusion}
 
-In this chapter, we take a brief overview of existing sequential state estimation and combined state and parameter estimation. The particle filter is an efficient method for state estimation, although the particles impoverishment is inevitable. Extended to this method, researchers are working on killing particles degeneracy and several accomplishments have been achieved. A new challenge is estimating the unknown parameters. In no doubt, for complex stochastic processes and dynamics, both Bayesian and Frequentist methods are working well. One may refer to \citep{wakefield2013bayesian} for further discussion between Bayesian and Frequentist methods and implementation. 
+In this chapter, we take a brief overview of existing sequential state estimation methods and combined state and parameter estimation methods. The particle filter is an efficient algorithm for state estimation, although the particles impoverishment is inevitable. Extended to this method, researchers are working on killing particles degeneracy and several accomplishments have been achieved. A new challenge is estimating the unknown parameters. In no doubt, for complex stochastic processes and dynamics, both Bayesian and Frequentist methods are working well. One may refer to \citep{wakefield2013bayesian} for further discussion between Bayesian and Frequentist methods and implementation. 
 
 As a summary, most of the research issues for filtering and parameter estimation focused on 
 \begin{itemize}\itemsep0em 
