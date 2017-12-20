@@ -55,7 +55,7 @@ Finally, the point $p_i$ belongs to the track if Rule 1 = TRUE or Rule 2 = TRUE 
 
 \section{Evaluation}
 
-Errors are measured by Synchronized Euclidean Distance \citep{lawson2011compression}. SED measures the distances between the original and compressed trace at the same time. As shown in figure \ref{DataSimpSED}, the green points $P_{t1}, \ldots ,P_{t5}$ are original positions. After simplification, the points $P_{t2}, P_{t3}$ and $P_{t4}$ were removed. The black curve is the original trajectory and the gray dash-dot line is the simplified trajectory. The blue points $P'_{t2}$,$P'_{t3}$ and $P'_{t4}$ on simplified trajectory have the same time difference as the point $P_{t2}$, $P_{t3}$ and $P_{t4}$ on original trajectory did. For instance, the time difference between $P_{t2}$ and $P_{t3}$ is the same as that between $P'_{t2}$ and $P'_{t3}$. Further, the distances between $P_{t2}$ and $P'_{t2}$, $P_{t3}$ and $P'_{t3}$ and $P_{t4}$, $P'_{t4}$ can be calculated.
+Errors are measured by Synchronized Euclidean Distance \citep{lawson2011compression}. SED measures the distances between the original and compressed trace at the same time. As shown in figure \ref{DataSimpSED}, the green points $P_{t1}, \ldots ,P_{t5}$ are original positions. After simplification, the points $P_{t2}, P_{t3}$ and $P_{t4}$ are removed. The black curve is the original trajectory and the gray dash-dot line is the simplified trajectory. The blue points $P'_{t2}$,$P'_{t3}$ and $P'_{t4}$ on simplified trajectory have the same time difference as the point $P_{t2}$, $P_{t3}$ and $P_{t4}$ on original trajectory did. For instance, the time difference between $P_{t2}$ and $P_{t3}$ is the same as that between $P'_{t2}$ and $P'_{t3}$. Further, the distances between $P_{t2}$ and $P'_{t2}$, $P_{t3}$ and $P'_{t3}$ and $P_{t4}$, $P'_{t4}$ can be calculated.
 
 
 \begin{figure}
@@ -294,7 +294,9 @@ Table \ref{DataSimpCompTable} describes the results after being simplified by DP
 \caption{A segment start from time $t=2\,000$ to $3\,000$, recorded by GPS units. $\blacktriangle$ indicates that the boom is not operating. $\bullet$ indicates that the boom is operating. Figure \ref{ggRawTrac}, the trajectory connected by raw data with 27 points. Figure \ref{ggDPTrac}, the trajectory connected by simplified data with Douglas-Peucker algorithm with 24 points. Figure \ref{ggSPTrac}, the trajectory connected by simplified data with proposed simplification algorithm with 23  points.}\label{DataSimpRawTra}
 \end{figure}
 
-\begin{figure}
+\clearpage
+
+\begin{figure}[h]
 \centering
 \begin{subfigure}[t]{0.47\textwidth}
 \includegraphics[width=\linewidth]{Chapters/06Spinoff/plot/ggRawKF2.pdf}
@@ -311,8 +313,7 @@ Table \ref{DataSimpCompTable} describes the results after being simplified by DP
 \caption{Trajectory fitted by Kalman filter. The mean squared errors of raw data, DP and proposed algorithm are 26.8922, 23.9788 and 23.9710 respectively.}\label{DataSimpKFTra}
 \end{figure}
 
-\pagebreak
 
 \section{Conclusion}
 
-The data simplification algorithm was originally proposed to solve the fitting-drift problem. Duplicated and short-distance points cause reconstruction issues in spline fitting. The advantage of using data simplification algorithm is that less data points will potentially increase computation efficiency and save storage space without of losing information in reconstruction.  
+The data simplification algorithm is originally proposed to solve the over-fitting and wiggle-construction problems. Duplicated and short-distance points cause reconstruction issues in spline fitting. The advantage of data simplification algorithm is that less data points potentially increase computation efficiency and save storage space without of losing information for reconstructing.  

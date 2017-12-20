@@ -104,7 +104,7 @@ From the objective function \eqref{M1}, the posterior distribution of $\theta$ i
 \begin{align*}
 p\left(\theta \mid y_{1:t}\right) &\propto p\left(y_{1:t}\mid\theta\right)p\left(\theta\right) \propto \exp\left( -\frac{1}{2} y_{1:t} \Sigma_{YY}^{-1} y_{1:t} \right) \sqrt{\det \Sigma_{YY}^{-1}} p\left(\theta\right).
 \end{align*}
-Then, by taking natural logarithm on the posterior of $\theta$ and using the useful solutions in equations \eqref{sigmayy01} and \eqref{sigmayy02}, we will have
+Then, by taking natural logarithm on the posterior of $\theta$ and by using the useful solutions in equations \eqref{sigmayy01} and \eqref{sigmayy02}, we will have
 \begin{align}
 \ln L\left(\theta\right) &= -\frac{1}{2}y_{1:t}^\top\Sigma_{YY}^{-1}y_{1:t}+\frac{1}{2}\sum\ln\mbox{tr}\left(B_t\right)-\sum\ln\mbox{tr}\left(L_t\right)+\sum\ln\mbox{tr}\left(R_t\right) + \ln p\left(\theta\right).
 \end{align}
@@ -218,7 +218,7 @@ In this way, a tentative new state $x'$ is generated from the proposal density $
 \end{equation}
 If $\alpha \geq 1$, the new state is accepted. Otherwise, the new state is accepted with probability $\alpha$.
 
-Here comes an issues of how to choose $q\left(\cdot\mid x^{(t)}\right)$. The most widely used subclass of MCMC algorithms is based on the \textit{Random Walk Metropolis} (RWM). The RWM updating scheme was first applied by \cite{metropolis1953equation} and proceeds as follows. Given a current value of the $d$-dimensional Markov chain $x^{(t)}$, a new value $x'$ is obtained by proposing a jump $\epsilon = \lvert x' - x^{(t)} \rvert  $ from the pre-specified Lebesgue density 
+Here comes an issues of how to choose $q\left(\cdot\mid x^{(t)}\right)$. The most widely used subclass of MCMC algorithms is based on the \textit{random walk Metropolis} (RWM). The RWM updating scheme was first applied by \cite{metropolis1953equation} and proceeds as follows. Given a current value of the $d$-dimensional Markov chain $x^{(t)}$, a new value $x'$ is obtained by proposing a jump $\epsilon = \lvert x' - x^{(t)} \rvert  $ from the pre-specified Lebesgue density 
 \begin{equation}\label{stepsizeep}
 \tilde{\gamma}\left(\epsilon^\star;\lambda\right) = \frac{1}{\lambda^d}\gamma \left( \frac{\epsilon^\star}{\lambda} \right),
 \end{equation}
@@ -231,7 +231,7 @@ If the proposed value is accepted it becomes the next current value $x^{(t+1)}= 
 
 \subsection{The Self-tuning Metropolis-Hastings Algorithm}
 
-The self-tuning MH algorithm automatically tunes the step sizes for different parameters by one-variable-at-a-time Random Walk. Aiming at the target acceptance rates for each parameter, the algorithm efficiently and accurately explore the structure of the $d$-dimensional parameter space. 
+The self-tuning MH algorithm automatically tunes the step sizes for different parameters by one-variable-at-a-time random walk. Aiming at the target acceptance rates for each parameter, the algorithm efficiently and accurately explore the structure of the $d$-dimensional parameter space. 
 
 By assuming the parameters are independent, the idea of this algorithm is that in each iteration, only one parameter is proposed and the others remain to be changed. After the step, take $n$ samples out of the total amount of iterations $N$ as new sequences. In figure \ref{randomwalk}, examples of different proposing methods are compared. 
 \begin{figure}[h]
@@ -239,19 +239,19 @@ By assuming the parameters are independent, the idea of this algorithm is that i
  \begin{subfigure}[b]{0.32\textwidth}
      %\includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/oneRW.pdf}
      \includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/ggoneRW.pdf}
-     \caption{\footnotesize One-variable-at-a-time Random Walk.}\label{MCMConevariableRW}
+     \caption{\footnotesize One-variable-at-a-time random walk.}\label{MCMConevariableRW}
 \end{subfigure}
 \begin{subfigure}[b]{0.32\textwidth}
     %\includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/indRW.pdf}
      \includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/ggindRW.pdf}
-    \caption{\footnotesize Independent Multi-variable-at-a-time Random Walk.}\label{MCMCMultivariableRW}
+    \caption{\footnotesize Independent multi-variable-at-a-time random walk.}\label{MCMCMultivariableRW}
 \end{subfigure}
 \begin{subfigure}[b]{0.32\textwidth}
     %\includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/corRW.pdf}
      \includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/ggcorRW.pdf}   
-    \caption{\footnotesize Correlated Multi-variable-at-a-time Random Walk.}\label{MCMCCorrelatedRW}
+    \caption{\footnotesize Correlated multi-variable-at-a-time random walk.}\label{MCMCCorrelatedRW}
 \end{subfigure}
-\caption{Examples of 2-Dimensional Random Walk Metropolis-Hastings algorithm. Figure \ref{MCMConevariableRW} is the trace of one-variable-at-a-time Random Walk. At each time, only one variable is changed and the other one stay constant. Figure \ref{MCMCMultivariableRW} and \ref{MCMCCorrelatedRW} present the traces by multi-variable-at-a-time Random Walk. In figure \ref{MCMCMultivariableRW}, the proposal for each step is independent, but in figure \ref{MCMCCorrelatedRW} the proposal are proposed correlated.}
+\caption{Examples of 2-Dimensional random walk Metropolis-Hastings algorithm. Figure \ref{MCMConevariableRW} is the trace of one-variable-at-a-time random walk. At each time, only one variable is changed and the other one stay constant. Figure \ref{MCMCMultivariableRW} and \ref{MCMCCorrelatedRW} present the traces by multi-variable-at-a-time random walk. In figure \ref{MCMCMultivariableRW}, the proposal for each step is independent, but in figure \ref{MCMCCorrelatedRW} the proposal are proposed correlated.}
 \label{randomwalk}
 \end{figure}
 
@@ -395,7 +395,7 @@ Plenty of work has been done in determining the efficiency of Metropolis-Hasting
 
 In terms of the step size $\epsilon$, it is pointed out that for a stochastic approximation procedure, its step size sequence $\left\lbrace \epsilon_i\right\rbrace$ should satisfy $\sum_{i=1}^\infty \epsilon_i=\infty $ and $\sum_{i=1}^\infty \epsilon_i^{1+\lambda}<\infty $ for some $\lambda>0$. The former condition somehow ensures that any point of $X$ can eventually be reached, while the second condition ensures that the noise is contained and does not prevent convergence \citep{andrieu2008tutorial}. \cite{sherlock2010random} tune various algorithms to attain target acceptance rates, and one of the algorithms tunes step sizes of univariate updates to attain the optimal efficiency of Markov chain at the acceptance rates between 0.4 and 0.45. Additionally, \cite{graves2011automatic} mentions that it is certain that one could use the actual arctangent relationship to try to choose a good $\epsilon$: in the univariate example, if $\alpha$ is the desired acceptance rate, then $\epsilon = 2\sigma / \tan \left(\pi/2\alpha\right)$, where $\sigma$ is the posterior standard deviation, will be obtained. In fact, some explorations infer a linear relationship between acceptance rate and step size, which is $\mathtt{logit}(\alpha) \approx 0.76-1.12\ln \epsilon/\sigma$, and the slope of the relationship is nearly equal to the constant -1.12 independently. 
 
-However, in multi-variable-at-a-time RWM, one expects that the proper interpretation of $\sigma$ is not the posterior standard deviation but the average conditional standard deviation, which is presumably more difficult to estimate from a Metropolis algorithm. In a higher $d$-dimensional space, or propose multi-variable-at-a-time, suppose $\Sigma$ is known or could be estimated, then $X'$ can be proposed from $q\sim N\left(X,\epsilon^2\Sigma\right)$. Thus,the optimal step size $\epsilon$ is required. A concessive way of RWM in high dimension is proposing one-variable-at-a-time and treating them as one dimension space individually. In any case, however, the behavior of RWM on a multivariate normal distribution is governed by its covariance matrix $\Sigma$, and it is better than using a fixed $N\left(X,\epsilon^2I_d\right)$ distribution \citep{roberts2001optimal}.
+However, in multi-variable-at-a-time RWM, one expects that the proper interpretation of $\sigma$ is not the posterior standard deviation but the average conditional standard deviation, which is presumably more difficult to estimate from a Metropolis algorithm. In a higher $d$-dimensional space, or propose multi-variable-at-a-time, suppose $\Sigma$ is known or could be estimated, then $X'$ can be proposed from $q\sim N\left(X,\epsilon^2\Sigma\right)$. Thus,the optimal step size $\epsilon$ is required. A concessive way of RWM in high dimension is proposing one-variable-at-a-time and treating them as separate one dimensional space individually. In any case, however, the behavior of RWM on a multivariate normal distribution is governed by its covariance matrix $\Sigma$, and it performs better than a fixed $N\left(X,\epsilon^2I_d\right)$ distribution \citep{roberts2001optimal}.
 
 
 To explore the efficiency of a MCMC process, we introduce some notions first. For an arbitrary square integrable function $g$, \cite{roberts2001optimal} define its \textit{integrated autocorrelation time} by 
@@ -487,7 +487,7 @@ In the formula \eqref{M1}, the parameter posterior is estimated with observation
 \begin{equation*}
 p(\theta \mid Y) \propto p(Y\mid\theta)p(\theta) \propto \exp\left( {-\frac{1}{2} Y \Sigma_{YY}^{-1} Y } \right) \sqrt{\det \Sigma_{YY}^{-1}} p(\theta).
 \end{equation*}
-Then, by taking natural logarithm on the posterior of $\theta$ and using the useful solutions in equations \eqref{sigmayy01} and \eqref{sigmayy02}, we will have
+Then, by taking natural logarithm on the posterior of $\theta$ and by using the useful solutions in equations \eqref{sigmayy01} and \eqref{sigmayy02}, we will have
 \begin{equation}\label{linearlogL}
 \ln L(\theta) = -\frac{1}{2}Y^\top\Sigma_{YY}^{-1}Y+\frac{1}{2}\sum\ln\mbox{tr}(B_t)-\sum\ln\mbox{tr}(L_t)+\sum\ln\mbox{tr}(R_t) + \ln p(\theta).
 \end{equation}
@@ -706,7 +706,7 @@ To use the Algorithm \ref{algoonevarible}, similarly with Section \ref{sectionlo
 \begin{equation*}
 p(\theta \mid Y) \propto p(Y\mid\theta)p(\theta) \propto \exp\left( -\frac{1}{2} Y \Sigma_{YY}^{-1} Y \right) \sqrt{\det \Sigma_{YY}^{-1}} p(\theta).
 \end{equation*}
-By taking natural logarithm on the posterior of $\theta$ and using the useful solutions in equations \eqref{sigmayy01} and \eqref{sigmayy02}, we have 
+By taking natural logarithm on the posterior of $\theta$ and by using the useful solutions in equations \eqref{sigmayy01} and \eqref{sigmayy02}, we have 
 \begin{equation}\label{simuOUlogL}
 \ln L(\theta) = -\frac{1}{2}Y^\top\Sigma_{YY}^{-1}Y+\frac{1}{2}\sum\ln\mbox{tr}(B_t)-\sum\ln\mbox{tr}(L_t)+\sum\ln\mbox{tr}(R_t) + \ln p(\theta).
 \end{equation}
@@ -898,7 +898,7 @@ In fact, the matrix $A_t$ is a $2t \times 2t$ bandwidth six sparse matrix at tim
 \end{bmatrix} \\
 &= \begin{bmatrix}
 \left(A_t-B_t\right) ^{-1} & \left(A_t-B_t\right)^{-1}\\
-\left(A_t-B_t\right)^{-1} & \left(I- A_t^{-1}B_t\right) ^{-1}B_t^{-1}
+\left(A_t-B_t\right)^{-1} & \left(I_t- A_t^{-1}B_t\right) ^{-1}B_t^{-1}
 \end{bmatrix} \\
 &\triangleq \begin{bmatrix}
 \Sigma_{XX} & \Sigma_{XY} \\
@@ -917,7 +917,7 @@ By using Choleski decomposition and similar technical solution, second term in t
 \begin{align*}
 p(\theta \mid Y) &\propto p(Y\mid\theta)p(\theta) \propto \exp\left( -\frac{1}{2} Y \Sigma_{YY}^{-1} Y \right) \sqrt{\det \Sigma_{YY}^{-1}} P(\theta).
 \end{align*}
-Then, by taking natural logarithm on the posterior of $\theta$ and using the useful solutions in equations \eqref{sigmayy01} and \eqref{sigmayy02}, we will have
+Then, by taking natural logarithm on the posterior of $\theta$ and by using the useful solutions in equations \eqref{sigmayy01} and \eqref{sigmayy02}, we will have
 \begin{align}\label{logL}
 \ln L(\theta) &= -\frac{1}{2}Y^\top\Sigma_{YY}^{-1}Y+\frac{1}{2}\sum\ln\mbox{tr}(B_t)-\sum\ln\mbox{tr}(L_t)+\sum\ln\mbox{tr}(R_t).
 \end{align}
@@ -1026,7 +1026,7 @@ For $X_{t}$, the joint distribution with $Y_{1:t}$ updated to time $t$ is
 \begin{align*}
 X_{t}, Y_{1:t} \mid \theta \sim N\left( 0, \begin{bmatrix}
 C_{t}^\top\left(A_{t}-B_{t}\right) ^{-1}C_{t} & C_{t}^\top \left(A_{t}-B_{t}\right)^{-1}\\
-\left(A_{t}-B_{t}\right)^{-1}C_{t} & \left(I- A_{t}^{-1}B_{t}\right) ^{-1}B_{t}^{-1}
+\left(A_{t}-B_{t}\right)^{-1}C_{t} & \left(I_t- A_{t}^{-1}B_{t}\right) ^{-1}B_{t}^{-1}
 \end{bmatrix} \right),
 \end{align*}
 where $C_{t}^\top=\begin{bmatrix}
@@ -1100,7 +1100,7 @@ where $IG(\alpha,\beta)$ represents the \textit{Inverse Gamma} distribution with
 
 We have discussed the efficiency of Metropolis-Hastings (MH) algorithm and how it is affected by the step size. To explain it explicitly, here we give an example comparing Eff, EffUT, ESS and ESSUT, which are calculated by using the same dataset and running 10\,000 iterations of DA MH. We are taking a sequence from 0.1 to 4 with equal-space of 0.3, so that $s=\left\lbrace 0.1,\dots,4\right\rbrace$, and to solve criterion formula with each of the value. Table \ref{effeutessessutexampletable} and figure \ref{effeutessessutexamplefigure} show the compares the results of the calculation. 
 
-The best step size found by Eff is 1, which is as the same as that found by ESS. By using $s=1$ and running 1\,000 iterations, the DA MH takes 36.35 seconds to get the Markov chain for $\theta$ and the acceptance rates $\alpha_1$ for approximating $\hat{\pi}(\cdot)$ and $\alpha_2$ for estimating the posterior distribution $\pi(\cdot)$ are 0.3097 and 0.8324 respectively. By using EffUT and ESSUT, the best step size is 2.5, which is bigger. One of the advantages of using this step size is the significant decreasing of the computation time to 5.10 seconds. It is because the surrogate $\hat{\pi}(\cdot)$ takes bad proposals out and only good ones are accepted to pass to the next level. It can be seen from the lower rates $\alpha_1$ in table \ref{effeutessessutexampletable}. 
+The best step size found by Eff is 1, which is as the same as that found by ESS. Let $s=1$ and run 1\,000 iterations, the DA MH takes 36.35 seconds to get the Markov chain for $\theta$ and the acceptance rates $\alpha_1$ for approximating $\hat{\pi}(\cdot)$ and $\alpha_2$ for estimating the posterior distribution $\pi(\cdot)$ are 0.3097 and 0.8324 respectively. By using EffUT and ESSUT, the best step size is 2.5, which is bigger. One of the advantages of using this step size is the significant decreasing of the computation time to 5.10 seconds. It is because the surrogate $\hat{\pi}(\cdot)$ takes bad proposals out and only good ones are accepted to pass to the next level. It can be seen from the lower rates $\alpha_1$ in table \ref{effeutessessutexampletable}. 
 %\begin{table}[h]
 %\centering
 %\begin{tabular}{\mid c\mid c\mid c\mid c\mid c\mid c\mid }
@@ -1154,15 +1154,15 @@ ESSUT & 29.8912   & 5.10   & 2.5   & 0.0360   & 0.7861    \\ \hline
 	\includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/ggessut.pdf}
 	\caption{ESSUT against different step sizes}
 \end{subfigure}
-\caption{Influences of different step sizes on sampling efficiency (Eff), efficiency in unit time (EffUT), effective sample size (ESS) and effective sample size in unit time (ESSUT) found by using the same data}
+\caption{Influences of different step sizes on sampling efficiency (Eff), efficiency in unit time (EffUT), effective sample size (ESS) and effective sample size in unit time (ESSUT) found with the same data}
 \label{effeutessessutexamplefigure}
 \end{figure}
 
 
-On the surface, a bigger step size causes lower acceptance rates $\alpha_1$ and it might not be a smart choice. However, on the other hand, one should notice the less time cost. To make it sensible, we are running the DA MH with different step sizes, as presented in table \ref{effeutessessutexampletable},  for the same (or similar) amount of time. Because of the bigger step size takes less time than smaller one, so we achieve a longer chain. To be more clear, we take 1\,000 samples out from a longer chain, such as 8\,500, and calculate Eff, EffUT, ESS and ESSUT separately using the embedded function \textsf{IAT}, \citep{christen2010general}, and \textsf{ESS} of the package \textsf{LaplacesDemon} in \textit{R} and the above formulas . As we can see from the outcomes, by running the similar amount of time, the Markov chain using a bigger step size has a higher efficiency and effective sample size in unit time. More intuitively, the advantage of using larger step size is the sampling algorithm generates more representative samples per second. Figure \ref{1koutof8kfigures} is comparing different $\theta$ chains found by using different step sizes but running the same amount of time. As we can see that $\theta$ with the optimal step size has a lower correlated relationship. 
+On the surface, a bigger step size causes lower acceptance rates $\alpha_1$ and it might not be a smart choice. However, on the other hand, one should notice the less time cost. To make it sensible, we are running the DA MH with different step sizes, as presented in table \ref{effeutessessutexampletable},  for the same (or similar) amount of time. Because of the bigger step size takes less time than smaller one, so we achieve a longer chain. To be more clear, we take 1\,000 samples out from a longer chain, such as 8\,500, and calculate Eff, EffUT, ESS and ESSUT separately by the embedded function \textsf{IAT}, \citep{christen2010general}, and \textsf{ESS} of the package \textsf{LaplacesDemon} in \textit{R} and the above formulas . As we can see from the outcomes, by running the similar amount of time, the Markov chain with a bigger step size has a higher efficiency and effective sample size in unit time. More intuitively, the advantage of using larger step size is the sampling algorithm generates more representative samples per second. Figure \ref{1koutof8kfigures} is comparing different $\theta$ chains found by using different step sizes but running the same amount of time. As we can see that $\theta$ with the optimal step size has a lower correlated relationship. 
 \begin{table}[h]
 \centering
-\caption{Comparing Eff, EffUT, ESS and ESSUT values using different step size. The $1000^\star$ means taking 1\,000 samples from a longer chain, like 1\,000 out of 5\,000 sample chain. The computation time is measured in seconds~$s$.}
+\caption{Comparison of Eff, EffUT, ESS and ESSUT values with different step size. The $1000^\star$ means taking 1\,000 samples from a longer chain, like 1\,000 out of 5\,000 sample chain. The computation time is measured in seconds~$s$.}
 \label{stepsizecompare}
 \begin{tabular}{|c|C{1.5cm}|C{1.5cm}|C{1.5cm}|C{1.5cm}|C{1.5cm}|C{1.5cm}|}
 \hline
@@ -1227,7 +1227,7 @@ p(x_{0:n-L},\theta\mid y_{0:n-1}) \approx p(x_{0:n-L},\theta \mid y_{0:n})
 \end{equation*}
 for large $L$. The new observations coming after the $n$th data has little influence on $x_{0:n-L}$. 
 
-Being inspired, we are not using the first $0$ to $n-1$ date and ignoring the latest $n$th, but using all the latest with truncating the first few history ones. Suppose we are given a fixed-length $L$, up to time $t$, which should be greater than $L$, we are estimating $x_t$ by using all the retrospective observations to the point at $t-L+1$. In another word, the estimation distribution for the current state is 
+Being inspired, we do not use the first $0$ to $n-1$ date and ignore the latest $n$th, on contrary, use all the latest date with truncating the first few history ones. Suppose we are given a fixed-length $L$, up to time $t$ ($t>L$),  we estimate the $x_t$ by using all the retrospective observations to the point at $t-L+1$. In another word, the estimation distribution for the current state is 
 \begin{equation}
 p(X_{t}\mid Y_{t-L+1:t},\theta),
 \end{equation}
@@ -1257,7 +1257,7 @@ The next question is how to choose an appropriate $L$. The length of data used i
 In addition, from a practical point of view, the observation error $\sigma$ should be kept at a reasonable level, let's say $50cm$, and the computation time should be as less as possible. To reach that level, $L=100$ is an appropriate choice. For a one-dimensional linear model, $L$ can be chosen larger and that does not change too much. If the data up to time $t$ is less than or equal to the chosen $L$, the whole data set is used in learning $\theta$ and estimating $X_t$. 
 
 
-For the true posterior, the algorithm requires a cheap estimation $\hat{\pi}(\cdot)$, which is found by one-variable-at-a-time Metropolis-Hastings algorithm. The advantage is getting a precise estimation of the parameter structure, and disadvantage is, obviously, lower efficiency. Luckily, we find that it is not necessary to run this MH every time when estimate a new state from $x_{t-1}$ to $x_t$. In fact, in the DA MH process, the cheap $\hat{\pi}$ does not vary too much in the filtering process with new data coming into the dataset. We may use this property in the algorithm. First of all, we use all available data from $1$ to $t$ with length up to $L$ to learn the structure of $\theta$ and find out the cheap approximation $\hat{\pi}$. Then, use DA MH to estimate the true posterior $\pi$ for $\theta$ and $x_t$. After that, extend dataset to $1:t+1$ if $t\leq L$ or shift the data window to $2:t+1$ if $t>L$ and run DA MH again to estimate $\theta$ and $x_{t+1}$. From figures \ref{batchwindowkeyfeature} and \ref{batchwindowparameter}, we can see that the main features and parameters in the estimating process between using batch and sliding window methods have not significant differences. 
+For the true posterior, the algorithm requires a cheap estimation $\hat{\pi}(\cdot)$, which is found by one-variable-at-a-time Metropolis-Hastings algorithm. The advantage is getting a precise estimation of the parameter structure, and disadvantage is, obviously, lower efficiency. Luckily, we find that it is not necessary to run this MH every time when estimate a new state from $x_{t-1}$ to $x_t$. In fact, in the DA MH process, the cheap $\hat{\pi}$ does not vary too much in the filtering process with new data coming into the dataset. We may use this property in the algorithm. First of all, we use all available data from $1$ to $t$ with length up to $L$ to learn the structure of $\theta$ and find out the cheap approximation $\hat{\pi}$. Then, use DA MH to estimate the true posterior $\pi$ for $\theta$ and $x_t$. After that, extend dataset to $1:t+1$ if $t\leq L$ or shift the data window to $2:t+1$ if $t>L$ and run DA MH again to estimate $\theta$ and $x_{t+1}$. From figures \ref{batchwindowkeyfeature} and \ref{batchwindowparameter}, we can see that the main features and parameters in the estimating process between batch method and sliding window method have not significant differences. 
 
 
 To avoid estimation bias in the algorithm, we are introducing the \textit{threshold} criterion and a \textit{cutting-off} value. The \textit{threshold} criterion is used to test  a bias in the algorithm. In a certain circumstance, the cheap $\hat{\pi}$ is not accurate and is replaced by a new one $\hat{\pi}_{\mbox{\scriptsize new}}$. A \textit{cutting-off} procedure stops the algorithm when a large $\Delta_t$ occurs in the process. A large time gap indicates a break of the vehicle at a time point and it causes irregularity and bias. A smart way is to stop the process and to wait for new data coming in. By running testings on real data, the \textit{threshold} is chosen $\alpha_2<0.7$ and the \textit{cutting-off} value is set at $\Delta_t\geq 300$. For each time, if the acceptance rate $\alpha_2$ is less than $0.7$, we update the mean of $\hat{\pi}$ and remain the covariance unchanged. In fact, the mean of the estimation may vary upon the data we use but the covariance matrix does not change too much, as is shown in figure \ref{ParameterEvolutionVisualization}. Actually, these two values are on researchers' choices. Figures \ref{comparenotanupDAL} and \ref{comparenotanupfeatures} compare the performances of using and not using the \textit{threshold} criterion to update the mean of parameters. We can see that by using the \textit{threshold} criterion, we effectively avoid estimation bias and obtain more effective samples. 
@@ -1385,7 +1385,7 @@ Since a cheap surrogate $\hat{\pi}(\cdot)$ for the true $\pi(\cdot)$ is found in
 
 \section{Discussion and Future Work}
 
-In this chapter, we use the self-tuning one-variable-at-a-time Random Walk Metropolis-Hastings to learn the parameter hyper space for a linear state-space model. Starting from the joint covariance and distribution of $X$ and $Y$, we have a recursive way to update the mean and covariance sequentially. After getting the cheap approximation posterior distribution, DA MH algorithm accelerates the estimating process. The advantage of this algorithm is that it is easy to understand and implement in practice. By contrast, Particle Learning algorithm is highly efficient, however, the sufficient statistics are not available at all time . 
+In this chapter, we use the self-tuning one-variable-at-a-time random walk Metropolis-Hastings to learn the parameter hyper space for a linear state-space model. Starting from the joint covariance and distribution of $X$ and $Y$, we have a recursive way to update the mean and covariance sequentially. After getting the cheap approximation posterior distribution, DA MH algorithm accelerates the estimating process. The advantage of this algorithm is that it is easy to understand and implement in practice. By contrast, Particle Learning algorithm is highly efficient, however, the sufficient statistics are not available at all time . 
 
 Some future work can be done on inferring state from precious movement with other kinetic information, not just with diffusive  velocity. Besides, I am more interested in increasing the efficiency and accuracy of MCMC method. 
 

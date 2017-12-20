@@ -6,7 +6,7 @@
 
 Calculating the log-posterior of parameters requires finding out the forecast distribution of $p\left(y_{1:t}\mid y_{1:t-1},\theta\right)$. A general way is to use the joint distribution of $y_{t}$ and $y_{1:t-1}$, which is $p\left(y_{1:t}\mid \theta\right)\sim N\left(0,\Sigma_{YY}\right)$ and following the procedure in Section \ref{sectionforecast} to work out the inverse matrix of a multivariate normal distribution. For example, one may find the inverse of the covariance matrix 
 \begin{align*}
-\Sigma_{YY}^{-1} = B\left(I-A^{-1}B\right) =\frac{1}{\sigma^4}\left(\sigma^2 I-A^{-1}\right) \triangleq \frac{1}{\sigma^4}
+\Sigma_{YY}^{-1} = B\left(I_t-A_t^{-1}B_t\right) =\frac{1}{\sigma^4}\left(\sigma^2 I_t-A_t^{-1}\right) \triangleq \frac{1}{\sigma^4}
 \begin{bmatrix} 
 Z_{t} & b_{t} \\
 b_{t}^\top & K_{t}
@@ -15,13 +15,13 @@ b_{t}^\top & K_{t}
 Therefore the original form of this covariance is 
 \begin{align*} \Sigma_{YY} =\sigma^4 
 \begin{bmatrix}
-\left(Z-bK^{-1}b^\top\right)^{-1} & -Z^{-1}b\left(K-b^\top Z^{-1}b\right)^{-1}\\
--K^{-1}b^\top \left(Z-bK^{-1}b^\top\right)^{-1} & \left(K-b^\top Z^{-1}b\right)^{-1}
+\left(Z_t-b_tK_t^{-1}b_t^\top\right)^{-1} & -Z_t^{-1}b_t\left(K_t-b_t^\top Z_t^{-1}b_t\right)^{-1}\\
+-K_t^{-1}b_t^\top \left(Z_t-b_tK_t^{-1}b_t^\top\right)^{-1} & \left(K_t-b_t^\top Z_t^{-1}b_t\right)^{-1}
 \end{bmatrix}.
 \end{align*}
-For sake of simplicity, here we use $Z$ to represent the $t\times t$ matrix $Z_{t}$, $b$ to represent the $t \times 1$ vector $b_{t}$ and $K$ to represent the $1\times 1$ constant $K_{t}$. By denoting $C_{t}^\top = \begin{bmatrix} 0 & \cdots & 0 & 1\end{bmatrix}$ and post-multiplying $\Sigma_{YY}^{-1}$, it gives us 
+For sake of simplicity, $Z_t$ is a $t\times t$ matrix, $b_t$ is a $t \times 1$ vector and $K_t$ is a $1\times 1$ constant number. By denoting $C_{t}^\top = \begin{bmatrix} 0 & \cdots & 0 & 1\end{bmatrix}$ and post-multiplying $\Sigma_{YY}^{-1}$, it gives us 
 \begin{equation}
-\Sigma_{YY}^{-1} C_{t}= \frac{1}{\sigma^4}\left(\sigma^2 I-A^{-1}\right) C_{t}= \frac{1}{\sigma^4} \begin{bmatrix} b_{t} \\ K_{t} \end{bmatrix}.
+\Sigma_{YY}^{-1} C_{t}= \frac{1}{\sigma^4}\left(\sigma^2 I_t-A_t^{-1}\right) C_{t}= \frac{1}{\sigma^4} \begin{bmatrix} b_{t} \\ K_{t} \end{bmatrix}.
 \end{equation} 
 
 By using the formula, one can find a recursive way to update $K_{t}$ and $b_{t-1}$, which are 
@@ -82,15 +82,15 @@ and
 \end{align*}
 
 \begin{align*}
-\bar{\mu}_{t}      &= 0-\sigma^4 K_t^{-1}b_t^\top \left(Z-b_tK_t^{-1}b_t^\top\right)^{-1} \sigma^{-4} \left(Z-b_tK_t^{-1}b_t^\top\right) y_{1:t-1} \\
+\bar{\mu}_{t}      &= 0-\sigma^4 K_t^{-1}b_t^\top \left(Z_t-b_tK_t^{-1}b_t^\top\right)^{-1} \sigma^{-4} \left(Z_t-b_tK_t^{-1}b_t^\top\right) y_{1:t-1} \\
 					 & =-K_t^{-1}b_t^\top y_{1:t-1} \\
 					 & = \frac{\phi}{\sigma^2}K_{t-1}\bar{\mu}_{t-1} + \phi \left(1 - \frac{K_{t-1}}{\sigma^2}\right)y_{t-1}, \\
 \begin{split}
-\bar{\Sigma}_{t} &= \sigma^4\left(K_t-b_t^\top Z^{-1}b_t\right)^{-1}\\ 
+\bar{\Sigma}_{t} &= \sigma^4\left(K_t-b_t^\top Z_t^{-1}b_t\right)^{-1}\\ 
 &\hphantom{+t-} - \sigma^4K_t^{-1}b_t^\top \left(Z_t-b_tK_t^{-1}b_t^\top\right)^{-1} 
  \left(Z_t-b_tK_t^{-1}b_t^\top\right)Z_t^{-1}b_t\left(K_t-b_t^\top Z_t^{-1}b_t\right)^{-1}
 \end{split}
-\\  & = \sigma^4\left(I-K_t^{-1}b_t^\top Z_t^{-1}b_t\right)\left(K_t-b_t^\top Z_t^{-1}b_t\right)^{-1} \\
+\\  & = \sigma^4\left(I_t-K_t^{-1}b_t^\top Z_t^{-1}b_t\right)\left(K_t-b_t^\top Z_t^{-1}b_t\right)^{-1} \\
                      & = \sigma^4K_{t}^{-1},
 \end{align*}
 where $K_1=\frac{\sigma^4}{\sigma^2+\tau^2+L^2\phi^2}$.
@@ -110,22 +110,22 @@ As discussed before, $p\left(x_t \mid y_{1:t}\right)$ is a mixture Gaussian dist
 
 To find $\mu_i$ and $\Sigma_i$, we will use the joint distribution of $x_{t}$ and $y_{1:t}$, which is $p\left(x_{t}, y_{1:t}  \mid  \theta\right)\sim N\left(0,\Gamma\right)$ and 
 \begin{equation*}
-\Gamma=\begin{bmatrix} C_{t}^\top\left(A-B\right)^{-1}C_{t} & C_{t}^\top\left(A-B\right)^{-1}\\\left(A-B\right)^{-1}C_{t} & \left(I-A^{-1}B\right)^{-1}B^{-1} \end{bmatrix}.
+\Gamma=\begin{bmatrix} C_{t}^\top\left(A_t-B_t\right)^{-1}C_{t} & C_{t}^\top\left(A_t-B_t\right)^{-1}\\\left(A_t-B_t\right)^{-1}C_{t} & \left(I_t-A_t^{-1}B_t\right)^{-1}B_t^{-1} \end{bmatrix}.
 \end{equation*}
 Because of 
 \begin{align*}
-C_{t}^\top A_{t}^{-1} = \begin{bmatrix} - b_{t}^\top & \sigma^2- K_{t} \end{bmatrix},
+C_{t}^\top A_t^{-1} = \begin{bmatrix} - b_{t}^\top & \sigma^2- K_{t} \end{bmatrix},
 \end{align*}
 thus, for any given $\theta_i$, $x_{t}\mid y_{1:t},\theta_i \sim N\left(\mu_{t}^{\left(x\right)},\sigma_{t}^{\left(x\right)2}\right)$, where
 \begin{align*}
-\mu_i  &= \phi \hat{x}_{t-1} +  C_{t}^\top \left(A-B\right)^{-1}B \left(I-A^{-1}B\right)y_{1:t}\\
-                      &= \phi \hat{x}_{t-1} +  C_{t}^\top A^{-1}B y_{1:t} \\ &= \phi \hat{x}_{t-1} +  \frac{1}{\sigma^2}C_{t}^\top A^{-1} y_{1:t}\\
+\mu_i  &= \phi \hat{x}_{t-1} +  C_{t}^\top \left(A_t-B_t\right)^{-1}B_t \left(I_t-A_t^{-1}B_t\right)y_{1:t}\\
+                      &= \phi \hat{x}_{t-1} +  C_{t}^\top A_t^{-1}B_t y_{1:t} \\ &= \phi \hat{x}_{t-1} +  \frac{1}{\sigma^2}C_{t}^\top A_t^{-1} y_{1:t}\\
                       &=0+  \frac{1}{\sigma^2}\begin{bmatrix} - b_{t}^\top & \sigma^2- K_{t} \end{bmatrix} \begin{bmatrix} y_{1:t-1} \\ y_{t} \end{bmatrix}  \\
                       &= - \frac{1}{\sigma^2}b_{t-1}^\top y_{1:t-1}+\left(1-\frac{K_{t}}{\sigma^2}\right)y_{t}\\
                       &=\frac{K_{t}\bar{\mu}_{t}}{\sigma^2}+\left(1-\frac{K_{t}}{\sigma^2}\right)y_{t} \\
-\Sigma_i&=C_{t}^\top\left(A-B\right)^{-1}C_{t}-  C_{t}^\top\left(A-B\right)^{-1}  B\left(I-A^{-1}B\right) \left(A-B\right)^{-1}C_{t}\\
-                      &= C_{t}^\top\left(A-B\right)^{-1}C_{t} -  C_{t}^\top A^{-1}B\left(A-B\right)^{-1}C_{t}\\
-                      &= C_{t}^\top A^{-1}C_{t} \\ &= \sigma^2-K_{t}.
+\Sigma_i&=C_{t}^\top\left(A_t-B_t\right)^{-1}C_{t}-  C_{t}^\top\left(A_t-B_t\right)^{-1}  B_t\left(I_t-A_t^{-1}B_t\right) \left(A_t-B_t\right)^{-1}C_{t}\\
+                      &= C_{t}^\top\left(A_t-B_t\right)^{-1}C_{t} -  C_{t}^\top A_t^{-1}B_t\left(A_t-B_t\right)^{-1}C_{t}\\
+                      &= C_{t}^\top A_t^{-1}C_{t} \\ &= \sigma^2-K_{t}.
 \end{align*}
 By substituting them into the equation \eqref{linearmu} and \eqref{linearsigma}, the estimated $\hat{x}_t$ is obtained. 
 
@@ -236,7 +236,7 @@ A_{t+1}^{-1} = \left(M_{t+1}+U_{t+1}U_{t+1}^\top\right)^{-1}= M_{t+1}^{-1}-M_{t+
 Consequently, it is easy to find that $M_{t+1}^{-1}C_{t+1} =\begin{bmatrix} 0 \\ B_1^{-1} \end{bmatrix} $ and 
 \begin{align*}
 A_{t+1}^{-1}C_{t+1} &= \begin{bmatrix} 0 \\ B_1^{-1} \end{bmatrix}  - \begin{bmatrix}
-A_t^{-1} & 0 \\ 0 & B_1^{-1} \end{bmatrix} \begin{bmatrix} C_tS_{t+1} \\ D \end{bmatrix}
+A_t^{-1} & 0 \\ 0 & B_1^{-1} \end{bmatrix} \begin{bmatrix} C_tS_{t+1} \\ D_{t+1} \end{bmatrix}
 \left(I+U_{t+1}^\top M_{t+1}^{-1}U_{t+1}\right)^{-1}  \begin{bmatrix}
 S_{t+1}^\top C_t^\top & D_{t+1}^\top \end{bmatrix} \begin{bmatrix} 0 \\ B_1^{-1} \end{bmatrix}  \\ 
 % ===
@@ -263,7 +263,7 @@ b_{t+1} &= A_t^{-1}C_t S_{t+1} \left(I+ S_{t+1}^\top \left(B_1^{-1} - K_t\right)
 -b_t \\ B_1^{-1}-K_t 
 \end{bmatrix}  S_{t+1} \left(I+ S_{t+1}^\top \left(B_1^{-1} - K_t\right)  S_{t+1} +D_{t+1}^\top B_1^{-1}D_{t+1}  \right)^{-1} D_{t+1}^\top B_1^{-1}.
 \end{align*}
-To achieve the recursive updating formula, we need to find the form of $b_{t+1}^\top B_t^2 Y_{1:t}$ at first. In fact, it is \footnotesize
+To achieve the recursive updating formula, we need to find the form of $b_{t+1}^\top B_t Y_{1:t}$ first. In fact, it is \footnotesize
 \begin{align*}
 b_{t+1}^\top B_t Y_{1:t} &= B_1^{-\top}D_{t+1}  \left(I+ S_{t+1}^\top  \left(B_1^{-1} - K_t\right)  S_{t+1} +D_{t+1}^\top B_1^{-1}D_{t+1}  \right)^{-\top} S_{t+1}^\top 
 \begin{bmatrix}
@@ -286,7 +286,7 @@ By using equation \eqref{recursiveKp1} and simplifying the above equation, one c
 &= -D_{t+1}^{-\top}S_{t+1}^\top \left(K_tB_1\bar{\mu}_t + \left(I-K_tB_1\right)Y_t\right) \\ 
 &= -D_{t+1}^{-\top}S_{t+1}^\top \left( Y_t +   K_tB_1\left(\bar{\mu}_t-Y_t\right)\right),
 \end{align*}
-where by simplifying $D^{-\top}S^\top$, one may find 
+where by simplifying $D_{t+1}^{-\top}S_{t+1}^\top$, one may find 
 \begin{align*}
 D_{t+1}^{-\top}S_{t+1}^\top = \begin{bmatrix}
 -1 & -\frac{1-e^{-\gamma \Delta_{t+1}}}{\gamma} \\ 0 & - e^{-\gamma \Delta_{t+1}}
@@ -320,41 +320,41 @@ and $K_1 =B_1^{-1} - A_1^{-1} = \begin{bmatrix}
 
 Because of the joint distribution \eqref{jointmatrix}, one can find the best estimation with a given $\theta$ by
 \begin{align*}
-X \mid Y,\theta &\sim N \left( A^{-1}BY, A^{-1} \right) \\
-&\sim N\left(L^{-\top}L^{-1}BY,L^{-\top}L^{-1}\right)\\
-&\sim N\left(L^{-\top}W,L^{-\top}L^{-1}\right),
+X_t \mid Y_{1:t},\theta &\sim N \left( A_t^{-1}B_tY_{1:t}, A_t^{-1} \right) \\
+&\sim N\left(L_t^{-\top}L_t^{-1}B_tY_{1:t},L_t^{-\top}L_t^{-1}\right)\\
+&\sim N\left(L_t^{-\top}W_t,L_t^{-\top}L_t^{-1}\right),
 \end{align*}
 thus
 \begin{align*}
-\hat{X} = L^{-\top}\left(W+Z\right),
+\hat{X_t} = L_t^{-\top}\left(W_t+Z_t\right),
 \end{align*}
-where $Z \sim N\left(0, I\left(\sigma,\tau\right)\right)$.
+where $Z_t \sim N\left(0, I_t\left(\sigma,\tau\right) \right)$.
 
 
-For $X_{t+1}$, the joint distribution with $Y$ updated to stage $t+1$ is 
+For $X_{t+1}$, the joint distribution with $Y_{1:t+1}$ updated to stage $t+1$ is 
 \begin{align*}
-X_{t+1}, Y\mid \theta \sim N\left( 0, \begin{bmatrix}
-C_{t+1}^\top\left(A-B\right) ^{-1}C_{t+1} & C_{t+1}^\top \left(A-B\right)^{-1}\\
-\left(A-B\right)^{-1}C_{t+1} & \left(I- A^{-1}B\right) ^{-1}B^{-1}
+X_{t+1}, Y_{1:t+1}\mid \theta \sim N\left( 0, \begin{bmatrix}
+C_{t+1}^\top\left(A_{t+1}-B_{t+1}\right) ^{-1}C_{t+1} & C_{t+1}^\top \left(A_{t+1}-B_{t+1}\right)^{-1}\\
+\left(A_{t+1}-B_{t+1}\right)^{-1}C_{t+1} & \left(I- A_{t+1}^{-1}B_{t+1}\right) ^{-1}B_{t+1}^{-1}
 \end{bmatrix} \right),
 \end{align*}
 where $C_{t+1}^\top = \begin{bmatrix}
 0 & \cdots & 0 & 1 & 0 \\
 0 & \cdots & 0 & 0 & 1
-\end{bmatrix}$ is a $2 \times 2\left(t+1\right)$ matriX. Thus
+\end{bmatrix}$ is a $2 \times 2\left(t+1\right)$ matrix. Thus
 \begin{align*}
-X_{t+1}\mid Y,\theta \sim N\left( \bar{\mu}_{t+1}^{\left(X\right)},\bar{\Sigma}_{t+1}^{\left(X\right)} \right),
+X_{t+1}\mid Y_{1:t+1},\theta \sim N\left( \bar{\mu}_{t+1}^{\left(X\right)},\bar{\Sigma}_{t+1}^{\left(X\right)} \right),
 \end{align*}
 where
 \begin{align*}
-\bar{\mu}_{t+1}^{\left(X\right)} & = C_{t+1}^\top A^{-1}BY =C_{t+1}^\top L^{-\top}W,\\
-\bar{\Sigma}_{t+1}^{\left(X\right)} & =C_{t+1}^\top A^{-1}C_{t+1} =U_{t+1}^\top U_{t+1},
+\bar{\mu}_{t+1}^{\left(X\right)} & = C_{t+1}^\top A_{t+1}^{-1}B_{t+1}Y_{1:t+1} =C_{t+1}^\top L_{t+1}^{-\top}W_{t+1},\\
+\bar{\Sigma}_{t+1}^{\left(X\right)} & =C_{t+1}^\top A_{t+1}^{-1}C_{t+1} =U_{t+1}^\top U_{t+1},
 \end{align*}
-and $U_{t+1} = L^{-1} C_{t+1}$. %$= \mbox{solve}\left(L,C_{t+1}\right)$.
+and $U_{t+1} = L_{t+1}^{-1} C_{t+1}$. %$= \mbox{solve}\left(L_{t+1},C_{t+1}\right)$.
 
-The filtering distribution of the state with given parameters is $p\left(X_t\mid Y_{1:t}, \theta \right)$. To find its form, one can use the joint distribution of $X_{t+1}$ and $Y_{1:t+1}$, which is $p\left(X_{t+1}, Y_{1:t+1}  \mid  \theta\right)\sim N\left(0,\Gamma\right)$, where
+The filtering distribution of the state with given parameters is $p\left(X_{t+1}\mid Y_{1:t+1}, \theta \right)$. To find its form, one can use the joint distribution of $X_{t+1}$ and $Y_{1:t+1}$, which is $p\left(X_{t+1}, Y_{1:t+1}  \mid  \theta\right)\sim N\left(0,\Gamma\right)$, where
 \begin{equation*}
-\Gamma=\begin{bmatrix} C_{t+1}^\top\left(A-B\right)^{-1}C_{t+1} & C_{t+1}^\top\left(A-B\right)^{-1}\\\left(A-B\right)^{-1}C_{t+1} & \left(I-A^{-1}B\right)^{-1}B^{-1} \end{bmatrix}.
+\Gamma=\begin{bmatrix} C_{t+1}^\top\left(A_{t+1}-B_{t+1}\right)^{-1}C_{t+1} & C_{t+1}^\top\left(A_{t+1}-B_{t+1}\right)^{-1}\\\left(A_{t+1}-B_{t+1}\right)^{-1}C_{t+1} & \left(I-A_{t+1}^{-1}B_{t+1}\right)^{-1}B_{t+1}^{-1} \end{bmatrix}.
 \end{equation*}
 Because of 
 \begin{align*}
@@ -362,14 +362,14 @@ C_{t+1}^\top A_{t+1}^{-1} = \begin{bmatrix} - b_{t+1}^\top & B_1^{-1}- K_{t+1} \
 \end{align*}
 then $X_{t+1}\mid Y_{1:t+1},\theta \sim N\left(\bar{\mu}_{t+1}^{\left(X\right)},\bar{\sigma}_{t+1}^{\left(X\right)2}\right)$, where
 \begin{align*}
-\bar{\mu}_{t+1}^{\left(X\right)}       &= \Phi \hat{x}_{t} +  C_{t+1}^\top \left(A-B\right)^{-1}B \left(I-A^{-1}B\right)Y_{1:t+1}\\
-                      &= \Phi \hat{x}_{t} +  C_{t+1}^\top A^{-1}B Y_{1:t+1} \\ 
-                      &=0+ \begin{bmatrix} - b_{t+1}^\top & B_1^{-1}-K_{t+1} \end{bmatrix}\begin{bmatrix} B_t & 0 \\ 0 & B_1 \end{bmatrix} \begin{bmatrix} Y_{1:t} \\ Y_{y+1} \end{bmatrix} \\
-                      &=   -b^\top B_t Y_{1:t} + \left(I - B_1K_{t+1}\right)Y_{t+1} \\
+\bar{\mu}_{t+1}^{\left(X\right)}       &= \Phi \hat{x}_{t} +  C_{t+1}^\top \left(A_{t+1}-B_{t+1}\right)^{-1}B_{t+1} \left(I-A_{t+1}^{-1}B_{t+1}\right)Y_{1:t+1}\\
+                      &= \Phi \hat{x}_{t} +  C_{t+1}^\top A_{t+1}^{-1}B_{t+1} Y_{1:t+1} \\ 
+                      &=0+ \begin{bmatrix} - b_{t+1}^\top & B_1^{-1}-K_{t+1} \end{bmatrix}\begin{bmatrix} B_{t+1} & 0 \\ 0 & B_1 \end{bmatrix} \begin{bmatrix} Y_{1:t} \\ Y_{y+1} \end{bmatrix} \\
+                      &=   -b^\top B_{t+1} Y_{1:t} + \left(I - B_1K_{t+1}\right)Y_{t+1} \\
                       & =  K_{t+1}B_1\bar{\mu}_{t+1 } + \left(I - B_1K_{t+1}\right)Y_{t+1}  \\
-\bar{\sigma}_{t+1}^{\left(X\right)2}&=C_{t+1}^\top\left(A-B\right)^{-1}C_{t+1}-  C_{t+1}^\top\left(A-B\right)^{-1}  B\left(I-A^{-1}B\right) \left(A-B\right)^{-1}C_{t+1}\\
-                      &= C_{t+1}^\top\left(A-B\right)^{-1}C_{t+1} -  C_{t+1}^\top A^{-1}B\left(A-B\right)^{-1}C_{t+1}\\
-                      &= C_{t+1}^\top A^{-1}C_{t+1} \\ &=B_1^{-1}-K_{t+1}.
+\bar{\sigma}_{t+1}^{\left(X\right)2} %&=C_{t+1}^\top\left(A_{t+1}-B_{t+1}\right)^{-1}C_{t+1}-  \\& C_{t+1}^\top\left(A_{t+1}-B_{t+1}\right)^{-1}  B_{t+1}\left(I-A_{t+1}^{-1}B_{t+1}\right) \left(A_{t+1}-B_{t+1}\right)^{-1}C_{t+1}\\
+                      &= C_{t+1}^\top\left(A_{t+1}-B_{t+1}\right)^{-1}C_{t+1} -  C_{t+1}^\top A_{t+1}^{-1}B_{t+1}\left(A_{t+1}-B_{t+1}\right)^{-1}C_{t+1}\\
+                      &= C_{t+1}^\top A_{t+1}^{-1}C_{t+1} \\ &=B_1^{-1}-K_{t+1}.
 \end{align*}
 
 

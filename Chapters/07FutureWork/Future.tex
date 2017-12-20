@@ -40,10 +40,13 @@ As a result, after $M$ iterations, $\theta^*$ is convergence and $f^*(t,y,\theta
 
 \subsection*{Non-trivial V-Spline with Correlated Errors}
 
-In Chapter \ref{ChapterGPR}, the Bayes estimate of V-spline with correlated errors is given. The extended GCV serves to find the optimal parameters for the estimate. Whereas the extended GCV is not applicable for non-trivial V-spline, where $\lambda(t)$ is piecewise constant. 
+The Bayes estimate of V-spline with correlated errors is given in Chapter \ref{ChapterGPR}. In order to find the Bayes estimate for the non-trivial V-spline with a piecewise penalty term $\lambda(t)$, we conjecture that the methods discussed in this chapter can be extended using the inner product 
+\begin{equation*}
+\langle f,g \rangle=f(0) g(0)+f'(0) g'(0)+\sum_{i=1}^{n-1}w_i\int_{t_i}^{t_{i+1}}f''(t)g''(t)dt,
+\end{equation*}
+on $\mathcal{C}^{(2)}_{\mbox{\scriptsize p.w.}}[0,1]$, where $\sum_i w_i=1$ and $w_i>0$. 
 
-\cite{opsomer2001nonparametric, wang1998smoothing} present a few extensions of the generalized maximum likelihood (GML), generalized cross-validation (GCV) and unbiased risk (UBR) methods to find optimal parameters for smoothing spline ANOVA models when observations are correlated. These algorithms in applied on conventional polynomial smoothing spline, but not on V-spline. Suppose the errors of the observations $y$ and $v$ are $\varepsilon_y\sim N\left(0,\sigma^2W^{-1}\right)$ and $\varepsilon_v\sim N\left(0,\tau^2U^{-1}\right)$ with unknown parameters $\sigma^2$ and $\tau^2$, I hope to find general solutions, similarly to GML, GCV and UBR, to tune the parameters for V-spline returning least true mean squared errors. 
-
+For parameter selection, the extended GCV is not applicable for non-trivial V-spline. \cite{opsomer2001nonparametric, wang1998smoothing} present a few extensions to the generalized maximum likelihood (GML), generalized cross-validation (GCV) and unbiased risk (UBR) methods to find the optimal parameters for smoothing spline ANOVA models when observations are correlated. Suppose the errors of the observations $y$ and $v$ are $\varepsilon_y\sim N\left(0,\sigma^2W^{-1}\right)$ and $\varepsilon_v\sim N\left(0,\tau^2U^{-1}\right)$ with unknown parameters $\sigma^2$ and $\tau^2$, a future work is to find a general solution, similarly to GML, GCV and UBR, to tune the parameters for V-spline with correlated errors.  
 
 
 

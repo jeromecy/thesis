@@ -53,7 +53,7 @@ The following sections, we explore state filters that are not restricted by assu
 
 \subsection{Sequential Monte Carlo Method}
 
-The use of \textit{Monte Carlo} methods for filtering can be traced back to the pioneering contributions of \citep{handschin1969monte, handschin1970monte}. These researchers tried to use an importance sampling paradigm to approximate the target distributions and. Later on, an importance sampling algorithms were implemented sequentially in the filtering context. This algorithm is named \textit{sequential importance sampling}, often abbreviated SIS, and has been known since the early 1970s. Limited by the power of computers and suffering from sample impoverishment or weight degeneracy, the SIS did not develop well until 1993. Gordon used this a technique based on sampling and importance sampling methods to find the best state estimation \citep{gordon1993novel}. A particle filter algorithm was proposed to allow rejuvenation of the set of samples by duplicating the samples with high importance weights and, on the contrary, removing samples with low weights \citep{cappe2009inference}. Since then, sequential Monte Carlo (SMC) methods have been applied in many different fields including but not limited to computer vision, signal processing, control, econometrics, finance, robotics, and statistics \citep{smcmip2011, ristic2004beyond}.
+The use of \textit{Monte Carlo} methods for filtering can be traced back to the pioneering contributions of \citep{handschin1969monte, handschin1970monte}. These researchers tried to use an importance sampling paradigm to approximate the target distributions and. Later on, an importance sampling algorithms were implemented sequentially in the filtering context. This algorithm is named \textit{sequential importance sampling}, often abbreviated SIS, and has been known since the early 1970s. Limited by the power of computers and suffering from sample impoverishment or weight degeneracy, the SIS did not develop well until 1993. \cite{gordon1993novel} use this a technique based on sampling and importance sampling methods to find the best state estimation. A particle filter algorithm was proposed to allow rejuvenation of the set of samples by duplicating the samples with high importance weights and, on the contrary, removing samples with low weights \citep{cappe2009inference}. Since then, sequential Monte Carlo (SMC) methods have been applied in many different fields including but not limited to computer vision, signal processing, control, econometrics, finance, robotics, and statistics \citep{smcmip2011, ristic2004beyond}.
 
 In the state-space model, a generic particle filter estimates the posterior distribution of the hidden states using the observation measurement process. The filtering problem is to estimate sequentially the values of the hidden states $x_t$ given the values of the observation process $y_{1:t}$ at any time $t$. In another word, it is to find the value of $p(x_t  \mid  y_{1:t})$. The process is divided into two steps: prediction and updating. In the prediction step, the assumption of Markov chain is the current status $x_t $ only depends on the previous one $x_{t-1}$. Then we can calculate the probability of $x_t$ by 
 \begin{align*}
@@ -269,7 +269,7 @@ The algorithm stops at $k=t$, where the particle system targets the distribution
 
 It is discussed that the sequential Monte Carlo approaches are powerful methodologies to cope with large data set recursively, but unfortunately, they are inefficient when apply to high dimensional problems \citep{septier2009mcmc}.  An alternative set of powerful stochastic algorithms that allow us to solve most of Bayesian computational problems is MCMC method. However, as dataset becomes larger and larger, it requires numerous computing in the process. 
 
-A natural extension is whether there exists a sequential MCMC method to diversify the degenerate particle population thus improving the empirical approximation for multi-target tracking or high dimensional space. Luckily, sequential approaches using MCMC is proposed by \cite{berzuini1997dynamic}, in which the author combines MCMC with importance resampling to sequentially update the posterior distribution. 
+A natural extension is whether there exists a sequential MCMC method to diversify the degenerate particle population thus improving the empirical approximation for multi-target tracking or high dimensional space. Luckily, sequential approaches using MCMC method is proposed by \cite{berzuini1997dynamic}, who combines MCMC with importance resampling to sequentially update the posterior distribution. 
 Other discussions, such as \citep{khan2005mcmc, golightly2006bayesian, pang2008models}, use either resampling nor importance sampling. 
 
 As we discussed before, a filtering problem is to find the posterior distribution recursively, such as  
@@ -324,7 +324,7 @@ After burn-in points, keep $x_k^{\left(j\right)}= x_k^{(i)}$ as new particles fo
 
 The state transition density and the conditional likelihood function depend not only upon the dynamic state $x_t$, but also on a static parameter vector $\theta$, which will be stressed by use of the notations $f(x_t \mid x_{t-1},\theta)$ and $g(y_t\mid x_t,\theta)$. Putting the algorithms on-line means to update the parameters and states instantly as new observations coming into the data stream. For Bayesian dynamic models, however, the most natural option consists in treating the unknown parameter $\theta$, using the state-space representation, as a component of the state which lacks dynamic evolution, also referred to as a static parameter \citep{cappe2007overview}. The standard SMC is deficient for on-line parameter estimation. As a result of the successive resampling steps, after a certain time $t$, the approximation $\hat{p}(\theta\mid y_{1:t})$ will only contain a single unique value for $\theta$. In other words, SMC approximation of the marginalized parameter posterior distribution is represented by a single Dirac delta function. It also causes error accumulation in successive Monte Carlo steps growing exponentially or polynomially in time \citep{kantas2009overview}. 
 
-In this section, we are discussing some methods that will estimate combined state and parameter by either jointly estimating of state and parameter or by marginalizing the parameter using sufficient statistics. 
+In this section, we discuss some methods that estimate combined state and parameter by either jointly estimating the state and parameter or by marginalizing the parameter through sufficient statistics. 
 
 
 
@@ -581,7 +581,7 @@ Approximate likelihood function by \eqref{esembleKalmanLikeli}.\\
 Update. Draw $\theta$ either use normal approximation or grid-based approximation to find \eqref{jointposteriorterm2}. \\
 Draw $\theta^{(i)}\sim p(\theta\mid y_{1:k})$.\\
 Generate forecast ensemble by $x_k^{f(i)} = x_k^{p(i)}+w_k$.\\
-Draw posterior ensemble using \eqref{ensembleKalmanForecast}.
+Draw posterior ensemble using equation \eqref{ensembleKalmanForecast}.
 }
 }
 \caption{Adaptive Ensemble Kalman Filter}\label{algorithmEnKF}

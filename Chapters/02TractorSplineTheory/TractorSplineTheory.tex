@@ -43,7 +43,7 @@ A conventional smoothing spline is controlled by one single parameter, which con
 Similar to the conventional smoothing spline problem, one has to choose the penalty function $\lambda(t)$. The fundamental idea of nonparametric smoothing is to let the data choose the amount of smoothness, which consequently decides the model complexity \citep{gu1998model}. When $\lambda$ is constant, most methods focus on data-driven criteria, such as cross-validation (CV), generalized cross-validation (GCV) \citep{craven1978smoothing} and generalized maximum likelihood (GML) \citep{wahba1985comparison}. Allowing the smoothing parameter to be a function poses additional challenges, though \cite{liu2010data} were able to extend GML to adaptive smoothing splines.
 
 
-In this chapter, an adaptive smoothing spline named the V-spline is proposed that uses modified Hermite spline basis functions to obtain a reconstruction of $f$ and $f'$ from noisy paired position data $\mathbf{y}=\left\lbrace y_1,\ldots,y_n\right\rbrace$ and velocity data $\mathbf{v}=\left\lbrace v_1,\ldots,v_n\right\rbrace$. Rather than only using residuals $f(t_i)-y_i$, extra residuals  $f'(t_i)-v_i$ and a new parameter $\gamma$ are included in the objective function. The parameter $\gamma$ controls the degree to which the velocity information is used in the reconstruction. In this way, the V-spline keeps a balance between position and velocity. An advanced cross-validation formula is given for the V-spline parameters. It is shown that the new spline performs well on simulated signal data \textit{Blocks}, \textit{Bumps}, \textit{HeaviSine} and \textit{Doppler} \citep{donoho1994ideal}. Finally, an application of the V-spline to a set of 2-dimensional real data is given. 
+In this chapter, an adaptive smoothing spline named the V-spline is proposed that uses modified Hermite spline basis functions to obtain a reconstruction of $f$ and $f'$ from noisy paired position data $\mathbf{y}=\left\lbrace y_1,\ldots,y_n\right\rbrace$ and velocity data $\mathbf{v}=\left\lbrace v_1,\ldots,v_n\right\rbrace$. Rather than just using residuals of $f(t_i)-y_i$, the extra residuals of $f'(t_i)-v_i$ and a new parameter $\gamma$ are included in the objective function. The parameter $\gamma$ controls the degree to which the velocity information is used in the reconstruction. In this way, the V-spline keeps a balance between position and velocity. An advanced cross-validation formula is given for the V-spline parameters. It is shown that the new spline performs well on simulated signal data \textit{Blocks}, \textit{Bumps}, \textit{HeaviSine} and \textit{Doppler} \citep{donoho1994ideal}. Finally, an application of the V-spline to a set of 2-dimensional real data is given. 
 
 %Errors comes from the GPS units and individuals' behaviors, which bring unreliable data and less precise results. %\citep{castro2006geometric}
 
@@ -73,7 +73,7 @@ The solution to the objective function \eqref{tractorsplineObjective} is named \
 Suppose there is a time series sequence of observed dataset $a\leq t_1<t_2<\cdots<t_n \leq b$. The function $f(t)$ %(stands for $f_y(t)$)
 defined on this interval $[t_1,t_n]$ is called V-spline, if it is the solution to the objective function \eqref{tractorsplineObjective}. Then, it has the following property: on each interior interval $(t_i,t_{i+1})$, $i=1,\ldots,n-1$, $f(t)$ is a cubic polynomial, but on interval $(a,t_0)$ and $(t_n,b)$ is linear; $f(t)$ fits together at each point $t_i$ in such a way that $f(t)$ itself and its first derivatives are continuous at each $t_i$,  $i=1,\ldots,n-1$. 
 
-Using Hermite interpolation on an arbitrary interval $[t_i,t_{i+1} ) $, the cubic spline basis functions can be constructed as follows
+By using Hermite interpolation on an arbitrary interval $[t_i,t_{i+1} )$, the cubic spline basis functions can be constructed as follows
 \begin{align}\label{hermitebasis1}
 & h_{00}^{\left(i\right)}\left(t\right)=
 \begin{cases}
@@ -384,7 +384,7 @@ In this section, we examine the visual quality of the proposed method with four 
 
 For calculating consideration, we use $n=1024$ \citep{nason2010wavelet}. Because of all noise are randomly generated, for the convenience of reinitialization and repeatable comparison, we set random seed at 2016. The noise is \iid zero-mean Gaussian distributed with standard deviation regarding to signal-to-noise ratio (SNR), which specifies the ratio of the standard deviation of the function to the standard deviation of the simulated errors. Explicitly, if the standard deviation of the true signal $f$ is $\sigma_f$, the simulated data will be $f+\varepsilon$, where the simulated error  $\varepsilon \sim N(0,\sigma_f/SNR)$. 
 
-If the original function $g(t)$ is treated as velocity function $f'(t)=g(t)$, thus by setting initial position $y_0=0$, acceleration $a_0=0$ and using the following formula 
+If the original function $g(t)$ is treated as velocity function $f'(t)=g(t)$, thus by setting initial position $y_0=0$, acceleration $a_0=0$ and by using the following formula 
 \begin{equation}\label{generateVelocity}
 f(t_{i+1})=f(t_i)+\left(g(t_i)+g(t_{i+1}) \right)\frac{t_{i+1}-t_i}{2}
 \end{equation}
@@ -1044,7 +1044,7 @@ To tell the differences more clearly, we take $\lambda(t)$ in our demonstration.
  \caption{The penalty value $\lambda(t)$ of the V-spline on $x$ and $y$ axes. Red dots are the measurements $\mathbf{y}$. The bigger red dots in figure \ref{penaltyxyggXYPath} indicate larger penalty values. It can be seen that most of large penalty values occur at turnings, where the tractor likely slows down and takes breaks. }\label{penaltyxygg}
  \end{figure}
 
-The 1-dimensional reconstruction gets the best fittings $\hat{f}_x$ and $\hat{f}_y$ on $x$ and $y$ axes separately using different penalty values, denoted as $\lambda_{d,x}$, $\lambda_{u,x}$, $\lambda_{d,y}$, $\lambda_{u,y}$, $\gamma_x$ and $\gamma_y$. The final reconstruction is the combination of  $\hat{f}_x$ and $\hat{f}_y$. It is shown in figure \ref{1DCombinedXY}. 
+The 1-dimensional reconstruction gets the best fittings $\hat{f}_x$ and $\hat{f}_y$ on $x$ and $y$ axes separately by using different penalty values, denoted as $\lambda_{d,x}$, $\lambda_{u,x}$, $\lambda_{d,y}$, $\lambda_{u,y}$, $\gamma_x$ and $\gamma_y$. The final reconstruction is the combination of  $\hat{f}_x$ and $\hat{f}_y$. It is shown in figure \ref{1DCombinedXY}. 
 \begin{figure}
   \centering
     \includegraphics[width=\textwidth,height=10cm]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataCombinedXY2.pdf} 
@@ -1128,7 +1128,7 @@ Additionally, the reconstruction of a V-spline contains $4\times (n-1)$ paramete
 
 Even though the mean squared errors of a V-spline is not the least comparing with other methods, the true mean squared errors are the least of among all the methods. That means the reconstruction is closer to the true path. 
 
-In parameter selection, the cross-validation only focuses on the errors of $f$ ignoring that in $f'$. So the reconstruction of $f'$ is not as smooth as that of $f$, which does not affect trajectory reconstruction. A drawback of V-spline is that the computing time in finding local minimal CV score is more than using B-spline. If there is an efficient way to compute matrix inverse, the calculation speed will be much faster. So in the simulation and application studies, we try to optimize our coding to make it run as faster as possible.
+In parameter selection, the cross-validation only focuses on the errors of $f$ ignoring that in $f'$. So the reconstruction of $f'$ is not as smooth as that of $f$, which does not affect trajectory reconstruction. A drawback of V-spline is that the computing time in finding local minimal CV score is more than B-spline. If there is an efficient way to compute matrix inverse, the calculation speed will be much faster. So in the simulation and application studies, we try to optimize our coding to make it run as faster as possible.
 
 Another potential application of V-spline is to vessel monitoring system. The system is a fisheries surveillance that allows environmental and fisheries regulatory organization to track and monitor the activities of fishing vessels. The system calculates the position of the moving object and sends a data report to shore-side users. This information includes time, latitude and longitude positions. However, due to weak signals, the tracking system may lose useful information. The V-spline can help to reconstruct the whole trajectory for a fishery vessel and to analyze its behavior. For example, a larger penalty value indicates stops on the sea inferring that the vessel is casting nets; a smaller penalty value indicates the vessel is moving normally. 
 
