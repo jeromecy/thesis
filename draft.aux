@@ -53,15 +53,15 @@
 \citation{chen2003bayesian,sarkka2013bayesian}
 \citation{kalman1960new}
 \citation{bishop2001introduction}
-\@writefile{toc}{\contentsline {section}{\numberline {1.4}Bayesian Filtering}{6}}
 \citation{haykin2001kalman}
+\@writefile{toc}{\contentsline {section}{\numberline {1.4}Bayesian Filtering}{6}}
 \citation{chen2003bayesian,rhodes1971tutorial,kailath1981lectures,sorenson1985kalman}
 \citation{tusell2011kalman}
 \citation{haykin2001kalman,guzzi2016data}
-\newlabel{introKFmodel}{{1.2}{7}}
-\newlabel{KalmanEstimation}{{1.3}{7}}
 \citation{gelb1974applied,bar1993estimation}
 \citation{wan2000unscented}
+\newlabel{introKFmodel}{{1.2}{7}}
+\newlabel{KalmanEstimation}{{1.3}{7}}
 \citation{julier1997new,wan2000unscented,gyorgy2014unscented}
 \citation{chandrasekar2007comparison,laviola2003comparison,st2004comparison}
 \citation{ran2010self}
@@ -188,7 +188,7 @@
 \newlabel{num4}{{2.5}{33}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2.6}{\ignorespaces Distribution of the penalty values $\lambda (t)$ in V-spline. Figures on the left side indicate the values varying in intervals. On the right side, these values are projected into reconstructions. The bigger the blacks dots present, the larger the penalty values are.\relax }}{35}}
 \newlabel{numpenalty}{{2.6}{35}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.7}{\ignorespaces Estimated velocity functions by V-spline. The velocity is generated from the original simulation functions by equation (2.33\hbox {})\relax }}{35}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.7}{\ignorespaces Estimated velocity functions by V-spline. The velocity is generated from the original simulation functions by equation \textup  {\hbox {\mathsurround \z@ \normalfont  (\ignorespaces 2.33\hbox {}\unskip \@@italiccorr )}}\relax }}{35}}
 \newlabel{numvtractor}{{2.7}{35}}
 \@writefile{lot}{\contentsline {table}{\numberline {2.1}{\ignorespaces MSE. Mean squared errors of different methods. The numbers in bold indicate the least error among these methods under the same level. The difference is not significant.\relax }}{36}}
 \newlabel{mse3200}{{2.1}{36}}
@@ -289,6 +289,7 @@
 \citation{gu2013smoothing}
 \@writefile{toc}{\contentsline {section}{\numberline {3.2}Polynomial Smoothing Splines on $[0, 1]$ as Bayes Estimates}{51}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2.1}Polynomial Smoothing Spline}{51}}
+\newlabel{gausspriorequation}{{3.2}{51}}
 \citation{aronszajn1950theory}
 \citation{gu2013smoothing}
 \citation{wahba1990spline,berlinet2011reproducing}
@@ -298,19 +299,21 @@
 \newlabel{theoremKernel}{{5}{52}}
 \citation{gu2013smoothing}
 \citation{gu2013smoothing}
-\citation{rasmussen2006gaussian}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2.3}Polynomial Smoothing Splines as Bayes Estimates}{53}}
+\newlabel{Ef0f0}{{3.6}{53}}
+\newlabel{Ef1f1}{{3.7}{53}}
+\citation{rasmussen2006gaussian}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2.4}Gaussian Process Regression}{54}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.3}V-Spline as Bayes Estimate}{55}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}Reproducing Kernel Hilbert Space $\mathcal  {C}_{\unhbox \voidb@x \hbox {\relax \fontsize  {8}{9.5}\selectfont  p.w.}}^{(2)}[0,1]$}{55}}
-\newlabel{maineq}{{3.12}{55}}
-\newlabel{TractorSplineInnerProduct}{{3.13}{55}}
-\newlabel{kerneleq}{{3.14}{55}}
-\newlabel{GaussianProcessFunctionF}{{3.15}{56}}
-\newlabel{GassianProcessRawequation}{{3.16}{57}}
-\newlabel{matriteq}{{3.17}{57}}
+\newlabel{maineq}{{3.14}{55}}
+\newlabel{TractorSplineInnerProduct}{{3.15}{55}}
+\newlabel{kerneleq}{{3.16}{56}}
+\newlabel{GaussianProcessFunctionF}{{3.17}{56}}
+\newlabel{GassianProcessRawequation}{{3.18}{57}}
+\newlabel{matriteq}{{3.19}{57}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}Posterior of Bayes Estimates}{57}}
-\newlabel{GPrhoeq}{{3.19}{58}}
+\newlabel{GPrhoeq}{{3.21}{58}}
 \newlabel{GPLemma}{{3}{58}}
 \citation{wang1998smoothing}
 \citation{diggle1989spline}
@@ -497,28 +500,31 @@
 \newlabel{sub@MCMCMultivariableRW}{{b}{99}}
 \newlabel{MCMCCorrelatedRW}{{5.1c}{99}}
 \newlabel{sub@MCMCCorrelatedRW}{{c}{99}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces Examples of 2-Dimension Random Walk Metropolis-Hastings algorithm. Figure 5.1a\hbox {} is using one-variable-at-a-time proposal Random Walk. At each time, only one variable is changed and the other one stay constant. Figure 5.1b\hbox {} and 5.1c\hbox {} are using multi-variable-at-a-time Random Walk. The difference is in figure 5.1b\hbox {}, every forward step are proposed independently, but in 5.1c\hbox {} are proposed according to the covariance matrix. \relax }}{99}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces Examples of 2-Dimensional Random Walk Metropolis-Hastings algorithm. Figure 5.1a\hbox {} is the trace of one-variable-at-a-time Random Walk. At each time, only one variable is changed and the other one stay constant. Figure 5.1b\hbox {} and 5.1c\hbox {} present the traces by multi-variable-at-a-time Random Walk. In figure 5.1b\hbox {}, the proposal for each step is independent, but in figure 5.1c\hbox {} the proposal are proposed correlated.\relax }}{99}}
 \newlabel{randomwalk}{{5.1}{99}}
 \citation{christen2005markov}
 \newlabel{autostepab}{{5.22}{100}}
 \newlabel{stRWMHselect}{{3}{100}}
 \@writefile{loa}{\contentsline {algocf}{\numberline {5.1}{\ignorespaces Self-tuning Random Walk Metropolis-Hastings Algorithm\relax }}{100}}
 \newlabel{algoonevarible}{{5.1}{100}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.2}Adaptive Delayed-Acceptance Metropolis-Hastings Algorithm}{100}}
 \citation{sherlock2015efficiency}
 \citation{stroud2016bayesian}
 \citation{mathew2012bayesian}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.2}Adaptive Delayed-Acceptance Metropolis-Hastings Algorithm}{101}}
 \newlabel{dahalpha2}{{5.23}{101}}
 \newlabel{dahalpha1}{{5.24}{101}}
 \citation{sherlock2010random}
 \citation{roberts2001optimal}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.3}Efficiency of Metropolis-Hastings Algorithm}{102}}
-\newlabel{effMHA}{{5.3.3}{102}}
 \citation{gelman1996efficient}
 \citation{gilks1995markov}
 \citation{roberts2001optimal}
 \citation{roberts1997weak,bedard2007weak,beskos2009optimal,sherlock2009optimal,sherlock2013optimal}
 \citation{sherlock2010random}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.3}Efficiency of Metropolis-Hastings Algorithm}{102}}
+\newlabel{effMHA}{{5.3.3}{102}}
+\citation{andrieu2008tutorial}
+\citation{sherlock2010random}
+\citation{graves2011automatic}
 \newlabel{MCMClargestep}{{5.2a}{103}}
 \newlabel{sub@MCMClargestep}{{a}{103}}
 \newlabel{MCMCsmallstep}{{5.2b}{103}}
@@ -527,9 +533,6 @@
 \newlabel{sub@MCMCproperstep}{{c}{103}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces Metropolis-Hastings sampler for a single parameter with: 5.2a\hbox {} a large step size, 5.2b\hbox {} a small step size, 5.2c\hbox {} an appropriate step size. The upper plots show the sample chain and lower plots indicate the autocorrelation for each case.\relax }}{103}}
 \newlabel{largesmallstepsize}{{5.2}{103}}
-\citation{andrieu2008tutorial}
-\citation{sherlock2010random}
-\citation{graves2011automatic}
 \citation{roberts2001optimal}
 \citation{roberts2001optimal}
 \citation{kass1998markov,robert2004monte}
@@ -540,29 +543,29 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.4.1}Simulation on Regularly Sampled Time Series Data}{106}}
 \citation{lopes2011particle}
 \newlabel{linearlogL}{{5.29}{107}}
-\newlabel{sectionlinearRecursive}{{5.4.1}{107}}
 \citation{sherman1950adjustment,woodbury1950inverting,bartlett1951inverse,bodewig1956matrix}
 \citation{deng2011generalization}
-\citation{bartlett1951inverse}
 \@writefile{lof}{\contentsline {figure}{\numberline {5.3}{\ignorespaces Linear simulation with true parameter $\theta = \{ \phi =0.9,\tau ^2=0.5,\sigma ^2=1\}$. By transforming back to the original scale, the estimation of $\mathaccentV {hat}05E{\theta }$ is $\{\phi = 0.8810, \tau ^2 = 0.5247, \sigma ^2= 0.9416\}$. \relax }}{108}}
 \newlabel{linearmarginplots}{{5.3}{108}}
+\newlabel{sectionlinearRecursive}{{5.4.1}{108}}
 \newlabel{beforeSMformula}{{5.30}{108}}
 \newlabel{theoremSMW}{{8}{108}}
-\newlabel{SMWformula}{{5.31}{108}}
+\citation{bartlett1951inverse}
+\newlabel{SMWformula}{{5.31}{109}}
 \newlabel{SMformula}{{5.32}{109}}
-\newlabel{linearmu}{{5.37}{109}}
-\newlabel{linearsigma}{{5.38}{109}}
 \citation{tandeo2011linear}
-\newlabel{MCMClinearsimuXall}{{5.4a}{110}}
-\newlabel{sub@MCMClinearsimuXall}{{a}{110}}
-\newlabel{MCMClinearsimuXt2}{{5.4b}{110}}
-\newlabel{sub@MCMClinearsimuXt2}{{b}{110}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.4}{\ignorespaces Linear simulation of $x_{1:t}$ and single $x_t$.In figure 5.4a\hbox {}, the dots is the true $x_{1:t}$ and the solid line is the estimation $\mathaccentV {hat}05E{x}_{1:t}$. In figure 5.4b\hbox {}, the estimation $\mathaccentV {hat}05E{x}_t$ is very close to the true $x$. In fact, the true $x$ falls in the interval $[\mathaccentV {hat}05E{x}-\varepsilon ,\mathaccentV {hat}05E{x}+\varepsilon ]$.\relax }}{110}}
-\newlabel{linearmarginXt}{{5.4}{110}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.2}Simulation on Irregularly Sampled Time Series Data}{110}}
 \citation{einstein1956investigations}
+\newlabel{linearmu}{{5.37}{110}}
+\newlabel{linearsigma}{{5.38}{110}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.2}Simulation on Irregularly Sampled Time Series Data}{110}}
 \citation{vaughan2015goodness}
 \citation{kijima1997markov}
+\newlabel{MCMClinearsimuXall}{{5.4a}{111}}
+\newlabel{sub@MCMClinearsimuXall}{{a}{111}}
+\newlabel{MCMClinearsimuXt2}{{5.4b}{111}}
+\newlabel{sub@MCMClinearsimuXt2}{{b}{111}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.4}{\ignorespaces Linear simulation of $x_{1:t}$ and single $x_t$.In figure 5.4a\hbox {}, the dots is the true $x_{1:t}$ and the solid line is the estimation $\mathaccentV {hat}05E{x}_{1:t}$. In figure 5.4b\hbox {}, the estimation $\mathaccentV {hat}05E{x}_t$ is very close to the true $x$. In fact, the true $x$ falls in the interval $[\mathaccentV {hat}05E{x}-\varepsilon ,\mathaccentV {hat}05E{x}+\varepsilon ]$.\relax }}{111}}
+\newlabel{linearmarginXt}{{5.4}{111}}
 \newlabel{linearOUequation}{{5.41}{111}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5.5}{\ignorespaces Simulated data. The solid dots indicate the true state $x$ and cross dots indicate observation $y$. Irregular time lag $\Delta _t$ are generated from \textit  {Inverse Gamma}(2,0.1) distribution.\relax }}{112}}
 \newlabel{simuOUreview}{{5.5}{112}}
@@ -659,7 +662,7 @@
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
 \newlabel{appendTS}{{A}{147}}
-\@writefile{toc}{\contentsline {section}{\numberline {A.1}Penalty Matrix in (2.12\hbox {})}{147}}
+\@writefile{toc}{\contentsline {section}{\numberline {A.1}Penalty Matrix in \textup  {\hbox {\mathsurround \z@ \normalfont  (\ignorespaces 2.12\hbox {}\unskip \@@italiccorr )}}}{147}}
 \newlabel{PenaltyTermDetails}{{A.1}{147}}
 \citation{Peng1983linear}
 \@writefile{toc}{\contentsline {section}{\numberline {A.2}Proof of Theorem 1\hbox {}}{148}}

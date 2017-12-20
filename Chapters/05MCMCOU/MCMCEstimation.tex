@@ -3,7 +3,7 @@
 
 Data assimilation is a sequential process, by which the observations are incorporated into a numerical model describing the evolution of this system throughout the whole process. It is applied in many fields, particularly in weather forecasting and hydrology. The quality of the numerical model determines the accuracy of this system, which requires sequential combined state and parameter inferences. An enormous literature has been done on discussing pure state estimation, however, less research is talking about estimating combined state and parameter, particularly in a sequential updating way. 
 
-Sequential Monte Carlo method is well studied in the scientific literature and quite prevalent in academic research in the last decades. It allows us to specify complex, non-linear time series patterns and enables performing real-time Bayesian estimations when it is coupled with Dynamic Generalized Linear Models \citep{vieira2016online}. However, model's parameters are unknown in real-world application and it is a limit for standard SMC. Extensions to this algorithm have been done by researchers. \cite{kitagawa1998self} propose a self-organizing filter and augmenting the state vector with unknown parameters. The state and parameter are estimated simultaneously by either a non-Gaussian filter or a particle filter. \cite{liu2001combined} propose an improved particle filter to kill degeneracy, which is a normal issue in static parameters estimation. They are using a kernel smoothing approximation, with a correction factor to account for over-dispersion. Alternatively, \cite{storvik2002particle} propose a new filter algorithm by assuming the posterior depends on a set of sufficient statistics, which can be updated recursively. However, this approach only applies to parameters with conjugate priors \citep{stroud2016bayesian}. Particle learning was first introduced in \citep{carvalho2010particle}. Unlike Storvik filter, it is using sufficient statistics solely to estimate parameters and promises to reduce particle impoverishment. These particle-like methods are all using more or less sampling and resampling algorithms to update particles recursively. 
+Sequential Monte Carlo method is well studied in the scientific literature and quite prevalent in academic research in the last decades. It allows us to specify complex, non-linear time series patterns and enables performing real-time Bayesian estimations when it is coupled with Dynamic Generalized Linear Models \citep{vieira2016online}. However, model's parameters are unknown in real-world application and it is a limit for standard SMC. Extensions to this algorithm have been done by researchers. \cite{kitagawa1998self} propose a self-organizing filter and augmenting the state vector with unknown parameters. The state and parameter are estimated simultaneously by either a non-Gaussian filter or a particle filter. \cite{liu2001combined} propose an improved particle filter to kill degeneracy, which is a normal issue in static parameters estimation. They use a kernel smoothing approximation, with a correction factor to account for over-dispersion. Alternatively, \cite{storvik2002particle} propose a new filter algorithm by assuming the posterior depends on a set of sufficient statistics, which can be updated recursively. However, this approach only applies to parameters with conjugate priors \citep{stroud2016bayesian}. Unlike Storvik filter, the Particle learning approach, introduced by \cite{carvalho2010particle}, uses sufficient statistics solely to estimate parameters and promises to reduce particle impoverishment. These particle-like methods are all using more or less sampling and resampling algorithms to update particles recursively. 
 
 \cite{stroud2016bayesian} propose an SMC algorithm by using ensemble Kalman filter framework for high dimensional space models with observations. Their approach combines information about the parameters from data at different time points in a formal way using Bayesian updating. \cite{polson2008practical} rely on a fixed-lag length of data approximation to filtering and sequential parameter learning in a general dynamic state-space model. This approach allows for sequential parameter learning where importance sampling has difficulties and avoids degeneracies in particle filtering. A new adaptive MCMC method yields a quick and flexible way for estimating posterior distribution in parameter estimation \citep{haario1999adaptive}. This new Adaptive Proposal method depends on historical data, is introduced to avoid the difficulties of tunning the proposal distribution in Metropolis-Hastings methods. 
 
@@ -23,7 +23,7 @@ In a general state-space model of the following form, either the forward map $F$
 \mbox{Observation:}\hspace*{0.3cm}   & y_t=G(x_t,\theta), \\
 \mbox{Hidden State:}\hspace*{0.3cm} & x_t=F(x_{t-1},\theta),\label{MCMChiddX}
 \end{align}
-where $G$ and $F$ are linear processes with Gaussian white noises $\varepsilon\sim N\left( 0,R(\theta) \right)$ and $\varepsilon'\sim N\left( 0,Q(\theta) \right)$. This model has an initial state $p(x_0\mid \theta)$ and a prior distribution of the parameter $p(\theta)$ is known or can be estimated. Therefore, for a general Bayesian filtering problem with known static parameter $\theta$, it requires computing the posterior distribution of current state $p(x_t \mid y_{1:t})$ at each time $t=1,\dots, T$ by marginalizing the previous state
+where $G$ and $F$ are linear processes with Gaussian white noises $\varepsilon\sim N\left( 0,R(\theta) \right)$ and $\varepsilon'\sim N\left( 0,Q(\theta) \right)$. This model has an initial state $p(x_0\mid \theta)$ and a prior distribution of the parameter $p(\theta)$ is known or can be estimated. Hence, for a general Bayesian filtering problem with known static parameter $\theta$, it requires computing the posterior distribution of current state $p(x_t \mid y_{1:t})$ at each time $t=1,\dots, T$ by marginalizing the previous state
 \begin{equation*}
 p(x_t\mid y_{1:t}) = \int p(x_t\mid x_{t-1},y_{1:t})p(x_{t-1}\mid y_{1:t}) dx_{t-1}, 
 \end{equation*}
@@ -31,7 +31,7 @@ where $y_{1:t} = \left\lbrace y_1,\dots,y_t\right\rbrace$ is the observation inf
 \begin{align}\label{objecfun}
 p(x_t \mid y_{1:t}) = \int p(x_t \mid y_{1:t},\theta)p(\theta\mid y_{1:t})d\theta.
 \end{align}
-The approach in equation (\ref{objecfun}) relies on the two terms : (\romannum{1}) a conditional posterior distribution for the states given parameters and observations; (\romannum{2}) a marginal posterior distribution for parameter $\theta$. Several methods can be used in finding the second term, such as cross validation, Expectation Maximization algorithm, Gibbs sampling, Metropolis-Hastings algorithm and so on. A Monte Carlo method is popular in research area solving this problem. Monte Carlo method is an algorithm that relies on repeated random sampling to obtain numerical results. To compute an integration of $\int f(x)dx$, one has to sampling as many independent $x_i \mbox{ } (i = 1,\dots, N)$ as possible and numerically to find $\frac{1}{N}\sum_i f(x_i)$ to approximate the target function. In the target function, we draw samples of $\theta$ and use a numerical way to calculate its posterior $p(\theta\mid y_{1:t})$. 
+The approach in equation \eqref{objecfun} relies on the two terms : (\romannum{1}) a conditional posterior distribution for the states given parameters and observations; (\romannum{2}) a marginal posterior distribution for parameter $\theta$. Several methods can be used in finding the second term, such as cross validation, Expectation Maximization algorithm, Gibbs sampling, Metropolis-Hastings algorithm and so on. A Monte Carlo method is popular in research area solving this problem. Monte Carlo method is an algorithm that relies on repeated random sampling to obtain numerical results. To compute an integration of $\int f(x)dx$, one has to sampling as many independent $x_i \mbox{ } (i = 1,\dots, N)$ as possible and numerically to find $\frac{1}{N}\sum_i f(x_i)$ to approximate the target function. In the target function, we draw samples of $\theta$ and use a numerical way to calculate its posterior $p(\theta\mid y_{1:t})$. 
 
 
 Additionally, the marginal posterior distribution for the parameter can be written in two different ways: 
@@ -39,14 +39,14 @@ Additionally, the marginal posterior distribution for the parameter can be writt
 p(\theta \mid y_{1:t}) &\propto p(y_{1:t}\mid\theta)p(\theta),\\
 p(\theta \mid y_{1:t}) &\propto p(y_t\mid y_{1:t-1}, \theta)p(\theta\mid y_{1:t-1}). \label{M2}
 \end{align}
-The above formula (\ref{M1}) is a standard Bayesian inference requiring a prior distribution $p(\theta)$. It can be used in off-line methods, in which $\hat{\theta}$ is inferred by iterating over a fixed observation record $y_{1:t}$. In contrast, formula (\ref{M2}) is defined in a recursive way over time depending on the previous posterior at time $t-1$, which is known as on-line method. $\hat{\theta}$ is estimated sequentially as a new observation $y_{t+1}$ becomes available. 
+The above formula \eqref{M1} is a standard Bayesian inference requiring a prior distribution $p(\theta)$. It can be used in off-line methods, in which $\hat{\theta}$ is inferred by iterating over a fixed observation record $y_{1:t}$. In contrast, formula \eqref{M2} is defined in a recursive way over time depending on the previous posterior at time $t-1$, which is known as on-line method. $\hat{\theta}$ is estimated sequentially as a new observation $y_{t+1}$ becomes available. 
 
 
-Therefore, the question becomes finding an efficient way to sampling $\theta$, such as Importance sampling \citep{hammersley1964percolation, geweke1989bayesian}, Rejection sampling \citep{casella2004generalized, martino2010generalized}, Gibbs sampling \citep{geman1984stochastic}, Metropolis-Hastings method \citep{metropolis1953equation, hastings1970monte} and so on. 
+Therefore the question becomes finding an efficient way to sampling $\theta$, such as Importance sampling \citep{hammersley1964percolation, geweke1989bayesian}, Rejection sampling \citep{casella2004generalized, martino2010generalized}, Gibbs sampling \citep{geman1984stochastic}, Metropolis-Hastings method \citep{metropolis1953equation, hastings1970monte} and so on. 
 
 \subsection{Log-likelihood Function of Parameter Posterior}\label{sectionlogParameter}
 
-To sample $\theta$, firstly we should find its distribution function by starting from the joint covariance matrix of $x_{0:t}$ and $y_{1:t}$. With a given $\theta$, suppose the joint covariance matrix is in the form of 
+To sample $\theta$, we should find its distribution function first from the covariance matrix of the joint $x_{0:t}$ and $y_{1:t}$. With a given $\theta$, suppose the joint covariance matrix is in the form of 
 \begin{equation}\label{generaljointmatrix}
 \begin{bmatrix} \begin{matrix} x_{1:t}\\ y_{1:t}  \end{matrix} \biggr\rvert \theta \end{bmatrix}
 \sim N\left(0, \Sigma_t \right),
@@ -57,7 +57,7 @@ where $x_{1:t}$ represents the hidden states $\left\lbrace x_0,x_1,\dots,x_t\rig
 A_t& -B_t \\ -B_t^\top & B_t
 \end{bmatrix}, 
 \end{align*}
-where $A_t$ is a $t \times t$ matrix of forward map hidden states, $B_t$ is a $t\times t$ matrix of observation errors up to time $t$. The structure of the matrices, such as bandwidth, sparse density, depending on the structure of the model. Temporally, we are using $A$ and $B$ to represent the matrices  $A_t$ and $B_t$ here. Then, we may find the covariance matrix easily by calculating the inverse of the precision matrix 
+where $A_t$ is a $t \times t$ matrix of forward map hidden states, $B_t$ is a $t\times t$ matrix of observation errors up to time $t$. The structure of the matrices, such as bandwidth, sparse density, depending on the structure of the model. Temporally, we use $A$ and $B$ to represent the matrices  $A_t$ and $B_t$ here. Then, we may find the covariance matrix by calculating the inverse of the precision matrix 
 \begin{align*}
 \Sigma &= \begin{bmatrix}
 \left(A-B^\top B^{-1}B\right) ^{-1} & -\left(A-B^\top B^{-1}B\right)^{-1}B^\top B^{-1}\\
@@ -99,11 +99,11 @@ y_{1:t}^\top \Sigma_{YY}^{-1} y_{1:t} &= \left(L^{-1}By_{1:t}\right)^\top\left(L
 &= \det B\left(\det L^{-1}\right)^2\left(\det R\right)^2.
 \end{split}
 \end{align}
-From the objective function (\ref{M1}), the posterior distribution of $\theta$ is 
+From the objective function \eqref{M1}, the posterior distribution of $\theta$ is 
 \begin{align*}
 p\left(\theta \mid y_{1:t}\right) &\propto p\left(y_{1:t}\mid\theta\right)p\left(\theta\right) \propto \exp\left( -\frac{1}{2} y_{1:t} \Sigma_{YY}^{-1} y_{1:t} \right) \sqrt{\det \Sigma_{YY}^{-1}} p\left(\theta\right).
 \end{align*}
-Then, by taking natural logarithm on the posterior of $\theta$ and using the useful solutions in equations (\ref{sigmayy01}) and (\ref{sigmayy02}), we will have
+Then, by taking natural logarithm on the posterior of $\theta$ and using the useful solutions in equations \eqref{sigmayy01} and \eqref{sigmayy02}, we will have
 \begin{align}
 \ln L\left(\theta\right) &= -\frac{1}{2}y_{1:t}^\top\Sigma_{YY}^{-1}y_{1:t}+\frac{1}{2}\sum\ln\mbox{tr}\left(B\right)-\sum\ln\mbox{tr}\left(L\right)+\sum\ln\mbox{tr}\left(R\right) + \ln p\left(\theta\right).
 \end{align}
@@ -112,7 +112,7 @@ Then, by taking natural logarithm on the posterior of $\theta$ and using the use
 
 \subsection{The Forecast Distribution}\label{sectionforecast}
 
-From equation (\ref{M2}), a sequential way for estimating the forecast distribution is needed. Suppose it is 
+From equation \eqref{M2}, a sequential way for estimating the forecast distribution is needed. Suppose it is 
 \begin{equation}
 p(y_{t}\mid y_{1:t-1},\theta) \sim N\left( \bar{\mu}_{t},\bar{\sigma}_{t} \right). 
 \end{equation}
@@ -150,7 +150,7 @@ So, from the above covariance matrix, we can find the mean and variance of $p\le
 
 \subsection{The Estimation Distribution}\label{generalEstDistr}
 
-From the joint distribution (\ref{generaljointmatrix}), one can find the best estimation with a given $\theta$ by
+From the joint distribution \eqref{generaljointmatrix}, one can find the best estimation with a given $\theta$ by
 \begin{align*}
 \hat{x}_{1:t} \mid y_{1:t},\theta &\sim N \left( A_{t}^{-1}B_{t}y_{1:t}, A_{t}^{-1} \right) \\
 &\sim N(L^{-\top}L^{-1}B_{t}y_{1:t-1},L^{-\top}L^{-1})\\
@@ -183,11 +183,11 @@ Generally, researchers would like to find the combined estimation for $x_t$ and 
 \begin{equation*}
 p(x_t, \theta \mid y_{1:t}) = p(x_t\mid y_{1:t},\theta)p(\theta\mid y_{1:t}).
 \end{equation*}
-Differently, from the target equation (\ref{objecfun}), the state inference containing $N$ samples is a mixture Gaussian distribution in the following form 
+Differently, from the target equation \eqref{objecfun}, the state inference containing $N$ samples is a mixture Gaussian distribution in the following form 
 \begin{equation}\label{mixtureGaussian}
 p(x_t \mid y_{1:t}) = \int p(x_t\mid y_{1:t},\theta) p(\theta\mid y_{1:t})d\theta \dot{=} \frac{1}{N}\sum_{i=1}^{N}p\left(x_{t}\mid\theta^{(i)},y_{1:t}\right). 
 \end{equation}
-Suppose $x_t\mid y_{1:t},\theta_i \sim N\left( \mu_{ti}^{(x)},\Var(x_{ti}) \right)$ is found from equation (\ref{generalmux}) and (\ref{generalSigx}) for each $\theta_i$, then its mean is 
+Suppose $x_t\mid y_{1:t},\theta_i \sim N\left( \mu_{ti}^{(x)},\Var(x_{ti}) \right)$ is found from equation \eqref{generalmux} and \eqref{generalSigx} for each $\theta_i$, then its mean is 
 \begin{equation}\label{mixturemean}
 \mu_t^{(x)} = \frac{1}{N} \sum_i \mu_{ti}^{(x)} 
 \end{equation}
@@ -207,7 +207,7 @@ Given essentially a probability distribution $\pi(\cdot)$ (the "target distribut
 \begin{equation*}
 \pi\left(x^{(t)}\right)q\left(x', x^{(t)}\right) = \pi\left(x'\right)q\left(x^{(t)}, x'\right),
 \end{equation*}
-which means that the transition from the current state $\pi(x^{(t)})$ to the new state $\pi(x')$ has the same probability as that from $\pi(x')$ to $\pi(x^{(t)})$. In sampling method, drawing $x_i$ first and then drawing $x_j$ should have the same probability as drawing $x_j$ and then drawing $x_i$. However, in most situations, the details balance condition is not satisfied. Therefore, we introduce a function $\alpha(x,y)$ satisfying 
+which means that the transition from the current state $\pi(x^{(t)})$ to the new state $\pi(x')$ has the same probability as that from $\pi(x')$ to $\pi(x^{(t)})$. In sampling method, drawing $x_i$ first and then drawing $x_j$ should have the same probability as drawing $x_j$ and then drawing $x_i$. However, in most situations, the details balance condition is not satisfied. Therefore we introduce a function $\alpha(x,y)$ satisfying 
 \begin{equation*}
 \pi\left(x'\right)q\left(x', x^{\left(t\right)}\right)\alpha\left(x',x^{\left(t\right)}\right) = \pi\left(x^{\left(t\right)}\right)q\left(x^{\left(t\right)}, x'\right)\alpha\left(x^{\left(t\right)},x'\right).
 \end{equation*}
@@ -221,7 +221,7 @@ Here comes an issues of how to choose $q\left(\cdot\mid x^{(t)}\right)$. The mos
 \begin{equation}\label{stepsizeep}
 \tilde{\gamma}\left(\epsilon^\star;\lambda\right) = \frac{1}{\lambda^d}\gamma \left( \frac{\epsilon^\star}{\lambda} \right),
 \end{equation}
-with $\gamma(\epsilon) = \gamma(-\epsilon)$ for all $\epsilon$. Here, the positive $\lambda$ governs the overall distance of the proposed jump and plays a crucial role in determining the efficiency of any algorithm. In a random walk, the proposal density function $q(\cdot)$ can be chosen for some suitable normal distribution, and hence $q\left(x'\mid x^{\left(t\right)}\right)=N\left(x'\mid x^{\left(t\right)},\epsilon^2\right)$ and $q\left(x^{\left(t\right)}\mid x'\right)=N\left(x^{\left(t\right)}\mid x',\epsilon^2\right)$ cancel in the above equation (\ref{alphabalance}) \citep{sherlock2016adaptive}. Therefore, to decide whether to accept the new state, we compute the quantity
+with $\gamma(\epsilon) = \gamma(-\epsilon)$ for all $\epsilon$. Here, the positive $\lambda$ governs the overall distance of the proposed jump and plays a crucial role in determining the efficiency of any algorithm. In a random walk, the proposal density function $q(\cdot)$ can be chosen for some suitable normal distribution, and hence $q\left(x'\mid x^{\left(t\right)}\right)=N\left(x'\mid x^{\left(t\right)},\epsilon^2\right)$ and $q\left(x^{\left(t\right)}\mid x'\right)=N\left(x^{\left(t\right)}\mid x',\epsilon^2\right)$ cancel in the above equation \eqref{alphabalance} \citep{sherlock2016adaptive}. To decide whether to accept the new state, we compute the quantity
 \begin{equation}
 \alpha=\min \left\lbrace 1,\frac{\pi\left(x'\right) q\left( x^{\left(t\right)}\mid x'\right) }{\pi\left(x^{\left(t\right)}\right)  q\left( x'\mid x^{\left(t\right)} \right) }  \right\rbrace= \min \left\lbrace 1,\frac{\pi\left(x'\right)  }{\pi\left(x^{\left(t\right)}\right) }  \right\rbrace.
 \end{equation}
@@ -248,7 +248,7 @@ In this section, a self-tuning MH algorithm, which automatically tunes the step 
      \includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/ggcorRW.pdf}   
     \caption{\footnotesize Correlated Multi-variable-at-a-time Random Walk.}\label{MCMCCorrelatedRW}
 \end{subfigure}
-\caption{Examples of 2-Dimension Random Walk Metropolis-Hastings algorithm. Figure \ref{MCMConevariableRW} is using one-variable-at-a-time proposal Random Walk. At each time, only one variable is changed and the other one stay constant. Figure \ref{MCMCMultivariableRW} and \ref{MCMCCorrelatedRW} are using multi-variable-at-a-time Random Walk. The difference is in figure \ref{MCMCMultivariableRW}, every forward step are proposed independently, but in \ref{MCMCCorrelatedRW} are proposed according to the covariance matrix. }
+\caption{Examples of 2-Dimensional Random Walk Metropolis-Hastings algorithm. Figure \ref{MCMConevariableRW} is the trace of one-variable-at-a-time Random Walk. At each time, only one variable is changed and the other one stay constant. Figure \ref{MCMCMultivariableRW} and \ref{MCMCCorrelatedRW} present the traces by multi-variable-at-a-time Random Walk. In figure \ref{MCMCMultivariableRW}, the proposal for each step is independent, but in figure \ref{MCMCCorrelatedRW} the proposal are proposed correlated.}
 \label{randomwalk}
 \end{figure}
 To gain the target acceptance rates $\alpha_i$, $(i = 1, \dots, d)$, the step sizes $s_i$ for each parameter can be tuned automatically. The concept of the algorithm is if the proposal is accepted, we have more confidence on the direction and step size that were made. In this scenario, the next movement should be further, that means the step size $s_{t+1}$ in the next step is bigger than $s_t$; otherwise, a conservative proposal is made with a shorter distance, which is $s_{t+1}\leq s_t$. 
@@ -280,8 +280,7 @@ The complete one-variable-at-a-time MH is illustrated in the following table:
 \begin{algorithm}[H]
 %\SetAlgoLined
 %\KwResult{Write here the result }
-Initialization: Given an arbitrary positive step size $s_i^{(1)}$ for each parameter. Set up a value for $b$ and find $a$ by using formula (\ref{autostepab}). 
-Set up a target acceptance rate $\alpha_i$ for each parameter, where $i = 1,\dots, d$. \\
+Initialization: Given an arbitrary positive step size $s_i^{(1)}$ for each parameter. Set up a value for $b$ and find $a$ by using the formula \eqref{autostepab}. Set up a target acceptance rate $\alpha_i$ for each parameter, where $i = 1,\dots, d$. \\
 Run sampling algorithm: \For{$k$ from 1 to $N$}{
 Randomly select a parameter $\theta_i^{(k)}$, propose a new one by $\theta_i'\sim N\left(\theta_i^{(k)}, \epsilon s_i^{(k)}\right)$ and leave the rest unchanged.\label{stRWMHselect}\\
 Accept $\theta_i'$ with probability $\alpha=\min\left\lbrace  1,\frac{\pi\left(\theta'\right)q\left(\theta^{\left(k\right)},\theta'\right)}{\pi\left(\theta^{\left(k\right)}\right)q\left(\theta', \theta^{(k)}\right)}  \right\rbrace$. \\
@@ -294,7 +293,7 @@ Take $n$ samples out from $N$ with equal spaced index for each parameter being a
 \end{algorithm}
 
 
-The advantage of the Algorithm \ref{algoonevarible} is that it returns a more accurate estimation for $\theta$ and it is more reliable to learn the structure of parameter space. However, if $\pi(\cdot)$ is in an irregular structure, the algorithm is really time-consuming and that cause a lower efficiency. To accelerate the computation, we are utilizing the \textit{Delayed-Acceptance Metropolis-Hastings} (DA MH) algorithm.
+The advantage of the Algorithm \ref{algoonevarible} is that it returns a more accurate estimation for $\theta$ and is more reliable to learn the structure of the parameter space. However, if $\pi(\cdot)$ has an irregular structure, the algorithm becomes time-consuming and low efficient. To solve the issue, the \textit{Delayed-Acceptance Metropolis-Hastings} (DA MH) algorithm is utilized to speed up the computation.
 
 
 
@@ -316,14 +315,14 @@ For a symmetric proposal density kernel $q\left(x', x^{(t)}\right)$ such as is u
 \begin{equation} \label{dahalpha1}
 \alpha_1= \min \left\lbrace 1,\frac{\pi(x')}{\pi\left(x^{(t)}\right)}  \right\rbrace.
 \end{equation}
-If the true posterior is available, the delayed-acceptance Metropolis-Hastings algorithm is obtained by substituting this for the unbiased stochastic approximation in (\ref{dahalpha2}) \citep{sherlock2015efficiency}.
+If the true posterior is available, the delayed-acceptance Metropolis-Hastings algorithm is obtained by substituting this for the unbiased stochastic approximation in \eqref{dahalpha2} \citep{sherlock2015efficiency}.
 
 
-To accelerate the MH algorithm, DA MH requires a cheap approximate estimation $\hat{\pi}(\cdot)$ in formula (\ref{dahalpha1}). Intuitively, the approximation should be efficient with respect to time and accuracy to the true posterior $\pi(\cdot)$. A sensible option is assuming the parameter distribution at each time $t$ is following a normal distribution with mean $m_t$ and covariance $C_t$. So the posterior density is given by 
+To accelerate the MH algorithm, DA MH requires a cheap approximate estimation $\hat{\pi}(\cdot)$ in formula \eqref{dahalpha1}. Intuitively, the approximation should be efficient with respect to time and accuracy to the true posterior $\pi(\cdot)$. A sensible option is assuming the parameter distribution at each time $t$ is following a normal distribution with mean $m_t$ and covariance $C_t$. So the posterior density is given by 
 \begin{equation*}
 \hat{\pi}(\theta\mid y_{1:t}) \propto \exp\left( -\frac{1}{2}(\theta-m_t)^\top C_t^{-1}(\theta-m_t)\right). 
 \end{equation*}
-A lazy $C_t$ is using identity matrix, in which way all the parameters are independent. In terms of $m_t$, in most of circumstances, 0 is not an idea choice. To find an optimal or suboptimal $m_t$ and $C_t$, several algorithms have been discussed. \cite{stroud2016bayesian} use a second-order expansion of $l(\theta)$ at the mode and the mean and covariance become $m_t=\arg \max l(\theta)$ and $C_t = - \left[ \frac{\partial l(\theta)}{\partial \theta_i \partial \theta_j} \right]_{\theta=m_t}^{-1}$ respectively. The drawback of this estimation is a global optimum is not guaranteed. \cite{mathew2012bayesian} propose a fast adaptive MCMC sampling algorithm, which is a consist of two phases. In the learning phase, they use hybrid Gibbs sampler to learn the covariance structure of the variance components. In phase two, the covariance structure is used to formulate an effective proposal distribution for a MH algorithm. 
+A lazy $C_t$ is chosen as an identity matrix, in which way all the parameters are independent. In terms of $m_t$, in most of circumstances, 0 is not an idea choice. To find an optimal or suboptimal $m_t$ and $C_t$, several algorithms have been discussed. \cite{stroud2016bayesian} use a second-order expansion of $l(\theta)$ at the mode and the mean and covariance become $m_t=\arg \max l(\theta)$ and $C_t = - \left[ \frac{\partial l(\theta)}{\partial \theta_i \partial \theta_j} \right]_{\theta=m_t}^{-1}$ respectively. The drawback of this estimation is a global optimum is not guaranteed. \cite{mathew2012bayesian} propose a fast adaptive MCMC sampling algorithm, which is a consist of two phases. In the learning phase, they use hybrid Gibbs sampler to learn the covariance structure of the variance components. In phase two, the covariance structure is used to formulate an effective proposal distribution for a MH algorithm. 
 
 
 Likewise, we are suggesting that use a batch of data with length $L<t$ to learn the parameter space by using self-tuning random walk MH algorithm in the learning phase first. This algorithm tunes each parameter at its own optimal step size and explores the surface in different directions. When the process is done, we have a sense of Hyper-surface of $\theta\approx\hat{\theta}$ and its mean $\hat{\mu}\approx m_L$ and covariance $\hat{\Sigma}\approx C_L$ can be estimated. Then, we can move to the second phase: DA MH algorithm. The new $\theta'$ is proposed from  $N\left(\theta^{(t)}\mid m_L,C_L\right)$, which is in the following form 
@@ -340,7 +339,7 @@ where $R^\top R = C_L$ is the Cholesky decomposition, $\epsilon$ is the tuned st
 
 \subsection{Efficiency of Metropolis-Hastings Algorithm}\label{effMHA}
 
-In equation (\ref{stepsizeep}), the jump size $\epsilon$ determines the efficiency of RWM algorithm. For a general RWM, it is intuitively clear that we can make the algorithm arbitrarily poor by making $\epsilon$ either very large or very small \citep{sherlock2010random}. Assuming $\epsilon$ is extremely large, the proposal $x'\sim N\left(x^{(t)},\epsilon\right)$, for example, is taken a further distance from current value $x^{(t)}$. Therefore, the algorithm will reject most of its proposed moves and stay where it was for a few iterations. On the other hand, if $\epsilon$ is extremely small, the algorithm will keep accepting the proposed $x'$ since $\alpha$ is always approximately be 1 because of the continuity of $\pi(x)$ and $q(\cdot)$ \citep{roberts2001optimal}. Thus, RWM takes a long time to explore the posterior space and converge to its stationary distribution. So, the balance between these two extreme situations must exist. This appropriate step size $\hat{\epsilon}$ is optimal, sometimes is suboptimal, the solution to gain a Markov chain. Figure \ref{largesmallstepsize} illustrates the performances of RWM with different step size $\epsilon$. From these plots we may see that either too large or too small $\epsilon$ causes high correlation chains, indicating bad samples in sampling algorithm. An appropriate $\epsilon$ decorrelate samples and returns a stationary chain, which is said to be high efficiency. 
+In equation \eqref{stepsizeep}, the jump size $\epsilon$ determines the efficiency of RWM algorithm. For a general RWM, it is intuitively clear that we can make the algorithm arbitrarily poor by making $\epsilon$ either very large or very small \citep{sherlock2010random}. Assuming $\epsilon$ is extremely large, the proposal $x'\sim N\left(x^{(t)},\epsilon\right)$, for example, is taken a further distance from current value $x^{(t)}$. Therefore the algorithm will reject most of its proposed moves and stay where it was for a few iterations. On the other hand, if $\epsilon$ is extremely small, the algorithm will keep accepting the proposed $x'$ since $\alpha$ is always approximately be 1 because of the continuity of $\pi(x)$ and $q(\cdot)$ \citep{roberts2001optimal}. Thus, RWM takes a long time to explore the posterior space and converge to its stationary distribution. So, the balance between these two extreme situations must exist. This appropriate step size $\hat{\epsilon}$ is optimal, sometimes is suboptimal, the solution to gain a Markov chain. Figure \ref{largesmallstepsize} illustrates the performances of RWM with different step size $\epsilon$. From these plots we may see that either too large or too small $\epsilon$ causes high correlation chains, indicating bad samples in sampling algorithm. An appropriate $\epsilon$ decorrelate samples and returns a stationary chain, which is said to be high efficiency. 
 
 
 %\begin{figure}[h]
@@ -400,15 +399,15 @@ To explore the efficiency of a MCMC process, we introduce some notions first. Fo
 \begin{equation*}
 \tau_g = 1+ 2\sum_{i=1}^{\infty} \mathrm{Corr}\left( g(X_0),g(X_i) \right),
 \end{equation*}
-where $X_0$ is assumed to be distributed according to $\pi$. Because central limit theorem, the variance of the estimator $\bar{g} = \sum_{i=1}^{n}g(X_i)/n$ for estimating $\E\lbrack g(X) \rbrack$ is approximately $\Var_\pi\lbrack g(X)\rbrack \times \tau_g/n$. The variance tells us the accuracy of the estimator $\bar{g}$. The smaller it is, the faster the chain converge. Therefore, they suggest that the efficiency of Markov chains can be found by comparing the reciprocal of their integrated autocorrelation time, which is 
+where $X_0$ is assumed to be distributed according to $\pi$. Because central limit theorem, the variance of the estimator $\bar{g} = \sum_{i=1}^{n}g(X_i)/n$ for estimating $\E\lbrack g(X) \rbrack$ is approximately $\Var_\pi\lbrack g(X)\rbrack \times \tau_g/n$. The variance tells us the accuracy of the estimator $\bar{g}$. The smaller it is, the faster the chain converges. Therefore, they suggest that the efficiency of Markov chains can be found by comparing the reciprocal of their integrated autocorrelation time, which is 
 \begin{equation*}
 e_g(\sigma)\propto \left(\tau_g\Var_\pi\lbrack g(X)\rbrack \right)^{-1}. 
 \end{equation*}
-However, the disadvantage of their method is that the measurement of efficiency is highly dependent on the function $g$. Instead, an alternative approach is using \textit{effective sample size} (ESS) \citep{kass1998markov, robert2004monte},  which is defined in \citep{gong2016practical} in the following form of  
+However, the disadvantage of their method is that the measurement of efficiency is highly dependent on the function $g$. Instead, an alternative approach uses \textit{effective sample size} (ESS) \citep{kass1998markov, robert2004monte},  which is defined in \citep{gong2016practical} in the following form of  
 \begin{equation*}
 \mbox{ESS} =  \frac{n}{1+2\sum_{k=1}^{\infty}\rho_k(X)} \approx \frac{n}{1+2\sum_{k=1}^{k_\text{\tiny cut}}\rho_k(X)}= \frac{n}{\tau}, 
 \end{equation*}
-where $n$ is the number of samples, $k_\mathtt{cut}$ is lag of the first $\rho_k<0.01$  or $0.05$ , and $\tau$ is the integrated autocorrelation time. Given a Markov chain having $n$ iterations, the ESS measures the size of \iid samples with the same standard error. Moreover, a wide support among both statisticians \citep{geyer1992practical} and physicists \citep{sokal1997monte} are using the following cost of an independent sample to evaluate the performance of MCMC, that is 
+where $n$ is the number of samples, $k_\mathtt{cut}$ is lag of the first $\rho_k<0.01$  or $0.05$ , and $\tau$ is the integrated autocorrelation time. Given a Markov chain having $n$ iterations, the ESS measures the size of \iid samples with the same standard error. Moreover, a wide support among both statisticians \citep{geyer1992practical} and physicists \citep{sokal1997monte} use the following cost of an independent sample to evaluate the performance of MCMC, that is 
 \begin{equation*}
 \frac{n}{\mbox{ESS}}\times \mbox{cost per step} = \tau \times  \mbox{cost per step}.
 \end{equation*} 
@@ -475,22 +474,22 @@ and denoted as $\Sigma^{-1}=\begin{bmatrix} A & -B \\ -B & B \end{bmatrix}$. Its
 \Sigma_{XX} & \Sigma_{XY}  \\ \Sigma_{YX} & \Sigma_{YY} 
 \end{bmatrix},
 \end{equation}
-where $B$ is a $t\times t$ diagonal matrix with elements $\frac{1}{\sigma^2}$. The covariance matrices $\Sigma_{XX} =  \left(A-B\right)^{-1}$ and $\Sigma_{YY}=\left(I-A^{-1}B\right)^{-1}B^{-1}$ are easily found. 
+where $B$ is a $t\times t$ diagonal matrix with elements $\frac{1}{\sigma^2}$. The covariance matrices $\Sigma_{XX} =  \left(A-B\right)^{-1}$ and $\Sigma_{YY}=\left(I-A^{-1}B\right)^{-1}B^{-1}$ are found. 
 
 
 
 \subsubsection*{Parameter Estimation}
 
-In formula (\ref{M1}), the parameter posterior is estimated with observation data $y_{1:t}$. By using the Algorithm \ref{algoonevarible}, although it may take a longer time, we will achieve a precise estimation. Similarly with Section \ref{sectionlogParameter}, from the objective function, the posterior distribution of $\theta$ is 
+In the formula \eqref{M1}, the parameter posterior is estimated with observation data $y_{1:t}$. By using the Algorithm \ref{algoonevarible}, although it may take a longer time, we will achieve a precise estimation. Similarly with Section \ref{sectionlogParameter}, from the objective function, the posterior distribution of $\theta$ is 
 \begin{equation*}
 p(\theta \mid Y) \propto p(Y\mid\theta)p(\theta) \propto \exp\left( {-\frac{1}{2} Y \Sigma_{YY}^{-1} Y } \right) \sqrt{\det \Sigma_{YY}^{-1}} p(\theta).
 \end{equation*}
-Then, by taking natural logarithm on the posterior of $\theta$ and using the useful solutions in equations (\ref{sigmayy01}) and (\ref{sigmayy02}), we will have
+Then, by taking natural logarithm on the posterior of $\theta$ and using the useful solutions in equations \eqref{sigmayy01} and \eqref{sigmayy02}, we will have
 \begin{equation}\label{linearlogL}
 \ln L(\theta) = -\frac{1}{2}Y^\top\Sigma_{YY}^{-1}Y+\frac{1}{2}\sum\ln\mbox{tr}(B)-\sum\ln\mbox{tr}(L)+\sum\ln\mbox{tr}(R) + \ln p(\theta).
 \end{equation}
 
-In a simple linear case, we are choosing the parameter $\theta = \left\lbrace \phi=0.9,\tau^2=0.5,\sigma^2=1\right\rbrace$ as the author did in \citep{lopes2011particle} and using $n=500$ dataset, setting initial $L=0$. Instead of inferring $\tau$ and $\sigma$, we are estimating $\nu_1 = \ln \tau^2$ and $\nu_2 = \ln \sigma^2$ in the RW-MH to avoid singular proposals. After the process, the parameters can be transformed back to original scale. Therefore, the new parameter  $\theta^* =  \left\lbrace \phi,\nu_1,\nu_2\right\rbrace = \left\lbrace \phi,\ln\tau^2,\ln\sigma^2\right\rbrace$. 
+In a simple linear case, we are choosing the parameter $\theta = \left\lbrace \phi=0.9,\tau^2=0.5,\sigma^2=1\right\rbrace$ as the author did in \citep{lopes2011particle} and using $n=500$ dataset, setting initial $L=0$. Instead of inferring $\tau$ and $\sigma$, we are estimating $\nu_1 = \ln \tau^2$ and $\nu_2 = \ln \sigma^2$ in the RW-MH to avoid singular proposals. After the process, the parameters can be transformed back to original scale. Therefore the new parameter  $\theta^* =  \left\lbrace \phi,\nu_1,\nu_2\right\rbrace = \left\lbrace \phi,\ln\tau^2,\ln\sigma^2\right\rbrace$. 
 
 Buy using Algorithm \ref{algoonevarible} and aiming the optimal acceptance rate at 0.44, after 10\,000 iterations we get the acceptance rates for each parameters are $\alpha_\phi = 0.4409, \alpha_{\nu_1}= 0.4289$ and $\alpha_{\nu_2}= 0.4505$, and the estimations are $\phi =0.8794, \nu_1= -0.6471$ and $\nu_2= -0.0639$ respectively. Thus, we have the cheap surrogate $\hat{\pi}(\cdot)$. Keep going to the DA MH with another 10\,000 iterations, the algorithm returns the best estimation with $\alpha_1=0.1896$ and $\alpha_2 = 0.8782$. In figure \ref{linearmarginplots}, the trace plots illustrates that the Markov chain of $\hat{\theta}$ is stably fluctuating around the true $\theta$. 
 
@@ -516,15 +515,15 @@ Buy using Algorithm \ref{algoonevarible} and aiming the optimal acceptance rate 
 
 \subsubsection*{Recursive Forecast Distribution}\label{sectionlinearRecursive}
 
-Calculating the log-posterior of parameters requires finding out the forecast distribution of $p(y_{1:t}\mid y_{1:t-1},\theta)$. A general way is using the joint distribution of $y_{t}$ and $y_{1:t-1}$, which is $p(y_{1:t}\mid \theta)\sim N(0,\Sigma_{YY})$, and following the procedure in Section \ref{sectionforecast} to work out the inverse matrix of a multivariate normal distribution. For example, one may find the inverse of the covariance matrix 
+Calculating the log-posterior of parameters requires finding out the forecast distribution of $p(y_{1:t}\mid y_{1:t-1},\theta)$. A general way is to use the joint distribution of $y_{t}$ and $y_{1:t-1}$, which is $p(y_{1:t}\mid \theta)\sim N(0,\Sigma_{YY})$, and following the procedure in Section \ref{sectionforecast} to work out the inverse matrix of a multivariate normal distribution. For example, one may find the inverse of the covariance matrix 
 \begin{align*}
 \Sigma_{YY}^{-1} = B_t(I-A_t^{-1}B_t) =\frac{1}{\sigma^4}(\sigma^2 I_t-A_t^{-1}) \triangleq \frac{1}{\sigma^4} 
 \begin{bmatrix} 
 Z_{t} & b_{t} \\
 b_{t}^\top & K_{t}
-\end{bmatrix}.
+\end{bmatrix},
 \end{align*}
-Therefore, the original form of this covariance is 
+and the original form of this covariance is 
 \begin{align*} \Sigma_{YY} =\sigma^4 \begin{bmatrix}
 \left(Z_t-b_tK_t^{-1}b_t^\top\right)^{-1} & -Z_t^{-1}b_t\left(K_t-b_t^\top Z_t^{-1}b_t\right)^{-1}\\
 -K_t^{-1}b_t^\top \left(Z_t-b_tK_t^{-1}b_t^\top\right)^{-1} & \left(K_t-b_t^\top Z_t^{-1}b_t\right)^{-1}
@@ -553,7 +552,7 @@ Suppose $A\in R^{n\times n}$ is an invertible square matrix and $u,v\in R^n$ are
 \end{theorem}
 
 
-By using the formula (\ref{SMformula}), one can find a recursive way to update $K_{t}$ and $b_{t-1}$, which is 
+By using the formula \eqref{SMformula}, one can find a recursive way to update $K_{t}$ and $b_{t-1}$, which is 
 \begin{align}
 K_{t}  &=\frac{\sigma^4}{\tau^2+\sigma^2+\phi^2(\sigma^2-K_{t-1})},\\
 b_{t} &= \begin{bmatrix}
@@ -570,7 +569,7 @@ where $K_1=\frac{\sigma^4}{\sigma^2+\tau^2+L^2\phi^2}$. For calculation details,
 
 \subsubsection*{The Estimation Distribution}
 
-As introduced in Section \ref{generalEstDistr}, from the joint distribution of $x_{1:t}$ and $y_{1:t}$, one can find the best estimation with a given $\theta$ by
+As discussed in Section \ref{generalEstDistr}, from the joint distribution of $x_{1:t}$ and $y_{1:t}$, one can find the best estimation with a given $\theta$ by
 \begin{align*}
 \hat{x}_{1:t} \mid y_{1:t},\theta \sim N\left(L^{-\top}W,L^{-\top}L^{-1}\right),
 \end{align*}
@@ -599,7 +598,7 @@ thus, for any given $\theta$, we have $\hat{x}_{t}\mid y_{1:t},\theta \sim N\lef
 \mu_{t}^{(x)} &  =  \frac{K_{t}\bar{\mu}_{t}}{\sigma^2}+\left(1-\frac{K_{t}}{\sigma^2}\right)y_{t} \\
 \Var(x_t)&= \sigma^2-K_{t}.
 \end{align}
-By substituting them into the equation (\ref{linearmu}) and (\ref{linearsigma}), the estimated $\hat{x}_t$ is easily got. For calculation details, we refer readers to Appendix \ref{linearcalculation}.
+By substituting them into the equation \eqref{linearmu} and \eqref{linearsigma}, the estimated $\hat{x}_t$ is obtained. For calculation details, we refer readers to Appendix \ref{linearcalculation}.
 
 
 \begin{figure}[h]
@@ -629,7 +628,7 @@ By considering the velocity $u_t$ of a Brownian motion at time $t$, over a small
 \begin{equation*}
 mdu_t = -\omega u_tdt+dW_t,
 \end{equation*}
-where $\omega>0$ is called the friction coefficient and $m>0$ is the mass. If we define $\gamma = \omega /m$ and $\lambda = 1/m$, we obtain the OU process \citep{vaughan2015goodness}, which was first introduced with the following differential equation:
+where $\omega>0$ is called the friction coefficient and $m>0$ is the mass. If we define $\gamma = \omega /m$ and $\lambda = 1/m$, we obtain the OU process \citep{vaughan2015goodness}, which was introduced with the following differential equation:
 \begin{equation*}
 du_t= -\gamma u_tdt+\lambda dW_t.
 \end{equation*}
@@ -641,7 +640,7 @@ To apply OU process on irregular sampling data, we assume that the latent proces
 \begin{equation}\label{linearOUequation}
 dx_t= -\gamma x_tdt+\lambda dW_t, 
 \end{equation}
-where $W_t$ is a standard Brownian motion, $\gamma>0$ represents the slowly evolving transfer between two neighbor data and $\lambda$ is the forward transition variability. It is not hard to find the solution of equation (\ref{linearOUequation}) is 
+where $W_t$ is a standard Brownian motion, $\gamma>0$ represents the slowly evolving transfer between two neighbor data and $\lambda$ is the forward transition variability. It is not hard to find the solution of equation \eqref{linearOUequation} is 
 \begin{equation*}
 x_t = x_{t-1}e^{-\gamma t} +\int_{0}^{t} \lambda e^{-\gamma (t-s)}dW_s. 
 \end{equation*}
@@ -657,7 +656,7 @@ y_t = Hx_t + \varepsilon,
 \end{equation}
 where $\varepsilon\sim N(0,\sigma)$ is a Gaussian white noise. 
 
-To run simulations, we firstly generate irregular time lag sequence $\left\lbrace \Delta_t\right\rbrace$ from an \textit{Inverse Gamma} distribution with parameters $\alpha=2, \beta=0.1$. Then, the following parameters were chosen for the numerical simulation: $\gamma = 0.5$, $\lambda^2 = 0.1$, $\sigma^2=1$. 
+To run the simulations, we generate an irregular time-lag sequence $\left\lbrace \Delta_t\right\rbrace$ first from an \textit{Inverse Gamma} distribution with parameters $\alpha=2, \beta=0.1$. Then, the following parameters were chosen for the numerical simulation: $\gamma = 0.5$, $\lambda^2 = 0.1$, $\sigma^2=1$. 
 
 
 
@@ -701,11 +700,11 @@ where $B_t$ is a $t\times t$ diagonal matrix with elements $\frac{1}{\sigma^2}$.
 
 \subsubsection*{Parameter Estimation}
 
-To use the Algorithm \ref{algoonevarible}, similarly with Section \ref{sectionlogParameter}, we firstly need to find the posterior distribution of $\theta$ with observations $y_{1:t}$, which in fact is 
+To use the Algorithm \ref{algoonevarible}, similarly with Section \ref{sectionlogParameter}, we need to find the posterior distribution of $\theta$ with observations $y_{1:t}$ fist, which in fact is 
 \begin{equation*}
 p(\theta \mid Y) \propto p(Y\mid\theta)p(\theta) \propto \exp\left( -\frac{1}{2} Y \Sigma_{YY}^{-1} Y \right) \sqrt{\det \Sigma_{YY}^{-1}} p(\theta).
 \end{equation*}
-By taking natural logarithm on the posterior of $\theta$ and using the useful solutions in equations (\ref{sigmayy01}) and (\ref{sigmayy02}), we have 
+By taking natural logarithm on the posterior of $\theta$ and using the useful solutions in equations \eqref{sigmayy01} and \eqref{sigmayy02}, we have 
 \begin{equation}\label{simuOUlogL}
 \ln L(\theta) = -\frac{1}{2}Y^\top\Sigma_{YY}^{-1}Y+\frac{1}{2}\sum\ln\mbox{tr}(B)-\sum\ln\mbox{tr}(L)+\sum\ln\mbox{tr}(R) + \ln p(\theta).
 \end{equation}
@@ -749,7 +748,7 @@ With the above formula, the recursive way of updating the mean and covariance ar
 \end{align}
 where $K_1=\frac{\sigma^4}{\sigma^2+\tau_1^2+L^2\phi_1^2}$. 
 
-Additionally, as introduced in Section \ref{generalEstDistr}, the best estimation of $x_{1:t}$ with a given $\theta$ is 
+Additionally, as discussed in Section \ref{generalEstDistr}, the best estimation of $x_{1:t}$ with a given $\theta$ is 
 \begin{align*}
 \hat{x}_{1:t} \mid y_{1:t},\theta \sim N\left(L^{-\top}W,L^{-\top}L^{-1}\right),
 \end{align*}
@@ -763,7 +762,7 @@ The same as we did in Section \ref{sectionlinearRecursive}, for any given $\thet
 \mu_{t}^{(x)} &  =  \frac{K_{t}\bar{\mu}_{t}}{\sigma^2}+\left(1-\frac{K_{t}}{\sigma^2}\right)y_{t} \\
 \Var(x_t)&= \sigma^2-K_{t}.
 \end{align*}
-By substituting them into the equation (\ref{linearmu}) and (\ref{linearsigma}), the estimated $\hat{x}_t$ is easily got. The difference at this time is the $\mu_{t}^{(x)}$ and $\Var(x_t)$ are dependent on time lag $\Delta_t$, that can be seen from formula (\ref{linearOUK}) and (\ref{linearOUmu}). 
+By substituting them into the equation \eqref{linearmu} and \eqref{linearsigma}, the estimated $\hat{x}_t$ is obtained. The difference at this time is the $\mu_{t}^{(x)}$ and $\Var(x_t)$ are dependent on time lag $\Delta_t$, that can be seen from formula \eqref{linearOUK} and \eqref{linearOUmu}. 
 
 
 \begin{figure}[h]
@@ -796,7 +795,7 @@ Tractors moving on an orchard are mounted with GPS units, which are recording da
 \label{realdatareview}
 \end{figure}
 
-Therefore, in this section, we are introducing an Ornstein-Uhlenbeck process (OU-process) model combing both position and velocity with the following equations  
+In this section, we are introducing an Ornstein-Uhlenbeck process (OU-process) model combing both position and velocity with the following equations  
 \begin{equation}\label{OUprocess}
 \begin{cases}
 du_t = -\gamma u_t dt+ \lambda dW_t,\\
@@ -834,7 +833,7 @@ and
 \rho_t\sigma_t^{(x)}\sigma_t^{(u)} & =\frac{\lambda ^2 \left(e^{\gamma\Delta_t} -1\right) \left(1-e^{-2\gamma\Delta_t}\right)}{2 \gamma ^2}
 \end{cases}
 \end{align*}
-In the above equations $\Delta_t = T_t-T_{t-1}$ and initial values are $\Delta_1=0$, $x_0\sim N\left(0,L_x^2\right), u_0\sim N(0,L_u^2)$, $\rho_t^2 = 1-\frac{\xi^2 \Delta_t}{\sigma_t^{(x)^2}}$. To be useful, we are using $\frac{1}{1-\rho_t^2} =\frac{\sigma_t^{(x)2}}{\xi^2 \Delta_t}$ instead in the calculation. 
+In the above equations $\Delta_t = T_t-T_{t-1}$ and initial values are $\Delta_1=0$, $x_0\sim N\left(0,L_x^2\right), u_0\sim N(0,L_u^2)$, $\rho_t^2 = 1-\frac{\xi^2 \Delta_t}{\sigma_t^{(x)^2}}$. To be useful, we use $\frac{1}{1-\rho_t^2} =\frac{\sigma_t^{(x)2}}{\xi^2 \Delta_t}$ instead in the calculation. 
 
 Furthermore, the independent observation process is 
 \begin{equation}\label{obseq}
@@ -889,7 +888,7 @@ where $B_t$ is a $2t\times 2t$ diagonal matrix of observation errors at time $t$
 \vdots & \vdots & \ddots & \vdots & \vdots \\
  \cdot  &  \cdot  & \cdot  & \frac{1}{\sigma^2}&  \cdot \\  \cdot  &  \cdot & \cdot  &  \cdot  & \frac{1}{\tau^2}
 \end{bmatrix}$. 
-In fact, the matrix $A_t$ is a $2t \times 2t$ bandwidth six sparse matrix at time $t$ in the process. For sake of simplicity, we are using $A$ and $B$ to represent the matrices  $A_t$ and $B_t$ here. Then, we may find the covariance matrix by calculating the inverse of the precision matrix as 
+In fact, the matrix $A_t$ is a $2t \times 2t$ bandwidth six sparse matrix at time $t$ in the process. For sake of simplicity, we use $A$ and $B$ to represent the matrices $A_t$ and $B_t$ here. Then, we may find the covariance matrix by calculating the inverse of the precision matrix as 
 \begin{align*}
 \Sigma &= \begin{bmatrix}
 \left(A-B^\top B^{-1}B\right) ^{-1} & -\left(A-B^\top B^{-1}B\right)^{-1}B^\top B^{-1}\\
@@ -916,7 +915,7 @@ By using Choleski decomposition and similar technical solution, second term in t
 \begin{align*}
 p(\theta \mid Y) &\propto p(Y\mid\theta)p(\theta) \propto \exp\left( -\frac{1}{2} Y \Sigma_{YY}^{-1} Y \right) \sqrt{\det \Sigma_{YY}^{-1}} P(\theta).
 \end{align*}
-Then, by taking natural logarithm on the posterior of $\theta$ and using the useful solutions in equations (\ref{sigmayy01}) and (\ref{sigmayy02}), we will have
+Then, by taking natural logarithm on the posterior of $\theta$ and using the useful solutions in equations \eqref{sigmayy01} and \eqref{sigmayy02}, we will have
 \begin{align}\label{logL}
 \ln L(\theta) &= -\frac{1}{2}Y^\top\Sigma_{YY}^{-1}Y+\frac{1}{2}\sum\ln\mbox{tr}(B)-\sum\ln\mbox{tr}(L)+\sum\ln\mbox{tr}(R).
 \end{align}
@@ -999,7 +998,7 @@ that are updating in a recursive way. As a result, one can achieve the following
 \bar{\Sigma}_{t}&=\left(B_1K_{t}B_1\right)^{-1}
 \end{split}
 \end{align}
-The matrix $K_{t}$ is updated via equation (\ref{OUupdatingK}), or updating its inverse in the following form makes the computation faster, that is 
+The matrix $K_{t}$ is updated via equation \eqref{OUupdatingK}, or updating its inverse in the following form makes the computation faster, that is 
 \begin{align*}
 K_{t}^{-1} &= B_1D_{t}^{-\top}D_{t}^{-1}B_1 + B_1\Phi_{t} \left(B_1^{-1} - K_{t-1}\right) \Phi_{t}^\top B_1+ B_1,\\
 \bar{\Sigma}_{t} &= D_{t}^{-\top}D_{t}^{-1}+ \Phi_{t} \left(B_1^{-1} - K_{t-1}\right) \Phi_{t}^\top + B_1^{-1}
@@ -1011,7 +1010,7 @@ and $K_1 =B_1^{-1} - A_1^{-1} = \begin{bmatrix}
 
 \subsection{The Estimation Distribution}
 
-Because of the joint distribution (\ref{jointmatrix}), one can find the best estimation with a given $\theta$ by
+Because of the joint distribution \eqref{jointmatrix}, one can find the best estimation with a given $\theta$ by
 \begin{equation*}
 X_{1:t} \mid Y_{1:t},\theta \sim N\left(L^{-\top}W,L^{-\top}L^{-1}\right),
 \end{equation*}
@@ -1056,7 +1055,7 @@ The recursive updating formula is
 
 \subsection{Prior Distribution for Parameter}
 
-The well known Hierarchical Linear Model, where the parameters vary at more than one level, was firstly introduced by \cite{lindley1972bayes, smith1973general}. Hierarchical Model can be used on data with many levels, although 2-level models are the most common ones. The state-space model in equations (\ref{MCMCobserY}) and (\ref{MCMChiddX}) is one of Hierarchical Linear Model if $G_t$ and $F_t$ are linear, and non-linear model if $G_t$ and $F_t$ are non-linear processes. Researchers have made a few discussions and work on these both linear and non-linear models. In this section, we only discuss on the prior for parameters in these models. 
+The well known \textit{Hierarchical Linear Model}, where the parameters vary at more than one level, is first introduced by \cite{lindley1972bayes, smith1973general}. Hierarchical Model can be used on data with many levels, although 2-level models are the most common ones. The state-space model in equations \eqref{MCMCobserY} and \eqref{MCMChiddX} is one of Hierarchical Linear Model if $G_t$ and $F_t$ are linear, and non-linear model if $G_t$ and $F_t$ are non-linear processes. Researchers have made a few discussions and work on these both linear and non-linear models. In this section, we only discuss on the prior for parameters in these models. 
 
 Various informative and non-informative prior distributions have been suggested for scale parameters in hierarchical models. \cite{gelman2006prior} give a discussion on prior distributions for variance parameters in hierarchical models. General considerations include using invariance \citep{jeffries1961theory}, maximum entropy \citep{jaynes1983papers} and agreement with classical estimators \citep{box2011bayesian}. Regarding informative priors, the author suggests to distinguish them into three categories: (\romannum{1}) is traditional informative prior. A prior distribution giving numerical information is crucial to statistical modeling and it can be found from a literature review, an earlier data analysis or the property of the model itself. (\romannum{2}) is weakly informative prior. This genre prior is not supplying any controversial information but are strong enough to pull the data away from inappropriate inferences that are consistent with the likelihood. Some examples and brief discussions of weakly informative priors for logistic regression models are given in \citep{gelman2008weakly}. (\romannum{3}) is uniform prior, which allows the information from the likelihood to be interpreted probabilistically. 
 
@@ -1065,14 +1064,14 @@ Various informative and non-informative prior distributions have been suggested 
 \omega_t &\sim N(0,\alpha Q),\\
 \varepsilon_t &\sim N(0,\alpha R),
 \end{align*}
-where the two matrices $R$ and $Q$ are known and $\alpha$ is an unknown scale factor to be estimated. (Note that a perfect model is obtained by setting $Q= 0$.) Therefore, the density of the Gaussian state-space model becomes 
+where the two matrices $R$ and $Q$ are known and $\alpha$ is an unknown scale factor to be estimated. (Note that a perfect model is obtained by setting $Q= 0$.) The density of the Gaussian state-space model therefore becomes 
 \begin{align*}
 p(y_t\mid x_t,\alpha) &= N(F(x_t),\alpha R),\\
 p(x_t\mid x_{t-1},\alpha) &= N(G(x_{t-1}),\alpha Q).
 \end{align*}
 The parameter $\alpha$ is assumed \textit{Inverse Gamma} distribution. 
 
-For the priors of all the parameters in OU-process, shown in equation (\ref{OUprocess}) and (\ref{obseq}), firstly we should understand what meanings of these parameters are standing for. The reciprocal of $\gamma$ is typical velocity falling in the reasonable range of 0.1 to 100 $m/s$. $\xi$ is the error occurs in transition process, $\sigma$ and $\tau$ are errors in the forward map for position and velocity respectively. Generally, the error is a positive finite number. Considering prior distributions for these parameters, before looking at the data, we have an idea of ranges where these parameters are falling in. Conversely, we do not have any assumptions about the true value of $\lambda$, which means it could be anywhere. According to this assumption, the prior distributions are 
+For the priors of all the parameters in an OU-process, shown in equation \eqref{OUprocess} and \eqref{obseq}, first of all, we should understand what meanings of these parameters are standing for. The reciprocal of $\gamma$ is typical velocity falling in the reasonable range of 0.1 to 100 $m/s$. $\xi$ is the error occurs in transition process, $\sigma$ and $\tau$ are errors in the forward map for position and velocity respectively. Generally, the error is a positive finite number. Considering prior distributions for these parameters, before looking at the data, we have an idea of ranges where these parameters are falling in. Conversely, we do not have any assumptions about the true value of $\lambda$, which means it could be anywhere. According to this assumption, the prior distributions are 
 \begin{align*}
 \gamma   &\sim IG(10,0.5),\\
 \xi^2        &\sim IG(5,2.5),\\
@@ -1220,7 +1219,7 @@ Step Size& Length & Time & Eff   & EffUT & ESS & ESSUT \\ \hline
 
 \subsection{A Sliding Window State and Parameter Estimation Approach}
 
-The length of data used in the algorithm really affects the computation time. The forecast distribution $p(Y_{t}\mid Y_{1:t-1},\theta)$ and estimation distribution $p(X_{t}\mid Y_{1:t},\theta)$ require finding the inverse of the covariance $\Sigma_{YY}^{(t+1)}$, however, which is time consuming if the sample size is big to generate a large sparse matrix. For a moving vehicle, one is more willing to get the estimation and moving status instantly rather than being delayed. Therefore, a compromise solution is using fixed-length sliding window sequential filtering. A fixed-lag sequential parameter learning method was proposed by \cite{polson2008practical} and named as \textit{Practical Filtering}. The authors rely on the approximation of 
+The length of data used in the algorithm really affects the computation time. The forecast distribution $p(Y_{t}\mid Y_{1:t-1},\theta)$ and estimation distribution $p(X_{t}\mid Y_{1:t},\theta)$ require finding the inverse of the covariance $\Sigma_{YY}^{(t+1)}$, however, which is time consuming if the sample size is big to generate a large sparse matrix. For a moving vehicle, one is more willing to get the estimation and moving status instantly rather than being delayed. Therefore a compromise solution is the fixed-length sliding window sequential filter. A fixed-lag sequential parameter learning method was proposed by \cite{polson2008practical} and named as \textit{Practical Filtering}. The authors rely on the approximation of 
 \begin{equation*}
 p(x_{0:n-L},\theta\mid y_{0:n-1}) \approx p(x_{0:n-L},\theta \mid y_{0:n})
 \end{equation*}
@@ -1256,7 +1255,7 @@ The next question is how to choose an appropriate $L$. The length of data used i
 In addition, from a practical point of view, the observation error $\sigma$ should be kept at a reasonable level, let's say $50cm$, and the computation time should be as less as possible. To reach that level, $L=100$ is an appropriate choice. For a one-dimensional linear model, $L$ can be chosen larger and that does not change too much. If the data up to time $t$ is less than or equal to the chosen $L$, the whole data set is used in learning $\theta$ and estimating $X_t$. 
 
 
-For the true posterior, the algorithm requires a cheap estimation $\hat{\pi}(\cdot)$, which is found by one-variable-at-a-time Metropolis-Hastings algorithm. The advantage is getting a precise estimation of the parameter structure, and disadvantage is, obviously, lower efficiency. Luckily, we find that it is not necessary to run this MH every time when estimate a new state from $x_{t-1}$ to $x_t$. In fact, in the DA MH process, the cheap $\hat{\pi}$ does not vary too much in the filtering process with new data coming into the dataset. We may use this property in the algorithm. At first, we use all available data from $1$ to $t$ with length up to $L$ to learn the structure of $\theta$ and find out the cheap approximation $\hat{\pi}$. Then, use DA MH to estimate the true posterior $\pi$ for $\theta$ and $x_t$. After that, extend dataset to $1:t+1$ if $t\leq L$ or shift the data window to $2:t+1$ if $t>L$ and run DA MH again to estimate $\theta$ and $x_{t+1}$. From figures \ref{batchwindowkeyfeature} and \ref{batchwindowparameter}, we can see that the main features and parameters in the estimating process between using batch and sliding window methods have not significant differences. 
+For the true posterior, the algorithm requires a cheap estimation $\hat{\pi}(\cdot)$, which is found by one-variable-at-a-time Metropolis-Hastings algorithm. The advantage is getting a precise estimation of the parameter structure, and disadvantage is, obviously, lower efficiency. Luckily, we find that it is not necessary to run this MH every time when estimate a new state from $x_{t-1}$ to $x_t$. In fact, in the DA MH process, the cheap $\hat{\pi}$ does not vary too much in the filtering process with new data coming into the dataset. We may use this property in the algorithm. First of all, we use all available data from $1$ to $t$ with length up to $L$ to learn the structure of $\theta$ and find out the cheap approximation $\hat{\pi}$. Then, use DA MH to estimate the true posterior $\pi$ for $\theta$ and $x_t$. After that, extend dataset to $1:t+1$ if $t\leq L$ or shift the data window to $2:t+1$ if $t>L$ and run DA MH again to estimate $\theta$ and $x_{t+1}$. From figures \ref{batchwindowkeyfeature} and \ref{batchwindowparameter}, we can see that the main features and parameters in the estimating process between using batch and sliding window methods have not significant differences. 
 
 
 To avoid estimation bias in the algorithm, we are introducing \textit{threshold} and \textit{cut off} processes. \textit{threshold} means when a bias occurs in the algorithm, the cheap $\hat{\pi}$ may not be appropriate and a new one is needed. Thus, we have to update $\hat{\pi}$ with a latest data we have. A \textit{cut off} process stops the algorithm when a large $\Delta_t$ happens. A large time gap indicates the vehicle stops at some time point and it causes irregularity and bias. A smart way is stopping the process and waiting for new data coming in. By running testings on real data, the \textit{threshold} is chosen $\alpha_2<0.7$ and \textit{cut off} is $\Delta_t\geq 300$ seconds. These two values are on researchers' choice. From figures \ref{comparenotanupDAL} and \ref{comparenotanupfeatures}, we can see that by using the \textit{threshold}, we are efficiently avoiding bias and getting more effective samples. 
@@ -1331,7 +1330,7 @@ Shift the window by setting $t = t+1$ and go back to step \ref{algorithmestimait
 
 \subsection{Implementation}
 
-To implement the Algorithm \ref{algorithmslidingwindow}, firstly we should get an idea of how the hyper parameter space looks like by running step \ref{algorithmlearningsurface} of the algorithm with some observed data. By setting $L=100$ and running 5\,000 iterations, we can find the whole $\theta$ samples in 59 seconds. For each parameter of $\theta$, we take 1\,000 sub-samples out of 5\,000 as new sequences. The new $\theta^*$ is representative for the hyper parameter space. Then,the traces and correlation is derived from $\theta^*$. Meanwhile, the acceptance rates for each parameter are $\alpha_\gamma = 0.453,\alpha_{\xi^2}=0.433, \alpha_{\lambda^2}=0.435, \alpha_{\sigma^2}=0.414, \alpha_{\tau^2}=0.4490$ respectively. Hence, the structure of  $\hat{\theta}\sim N\left( m_t,C_t\right)$ is achieved. That can be seen in figure \ref{realdatacorMatrix}. 
+To implement the Algorithm \ref{algorithmslidingwindow}, we should get an idea of what the hyper parameter space looks like by running step \ref{algorithmlearningsurface} of the algorithm with some observed data. By setting $L=100$ and running 5\,000 iterations, we can find the whole $\theta$ samples in 59 seconds. For each parameter of $\theta$, we take 1\,000 sub-samples out of 5\,000 as new sequences. The new $\theta^*$ is representative for the hyper parameter space. Then,the traces and correlation is derived from $\theta^*$. Meanwhile, the acceptance rates for each parameter are $\alpha_\gamma = 0.453,\alpha_{\xi^2}=0.433, \alpha_{\lambda^2}=0.435, \alpha_{\sigma^2}=0.414, \alpha_{\tau^2}=0.4490$ respectively. Hence, the structure of  $\hat{\theta}\sim N\left( m_t,C_t\right)$ is achieved. That can be seen in figure \ref{realdatacorMatrix}. 
 %In fact, as assuming the parameter does not vary too much through out the process, the correlation changes a little.  
 \begin{figure}[h]
 \centering
@@ -1418,7 +1417,7 @@ Since a cheap surrogate $\hat{\pi}(\cdot)$ for the true $\pi(\cdot)$ is found in
 
 \section{Discussion and Future Work}
 
-In this chapter, we are using the a self-tuning one-variable-at-a-time Metropolis-Hastings Random Walk to learn the parameter hyper space for a linear state-space model.  Starting from the joint covariance and distribution of $X$ and $Y$, we have a recursive way to update the mean and covariance sequentially. After getting the cheap approximation posterior distribution,DA MH algorithm accelerates the estimating process. The advantage of this algorithm is that it is easily to understand and implement in practice. By contrast, Particle Learning algorithm is highly efficient, however, the sufficient statistics are not available at all time . 
+In this chapter, we use the self-tuning one-variable-at-a-time Random Walk Metropolis-Hastings to learn the parameter hyper space for a linear state-space model. Starting from the joint covariance and distribution of $X$ and $Y$, we have a recursive way to update the mean and covariance sequentially. After getting the cheap approximation posterior distribution,DA MH algorithm accelerates the estimating process. The advantage of this algorithm is that it is easy to understand and implement in practice. By contrast, Particle Learning algorithm is highly efficient, however, the sufficient statistics are not available at all time . 
 
 Some future work can be done on inferring state from precious movement with other kinetic information, not just with diffusive  velocity. Besides, I am more interested in increasing the efficiency and accuracy of MCMC method. 
 

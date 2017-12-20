@@ -29,27 +29,27 @@ A number of splines are commonly in use, see \eg \citep{esl2009}. The B-spline, 
 
 Another widely used spline is the piecewise cubic spline, which is continuous on an interval $[a,b]$ and has continuous first and second derivatives \citep{wolberg1988cubic}. Let $f(t)$ denote a trajectory reconstruction, \ie the location of the vehicle at time $t$. For the piecewise cubic spline,  
 \begin{equation*}
-f(t)=d_i(t-t_i)^3+c_i(t-t_i)^2+b_i(t-t_i)+a_i,
+f(t)=d_j(t-t_j)^3+c_j(t-t_j)^2+b_j(t-t_j)+a_j,
 \end{equation*}
-on the subinterval $[t_i,t_{i+1})$ with given coefficients $d_i, c_i, b_i$ and $a_i$, $i=1,2,\ldots,n$. The coefficients are chose in such a way that $f$ and its first and second derivatives are continuous at each knot $t_i$. If the second and third derivatives of $f$ are zero at $a$ and $b$, $f$ is said to be a natural cubic spline and these conditions are called the \textit{natural boundary conditions}  \citep{green1993nonparametric}. 
+on the subinterval $[t_j,t_{j+1})$ with given coefficients $d_j, c_j, b_j$ and $a_j$, $j=1,2,\ldots,K$. The coefficients are chose in such a way that $f$ and its first and second derivatives are continuous at each knot $t_j$. If the second derivative of $f$ is zero at $a$ and $b$, $f$ is said to be a \textit{natural cubic spline} and these conditions are called the \textit{natural boundary conditions}  \citep{green1993nonparametric}. 
 
 
-To find the best estimation $\hat{f}(t)$ going through observation $y_i$, $i=1,\ldots,n$, one can use regression methods returning the least residual sum of squares among all the sequences. Consider a model $y_i=f(t_i)+\varepsilon_i$ with random errors $\left\lbrace \varepsilon_i\right\rbrace_{i=1}^n \sim N(0,\sigma^2)$ in space $\mathit{C}^{(m)}[a,b]$, the classical parametric regression assumes that $f$ has the form of $f(t,\beta)$, which is known up to the data estimated parameters $\beta$ \citep{kim2004smoothing}. When $f(t,\beta)$ is linear in $\beta$, we will have a standard linear model. 
+Given observations $\left(t_i,y_i\right)$, $i=1,\ldots,n$ ($n\geq K$), one can use regression methods to estimate $f(t)$. Specifically, let $y_i=f(t_i)+\varepsilon_i$ with random errors $\left\lbrace \varepsilon_i\right\rbrace_{i=1}^n \sim N\left(0,\sigma^2\right)$. In the case of the natural cubic spline, where $f\in \mathit{C}^{(2)}[a,b]$, this leads to a standard linear parametric model \citep{kim2004smoothing}. 
 
 
 However, a parametric approach only captures features contained in the preconceived class of functions and increases model bias \citep{yao2005functional}. To avoid this, nonparametric methods have been developed. Rather than giving specified parameters, it is desired to reconstruct $f$ from the data $y(t_i)\equiv y_i$ itself  \citep{craven1978smoothing}. The estimates of polynomial smoothing splines appear as a solution to the following minimization problem: find $\hat{f} \in \mathit{C}^{(m)}[a,b]$ that minimizes the penalized residual sum of squares: 
 \begin{equation}\label{introSmoothingOb}
-\mbox{RSS}=\sum_{i=1}^{n}\left(  y_i-f(t_i)\right) ^2+\lambda\int_a^b \left(f^{(m)}\right)^2 dt
+\mbox{RSS}=\sum_{i=1}^{n}\left(y_i-f(t_i)\right)^2+\lambda\int_a^b \left(f^{(m)}\right)^2 dt
 \end{equation}
-for pre-specified value $\lambda(>0)$ \citep{aydin2012smoothing}. In the above equation, the first term is the residual sum squares controlling the lack of fit. The second term is the roughness penalty weighted by a smoothing parameter $\lambda$, which varies from $0$ to $+\infty$ and establishes a trade-off between interpolation and straight line in the following way: 
+for pre-specified value $\lambda(>0)$ \citep{aydin2012smoothing}. In the above equation, the first term is the residual sum squares controlling the lack of fit. The second term is the roughness penalty weighted by a smoothing parameter $\lambda$, which varies from $0$ to $+\infty$ and establishes a trade-off between interpolation and a  straight line fit in the following way: 
 \begin{align*}\small 
 \begin{cases}
 \lambda = 0  & \mbox{$f$ can be any function that interpolates the data}\\
-\lambda = +\infty & \mbox{the simple least squares line fit since no second derivative can be tolerated}\\
+\lambda = +\infty & \mbox{the simple least squares line fit since no second derivative can be tolerated}
 \end{cases}
 \end{align*}\citep{esl2009}. 
 
-Hence, the cost of the equation (\ref{introSmoothingOb}) is determined not only by its goodness-of-fit to the data quantified by the residual sum of squares but also by its roughness \citep{schwarz2012geodesy}. The motivation of the roughness penalty term is from a formalization of a mechanical device: if a thin piece of flexible wood, called a spline, is bent to the shape of the curve $g$, then the leading term in the strain energy is proportional to $\int f''^2$ \citep{green1993nonparametric}. 
+Hence, the cost of the equation \eqref{introSmoothingOb} is determined not only by its goodness-of-fit to the data quantified by the residual sum of squares but also by its roughness \citep{schwarz2012geodesy}. The motivation of the roughness penalty term is from a formalization of a mechanical device: if a thin piece of flexible wood, called a spline, is bent to the shape of the curve $g$, then the leading term in the strain energy is proportional to $\int f''^2$ \citep{green1993nonparametric}. 
 
 
 %
@@ -58,7 +58,7 @@ Hence, the cost of the equation (\ref{introSmoothingOb}) is determined not only 
 %Being bounded on a Hilbert space $C^{(m)}[0,1]$ with an inner product  $\langle f,g\rangle=\int_0^1fgdt$, \citep{wahba1978improper} showed that a Bayesian version of smoothing spline problem is to take a Gaussian process prior $f(t_i) = a_0+a_1t_i+\cdots + a_{m-1}t_i^{m-1} + x_i$, on $f$ with $x_i=X(t_i)$ being a zero mean Gaussian process whose $m$th derivative is scaled white noise, $i=1,\ldots,n$ \citep{speckman2003fully}. The extended Bayes estimates $f_\lambda$ with a "partially diffuse" prior is as exactly the same as spline solution. Some works have been done on discovering the relationship between nonparametric regression and Bayesian estimation. \citep{heckman1991minimax} shows that if $f$ the regression function $\E(y\mid f)$ has unknown prior distribution  $\mathbf{f}=(f(t_1),\ldots,f(t_n))^\top$ lying in a known class of $\Omega$, then the maximum is taken over all priors in $\Omega$ and the minimum is taken over linear estimator of $\mathbf{f}$. \citep{branson2017nonparametric} propose a Gaussian process regression method that acts as a Bayesian analog to local linear regression for sharp regression discontinuity designs. It is no doubt that one of the attractive features of the Bayesian approach is that, in principle, one can solve virtually any statistical decision or inference problem. Particularly, one can provide an accuracy assessment for $\hat{f}=\E (f\mid \mathbf{y})$ using posterior probability regions \citep{cox1993analysis}. 
 %
 %
-%Based on the correspondence, \citep{craven1978smoothing} proposed an generalized cross-validation estimate for the minimizer $f_\lambda$. The estimate $\hat{\lambda}$ is the minimizer of the function where the trace of matrix $A(\lambda)$ in (\ref{crossvalidationmatrixA}) is incorporated. It is also able to establish an optimal convergence property for their estimator when the number of observations in a fixed interval tends to infinity \citep{wecker1983signal}. A high efficient algorithm to optimize generalized cross-validation and generalized maximum likelihood scores with multiple smoothing parameters via the Newton method was proposed by \citep{gu1991minimizing}. This algorithm can also be applied to the maximum likelihood and the restricted maximum likelihood estimation. The behavior of the optimal regularization parameter in the method of regularization was investigated by \citep{wahba1990optimal}. 
+%Based on the correspondence, \citep{craven1978smoothing} proposed an generalized cross-validation estimate for the minimizer $f_\lambda$. The estimate $\hat{\lambda}$ is the minimizer of the function where the trace of matrix $A(\lambda)$ in \eqref{crossvalidationmatrixA} is incorporated. It is also able to establish an optimal convergence property for their estimator when the number of observations in a fixed interval tends to infinity \citep{wecker1983signal}. A high efficient algorithm to optimize generalized cross-validation and generalized maximum likelihood scores with multiple smoothing parameters via the Newton method was proposed by \citep{gu1991minimizing}. This algorithm can also be applied to the maximum likelihood and the restricted maximum likelihood estimation. The behavior of the optimal regularization parameter in the method of regularization was investigated by \citep{wahba1990optimal}. 
 %
 
 
@@ -70,12 +70,12 @@ As discussed in the previous section, the determination of an optimal smoothing 
 
 %\subsection*{Cross-Validation}
 
-A classical parameter selection method is \textit{cross-validation} (CV). The idea behind this method can be traced back to 1930s \citep{larson1931shrinkage}. Because in most applications, only a limited amount of data is available. Thus, an idea is to split this dataset into two subgroups, one of which is used for training the model and the other one is used to evaluate its statistical performance. The sample used in evaluation is considered as "new data" as long as data are \iid. 
+A classical parameter selection method is \textit{cross-validation} (CV). The idea behind this method can be traced back to 1930s \citep{larson1931shrinkage}. Because in most applications, only a limited amount of data is available. Thus, an idea is to split this dataset into two subgroups, one of which is used for training the model and the other one is used to evaluate its statistical performance. The sample used in evaluation is considered as "new data" as long as data is \iid. 
 
 A single data split yields a validation estimate of the risk and averaging over several splits yields a cross-validation estimate \citep{arlot2010survey}. Because of the assumption that data are identically distributed, and training and validation samples are independent, CV methods are widely used in parameter selection and model evaluation. 
 
 
-For example, a $k$-fold CV splits the data into $k$ roughly equal-sized parts. For the $k$th part, we fit the model to the other $k-1$ parts of the data, and calculate the prediction error of the fitted model when predicting the $k$th part of the data. A detailed procedure is given by \citep{wahba1975completely}: suppose we have $n$ paired data $(t_1,y_1), \ldots, (t_n,y_n)$. Run a $k$-fold CV according to the following Algorithm \ref{kfoldCV}. 
+For example, a $k$-fold CV splits the data into $k$ roughly equal-sized parts. For the $k$th part, we fit the model to the other $k-1$ parts of the data, and calculate the prediction error of the fitted model when predicting the $k$th part of the data. A detailed procedure is given by \cite{wahba1975completely}: suppose we have $n$ paired data $(t_1,y_1), \ldots, (t_n,y_n)$. Run a $k$-fold CV according to the following Algorithm \ref{kfoldCV}. 
 \begin{algorithm}[h]
 \SetAlgoLined 
 %\KwResutt{Write here the resutt }
@@ -111,7 +111,7 @@ where $A_{ii}$ is the $i$th diagonal element of $A(\lambda)$. Then, the GCV appr
 In smoothing problems, GCV can also alleviate the tendency of cross-validation to under-smooth \citep{esl2009}. 
 
 
-Rather than $\lambda$ being constant, a new challenge is posed that the smoothing parameter becomes a function $\lambda(t)$ and is varying in domains. The structure of this penalty function controls the complexity of each domain and the whole final model.  \cite{donoho1995wavelet} introduced adaptive splines and a method to calculate piecewise parameters and \cite{liu2010data} give an improved formula for this method. They proposed an approximation to the penalty function with an indicator and extended the generalized likelihood to the adaptive smoothing spline. This will be another interesting research topic. 
+Rather than $\lambda$ being constant, a new challenge is posed that the smoothing parameter becomes a function $\lambda(t)$ and is varying in domains. The structure of this penalty function controls the complexity of each domain and the whole final model.  \cite{donoho1995wavelet} introduce adaptive splines and a method to calculate piecewise parameters and \cite{liu2010data} give an improved formula for this method. They proposed an approximation to the penalty function with an indicator and extended the generalized likelihood to the adaptive smoothing spline. This will be another interesting research topic. 
 
 
 %Craven and Wahba [5], Hardle [8], Hardle, Hall and Marron
@@ -127,16 +127,16 @@ Rather than $\lambda$ being constant, a new challenge is posed that the smoothin
 %
 %The AIC, abbreviated for Akaike Information Criterion, is originally for parametric problems of model selection. 
 
-Overall, almost every technique found in the scientific literatures on the reconstruction and trajectory planning problem is based on the optimization of objective functions or parameter selections, such as the objective function (\ref{introSmoothingOb}) and cross-validation approaches \citep{gasparetto2007new}. 
+Overall, almost every technique found in the scientific literatures on the reconstruction and trajectory planning problem is based on the optimization of objective functions or parameter selections, such as the objective function \eqref{introSmoothingOb} and cross-validation approaches \citep{gasparetto2007new}. 
 % Besides the aforementioned approaches, the most significant optimality criteria are: (\romannum{1}) minimum execution time, (\romannum{2}) minimum energy (or actuator effort), (\romannum{3}) minimum jerk. 
 
 
 
 \section{Bayesian Filtering}
 
-Smoothing spline algorithms have several advantages in inferring and characterizing planar trajectories, particularly in reconstruction. However, subject to the property that smoothing splines require the solution of a global problem that involves the entire set of points to be interpolated, it might not be suitable for on-line estimation or instant updating \citep{biagiotti2013online}. Therefore, it is time to use Bayesian filtering to implement on-line/instant estimation and prediction. 
+Smoothing spline algorithms have several advantages in inferring and characterizing planar trajectories, particularly in reconstruction. However, subject to the property that smoothing splines require the solution of a global problem that involves the entire set of points to be interpolated, it might not be suitable for on-line estimation or instant updating \citep{biagiotti2013online}. It is the time to use Bayesian filtering to implement on-line/instant estimation and prediction. 
 
-The word \textit{filtering} refers to the methods for estimating the state of a time-varying system, which is indirectly observed through noisy measurements. A Bayes filter is a general probabilistic approach to infer an unknown probability density function recursively over time using incoming measurements and a mathematical process model. The concept \textit{optimal estimation} refers to some criteria that measure the optimality in specific sense \citep{anderson1979optimal}. For example, a posterior estimation of $\hat{x}_t\sim p(x_t\mid y_{1:t})$ that minimizes the loss function $J_t=\E\lbrack x_t-\hat{x}_t\rbrack^2$ for incorrect estimates, or least mean squared errors, maximum likelihood approximation and so on. See \eg  \citep{chen2003bayesian, sarkka2013bayesian}. Hence, an optimal \textit{Bayesian filtering} is using Bayesian way of formulating optimal filtering by meeting some statistical criteria. 
+The word \textit{filtering} refers to the methods for estimating the state of a time-varying system, which is indirectly observed through noisy measurements. A Bayes filter is a general probabilistic approach to infer an unknown probability density function recursively over time using incoming measurements and a mathematical process model. The concept \textit{optimal estimation} refers to some criteria that measure the optimality in specific sense \citep{anderson1979optimal}. For example, a posterior estimation of $\hat{x}_t\sim p(x_t\mid y_{1:t})$ that minimizes the loss function $J_t=\E\lbrack x_t-\hat{x}_t\rbrack^2$ for incorrect estimates, or least mean squared errors, maximum likelihood approximation and so on. See \eg  \citep{chen2003bayesian, sarkka2013bayesian}. Hence, an optimal \textit{Bayesian filtering} is using the Bayesian way of formulating optimal filtering by meeting some statistical criteria. 
 
 It is no doubt that in a conventional target tracking system, the most common method is the standard Kalman filter, which is a recursive solution to the discrete data linear filtering problem. 
 
@@ -170,9 +170,9 @@ and $K_t = S_{t-1} G^\top (R_t +GS_{t-1}G^\top)^{-1}$ is named Kalman gain matri
 
 Further, compared with the filtering distribution $p(x_t\mid y_{1:t})$, the prediction distribution is trying to find an $n$-steps later distribution $p(x_{t+n}\mid y_{1:t})$ from the current state, and the smoothing distribution is to find the distribution $p(x_k\mid y_{1:t})$ of a specific state $x_k$ in the past for any $k$, where $1<k<t$. 
 
-However, Kalman filter has a limitation that it does not apply to general non-linear model and non-Gaussian distributions. For a non-linear system, one can use the extended Kalman filter (EKF), which is widely used for solving nonlinear state estimation applications \citep{gelb1974applied, bar1993estimation}. The EKF uses Taylor expansion to construct linear approximations of nonlinear functions, therefore, the state transition $f$ and observation $g$ do not have to be linear but to be differentiable. However, in the EKF process, these approximations can introduce large errors in the true posterior mean and covariance of the transformed (Gaussian) random variable \citep{wan2000unscented}. 
+However, Kalman filter has a limitation that it does not apply to general non-linear model and non-Gaussian distributions. For a non-linear system, one can use the extended Kalman filter (EKF), which is widely used for solving nonlinear state estimation applications \citep{gelb1974applied, bar1993estimation}. The EKF uses Taylor expansion to construct linear approximations of nonlinear functions, therefore the state transition $f$ and observation $g$ do not have to be linear but to be differentiable. However, in the EKF process, these approximations can incur large errors in the true posterior mean and covariance of the transformed random variable \citep{wan2000unscented}. 
 
-Alternatively, the unscented Kalman filter (UKF) is a derivative-free method \citep{julier1997new, wan2000unscented, gyorgy2014unscented}. It is using the Kalman filter to create a normal distribution that approximates the result of a non-linear transformation numerically by seeing what happens to a few deliberately chosen points. The unscented transform is used to recursively estimating the equation (\ref{KalmanEstimation}), where the state random variable is redefined as the concatenation of the original state and noise variables. By contrast, Kalman filter does not require numerical approximations. 
+Alternatively, the unscented Kalman filter (UKF) is a derivative-free method \citep{julier1997new, wan2000unscented, gyorgy2014unscented}. It uses the Kalman filter to create a normal distribution that approximates the result of a non-linear transformation numerically by seeing what happens to a few deliberately chosen points. The unscented transform is used to recursively estimating the equation \eqref{KalmanEstimation}, where the state random variable is redefined as the concatenation of the original state and noise variables. By contrast, Kalman filter does not require numerical approximations. 
 
 The performances of EKF and UKF are compared in a few references regarding to different kinds of aspects, such as \citep{chandrasekar2007comparison, laviola2003comparison, st2004comparison}. There is not an overall conclusion that which one performs better. 
 
@@ -182,20 +182,19 @@ Limited to its property, Kalman filter is tied up for a dynamic system, where th
 
 However, when the target maneuver occurs, Kalman filtering accuracy will be reduced or even diverged due to the model mismatch and noise characteristics that cannot be known exactly \citep{liu2014filtering}. Additionally, Kalman filter based methods require the state vector contains pre-specified coefficients during the whole approximation procedure and are within the bounded definition range determined at the beginning \citep{jauch2017recursive}. 
 
-A more generic algorithm is introduced in the following section. 
-
+A more generic algorithm is investigated in the following section. 
 
 \subsection*{Monte Carlo Filter}
 
 \textit{Monte Carlo filter} is a class of Monte Carlo approaches \citep{chen2003bayesian}. The power of these approaches is that they can numerically and efficiently handle integration and optimization problems. 
 
-The important advantage of Monte Carlo is that a large number of posterior moments can be estimated at a reasonable computational effort and that estimates of the numerical accuracy of these results are obtained in a simple way \citep{kloek1978bayesian}. \textit{Sequential Monte Carlo} method is using Monte Carlo approaches to estimate and to compute recursively. One of the attractive merits is in the fact that they allow on-line estimation by combining the powerful Monte Carlo sampling methods with Bayesian inference at an expense of reasonable computational cost \citep{chen2003bayesian}. 
+The important advantage of Monte Carlo is that a large number of posterior moments can be estimated at a reasonable computational effort and that estimates of the numerical accuracy of these results are obtained in a simple way \citep{kloek1978bayesian}. \textit{Sequential Monte Carlo} method uses Monte Carlo approaches to estimate and to compute recursively. One of the attractive merits is in the fact that they allow on-line estimation by combining the powerful Monte Carlo sampling methods with Bayesian inference at an expense of reasonable computational cost \citep{chen2003bayesian}. 
 
-For example, consider the model (\ref{introKFmodel}) with parameter $\theta$. The likelihood approximation is $p(y_t\mid y_{1:t-1},\theta)$ and can be written by
+For example, consider the model \eqref{introKFmodel} with parameter $\theta$. The likelihood approximation is $p(y_t\mid y_{1:t-1},\theta)$ and can be written by
 \begin{equation*}
 p(y_t\mid y_{1:t-1},\theta) = \int p(y_t\mid x_t,\theta)p(x_t\mid y_{1:t-1},\theta) dx_t = \E \lbrack p(y_t\mid x_t,\theta)\rbrack.
 \end{equation*}
-The standard Monte Carlo algorithm is trying to compute the integration by drawing $N$ independent samples $x_t^{(i)}$ from $p(x_t\mid y_{1:t-1},\theta)$ at first and then, by adding them up, to approximate the integration for large $N$ in the following way 
+The standard Monte Carlo algorithm is trying to compute the integration by drawing $N$ independent samples $x_t^{(i)}$ from $p(x_t\mid y_{1:t-1},\theta)$ first and then, by adding them up, to approximate the integration for large $N$ in the following way 
 \begin{equation*}
 \E\left[p(y_t\mid x_t,\theta)\right]\approx \frac{1}{N}\sum_i p(y_t\mid x_t^{(i)},\theta), 
 \end{equation*}
@@ -213,13 +212,13 @@ Nevertheless, the SIS makes samples skewed that only a few samples have proper w
 
 Besides the SIS processes, a resampling step, also known as a selection step, is trying to eliminate the samples with small weights and duplicate the samples with large weights in a principled way \citep{rubin2004multiple, tanner1987calculation}. This method is named \textit{sampling and importance resampling} (SIR). Suppose samples with associated weights are $\left\lbrace x_t^{(i)},W_t^{(i)}\right\rbrace$, a resampling step is executed by generating new samples $\tilde{x}_t^{(i)}$ according to normalized weights $\tilde{W}_t^{(i)}$. It is pointed out that the resampling step does not prevent weights degeneracy but improve further calculation. 
 
-The common feature of SIS and SIR is that both of these methods are based on importance sampling and updating samples weights recursively. The difference is that in SIR, the resampling step is always performed. Whereas, in SIS, resampling is only taken when needed. 
+The common feature of SIS and SIR is that both of these methods are based on importance sampling and updating samples weights recursively. The difference is that in SIR, the resampling step is always performed. Whereas, in SIS, the resampling is only taken when needed. 
 
 
 \textit{Particle filter} (PF) is the most successful application of importance sampling with resampling algorithm. It randomly generates a cloud of points and push these points through the computation process. It is a recursive implementation of the Monte Carlo approaches \citep{doucet2009tutorial}. 
 
 
-A generic PF firstly generates $N$ uniformly weighted random measurements $\left\lbrace x_{t-1}^{(i)},\frac{1}{N} \right\rbrace$ at time $t-1$. Once a new observation $y_t$ comes into the system, the weights will be updated recursively by involving the likelihood function $p(y_t\mid x_t^{(i)})$ and propagation function $p(x_t^{(i)}\mid x_{t-1}^{(i)})$. In fact, it is the SIS step. To monitor how bad is the weight degeneracy, a suggested measurement \textit{effective sample size} was introduced in \citep{kong1994sequential}. It is the reciprocal of the sum of squared weights in the form of 
+A generic PF generates $N$ uniformly weighted random measurements $\left\lbrace x_{t-1}^{(i)},\frac{1}{N} \right\rbrace$ first at time $t-1$. Once a new observation $y_t$ comes into the system, the weights will be updated recursively by involving the likelihood function $p(y_t\mid x_t^{(i)})$ and propagation function $p(x_t^{(i)}\mid x_{t-1}^{(i)})$. In fact, it is the SIS step. To monitor how bad is the weight degeneracy, a suggested measurement \textit{effective sample size} is introduced in \citep{kong1994sequential}. It is the reciprocal of the sum of squared weights in the form of 
 \begin{equation*}
 N_{\mbox{\scriptsize eff}} = \frac{1}{\sum_{i=1}^{N}\left(W_t^{(i)} \right)^2}. 
 \end{equation*}
@@ -290,7 +289,7 @@ Metropolis-Hastings algorithm is widely used in statistical inference, to sample
 
 %It is introduced that Metropolis-Hastings algorithm draws samples from a target distribution $\pi(\cdot)$ by proposing $x'$ from $x^{(t)}$. Then calculate a probability to decide whether accept or reject it. The proposal distribution 
 
-\textit{Adaptive MCMC} methods have been developed to automatically adjust these parameters. See \eg \citep{andrieu2008tutorial, atchade2009adaptive, roberts2009examples}. One of the most successful adaptive MCMC algorithms was introduced by \cite{haario2001adaptive}, where, based on the  random walk Metropolis algorithm, the covariance of the proposal distribution is calculated using all of the previous states. For instance, with an adaptive MCMC chain $x_0,x_1,\ldots,x_t$, the proposal $x'$ is from $N(\cdot\mid x_t,R_t)$, where $R_t$ is the covariance matrix determined by the spatial distribution of the state $x_0,x_1,\ldots,x_t$. 
+\textit{Adaptive MCMC} methods have been developed to automatically adjust these parameters. See \eg \citep{andrieu2008tutorial, atchade2009adaptive, roberts2009examples}. One of the most successful adaptive MCMC algorithms is introduced by \cite{haario2001adaptive}, where, based on the  random walk Metropolis algorithm, the covariance of the proposal distribution is calculated using all of the previous states. For instance, with an adaptive MCMC chain $x_0,x_1,\ldots,x_t$, the proposal $x'$ is from $N(\cdot\mid x_t,R_t)$, where $R_t$ is the covariance matrix determined by the spatial distribution of the state $x_0,x_1,\ldots,x_t$. 
 
 Even though the adaptive Metropolis algorithm is non-Markovian, the establishment was verified that the adaptive MCMC algorithm indeed has the correct ergodic properties. 
 
@@ -373,13 +372,13 @@ tune the Markov chain parameters can be found at \citep{roberts2009examples}.
 
 \subsection*{Other Monte Carlo Algorithms}
 
-The \textit{Hamiltonian Monte Carlo} (HMC), devised by \cite{duane1987hybrid} as hybrid Monte Carlo, is using Hamiltonian dynamics to produce distant proposals for the Metropolis algorithm in order to avoid slow exploration of the state-space that results from the diffusive behavior of simple random walk proposals \citep{neal2011mcmc}. In practice, the HMC sampler is more efficient for sampling in high-dimensional distributions than MH.
+The \textit{Hamiltonian Monte Carlo} (HMC), devised by \cite{duane1987hybrid} as hybrid Monte Carlo, uses Hamiltonian dynamics to produce distant proposals for the Metropolis algorithm in order to avoid slow exploration of the state-space that results from the diffusive behavior of simple random walk proposals \citep{neal2011mcmc}. In practice, the HMC sampler is more efficient for sampling in high-dimensional distributions than MH.
 
 The key feature of HMC is the Hamiltonian system equation as follows: 
 \begin{equation*}
 H(x,v) = U(x)+K(v),
 \end{equation*}
-which is consisting of potential energy $U(x)$ with a $d$-dimensional momentum vector (position) $x$ and kinetic energy function $K(v)=\frac{v^\top M^{-1}v}{2}$ with a $d$-dimensional momentum vector (velocity) $v$. To propose $\left\lbrace x',v'\right\rbrace$, HMC is using leapfrog method, which is based on Euler's method and modified Euler's method, to increase the proposing accuracy \citep{betancourt2017conceptual}. It is accepted with the probability
+which is consisting of potential energy $U(x)$ with a $d$-dimensional momentum vector (position) $x$ and kinetic energy function $K(v)=\frac{v^\top M^{-1}v}{2}$ with a $d$-dimensional momentum vector (velocity) $v$. To propose $\left\lbrace x',v'\right\rbrace$, HMC uses the leapfrog method, which is based on Euler's method and modified Euler's method, to increase the proposing accuracy \citep{betancourt2017conceptual}. It is accepted with the probability
 \begin{equation*}
 \alpha = \min\left\lbrace\exp\lbrack H(x,v)-H(x',v') \rbrack, 1\right\rbrace.
 \end{equation*}
@@ -387,7 +386,7 @@ which is consisting of potential energy $U(x)$ with a $d$-dimensional momentum v
 Compared with MH sampler, the HMC has a higher efficiency in most of the high-dimensional cases. It is incorporating not only with energy $U(x)$ but also with a gradient. In this way, HMC explores a larger area and converges to balance faster. 
 
 
-The \textit{Zig-Zag Monte Carlo} is using a continuous-time piecewise zig-zag process to increase the sampling efficiency \citep{bierkens2016piecewise}. It is an application of the Curie-Weiss model in high dimension and provides a practically efficient sampling scheme for sampling in the big data regime with some remarkable properties \citep{turitsyn2011irreversible, bierkens2017limit}. 
+The \textit{Zig-Zag Monte Carlo} uses a continuous-time piecewise zig-zag process to increase the sampling efficiency \citep{bierkens2016piecewise}. It is an application of the Curie-Weiss model in high dimension and provides a practically efficient sampling scheme for sampling in the big data regime with some remarkable properties \citep{turitsyn2011irreversible, bierkens2017limit}. 
 
 Given a target density $\pi(\cdot)$, the Zig-Zag process $f(x,\theta)$ is defined in a $d \otimes 2$ space $\mathcal{E}$. $x$ is in the $d$-dimensional topological subspace and $\theta$ is in a binary discrete $\left\lbrace -1,1\right\rbrace_d$ subspace denoting the flipping statues. The switching rate $\lambda(x,\theta)$ agrees with the target distribution $\pi(\cdot)$ in a certain way and is defined as $\lambda(x,\theta) = \max \left\lbrace 0,\theta U'(x) \right\rbrace +\gamma(x)$, where $U'(x)  = \lambda(x,\theta) - \lambda(x,-\theta)$. Then, the Zig-Zag operator $L$ is 
 \begin{equation*}
@@ -427,15 +426,15 @@ In Chapter \ref{ChapterTS}, an adaptive smoothing V-spline method, which is base
 
 In Chapter \ref{ChapterGPR}, the Bayesian estimation form of the V-spline is given. It is proved that the Bayesian estimate is corresponding to a trivial V-spline  in the reproducing kernel Hilbert space $\mathcal{C}_{\mbox{\scriptsize p.w.}}^{(2)}[0,1]$, where the second-derivative is piecewise-continuous.  An extended GCV is used to find the optimal parameters for the Bayesian estimate. 
 
-In Chapter \ref{ChapterFR}, it is to give a comprehensive overview of existing methods for sequential state and parameter inference. Basic concepts and popular algorithms on sequential state estimation are introduced firstly. Furthermore, the algorithms that can estimate combined unknown state and parameter are brought into a separate section. A numerical comparison of different methods is given at the end of this chapter. 
+In Chapter \ref{ChapterFR}, a comprehensive overview of existing methods for sequential state and parameter inference is given. Basic concepts and popular algorithms of sequential state estimation are discussed in the second section. Furthermore, the algorithms for combined state and parameter estimation are brought into a separate section. A numerical comparison of different methods is given at the end of this chapter. 
 
-In Chapter \ref{ChapterMCMC}, it is using a random walk Metropolis-Hastings algorithm in a learning phase to learn the mean of covariance of the parameters space. After that, the information is implemented in the estimation phase, where an adaptive Delayed-Acceptance Metropolis-Hastings algorithm is proposed for estimating the posterior distribution of combined state and parameter. To remain a high running efficiency, a sliding window approach, in which way historical data is cut off when new observations come into the data stream, is used to improve the sampling speed. This algorithm is applied to irregularly sampled time series data and implemented in real GPS data set. 
+In Chapter \ref{ChapterMCMC}, a random walk Metropolis-Hastings algorithm in the learning phase is utilized to learn the mean and the covariance of the parameters space. After that, the information is implemented in the estimation phase, where an adaptive Delayed-Acceptance Metropolis-Hastings algorithm is proposed for estimating the posterior distribution of combined state and parameter. To remain a high running efficiency, a sliding window approach, in which way historical data is cut off when new observations come into the data stream, is used to improve the sampling speed. This algorithm is applied to irregularly sampled time series data and implemented in real GPS data set. 
 
 The proof of theorems, details of equation calculations, and results of simulation studies are all presented in appendices. For details, the Appendix \ref{appendTS} includes V-spline related theorems, lemmas, calculations and figures. In Appendix \ref{appendMCMC}, the proposed adaptive sequential MCMC related works and outcomes are illustrated, including details of the recursive form calculation, tables and figures of parameters comparison and so on. 
 
 A spin-off outcome is presented in Appendix \ref{appendSimp}. It is a data simplification method used for reducing the size of a dataset and saving storage costs without losing important information.
 
-Finally, the list of references is at the end of this thesis.
+
 
 
 

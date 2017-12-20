@@ -4,7 +4,7 @@
 
 \subsection*{The Forecast Distribution} 
 
-Calculating the log-posterior of parameters requires finding out the forecast distribution of $p\left(y_{1:t}\mid y_{1:t-1},\theta\right)$. A general way is using the joint distribution of $y_{t}$ and $y_{1:t-1}$, which is $p\left(y_{1:t}\mid \theta\right)\sim N\left(0,\Sigma_{YY}\right)$ and following the procedure in Section \ref{sectionforecast} to work out the inverse matrix of a multivariate normal distribution. For example, one may find the inverse of the covariance matrix 
+Calculating the log-posterior of parameters requires finding out the forecast distribution of $p\left(y_{1:t}\mid y_{1:t-1},\theta\right)$. A general way is to use the joint distribution of $y_{t}$ and $y_{1:t-1}$, which is $p\left(y_{1:t}\mid \theta\right)\sim N\left(0,\Sigma_{YY}\right)$ and following the procedure in Section \ref{sectionforecast} to work out the inverse matrix of a multivariate normal distribution. For example, one may find the inverse of the covariance matrix 
 \begin{align*}
 \Sigma_{YY}^{-1} = B\left(I-A^{-1}B\right) =\frac{1}{\sigma^4}\left(\sigma^2 I-A^{-1}\right) \triangleq \frac{1}{\sigma^4}
 \begin{bmatrix} 
@@ -12,14 +12,14 @@ Z_{t} & b_{t} \\
 b_{t}^\top & K_{t}
 \end{bmatrix}.
 \end{align*}
-Therefore, the original form of this covariance is 
+Therefore the original form of this covariance is 
 \begin{align*} \Sigma_{YY} =\sigma^4 
 \begin{bmatrix}
 \left(Z-bK^{-1}b^\top\right)^{-1} & -Z^{-1}b\left(K-b^\top Z^{-1}b\right)^{-1}\\
 -K^{-1}b^\top \left(Z-bK^{-1}b^\top\right)^{-1} & \left(K-b^\top Z^{-1}b\right)^{-1}
 \end{bmatrix}.
 \end{align*}
-For sake of simplicity, here we are using $Z$ to represent the $t\times t$ matrix $Z_{t}$, $b$ to represent the $t \times 1$ vector  $b_{t}$  and $K$ to represent the $1\times 1$ constant $K_{t}$. By denoting $C_{t}^\top = \begin{bmatrix} 0 & \cdots & 0 & 1\end{bmatrix}$ and post-multiplying $\Sigma_{YY}^{-1}$, it gives us 
+For sake of simplicity, here we use $Z$ to represent the $t\times t$ matrix $Z_{t}$, $b$ to represent the $t \times 1$ vector $b_{t}$ and $K$ to represent the $1\times 1$ constant $K_{t}$. By denoting $C_{t}^\top = \begin{bmatrix} 0 & \cdots & 0 & 1\end{bmatrix}$ and post-multiplying $\Sigma_{YY}^{-1}$, it gives us 
 \begin{equation}
 \Sigma_{YY}^{-1} C_{t}= \frac{1}{\sigma^4}\left(\sigma^2 I-A^{-1}\right) C_{t}= \frac{1}{\sigma^4} \begin{bmatrix} b_{t} \\ K_{t} \end{bmatrix}.
 \end{equation} 
@@ -39,7 +39,7 @@ With the above formula, the recursive way of updating the mean and covariance ar
 where $K_1=\frac{\sigma^4}{\sigma^2+\tau^2+L^2\phi^2}$. For calculation details, readers can refer to Appendix \ref{linearcalculation}. 
 
 
-By using the formula again, one term of equation (\ref{beforeSMformula}) becomes 
+By using the formula again, one term of equation \eqref{beforeSMformula} becomes 
 \begin{equation}
 A_{t}^{-1}C_{t} = \left( I - \frac{M_{t}^{-1}u_{t}u_{t}^\top }{1+u_{t}^\top M_{t}^{-1} u_{t}} \right)M_{t}^{-1}C_{t},
 \end{equation}
@@ -99,7 +99,7 @@ where $K_1=\frac{\sigma^4}{\sigma^2+\tau^2+L^2\phi^2}$.
 
 \subsection*{The Estimation Distribution}
 
-As introduced before, $p\left(x_t \mid y_{1:t}\right)$ is a mixture Gaussian distribution with given $\theta$ and its mean and variance can be found by 
+As discussed before, $p\left(x_t \mid y_{1:t}\right)$ is a mixture Gaussian distribution with given $\theta$ and its mean and variance can be found by 
 \begin{align}
 \mu_x^{\left(t\right)} &= \frac{1}{N} \sum_i \mu_i\\
 \begin{split}\Var\lbrack x^{\left(t\right)}\rbrack
@@ -127,7 +127,7 @@ thus, for any given $\theta_i$, $x_{t}\mid y_{1:t},\theta_i \sim N\left(\mu_{t}^
                       &= C_{t}^\top\left(A-B\right)^{-1}C_{t} -  C_{t}^\top A^{-1}B\left(A-B\right)^{-1}C_{t}\\
                       &= C_{t}^\top A^{-1}C_{t} \\ &= \sigma^2-K_{t}.
 \end{align*}
-By substituting them into the equation (\ref{linearmu}) and (\ref{linearsigma}), the estimated $\hat{x}_t$ is easily got. 
+By substituting them into the equation \eqref{linearmu} and \eqref{linearsigma}, the estimated $\hat{x}_t$ is obtained. 
 
 
 
@@ -252,7 +252,7 @@ A_t^{-1} C_tS_{t+1} \\B_1^{-1}D_{t+1} \end{bmatrix}
 A_t^{-1} C_tS_{t+1} \\B_1^{-1}D_{t+1} \end{bmatrix} 
 \left(I+ S_{t+1}^\top \left(B_1^{-1} - K_t\right)  S_{t+1} +D_{t+1}^\top B_1^{-1}D_{t+1}  \right)^{-1}  D_{t+1}^\top B_1^{-1}.
 \end{align*}
-Thus, by using the equation (\ref{OUKtp1}), we will get 
+Thus, by using the equation \eqref{OUKtp1}, we will get 
 \begin{equation}\label{recursiveKp1}
 K_{t+1} =B_1^{-1}D_{t+1} \left(I+ S_{t+1}^\top \left(B_1^{-1} - K_t\right)  S_{t+1} +D_{t+1}^\top B_1^{-1}D_{t+1}  \right)^{-1}  D_{t+1}^\top B_1^{-1},
 \end{equation}
@@ -263,7 +263,7 @@ b_{t+1} &= A_t^{-1}C_t S_{t+1} \left(I+ S_{t+1}^\top \left(B_1^{-1} - K_t\right)
 -b_t \\ B_1^{-1}-K_t 
 \end{bmatrix}  S_{t+1} \left(I+ S_{t+1}^\top \left(B_1^{-1} - K_t\right)  S_{t+1} +D_{t+1}^\top B_1^{-1}D_{t+1}  \right)^{-1} D_{t+1}^\top B_1^{-1}.
 \end{align*}
-To achieve the recursive updating formula, firstly we need to find the form of $b_{t+1}^\top B_t^2 Y_{1:t}$. In fact, it is \footnotesize
+To achieve the recursive updating formula, we need to find the form of $b_{t+1}^\top B_t^2 Y_{1:t}$ at first. In fact, it is \footnotesize
 \begin{align*}
 b_{t+1}^\top B_t Y_{1:t} &= B_1^{-\top}D_{t+1}  \left(I+ S_{t+1}^\top  \left(B_1^{-1} - K_t\right)  S_{t+1} +D_{t+1}^\top B_1^{-1}D_{t+1}  \right)^{-\top} S_{t+1}^\top 
 \begin{bmatrix}
@@ -278,7 +278,7 @@ Y_{1:t-1} \\ Y_t
 \left(  K_t B_1\bar{\mu}_t+ \left(I-K_t B_1\right)  Y_t      \right), \\
 \end{align*}
 \normalsize
-By using equation (\ref{recursiveKp1}) and simplifying the above equation, one can achieve a recursive updating form of the mean, which is 
+By using equation \eqref{recursiveKp1} and simplifying the above equation, one can achieve a recursive updating form of the mean, which is 
 \begin{align*}
 %\bar{\mu}_{t+1} = -B_1K_{t+1}^{-1} B_1^{-1}D_{t+1}  \left(I+ S_{t+1}^\top  \left(B_1^{-1} - K_t\right)  S_{t+1} +D_{t+1}^\top B_1^{-1}D_{t+1}  \right)^{-\top} S_{t+1}^\top 
 %\left(  K_t B_1 \bar{\mu}_t+ \left(I-K_tB_1\right)Y_t      \right).
@@ -318,7 +318,7 @@ and $K_1 =B_1^{-1} - A_1^{-1} = \begin{bmatrix}
 
 \subsection*{The Estimation Distribution}
 
-Because of the joint distribution (\ref{jointmatrix}), one can find the best estimation with a given $\theta$ by
+Because of the joint distribution \eqref{jointmatrix}, one can find the best estimation with a given $\theta$ by
 \begin{align*}
 X \mid Y,\theta &\sim N \left( A^{-1}BY, A^{-1} \right) \\
 &\sim N\left(L^{-\top}L^{-1}BY,L^{-\top}L^{-1}\right)\\

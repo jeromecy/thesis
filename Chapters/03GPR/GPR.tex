@@ -31,7 +31,7 @@ where the first term is the lack of fit of $f$ to the data. In the second term, 
 Further, \cite{wahba1978improper} shows that a Bayesian version of this problem is to take a Gaussian process prior $f(t_i) = a_0+a_1t_i+\cdots + a_{m-1}t_i^{m-1} + x_i$ on $f$ with $x_i=X(t_i)$ being a zero-mean Gaussian process whose $m$th derivative is scaled white noise, $i=1,\ldots,n$ \citep{speckman2003fully}. The extended Bayes estimates $f_\lambda$ with a "partially diffuse" prior is as exactly the same as spline solution. Some works have been done on discovering the relationship between nonparametric regression and Bayesian estimation. \cite{heckman1991minimax} show that if $f$ the regression function $\E(y\mid f)$ has unknown prior distribution  $\mathbf{f}=(f(t_1),\ldots,f(t_n))^\top$ lying in a known class of $\Omega$, then the maximum is taken over all priors in $\Omega$ and the minimum is taken over linear estimator of $\mathbf{f}$. \cite{branson2017nonparametric} propose a Gaussian process regression method that acts as a Bayesian analog to local linear regression for sharp regression discontinuity designs. It is no doubt that one of the attractive features of the Bayesian approach is that, in principle, one can solve virtually any statistical decision or inference problem. Particularly, one can provide an accuracy assessment for $\hat{f}=\E (f\mid \mathbf{y})$ using posterior probability regions \citep{cox1993analysis}. 
 
 
-Based on the correspondence, \cite{craven1978smoothing} propose an generalized cross-validation estimate for the minimizer $f_\lambda$. The estimate $\hat{\lambda}$ is the minimizer of the function where the trace of matrix $A(\lambda)$ in (\ref{crossvalidationmatrixA}) is incorporated. It is also able to establish an optimal convergence property for their estimator when the number of observations in a fixed interval tends to infinity \citep{wecker1983signal}. A high efficient algorithm to optimize generalized cross-validation and generalized maximum likelihood scores with multiple smoothing parameters via the Newton method was proposed by \cite{gu1991minimizing}. This algorithm can also be applied to the maximum likelihood and the restricted maximum likelihood estimation. The behavior of the optimal regularization parameter in the method of regularization was investigated by \cite{wahba1990optimal}. 
+Based on the correspondence, \cite{craven1978smoothing} propose an generalized cross-validation estimate for the minimizer $f_\lambda$. The estimate $\hat{\lambda}$ is the minimizer of the function where the trace of matrix $A(\lambda)$ in \eqref{crossvalidationmatrixA} is incorporated. It is also able to establish an optimal convergence property for their estimator when the number of observations in a fixed interval tends to infinity \citep{wecker1983signal}. A high efficient algorithm to optimize generalized cross-validation and generalized maximum likelihood scores with multiple smoothing parameters via the Newton method was proposed by \cite{gu1991minimizing}. This algorithm can also be applied to the maximum likelihood and the restricted maximum likelihood estimation. The behavior of the optimal regularization parameter in the method of regularization was investigated by \cite{wahba1990optimal}. 
 
 
 In this chapter, it is proved that the V-spline can be estimated by a Bayesian approach in second-derivative-piecewise-continuous reproducing kernel Hilbert space. The GCV is used to find the optimal parameters for V-spline. 
@@ -40,16 +40,16 @@ In this chapter, it is proved that the V-spline can be estimated by a Bayesian a
 
 \section{Polynomial Smoothing Splines on $[0, 1]$ as Bayes Estimates}
 
-A polynomial smoothing spline of degree $2m-1$ is a piecewise polynomial of the same degree on each intervals $[t_i,t_{i+1}]$, $i=1, \ldots, n-1$, and the first $2m-2$ derivatives are continuous at joint knots. For instance, when $m=2$,  a piecewise cubic smoothing spline is a special case of the polynomial smoothing spline providing a powerful tool to estimate the above nonparametric function (\ref{GaussianProcessGeneralObjective}) in the space  $\mathcal{C}^{(2)}[0,1]$, where the penalty term is $\int f''^2dt$ \citep{hastie1990generalized, wang1998smoothing}. If a general space $\mathcal{C}^{(m)}[0,1]$ is equipped with an appropriate inner product, it can be made a reproducing kernel Hilbert space. 
+A polynomial smoothing spline of degree $2m-1$ is a piecewise polynomial of the same degree on each intervals $[t_i,t_{i+1}]$, $i=1, \ldots, n-1$, and the first $2m-2$ derivatives are continuous at joint knots. For instance, when $m=2$,  a piecewise cubic smoothing spline is a special case of the polynomial smoothing spline providing a powerful tool to estimate the above nonparametric function \eqref{GaussianProcessGeneralObjective} in the space  $\mathcal{C}^{(2)}[0,1]$, where the penalty term is $\int f''^2dt$ \citep{hastie1990generalized, wang1998smoothing}. If a general space $\mathcal{C}^{(m)}[0,1]$ is equipped with an appropriate inner product, it can be made a reproducing kernel Hilbert space. 
 
 \subsection{Polynomial Smoothing Spline}
 
-A spline is a numeric function that is piecewise-defined by polynomial functions, and which possesses a high degree of smoothness at the places where the polynomial pieces connect (known as knots) \citep{judd1998numerical, chen2009feedback}. Suppose we are given observed data $(t_1,y_1),(t_2,y_2), \ldots, (t_n,y_n)$ in the interval $[0,1]$, satisfying $0\leq t_1< t_2 < \cdots <t_n \leq 1$, a piecewise polynomial function $f(t)$ can be obtained by dividing the interval into contiguous intervals $(t_1,t_2),\ldots,(t_{n-1},t_n)$ and represented by a separate polynomial on each interval. For any continuous $f\in \mathcal{C}^{(m)}[0,1]$, it can be represented in a linear combination of basis functions $h_m(t)$ as $f(t) =\sum_{m=1}^{M}\beta_mh_m(t)$, where $\beta_m$ are coefficients \citep{ellis2009}. It is just like every vector in a vector space can be represented as a linear combination of basis vectors. 
+A spline is a numeric function that is piecewise-defined by polynomial functions, and which possesses a high degree of smoothness at the places where the polynomial pieces connect (known as knots) \citep{judd1998numerical, chen2009feedback}. Suppose we are given observed data $(t_1,y_1),(t_2,y_2), \ldots, (t_n,y_n)$ in the interval $[0,1]$, satisfying $0< t_1< t_2 < \cdots <t_n < 1$, a piecewise polynomial function $f(t)$ can be obtained by dividing the interval into contiguous intervals $(t_1,t_2),\ldots,(t_{n-1},t_n)$ and represented by a separate polynomial on each interval. For any continuous $f\in \mathcal{C}^{(m)}[0,1]$, it can be represented in a linear combination of basis functions $h_m(t)$ as $f(t) =\sum_{m=1}^{M}\beta_mh_m(t)$, where $\beta_m$ are coefficients \citep{ellis2009}. It is just like every vector in a vector space can be represented as a linear combination of basis vectors. 
 
 
 
-A smoothing polynomial spline is uniquely the smoothest function that achieves a given degree of fidelity to a particular data set \citep{whittaker1922new}. In deed, the minimizer of function (\ref{GaussianProcessGeneralObjective}) is the curve estimate $\hat{f}(t)$ over all spline functions $f(t)$ with $m-1$ continuous derivatives fitting observed data in the space $\mathcal{C}^{(m)}[0,1]$. In fact, \cite{kimeldorf1971some, kimeldorf1970correspondence}  prove that the minimizer $f_\lambda$ of function (\ref{GaussianProcessGeneralObjective}) has the following form 
-\begin{equation}
+A smoothing polynomial spline is uniquely the smoothest function that achieves a given degree of fidelity to a particular data set \citep{whittaker1922new}. In deed, the minimizer of function \eqref{GaussianProcessGeneralObjective} is the curve estimate $\hat{f}(t)$ over all spline functions $f(t)$ with $m-1$ continuous derivatives fitting observed data in the space $\mathcal{C}^{(m)}[0,1]$. In fact, \cite{kimeldorf1971some, kimeldorf1970correspondence}  prove that the minimizer $f_\lambda$ of function \eqref{GaussianProcessGeneralObjective} has the following form 
+\begin{equation}\label{gausspriorequation}
 f(t)=\sum_{\nu=1}^m d_\nu \phi_\nu(t)+\sum_{i=1}^n c_iR_1(t,t_i).
 \end{equation}
 %where $\phi_\nu (t)=\frac{t^{\nu-1}}{(\nu-1)!}$, $\nu=1, \ldots, m$. 
@@ -66,13 +66,13 @@ f(t) = \sum_{\nu=0}^{m-1}\frac{t^\nu}{\nu!}f^{(\nu)}(0) + \int_{0}^{1}\frac{(t-u
 \end{equation}
 where $(\cdot)_+ =\max(0, \cdot)$. With an inner product 
 \begin{equation}
-\langle f,g \rangle = \sum_{\nu=0}^{m-1}f^{(\nu)}(0)g^{(\nu)}(0) +  \int_{0}^{1}f^{(m)} g^{(m)}dt,
+\langle f,g \rangle = \sum_{\nu=0}^{m-1}f^{(\nu)}(0)g^{(\nu)}(0) +  \int_{0}^{1}f^{(m)}(t) g^{(m)}(t)dt,
 \end{equation}
 the representer is 
 \begin{equation}\label{GaussianProcessKernelR}
 R_s(t) =\sum_{\nu=0}^{m-1} \frac{s^{\nu}}{\nu!} \frac{t^{\nu}}{\nu!} +\int_0^1\frac{ (s-u)_+^{m-1}}{(m-1)!} \frac{ (t-u)_+^{m-1}}{(m-1)!} du \triangleq R_0(s,t)+R_1(s,t). 
 \end{equation}
-It is easily to prove that $R(s,t)$ is non-negative and is reproducing kernel, by which $\langle R(s,t),f(t) \rangle = \langle R_s(t),f(t) \rangle=f(s)$. Additionally, $R_s^{(\nu)}(0) = s^\nu/\nu!$ for $\nu = 0,\ldots, m-1$.
+It is easy to prove that $R(s,t)$ is non-negative and is reproducing kernel, by which $\langle R(s,t),f(t) \rangle = \langle R_s(t),f(t) \rangle=f(s)$. Additionally, $R_s^{(\nu)}(0) = s^\nu/\nu!$ for $\nu = 0,\ldots, m-1$.
 
 Before moving on to further steps, we are now introducing the following two theorems. 
 \begin{theorem}\citep{aronszajn1950theory}\label{theoremRKHS}
@@ -87,19 +87,16 @@ According to Theorem \ref{theoremRKHS}, the Hilbert space associated with $R(\cd
 
 
 
-
-
-
 \subsection{Polynomial Smoothing Splines as Bayes Estimates}
 
-Because it is possible to interpret the smoothing spline regression estimator as a Bayes estimate when the mean function $r(\cdot)$ is given an improper prior distribution \citep{wahba1990spline, berlinet2011reproducing}. Therefore, we will find that the posterior mean of $f=f_0+f_1$ on $[0,1]$ with proper priors is the polynomial smoothing  spline of (\ref{GaussianProcessGeneralObjective}). 
+Because it is possible to interpret the smoothing spline regression estimator as a Bayes estimate when the mean function $r(\cdot)$ is given an improper prior distribution \citep{wahba1990spline, berlinet2011reproducing}. Therefore, one can find that the posterior mean of $f$ on $[0,1]$ with a vague improper prior is the polynomial smoothing spline of the objective function  \eqref{GaussianProcessGeneralObjective}. 
 
-In fact, it can be found that for each $f=f_0+f_1$ on $[0,1]$, with $f_0$ and $f_1$ having independent Gaussian priors with zero means and covariances, it satisfies: 
-\begin{align*}
-\E \lbrack f_0(s)f_0(t)\rbrack  &= \tau^2 R_0(s,t)=\tau^2 \sum_{\nu=0}^{m-1}\frac{s^\nu}{\nu!}\frac{t^\nu}{\nu!}, \\
-\E \lbrack f_1(s)f_1(t) \rbrack &= bR_1(s,t) = b\int_{0}^{1} \frac{(s-u)_+^{m-1}}{(m-1)!} \frac{(t-u)_+^{m-1}}{(m-1)!},
-\end{align*}
-where $R_0$ and $R_1$ are from (\ref{GaussianProcessKernelR}). Because of the observations are normally distributed as $y_i\sim N(f(t_i),\sigma^2)$, then the joint distribution for $\mathbf{y} = \left\lbrace y_1,\ldots,y_n\right\rbrace$ and $f(t)$ is normal with zero mean and the following covariance matrix 
+Consider $f=f_0+f_1$ on $[0,1]$, with $f_0$ and $f_1$ having independent Gaussian priors with zero means and covariances satisfying  
+\begin{align}
+\E \lbrack f_0(s)f_0(t)\rbrack  &= \tau^2 R_0(s,t)=\tau^2 \sum_{\nu=0}^{m-1}\frac{s^\nu}{\nu!}\frac{t^\nu}{\nu!},\label{Ef0f0} \\
+\E \lbrack f_1(s)f_1(t) \rbrack &= bR_1(s,t) = b\int_{0}^{1} \frac{(s-u)_+^{m-1}}{(m-1)!} \frac{(t-u)_+^{m-1}}{(m-1)!},\label{Ef1f1}
+\end{align}
+where $R_0$ and $R_1$ are from \eqref{GaussianProcessKernelR}. Because of the observations are normally distributed as $y_i\sim N(f(t_i),\sigma^2)$, then the joint distribution for $\mathbf{y} = \left\lbrace y_1,\ldots,y_n\right\rbrace$ and $f(t)$ is normal with zero mean and the following covariance matrix 
 \begin{align*}\Cov (f,\mathbf{y}) = 
 \begin{bmatrix}
 bQ+\tau SS^\top+\sigma^2 I & b\xi +\tau^2 S\phi \\
@@ -121,13 +118,14 @@ where $\rho = \tau^2/b$ and $n\lambda=\sigma^2/b$. Furthermore, by denoting $M=Q
 \end{align}
 
 \begin{theorem}\citep{gu2013smoothing}
-The polynomial smoothing spline of (\ref{GaussianProcessGeneralObjective}) is the posterior mean of $f = f_0 +f_1$, where $f_0$ diffuses in span $\left\lbrace t^{\nu-1}, \nu= 1, \ldots , m\right\rbrace$ and $f_1$ has a Gaussian process prior with mean zero and a covariance function
+The polynomial smoothing spline of \eqref{GaussianProcessGeneralObjective} is the posterior mean of $f = f_0 +f_1$, where $f_0$ diffuses in span $\left\lbrace t^{\nu-1}, \nu= 1, \ldots , m\right\rbrace$ and $f_1$ has a Gaussian process prior with mean zero and a covariance function
 \begin{equation*}
 bR_1(s,t) = b\int_{0}^{1} \frac{\left(s-u\right)_+^{m-1}}{(m-1)!} \frac{\left(t-u\right)_+^{m-1}}{(m-1)!},
 \end{equation*}
 for $b=\sigma^2/n\lambda$. 
 \end{theorem}
 
+\textit{Remark}: Equation \eqref{Ef0f0} can be obtained from equation \eqref{gausspriorequation} if we assume $d_\nu \sim N\left(0,\tau^2I_{m\times m}\right)$. Therefore the limit of $\rho=\frac{\tau^2}{b}\to\infty$ indicates a diffuse prior for the coefficients $\mathbf{d}$. 
 
 
 \subsection{Gaussian Process Regression}
@@ -168,7 +166,7 @@ where
 \bar{f_*}&=\E \left( f_* \mid  \mathbf{y},\mathbf{t},t_*\right) = K(t_*,\mathbf{t})\left( K(\mathbf{t},\mathbf{t})+\sigma_n^2\right) ^{-1}\mathbf{y},\\
 \Cov(f_*)&=K(t_*,t_*)-K(t_*,\mathbf{t})\left( K(\mathbf{t},\mathbf{t})+\sigma_n^2I\right) ^{-1}K(\mathbf{t},t_*).
 \end{align}
-Therefore, it can seen that the Bayesian estimation of a smoothing spline is a special format of Gaussian process regression with diffuse prior and the covariance matrix $R(s,t)$. 
+Therefore it can seen that the Bayesian estimation of a smoothing spline is a special format of Gaussian process regression with diffuse prior and the covariance matrix $R(s,t)$. 
 
 
 
@@ -177,7 +175,7 @@ Therefore, it can seen that the Bayesian estimation of a smoothing spline is a s
 \section{V-Spline as Bayes Estimate}
 
 
-Recall the definition of V-spline introduced in Section \ref{SectionTractorSpline}. It is the solution to the objective function (\ref{tractorsplineObjective}), where an extra term for $f'(t)-v$ and an extra parameter $\gamma$ are incorporated. The penalty parameter $\lambda(t)$ is a function varying on different domains. If $\lambda(t)=\lambda$ is constant and $\gamma=0$, the V-spline degenerate to a conventional cubic smoothing spline consisting of a set of given basis functions.  
+Recall the definition of V-spline that is introduced in Section \ref{SectionTractorSpline}. It is the solution to the objective function \eqref{tractorsplineObjective}, where an extra term for $f'(t)-v$ and an extra parameter $\gamma$ are incorporated. The penalty parameter $\lambda(t)$ is a function varying on different domains. If $\lambda(t)=\lambda$ is constant and $\gamma=0$, the V-spline degenerate to a conventional cubic smoothing spline consisting of a set of given basis functions.  
 
 However, the Bayes estimate for a polynomial smoothing spline requires fixed interval on $[0,1]$ and the penalty parameter is constant. For the first constraint, without loss of generality, an arbitrary interval $[a,b]$ can be transformed to $[0,1]$. For the second constraint, it is assumed that $\lambda(t)$ stays the same constant in each subinterval of $[0,1]$ and name the solution "trivial V-spline".  In this section, we are still using the name "V-spline" for sake of simplicity. 
 
@@ -199,7 +197,7 @@ Given a sequence of paired data $\left\lbrace (t_1,y_1,v_1),\ldots, (t_n,y_n,v_n
 \end{equation}
 in the space $\mathcal{C}_{\mbox{\scriptsize p.w.}}^{(2)}[0,1]$ is a V-spline. Equipped with an appropriate inner product
 \begin{equation}\label{TractorSplineInnerProduct}
-\langle f,g \rangle=f(0) g(0)+f'(0) g'(0)+\int_{0}^{1}f''g''dx,
+\langle f,g \rangle=f(0) g(0)+f'(0) g'(0)+\int_{0}^{1}f''(t)g''(t)dt,
 \end{equation}
 the space $\mathcal{C}_{\mbox{\scriptsize p.w.}}^{(2)}[0,1]$ is made a reproducing kernel Hilbert space. In fact, the representer $R_s(\cdot)$ is 
 \begin{equation}\label{kerneleq}
@@ -238,7 +236,7 @@ Define a new notation $\dot{R}(s,t)=\frac{\partial R}{\partial s}(s,t)=\frac{\pa
 %f(t)=d_1+d_2t+\sum_{j=1}^{n}c_jR_1(t_j,t)+\sum_{i=j}^{n}b_j\dot{R}_1(t_j,\cdot) +\rho(t)
 %\end{equation}
 %where $\mathbf{d},\mathbf{c}$ and $\mathbf{b}$ are coefficients, and $\rho(t) \in \mathcal{H}_* \ominus \mathcal{A}$. 
-It can be seen that the first term $\dot{R}_0=t\in \mathcal{H}_0$, and the space spanned by the second term $\dot{R}_1=\int_0^s(t-u)_+du$, denoted as $\mathcal{\dot{H}}$, is a subspace of $\mathcal{H}_1$, and $\mathcal{\dot{H}} \ominus \mathcal{H}_1\neq \emptyset$. Given the sample points $t_j, j=1, \ldots, n$, in equation $(\ref{maineq})$ and noting that the space
+It can be seen that the first term $\dot{R}_0=t\in \mathcal{H}_0$, and the space spanned by the second term $\dot{R}_1=\int_0^s(t-u)_+du$, denoted as $\mathcal{\dot{H}}$, is a subspace of $\mathcal{H}_1$, and $\mathcal{\dot{H}} \ominus \mathcal{H}_1\neq \emptyset$. Given the sample points $t_j, j=1, \ldots, n$, in equation \eqref{maineq} and noting that the space
 \begin{equation*}
 \mathcal{A}=\left\lbrace f: f=\sum_{j=1}^{n}\alpha_jR_1(t_j,\cdot)+\sum_{j=1}^{n}\beta_j\dot{R}_1(t_j,\cdot)\right\rbrace 
 \end{equation*}
@@ -249,7 +247,7 @@ For any $f\in\mathcal{C}_{\mbox{\scriptsize p.w.}}^{(2)}[0,1]$, it can be writte
 \begin{equation}\label{GaussianProcessFunctionF}
 f(t)=d_1+d_2t+\sum_{j=1}^{n}c_jR_1(t_j,t)+\sum_{j=1}^{n}b_j\dot{R}_1(t_j,\cdot) +\rho(t)
 \end{equation}
-where $\mathbf{d},\mathbf{c}$ and $\mathbf{b}$ are coefficients, and $\rho(t) \in \mathcal{H}_1 \ominus \mathcal{H}_*$. Thus, by substituting to the equation $(\ref{maineq})$, it can be written as 
+where $\mathbf{d},\mathbf{c}$ and $\mathbf{b}$ are coefficients, and $\rho(t) \in \mathcal{H}_1 \ominus \mathcal{H}_*$. Thus, by substituting to the equation \eqref{maineq}, it can be written as 
 \begin{equation}\label{GassianProcessRawequation}
 \begin{split}
 &\frac{1}{n}\sum_{i=1}^n \left( y_i - d_1-d_2t-\sum_{j=1}^{n}c_jR_1(t_j,t_i)-\sum_{j=1}^{n}b_j\dot{R}_1(t_j,t_i)-\rho(t_i) \right) ^2\\
@@ -262,7 +260,7 @@ Because of orthogonality, $\rho(t_i) = \left(R_1(t_i,\cdot),\rho\right)=0$, $\rh
 S&=\left\lbrace S_{ij} \right\rbrace_{n\times 2}=\begin{bmatrix}1 & t_i \end{bmatrix} ,& Q&=\left\lbrace Q_{ij} \right\rbrace_{n\times n}= R_1(t_j,t_i), & P&=\left\lbrace P_{ij} \right\rbrace_{n\times n}= \dot{R}_1(t_j,t_i), \\
 S'&=\left\lbrace S'_{ij} \right\rbrace_{n\times 2}=\begin{bmatrix} 0 & 1 \end{bmatrix} ,& Q'&=\left\lbrace Q'_{ij} \right\rbrace_{n\times n}= R_1'(t_j,t_i), & P'&=\left\lbrace P'_{ij} \right\rbrace_{n\times n}= \dot{R}_1'(t_j,t_i). 
 \end{align*}
-and noting that $\int_0^1R''_1(t_i,t)R''_1(t_j,t)dt=R_1(t_i,t_j)$, $\int_0^1R''_1(t_i,t)\dot{R}''_1(t_j,t)dt=\int_0^{v}(t_i-t)dt=\dot{R}_1(t_j,t_i)$, and $\int_0^1\dot{R}''_1(t_i,t)\dot{R}''_1(t_j,t)dt=\int_0^{v}1dt=\dot{R}'_1(t_i,t_j)$, where $v=\mbox{min}(t_i,t_j)$, the above equation (\ref{GassianProcessRawequation}) can be written as 
+and noting that $\int_0^1R''_1(t_i,t)R''_1(t_j,t)dt=R_1(t_i,t_j)$, $\int_0^1R''_1(t_i,t)\dot{R}''_1(t_j,t)dt=\int_0^{v}(t_i-t)dt=\dot{R}_1(t_j,t_i)$, and $\int_0^1\dot{R}''_1(t_i,t)\dot{R}''_1(t_j,t)dt=\int_0^{v}1dt=\dot{R}'_1(t_i,t_j)$, where $v=\mbox{min}(t_i,t_j)$, the above equation \eqref{GassianProcessRawequation} can be written as 
 \begin{equation}\label{matriteq}
 \begin{split}
 \left(\mathbf{y}-S\mathbf{d}-Q\mathbf{c}-P\mathbf{b}\right)^\top \left(\mathbf{y}-S\mathbf{d}-Q\mathbf{c}-P\mathbf{b}\right)+\\
@@ -270,25 +268,26 @@ and noting that $\int_0^1R''_1(t_i,t)R''_1(t_j,t)dt=R_1(t_i,t_j)$, $\int_0^1R''_
 +n\lambda \left(\mathbf{c}^\top Q\mathbf{c} + 2\mathbf{c}^\top P\mathbf{b}+ \mathbf{b}^\top P'\mathbf{b}\right)+n\lambda\left(\rho,\rho\right).
 \end{split}
 \end{equation}
-Note that $\rho$ only appears in the third term and is minimized at $\rho=0$. Hence, a V-spline resides in the space $\mathcal{H}_0\oplus \mathcal{H}_*$ of finite dimension. Thus, the solution to $(\ref{maineq})$ is computed via the minimization of the first three terms in $(\ref{matriteq})$ with respect to $\mathbf{d}$, $\mathbf{c}$ and $\mathbf{b}$.
+Note that $\rho$ only appears in the third term and is minimized at $\rho=0$. Hence, a V-spline resides in the space $\mathcal{H}_0\oplus \mathcal{H}_*$ of finite dimension. Thus, the solution to \eqref{maineq} is computed via the minimization of the first three terms in \eqref{matriteq} with respect to $\mathbf{d}$, $\mathbf{c}$ and $\mathbf{b}$.
 
 
 
 \subsection{Posterior of Bayes Estimates}
 
 
-Consider the independent observations $y_i\sim N\left(f(t_i),\sigma^2 \right)$ and $v_i\sim N\left(f'(t_i),\frac{\sigma^2}{\gamma} \right)$, with a prior $f\sim N(0,\beta I)$, it is easy to see that the posterior mean of $f$ is the minimizer of 
-\begin{equation*}
-\frac{1}{\sigma^2} \sum_{i=1}^{n}\left(y_i-f(t_i)\right)^2+\frac{\gamma}{\sigma^2} \sum_{i=1}^{n}\left(v_i-f'(t_i)\right)^2 + \frac{1}{\beta} \sum_{t\in [0,1]}f^2(t),
-\end{equation*}
-and defines a shrinkage estimate being shrunk toward zero. 
-
+Consider the independent observations $y_i\sim N\left(f(t_i),\sigma^2 \right)$ and $v_i\sim N\left(f'(t_i),\frac{\sigma^2}{\gamma} \right)$, 
+%with a prior $f\sim N(0,\beta I)$, 
+%it is easy to see that the posterior mean of $f$ is the minimizer of 
+%\begin{equation*}
+%\frac{1}{\sigma^2} \sum_{i=1}^{n}\left(y_i-f(t_i)\right)^2+\frac{\gamma}{\sigma^2} \sum_{i=1}^{n}\left(v_i-f'(t_i)\right)^2 + \frac{1}{\beta} \sum_{t\in [0,1]}f^2(t),
+%\end{equation*}
+%and defines a shrinkage estimate being shrunk toward zero. 
 %Now in the model $y=f(t)+\varepsilon_1$, $\varepsilon_1 \sim N(0,\sigma^2)$, and $v=f '(t)+\varepsilon_2$, $\varepsilon_2\sim N\left(0, \frac{\sigma^2}{\gamma}\right)$, 
-According to equation $(\ref{GaussianProcessFunctionF})$, let $f(t) \in \mathcal{C}_{\mbox{\scriptsize p.w.}}^{(2)}[0,1]$, has the prior distribution 
+according to equation \eqref{GaussianProcessFunctionF}, let $f(t) \in \mathcal{C}_{\mbox{\scriptsize p.w.}}^{(2)}[0,1]$, has the prior distribution 
 \begin{equation}
 f(t)=(d_1+d_2t)+\sum_{i=1}^{n}c_iR_1(t_i,t)+\sum_{i=1}^{n}b_i\dot{R}_1(t_i,t),
 \end{equation}
-where $d\sim N(0,\tau^2I)$. The covariance functions for $y,v$ and $f , f '$ are \small
+where $d\sim N(0,\tau^2I_{2\times 2})$. The covariance functions for $y,v$ and $f , f '$ are \small
 \begin{align*}
 \E\lbrack f(s)f (t)\rbrack &=\tau^2R_0(s,t)+\beta R_1(s,t) & \E \lbrack f(s)f '(t)\rbrack&=\tau^2R_0'(s,t)+\beta R_1'(s,t) \\
 \E\lbrack f '(s)f (t)\rbrack&=\tau^2\dot{R}_0(s,t)+\beta\dot{R}_1(s,t) & \E\lbrack f '(s)f '(t)\rbrack&=\tau^2\dot{R}'_0(s,t)+\beta\dot{R}'_1(s,t) \\
@@ -303,7 +302,7 @@ where $d\sim N(0,\tau^2I)$. The covariance functions for $y,v$ and $f , f '$ are
 \E\lbrack y_i,f(s)\rbrack&=\tau^2 R_0(s_i,s)+\beta R_1(s_i,s)  & \E\lbrack y_i,f '(s)\rbrack&=\tau^2 R'_0(s_i,s)+\beta R'_1(s_i,s)  \\
 \E\lbrack v_i,f(s)\rbrack&=\tau^2 \dot{R}_0(s_i,s)+\beta \dot{R}_1(s_i,s) & \E\lbrack v_i,f '(s)\rbrack&=\tau^2\dot{R}'_0(s_i,s)+\beta \dot{R}'_1(s_i,s)
 \end{align*}
-\normalsize where $R(s,t)$ is taken from $(\ref{kerneleq})$ and $\beta$ is fixed. 
+\normalsize where $R(s,t)$ is taken from \eqref{kerneleq} and $\beta$ is fixed. 
 
 
 Observing $y_i\sim N\left(f (t_i),\sigma^2\right)$ and $v_i\sim N\left(f (t_i),\frac{\sigma^2}{\gamma}\right)$, $i=1,\ldots,n$, the joint distribution of $\mathbf{y},\mathbf{v}$ and $f(t)$ is normal with mean zero and a covariance matrix can be found. The posterior mean of $f(t)$ is seen to be 
@@ -356,7 +355,7 @@ where $\phi$ is $2 \times 1$ matrix with entry $1$ and $t$, $\xi$ is $n\times 1$
 	\end{align*}
 \end{lemma}
 
-Setting $\rho \rightarrow \infty$ in equation $(\ref{GPrhoeq})$ and applying Lemma $\ref{GPLemma}$, the posterior mean $\E (f(t)\mid \mathbf{y},\mathbf{v})$ is $\hat{f}  = \mathbf{\phi}^\top \mathbf{d}+\mathbf{\xi}^\top \mathbf{c}+\mathbf{\psi}^\top \mathbf{b}$, with the coefficients given by
+Setting $\rho \rightarrow \infty$ in equation \eqref{GPrhoeq} and applying Lemma \ref{GPLemma}, the posterior mean $\E (f(t)\mid \mathbf{y},\mathbf{v})$ is $\hat{f}  = \mathbf{\phi}^\top \mathbf{d}+\mathbf{\xi}^\top \mathbf{c}+\mathbf{\psi}^\top \mathbf{b}$, with the coefficients given by
 \begin{align*} 
 \mathbf{d}&=\left(T^\top M^{-1}T\right)^{-1}T^\top M^{-1}\begin{bmatrix}\mathbf{y} \\ \mathbf{v} \end{bmatrix},\\
 \begin{bmatrix}\mathbf{c}\\ \mathbf{b}\end{bmatrix} &=
@@ -376,7 +375,7 @@ P^\top \left(S\mathbf{d}+\left(Q+n\lambda I\right) \mathbf{c} +P\mathbf{b}-\math
 \end{align*}
 Finally we obtain the following theorem: 
 \begin{theorem}
-The smoothing V-spline of (\ref{maineq}) is the posterior
+The smoothing V-spline of \eqref{maineq} is the posterior
 mean of $f=f_0+f_1 + \dot{f}_1$, where $f_0$ diffuses in span $\left\lbrace 1,t\right\rbrace$ and $f_1$, $\dot{f}_1$ have Gaussian process priors with mean zero and covariance functions
 \begin{align*}
 \Cov \left(f_1,f_1\right)   &= R_1\left(s,t\right)   =\beta \int_{0}^{1} \left(s-u\right)_+\left(t-u\right)_+du, \\
@@ -444,7 +443,7 @@ v_i =f'(t_i)+\varepsilon_{i}^{(2)},
 \end{align}
 where $\varepsilon^{(1)}\sim N\left(0,\sigma^2W^{-1}\right)$, $\varepsilon^{(2)}\sim N\left(0,\frac{\sigma^2}{\gamma}U^{-1}\right)$ , $0\leq t_1 < \cdots < t_n \leq 1$. 
 
-With the same parameter found by GCV, V-spline and its Bayes estimate return the same reconstruction. However, because we are using constant $\lambda$ rather than a piecewise $\lambda(t)$, the trivial V-spline might not be the optimal solution compared with the one consisting an adaptive penalty term in Section \ref{SectionTractorSpline}. 
+With the same parameter found by GCV, V-spline and its Bayes estimate return the same reconstruction. However, because of the parameter is a constant $\lambda$ rather than a piecewise constant function $\lambda(t)$, the trivial V-spline might not be the optimal solution compared with the one consisting an adaptive penalty term in Section \ref{SectionTractorSpline}. 
 
 \begin{figure}[h]
 \centering
@@ -457,10 +456,16 @@ With the same parameter found by GCV, V-spline and its Bayes estimate return the
 
 \section{Conclusion}
 
-In this chapter, we take a review of the work that has been done in the last few decades for the relationship between polynomial smoothing spline and the Bayes estimates. With improper priors, the two methods are corresponding to each other. In fact, smoothing spline is a particular case of Gaussian process regression. By following the work done by \cite{gu2013smoothing}, we find the Bayes estimate for V-spline with a constant penalty parameter $\lambda$.  However, it is a particular scenario of V-spline whose $\lambda(t)$ varying on domains. So the trivial V-spline might not be an optimal solution. Additionally, we give the formula of GCV for V-spline with correlated errors on $y$ and $v$. 
+In this chapter, we take a review of the work that has been done in the last few decades for the relationship between polynomial smoothing spline and the Bayes estimates. With improper priors, the two methods are corresponding to each other. In fact, smoothing spline is a particular case of Gaussian process regression. By following the work done by \cite{gu2013smoothing}, we find the Bayes estimate for a trivial V-spline of a constant penalty parameter $\lambda$. Additionally, we give the formula of GCV for V-spline with correlated errors on $y$ and $v$. 
 
 
-A further work is to find the Bayes estimate for the real V-spline with a piecewise penalty term $\lambda(t)$. Besides GCV, other methods, such as EM and UBR are worth being invested in further research. 
+A further work is to find the Bayes estimate for the real V-spline with a piecewise penalty term $\lambda(t)$. A guess is by defining a different inner product 
+\begin{equation*}
+\langle f,g \rangle=f(0) g(0)+f'(0) g'(0)+\sum_{i=1}^{n-1}\int_{t_i}^{t_{i+1}}f''(t)g''(t)dt,
+\end{equation*}
+on $\mathcal{C}^{(2)}_{\mbox{\scriptsize p.w.}}[0,1]$, one may find the Bayes estimate for the V-spline through a similar procedure. 
+
+Besides GCV, other methods, such as EM and UBR are worth being investigated in further research. 
 
 
 

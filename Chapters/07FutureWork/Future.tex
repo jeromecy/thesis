@@ -40,7 +40,7 @@ As a result, after $M$ iterations, $\theta^*$ is convergence and $f^*(t,y,\theta
 
 \subsection*{Non-trivial V-Spline with Correlated Errors}
 
-In Chapter \ref{ChapterGPR}, the Bayes estimate of V-spline with correlated errors is given. The extended GCV serves to find the optimal parameters for the estimate. Whereas, the extended GCV is only applicable for trivial V-spline, where $\lambda(t)$ is constant. 
+In Chapter \ref{ChapterGPR}, the Bayes estimate of V-spline with correlated errors is given. The extended GCV serves to find the optimal parameters for the estimate. Whereas the extended GCV is only applicable for trivial V-spline, where $\lambda(t)$ is constant. 
 
 
 \cite{opsomer2001nonparametric, wang1998smoothing} present a few extensions of the generalized maximum likelihood (GML), generalized cross-validation (GCV) and unbiased risk (UBR) methods to find optimal parameters for smoothing spline ANOVA models when observations are correlated. These algorithms in applied on conventional polynomial smoothing spline, but not on V-spline. Suppose the errors of the observations $y$ and $v$ are $\varepsilon_y\sim N\left(0,\sigma^2W^{-1}\right)$ and $\varepsilon_v\sim N\left(0,\tau^2U^{-1}\right)$ with unknown parameters $\sigma^2$ and $\tau^2$, I hope to find general solutions, similarly to GML, GCV and UBR, to tune the parameters for V-spline returning least true mean squared errors. 
@@ -74,14 +74,14 @@ However, the grid-based MCMC may not be practical for a higher $n$-dimensional s
 
 Parallel computing is a type of computation in which many calculations or the execution of processes are carried out simultaneously on multi-core processors \citep{asanovic2006landscape}. A master process controls the strategy on how to split large, expensive computation into smaller slave processes and solved concurrently on each separate processor \citep{Almasi1994Highly}. After computing, slave processes pass results back to the master process, in which the final result is generated. 
 
-Parallel MCMC is using this technology to deploy the computation and run samplers on multi-core CPU. Approaches for parallel MCMC are either by implementing parallelization within a single chain or by running multiple chains \citep{wu2012parallel}. It is useful for computing complex Bayesian models, which do not only lead to a dramatic speedup in computing but can also be used to optimize model parameters in complex Bayesian models.
+The parallel MCMC uses this technology to deploy the computation and run samplers on multi-core CPU. Approaches for parallel MCMC are either by implementing parallelization within a single chain or by running multiple chains \citep{wu2012parallel}. It is useful for computing complex Bayesian models, which do not only lead to a dramatic speedup in computing but can also be used to optimize model parameters in complex Bayesian models.
 
 A simple parallel Monte Carlo estimation of $\E\lbrack p(\theta)\rbrack$ proceeds in the following way \citep{kontoghiorghes2005handbook}. Suppose there amount to $k$ CPU cores to generate $N$ samples. Thus, on each CPU there are $m=N/k$ samples on average. A master process passes $m$ to each slave process $i$, $i=1,\ldots,k$. At each slave process, it generates $m$ samples for $\theta_i^{(m)}$ and passes middle-result $S_i$ back to the master process. At last, the master process computes the final result by 
 \begin{equation*}
 \E\lbrack p(\theta)\rbrack=\frac{\sum_i S_i}{N}. 
 \end{equation*}
 
-Therefore, parallel MCMC is using MCMC sampler scheme to draw samples on multi-cores simultaneously. A naive yet natural approach to parallel MCMC is simply to generate several independent Markov chains on different
+The parallel MCMC uses MCMC sampler scheme to draw samples on multi-cores simultaneously. A naive yet natural approach to parallel MCMC is simply to generate several independent Markov chains on different
 processors and then combine the results appropriately \citep{bradford1996markov, gelman1992inference}. Or, alternatively, develop parallelism within a single chain. Suppose there are $k$ CPU cores. Give initial values $\theta_i^{(0)}$ for each core. Concurrently update $\theta$ chains by a predetermined MCMC sampler with $p(\theta\mid y_{1:t})$ on each slave process. Computes summary statistics for the updated $\theta_i^{(0: N)}$ and passes back to the master process. Finally, achieve a sequence of $\theta$ of length $kN$ \citep{wu2012parallel}. 
 
 A further weighted parallel MCMC and parallelization approach to the Gibbs sampler is proposed by \cite{vanderwerken2013parallel}.
