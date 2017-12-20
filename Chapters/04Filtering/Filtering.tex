@@ -1,15 +1,14 @@
 
 \section{Introduction}
 
-As the development of the technology of science and real life, the "big data" challenge becomes ubiquitous. Classical methods, such as MCMC, are normally suitable and good at handling a batch of data forecasting and analyzing. However, for big data and instant updating data stream, more robust and efficient methods are required. 
+With data acquisition becoming easier, cheaper and faster, the challenges of ``big data'' are becoming ubiquitous. Classical methods for estimation and prediction, such as MCMC, are more suitable in batch mode. However, for data streams, more robust and efficient on-line methods are required. Approaches, such as Kalman filter and Sequential Monte Carlo, for on-line updating and estimation have been well studied in scientific literature and have been applied in real world applications.
 
-
-Alternative approaches, such as Sequential Monte Carlo, for on-line updating and estimating are well studied in scientific literature and prevalent in academic research in the last decades. When it embraced with  state-space model, which is a popular class of time series models that have found numerous of applications in fields as diverse as statistics, ecology, econometrics, engineering and environmental sciences \citep{cappe2009inference, smcmip2011, elliott1995estimation, cargnoni1997bayesian}, it allows us to establish complex linear and nonlinear Bayesian estimations in time series patterns \citep{vieira2016online}. 
+The state-space model, which is a popular class of time series models, has found numerous of applications in fields as diverse as statistics, ecology, econometrics, engineering and environmental sciences \citep{cappe2009inference, smcmip2011, elliott1995estimation, cargnoni1997bayesian}. The state-space model allows us to establish complex linear and nonlinear Bayesian representations of time series patterns \citep{vieira2016online}. 
 
 
 \subsection*{State-Space Model}
 
-State-space models are models that rely on the concept of state variables. If we describe a system as an operator mapping from the space of inputs to the space of outputs, then we may need the entire input-output history of the system together with the planned input in order to compute the future output values \citep{hangos2006analysis}. In an alternative way, by using new information at time $t$ containing all the past information up to the current state and initial conditions to get the current output is possible, which is known as a sequential method. A genetic state-space model consists of two sets of equations: state equation and output equation. The state equation describes the evolution of the true input and state variables sequentially as a function and passes the variable one after one, generally, with some noises. The output equation catches the input values and interprets it out by an algebraic equation. A general state-space model has the form of 
+State-space models are models that rely on the concept of state variables. If we describe a system as an operator mapping from the space of inputs to the space of outputs, then we may need the entire input-output history of the system together with the planned input in order to compute the future output values \citep{hangos2006analysis}. Alternatively, a sequential method builds on past data and the initial conditions by incorporating new information when it arrives. A generic state-space model consists of two sets of equations: state equation and output equation. The state equation describes the evolution of the true input and state variables sequentially as a function and passes the variable one after one, generally, with some noises. The output equation catches the input values and interprets it out by an algebraic equation. A general state-space model has the form of 
 \begin{align}\label{statemodel1}
 \mbox{State equation } x_t &= G_t(x_{t-1})+w_t,\\
 \label{statemodel2}
@@ -632,7 +631,7 @@ The advantage of this algorithm is that it only requires an approximation of the
 %\end{align*}
 %where $\epsilon\sim N(0,\tau)$ and $\omega\sim N(0,\sigma)$. Particularly, the initial value $x_0\sim N(m_0,C_0)$ is supposed to be known. $\sigma^2$ and $\tau^2$ are supposed to be \textit{Inverse Gamma} distributed with two parameters $(a_0,A_0)$ and $(b_0,B_0)$ respectively. Therefore, the unknown parameter $\theta$ is a set of $\left\lbrace \alpha,\beta,\sigma^2,\tau^2\right\rbrace$. 
 
-In this section, we are comparing the performance of Liu and West's filter (LW), Storvik filter (St), Particle Learning (PL) and the proposed sequential MCMC Algorithm \ref{algorithmslidingwindow} in Section \ref{SectionHighDimensionalOU} by a simple dynamic linear model, see example \citep{liu2001combined}. Explicitly, the model is 
+In this section, we compare the performance of Liu and West's filter (LW), Storvik filter (St), Particle Learning (PL) and the proposed sequential MCMC Algorithm \ref{algorithmslidingwindow} in Section \ref{SectionHighDimensionalOU} by a simple dynamic linear model, see examples in \citep{liu2001combined}. Explicitly, the model is 
 \begin{align*}
 y_t&=F x_t+\varepsilon_t,\\
 x_t&=\phi x_{t-1}+w_t,\\
@@ -753,9 +752,9 @@ $\frac{1}{n}\sum_i(\hat{x}_i-x_i)^2$ & 0.5745 & 0.5739 & 0.5737 & 0.5875&  0.574
 %\end{table}
 
 
-From figure \ref{FilterRiewComparesion01} it can be seen that the former three algorithms converge to the true parameter $\phi$ with similar speeds along time $t$. LW filter has a larger distance to the true parameter comparing with St and PL filters. The proposed MCMC with 100 length data in estimation phase has the biggest variance. By setting a longer length, the MCMC becomes more stable. 
+From figure \ref{FilterRiewComparesion01}, it can be seen that the former three algorithms converge to the true parameter $\phi$ at similar speeds along the time $t$. LW filter has a larger distance to the true parameter comparing with St and PL filters. The proposed MCMC with 100 length data in estimation phase has the largest variance. By setting a longer length $L$, the proposed adaptive MCMC becomes stable. 
 
-The estimations for $x_t$ from $t=300$ to $897$ are very close and hard to tell visually. From table \ref{FilterRiewComparesionTable}, we can see that, by repeatedly running 50 times, the proposed MCMC algorithm is more stable in estimating parameter $\phi$ as it has the lowest standard error (SE) among all the algorithms. The MSE of all the algorithms on estimating $x$ is on the similar levels. 
+The estimations for $x_t$ from $t=300$ to $897$ are very close and the differences are hard to tell visually. From table \ref{FilterRiewComparesionTable}, we can see that, by repeatedly running 50 simulations, the proposed MCMC algorithm is more stable in estimating parameter $\phi$ as it has the lowest standard error (SE) among all the algorithms. The MSE of all the algorithms on estimating $x$ is on the similar levels. 
 
 
 \section{Conclusion}
