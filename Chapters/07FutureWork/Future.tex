@@ -1,5 +1,5 @@
 
-In this thesis, two main practical algorithms are proposed: the adaptive V-spline and the adaptive sequential MCMC algorithm. Being honest, there are a few flaws in these two algorithms and future work remains to be done to improve their performances. 
+In this thesis, two main practical algorithms are proposed: the adaptive V-spline and the adaptive sequential MCMC algorithm. The first algorithm is appropriate for batch estimation and the second for on-line estimation, and we have seen that both algorithms have good performance in practice. Nevertheless, there are a number of areas in which further improvements could be made.
 
 
 \subsection*{Gradient Boosting V-Spline}
@@ -47,17 +47,34 @@ In Chapter \ref{ChapterGPR}, the Bayes estimate of V-spline with correlated erro
 
 
 
-\subsection*{Informative Proposals}
+%\subsection*{Informative Proposals}
+%
+%In Chapter \ref{ChapterMCMC}, the proposed adaptive MCMC algorithm draws samples of $\theta=\left\lbrace\gamma,\xi^2,\lambda^2,\sigma^2,\tau^2\right\rbrace$ from $N(m,C)$, where the information of $m$ and $C$ are learned from a self-tuning learning phase. For each $\theta^{(i)}$, it generates a paired mean and variance $\left\lbrace\mu_t^{(i)},\Sigma_t^{(i)}\right\rbrace$ for mixture Gaussian $x_t$. 
+%
+%In the sampling step of real data application, the mechanic boom status is not incorporated, which may provide useful information. Like the penalty parameter $\lambda$ being classified by $\lambda_d$ and $\lambda_u$ according to boom status, the MCMC sampler may use this information to propose $\theta$ with different strategies, such as different step sizes, different $m$s and $C$s. In this way, the parameter $\theta$ is classified by $\theta_u$ and $\theta_d$. 
+%
+%(not finished yet)
+%
+%%Propose samples on two direction $\begin{bmatrix}
+%%W & 0 \\ 0 & U
+%%\end{bmatrix}$.
 
-In Chapter \ref{ChapterMCMC}, the proposed adaptive MCMC algorithm draws samples of $\theta=\left\lbrace\gamma,\xi^2,\lambda^2,\sigma^2,\tau^2\right\rbrace$ from $N(m,C)$, where the information of $m$ and $C$ are learned from a self-tuning learning phase. For each $\theta^{(i)}$, it generates a paired mean and variance $\left\lbrace\mu_t^{(i)},\Sigma_t^{(i)}\right\rbrace$ for mixture Gaussian $x_t$. 
+\subsection*{Directional Dependent OU-Process}
 
-In the sampling step of real data application, the mechanic boom status is not incorporated, which may provide useful information. Like the penalty parameter $\lambda$ being classified by $\lambda_d$ and $\lambda_u$ according to boom status, the MCMC sampler may use this information to propose $\theta$ with different strategies, such as different step sizes, different $m$s and $C$s. In this way, the parameter $\theta$ is classified by $\theta_u$ and $\theta_d$. 
-
-(not finished yet)
-
-%Propose samples on two direction $\begin{bmatrix}
-%W & 0 \\ 0 & U
-%\end{bmatrix}$.
+In the usual formulation of an OU-process, we have
+\begin{equation*}
+dv_{t}=-\gamma v_{t}+\lambda dW_{t},
+\end{equation*}
+where $v_{t}=\left[{v_{t}^{x}\atop v_{t}^{y}}\right],\,W_{t}=\left[{W_{t}^{x}\atop W_{t}^{y}}\right]$
+are vectors in $\mathbb{R}^{2}.$ In particular, $W_{t}^{x}$ and
+$W_{t}^{y}$ are independent Wiener processes. However, we can imagine
+that the stochastic term has independent components in the directions
+parallel and perpendicular to the velocity. Let $\{n_{t},m_{t}\}$
+be an orthonormal frame in $\mathbb{R}^{2},$ where $n_{t}=\frac{v_{t}}{|v_{t}|}$
+is the direction of the velocity. The proposal is that $\lambda dW_{t}$
+can be replaced with $\lambda_{\parallel}n_{t}dW_{t}^{\parallel}+\lambda_{\perp}m_{t}dW_{t}^{\perp},$
+where $W_{t}^{\parallel}$ and $W_{t}^{\perp}$ are independent Wiener
+processes.
 
 
 \subsection*{Grid-based MCMC}

@@ -461,16 +461,16 @@
 \citation{stroud2016bayesian}
 \citation{polson2008practical}
 \citation{haario1999adaptive}
-\@writefile{toc}{\contentsline {section}{\numberline {5.2}Bayesian Inference on Combined State and Parameter}{91}}
-\newlabel{MCMCobserY}{{5.1}{91}}
-\newlabel{MCMChiddX}{{5.2}{91}}
-\newlabel{objecfun}{{5.3}{91}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.2}Bayesian Inference on Combined State and Parameter}{90}}
 \citation{hammersley1964percolation,geweke1989bayesian}
 \citation{casella2004generalized,martino2010generalized}
 \citation{geman1984stochastic}
 \citation{metropolis1953equation,hastings1970monte}
-\newlabel{M1}{{5.4}{92}}
-\newlabel{M2}{{5.5}{92}}
+\newlabel{MCMCobserY}{{5.1}{91}}
+\newlabel{MCMChiddX}{{5.2}{91}}
+\newlabel{objecfun}{{5.3}{91}}
+\newlabel{M1}{{5.4}{91}}
+\newlabel{M2}{{5.5}{91}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.2.1}The Posterior Distribution}{92}}
 \newlabel{sectionlogParameter}{{5.2.1}{92}}
 \newlabel{generaljointmatrix}{{5.6}{92}}
@@ -480,21 +480,21 @@
 \newlabel{sectionforecast}{{5.2.2}{93}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.2.3}The Estimation Distribution}{94}}
 \newlabel{generalEstDistr}{{5.2.3}{94}}
+\newlabel{generalmux}{{5.13}{94}}
+\newlabel{generalSigx}{{5.14}{94}}
 \citation{smith1993bayesian,tierney1994markov,gilks1995markov}
 \citation{muller1991generic,tierney1994markov}
 \citation{dongarra2000guest,medova2008bayesian}
-\newlabel{generalmux}{{5.13}{95}}
-\newlabel{generalSigx}{{5.14}{95}}
 \newlabel{mixtureGaussian}{{5.15}{95}}
 \newlabel{mixturemean}{{5.16}{95}}
 \newlabel{mixturevariance}{{5.17}{95}}
 \@writefile{toc}{\contentsline {section}{\numberline {5.3}Random Walk Metropolis-Hastings Algorithm}{95}}
 \citation{metropolis1953equation}
 \citation{sherlock2016adaptive}
+\citation{sherlock2010random}
 \newlabel{alphabalance}{{5.18}{96}}
 \newlabel{stepsizeep}{{5.19}{96}}
-\citation{sherlock2010random}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.1}The Self-tuning Metropolis-Hastings Algorithm}{97}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.1}The Self-tuning Metropolis-Hastings Algorithm}{96}}
 \newlabel{MCMConevariableRW}{{5.1a}{97}}
 \newlabel{sub@MCMConevariableRW}{{a}{97}}
 \newlabel{MCMCMultivariableRW}{{5.1b}{97}}
@@ -503,26 +503,29 @@
 \newlabel{sub@MCMCCorrelatedRW}{{c}{97}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces Examples of 2-Dimensional Random Walk Metropolis-Hastings algorithm. Figure 5.1a\hbox {} is the trace of one-variable-at-a-time Random Walk. At each time, only one variable is changed and the other one stay constant. Figure 5.1b\hbox {} and 5.1c\hbox {} present the traces by multi-variable-at-a-time Random Walk. In figure 5.1b\hbox {}, the proposal for each step is independent, but in figure 5.1c\hbox {} the proposal are proposed correlated.\relax }}{97}}
 \newlabel{randomwalk}{{5.1}{97}}
+\citation{christen2005markov}
 \newlabel{autostepab}{{5.22}{98}}
 \newlabel{stRWMHselect}{{3}{98}}
 \@writefile{loa}{\contentsline {algocf}{\numberline {5.1}{\ignorespaces Self-tuning Random Walk Metropolis-Hastings Algorithm\relax }}{98}}
 \newlabel{algoonevarible}{{5.1}{98}}
-\citation{christen2005markov}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.2}Adaptive Delayed-Acceptance Metropolis-Hastings Algorithm}{98}}
 \citation{sherlock2015efficiency}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.2}Adaptive Delayed-Acceptance Metropolis-Hastings Algorithm}{99}}
-\newlabel{dahalpha2}{{5.23}{99}}
-\newlabel{dahalpha1}{{5.24}{99}}
 \citation{stroud2016bayesian}
 \citation{mathew2012bayesian}
+\newlabel{dahalpha2}{{5.23}{99}}
+\newlabel{dahalpha1}{{5.24}{99}}
 \citation{sherlock2010random}
 \citation{roberts2001optimal}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.3}Efficiency of Metropolis-Hastings Algorithm}{100}}
-\newlabel{effMHA}{{5.3.3}{100}}
 \citation{gelman1996efficient}
 \citation{gilks1995markov}
 \citation{roberts2001optimal}
 \citation{roberts1997weak,bedard2007weak,beskos2009optimal,sherlock2009optimal,sherlock2013optimal}
 \citation{sherlock2010random}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.3}Efficiency of Metropolis-Hastings Algorithm}{100}}
+\newlabel{effMHA}{{5.3.3}{100}}
+\citation{andrieu2008tutorial}
+\citation{sherlock2010random}
+\citation{graves2011automatic}
 \newlabel{MCMClargestep}{{5.2a}{101}}
 \newlabel{sub@MCMClargestep}{{a}{101}}
 \newlabel{MCMCsmallstep}{{5.2b}{101}}
@@ -531,108 +534,105 @@
 \newlabel{sub@MCMCproperstep}{{c}{101}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces Metropolis-Hastings sampler for a single parameter with: 5.2a\hbox {} a large step size, 5.2b\hbox {} a small step size, 5.2c\hbox {} an appropriate step size. The upper plots show the sample chains and lower plots indicate the autocorrelation values for each case.\relax }}{101}}
 \newlabel{largesmallstepsize}{{5.2}{101}}
-\citation{andrieu2008tutorial}
-\citation{sherlock2010random}
-\citation{graves2011automatic}
 \citation{roberts2001optimal}
 \citation{roberts2001optimal}
 \citation{kass1998markov,robert2004monte}
 \citation{gong2016practical}
 \citation{geyer1992practical}
 \citation{sokal1997monte}
-\@writefile{toc}{\contentsline {section}{\numberline {5.4}Simulation Studies}{104}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.4}Simulation Studies}{103}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.4.1}Simulation on Regularly Sampled Time Series Data}{104}}
 \citation{lopes2011particle}
 \newlabel{linearlogL}{{5.29}{105}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.3}{\ignorespaces Linear simulation with true parameter $\theta = \{ \phi =0.9,\tau ^2=0.5,\sigma ^2=1\}$. By transforming back to the original scale, the estimation of $\mathaccentV {hat}05E{\theta }$ is $\{\phi = 0.8810, \tau ^2 = 0.5247, \sigma ^2= 0.9416\}$. \relax }}{106}}
-\newlabel{linearmarginplots}{{5.3}{106}}
-\newlabel{sectionlinearRecursive}{{5.4.1}{106}}
+\newlabel{sectionlinearRecursive}{{5.4.1}{105}}
 \citation{sherman1950adjustment,woodbury1950inverting,bartlett1951inverse,bodewig1956matrix}
 \citation{deng2011generalization}
 \citation{bartlett1951inverse}
-\newlabel{beforeSMformula}{{5.30}{107}}
-\newlabel{theoremSMW}{{8}{107}}
-\newlabel{SMWformula}{{5.31}{107}}
-\newlabel{SMformula}{{5.32}{107}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.3}{\ignorespaces Linear simulation with true parameter $\theta = \{ \phi =0.9,\tau ^2=0.5,\sigma ^2=1\}$. By transforming back to the original scale, the estimation of $\mathaccentV {hat}05E{\theta }$ is $\{\phi = 0.8810, \tau ^2 = 0.5247, \sigma ^2= 0.9416\}$. \relax }}{106}}
+\newlabel{linearmarginplots}{{5.3}{106}}
+\newlabel{beforeSMformula}{{5.30}{106}}
+\newlabel{theoremSMW}{{8}{106}}
+\newlabel{SMWformula}{{5.31}{106}}
+\newlabel{SMformula}{{5.32}{106}}
+\newlabel{linearmu}{{5.37}{107}}
+\newlabel{linearsigma}{{5.38}{107}}
 \citation{tandeo2011linear}
-\newlabel{linearmu}{{5.37}{108}}
-\newlabel{linearsigma}{{5.38}{108}}
 \citation{einstein1956investigations}
+\newlabel{MCMClinearsimuXall}{{5.4a}{108}}
+\newlabel{sub@MCMClinearsimuXall}{{a}{108}}
+\newlabel{MCMClinearsimuXt2}{{5.4b}{108}}
+\newlabel{sub@MCMClinearsimuXt2}{{b}{108}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.4}{\ignorespaces Linear simulation of $x_{1:t}$ and single $x_t$.In figure 5.4a\hbox {}, the dots is the true $x_{1:t}$ and the solid line is the estimation $\mathaccentV {hat}05E{x}_{1:t}$. In figure 5.4b\hbox {}, the estimation $\mathaccentV {hat}05E{x}_t$ is very close to the true $x$. In fact, the true $x$ falls in the interval $[\mathaccentV {hat}05E{x}-\varepsilon ,\mathaccentV {hat}05E{x}+\varepsilon ]$.\relax }}{108}}
+\newlabel{linearmarginXt}{{5.4}{108}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.2}Simulation on Irregularly Sampled Time Series Data}{108}}
 \citation{vaughan2015goodness}
 \citation{kijima1997markov}
-\newlabel{MCMClinearsimuXall}{{5.4a}{109}}
-\newlabel{sub@MCMClinearsimuXall}{{a}{109}}
-\newlabel{MCMClinearsimuXt2}{{5.4b}{109}}
-\newlabel{sub@MCMClinearsimuXt2}{{b}{109}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.4}{\ignorespaces Linear simulation of $x_{1:t}$ and single $x_t$.In figure 5.4a\hbox {}, the dots is the true $x_{1:t}$ and the solid line is the estimation $\mathaccentV {hat}05E{x}_{1:t}$. In figure 5.4b\hbox {}, the estimation $\mathaccentV {hat}05E{x}_t$ is very close to the true $x$. In fact, the true $x$ falls in the interval $[\mathaccentV {hat}05E{x}-\varepsilon ,\mathaccentV {hat}05E{x}+\varepsilon ]$.\relax }}{109}}
-\newlabel{linearmarginXt}{{5.4}{109}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.2}Simulation on Irregularly Sampled Time Series Data}{109}}
-\newlabel{linearOUequation}{{5.41}{110}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.5}{\ignorespaces Simulated data. The solid dots indicate the true state $x$ and cross dots indicate observation $y$. Irregular time lag $\Delta _t$ are generated from \textit  {Inverse Gamma}(2,0.1) distribution.\relax }}{111}}
-\newlabel{simuOUreview}{{5.5}{111}}
-\newlabel{simuOUlogL}{{5.45}{112}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces Irregular time step OU process simulation. The estimation of $\mathaccentV {hat}05E{\theta }$ is $\{\gamma =0.4841, \lambda ^2=0.1032, \sigma ^2=0.9276\}$. In the plots, the horizontal dark lines are the true $\theta $. \relax }}{112}}
-\newlabel{simuOUmarginplots}{{5.6}{112}}
+\newlabel{linearOUequation}{{5.41}{109}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.5}{\ignorespaces Simulated data. The solid dots indicate the true state $x$ and cross dots indicate observation $y$. Irregular time lag $\Delta _t$ are generated from \textit  {Inverse Gamma}(2,0.1) distribution.\relax }}{110}}
+\newlabel{simuOUreview}{{5.5}{110}}
+\newlabel{simuOUlogL}{{5.45}{111}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces Irregular time step OU process simulation. The estimation of $\mathaccentV {hat}05E{\theta }$ is $\{\gamma =0.4841, \lambda ^2=0.1032, \sigma ^2=0.9276\}$. In the plots, the horizontal dark lines are the true $\theta $. \relax }}{111}}
+\newlabel{simuOUmarginplots}{{5.6}{111}}
 \newlabel{linearOUK}{{5.46}{112}}
-\newlabel{linearOUmu}{{5.48}{113}}
-\newlabel{linearOUsigma}{{5.49}{113}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.5}High Dimensional Ornstein-Uhlenbeck Process Application}{113}}
-\newlabel{SectionHighDimensionalOU}{{5.5}{113}}
+\newlabel{linearOUmu}{{5.48}{112}}
+\newlabel{linearOUsigma}{{5.49}{112}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.5}High Dimensional Ornstein-Uhlenbeck Process Application}{112}}
+\newlabel{SectionHighDimensionalOU}{{5.5}{112}}
+\newlabel{MCMCOUallX}{{5.7a}{113}}
+\newlabel{sub@MCMCOUallX}{{a}{113}}
+\newlabel{MCMCOUallXt2}{{5.7b}{113}}
+\newlabel{sub@MCMCOUallXt2}{{b}{113}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.7}{\ignorespaces Irregular time step OU process simulation of $x_{1:t}$ and sole $x_t$. In figure 5.7a\hbox {}, the dots is the true $x_{1:t}$ and the solid line is the estimation $\mathaccentV {hat}05E{x}_{1:t}$. In figure 5.7b\hbox {}, the chain in solid line is the estimation $\mathaccentV {hat}05E{x}_t$; dotted line is the true value of $x$; dot-dash line on top is the observed value of $y$; dashed lines are the estimated error. \relax }}{113}}
+\newlabel{simuOUxt}{{5.7}{113}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.8}{\ignorespaces The trajectory of a moving tractor. The time lags (right side figure) obtained from GPS units are irregular.\relax }}{113}}
+\newlabel{realdatareview}{{5.8}{113}}
 \newlabel{OUprocess}{{5.52}{113}}
-\newlabel{MCMCOUallX}{{5.7a}{114}}
-\newlabel{sub@MCMCOUallX}{{a}{114}}
-\newlabel{MCMCOUallXt2}{{5.7b}{114}}
-\newlabel{sub@MCMCOUallXt2}{{b}{114}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.7}{\ignorespaces Irregular time step OU process simulation of $x_{1:t}$ and sole $x_t$. In figure 5.7a\hbox {}, the dots is the true $x_{1:t}$ and the solid line is the estimation $\mathaccentV {hat}05E{x}_{1:t}$. In figure 5.7b\hbox {}, the chain in solid line is the estimation $\mathaccentV {hat}05E{x}_t$; dotted line is the true value of $x$; dot-dash line on top is the observed value of $y$; dashed lines are the estimated error. \relax }}{114}}
-\newlabel{simuOUxt}{{5.7}{114}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.8}{\ignorespaces The trajectory of a moving tractor. The time lags (right side figure) obtained from GPS units are irregular.\relax }}{114}}
-\newlabel{realdatareview}{{5.8}{114}}
-\newlabel{obseq}{{5.56}{115}}
-\newlabel{obmodel}{{5.57}{115}}
-\newlabel{jointmatrix}{{5.58}{115}}
+\newlabel{obseq}{{5.56}{114}}
+\newlabel{obmodel}{{5.57}{114}}
+\newlabel{jointmatrix}{{5.58}{114}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.5.1}The Posterior Distribution}{116}}
-\newlabel{logL}{{5.59}{117}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.2}The Forecast Distribution}{117}}
-\newlabel{OUupdatingK}{{5.61}{118}}
+\newlabel{logL}{{5.59}{116}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.2}The Forecast Distribution}{116}}
+\newlabel{OUupdatingK}{{5.61}{117}}
 \citation{lindley1972bayes,smith1973general}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.3}The Estimation Distribution}{118}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.4}Prior Distribution for Parameters}{118}}
 \citation{gelman2006prior}
 \citation{jeffries1961theory}
 \citation{jaynes1983papers}
 \citation{box2011bayesian}
 \citation{gelman2008weakly}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.3}The Estimation Distribution}{119}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.4}Prior Distribution for Parameters}{119}}
 \citation{stroud2007sequential}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.9}{\ignorespaces Probability density function and cumulative distribution function of \textit  {Inverse Gamma} with two parameters $\alpha $ and $\beta $. \relax }}{121}}
-\newlabel{IGPDFCDF}{{5.9}{121}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.5}Efficiency of Delayed-Acceptance Metropolis-Hastings Algorithm}{121}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.9}{\ignorespaces Probability density function and cumulative distribution function of \textit  {Inverse Gamma} with two parameters $\alpha $ and $\beta $. \relax }}{120}}
+\newlabel{IGPDFCDF}{{5.9}{120}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.5}Efficiency of Delayed-Acceptance Metropolis-Hastings Algorithm}{120}}
 \citation{christen2010general}
 \citation{polson2008practical}
-\@writefile{lot}{\contentsline {table}{\numberline {5.1}{\ignorespaces An example of Eff, EffUT, ESS and ESSUT found by running 10\tmspace  +\thinmuskip {.1667em}000 iterations with same data. The computation time is measured in seconds\nobreakspace  {}$s$. \relax }}{122}}
-\newlabel{effeutessessutexampletable}{{5.1}{122}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.6}A Sliding Window State and Parameter Estimation Approach}{122}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.10}{\ignorespaces Influences of different step sizes on sampling efficiency (Eff), efficiency in unit time (EffUT), effective sample size (ESS) and effective sample size in unit time (ESSUT) found by using the same data\relax }}{123}}
-\newlabel{effeutessessutexamplefigure}{{5.10}{123}}
-\@writefile{lot}{\contentsline {table}{\numberline {5.2}{\ignorespaces Comparing Eff, EffUT, ESS and ESSUT values using different step size. The $1000^\star $ means taking 1\tmspace  +\thinmuskip {.1667em}000 samples from a longer chain, like 1\tmspace  +\thinmuskip {.1667em}000 out of 5\tmspace  +\thinmuskip {.1667em}000 sample chain. The computation time is measured in seconds\nobreakspace  {}$s$.\relax }}{124}}
-\newlabel{stepsizecompare}{{5.2}{124}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.11}{\ignorespaces Comparison of efficiency (Eff), efficiency in unit time (EffUT), effective sample size (ESS) and effective sample size in unit time (ESSUT) against the different length of data. Increasing data length does not significantly improve the efficiency and ESSUT.\relax }}{125}}
-\newlabel{compareLengthData}{{5.11}{125}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.12}{\ignorespaces Comparison of $\qopname  \relax o{ln}DA$ and $\qopname  \relax o{ln}L$ surfaces between not-updating-mean and updating-mean methods. It is obviously that the updating-mean method has dense log-surfaces indicating more effective samples.\relax }}{126}}
-\newlabel{comparenotanupDAL}{{5.12}{126}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.13}{\ignorespaces Comparison of acceptance rates $\alpha _1$, $\alpha _2$, EffUT and ESSUT between not-updating-mean and updating-mean methods. Black solid dots $\bullet $ indicate values obtained from not-updating-mean method and black solid triangular $\blacktriangle $ indicate values obtained from updating-mean method. The acceptance rates of the updating-mean method are more stable and effective samples are larger in unit computation time. \relax }}{127}}
-\newlabel{comparenotanupfeatures}{{5.13}{127}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.7}Implementation}{127}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.14}{\ignorespaces Visualization of the parameters correlation matrix, which is found in learning phase. \relax }}{128}}
-\newlabel{realdatacorMatrix}{{5.14}{128}}
-\newlabel{algorithmlearningsurface}{{2}{129}}
-\newlabel{algorithmestimaiton}{{3}{129}}
-\newlabel{algorithmDA}{{4}{129}}
-\@writefile{loa}{\contentsline {algocf}{\numberline {5.2}{\ignorespaces Sliding Window MCMC\relax }}{129}}
-\newlabel{algorithmslidingwindow}{{5.2}{129}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.15}{\ignorespaces Trace plots of $\theta $ from learning phase after taking 1\tmspace  +\thinmuskip {.1667em}000 burn-in samples out from 5\tmspace  +\thinmuskip {.1667em}000. \relax }}{130}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.16}{\ignorespaces Estimations of $X$ and $Y$ found by combined batch and sequential methods. The black line is the estimation by batch method and the blue line is the sequential MCMC filtering estimation. Red dots are the measurements.\relax }}{131}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.17}{\ignorespaces Zoom in on estimations. For each estimation $\mathaccentV {hat}05E{X}_i (i=1,\dots  ,t)$, there is an error circle around it. \relax }}{132}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.6}Discussion and Future Work}{132}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.1}{\ignorespaces An example of Eff, EffUT, ESS and ESSUT found by running 10\tmspace  +\thinmuskip {.1667em}000 iterations with same data. The computation time is measured in seconds\nobreakspace  {}$s$. \relax }}{121}}
+\newlabel{effeutessessutexampletable}{{5.1}{121}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.6}A Sliding Window State and Parameter Estimation Approach}{121}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.10}{\ignorespaces Influences of different step sizes on sampling efficiency (Eff), efficiency in unit time (EffUT), effective sample size (ESS) and effective sample size in unit time (ESSUT) found by using the same data\relax }}{122}}
+\newlabel{effeutessessutexamplefigure}{{5.10}{122}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.2}{\ignorespaces Comparing Eff, EffUT, ESS and ESSUT values using different step size. The $1000^\star $ means taking 1\tmspace  +\thinmuskip {.1667em}000 samples from a longer chain, like 1\tmspace  +\thinmuskip {.1667em}000 out of 5\tmspace  +\thinmuskip {.1667em}000 sample chain. The computation time is measured in seconds\nobreakspace  {}$s$.\relax }}{123}}
+\newlabel{stepsizecompare}{{5.2}{123}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.11}{\ignorespaces Comparison of efficiency (Eff), efficiency in unit time (EffUT), effective sample size (ESS) and effective sample size in unit time (ESSUT) against the different length of data. Increasing data length does not significantly improve the efficiency and ESSUT.\relax }}{124}}
+\newlabel{compareLengthData}{{5.11}{124}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.12}{\ignorespaces Comparison of $\qopname  \relax o{ln}DA$ and $\qopname  \relax o{ln}L$ surfaces between not-updating-mean and updating-mean methods. It is obviously that the updating-mean method has dense log-surfaces indicating more effective samples.\relax }}{125}}
+\newlabel{comparenotanupDAL}{{5.12}{125}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.13}{\ignorespaces Comparison of acceptance rates $\alpha _1$, $\alpha _2$, EffUT and ESSUT between not-updating-mean and updating-mean methods. Black solid dots $\bullet $ indicate values obtained from not-updating-mean method and black solid triangular $\blacktriangle $ indicate values obtained from updating-mean method. The acceptance rates of the updating-mean method are more stable and effective samples are larger in unit computation time. \relax }}{126}}
+\newlabel{comparenotanupfeatures}{{5.13}{126}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.7}Implementation}{126}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.14}{\ignorespaces Visualization of the parameters correlation matrix, which is found in learning phase. \relax }}{127}}
+\newlabel{realdatacorMatrix}{{5.14}{127}}
+\newlabel{algorithmlearningsurface}{{2}{128}}
+\newlabel{algorithmestimaiton}{{3}{128}}
+\newlabel{algorithmDA}{{4}{128}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {5.2}{\ignorespaces Sliding Window MCMC\relax }}{128}}
+\newlabel{algorithmslidingwindow}{{5.2}{128}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.15}{\ignorespaces Trace plots of $\theta $ from learning phase after taking 1\tmspace  +\thinmuskip {.1667em}000 burn-in samples out from 5\tmspace  +\thinmuskip {.1667em}000. \relax }}{129}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.16}{\ignorespaces Estimations of $X$ and $Y$ found by combined batch and sequential methods. The black line is the estimation by batch method and the blue line is the sequential MCMC filtering estimation. Red dots are the measurements.\relax }}{130}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.17}{\ignorespaces Zoom in on estimations. For each estimation $\mathaccentV {hat}05E{X}_i (i=1,\dots  ,t)$, there is an error circle around it. \relax }}{131}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.6}Discussion and Future Work}{131}}
 \citation{freund1995desicion,friedman2001greedy}
 \@writefile{toc}{\contentsline {chapter}{\numberline {6}Future Work}{133}}
 \@writefile{lof}{\addvspace {10\p@ }}
