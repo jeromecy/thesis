@@ -666,7 +666,7 @@ p\left(\phi  \mid  x_{1:t+1},y_{1:t+1}\right) & \propto p\left(x_{1:t+1},y_{1:t+
 \end{itemize}
 
 
-Notice that the proposed sliding window MCMC algorithm requires using a few data to learn the parameter's mean and variance in the learning phase. Besides, LW, St and PL do not converge at the first few data. Then, to be fair, we take the first 300 data out and use them in the learning phase of the proposed algorithm. In the estimation phase, we use three different strategies: a fixed length of 100, a fixed length of 300 and an expanding length including all the historical data along time $t$. In the former three algorithms, we use 5\,000 particles to infer state and parameter. In the latter MCMC algorithm, we take 5\,000 samples at each time $t$ for  $x_t^{(i)}$ and $\phi^{(i)}$, where $i=1,\ldots,5\,000$ and $t=300,\ldots,897$. Furthermore, we run the comparison for 50 times to check their stabilities. 
+Notice that the proposed sliding window MCMC algorithm requires using a few data to learn the parameter's mean and variance in the learning phase. Besides, LW, St and PL do not converge at the first few data. Then, to be fair, we take the first 300 data out and use them in the learning phase of the proposed algorithm. In the estimation phase, we use three different strategies: a fixed length of 100, a fixed length of 300 and an expanding length including all the historical data along with time $t$. In the former three algorithms, we use 5\,000 particles to infer state and parameter. In the latter MCMC algorithm, we take 5\,000 samples at each time $t$ for  $x_t^{(i)}$ and $\phi^{(i)}$, where $i=1,\ldots,5\,000$ and $t=300,\ldots,897$. Furthermore, we run the comparison for 50 times to check their stabilities. 
 
 %\begin{figure}[h]
 %\centering
@@ -702,7 +702,7 @@ Notice that the proposed sliding window MCMC algorithm requires using a few data
 \includegraphics[width=\textwidth]{Chapters/04Filtering/plot/MCMCchainVary.pdf}
  \caption{MCMC with varying-length}
    \end{subfigure}
-\caption{Trace plots. Repeatedly running 50 times with cutting off the first \textbf{300} data. It is apparent that all these algorithms converge to the true parameter (black horizontal line) along time. St, PL and MCMC-vary have a narrower range. MCMC-100 has a higher variability and MCMC-vary has the least. The more data incorporated in the estimation phase the better approximation to be obtained. }\label{FilterRiewComparesion01}
+\caption{Trace plots. Repeatedly running 50 times with cutting off the first \textbf{300} data. It is apparent that all these algorithms converge to the true parameter (black horizontal line) along with time. St, PL and MCMC-vary have a narrower range. MCMC-100 has a higher variability and MCMC-vary has the least. The more data incorporated in the estimation phase the better approximation to be obtained. }\label{FilterRiewComparesion01}
 \end{figure}
 
  
@@ -752,7 +752,7 @@ $\frac{1}{n}\sum_i(\hat{x}_i-x_i)^2$ & 0.5745 & 0.5739 & 0.5737 & 0.5875&  0.574
 %\end{table}
 
 
-From figure \ref{FilterRiewComparesion01}, it can be seen that the former three algorithms converge to the true parameter $\phi$ at similar speeds along the time $t$. LW filter has a larger distance to the true parameter comparing with St and PL filters. The proposed MCMC with 100 length data in estimation phase has the largest variance. By setting a longer length $L$, the proposed adaptive MCMC becomes stable. 
+From figure \ref{FilterRiewComparesion01}, it can be seen that the former three algorithms converge to the true parameter $\phi$ at similar speeds along with the time $t$. LW filter has a larger distance to the true parameter comparing with St and PL filters. The proposed MCMC with 100 length data in estimation phase has the largest variance. By setting a longer length $L$, the proposed adaptive MCMC becomes stable. 
 
 The estimations for $x_t$ from $t=300$ to $897$ are very close and the differences are hard to tell visually. From table \ref{FilterRiewComparesionTable}, we can see that, by repeatedly running 50 simulations, the proposed MCMC algorithm is more stable in estimating parameter $\phi$ as it has the lowest standard error (SE) among all the algorithms. The MSE of all the algorithms on estimating $x$ is on the similar level.  
 
