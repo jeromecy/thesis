@@ -313,9 +313,9 @@ The basis idea of the cross-validation is to choose the value of $\lambda$ that 
 
 %An efficient way to calculate the cross-validation score is introduced by \citep{green1993nonparametric}. 
 Through the equation \eqref{fhy}, it is known that the value of the smoothing spline $\hat{f}$ depend linearly on the data $y_i$. Define the matrix $A(\lambda)$, which is a map vector of observed values $y_i$ to predicted values $\hat{f}(t_i)$. Then we have
-\begin{equation*}\label{crossvalidationmatrixA}
+\begin{equation}\label{crossvalidationmatrixA}
 \hat{\mathbf{f}}=A(\lambda)\mathbf{y}
-\end{equation*}
+\end{equation}
 and the following lemma.
 \begin{lemma}\label{cvlema}
 The cross-validation score satisfies
