@@ -26,6 +26,7 @@
 % % % % % % % % %  tikz package % % % % % % % %
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta,calc,backgrounds}
+\usepackage{pgfplots}
 
 \tikzset{
     right angle quadrant/.code={
@@ -46,8 +47,6 @@
     }
 }
 % % % % % % % % %  tikz package % % % % % % % %
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%  New commands 
 
 \newcommand{\BigO}[1]{{\rm O}\left(#1\right)}
@@ -117,6 +116,8 @@
 
 \chapter{Adaptive Smoothing V-Spline for Trajectory Reconstruction}\label{ChapterTS}
 \input{Chapters/02TractorSplineTheory/TractorSplineTheory}
+
+
 \clearemptydoublepage
 
 \chapter{V-Spline as Bayes Estimate}\label{ChapterGPR}
