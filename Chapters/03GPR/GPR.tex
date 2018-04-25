@@ -263,7 +263,7 @@ Note that $\rho$ only appears in the third term and is minimized at $\rho=0$. He
 \subsection{Posterior of Bayes Estimates}
 
 
-Consider the independent observations $y_i\sim N\left(f(t_i),\sigma^2 \right)$ and $v_i\sim N\left(f'(t_i),\frac{\sigma^2}{\gamma} \right)$, 
+%Consider the independent observations $y_i\sim N\left(f(t_i),\sigma^2 \right)$ and $v_i\sim N\left(f'(t_i),\frac{\sigma^2}{\gamma} \right)$, 
 %with a prior $f\sim N(0,\beta I)$, 
 %it is easy to see that the posterior mean of $f$ is the minimizer of 
 %\begin{equation*}
@@ -271,11 +271,12 @@ Consider the independent observations $y_i\sim N\left(f(t_i),\sigma^2 \right)$ a
 %\end{equation*}
 %and defines a shrinkage estimate being shrunk toward zero. 
 %Now in the model $y=f(t)+\varepsilon_1$, $\varepsilon_1 \sim N(0,\sigma^2)$, and $v=f '(t)+\varepsilon_2$, $\varepsilon_2\sim N\left(0, \frac{\sigma^2}{\gamma}\right)$, 
-according to equation \eqref{GaussianProcessFunctionF}, let $f(t) \in \mathcal{C}_{\mbox{\scriptsize p.w.}}^{(2)}[0,1]$, has the prior distribution 
-\begin{equation}
-f(t)=(d_1+d_2t)+\sum_{i=1}^{n}c_iR_1(t_i,t)+\sum_{i=1}^{n}b_i\dot{R}_1(t_i,t),
-\end{equation}
-where $d\sim N(0,\tau^2I_{2\times 2})$. The covariance functions for $y$, $v$ and $f$, $f'$ are \small
+%according to equation \eqref{GaussianProcessFunctionF}, let $f(t) \in \mathcal{C}_{\mbox{\scriptsize p.w.}}^{(2)}[0,1]$, has the prior distribution 
+%\begin{equation}
+%f(t)=(d_1+d_2t)+\sum_{i=1}^{n}c_iR_1(t_i,t)+\sum_{i=1}^{n}b_i\dot{R}_1(t_i,t),
+%\end{equation}
+%where $d\sim N(0,\tau^2I_{2\times 2})$. The covariance functions for $y$, $v$ and $f$, $f'$ are \small
+Suppose the covariance functions for $y$, $v$ and $f$, $f'$ are \small
 \begin{align*}
 \E\lbrack f(s)f (t)\rbrack &=\tau^2R_0(s,t)+\beta R_1(s,t) & \E \lbrack f(s)f '(t)\rbrack&=\tau^2R_0'(s,t)+\beta R_1'(s,t) \\
 \E\lbrack f '(s)f (t)\rbrack&=\tau^2\dot{R}_0(s,t)+\beta\dot{R}_1(s,t) & \E\lbrack f '(s)f '(t)\rbrack&=\tau^2\dot{R}'_0(s,t)+\beta\dot{R}'_1(s,t) \\
@@ -356,9 +357,9 @@ Q'& P'+\frac{n\lambda}{\gamma}I
 It is easy to verify that $\mathbf{d},\mathbf{c},\mathbf{b}$ are the solutions to
 \begin{align*}
 &\begin{cases}
-S^\top \left(S\mathbf{d} +Q\mathbf{c}+P\mathbf{b}-\mathbf{y}\right) +\gamma S'^\top\left( S'\mathbf{b}+ P^\top \mathbf{c}+S'^\top P'\mathbf{b}-\mathbf{v}\right)=0, \\
-Q\left(S\mathbf{d}+\left(Q+n\lambda I\right)\mathbf{c}+P\mathbf{b}-\mathbf{y}\right) + P \left( \gamma S' \mathbf{b} + \gamma P^\top \mathbf{c}+ \left(\gamma P'+n\lambda I\right) \mathbf{b}- \gamma \mathbf{v}\right)=0, \\
-P^\top \left(S\mathbf{d}+\left(Q+n\lambda I\right) \mathbf{c} +P\mathbf{b}-\mathbf{y}\right)+P'\left(\gamma S'\mathbf{b}+P^\top \mathbf{c}+\left(\gamma P'+n\lambda I\right)\mathbf{b}- \gamma\mathbf{v}\right)=0. \\
+S^\top \left(S\mathbf{d} +Q\mathbf{c}+P\mathbf{b}-\mathbf{y}\right) +\gamma S'^\top\left( S'\mathbf{d}+ P^\top \mathbf{c}+ P'\mathbf{b}-\mathbf{v}\right)=0, \\
+Q\left(S\mathbf{d}+\left(Q+n\lambda I\right)\mathbf{c}+P\mathbf{b}-\mathbf{y}\right) + P \left( \gamma S' \mathbf{d} + \gamma P^\top \mathbf{c}+ \left(\gamma P'+n\lambda I\right) \mathbf{b}- \gamma \mathbf{v}\right)=0, \\
+P^\top \left(S\mathbf{d}+\left(Q+n\lambda I\right) \mathbf{c} +P\mathbf{b}-\mathbf{y}\right)+P'\left(\gamma S'\mathbf{d}+P^\top \mathbf{c}+\left(\gamma P'+n\lambda I\right)\mathbf{b}- \gamma\mathbf{v}\right)=0.
 \end{cases}
 \end{align*}
 Finally we obtain the following theorem: 
@@ -449,7 +450,7 @@ In this chapter, we take a review of the work that has been done for the relatio
 
 In order to find the Bayes estimate for the real V-spline with a piecewise penalty term $\lambda(t)$, we conjecture that the methods discussed in this chapter can be extended using the inner product 
 \begin{equation*}
-\langle f,g \rangle=f(0) g(0)+f'(0) g'(0)+\sum_{i=1}^{n-1}w_i\int_{t_i}^{t_{i+1}}f''(t)g''(t)dt,
+\langle f,g \rangle=f(0) g(0)+f'(0) g'(0)+\sum_{i=1}^{n-1}w_i^{-1}\int_{t_i}^{t_{i+1}}f''(t)g''(t)dt,
 \end{equation*}
 on $\mathcal{C}^{(2)}_{\mbox{\scriptsize p.w.}}[0,1]$, where $\sum_i w_i=1$ and $w_i>0$. 
 
