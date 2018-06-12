@@ -32,7 +32,7 @@
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
 
-\title[]{Previous Research} % The short title appears at the bottom of every slide, the full title is only on the title page
+\title[]{Inference and Characterization of Planar Trajectories} % The short title appears at the bottom of every slide, the full title is only on the title page
 
 \author{Zhanglong Cao} % Your name
 \institute[UO] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
@@ -42,7 +42,7 @@ University of Otago % Your institution for the title page
 %\medskip
 %\textit{zcao@maths.otago.ac.nz} % Your email address
 }
-%\date{19 Dec 2016} % Date, can be changed to a custom date
+\date{20 June 2018} % Date, can be changed to a custom date
 
 \begin{document}
 
@@ -166,7 +166,7 @@ Then
 
 %\subsection{Adjusted Penalty Term}
 \begin{frame}
-\frametitle{Adjusted Penalty Term}
+\frametitle{The Penalty Term}
 Given a constant $\lambda = \frac{\left(\Delta T_1\right)^3}{\left(\Delta d_1\right)^2}\eta$, the penalty term becomes
 \begin{equation}\begin{split}
 \eta \frac{\left(\Delta T_1\right)^2}{\left(\Delta d_1\right)^2} \left(\left(2\varepsilon_1+\varepsilon_2\right)^2+3\varepsilon_2^2\right)
@@ -184,7 +184,7 @@ which will be enormous with large measured errors in velocity $v_1$ or $v_2$ com
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{Hilbert Space and Reproducing Kernel for V-Spline}
+\frametitle{Reproducing Kernel Hilbert Space for V-Spline}
 
 For any $f \in \mathbb{H}$, $f=\sum_{i=1}^{2n} \theta_i N_i(t).$ Building up a new space \begin{align*}
 \mathcal{C}_{p.w.}^{2}[0,1]=\{f:f,f' \mbox{ continuous, } f'' \mbox{ piecewise continuous on } [0,1] \}.
@@ -314,6 +314,42 @@ A tractor moving on an orchard is mounted with a GPS-enabled unit, which records
 and transmits data to a remote server. The data is an irregularly spaced time series of longitude, latitude, speed and bearing. In online mode, the sliding window algorithm is able to infer the tractor's position within seconds with an uncertainty of $\approx 0.5\text{m}$. A window $L$ of 100 is chosen to maintain a balance between sampling speed and acceptable estimation errors. 
 \end{frame}
 
+%--------------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------------
+
+
+\begin{frame}
+For the priors of all the parameters in an OU-process, the reciprocal of $\gamma$ is typical velocity falling in the reasonable range of 0.1 to 100 $m/s$. $\xi$ is the error occurs in transition process, $\sigma$ and $\tau$ are errors in the forward map for position and velocity respectively. 
+\begin{align*}
+\gamma   &\sim IG(10,0.5),\\
+\xi^2        &\sim IG(5,2.5),\\
+\sigma^2 &\sim IG(5,2.5),
+\end{align*}
+where $IG(\alpha,\beta)$ represents the \textit{Inverse Gamma} distribution with two parameters $\alpha$ and $\beta$. 
+%\begin{figure}[h]
+%\centering
+%\includegraphics[width=0.45\textwidth]{Chapters/05MCMCOU/plots/ggIGPDF.pdf}
+%\includegraphics[width=0.45\textwidth]{Chapters/05MCMCOU/plots/ggIGCDF.pdf}
+%\caption{Probability density function and cumulative distribution function of \textit{Inverse Gamma} with two parameters $\alpha$ and $\beta$. }
+%\label{IGPDFCDF}
+%\end{figure}
+\end{frame}
+
+%--------------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------------
+
+\begin{frame}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{Chapters/05MCMCOU/plots/realdatalearningcorMatrix.pdf}
+\caption{Visualization of the parameters correlation matrix, which is found in learning phase. }\label{realdatacorMatrix}
+\end{figure}
+
+\end{frame}
+
+%--------------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------------
+
 
 \begin{frame}
 
@@ -329,10 +365,30 @@ and transmits data to a remote server. The data is an irregularly spaced time se
     \node [black, font=\bfseries] at (0.52,-0.02) {\small easting};
     \end{scope}
 \end{tikzpicture}
-\caption{Posterior mean trajectory in two dimensions. The orange line is the reconstruction from the learning phase and the green line is the filtering from the estimation phase. Red dots are the measurements, and the two blue dots are the start and end points.}
+\caption{Posterior mean trajectory in two dimensions. The orange line is the reconstruction from the learning phase and the green line is the filtering from the estimation phase. Red dots are the measurements.}
 \end{figure} 
 \end{frame}
 
+%--------------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------------
+
+
+
+
+\begin{frame}
+
+Further videos at:
+
+\href{https://www.youtube.com/watch?v=lQOSt8HrYRU&t=61s}{V-spline reconstruction} 
+
+\href{https://www.youtube.com/watch?v=CF6Sut3G6eI&t=67s}{Adaptive MCMC} 
+
+\end{frame}
+
+
+
+%--------------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------------
 
 \begin{frame}
 \frametitle{Acknowledgment}
@@ -346,7 +402,7 @@ and transmits data to a remote server. The data is an irregularly spaced time se
 \end{frame}
 
 %--------------------------------------------------------------------------------------
-
+%--------------------------------------------------------------------------------------
 
 \begin{frame}
 \begin{figure}
@@ -392,8 +448,35 @@ and transmits data to a remote server. The data is an irregularly spaced time se
 %------------------------------------------------
 
 \begin{frame}
-\Huge{\centerline{The End}}
+\frametitle{Main Contributions in The Past Three Years}
+\begin{itemize}
+\item Non-parametric V-spline
+\item Corresponding between V-spline and its Bayes estimate
+\item A practical adaptive MCMC sampler for combined state and parameter estimation
+\end{itemize}
+
 \end{frame}
+
+
+\begin{frame}
+\frametitle{Future Research Plans in Academic Career}
+\begin{itemize}
+\item Gradient boosting V-spline: to speed up computation
+
+\item MCMC algorithms, such as adaptive MCMC, grid-based MCMC and parallel MCMC algorithms, subsample MCMC. 
+
+\item Computational biology: such as genotype imputation, epidemiological forecasting. 
+
+\item Statistical methodologies and their applications.  
+
+\end{itemize}
+
+\end{frame}
+
+
+%\begin{frame}
+%\Huge{\centerline{Thank you for your attention.}}
+%\end{frame}
 
 %----------------------------------------------------------------------------------------
 

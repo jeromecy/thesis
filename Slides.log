@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.5)  5 JUN 2018 14:35
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.5)  12 JUN 2018 15:25
 entering extended mode
 **Slides.tex
 (C:\Users\zcao\Documents\Latex\Thesis\Slides.tex
@@ -1194,51 +1194,70 @@ ot/ggRealdataCompleteXY.pdf>] [14
 
 ] [17
 
+] [18
+
 ]
-<Chapters/05MCMCOU/plots/realdatabatchPosition2.pdf, id=561, 844.15375pt x 597.
+<Chapters/05MCMCOU/plots/realdatalearningcorMatrix.pdf, id=586, 844.15375pt x 5
+97.23125pt>
+File: Chapters/05MCMCOU/plots/realdatalearningcorMatrix.pdf Graphic file (type 
+pdf)
+ <use Chapters/05MCMCOU/plots/realdatalearningcorMatrix.pdf>
+Package pdftex.def Info: Chapters/05MCMCOU/plots/realdatalearningcorMatrix.pdf 
+used on input line 348.
+(pdftex.def)             Requested size: 273.83728pt x 193.74245pt.
+
+[19
+
+ <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/realdatalearning
+corMatrix.pdf>]
+<Chapters/05MCMCOU/plots/realdatabatchPosition2.pdf, id=620, 844.15375pt x 597.
 23125pt>
 File: Chapters/05MCMCOU/plots/realdatabatchPosition2.pdf Graphic file (type pdf
 )
  <use Chapters/05MCMCOU/plots/realdatabatchPosition2.pdf>
 Package pdftex.def Info: Chapters/05MCMCOU/plots/realdatabatchPosition2.pdf use
-d on input line 334.
+d on input line 370.
 (pdftex.def)             Requested size: 273.83728pt x 193.74245pt.
 
-Overfull \vbox (13.71797pt too high) detected at line 334
+Overfull \vbox (1.71797pt too high) detected at line 370
  []
 
-[18
+[20
 
  <C:/Users/zcao/Documents/Latex/Thesis/Chapters/05MCMCOU/plots/realdatabatchPos
-ition2.pdf>] [19
+ition2.pdf>] [21
 
-] <plots/mbie.png, id=620, 256.3176pt x 71.3064pt>
+] [22
+
+] <plots/mbie.png, id=705, 256.3176pt x 71.3064pt>
 File: plots/mbie.png Graphic file (type png)
 
 <use plots/mbie.png>
-Package pdftex.def Info: plots/mbie.png used on input line 358.
+Package pdftex.def Info: plots/mbie.png used on input line 414.
 (pdftex.def)             Requested size: 256.31697pt x 71.3062pt.
 
-<plots/tracmap-agriculture.png, id=622, 250.9375pt x 41.15375pt>
+<plots/tracmap-agriculture.png, id=707, 250.9375pt x 41.15375pt>
 File: plots/tracmap-agriculture.png Graphic file (type png)
 
 <use plots/tracmap-agriculture.png>
-Package pdftex.def Info: plots/tracmap-agriculture.png used on input line 358.
+Package pdftex.def Info: plots/tracmap-agriculture.png used on input line 414.
 (pdftex.def)             Requested size: 250.93687pt x 41.15364pt.
- [20
+ [23
 
  <C:/Users/zcao/Documents/Latex/Thesis/plots/mbie.png> <C:/Users/zcao/Documents
-/Latex/Thesis/plots/tracmap-agriculture.png>] [21
+/Latex/Thesis/plots/tracmap-agriculture.png>] [24
+
+] [25
 
 ]
 \tf@nav=\write6
 \tf@toc=\write7
 \tf@snm=\write8
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 400.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 400.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 483.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 483.
  (C:\Users\zcao\Documents\Latex\Thesis\Slides.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 400.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 400.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 483.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 483.
 Package rerunfilecheck Info: File `Slides.out' has not changed.
 (rerunfilecheck)             Checksum: 70AB422694DCE69DF960FA9A49BB6ADA;295.
 
@@ -1246,14 +1265,14 @@ Package rerunfilecheck Info: File `Slides.out' has not changed.
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.0pt have occurred.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 400.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 483.
  ) 
 Here is how much of TeX's memory you used:
- 19809 strings out of 493706
- 395471 string characters out of 3142169
- 451326 words of memory out of 3000000
- 22605 multiletter control sequences out of 15000+200000
- 16310 words of font info for 59 fonts, out of 3000000 for 9000
+ 19828 strings out of 493706
+ 395856 string characters out of 3142169
+ 451504 words of memory out of 3000000
+ 22615 multiletter control sequences out of 15000+200000
+ 16004 words of font info for 58 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  56i,18n,60p,416b,699s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb>
@@ -1261,17 +1280,16 @@ Here is how much of TeX's memory you used:
 :/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/P
 rogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Pro
 gram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss12.pfb><C:/Progr
-am Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss17.pfb><C:/Program
- Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss8.pfb><C:/Program Fi
-les (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><C:/Program Fi
-les (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmssi10.pfb><C:/Program Fil
-es (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmssi8.pfb><C:/Program Files
- (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (
-x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files (x86
-)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Slides.pdf (21 pages, 662390 bytes).
+am Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss8.pfb><C:/Program 
+Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><C:/Program 
+Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmssi10.pfb><C:/Program F
+iles (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmssi8.pfb><C:/Program Fil
+es (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files
+ (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files (x
+86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on Slides.pdf (25 pages, 694190 bytes).
 PDF statistics:
- 730 PDF objects out of 1000 (max. 8388607)
- 52 named destinations out of 1000 (max. 500000)
- 183 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 839 PDF objects out of 1000 (max. 8388607)
+ 61 named destinations out of 1000 (max. 500000)
+ 188 words of extra memory for PDF output out of 10000 (max. 10000000)
 
