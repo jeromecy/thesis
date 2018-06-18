@@ -1,0 +1,319 @@
+
+\section{Introduction}
+
+GPS devices are widely used in orchard planting and maintenance. This location-based system allows orchardist to check trajectory of tractors. The trajectory is a connection by a time series successive positions recorded by GPS devices. A classical GPS device records skeleton information, including time mark, latitude, longitude, number of available satellites, etc. Recently, researchers try to enrich trajectory (called Semantic Trajectory) by adding background geographic information to discover meaningful pattern \citep{ying2011semantic}. 
+
+Normally GPS units record more data than necessary and cause more errors due to weak signals or shelter from branches. To obtain a more accurate observation dataset and to save local storage space, several data simplification methods were proposed and are focusing on simplifying data set by making either a local or global decision. 
+
+A local simplification algorithm focuses on a couple of particular consecutive points. By analyzing the relationship between these points, a decision is made that which point can be deleted or retained. Distance threshold algorithm is one of these algorithms. All points, whose distance to the preceding track point is less than a predetermined threshold, are deleted. Direction changing algorithm is another one. The point is retained if the change in direction is greater than a predetermined threshold  \citep{ivanov2012real}. 
+
+Alternatively, global simplification algorithms have an overview of all tracked points. After analyzing the relationships among these points, a decision will be made about which one or more points to delete or to retain. The Douglas-Peucker algorithm is the most popular one  \citep{douglas1973algorithms}. A proposed simplification method, represented by \cite{chen2009trajectory}, consider both the skeleton information and semantic meanings of a trajectory when performing simplification. 
+
+
+Intuitively, the global simplification algorithms can be applied on off-line data analyses and local simplification algorithms will perform better on on-line or real-time track simplification. However, a pertinent algorithm is required in our case. 
+
+
+In our case, a GPS log is a sequence time series points $p_i \in P$, $P=\left\lbrace p_1,p_2, \ldots, p_n \right\rbrace$. Each GPS point $p_i$ contains information of time mark, latitude, longitude and semantic information of velocity, heading direction and boom status, which can be written in form of
+\begin{equation}
+T=\left\lbrace p_t=[x_t,y_t,v_t,\theta_t,b_t] \mid t \in \mathbb{R} \right\rbrace.
+\end{equation}
+Sequentially connect these points will give us a trajectory of a moving vehicle.
+Particularly, a tractor working on an orchard generates two kinds of boom status information: operating and not-operating. This information is recorded by GPS units and is indicated by $b=1$ for operating and $b=0$ for not-operating.
+
+
+To move further, here are two concepts that will be useful to understand the simplification scheme.
+\begin{itemize}
+\item $\mathbf{Segment}$ A segment is a part of the consecutive trajectory. Regarding the status of the boom, the trajectory can be simply divided into two kinds of the segment in our dataset, one is boom-operating, the other is boom-not-operating. 
+\item $\mathbf{Direction}$. Direction $\theta$ denotes the heading direction of a tractor at a specific point location. This parameter uses north direction as a basis, in which way $\ang{0} \leq \theta < \ang{360}$.
+\end{itemize}
+
+
+
+\section{Simplification Algorithm}
+
+The first two steps are designed to reduce some errors caused by misoperation and GPS units bugs.
+\begin{itemize}\itemsep0em
+\item Merging Phase. If the length of a segment composed of consecutive boom operating or not-operating points is less than a threshold, merge this one into its backward segment. 
+\item Removing Phase. If two or more data points have duplicated time mark, remove the latter ones. 
+\end{itemize}
+Now only two types of segment points are left in GPS log, boom operating, and not-operating and the length of each segment are greater than the predetermined threshold.
+
+The following algorithm is based on the relationship between a candidate point $p_i$ and its neighboring points $p_{i-1}$ and $p_{i+1}$, and the importance of the $p_i$ in the segment where it belongs to, $i=2,\ldots,n-1$. 
+
+\begin{itemize}\itemsep0em
+\item Rule 1. The candidate point $p_i$ is retained if it is not linear predictable or cannot be used for linear predicting. With the velocity information $v_{i-1}, v_i$ at point $p_{i-1}, p_i$ and time differences $\Delta t_{i-1} = \lvert t_{i}-t_{i-1} \rvert,\Delta t_{i} = \lvert t_{i+1}-t_{i}\rvert$, an estimated position can be calculated by $\hat{p}_i=\Delta t_{i-1} p_{i-1}$, $\hat{p}_{i+1}=\Delta t_{i} p_{i}$. If the distance $\lvert \hat{p}_i-p_i\rvert$ or $\lvert \hat{p}_{i+1}-p_{i+1}\rvert$ is less than a threshold, then the point $p_i$ is not linear predictable or cannot be used for linear predicting.
+
+\item Rule 2. Select a candidate point $p_i$. Retain this point if the distance between $p_i$ and $p_{i-1}$ is greater than the threshold $d$, where $d$ is the mean distances of these points $p_{i-1}, p_i, \ldots, p_{i+k}$ with same boom status $b_{i-1}=b_i=\cdots=b_{i+k}$. 
+
+\item Rule 3. Neighbor Heading Changing. The candidate point $p_i$ belongs to the track if $\lvert \theta_i-\theta_{i-1}\rvert  + \lvert \theta_i-\theta_{i+1}\rvert >\theta$, where $\lvert \theta_i-\theta_{i-1}\rvert$ and $ \lvert \theta_i-\theta_{i+1}\rvert $ are the direction changes between points $p_i$ and $p_{i-1}$ and between points $p_i$ and $p_{i+1}$, $\theta$ is predefined threshold.
+
+\item Rule 4. The candidate point $p_i$ belongs to the track if the boom status $b_i\neq b_{i-1}$.
+\end{itemize}
+
+Finally, the point $p_i$ belongs to the track if Rule 1 = TRUE or Rule 2 = TRUE or Rule 3 = TRUE or Rule 4 = TRUE.
+
+
+\section{Evaluation}
+
+Errors are measured by Synchronized Euclidean Distance \citep{lawson2011compression}. SED measures the distances between the original and compressed trace at the same time. As shown in figure \ref{DataSimpSED}, the green points $P_{t1}, \ldots ,P_{t5}$ are original positions. After simplification, the points $P_{t2}, P_{t3}$ and $P_{t4}$ are removed. The black curve is the original trajectory and the gray dash-dot line is the simplified trajectory. The blue points $P'_{t2}$,$P'_{t3}$ and $P'_{t4}$ on simplified trajectory have the same time difference as the point $P_{t2}$, $P_{t3}$ and $P_{t4}$ on original trajectory did. For instance, the time difference between $P_{t2}$ and $P_{t3}$ is the same as that between $P'_{t2}$ and $P'_{t3}$. Further, the distances between $P_{t2}$ and $P'_{t2}$, $P_{t3}$ and $P'_{t3}$ and $P_{t4}$, $P'_{t4}$ can be calculated.
+
+
+\begin{figure}
+\centering
+\begin{tikzpicture}
+\begin{scope}[every node/.style={circle,draw}]
+    \node[fill=green!30] (A) at (0,0) {$P_{t1}$};
+    \node[fill=blue!30] (B) at (3,0) {$P'_{t2}$};
+    \node[fill=blue!30] (C) at (7,0) {$P'_{t3}$};
+    \node[fill=blue!30] (D) at (11,0) {$P'_{t4}$};
+    \node[fill=green!30] (E) at (13,0) {$P_{t5}$};
+    \node[fill=green!30] (F) at (5,4) {$P_{t2}$};
+    \node[fill=green!30] (G) at (7,5) {$P_{t3}$};
+    \node[fill=green!30] (H) at (9,4) {$P_{t4}$};
+\end{scope}
+\begin{scope}[>={Stealth[black]},
+              every node/.style={fill=white,circle},
+              every edge/.style={draw=black,thick}]
+    \path [-] (A) edge[bend right= -1]  (F); 
+    \path [-] (F) edge[bend right= -5]  (G); 
+    \path [-] (G) edge[bend right=-5]  (H); 
+    \path [-] (H) edge[bend right= -1] (E); 
+\draw [line width=0.5mm,dash dot,gray] (A) -- (B);
+\draw [line width=0.5mm,dash dot,gray] (B) -- (C);
+\draw [line width=0.5mm,dash dot,gray] (C) -- (D);
+\draw [line width=0.5mm,dash dot,gray] (D) -- (E);
+\draw [line width=0.5mm,dotted] (F) -- (B);
+\draw [line width=0.5mm,dotted] (G) -- (C);
+\draw [line width=0.5mm,dotted] (D) -- (H);
+\draw [line width=0.5mm,blue!30] (F) -- (5,0);
+\draw [line width=0.5mm,blue!30] (H) -- (9,0);
+\draw [right angle symbol={B}{A}{F}];
+\draw [right angle symbol={A}{B}{H}];
+\path [->] (0,1) edge node {\textit{fast}} (4,4);
+\path [->] (10,4) edge node {\textit{fast}} (13,1);
+\end{scope}
+\end{tikzpicture}
+\caption{Synchronized Euclidean Distance}\label{DataSimpSED}
+\end{figure}
+
+
+Another way to calculate the difference between a GPS trace and its compressed version is to measure the perpendicular distance. This algorithm ignores the temporal component and uses simple perpendicular distance \citep{meratnia2004spatiotemporal}. The figure \ref{DataSimpAB} expresses these differences clearly. 
+
+\begin{figure}
+\centering
+\centering
+    \begin{subfigure}[b]{0.5\textwidth}
+    \resizebox{\linewidth}{!}{
+		\begin{tikzpicture}[dot/.style={circle,label={#1},name=#1}]
+		\coordinate (a) at (0,0);
+		\node[below of=a] {\LARGE $a(t_0)$};
+		\fill (a) circle[radius=4pt];
+		\coordinate (b) at (15,-1);
+		\node[above of=b] {\LARGE $a(t_5)$};
+		\fill (b) circle[radius=4pt];
+		\coordinate (c) at (0,1);
+		\node[above of=c] {\LARGE $p(t_0)$};
+		\fill (c) circle[radius=4pt];
+		\coordinate (d) at  (2,3);
+		\node[above of=d] {\LARGE $p(t_1)$};
+		\fill (d) circle[radius=4pt];
+		\coordinate (e) at  (7,4);
+		\node[above of=e] {\LARGE $p(t_2)$};
+		\fill (e) circle[radius=4pt];
+		\coordinate (f) at (8,3);
+		\node[above of=f] {\LARGE $p(t_3)$};
+		\fill (f) circle[radius=4pt];
+		\coordinate (g) at (10,-3);
+		\node[below of=g] {\LARGE $p(t_4)$};
+		\fill (g) circle[radius=4pt];
+		\coordinate (h) at (15,-2);
+		\node[below of=h] {\LARGE $p(t_5)$};
+		\fill (h) circle[radius=4pt];
+		\draw [line width=0.5mm] (c) -- (d) -- (e)--(f)--(g)--(h);
+		\draw [line width=0.5mm] (a) -- (b);
+		 % %y=x+1
+		\foreach \x in {0.0,0.2,...,2} {
+		    \pgfmathsetmacro\y{\x +1}
+		    	\draw (\x,\y) -- ($(0,0)!(\x,\y)!(15,-1)$);
+		}
+		% % y=0.2x+2.6
+		\foreach \x in {2,2.5,...,7} {
+		    \pgfmathsetmacro\y{0.2*\x +2.6}
+		    	\draw (\x,\y) -- ($(0,0)!(\x,\y)!(15,-1)$);
+		}
+		% % y=-x+11
+		\foreach \x in {7,7.2,...,8} {
+		    \pgfmathsetmacro\y{-\x +11}
+		    	\draw (\x,\y) -- ($(0,0)!(\x,\y)!(15,-1)$);
+		}
+		% % y=-3x+27
+		\foreach \x in {8,8.2,...,10} {
+		    \pgfmathsetmacro\y{-3*\x +27}
+		    	\draw (\x,\y) -- ($(0,0)!(\x,\y)!(15,-1)$);
+		}
+		% % y=0.2x-5
+		\foreach \x in {10,10.5,...,15} {
+		    \pgfmathsetmacro\y{0.2*\x -5}
+		    	\draw (\x,\y) -- ($(0,0)!(\x,\y)!(15,-1)$);
+		}
+		\end{tikzpicture}
+	}
+	\caption{perpendicular distance chords}\label{DataSimpA}
+	\end{subfigure}%
+	\begin{subfigure}[b]{0.5\textwidth}
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tikzpicture}[dot/.style={circle,label={#1},name=#1}]
+		\coordinate (a) at (0,0);
+		\node[below of=a] {\LARGE $a(t_0)$};
+		\fill (a) circle[radius=4pt];
+		\coordinate (b) at (15,-1);
+		\node[above of=b] {\LARGE $a(t_5)$};
+		\fill (b) circle[radius=4pt];
+		\coordinate (c) at (0,1);
+		\node[above of=c] {\LARGE $p(t_0)$};
+		\fill (c) circle[radius=4pt];
+		\coordinate (d) at  (2,3);
+		\node[above of=d] {\LARGE $p(t_1)$};
+		\fill (d) circle[radius=4pt];
+		\coordinate (e) at  (7,4);
+		\node[above of=e] {\LARGE $p(t_2)$};
+		\fill (e) circle[radius=4pt];
+		\coordinate (f) at (8,3);
+		\node[above of=f] {\LARGE $p(t_3)$};
+		\fill (f) circle[radius=4pt];
+		\coordinate (g) at (10,-3);
+		\node[below of=g] {\LARGE $p(t_4)$};
+		\fill (g) circle[radius=4pt];
+		\coordinate (h) at (15,-2);
+		\node[below of=h] {\LARGE $p(t_5)$};
+		\fill (h) circle[radius=4pt];
+		\draw [line width=0.5mm] (c) -- (d) -- (e)--(f)--(g)--(h);
+		\draw [line width=0.5mm] (a) -- (b);
+		 % %y=x+1	
+		\foreach \x [count=\i] in {0.0,0.2,...,2} {
+		    \pgfmathsetmacro\y{\x +1}
+		    \pgfmathsetmacro\k{(\i-1)/3}
+		    \pgfmathsetmacro\z{-1/15*\k}
+		    	\draw (\x,\y) -- (\k,\z);
+		}
+		 % y=0.2x+2.6
+		\foreach \x [count=\i] in {2,2.5,...,7} {
+		    \pgfmathsetmacro\y{0.2*\x +2.6}
+		    \pgfmathsetmacro\k{(\i+9)/3}
+		    \pgfmathsetmacro\z{-1/15*\k }
+		    	   \draw (\x,\y) -- (\k,\z);
+		}
+		 % y=-x+11
+		\foreach \x [count=\i] in {7,7.2,...,8} {
+		    \pgfmathsetmacro\y{-\x +11}
+		    \pgfmathsetmacro\k{(\i+19)/3}
+		    \pgfmathsetmacro\z{-1/15*\k }
+		    	   \draw (\x,\y) -- (\k,\z);
+		}
+		% % y=-3x+27
+		\foreach \x [count=\i] in {8,8.2,...,10} {
+		    \pgfmathsetmacro\y{-3*\x +27}
+		    \pgfmathsetmacro\k{(\i+24)/3}
+		    \pgfmathsetmacro\z{-1/15*\k }
+		    	   \draw (\x,\y) -- (\k,\z);
+		}
+		% % y=0.2x-5
+		\foreach \x [count=\i] in {10,10.5,...,15} {
+		    \pgfmathsetmacro\y{0.2*\x -5}
+		    \pgfmathsetmacro\k{(\i+34)/3}
+		    \pgfmathsetmacro\z{-1/15*\k }
+		    	   \draw (\x,\y) -- (\k,\z);
+		}
+		\end{tikzpicture}
+	}
+	\caption{time-synchronous distance chords}\label{DataSimpB}
+    \end{subfigure}
+\caption{\ref{DataSimpA} indicates that the errors are measured at fixed sampling rate as sum of perpendicular distance chords. \ref{DataSimpB} indicates that the errors are measured at fixed sampling rates as sum of time-synchronous distance chords.}\label{DataSimpAB}
+\end{figure}
+
+
+\section{Numerical Study}
+
+In the numerical simulation study, we use \textit{Kalman filter} (KF) to fit the trajectory after data simplification. The KF equations describe the prediction step in such a following way: 
+\begin{align*}
+\hat{x}_k^-&=A\hat{x}_{k-1}+Bu_k \\
+P_k^-&=AP_{k-1}A^\top+Q
+\end{align*}
+where $\hat{x}_k^-$ is a priori state estimate, $\hat{x}_k$ is a posteriori state estimate, $A$ is status transition matrix, $P_k^-$ is a priori estimate for error covariance, $u_k$ is an input parameter and $Q$ is process noise covariance. When a new observation comes into the data stream, KF update and corrects its estimation by: 
+\begin{align*}
+K_k&=P_k^-H^\top \left(HP_k^-H^\top+R\right)^{-1} \\
+\hat{x}_k&=\hat{x}_k^-+K_k\left(z_k-H\hat{x}_k^-\right) \\
+P_k&=(I-K_kH)P_k^-
+\end{align*}
+where $K_k$ is the Kalman gain matrix, $z_k$ is the observed data.
+
+
+The original data set contains 1\,021 rows, including latitude, longitude, velocity, bearing (heading direction) and boom status. Douglas-Peucker Algorithm, with distance threshold $0.205$m, retained 847 points. The proposed algorithm, given a predictable distance $5$m and heading direction changing threshold $\ang{30}$, returns the same amount of simplified points. Under the same circumstance, we calculated SED and other information. 
+
+Table \ref{DataSimpCompTable} describes the results after being simplified by DP algorithm and the proposed algorithm. Figure \ref{DataSimpRawTra} demonstrates the simplified raw data and figure \ref{DataSimpKFTra} is the fitted trajectories by KF. 
+
+\begin{table}
+\centering
+\caption{Comparison between raw data and simplified data}
+\label{DataSimpCompTable}\footnotesize
+\begin{tabular}{|c|c|c|c|}
+\hline 
+  & \textbf{Original Data} & \textbf{DP Algorithm} & \textbf{Proposed Algorithm}  \\
+\hline 
+\textbf{Remaining Points} & 1021   & 847   & 847 \\
+\hline 
+\textbf{Tracked Distances}(m)  & 74041.31     & 74038.33    & 74012.56     \\
+\hline 
+\textbf{SED} ($m$)    & \textit{NA}    & 1316.715    & 607.9587   \\
+\hline 
+\end{tabular}
+\end{table}
+\normalsize
+
+\begin{figure}
+\centering
+%\includegraphics[width=0.9\textwidth]{Chapters/06Spinoff/plot/3p1.pdf}
+\begin{subfigure}[t]{0.47\textwidth}
+\includegraphics[width=\linewidth]{Chapters/06Spinoff/plot/ggRawTrac.pdf}
+\caption{Raw trajectory}\label{ggRawTrac}
+\end{subfigure}
+ \begin{subfigure}[t]{0.47\textwidth}
+\includegraphics[width=\linewidth]{Chapters/06Spinoff/plot/ggDPTrac.pdf}
+\caption{Simplified trajectory by DP}\label{ggDPTrac}
+\end{subfigure}
+ \begin{subfigure}[t]{0.47\textwidth}
+%\includegraphics[width=\linewidth]{Chapters/06Spinoff/plot/ggSPTrac2.pdf}
+\begin{tikzpicture}
+    \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=\textwidth]{Chapters/06Spinoff/plot/ggSPTrac2.pdf}};
+	\draw[red,ultra thick] (2.6,3.6) circle [x radius=1cm, y radius=4mm, rotate=140];
+	\draw[red,ultra thick] (6,1.2) circle [x radius=1cm, y radius=5mm, rotate=140];
+\end{tikzpicture}
+\caption{Simplified trajectory by proposed algorithm}\label{ggSPTrac}
+\end{subfigure}
+\caption{A segment start from time $t=2\,000$ to $3\,000$, recorded by GPS units. $\blacktriangle$ indicates that the boom is not operating. $\bullet$ indicates that the boom is operating. Figure \ref{ggRawTrac}, the trajectory connected by raw data with 27 points. Figure \ref{ggDPTrac}, the trajectory connected by simplified data with Douglas-Peucker algorithm with 24 points. Figure \ref{ggSPTrac}, the trajectory connected by simplified data with proposed simplification algorithm with 23  points.}\label{DataSimpRawTra}
+\end{figure}
+
+\clearpage
+
+\begin{figure}[h]
+\centering
+\begin{subfigure}[t]{0.47\textwidth}
+\includegraphics[width=\linewidth]{Chapters/06Spinoff/plot/ggRawKF2.pdf}
+\caption{Fitted Kalman filter with raw data}
+\end{subfigure}
+ \begin{subfigure}[t]{0.47\textwidth}
+\includegraphics[width=\linewidth]{Chapters/06Spinoff/plot/ggDPKF2.pdf}
+\caption{Fitted Kalman filter with simplified data by DP}
+\end{subfigure}
+ \begin{subfigure}[t]{0.47\textwidth}
+\includegraphics[width=\linewidth]{Chapters/06Spinoff/plot/ggSPKF2.pdf}
+\caption{Fitted Kalman filter with simplified data by proposed algorithm}
+\end{subfigure}
+\caption{Trajectory fitted by Kalman filter. The mean squared errors of raw data, DP and proposed algorithm are 26.8922, 23.9788 and 23.9710 respectively.}\label{DataSimpKFTra}
+\end{figure}
+
+
+\section{Conclusion}
+
+The data simplification algorithm is originally proposed to solve the over-fitting and wiggle-construction problems. Duplicated and short-distance points cause reconstruction issues in spline fitting. The advantage of data simplification algorithm is that less data points potentially increase computation efficiency and save storage space without of losing information for reconstructing.  

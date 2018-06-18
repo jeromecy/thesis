@@ -1,0 +1,110 @@
+
+In this thesis, two main practical algorithms are proposed: the adaptive V-spline and the adaptive sequential MCMC algorithm. The first algorithm is appropriate for batch estimation and the second for on-line estimation, and we have seen that both algorithms have good performance in practice. Nevertheless, there are a number of areas in which further improvements could be made.
+
+
+\subsection*{Gradient Boosting V-Spline}
+
+V-spline is an advanced smoothing spline algorithm returning least true mean squared errors. However, to implement this algorithm on-line needs feasible solutions. One of them probably is combining spline method and gradient boosting algorithm. 
+
+
+In machine learning application, it is best to build a non-parametric regression or classification model from the data itself. A connection between the statistical framework and machine learning is the gradient-descent based formulation of boosting methods, which was derived by \cite{freund1995desicion, friedman2001greedy}. The gradient boosting algorithm is a powerful machine-learning technique that has shown considerable success in a wide range of practical applications, particularly in machine learning competitions on \textit{Kaggle}. 
+
+
+The motivation of gradient boosting algorithms is combining weak learners together as a strong leaner, which keeps minimizing the target loss function. 
+It has highly customizable application to meet particular needs, like being learned with respect to different loss functions. For example, for a continuous response $y\in \mathit{R}$, the loss function can be chosen as a Gaussian $L_2$ loss function. Hence, the squared error $L_2$ loss function is 
+\begin{equation*}
+L_2(y,f(t)) = \frac{1}{2}\left(y-f(t)\right)^2,
+\end{equation*}
+and the best trained $f^*$ is 
+\begin{equation*}
+f^* = \arg_{f}\min E_{t,y}\lbrack L_2\left(y,f\right)\rbrack.
+\end{equation*}
+To find $f^*$, it is reducing the loss $\tilde{y}_i=y_i-F_{m-1}(t_i)$ recursively. Consequently, the 
+\begin{equation*}
+f_m(t) = f_{m-1}(t)+ \rho_mh(t,\alpha_m),
+\end{equation*}
+is the sum of some basic learners $h_m(t,\alpha)$. $m=1,\ldots,M$ determines the complexity of the solution. 
+
+
+On-line boosting algorithms are given by \cite{babenko2009family, beygelzimer2015online}. It is assumed that the loss over the entire training data can be expressed as a sum of the loss for each point $t_i$, that is $L(f(t,y))=\sum_i L(f(t_i,y_i))$. Instead of computing the gradient of the entire loss, the gradient is computed with respect to just one data point. Furthermore, by adding additional regularization term will help to smooth the final learned weights to avoid over-fitting in a penalized regression problem \citep{chen2016xgboost}. 
+
+Accordingly, the V-spline $f^*(t)$ is a sum of several weak learners $f_m(t)$, each of which has $2N$ parameters $\theta_m=\left\lbrace \theta_m^{(1)},\ldots,\theta_m^{(2N)}\right\rbrace$. The optimal $\theta^*$ is found by 
+\begin{equation*}
+\theta^*=\sum_{m=0}^{M}\theta_m,
+\end{equation*}
+where $\theta_m$ is computed via $\theta_m=-\rho_m\frac{\partial L(\theta)}{\partial \theta}$. 
+
+As a result, after $M$ iterations, $\theta^*$ is convergence and $f^*(t,y,\theta^*)$ is obtained. 
+
+
+
+\subsection*{Non-trivial V-Spline with Correlated Errors}
+
+The Bayes estimate of V-spline with correlated errors is given in Chapter \ref{ChapterGPR}. In order to find the Bayes estimate for the non-trivial V-spline with a piecewise penalty term $\lambda(t)$, we conjecture that the methods discussed in this chapter can be extended using the inner product 
+\begin{equation*}
+\langle f,g \rangle=f(0) g(0)+f'(0) g'(0)+\sum_{i=1}^{n-1}w_i\int_{t_i}^{t_{i+1}}f''(t)g''(t)dt,
+\end{equation*}
+on $\mathcal{C}^{(2)}_{\mbox{\scriptsize p.w.}}[0,1]$, where $\sum_i w_i=1$ and $w_i>0$. 
+
+For parameter selection, the extended GCV is not applicable for non-trivial V-spline. \cite{opsomer2001nonparametric, wang1998smoothing} present a few extensions to the generalized maximum likelihood (GML), generalized cross-validation (GCV) and unbiased risk (UBR) methods to find the optimal parameters for smoothing spline ANOVA models when observations are correlated. Suppose the errors of the observations $y$ and $v$ are $\varepsilon_y\sim N\left(0,\sigma^2W^{-1}\right)$ and $\varepsilon_v\sim N\left(0,\tau^2U^{-1}\right)$ with unknown parameters $\sigma^2$ and $\tau^2$, a future work is to find a general solution, similarly to GML, GCV and UBR, to tune the parameters for V-spline with correlated errors.  
+
+
+
+%\subsection*{Informative Proposals}
+%
+%In Chapter \ref{ChapterMCMC}, the proposed adaptive MCMC algorithm draws samples of $\theta=\left\lbrace\gamma,\xi^2,\lambda^2,\sigma^2,\tau^2\right\rbrace$ from $N(m,C)$, where the information of $m$ and $C$ are learned from a self-tuning learning phase. For each $\theta^{(i)}$, it generates a paired mean and variance $\left\lbrace\mu_t^{(i)},\Sigma_t^{(i)}\right\rbrace$ for mixture Gaussian $x_t$. 
+%
+%In the sampling step of real data application, the mechanic boom status is not incorporated, which may provide useful information. Like the penalty parameter $\lambda$ being classified by $\lambda_d$ and $\lambda_u$ according to boom status, the MCMC sampler may use this information to propose $\theta$ with different strategies, such as different step sizes, different $m$s and $C$s. In this way, the parameter $\theta$ is classified by $\theta_u$ and $\theta_d$. 
+%
+%(not finished yet)
+%
+%%Propose samples on two direction $\begin{bmatrix}
+%%W & 0 \\ 0 & U
+%%\end{bmatrix}$.
+
+\subsection*{Directional Dependent OU-Process}
+
+In the usual formulation of an OU-process, we have
+\begin{equation*}
+dv_{t}=-\gamma v_{t}+\lambda dW_{t},
+\end{equation*}
+where $v_{t}=\left[{v_{t}^{x}\atop v_{t}^{y}}\right],\,W_{t}=\left[{W_{t}^{x}\atop W_{t}^{y}}\right]$
+are vectors in $\mathbb{R}^{2}.$ In particular, $W_{t}^{x}$ and
+$W_{t}^{y}$ are independent Wiener processes. However, we can imagine
+that the stochastic term has independent components in the directions
+parallel and perpendicular to the velocity. Let $\{n_{t},m_{t}\}$
+be an orthonormal frame in $\mathbb{R}^{2},$ where $n_{t}=\frac{v_{t}}{|v_{t}|}$
+is the direction of the velocity. The proposal is that $\lambda dW_{t}$
+can be replaced with $\lambda_{\parallel}n_{t}dW_{t}^{\parallel}+\lambda_{\perp}m_{t}dW_{t}^{\perp},$
+where $W_{t}^{\parallel}$ and $W_{t}^{\perp}$ are independent Wiener
+processes.
+
+
+\subsection*{Grid-based MCMC}
+
+In several references, Grid-based methods have been proved that it provides an optimal recursion of the filtered density $p(x_t\mid y_{1:t})$ if the state-space is discrete and consists of a finite number of states \citep{ristic2004beyond, stroud2016bayesian, arulampalam2002tutorial, hartmann2016grid}. 
+
+In the application of real time series dataset, the model is supposed as an OU-process containing five unknown parameters. With the idea of grid-based algorithm, the 5-dimension parameter space $\mathbb{R}^5$ can be initialized by spanning $\theta_0^{(i)}$ with equal weights $w_0=\left\lbrace\frac{1}{N},\frac{1}{N},\frac{1}{N},\frac{1}{N},\frac{1}{N}\right\rbrace$ at time $t=0$, where $i=1,\ldots,N$. When a new observation $Y_t=\left\lbrace y_t,v_t\right\rbrace$ comes into the system, the weights for each parameter in each subspace are updated via $w_t\propto p(Y_t\mid \theta,Y_{1:t-1})w_{t-1}$. 
+
+However, the grid-based MCMC may not be practical for a higher $n$-dimensional space, which requires $\BigO{N^n}$ computation cost per MCMC step. 
+
+
+\subsection*{Parallel MCMC}
+
+Parallel computing is a type of computation in which many calculations or the execution of processes are carried out simultaneously on multi-core processors \citep{asanovic2006landscape}. A master process controls the strategy on how to split large, expensive computation into smaller slave processes and solved concurrently on each separate processor \citep{Almasi1994Highly}. After computing, slave processes pass results back to the master process, in which the final result is generated. 
+
+The parallel MCMC uses this technology to deploy the computation and run samplers on multi-core CPU. Approaches for parallel MCMC are either by implementing parallelization within a single chain or by running multiple chains \citep{wu2012parallel}. It is useful for computing complex Bayesian models, which do not only lead to a dramatic speedup in computing but can also be used to optimize model parameters in complex Bayesian models.
+
+A simple parallel Monte Carlo estimation of $\E\lbrack p(\theta)\rbrack$ proceeds in the following way \citep{kontoghiorghes2005handbook}. Suppose there amount to $k$ CPU cores to generate $N$ samples. Thus, on each CPU there are $m=N/k$ samples on average. A master process passes $m$ to each slave process $i$, $i=1,\ldots,k$. At each slave process, it generates $m$ samples for $\theta_i^{(m)}$ and passes middle-result $S_i$ back to the master process. At last, the master process computes the final result by 
+\begin{equation*}
+\E\lbrack p(\theta)\rbrack=\frac{\sum_i S_i}{N}. 
+\end{equation*}
+
+The parallel MCMC uses MCMC sampler scheme to draw samples on multi-cores simultaneously. A naive yet natural approach to parallel MCMC is simply to generate several independent Markov chains on different
+processors and then combine the results appropriately \citep{bradford1996markov, gelman1992inference}. Or, alternatively, develop parallelism within a single chain. Suppose there are $k$ CPU cores. Give initial values $\theta_i^{(0)}$ for each core. Concurrently update $\theta$ chains by a predetermined MCMC sampler with $p(\theta\mid y_{1:t})$ on each slave process. Computes summary statistics for the updated $\theta_i^{(0: N)}$ and passes back to the master process. Finally, achieve a sequence of $\theta$ of length $kN$ \citep{wu2012parallel}. 
+
+A further weighted parallel MCMC and parallelization approach to the Gibbs sampler is proposed by \cite{vanderwerken2013parallel}.
+
+Consequently, the parallel MCMC is a potential alternative approach of sliding window MCMC in Chapter \ref{ChapterMCMC} to improve the computation speed in high dimensional space. 
+
+

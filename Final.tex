@@ -1,0 +1,178 @@
+\documentclass[12pt,twoside]{report}    
+
+\usepackage[phd]{otagofront}   %% Use Otago page layout
+\usepackage{natbib} 		%% author/year format in round brackets
+\usepackage{graphicx}           %% jpg, gif, tiff, and pdf graphics
+\usepackage{moreverb}           %% Verbatim Code Listings
+\usepackage{amsmath}		%% More math commands
+\usepackage{amssymb}		%% More math commands
+\usepackage{amsthm}		%% More math commands
+\usepackage{mathrsfs}		%% More math commands
+\usepackage{color}		%% Handling colors
+\usepackage{enumerate}          %% Fancy enumeration lists
+\usepackage{lscape}
+\usepackage{indentfirst}
+\usepackage{siunitx}
+\usepackage{lscape}
+\usepackage{subcaption}
+\usepackage[toc,page]{appendix}
+\usepackage[ruled,vlined,linesnumbered,resetcount,algochapter]{algorithm2e}
+\usepackage{romannum}
+\usepackage{multirow}
+\usepackage{array}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+
+
+% % % % % % % % %  tikz package % % % % % % % %
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,backgrounds}
+\usepackage{pgfplots}
+
+\tikzset{
+    right angle quadrant/.code={
+    \pgfmathsetmacro\quadranta{{1,1,-1,-1}[#1-1]}     % Arrays for selecting quadrant
+    \pgfmathsetmacro\quadrantb{{1,-1,-1,1}[#1-1]}
+    },
+    right angle quadrant=1, % Make sure it is set, even if not called explicitly
+    right angle length/.code={\def\rightanglelength{#1}},   % Length of symbol
+    right angle length=2ex, % Make sure it is set...
+    right angle symbol/.style n args={3}{
+        insert path={
+            let \p0 = ($(#1)!(#3)!(#2)$) in     % Intersection
+                let \p1 = ($(\p0)!\quadranta*\rightanglelength!(#3)$), % Point on base line
+                \p2 = ($(\p0)!\quadrantb*\rightanglelength!(#2)$) in % Point on perpendicular line
+                let \p3 = ($(\p1)+(\p2)-(\p0)$) in  % Corner point of symbol
+            (\p1) -- (\p3) -- (\p2)
+        }
+    }
+}
+% % % % % % % % %  tikz package % % % % % % % %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  New commands 
+
+\newcommand{\BigO}[1]{{\rm O}\left(#1\right)}
+\newcommand{\expo}{\,\mathrm{e}}
+\newcommand{\cvar}{\,\mathrm{i}}
+\newcommand{\besseli}{\mathrm{I}}
+\newcommand{\besselk}{\mathrm{K}}
+\newcommand{\bessely}{\mathrm{Y}}
+\newcommand{\besselj}{\mathrm{J}}
+\newcommand{\eg}{e.g.\ }
+\newcommand{\ie}{i.e.\ }
+\newcommand{\iid}{\textrm{i.i.d.\ }}
+\newcommand{\elemvec}[2]{\big[#1\big]_{#2}}
+\newcommand{\ud}[1]{\,\mathrm{d}#1}
+\newcommand{\hPhi}{\widehat{\Phi}}
+\newcommand{\diag}[1]{\text{diag}\left\{#1\right\}}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+\renewcommand{\labelenumi}{(\roman{enumi})}
+
+%\newcommand{\TODO}[1]{\textcolor{red}{\bf{[#1]}}}
+%\newcommand{\EDITED}[1]{\textcolor{blue}{\bf{[#1]}}}
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Corr}{\mathrm{Corr}}
+\newcommand{\tr}{\mathrm{tr}}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% Front page info 
+
+\title{Inference and Characterization of Planar Trajectories}
+\author{Zhanglong Cao}
+% %\date{30 August 2017}
+\date{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Extra info 
+
+\fullname{Zhanglong Cao}
+\department{Department of Mathematics and Statistics}
+\dob{4 March 1984} %% date-of-birth
+\address{46 St David Street, Dunedin, New Zealand}
+
+
+
+%% Uncomment to just print up a few chapters.
+%%
+%\includeonly{}
+
+\begin{document}
+
+
+%% Put in titlepage and contents, etc...
+\frontstuff
+
+%% Set to one-and-a-half line-spacing
+\linespread{1.3} \normalsize
+
+
+\chapter{Introduction}\label{ChapterIntro}
+\input{Chapters/01Intro/Introduction_Final}
+\clearemptydoublepage
+
+\chapter{Adaptive Smoothing V-Spline for Trajectory Reconstruction}\label{ChapterTS}
+\input{Chapters/02TractorSplineTheory/TractorSplineTheory_Final}
+
+
+\clearemptydoublepage
+
+\chapter{V-Spline as Bayes Estimate}\label{ChapterGPR}
+\input{Chapters/03GPR/GPR_Final}
+\clearemptydoublepage
+
+\chapter{An Overview of On-line State and Parameter Estimation}\label{ChapterFR}
+\input{Chapters/04Filtering/Filtering_Final}
+\clearemptydoublepage
+
+\chapter{Adaptive Sequential MCMC for On-line State and Parameter Estimation}\label{ChapterMCMC}
+\input{Chapters/05MCMCOU/MCMCEstimation_Final}
+\clearemptydoublepage
+
+%\chapter{Data Simplify}
+%\input{Chapters/06Spinoff/GPSsimp}
+%\clearemptydoublepage
+
+
+\chapter{Future Work}\label{ChapterFuture}
+\input{Chapters/07FutureWork/Future_Final}
+\clearemptydoublepage
+
+
+\chapter{Summary}\label{ChapterSummary}
+\input{Chapters/08Summary/Summary_Final}
+\clearemptydoublepage
+
+
+%% Appendices
+% % % % \appendix
+
+
+\begin{appendices}
+\addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
+\makeatletter
+\addtocontents{toc}{%
+  \begingroup
+  \let\protect\l@chapter\protect\l@section
+  \let\protect\l@section\protect\l@subsection
+}
+\makeatother
+ \chapter{Proofs and Figures of V-Spline Theorems}\label{appendTS}
+\input{Appendices/AppendixTractorSpline_Final}
+ \chapter{Calculations and Figures of Adaptive Sequential MCMC}\label{appendMCMC}
+  \input{Appendices/AppendixMCMC_Final}
+ \chapter{A Spin-off Outcome: Data Simplification Method}\label{appendSimp}
+  \input{Chapters/06Spinoff/GPSsimp_Final}
+\addtocontents{toc}{\endgroup}
+\end{appendices}
+
+% % % % % % % % bib  % % % % %
+\bibliographystyle{otago}
+\bibliography{thesis}
+\clearemptydoublepage
+
+
+\end{document}  

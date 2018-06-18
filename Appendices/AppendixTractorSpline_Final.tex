@@ -1,0 +1,241 @@
+
+
+\numberwithin{equation}{section}
+\numberwithin{lemma}{section}
+
+\section{Penalty Matrix in \eqref{tractormse}}\label{PenaltyTermDetails}
+
+The $i$-th $\Omega^{(i)}$ is a $2n \times 2n$ bandwidth four symmetric matrix and its non-zero elements on the upper triangular are 
+\begin{align}
+\Omega_{2i-1,2i-1}^{(i)} & =\int_{t_{i}}^{t_{i+1}} \frac{d^2 h_{00}^{(i)}(t)}{dt^2}  \frac{d^2 h_{00}^{(i)}(t)}{dt^2} dt=\frac{12}{\Delta_i^3}\\
+\Omega_{2i-1,2i}^{(i)} &=\int_{t_{i}}^{t_{i+1}} \frac{d^2 h_{00}^{(i)}(t)}{dt^2}  \frac{d^2 h_{10}^{(i)}(t)}{dt^2} dt=\frac{6}{\Delta_i^2}\\
+\Omega_{2i-1,2i+1}^{(i)} &=\int_{t_{i}}^{t_{i+1}} \frac{d^2 h_{00}^{(i)}(t)}{dt^2}  \frac{d^2 h_{01}^{(i)}(t)}{dt^2} dt=\frac{-12}{\Delta_i^3}\\
+\Omega_{2i-1,2i+2}^{(i)} &=\int_{t_{i}}^{t_{i+1}} \frac{d^2 h_{00}^{(i)}(t)}{dt^2}  \frac{d^2 h_{11}^{(i)}(t)}{dt^2} dt=\frac{6}{\Delta_i^2}\\
+\Omega_{2i,2i}^{(i)} &=\int_{t_{i}}^{t_{i+1}} \frac{d^2 h_{10}^{(i)}(t)}{dt^2}  \frac{d^2 h_{10}^{(i)}(t)}{dt^2} dt=\frac{4}{\Delta_i} \\
+\Omega_{2i,2i+1}^{(i)} &=\int_{t_{i}}^{t_{i+1}} \frac{d^2 h_{10}^{(i)}(t)}{dt^2}  \frac{d^2 h_{01}^{(i)}(t)}{dt^2} dt=\frac{-6}{\Delta_i^2}\\
+\Omega_{2i,2i+2}^{(i)} &=\int_{t_{i}}^{t_{i+1}} \frac{d^2 h_{10}^{(i)}(t)}{dt^2}  \frac{d^2 h_{11}^{(i)}(t)}{dt^2} dt=\frac{2}{\Delta_i}\\
+\Omega_{2i+1,2i+1}^{(i)} &=\int_{t_{i}}^{t_{i+1}} \frac{d^2 h_{01}^{(i)}(t)}{dt^2}  \frac{d^2 h_{01}^{(i)}(t)}{dt^2} dt=\frac{12}{\Delta_i^3}\\
+\Omega_{2i+1,2i+2}^{(i)} &=\int_{t_{i}}^{t_{i+1}} \frac{d^2 h_{01}^{(i)}(t)}{dt^2}  \frac{d^2 h_{11}^{(i)}(t)}{dt^2} dt=\frac{-6}{\Delta_i^2}\\
+\Omega_{2i+2,2i+2}^{(i)} &=\int_{t_{i}}^{t_{i+1}} \frac{d^2 h_{11}^{(i)}(t)}{dt^2}  \frac{d^2 h_{11}^{(i)}(t)}{dt^2} dt=\frac{4}{\Delta_i}
+\end{align}
+where $\Delta_i=t_{i+1}-t_i$ and $i=1,2,\ldots,n-1$. Then 
+\begin{equation*}
+\mathbf{\Omega}=\sum_{i=1}^{n-1}\lambda_i\Omega^{(i)}
+\end{equation*}
+
+
+\section{Proof of Theorem \ref{TractorSplineTheorem}}\label{AppendixTractorSplineProof}
+
+\begin{proof}
+%The proof is based on Ex. 5.7 of \citep{esl2009}, and is essentially a proof by contradiction. If $g:[a,b]\to \mathbb{R}$ is a proposed minimizer, then we can construct a cubic spline $f(t)$ that agrees with $g(t)$ and its first derivatives at $t_1,\ldots,t_n$, and is component-wise linear on $[a, t_1]$ and $[t_n, b]$. This means the first two terms of the objective function will be the same for $f(t)$ and $g(t)$. We now show that the curvature penalty ...
+If $g:[a,b]\mapsto \mathbb{R}$ is a proposed minimizer, construct a cubic spline $f(t)$ that agrees with $g(t)$ and its first derivatives at $t_1,\ldots,t_n$, and is component-wise linear on $[a, t_1]$ and $[t_n, b]$. Let $h(t) = g(t)-f(t)$. Then, for $i = 1,\dots ,n-1$, 
+\begin{align*}
+\int_{t_i}^{t_{i+1}}f''(t)h''(t)dt &=f''(t)h'(t) \bigg\rvert_{t_i}^{t_{i+1}}-\int_{t_i}^{t_{i+1}}f'''(t)h'(t)dt \\
+&= 0-f'''\left(t_i^+\right)\int_{t_i}^{t_{i+1}}h'(t)dt \\
+&= -f'''\left(t_i^+\right)\left( h(t_{i+1}) -h(t_i) \right)\\
+&=0.
+\end{align*}
+Additionally, $\int_{a}^{t_1}f''(t)h''(t)dt=\int_{t_n}^{b}f''(t)h''(t)dt=0$, since $f(t)$ is assumed linear outside the knots. Thus, for $i=0,\ldots,n$, 
+\begin{align*}
+\int_{t_i}^{t_{i+1}}\lvert g''(t) \rvert^2dt &= \int_{t_i}^{t_{i+1}}\lvert f''(t)+h''(t)\rvert^2 dt\\
+&= \int_{t_i}^{t_{i+1}}\lvert f''(t)\rvert^2dt+2\int_{t_i}^{t_{i+1}}f''(t)h''(t)dt+\int_{t_i}^{t_{i+1}}\lvert h''(t)\rvert^2dt\\
+&=\int_{t_i}^{t_{i+1}}\lvert f''(t)\rvert^2dt+\int_{t_i}^{t_{i+1}}\lvert h''(t)\rvert^2dt\\
+&\geq \int_{t_i}^{t_{i+1}}\lvert f''(t)\rvert^2dt.
+\end{align*}
+The result $J[f]\leq J[g]$ follows since $\lambda_i>0$. 
+
+Furthermore, equality of the curvature penalty term only holds if $g(t) = f(t)$. On $[t_1, t_n]$, we require $h''(t) = 0$ but since $h(t_i) = h'(t_i) = 0$ for $i = 1, \ldots , n$, this means $h(t) = 0$. Meanwhile on $[a, t_1]$ and $[t_n, b]$, $f''(t) = 0$ so that equality requires $g''(t)=0$. Since $f(t)$ agrees with $g(t)$ and its first derivatives at $t_1$ and $t_n$, equality is forced on both intervals.
+\end{proof}
+
+
+\section{Proof of Corollary \ref{TractorsplineCorollary}}\label{proofofCorollary}
+\begin{proof}
+By setting $\gamma\to 0$, the velocity information $v$ is taken away. The degrees of freedom of parameters decreases from $2n$ to $n$. Hence, there exists an $n\times 2n$ matrix $Q_\lambda$ restricting $n$ degrees of freedom of $\hat{\theta}$ and satisfying $Q_\lambda\hat{\theta}=0$.
+
+The matrices $B$ and $C$ have the following property:  
+\begin{align*}
+& BB^\top=CC^\top=I_n, \\
+& C^\top CB^\top=B^\top BC^\top=0.
+\end{align*}
+Denoting $G=B^\top B+ \gamma C^\top C +n\Omega_\lambda$ and giving $\hat{\theta} =(B^\top B+ \gamma C^\top C +n\Omega_\lambda)^{-1}(B^\top y+\gamma C^\top v)$, we will have $G\hat{\theta}=B^\top y+\gamma C^\top v$ and 
+\begin{align*}
+& BG\hat{\theta}=y+\gamma BC^\top v\\
+& CG\hat{\theta}=CB^\top y+\gamma v.
+\end{align*}
+Further, $C^\top CG\hat{\theta}=C^\top (CB^\top y+\gamma v) = \gamma C^\top v$. If by setting $\gamma=0$, one will get $Q_\lambda = C^\top CG$, which consists of the even rows of $\Omega_\lambda$.
+
+%For $1<i<n$, 
+%\begin{align*}
+%&\lambda_i\frac{6}{\Delta_i^2}\theta_{2i-3}+\lambda_i\frac{2}{\Delta_i}\theta_{2i-2}+\left( \lambda_i\frac{-6}{\Delta_i^2}+ \lambda_{i+1}\frac{6}{\Delta_{i+1}^2} \right) \theta_{2i-1} \\
+%+ & \left( \lambda_i\frac{4}{\Delta_i} + \lambda_{i+1}\frac{4}{\Delta_{i+1}}\right)\theta_{2i} 
+%+ \lambda_{i+1}\frac{-16}{\Delta_{i+1}^2}\theta_{2i+1} +  \lambda_{i+1}\frac{2}{\Delta_{i+1}}\theta_{2i+2}
+%\end{align*}
+
+By integrating by parts and using properties of the basis functions at the knots, one can get the even rows of $\Omega^{(i)}$, which are 
+\begin{align*}
+\Omega^{(i)}_{2i,2i-1}&=N''_{2i-1}\left(t_i^-\right) - N''_{2i-1}\left(t_i^+\right)  \\
+\Omega^{(i)}_{2i,2i}   &=N''_{2i}\left(t_i^-\right) - N''_{2i}\left(t_i^+\right)  \\
+\Omega^{(i)}_{2i,2i+1}&=N''_{2i+1}\left(t_i^-\right) - N''_{2i+1}\left(t_i^+\right) \\
+\Omega^{(i)}_{2i,2i+2}&=N''_{2i+2}\left(t_i^-\right) - N''_{2i+2}\left(t_i^+\right) \\
+\Omega^{(i)}_{2i+2,2i-1}&=N''_{2i-1}\left(t_{i+1}^-\right) - N''_{2i-1}\left( t_{i+1}^+ \right) \\
+\Omega^{(i)}_{2i+2,2i}&=N''_{2i}\left(t_{i+1}^-\right) - N''_{2i}\left(t_{i+1}^+\right) \\
+\Omega^{(i)}_{2i+2,2i+1}&=N''_{2i+1}\left(t_{i+1}^-\right) - N''_{2i+1}\left(t_{i+1}^+\right) \\
+\Omega^{(i)}_{2i+2,2i+2}&=N''_{2i+2}\left(t_{i+1}^-\right) - N''_{2i+2}\left(t_i^+\right) 
+\end{align*}
+Thus 
+\begin{equation*}
+Q_\lambda = nC^\top C\Omega_\lambda = nC^\top C\sum_i\lambda_i \Omega^{(i)}.
+\end{equation*}
+Consequently, if and only if $\lambda$ is constant, $Q_\lambda\hat{\theta}=-\lambda\left( f''\left(t_i^+\right)-f''\left(t_i^-\right) \right)=0$, for $i=1,\ldots,n$, otherwise $Q_\lambda\theta=0$ is true but does not represent $f''\left(t_i^+\right)-f''\left(t_i^-\right)$. 
+
+As a result, $f''(t)$ is continuous at the knots $t_i$ if $\lambda(t)$ is constant and $\gamma=0$. 
+
+
+\end{proof}
+
+
+
+
+\section{Proof of Lemma \ref{cvlemma}}
+\begin{proof}
+For any smooth curve $f$ with $\mathbf{y}^*$, we have 
+\begin{align*}
+&\frac{1}{n} \sum_{j=1}^n\left(y_j^*-f(t_j)\right)^2+\frac{\gamma}{n} \sum_{j=1}^n\left(v_j^*-f'(t_j)\right)^2+\sum_{j=1}^{n} \lambda_j\int_{t_j}^{t_{j+1}} f''^2dt \\
+\geq &\frac{1}{n} \sum_{j\neq i}\left(y_j^*-f(t_j)\right)^2+\frac{\gamma}{n} \sum_{j\neq i}\left(v_j^*-f'(t_j)\right)^2+\sum_{j=1}^{n} \lambda_j\int_{t_j}^{t_{j+1}} f''^2dt\\
+\geq &\frac{1}{n}\sum_{j\neq i}\left(y_j^*-\hat{f}^{(-i)}(t_j)\right)^2+\frac{\gamma}{n} \sum_{j\neq i}\left(v_j^*-\hat{f}'^{(-i)}(t_j)\right)^2+\sum_{j=1}^{n} \lambda_j\int_{t_j}^{t_{j+1}}  \left(\hat{f}^{''(-i)}\right)^2dt\\
+= &\frac{1}{n}\sum_{j=1}^{n}\left(y_j^*-\hat{f}^{(-i)}(t_j)\right)^2+\frac{\gamma}{n} \sum_{j=1}^{n}\left(v_j^*-\hat{f}'^{(-i)}(t_j)\right)^2+\sum_{j=1}^{n} \lambda_j\int_{t_j}^{t_{j+1}}  \left(\hat{f}^{''(-i)}\right)^2dt\\
+\end{align*}
+%For any spline $f$ and a given $\lambda(t)$, 
+%\begin{equation}
+%\begin{split}
+%&\frac{1}{n}\sum_{j=1}^{n}\left(y_j^*-f(t_j)\right)^2+\frac{\gamma}{n} \sum_{j=1}^{n}\left(v_j^*-f'(t_j)\right)^2+\int\lambda(t) f''^2 \\
+%\geq&\frac{1}{n}\sum_{j\neq i}^{n}\left(y_j^*-f(t_j)\right)^2+\frac{\gamma}{n} \sum_{j\neq i}^{n}\left(v_j^*-f'(t_j)\right)^2+\int\lambda(t) f''^2\\
+%\geq&\frac{1}{n}\sum_{j\neq i}^{n}\left(y_j^*-\hat{f}^{(-i)}(t_j)\right)^2+\frac{\gamma}{n} \sum_{j\neq i}^{n}\left(v_j^*-\hat{f}'^{(-i)}(t_j)\right)^2+\int\lambda(t) \hat{f}^{(-i)''2}\\
+%=&\frac{1}{n}\sum_{j=1}^{n}\left(y_j^*-\hat{f}^{(-i)}(t_j)\right)^2+\frac{\gamma}{n} \sum_{j=1}^{n}\left(v_j^*-\hat{f}'^{(-i)}(t_j)\right)^2+\int\lambda(t) \hat{f}^{(-i)''2}
+%\end{split}
+%\end{equation}
+by the definition of $\mathbf{\hat{f}}^{(-i)}$, $\mathbf{\hat{f}}'^{(-i)}$ and the fact that $y_i^*=\hat{f}^{(-i)}(t_i)$, $v_i^*=\hat{f}'^{(-i)}(t_i)$. It follows that $\hat{f}^{(-i)}$ is the minimizer of the objective function \eqref{tractorsplineObjective}, so that
+\begin{align*}
+\mathbf{\hat{f}}^{(-i)}&=S\mathbf{y}^*+\gamma T\mathbf{v}^*\\
+\mathbf{\hat{f}}'^{(-i)}&=U\mathbf{y}^*+\gamma V\mathbf{v}^*
+\end{align*}
+as required.
+\end{proof}
+
+
+\section{Proof of Theorem \ref{tractorsplinecvscore}}
+
+\begin{proof}
+\begin{equation}\label{th3proofeq1}
+\begin{split}
+\hat{f}^{(-i)}(t_i)-y_i=& \sum_{j=1}^{n}S_{ij}y_j^*+ \gamma \sum_{j=1}^{n}T_{ij}v_j^*-y_i^*\\
+=&\sum_{j\neq i}^{n}S_{ij}y_j+ \gamma \sum_{j\neq i}^{n}T_{ij}v_j+S_{ii}\hat{f}^{(-i)}(t_i)+\gamma T_{ii}\hat{f}'^{(-i)}(t_i)-y_i\\
+=&\sum_{j=1}^{n}S_{ij}y_j+ \gamma \sum_{j=1}^{n}T_{ij}v_j+S_{ii}\left(\hat{f}^{(-i)}(t_i)-y_i\right)+\gamma T_{ii}\left(\hat{f}'^{(-i)}(t_i)-v_i\right)-y_i\\
+=&\left(\hat{f}(t_i)-y_i\right)+S_{ii}\left(\hat{f}^{(-i)}(t_i)-y_i\right)+\gamma T_{ii}\left(\hat{f}'^{(-i)}(t_i)-v_i\right).
+\end{split}
+\end{equation}
+Additionally, 
+\begin{equation}
+\begin{split}
+\hat{f}'^{(-i)}(t_i)-v_i=& \sum_{j=1}^{n}U_{ij}y_j^*+ \gamma \sum_{j=1}^{n}V_{ij}v_j^*-v_i^*\\
+=&\sum_{j\neq i}^{n}U_{ij}y_j+ \gamma \sum_{j\neq i}^{n}V_{ij}v_j+U_{ii}\hat{f}^{(-i)}(t_i)+\gamma V_{ii}\hat{f}'^{(-i)}(t_i)-v_i\\
+=&\sum_{j=1}^{n}U_{ij}y_j+ \gamma \sum_{j=1}^{n}V_{ij}v_j+U_{ii}\left(\hat{f}^{(-i)}(t_i)-y_i\right)+\gamma V_{ii}\left(\hat{f}'^{(-i)}(t_i)-v_i\right)-v_i\\
+=&\left(\hat{f}'(t_i)-v_i\right)+U_{ii}\left(\hat{f}^{(-i)}(t_i)-y_i\right)+\gamma V_{ii}\left(\hat{f}'^{(-i)}(t_i)-v_i\right).
+\end{split}
+\end{equation}
+Thus 
+\begin{equation}\label{th3proofeq2}
+\hat{f}'^{(-i)}(t_i)-v_i = \frac{\hat{f}'(t_i)-v_i}{1-\gamma V_{ii}}+ \frac{U_{ii}\left(\hat{f}^{(-i)}(t_i)-y_i\right)}{1-\gamma V_{ii}}.
+\end{equation}
+By substituting equation \eqref{th3proofeq2} to \eqref{th3proofeq1}, we get
+\begin{equation*}
+\hat{f}^{(-i)}(t_i)-y_i=\frac{\hat{f}(t_i)-y_i+\gamma \frac{T_{ii}}{1-\gamma V_{ii}}\left(\hat{f}'(t_i)-v_i\right)}{1-S_{ii}-\gamma\frac{T_{ii}}{1-\gamma V_{ii}}U_{ii}}.
+\end{equation*}
+Consequently, 
+\begin{equation*}
+CV(\lambda,\gamma)=\frac{1}{n}\sum_{i=1}^{n}\left( \frac{\hat{f}(t_i)-y_i+\gamma \frac{T_{ii}}{1-\gamma V_{ii}}\left(\hat{f}'(t_i)-v_i\right)}{1-S_{ii}-\gamma\frac{T_{ii}}{1-\gamma V_{ii}}U_{ii}}\right)^2.
+\end{equation*}
+\end{proof}
+
+
+%\clearpage
+
+
+\section{Reconstructions at SNR=3}
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.45\textwidth]{Appendices/ggplot/ggBlocksPenaltyLineSNR3.pdf}
+    \includegraphics[width=0.45\textwidth]{Appendices/ggplot/ggBumpsPenaltyLineSNR3.pdf}
+    \includegraphics[width=0.45\textwidth]{Appendices/ggplot/ggHeaviPenaltyLineSNR3.pdf}
+    \includegraphics[width=0.45\textwidth]{Appendices/ggplot/ggDopplerPenaltyLineSNR3.pdf}
+\caption{Reconstructions of generated \textit{Blocks}, \textit{Bumps}, \textit{HeaviSine} and \textit{Doppler} functions by V-spline at SNR=3. The penalty values $\lambda(t)$ in V-spline are projected into reconstructions. The blacks dots are the measurements. The bigger blacks dots indicate the larger penalty values.}\label{TractorsplineSNR3}
+\end{figure}
+
+
+\section{Residual Analysis of Simulations}
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggacfBlocks7.pdf}
+    \caption{ACF of residuals from \textit{Blocks}}
+    \end{subfigure}%
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggacfBumps7.pdf}
+    \caption{ACF of residuals from \textit{Bumps}}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggacfHeavi7.pdf}
+    \caption{ACF of residuals from \textit{HeaviSine} }
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggacfDoppler7.pdf}
+    \caption{ACF of residuals from \textit{Doppler}}
+    \end{subfigure}
+\caption{ACF of residuals at SNR level of 7.}\label{tractorsplineSNR7acf}
+ \end{figure}
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggacfBlocks3.pdf}
+    \caption{ACF of residuals from \textit{Blocks}}
+    \end{subfigure}%
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggacfBumps3.pdf}
+    \caption{ACF of residuals from \textit{Bumps}}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggacfHeavi3.pdf}
+    \caption{ACF of residuals from \textit{HeaviSine}}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggacfDoppler3.pdf}
+    \caption{ACF of residuals from \textit{Doppler}}
+    \end{subfigure}
+\caption{ACF of residuals at SNR level of 3.}\label{tractorsplineSNR3acf}
+ \end{figure}
+
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}{\textwidth}
+    \centering
+    \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYResidualsXpoints.pdf}
+    \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYResidualsXhist.pdf}
+    \caption{residuals of $x$ }
+    \end{subfigure}
+    \begin{subfigure}{\textwidth}
+    \centering
+    \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYResidualsYpoints.pdf}
+    \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYResidualsYhist.pdf}
+    \caption{residuals of $y$ }
+    \end{subfigure}
+\caption{Residuals of 2-dimensional real data reconstruction }\label{tractorsplineResidualsRealdata}
+ \end{figure}
+
