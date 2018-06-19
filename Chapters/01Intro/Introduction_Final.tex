@@ -15,7 +15,7 @@ Given time series data from a vehicle-mounted GPS unit, an important question is
 \section{Smoothing Spline Based Reconstruction}
 
 Smoothing spline approaches are natural solutions to trajectory reconstruction, see 
-\eg \citep{eubank2004simple} and \citep{durbin2012time} for details. 
+\eg \cite{eubank2004simple} and \cite{durbin2012time} for details. 
 
 Some form of interpolation is an obvious approach to trajectory reconstruction. The simplest method, piecewise linear interpolation, connects successive locations by straight lines. Clearly, this interpolation implies abrupt changes in velocity at the join points. Smooth trajectories are more common in real life applications. A single polynomial function that is defined on the entire interval, such as B\'ezier curve, is not as flexible as a piecewise combination of polynomials, each of which is defined on a subinterval. The polynomials are jodined at the endpoints of their subintervals -- these endpoints are termed \textit{knots}. This kind of piecewise polynomial interpolation is called a \textit{spline}. 
 
@@ -25,7 +25,7 @@ Some form of interpolation is an obvious approach to trajectory reconstruction. 
 %\end{equation*}
 %The key step of a spline interpolation is the choice of basis functions. Once the $h_i(t)$ have been determined, the models are linear in the variables space. 
 
-A number of splines are commonly in use, see \citep{esl2009} for discussions. The B-spline, short for basis spline, gives a closed-form expression for the trajectory with continuous second derivatives and goes through the points smoothly while ignoring outliers \citep{komoriya1989trajectory, ben2004geometric}. It is flexible and has minimal support with respect to a given degree, smoothness, and domain partition. Once the knots are given, it is easy to compute the B-spline recursively for any desired degree of the polynomial \citep{de1978practical, cox1982practical}. An attractive feature of the B-spline is its flexibility for univariate regression and its appealing simplicity of the method is explained in \citep{dierckx1995curve, eilers1996flexible}. \cite{gasparetto2007new} use a fifth-order B-spline to compose the overall trajectory. Almost every spline can be represented as a B-spline. 
+A number of splines are commonly in use, see \cite{esl2009} for discussions. The B-spline, short for basis spline, gives a closed-form expression for the trajectory with continuous second derivatives and goes through the points smoothly while ignoring outliers \citep{komoriya1989trajectory, ben2004geometric}. It is flexible and has minimal support with respect to a given degree, smoothness, and domain partition. Once the knots are given, it is easy to compute the B-spline recursively for any desired degree of the polynomial \citep{de1978practical, cox1982practical}. An attractive feature of the B-spline is its flexibility for univariate regression and its appealing simplicity of the method is explained in \citep{dierckx1995curve, eilers1996flexible}. \cite{gasparetto2007new} use a fifth-order B-spline to compose the overall trajectory. Almost every spline can be represented as a B-spline. 
 
 Another widely used spline is the piecewise cubic spline, which is continuous on an interval $[a,b]$ and has continuous first and second derivatives \citep{wolberg1988cubic}. Let $f(t)$ denote a trajectory reconstruction, \ie the location of the vehicle at time $t$. For the piecewise cubic spline,  
 \begin{equation*}
@@ -65,7 +65,7 @@ Hence, the cost of the equation \eqref{introSmoothingOb} is determined not only 
 
 \section{Parameter Selection}
 
-As discussed in the previous section, the determination of an optimal smoothing parameter $\lambda$ in the interval $(0,+\infty)$ was found to be an underlying complication and the fundamental idea of nonparametric smoothing is to let the data choose the amount of smoothness, which consequently decides the model complexity \citep{gu1998model}. Various studies for selecting an appropriate smoothing parameter are developed and compared in literatures. Most of these methods are focusing on data driven criteria, such as cross-validation (CV), generalized cross-validation (GCV) \citep{craven1978smoothing} and generalized maximum likelihood (GML) \citep{wahba1985comparison} and recently developed methods, such as improved Akaike information criterion (AIC) \citep{hurvich1998smoothing}, exact risk approaches \citep{wand1997exact} and so on. See \eg \citep{craven1978smoothing, hardle1988far, hardle1990applied, wahba1990spline, green1993nonparametric, cantoni2001resistant, aydin2013smoothing} for details.  
+As discussed in the previous section, the determination of an optimal smoothing parameter $\lambda$ in the interval $(0,+\infty)$ was found to be an underlying complication and the fundamental idea of nonparametric smoothing is to let the data choose the amount of smoothness, which consequently decides the model complexity \citep{gu1998model}. Various studies for selecting an appropriate smoothing parameter are developed and compared in literatures. Most of these methods are focusing on data driven criteria, such as cross-validation (CV), generalized cross-validation (GCV) \citep{craven1978smoothing} and generalized maximum likelihood (GML) \citep{wahba1985comparison} and recently developed methods, such as improved Akaike information criterion (AIC) \citep{hurvich1998smoothing}, exact risk approaches \citep{wand1997exact} and so on. See \eg \cite{craven1978smoothing, hardle1988far, hardle1990applied, wahba1990spline, green1993nonparametric, cantoni2001resistant, aydin2013smoothing} for details.  
 
 
 %\subsection*{Cross-Validation}
@@ -80,7 +80,7 @@ For example, a $k$-fold CV splits the data into $k$ roughly equal-sized parts. F
 \SetAlgoLined 
 %\KwResutt{Write here the resutt }
 Initialization: Remove the first data $t_1$ and last date $t_n$ from the dataset. \\
-Split the rest data $t_2,\ldots,t_{n-1}$ into $k$ groups by: $ \mbox{Group k} : t_{k+1}, t_{2k+1}, \cdots$ \\
+Split the rest data $t_2,\ldots,t_{n-1}$ into $k$ groups by: for $i=1,\ldots,k$, the $i$th Group $G_i=\{t_{i+1}, t_{i+1+k}, t_{i+1+2k}, \cdots\}$.\\
 Guess a value $\lambda^*$. \\
 \While{CV score is not optimized}{
 \For{$i=1,\ldots,k$}{ \label{kfoldCV01}
@@ -136,7 +136,7 @@ Overall, almost every technique found in the scientific literatures on the recon
 
 Smoothing spline algorithms have several advantages in inferring and characterizing planar trajectories, particularly in reconstruction. However, subject to the property that smoothing splines require the solution of a global problem that involves the entire set of points to be interpolated, it might not be suitable for on-line estimation or instant updating \citep{biagiotti2013online}. It is the time to use Bayesian filtering to implement on-line/instant estimation and prediction. 
 
-The word \textit{filtering} refers to the methods for estimating the state of a time-varying system, which is indirectly observed through noisy measurements. A Bayes filter is a general probabilistic approach to infer an unknown probability density function recursively over time using incoming measurements and a mathematical process model. The concept \textit{optimal estimation} refers to some criteria that measure the optimality in specific sense \citep{anderson1979optimal}. For example, a posterior estimation of $\hat{x}_t\sim p(x_t\mid y_{1:t})$ that minimizes the loss function $J_t=\E\lbrack x_t-\hat{x}_t\rbrack^2$ for incorrect estimates, or least mean squared errors, maximum likelihood approximation and so on. See \eg \citep{chen2003bayesian, sarkka2013bayesian} for discussions. Hence, an optimal \textit{Bayesian filtering} uses the Bayesian way of formulating optimal filtering by meeting some statistical criteria. 
+The word \textit{filtering} refers to the methods for estimating the state of a time-varying system, which is indirectly observed through noisy measurements. A Bayes filter is a general probabilistic approach to infer an unknown probability density function recursively over time using incoming measurements and a mathematical process model. The concept \textit{optimal estimation} refers to some criteria that measure the optimality in specific sense \citep{anderson1979optimal}. For example, a posterior estimation of $\hat{x}_t\sim p(x_t\mid y_{1:t})$ that minimizes the loss function $J_t=\E\lbrack x_t-\hat{x}_t\rbrack^2$ for incorrect estimates, or least mean squared errors, maximum likelihood approximation and so on. See \eg \cite{chen2003bayesian, sarkka2013bayesian} for discussions. Hence, an optimal \textit{Bayesian filtering} uses the Bayesian way of formulating optimal filtering by meeting some statistical criteria. 
 
 It is no doubt that in a conventional target tracking system, the most common method is the standard Kalman filter, which is a recursive solution to the discrete data linear filtering problem. 
 
@@ -148,7 +148,7 @@ In a discrete-time linear system, the optimal Bayesian solution coincides with t
 
 The Kalman filter recursively updates the estimated state by computing from the previous estimation and a new observation. Without the need for storing the entire past observed data, the Kalman filter computes more efficient than computing the estimate directly from the entire past observed data at each step of the filtering process \citep{haykin2001kalman}.  
 
-A detailed Kalman filter and its may variants can be found in \citep{chen2003bayesian, rhodes1971tutorial, kailath1981lectures, sorenson1985kalman}. \cite{tusell2011kalman} gives a review of some \textit{R} packages, which are used to fit data with Kalman filter methods. Besides, it is also shown that the Kalman filter can be derived within a Bayesian framework and reduces to a maximum posterior probability (MAP) solution, and can be easily extended to ML solution \citep{haykin2001kalman, guzzi2016data}. 
+A detailed Kalman filter and its variants can be found in \citep{chen2003bayesian, rhodes1971tutorial, kailath1981lectures, sorenson1985kalman}. \cite{tusell2011kalman} gives a review of some \textit{R} packages, which are used to fit data with Kalman filter methods. Besides, it is also shown that the Kalman filter can be derived within a Bayesian framework and reduces to a maximum posterior probability (MAP) solution, and can be easily extended to ML solution \citep{haykin2001kalman, guzzi2016data}. 
 
 Consider the following model 
 \begin{align}\label{introKFmodel}
@@ -156,13 +156,12 @@ Consider the following model
 \cdots &\to &x_{t-1}&\to &x_{t}&\to &x_{t+1}&\to &\cdots &{\text{truth}}\\
 \cdots &&\downarrow &&\downarrow &&\downarrow && \cdots &\\ \cdots&&y_{t-1}&&y_{t}&&y_{t+1}&&\cdots &{\text{observation}}\end{array}
  \end{align}
-in which $x_t=F(x_{t-1})+\varepsilon_x$ is the true hidden state propagating through the transition matrix $F$ and $y_t=G(x_t)+\varepsilon_y$ is the observation measured by the measurement matrix $G$ of the system, where $\varepsilon$ indicates \iid noise in the model. 
+in which $x_t=F(x_{t-1})+\varepsilon_x$ is the true hidden state propagating through the transition matrix $F$ and $y_t=G(x_t)+\varepsilon_y$ is the observation measured by the measurement matrix $G$ of the system, where $\varepsilon_x$ and $\varepsilon_y$ can be viewed as white noise random sequences with unknown statistics in the discrete-time domain. 
 
-To estimate the filtering state $x_t$ from $y_{1:t}=\left\lbrace y_1,\ldots,y_t\right\rbrace$, Bayesian wants to maximize the posterior $p(x_t\mid y_{1:t})$ by marginalizing out all the previous measurements. Given the joint distribution of $p(x_t,x_{t-1},y_{1:t})$, Kalman filter supposes the expectation $\hat{x}_{t-1}$ and its variance $S_{t-1}$ are known and passing through the system by $\hat{x}_t=F\hat{x}_{t-1}$ and $S_t=FS_{t-1}F^\top + Q_t$. Because of the log-likelihood function is written in such way: 
-$\ln p(x_t\mid y_{1:t}) \propto \frac{1}{2}(y_t-Gx_t)^2-\frac{1}{2}(x_t-\hat{x}_{t-1})^2$,
-as a result, the solution is 
+To estimate the filtering state $x_t$ from $y_{1:t}=\left\lbrace y_1,\ldots,y_t\right\rbrace$, Bayesian wants to maximize the posterior $p(x_t\mid y_{1:t})$ by marginalizing out all the previous measurements. Given the joint distribution of $p(x_t,x_{t-1},y_{1:t})$, Kalman filter supposes the expectation $\hat{x}_{t-1}$ and its variance $S_{t-1}$ are known and passing through the system by $\hat{x}_t=F\hat{x}_{t-1}$ and $S_t=FS_{t-1}F^\top + Q_t$, here $Q_t$ is the covariance of $\varepsilon_x$. Because of the log-likelihood function is written in such way: 
+$\ln p(x_t\mid y_{1:t}) \propto -\frac{1}{2}(y_t-Gx_t)^\top R_t^{-1}(y_t-Gx_t)-\frac{1}{2}(x_t-\hat{x}_{t-1})^\top S_{t-1}^{-1}(x_t-\hat{x}_{t-1})$, and $R_t$ is the covariance of $\varepsilon_y$. As a result, the solution is 
 \begin{equation*}
-\hat{x}_t = \left(G^\top R^{-1}G+S_{t-1}^{-1}\right)^{-1}\left( G^\top R_t^{-1}y_t+S_{t-1}^{-1}\hat{x}_{t-1} \right).
+\hat{x}_t = \left(G^\top R_t^{-1}G+S_{t-1}^{-1}\right)^{-1}\left( G^\top R_t^{-1}y_t+S_{t-1}^{-1}\hat{x}_{t-1} \right).
 \end{equation*}
 Additionally, by setting $S_t^{-1} = G^\top R_t^{-1}G+S_{t-1}^{-1}$, the recursive estimation of covariance matrix is $S_t = S_{t-1} - K_t GS_{t-1}$, 
 and $K_t = S_{t-1} G^\top (R_t +GS_{t-1}G^\top)^{-1}$ is named Kalman gain matrix. Consequently, the recursive estimation is 
@@ -194,11 +193,11 @@ The important advantage of Monte Carlo is that a large number of posterior momen
 
 For example, consider the model \eqref{introKFmodel} with parameter $\theta$. The likelihood approximation is $p(y_t\mid y_{1:t-1},\theta)$ and can be written by
 \begin{equation*}
-p(y_t\mid y_{1:t-1},\theta) = \int p(y_t\mid x_t,\theta)p(x_t\mid y_{1:t-1},\theta) dx_t = \E \lbrack p(y_t\mid x_t,\theta)\rbrack.
+p(y_t\mid y_{1:t-1},\theta) = \int p(y_t\mid x_t,\theta)p(x_t\mid y_{1:t-1},\theta) dx_t = \E \lbrack y_t\mid x_t,\theta \rbrack.
 \end{equation*}
 The standard Monte Carlo algorithm is trying to compute the integration by drawing $N$ independent samples $x_t^{(i)}$ from $p(x_t\mid y_{1:t-1},\theta)$ first and then, by adding them up, to approximate the integration for large $N$ in the following way 
 \begin{equation*}
-\E\left[p(y_t\mid x_t,\theta)\right]\approx \frac{1}{N}\sum_i p(y_t\mid x_t^{(i)},\theta), 
+\E\left[ y_t\mid x_t,\theta \right]\approx \frac{1}{N}\sum_i p(y_t\mid x_t^{(i)},\theta), 
 \end{equation*}
 \citep{kalos2008monte}.
 
@@ -242,7 +241,7 @@ Apparently, Bayesian filtering has become a broad topic involving many scientifi
 Schemes exist to counteract sample impoverishment, which incurs in particle filter \citep{ristic2004beyond}. One approach is to consider the states for the particles to be predetermined by the forward filter and then to obtain the smoothed estimates by recalculating the particles' weights via a recursion from the final to the first time step \citep{godsill2000methodology}. Another approach is to use a \textit{Markov chain Monte Carlo} (MCMC) move step \citep{carlin1992monte}. MCMC refers to constructing Markov chains that move in the unobserved quantity space and produce a sequence samples from the posterior distribution. After the chain has been run long enough, the sequence is considered as an approximation to the posterior distribution \citep{kokkala2016particle}. 
 
 
-MCMC methods are a set of powerful stochastic algorithms that allow us to solve most of these Bayesian computational problems when the data are available in batches \citep{andrieu1999sequential, green1995reversible, andrieu2001model}. They are based on sampling from probability distributions based on a Markov chain. If samples are unable to be drawn directly from a distribution $\pi(x)$, we can construct a Markov chain of samples from another distribution $\hat{\pi}(x)$ that is equilibrium to $\pi(x)$. If the chain is long enough, these samples of the chain can be used as a basis for summarizing features of $\pi(x)$ of interest \citep{smith1993bayesian}. This is a crucial property. See \eg \citep{cappe2009inference, liu2008monte} for details. 
+MCMC methods are a set of powerful stochastic algorithms that allow us to solve most of these Bayesian computational problems when the data are available in batches \citep{andrieu1999sequential, green1995reversible, andrieu2001model}. They are based on sampling from probability distributions based on a Markov chain. If samples are unable to be drawn directly from a distribution $\pi(x)$, we can construct a Markov chain of samples from another distribution $\hat{\pi}(x)$ that is equilibrium to $\pi(x)$. If the chain is long enough, these samples of the chain can be used as a basis for summarizing features of $\pi(x)$ of interest \citep{smith1993bayesian}. This is a crucial property. See \eg \cite{cappe2009inference, liu2008monte} for details. 
 
 
 
@@ -291,7 +290,7 @@ Metropolis-Hastings algorithm is widely used in statistical inference, to sample
 
 %It is introduced that Metropolis-Hastings algorithm draws samples from a target distribution $\pi(\cdot)$ by proposing $x'$ from $x^{(t)}$. Then calculate a probability to decide whether accept or reject it. The proposal distribution 
 
-\textit{Adaptive MCMC} methods have been developed to automatically adjust these parameters, such as \citep{andrieu2008tutorial, atchade2009adaptive, roberts2009examples}. One of the most successful adaptive MCMC algorithms is introduced by \cite{haario2001adaptive}, where, based on the  random walk Metropolis algorithm, the covariance of the proposal distribution is calculated using all of the previous states. For instance, with an adaptive MCMC chain $x_0,x_1,\ldots,x_t$, the proposal $x'$ is from $N(\cdot\mid x_t,R_t)$, where $R_t$ is the covariance matrix determined by the spatial distribution of the state $x_0,x_1,\ldots,x_t$. 
+\textit{Adaptive MCMC} methods have been developed to automatically adjust these parameters, such as \citep{andrieu2008tutorial, girolami2011riemann,  atchade2009adaptive, roberts2009examples}. One of the most successful adaptive MCMC algorithms is introduced by \cite{haario2001adaptive}, where, based on the  random walk Metropolis algorithm, the covariance of the proposal distribution is calculated using all of the previous states. For instance, with an adaptive MCMC chain $x_0,x_1,\ldots,x_t$, the proposal $x'$ is from $N(\cdot\mid x_t,R_t)$, where $R_t$ is the covariance matrix determined by the spatial distribution of the state $x_0,x_1,\ldots,x_t$. 
 
 Even though the adaptive Metropolis algorithm is non-Markovian, the establishment was verified that the adaptive MCMC algorithm indeed has the correct ergodic properties. 
 
@@ -398,7 +397,7 @@ for all $(x,\theta)\in \mathcal{E}$.
 
 Thereafter, the obtained sequence of the Zig-Zag process is used to approximate expectations with respect to $\pi(\cdot)$ according to the law of large numbers. 
 %To check the performance of Zig-Zag sampler and comparing with other MCMC sampler, the effective sample size (ESS) is given as $ESS=\frac{\Var_\pi f}{\Var(\pi_t(f))}=\frac{\Var_\pi f}{\sigma^2N_s}N(t)$, $N(t)$ is the number of switches up to time $t$. It is numerically tested that the Zig-Zag sampler has a higher ESS than a tuned Random-Walk Metropolis-Hastings \citep{bierkens2017limit}. 
-The application of Zig-Zag process in big data scheme and some properties are given in \citep{bierkens2017limit, bierkens2016zig}.
+The application of Zig-Zag process in big data scheme and some properties are given in \citep{bierkens2017limit}. %\citep{bierkens2016zig}.
 
 
 

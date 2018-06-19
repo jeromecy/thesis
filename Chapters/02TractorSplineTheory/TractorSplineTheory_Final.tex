@@ -1,78 +1,3 @@
-%\documentclass{article}      % use "amsart" instead of "article" for AMSLaTeX format
-%\usepackage[a4paper]{geometry}                        % See geometry.pdf to learn the layout options. There are lots.
-%%\geometry{left=2.5cm,right=2.5cm,top=1.5cm,bottom=1.5cm}
-%\geometry{bottom=2.5cm}
-%
-%
-%\usepackage{graphicx}                    
-%\usepackage{amssymb}
-%\usepackage{indentfirst}
-%\usepackage{amsmath}
-%\usepackage{amsthm}
-%\usepackage{subcaption}
-%\usepackage{multirow}
-%\usepackage{array}
-%\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
-%\usepackage{natbib}
-%
-%\usepackage{tikz}
-%\usetikzlibrary{arrows.meta,calc,backgrounds}
-%\usepackage{pgfplots}
-%
-%\newtheorem{theorem}{Theorem}
-%\newtheorem{lemma}[theorem]{Lemma}
-%\newtheorem{corollary}[theorem]{Corollary}
-%
-%\newcommand{\E}{\mathrm{E}}
-%\newcommand{\Var}{\mathrm{Var}}
-%\newcommand{\Cov}{\mathrm{Cov}}
-%\newcommand{\Corr}{\mathrm{Corr}}
-%\newcommand{\tr}{\mathrm{tr}}
-%\newcommand{\iid}{\textrm{i.i.d.\ }}
-%\newcommand{\eg}{e.g.\ }
-%
-%
-%
-%\usepackage{tikz}
-%\usetikzlibrary{arrows.meta,calc,backgrounds}
-%\tikzset{
-%    right angle quadrant/.code={
-%    \pgfmathsetmacro\quadranta{{1,1,-1,-1}[#1-1]}     % Arrays for selecting quadrant
-%    \pgfmathsetmacro\quadrantb{{1,-1,-1,1}[#1-1]}
-%    },
-%    right angle quadrant=1, % Make sure it is set, even if not called explicitly
-%    right angle length/.code={\def\rightanglelength{#1}},   % Length of symbol
-%    right angle length=2ex, % Make sure it is set...
-%    right angle symbol/.style n args={3}{
-%        insert path={
-%            let \p0 = ($(#1)!(#3)!(#2)$) in     % Intersection
-%                let \p1 = ($(\p0)!\quadranta*\rightanglelength!(#3)$), % Point on base line
-%                \p2 = ($(\p0)!\quadrantb*\rightanglelength!(#2)$) in % Point on perpendicular line
-%                let \p3 = ($(\p1)+(\p2)-(\p0)$) in  % Corner point of symbol
-%            (\p1) -- (\p3) -- (\p2)
-%        }
-%    }
-%}
-
-%\providecommand{\keywords}[1]{\textbf{\textit{Keywords: }} #1}
-%
-%
-%\title{Adaptive Smoothing V-Spline for Trajectory Reconstruction}
-%
-%\author{Zhanglong Cao, David Bryant, Matthew Parry}
-%
-%\date{}  
-%\begin{document}
-%\maketitle
-%
-%
-%
-%\begin{abstract}
-%Trajectory reconstruction is the process of inferring the path of a moving object between successive observation points. Widely separated points and measurement errors can cause traditional spline method to infer trajectories with sharp angles not typical of a moving object. Smoothing spline methods can efficiently build up a more smooth trajectory. In conventional smoothing splines, the objective function is augmented with a penalty term, which has a single parameter that controls the smoothness of reconstruction. Adaptive smoothing splines extend the single parameter to a function that can vary, hence the degree of smoothness can be different regions. A new method named the V-spline is proposed, which incorporates both location and velocity information but penalizes excessive accelerations. In the application of interest, the penalty term is also dependent on a known operational state of the object. The V-spline includes a parameter that controls the degree to which the velocity information is used in the reconstruction. In addition, the smoothing penalty adapts the observations are irregular in time. An extended cross-validation technique is used to find all spline parameters. 
-%
-%\end{abstract}
-%
-%\keywords{trajectory reconstruction, smoothing spline, nonparametric regression, cross-validation, adaptive penalty.}
 
 
 \section{Introduction}
@@ -782,7 +707,7 @@ To examine the performance of the V-spline, we conduct a evaluation by comparing
 \end{align}
 
 
-The results are shown in tables \ref{mse3200} and \ref{tmse3200}. All of these methods have good performances in fitting noisy data. The differences of mean squared error between these methods are not significant, as can be seen from table \ref{mse3200}. The proposed method is not the best among these simulations according to MSE. However, from table \ref{tmse3200}, V-spline returns the smallest true mean squared errors. The difference is significant, that means the reconstruction from V-spline is closer to the true trajectory. 
+The results are shown in Tables \ref{mse3200} and \ref{tmse3200}. All of these methods have good performances in fitting noisy data. The differences of mean squared error between these methods are not significant, as can be seen from Table \ref{mse3200}. The proposed method is not the best among these simulations according to MSE. However, from Table \ref{tmse3200}, V-spline returns the smallest true mean squared errors. The difference is significant, that means the reconstruction from V-spline is closer to the true trajectory. 
  
 %\begin{sidewaystable}
  \begin{table}
@@ -853,7 +778,7 @@ Further analysis in figures \ref{tractorsplineSNR7acf} and \ref{tractorsplineSNR
 
 A set of irregularly sampled time series data has different time differences between each pair of successive points. The distribution of $\Delta T_i$ is not uniform.
 
-In this section, it is shown that the proposed V-spline has the ability to reconstruct the true trajectory even though the data is irregularly sampled. With the same functions that are used in the previous section, we firstly generate the simulation data of length $n=1024$. Then we draw a length of 512 subsequence with indices $1,3,\ldots,1023$ from the mother dataset for regularly sampled points and another 512 random indices for irregularly sampled points. See figure \ref{gghistIrregularTime}. 
+In this section, it is shown that the proposed V-spline has the ability to reconstruct the true trajectory even though the data is irregularly sampled. With the same functions that are used in the previous section, we firstly generate the simulation data of length $n=1024$. Then we draw a length of 512 subsequence with indices $1,3,\ldots,1023$ from the mother dataset for regularly sampled points and another 512 random indices for irregularly sampled points. See Figure \ref{gghistIrregularTime}. 
 
 \begin{figure}[!h]
     \centering
@@ -943,7 +868,7 @@ Thereafter, we convert the longitude and latitude information from a 3D sphere t
 u &=s\cdot \sin \left(\omega\frac{\pi}{180}\right),\\
 v &= s\cdot \cos \left(\omega\frac{\pi}{180}\right),
 \end{align}
-where $\omega$ is the bearing in degrees. Boom status is tagged as 0 if it is not operating and 1 if it is. Time marks are transformed by subtracting the first mark, in which way the time starts from 0. Time duplicated data, caused by errors, had been removed from the dataset. In the convenience of comparing with wavelet algorithm, we choose the first 512 out of 928 rows of data. The original measurements are plotted in figure \ref{original512}.
+where $\omega$ is the bearing in degrees. Boom status is tagged as 0 if it is not operating and 1 if it is. Time marks are transformed by subtracting the first mark, in which way the time starts from 0. Time duplicated data, caused by errors, had been removed from the dataset. In the convenience of comparing with wavelet algorithm, we choose the first 512 out of 928 rows of data. The original measurements are plotted in Figure \ref{original512}.
 
 
 \begin{figure}
@@ -978,7 +903,7 @@ In order to fit the real data, we bring the parameter $\eta_d$ to our model. The
 
 \subsection{1-Dimensional Trajectory}
 
-We treat $x$ and $y$ position separately and compare how the velocity information and the adjusted penalty term of equation \eqref{adjustedpenalty} work in our model. All parameters in fitted V-spline are automatically selected by cross-validation by equation \eqref{tractorcv}. Figure \ref{1dx} and figure \ref{1dy} compare the results of fitted methods on $x$ and $y$ axes. P-spline gives over-fitting on $x$ axis reconstruction and not applicable on $y$ axis due to errors. Wavelet(sure) misses some key points at corners when a tractor tries to turn around. V-spline without adjusted penalty term presents less fitting at time gap knots, where time marks keep increasing while position stays the same and velocity is 0. If we take the last knot $p_k$ before and the first knot $p_{k+1}$ after the time gap, Hermite spline basis will use $y_k, v_k, y_{k+1}$ and $v_{k+1}$ to build up a cubic spline, even though the velocity information is not useful. That is why we got a curve rather than a straight line. Wavelet(BayesThresh), V-spline without velocity and proposed V-spline give acceptable results.
+We treat $x$ and $y$ position separately and compare how the velocity information and the adjusted penalty term of equation \eqref{adjustedpenalty} work in our model. All parameters in fitted V-spline are automatically selected by cross-validation by equation \eqref{tractorcv}. Figure \ref{1dx} and Figure \ref{1dy} compare the results of fitted methods on $x$ and $y$ axes. P-spline gives over-fitting on $x$ axis reconstruction and not applicable on $y$ axis due to errors. Wavelet(sure) misses some key points at corners when a tractor tries to turn around. V-spline without adjusted penalty term presents less fitting at time gap knots, where time marks keep increasing while position stays the same and velocity is 0. If we take the last knot $p_k$ before and the first knot $p_{k+1}$ after the time gap, Hermite spline basis will use $y_k, v_k, y_{k+1}$ and $v_{k+1}$ to build up a cubic spline, even though the velocity information is not useful. That is why we got a curve rather than a straight line. Wavelet(BayesThresh), V-spline without velocity and proposed V-spline give acceptable results.
 
 
 Table \ref{1dxymse} illustrates the MSE of all methods on both $x$ and $y$ axes. The proposed V-spline returns the least errors among all methods.
@@ -1077,7 +1002,7 @@ b=1 & \mbox{if boom is operating}\\
 b=0 & \mbox{if boom is not operating}
 \end{cases}
 \end{equation}
-To explain the differences more clearly, we take $\lambda(t)$ in our demonstration. Figure \ref{penaltyxygg} indicates that at turning points and long time gap knots, the adjusted penalty term will lead $\lambda(t)$ to large values, which forces the spline to be a straight line between two knots. It can be seen in figure \ref{penaltyxyggXYPath} clearly. Histogram plots of $\lambda(t)$ show that most of the penalty values are small, which allows the V-spline to go as closer as possible to the observed points. Only a few of penalty values are large, so that V-spline gives a straight line at tricky points. 
+To explain the differences more clearly, we take $\lambda(t)$ in our demonstration. Figure \ref{penaltyxygg} indicates that at turning points and long time gap knots, the adjusted penalty term will lead $\lambda(t)$ to large values, which forces the spline to be a straight line between two knots. It can be seen in Figure \ref{penaltyxyggXYPath} clearly. Histogram plots of $\lambda(t)$ show that most of the penalty values are small, which allows the V-spline to go as closer as possible to the observed points. Only a few of penalty values are large, so that V-spline gives a straight line at tricky points. 
 
 
 \begin{figure}
@@ -1100,11 +1025,11 @@ To explain the differences more clearly, we take $\lambda(t)$ in our demonstrati
     \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataYPenaltyPath2.pdf}
     \caption{Reconstruction on $x$ and $y$}\label{penaltyxyggXYPath}
     \end{subfigure}
- %\caption{The penalty term $n\theta^\top\Omega\theta$ of V-spline on $x$ and $y$ axes. The big black dots in figure \ref{penaltyxyggXYPath} indicate large penalty values. It can be seen that most of large penalty values occur at turnings, where the tractor likely slows down and takes breaks. }\label{penaltyxygg}
- \caption{The penalty value $\lambda(t)$ of the V-spline on $x$ and $y$ axes. Red dots are the measurements $\mathbf{y}$. The bigger red dots in figure \ref{penaltyxyggXYPath} indicate larger penalty values. It can be seen that most of large penalty values occur at turnings, where the tractor likely slows down and takes breaks. }\label{penaltyxygg}
+ %\caption{The penalty term $n\theta^\top\Omega\theta$ of V-spline on $x$ and $y$ axes. The big black dots in Figure \ref{penaltyxyggXYPath} indicate large penalty values. It can be seen that most of large penalty values occur at turnings, where the tractor likely slows down and takes breaks. }\label{penaltyxygg}
+ \caption{The penalty value $\lambda(t)$ of the V-spline on $x$ and $y$ axes. Red dots are the measurements $\mathbf{y}$. The bigger red dots in Figure \ref{penaltyxyggXYPath} indicate larger penalty values. It can be seen that most of large penalty values occur at turnings, where the tractor likely slows down and takes breaks. }\label{penaltyxygg}
  \end{figure}
 
-The 1-dimensional reconstruction gets the best fittings $\hat{f}_x$ and $\hat{f}_y$ on $x$ and $y$ axes separately by using different penalty values, denoted as $\eta_{d,x}$, $\eta_{u,x}$, $\eta_{d,y}$, $\eta_{u,y}$, $\gamma_x$ and $\gamma_y$. The final reconstruction is the combination of  $\hat{f}_x$ and $\hat{f}_y$. It is shown in figure \ref{1DCombinedXY}. 
+The 1-dimensional reconstruction gets the best fittings $\hat{f}_x$ and $\hat{f}_y$ on $x$ and $y$ axes separately by using different penalty values, denoted as $\eta_{d,x}$, $\eta_{u,x}$, $\eta_{d,y}$, $\eta_{u,y}$, $\gamma_x$ and $\gamma_y$. The final reconstruction is the combination of  $\hat{f}_x$ and $\hat{f}_y$. It is shown in Figure \ref{1DCombinedXY}. 
 \begin{figure}
   \centering
     \includegraphics[width=\textwidth,height=10cm]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataCombinedXY2.pdf} 
@@ -1139,7 +1064,7 @@ In the adjusted penalty term, $\Delta d$ is the Euclidean distance $\Delta_d(p_1
  \caption{2-dimensional reconstruction. Larger dots indicate bigger values of penalty function $\lambda(t)$.}\label{completecombind2dxy}
 \end{figure}
 
-The penalty function $\lambda(t)$ of a 2-dimensional reconstruction is shared by $x$ and $y$ axes and presented in figure \ref{2dpenalty}. The complete penalty term is 
+The penalty function $\lambda(t)$ of a 2-dimensional reconstruction is shared by $x$ and $y$ axes and presented in Figure \ref{2dpenalty}. The complete penalty term is 
 \begin{equation*}
 n\theta_x^\top\Omega_{\eta_d,\eta_u}\theta_x + n\theta_y^\top\Omega_{\eta_d,\eta_u}\theta_y.
 \end{equation*}
@@ -1152,7 +1077,7 @@ Similarly, most of the large penalty values appear at long-time-gap knots and tu
 \end{figure}
 
 
-The following figure \ref{complete2DXY} is a complete reconstruction from the whole observed dataset $\left\lbrace x,u,y,v\right\rbrace$. The overall reconstruction gives a smoothing path that goes through each measurement and avoids curvatures at turning points. 
+The following Figure \ref{complete2DXY} is a complete reconstruction from the whole observed dataset $\left\lbrace x,u,y,v\right\rbrace$. The overall reconstruction gives a smoothing path that goes through each measurement and avoids curvatures at turning points. 
 %Instead of reconstructing on $x$ and $y$ axes separately, it chooses the penalty value with respect to the balance on both of the two directions. 
 \begin{figure}
 \centering
@@ -1175,14 +1100,3 @@ In parameter selection, the cross-validation only focuses on the errors of $f$ i
 Another potential application of V-spline is to vessel monitoring system. The system is a fisheries surveillance that allows environmental and fisheries regulatory organization to track and monitor the activities of fishing vessels. The system calculates the position of the moving object and sends a data report to shore-side users. This information includes time, latitude and longitude positions. However, due to weak signals, the tracking system may lose useful information. The V-spline can help to reconstruct the whole trajectory for a fishery vessel and to analyze its behavior. For example, a larger penalty value indicates stops on the sea inferring that the vessel is casting nets; a smaller penalty value indicates the vessel is moving normally. 
 
 After all, there is a wide range of applications for V-spline in real life. A future work is to implement V-spline on-line for instant estimation and to make it run faster. 
-
-%
-%\input{AppendixTractorSpline.tex}
-%
-%%\bibliographystyle{plain}
-%\bibliographystyle{apalike}
-%%\bibliography{meth}
-%\bibliography{/Users/zcao/Documents/Latex/Working/WorkingAll}
-%
-%
-%\end{document}

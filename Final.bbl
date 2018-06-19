@@ -109,7 +109,8 @@ Asanovic, K., Bodik, R., Catanzaro, B.~C., Gebis, J.~J., Husbands, P., Keutzer,
   {\em et~al.}}{2009}]{atchade2009adaptive}
 Atchade, Y., Fort, G., Moulines, E., and Priouret, P. (2009).
 \newblock Adaptive Markov chain Monte Carlo: theory and methods.
-\newblock {\em Preprint\/}.
+\newblock Technical report, Department of Statistics at the University of
+  Michigan.
 
 \bibitem[\protect\citeauthoryear{Ayd{\i}n, Memmedli, and Omay}{Ayd{\i}n {\em
   et~al.}}{2013}]{aydin2013smoothing}
@@ -140,10 +141,10 @@ Bajaj, R., Ranaweera, S.~L., and Agrawal, D.~P. (2002).
 \newblock {\em Computer\/},~{\em 35\/}(4), 92--94.
 
 \bibitem[\protect\citeauthoryear{Bar-Shalom and Li}{Bar-Shalom and
-  Li}{1993}]{bar1993estimation}
-Bar-Shalom, Y. and Li, X.-R. (1993).
+  Li}{1996}]{bar1993estimation}
+Bar-Shalom, Y. and Li, X.-R. (1996).
 \newblock Estimation and tracking- Principles, techniques, and software.
-\newblock {\em Norwood, MA: Artech House, Inc, 1993.\/}.
+\newblock {\em Norwood, MA: Artech House, Inc, 1993.\/},~{\em 38}, 62.
 
 \bibitem[\protect\citeauthoryear{Bartlett}{Bartlett}{1951}]{bartlett1951inverse}
 Bartlett, M.~S. (1951).
@@ -151,11 +152,12 @@ Bartlett, M.~S. (1951).
 \newblock {\em The Annals of Mathematical Statistics\/},~{\em 22\/}(1),
   107--111.
 
-\bibitem[\protect\citeauthoryear{B{\'e}dard}{B{\'e}dard}{2007}]{bedard2007weak}
-B{\'e}dard, M. (2007).
+\bibitem[\protect\citeauthoryear{B{\'e}dard}{B{\'e}dard}{
+  2007}]{bedard2007weak}
+B{\'e}dard, M. (Number 4 (2007)).
 \newblock Weak convergence of Metropolis algorithms for non-iid target
   distributions.
-\newblock {\em The Annals of Applied Probability\/}, 1222--1244.
+\newblock {\em The Annals of Applied Probability\/},~{\em 17}, 1222--1244.
 
 \bibitem[\protect\citeauthoryear{Ben-Arieh, Chang, Rys, and Zhang}{Ben-Arieh
   {\em et~al.}}{2004}]{ben2004geometric}
@@ -183,14 +185,14 @@ Berzuini, C., Best, N.~G., Gilks, W.~R., and Larizza, C. (1997).
 \bibitem[\protect\citeauthoryear{Beskos, Roberts, and Stuart}{Beskos {\em
   et~al.}}{2009}]{beskos2009optimal}
 Beskos, A., Roberts, G., and Stuart, A. (2009).
-\newblock Optimal scalings for local Metropolis-Hastings chains on nonproduct
+\newblock Optimal scalings for local Metropolis–Hastings chains on nonproduct
   targets in high dimensions.
-\newblock {\em The Annals of Applied Probability\/}, 863--898.
+\newblock {\em Ann. Appl. Probab.\/},~{\em 19\/}(3), 863--898.
 
 \bibitem[\protect\citeauthoryear{Betancourt}{Betancourt}{2017}]{betancourt2017conceptual}
 Betancourt, M. (2017).
 \newblock A Conceptual Introduction to Hamiltonian Monte Carlo.
-\newblock {\em arXiv preprint arXiv:1701.02434\/}.
+\newblock {\em ArXiv e-prints\/}.
 
 \bibitem[\protect\citeauthoryear{Beygelzimer, Hazan, Kale, and Luo}{Beygelzimer
   {\em et~al.}}{2015}]{beygelzimer2015online}
@@ -213,13 +215,6 @@ Bierkens, J. and Duncan, A. (2017).
 \newblock Limit theorems for the Zig-Zag process.
 \newblock {\em Advances in Applied Probability\/},~{\em 49\/}(3), 791--825.
 
-\bibitem[\protect\citeauthoryear{Bierkens, Fearnhead, and Roberts}{Bierkens
-  {\em et~al.}}{2016a}]{bierkens2016zig}
-Bierkens, J., Fearnhead, P., and Roberts, G. (2016a).
-\newblock The Zig-Zag Process and Super-Efficient Sampling for Bayesian
-  Analysis of Big Data.
-\newblock {\em arXiv preprint arXiv:1607.03188\/}.
-
 \bibitem[\protect\citeauthoryear{Bierkens, Roberts, {\em et~al.}}{Bierkens {\em
   et~al.}}{2016b}]{bierkens2016piecewise}
 Bierkens, J., Roberts, G., {\em et~al.} (2016b).
@@ -240,9 +235,10 @@ Blaauw, M., Christen, J.~A., {\em et~al.} (2011).
   process.
 \newblock {\em Bayesian analysis\/},~{\em 6\/}(3), 457--474.
 
-\bibitem[\protect\citeauthoryear{Bodewig}{Bodewig}{1956}]{bodewig1956matrix}
-Bodewig, E. (1956).
-\newblock Matrix calculus.
+\bibitem[\protect\citeauthoryear{Bodewig}{Bodewig}{1959}]{bodewig1956matrix}
+Bodewig, E. (1959).
+\newblock {\em Matrix Calculus 3rd Edition}.
+\newblock North-Holland.
 
 \bibitem[\protect\citeauthoryear{Box and Tiao}{Box and
   Tiao}{2011}]{box2011bayesian}
@@ -317,7 +313,7 @@ Carvalho, C.~M., Johannes, M.~S., Lopes, H.~F., Polson, N.~G., {\em et~al.}
   et~al.}}{2004}]{casella2004generalized}
 Casella, G., Robert, C.~P., and Wells, M.~T. (2004).
 \newblock Generalized accept-reject sampling schemes.
-\newblock {\em Lecture Notes-Monograph Series\/}, 342--347.
+\newblock {\em Lecture Notes-Monograph Series\/},~{\em 45}, 342--347.
 
 \bibitem[\protect\citeauthoryear{Castro, Iglesias, Rodr{\'\i}guez-Solano, and
   S{\'a}nchez}{Castro {\em et~al.}}{2006}]{castro2006geometric}
@@ -413,8 +409,8 @@ Christen, J.~A., Fox, C., {\em et~al.} (2010).
 
 \bibitem[\protect\citeauthoryear{Cox}{Cox}{1993}]{cox1993analysis}
 Cox, D.~D. (1993).
-\newblock An analysis of Bayesian inference for nonparametric regression.
-\newblock {\em The Annals of Statistics\/}, 903--923.
+\newblock An Analysis of Bayesian Inference for Nonparametric Regression.
+\newblock {\em Ann. Statist.\/},~{\em 21\/}(2), 903--923.
 
 \bibitem[\protect\citeauthoryear{Cox}{Cox}{1982}]{cox1982practical}
 Cox, M.~G. (1982).
@@ -437,14 +433,14 @@ De~Boor, C., De~Boor, C., Math{\'e}maticien, E.-U., De~Boor, C., and De~Boor,
 \bibitem[\protect\citeauthoryear{De~Jong}{De~Jong}{1988}]{de1988likelihood}
 De~Jong, P. (1988).
 \newblock The likelihood for a state space model.
-\newblock {\em Biometrika\/}, 165--169.
+\newblock {\em Biometrika\/},~{\em 75}, 165--169.
 
 \bibitem[\protect\citeauthoryear{Dempster, Laird, and Rubin}{Dempster {\em
   et~al.}}{1977}]{dempster1977maximum}
 Dempster, A.~P., Laird, N.~M., and Rubin, D.~B. (1977).
 \newblock Maximum likelihood from incomplete data via the EM algorithm.
 \newblock {\em Journal of the royal statistical society. Series B
-  (methodological)\/}, 1--38.
+  (methodological)\/},~{\em 39}, 1--38.
 
 \bibitem[\protect\citeauthoryear{Deng}{Deng}{2011}]{deng2011generalization}
 Deng, C.~Y. (2011).
@@ -486,7 +482,7 @@ Donoho, D.~L. and Johnstone, I.~M. (1995).
 Donoho, D.~L., Johnstone, I.~M., Kerkyacharian, G., and Picard, D. (1995).
 \newblock Wavelet shrinkage: asymptopia?
 \newblock {\em Journal of the Royal Statistical Society. Series B
-  (Methodological)\/}, 301--369.
+  (Methodological)\/},~{\em 57}, 301--369.
 
 \bibitem[\protect\citeauthoryear{Donoho and Johnstone}{Donoho and
   Johnstone}{1994}]{donoho1994ideal}
@@ -543,7 +539,7 @@ Durbin, J. and Koopman, S.~J. (2012).
   Marx}{1996}]{eilers1996flexible}
 Eilers, P.~H. and Marx, B.~D. (1996).
 \newblock Flexible smoothing with B-splines and penalties.
-\newblock {\em Statistical science\/}, 89--102.
+\newblock {\em Statistical science\/},~{\em 11}, 89--102.
 
 \bibitem[\protect\citeauthoryear{Einstein}{Einstein}{1956}]{einstein1956investigations}
 Einstein, A. (1956).
@@ -597,7 +593,7 @@ Freund, Y. and Schapire, R.~E. (1995).
 \bibitem[\protect\citeauthoryear{Friedman}{Friedman}{2001}]{friedman2001greedy}
 Friedman, J.~H. (2001).
 \newblock Greedy function approximation: a gradient boosting machine.
-\newblock {\em Annals of statistics\/}, 1189--1232.
+\newblock {\em Annals of statistics\/},~{\em 29}, 1189--1232.
 
 \bibitem[\protect\citeauthoryear{Gasparetto and Zanotto}{Gasparetto and
   Zanotto}{2007}]{gasparetto2007new}
@@ -622,7 +618,7 @@ Gelman, A. {\em et~al.} (2006).
 Gelman, A., Jakulin, A., Pittau, M.~G., and Su, Y.-S. (2008).
 \newblock A weakly informative default prior distribution for logistic and
   other regression models.
-\newblock {\em The Annals of Applied Statistics\/}, 1360--1383.
+\newblock {\em The Annals of Applied Statistics\/},~{\em 2}, 1360--1383.
 
 \bibitem[\protect\citeauthoryear{Gelman, Roberts, Gilks, {\em et~al.}}{Gelman
   {\em et~al.}}{1996}]{gelman1996efficient}
@@ -634,7 +630,7 @@ Gelman, A., Roberts, G.~O., Gilks, W.~R., {\em et~al.} (1996).
   Rubin}{1992}]{gelman1992inference}
 Gelman, A. and Rubin, D.~B. (1992).
 \newblock Inference from iterative simulation using multiple sequences.
-\newblock {\em Statistical science\/}, 457--472.
+\newblock {\em Statistical science\/},~{\em 7}, 457--472.
 
 \bibitem[\protect\citeauthoryear{Geman and Geman}{Geman and
   Geman}{1984}]{geman1984stochastic}
@@ -642,24 +638,32 @@ Geman, S. and Geman, D. (1984).
 \newblock Stochastic relaxation, Gibbs distributions, and the Bayesian
   restoration of images.
 \newblock {\em IEEE Transactions on pattern analysis and machine
-  intelligence\/},~(6), 721--741.
+  intelligence\/},~{\em 6\/}(6), 721--741.
 
 \bibitem[\protect\citeauthoryear{Geweke}{Geweke}{1989}]{geweke1989bayesian}
 Geweke, J. (1989).
 \newblock Bayesian inference in econometric models using Monte Carlo
   integration.
-\newblock {\em Econometrica: Journal of the Econometric Society\/}, 1317--1339.
+\newblock {\em Econometrica: Journal of the Econometric Society\/},~{\em 57},
+  1317--1339.
 
 \bibitem[\protect\citeauthoryear{Geyer}{Geyer}{1992}]{geyer1992practical}
 Geyer, C.~J. (1992).
 \newblock Practical markov chain monte carlo.
-\newblock {\em Statistical science\/}, 473--483.
+\newblock {\em Statistical science\/},~{\em 7}, 473--483.
 
 \bibitem[\protect\citeauthoryear{Gilks, Richardson, and Spiegelhalter}{Gilks
   {\em et~al.}}{1995}]{gilks1995markov}
 Gilks, W.~R., Richardson, S., and Spiegelhalter, D. (1995).
 \newblock {\em Markov chain Monte Carlo in practice}.
 \newblock CRC press.
+
+\bibitem[\protect\citeauthoryear{Girolami and Calderhead}{Girolami and
+  Calderhead}{2011}]{girolami2011riemann}
+Girolami, M. and Calderhead, B. (2011).
+\newblock Riemann manifold langevin and hamiltonian monte carlo methods.
+\newblock {\em Journal of the Royal Statistical Society: Series B (Statistical
+  Methodology)\/},~{\em 73\/}(2), 123--214.
 
 \bibitem[\protect\citeauthoryear{Gloderer and Hertle}{Gloderer and
   Hertle}{2010}]{gloderer2010spline}
@@ -672,6 +676,8 @@ Gloderer, M. and Hertle, A. (2010).
 Godsill, S., Doucet, A., and West, M. (2000).
 \newblock Methodology for Monte Carlo smoothing with application to
   time-varying autoregressions.
+\newblock In {\em International Symposium on Frontiers of Time Series
+  Modeling}.
 
 \bibitem[\protect\citeauthoryear{Godsill, Doucet, and West}{Godsill {\em
   et~al.}}{2001}]{godsill2001maximum}
@@ -724,7 +730,7 @@ Green, P.~J. and Silverman, B.~W. (1993).
 Gu, C. (1998).
 \newblock Model indexing and smoothing parameter selection in nonparametric
   function estimation.
-\newblock {\em Statistica Sinica\/}, 607--623.
+\newblock {\em Statistica Sinica\/},~{\em 8}, 607--623.
 
 \bibitem[\protect\citeauthoryear{Gu}{Gu}{2013}]{gu2013smoothing}
 Gu, C. (2013).
@@ -833,13 +839,13 @@ Haykin, S.~S. {\em et~al.} (2001).
   Woodroofe}{1991}]{heckman1991minimax}
 Heckman, N.~E. and Woodroofe, M. (1991).
 \newblock Minimax Bayes estimation in nonparametric regression.
-\newblock {\em The Annals of Statistics\/}, 2003--2014.
+\newblock {\em The Annals of Statistics\/},~{\em 19}, 2003--2014.
 
 \bibitem[\protect\citeauthoryear{Hermite}{Hermite}{1863}]{Hermite1863Remarque}
 Hermite, C. (1863).
-\newblock Remarque sur le développement de Comptes Rendus de l’Académie des
-  Sciences.
-\newblock ,~{\em 57}, 613--618.
+\newblock {\em Remarque sur le développement de Comptes Rendus de
+  l’Académie des Sciences.}, Volume~57.
+\newblock Elsevier of behalf of the French Academy of Sciences (France).
 
 \bibitem[\protect\citeauthoryear{Hightower and Borriello}{Hightower and
   Borriello}{2001}]{hightower2001location}
@@ -884,8 +890,9 @@ Jauch, J., Bleimund, F., Rhode, S., and Gauterin, F. (2017).
 
 \bibitem[\protect\citeauthoryear{Jaynes}{Jaynes}{1983}]{jaynes1983papers}
 Jaynes, E.~T. (1983).
-\newblock Papers On Probability.
-\newblock {\em Statistics and Statistical Physics\/}.
+\newblock {\em E. T. Jaynes: Papers on Probability, Statistics and Statistical
+  Physics}, Volume 158.
+\newblock Springer Netherlands.
 
 \bibitem[\protect\citeauthoryear{Jeffries}{Jeffries}{1961}]{jeffries1961theory}
 Jeffries, H. (1961).
@@ -992,15 +999,17 @@ Kimeldorf, G.~S. and Wahba, G. (1970).
 
 \bibitem[\protect\citeauthoryear{Kitagawa}{Kitagawa}{1998}]{kitagawa1998self}
 Kitagawa, G. (1998).
-\newblock A self-organizing state-space model.
-\newblock {\em Journal of the American Statistical Association\/}, 1203--1215.
+\newblock A Self-Organizing State-Space Model.
+\newblock {\em Journal of the American Statistical Association\/},~{\em
+  93\/}(443), 1203--1215.
 
 \bibitem[\protect\citeauthoryear{Kloek and Van~Dijk}{Kloek and
   Van~Dijk}{1978}]{kloek1978bayesian}
 Kloek, T. and Van~Dijk, H.~K. (1978).
 \newblock Bayesian estimates of equation system parameters: an application of
   integration by Monte Carlo.
-\newblock {\em Econometrica: Journal of the Econometric Society\/}, 1--19.
+\newblock {\em Econometrica: Journal of the Econometric Society\/},~{\em 46},
+  1--19.
 
 \bibitem[\protect\citeauthoryear{Kohn, Ansley, and Wong}{Kohn {\em
   et~al.}}{1992}]{kohn1992nonparametric}
@@ -1009,11 +1018,12 @@ Kohn, R., Ansley, C.~F., and Wong, C.-M. (1992).
   errors.
 \newblock {\em Biometrika\/},~{\em 79\/}(2), 335--346.
 
-\bibitem[\protect\citeauthoryear{Kokkala {\em et~al.}}{Kokkala {\em
-  et~al.}}{2016}]{kokkala2016particle}
-Kokkala, J. {\em et~al.} (2016).
-\newblock Particle and Sigma-Point Methods for State and Parameter Estimation
-  in Nonlinear Dynamic Systems.
+\bibitem[\protect\citeauthoryear{Kokkala}{Kokkala}{2016}]{kokkala2016particle}
+Kokkala, J. (2016).
+\newblock {\em Particle and Sigma-Point Methods for State and Parameter
+  Estimation in Nonlinear Dynamic Systems; Partikkeli- ja sigmapistemenetelmiä
+  epälineaaristen dynaamisten systeemien tila- ja parametriestimointiin}.
+\newblock G5 artikkeliväitöskirja, Aalto University.
 
 \bibitem[\protect\citeauthoryear{Komoriya and Tanie}{Komoriya and
   Tanie}{1989}]{komoriya1989trajectory}
@@ -1068,7 +1078,7 @@ Lawson, C.~T., Ravi, S., and Hwang, J.-H. (2011).
 Lindley, D.~V. and Smith, A.~F. (1972).
 \newblock Bayes estimates for the linear model.
 \newblock {\em Journal of the Royal Statistical Society. Series B
-  (Methodological)\/}, 1--41.
+  (Methodological)\/},~{\em 34}, 1--41.
 
 \bibitem[\protect\citeauthoryear{Liu and West}{Liu and
   West}{2001}]{liu2001combined}
@@ -1102,7 +1112,7 @@ Liu, Y., Suo, J., Karimi, H.~R., and Liu, X. (2014).
 \bibitem[\protect\citeauthoryear{Liu and Guo}{Liu and Guo}{2010}]{liu2010data}
 Liu, Z. and Guo, W. (2010).
 \newblock Data driven adaptive spline smoothing.
-\newblock {\em Statistica Sinica\/}, 1143--1163.
+\newblock {\em Statistica Sinica\/},~{\em 20}, 1143--1163.
 
 \bibitem[\protect\citeauthoryear{Lopes and Tsay}{Lopes and
   Tsay}{2011}]{lopes2011particle}
@@ -1183,7 +1193,8 @@ Nason, G. (2010).
   et~al.}}{2011}]{neal2011mcmc}
 Neal, R.~M. {\em et~al.} (2011).
 \newblock MCMC using Hamiltonian dynamics.
-\newblock {\em Handbook of Markov Chain Monte Carlo\/},~{\em 2\/}(11).
+\newblock {\em Handbook of Markov Chain Monte Carlo\/},~{\em 2\/}(11),
+  113--162.
 
 \bibitem[\protect\citeauthoryear{Nelder and Mead}{Nelder and
   Mead}{1965}]{nelder1965simplex}
@@ -1195,7 +1206,7 @@ Nelder, J.~A. and Mead, R. (1965).
   et~al.}}{2001}]{opsomer2001nonparametric}
 Opsomer, J., Wang, Y., and Yang, Y. (2001).
 \newblock Nonparametric regression with correlated errors.
-\newblock {\em Statistical Science\/}, 134--153.
+\newblock {\em Statistical Science\/},~{\em 16}, 134--153.
 
 \bibitem[\protect\citeauthoryear{Oussalah and De~Schutter}{Oussalah and
   De~Schutter}{2001}]{oussalah2001adaptive}
@@ -1211,18 +1222,11 @@ Pang, S.~K., Li, J., and Godsill, S.~J. (2008).
   groups.
 \newblock In {\em Aerospace Conference, 2008 IEEE},  1--17. IEEE.
 
-\bibitem[\protect\citeauthoryear{Peng}{Peng}{1983}]{Peng1983linear}
-Peng, G. (1983).
-\newblock Necessary and sufficient conditions on Linearly Independent
-  Functions.
-\newblock {\em Journal of Jishou University(Natural Sciences Edition)\/},~(0),
-  005.
-
 \bibitem[\protect\citeauthoryear{Petris, Petrone, and Campagnoli}{Petris {\em
   et~al.}}{2009}]{petris2009dynamic}
 Petris, G., Petrone, S., and Campagnoli, P. (2009).
-\newblock Dynamic linear models.
-\newblock {\em Dynamic Linear Models with R\/}, 31--84.
+\newblock {\em Dynamic Linear Models with R}.
+\newblock Springer.
 
 \bibitem[\protect\citeauthoryear{Pitt and Shephard}{Pitt and
   Shephard}{1999}]{pitt1999filtering}
@@ -1289,7 +1293,7 @@ Robert J~Elliott, Lakhdar~Aggoun, J. B.~M. (1995).
 Roberts, G.~O., Gelman, A., Gilks, W.~R., {\em et~al.} (1997).
 \newblock Weak convergence and optimal scaling of random walk Metropolis
   algorithms.
-\newblock {\em The annals of applied probability\/},~{\em 7\/}(1), 110--120.
+\newblock {\em Annals of Applied Probability\/},~{\em 7\/}(1), 110--120.
 
 \bibitem[\protect\citeauthoryear{Roberts and Rosenthal}{Roberts and
   Rosenthal}{2009}]{roberts2009examples}
@@ -1319,6 +1323,13 @@ Ruppert, D., Wand, M.~P., and Carroll, R.~J. (2003).
 S{\"a}rkk{\"a}, S. (2013).
 \newblock {\em Bayesian filtering and smoothing}, Volume~3.
 \newblock Cambridge University Press.
+
+\bibitem[\protect\citeauthoryear{Schöbel and Zhu}{Schöbel and
+  Zhu}{1999}]{Schobel1999Stochastic}
+Schöbel, R. and Zhu, J. (1999).
+\newblock Stochastic Volatility With an Ornstein–Uhlenbeck Process: An
+  Extension.
+\newblock {\em Review of Finance\/},~{\em 3\/}(1), 23--46.
 
 \bibitem[\protect\citeauthoryear{Schoenberg}{Schoenberg}{1964}]{schoenberg1964spline}
 Schoenberg, I.~J. (1964).
@@ -1365,15 +1376,15 @@ Sherlock, C. (2013).
 Sherlock, C., Fearnhead, P., and Roberts, G.~O. (2010).
 \newblock The random walk Metropolis: linking theory and practice through a
   case study.
-\newblock {\em Statistical Science\/}, 172--190.
+\newblock {\em Statistical Science\/},~{\em 25}, 172--190.
 
 \bibitem[\protect\citeauthoryear{Sherlock, Golightly, and Henderson}{Sherlock
-  {\em et~al.}}{2016}]{sherlock2016adaptive}
-Sherlock, C., Golightly, A., and Henderson, D.~A. (2016).
-\newblock Adaptive, delayed-acceptance MCMC for targets with expensive
-  likelihoods.
-\newblock {\em Journal of Computational and Graphical
-  Statistics\/},~(just-accepted).
+  {\em et~al.}}{2017}]{sherlock2016adaptive}
+Sherlock, C., Golightly, A., and Henderson, D.~A. (2017).
+\newblock Adaptive, Delayed-Acceptance MCMC for Targets With Expensive
+  Likelihoods.
+\newblock {\em Journal of Computational and Graphical Statistics\/},~{\em
+  26\/}(2), 434--444.
 
 \bibitem[\protect\citeauthoryear{Sherlock, Roberts, {\em et~al.}}{Sherlock {\em
   et~al.}}{2009}]{sherlock2009optimal}
@@ -1401,13 +1412,13 @@ Silverman, B.~W. (1985).
 \newblock Some aspects of the spline smoothing approach to non-parametric
   regression curve fitting.
 \newblock {\em Journal of the Royal Statistical Society. Series B
-  (Methodological)\/}, 1--52.
+  (Methodological)\/},~{\em 47}, 1--52.
 
 \bibitem[\protect\citeauthoryear{Smith}{Smith}{1973}]{smith1973general}
 Smith, A.~F. (1973).
 \newblock A general Bayesian linear model.
 \newblock {\em Journal of the Royal Statistical Society. Series B
-  (Methodological)\/}, 67--75.
+  (Methodological)\/},~{\em 35}, 67--75.
 
 \bibitem[\protect\citeauthoryear{Smith and Roberts}{Smith and
   Roberts}{1993}]{smith1993bayesian}
@@ -1415,7 +1426,7 @@ Smith, A.~F. and Roberts, G.~O. (1993).
 \newblock Bayesian computation via the Gibbs sampler and related Markov chain
   Monte Carlo methods.
 \newblock {\em Journal of the Royal Statistical Society. Series B
-  (Methodological)\/}, 3--23.
+  (Methodological)\/},~{\em 55}, 3--23.
 
 \bibitem[\protect\citeauthoryear{Sokal}{Sokal}{1997}]{sokal1997monte}
 Sokal, A. (1997).
@@ -1424,9 +1435,9 @@ Sokal, A. (1997).
 \newblock In {\em Functional integration},  131--192. Springer.
 
 \bibitem[\protect\citeauthoryear{Sorenson}{Sorenson}{1985}]{sorenson1985kalman}
-Sorenson, H.~W. (1985).
+Sorenson, H. W. (Harold~Wayne), .-I. C. S.~S. (1985).
 \newblock {\em Kalman filtering: theory and application}.
-\newblock IEEE.
+\newblock IEEE Press.
 
 \bibitem[\protect\citeauthoryear{Speckman and Sun}{Speckman and
   Sun}{2003}]{speckman2003fully}
@@ -1464,15 +1475,16 @@ Stroud, J.~R. and Bengtsson, T. (2007).
 \newblock {\em Monthly Weather Review\/},~{\em 135\/}(9), 3194--3208.
 
 \bibitem[\protect\citeauthoryear{Stroud, Katzfuss, and Wikle}{Stroud {\em
-  et~al.}}{2016}]{stroud2016bayesian}
-Stroud, J.~R., Katzfuss, M., and Wikle, C.~K. (2016).
+  et~al.}}{2018}]{stroud2018bayesian}
+Stroud, J.~R., Katzfuss, M., and Wikle, C.~K. (2018).
 \newblock A Bayesian adaptive ensemble Kalman filter for sequential state and
   parameter estimation.
-\newblock {\em arXiv preprint arXiv:1611.03835\/}.
+\newblock {\em Monthly Weather Review\/},~{\em 146\/}(1), 373--386.
 
 \bibitem[\protect\citeauthoryear{Syed}{Syed}{2011}]{syed2011review}
 Syed, A.~R. (2011).
 \newblock A review of cross validation and adaptive model selection.
+\newblock Master's thesis, Georgia State University, Arlanta, GA.
 
 \bibitem[\protect\citeauthoryear{Tandeo, Ailliot, and Autret}{Tandeo {\em
   et~al.}}{2011}]{tandeo2011linear}
@@ -1492,7 +1504,7 @@ Tanner, M.~A. and Wong, W.~H. (1987).
 \bibitem[\protect\citeauthoryear{Tierney}{Tierney}{1994}]{tierney1994markov}
 Tierney, L. (1994).
 \newblock Markov chains for exploring posterior distributions.
-\newblock {\em the Annals of Statistics\/}, 1701--1728.
+\newblock {\em the Annals of Statistics\/},~{\em 22}, 1701--1728.
 
 \bibitem[\protect\citeauthoryear{Tierney and Mira}{Tierney and
   Mira}{1999}]{tierney1999some}
@@ -1503,7 +1515,7 @@ Tierney, L. and Mira, A. (1999).
 \bibitem[\protect\citeauthoryear{Trevor~Hastie}{Trevor~Hastie}{2009}]{esl2009}
 Trevor~Hastie, Robert~Tibshirani, J.~F. (2009).
 \newblock {\em The Elements of Statistical Learning: Data Mining, Inference,
-  and Prediction. Second Edition}.
+  and Prediction.Second Edition\/} (Second Edition ed.).
 \newblock Springer-Verlag.
 
 \bibitem[\protect\citeauthoryear{Turitsyn, Chertkov, and Vucelja}{Turitsyn {\em
@@ -1524,10 +1536,6 @@ VanDerwerken, D.~N. and Schmidler, S.~C. (2013).
 \newblock Parallel markov chain monte carlo.
 \newblock {\em arXiv preprint arXiv:1312.7479\/}.
 
-\bibitem[\protect\citeauthoryear{Vaughan}{Vaughan}{2015}]{vaughan2015goodness}
-Vaughan, A. (2015).
-\newblock Goodness of Fit Test: Ornstein-Uhlenbeck Process.
-
 \bibitem[\protect\citeauthoryear{Vieira and Wilkinson}{Vieira and
   Wilkinson}{2016}]{vieira2016online}
 Vieira, R. and Wilkinson, D.~J. (2016).
@@ -1540,13 +1548,13 @@ Wahba, G. (1978).
 \newblock Improper priors, spline smoothing and the problem of guarding against
   model errors in regression.
 \newblock {\em Journal of the Royal Statistical Society. Series B
-  (Methodological)\/}, 364--372.
+  (Methodological)\/},~{\em 40}, 364--372.
 
 \bibitem[\protect\citeauthoryear{Wahba}{Wahba}{1985}]{wahba1985comparison}
 Wahba, G. (1985).
 \newblock A comparison of GCV and GML for choosing the smoothing parameter in
   the generalized spline smoothing problem.
-\newblock {\em The Annals of Statistics\/}, 1378--1402.
+\newblock {\em The Annals of Statistics\/},~{\em 13}, 1378--1402.
 
 \bibitem[\protect\citeauthoryear{Wahba}{Wahba}{1990}]{wahba1990spline}
 Wahba, G. (1990).
@@ -1610,7 +1618,7 @@ Wecker, W.~E. and Ansley, C.~F. (1983).
 \bibitem[\protect\citeauthoryear{West}{West}{1993}]{west1993mixture}
 West, M. (1993).
 \newblock Mixture models, Monte Carlo, Bayesian updating, and dynamic models.
-\newblock {\em Computing Science and Statistics\/}, 325--325.
+\newblock {\em Computing Science and Statistics\/},~{\em 24}, 325--325.
 
 \bibitem[\protect\citeauthoryear{Whittaker}{Whittaker}{1922}]{whittaker1922new}
 Whittaker, E.~T. (1922).
@@ -1621,6 +1629,8 @@ Whittaker, E.~T. (1922).
 \bibitem[\protect\citeauthoryear{Wolberg}{Wolberg}{1988}]{wolberg1988cubic}
 Wolberg, G. (1988).
 \newblock Cubic spline interpolation: A review.
+\newblock Technical report, Department of Computer Science, Columbia
+  University.
 
 \bibitem[\protect\citeauthoryear{Woodbury}{Woodbury}{1950}]{woodbury1950inverting}
 Woodbury, M.~A. (1950).

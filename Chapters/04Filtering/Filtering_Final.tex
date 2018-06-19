@@ -124,8 +124,8 @@ p(x_{0:t}\mid y_{1:t}) &= \frac{p(y_t \mid x_{0:t},y_{1:t-1})p(x_{0:t}\mid y_{1:
 the recursive form of the weights are
 \begin{align*}
 W_t^{(i)} &\propto \frac{p\left(x_{0:t}^{(i)}\mid y_{1:t}\right)}{q\left(x_{0:t}^{(i)}\mid y_{1:t}\right)}\\
-&= \frac{ p\left(y_{1:t}\mid x_{0:t}^{(i)}\right) p\left(x_{t}^{(i)}\mid x_{t-1}^{(i)}\right)  p\left(x_{0:t-1}^{(i)}\mid y_{1:t-1}\right)}   { q\left(x_{t}^{(i)}\mid x_{0:t-1}^{(i)},y_{t}\right)  q\left(x_{0:t-1}^{(i)}\mid y_{1:t-1}\right) } \\
-&= W_{t-1}^{(i)} \frac{ p\left(y_{1:t}\mid x_{0:t}^{(i)}\right) p\left(x_{t}^{(i)}\mid x_{t-1}^{(i)}\right) }   {q\left(x_{t}^{(i)}\mid x_{0:t-1}^{(i)},y_{t}\right)}.
+&= \frac{ p\left(y_{t}\mid x_{t}^{(i)}\right) p\left(x_{t}^{(i)}\mid x_{t-1}^{(i)}\right)  p\left(x_{0:t-1}^{(i)}\mid y_{1:t-1}\right)}   { q\left(x_{t}^{(i)}\mid x_{0:t-1}^{(i)},y_{t}\right)  q\left(x_{0:t-1}^{(i)}\mid y_{1:t-1}\right) } \\
+&= W_{t-1}^{(i)} \frac{ p\left(y_{t}\mid x_{t}^{(i)}\right) p\left(x_{t}^{(i)}\mid x_{t-1}^{(i)}\right) }   {q\left(x_{t}^{(i)}\mid x_{0:t-1}^{(i)},y_{t}\right)}.
 \end{align*}
 
 \subsection{Sequential Importance Sampling and Resampling}
@@ -517,7 +517,7 @@ Update $s_{k+1}^x = K\left(s_{k}^x,\theta,y_{k+1}\right)$.
 
 \subsection{Adaptive Ensemble Kalman Filter}
 
-Storvik filter and Particle learning algorithms are efficient in some ways,  however, the drawbacks are obvious. One of them is that the sufficient statistics are not always available, or hard to find, for complex models. They are trying to reduce the problem of particle impoverishment, although in practice they did not solve the problem completely \citep{chopin2010particle}. A Bayesian adaptive ensemble Kalman filter method was proposed for sequential state and parameter estimation by \cite{stroud2016bayesian}. This method is fully Bayesian and propagates the joint posterior density of states and parameters through over the process. 
+Storvik filter and Particle learning algorithms are efficient in some ways,  however, the drawbacks are obvious. One of them is that the sufficient statistics are not always available, or hard to find, for complex models. They are trying to reduce the problem of particle impoverishment, although in practice they did not solve the problem completely \citep{chopin2010particle}. A Bayesian adaptive ensemble Kalman filter method was proposed for sequential state and parameter estimation by \cite{stroud2018bayesian}. This method is fully Bayesian and propagates the joint posterior density of states and parameters through over the process. 
 
 
 The ensemble Kalman filter, which is an extension to the standard Kalman filter, is an approximate filtering method introduced in the geophysics literature by \cite{evensen1994sequential}. Instead of working with the entire distribution, the ensemble Kalman filter stores propagates and updates an ensemble of vectors that approximates the state distribution \citep{katzfuss2016understanding}. 
@@ -548,7 +548,7 @@ where $F_{t+1}$ is the observation map. The posterior ensemble at time $t+1$ bas
 \begin{equation}\label{ensembleKalmanForecast}
 x_{t+1}^{(i)} = x_{t+1}^{f(i)}+\hat{K}_{t+1}(\theta)\left(y_{t+1}+v_{t+1}^{(i)}+F_{t+1}(\theta)x_{t+1}^{f(i)}\right), 
 \end{equation}
-where $\left\lbrace x_{t}^{(i)}\right\rbrace_1^N$ is an ensemble of states representing the filtering distribution at time $t$. $x_{t+1}^{f(i)}$ is the forecast ensemble from the forward map by $x_{t+1}^{f(i)} = x_{t+1}^{p(i)} +w_{t+1}^{(i)}= G\left(x_{t}^{(i)}\right)+w_{t+1}^{(i)}$. For the second term of  \eqref{jointposteriorterm2},  \cite{stroud2016bayesian} propose a feasible likelihood approximation by a multivariate Gaussian distribution \citep{mitchell2000adaptive} for high-dimensional states: 
+where $\left\lbrace x_{t}^{(i)}\right\rbrace_1^N$ is an ensemble of states representing the filtering distribution at time $t$. $x_{t+1}^{f(i)}$ is the forecast ensemble from the forward map by $x_{t+1}^{f(i)} = x_{t+1}^{p(i)} +w_{t+1}^{(i)}= G\left(x_{t}^{(i)}\right)+w_{t+1}^{(i)}$. For the second term of  \eqref{jointposteriorterm2},  \cite{stroud2018bayesian} propose a feasible likelihood approximation by a multivariate Gaussian distribution \citep{mitchell2000adaptive} for high-dimensional states: 
 \begin{equation}\label{esembleKalmanLikeli}
 p(y_{t+1}\mid\theta,y_{1:t})\propto \left| \hat{\Sigma}_t(\theta)  \right|^{-\frac{1}{2}} \exp \left( -\frac{1}{2} \hat{e}_{t+1}(\theta)^\top \hat{\Sigma}_t(\theta)^{-1} \hat{e}_{t+1}(\theta) \right),
 \end{equation}
@@ -561,15 +561,6 @@ p(\theta\mid y_{1:t}) \propto \exp \left(  -\frac{1}{2}(\theta-m_t)^\top C_t^{-1
 A grid-based representation is writing the posterior in the way that $p(\theta\mid y_{1:t}) \propto p(y_t\mid\theta,y_{1:t-1})p(\theta\mid y_{1:t-1})$.  The recursion weights can be updated by $\pi_{t,k}\propto p(y_{t}\mid\theta,y_{1:t-1})\pi_{t,k-1}$. 
 
 To summarize it up, the complete algorithm is in the following 
-%\begin{itemize}
-%\item{Step 1.} Initialize samples $\theta^{(i)}\sim p(\theta)$ and $x_1^{(i)}\sim N(x_0,P_0)$.
-%\item{Step 2.} Propagate. $x_t^{p(i)} = G(x_{t-1}^{(i)})$.
-%\item{Step 3.} Approximate likelihood function by \eqref{esembleKalmanLikeli}. 
-%\item{Step 4.} Update. Draw $\theta$ either use normal approximation or grid-based approximation to find \eqref{jointposteriorterm2}. 
-%\item{Step 5.} Draw $\theta^{(i)}\sim p(\theta\mid y_{1:t})$.
-%\item{Step 6.} Generate forecast ensemble by $x_t^{f(i)} = x_t^{p(i)}+w_t$.
-%\item{Step 7.} Draw posterior ensemble using \eqref{ensembleKalmanForecast}
-%\end{itemize}
 \begin{algorithm}[h]
 \SetAlgoLined 
 %\KwResutt{Write here the resutt }
@@ -578,8 +569,8 @@ Initialize samples $\theta^{(i)}\sim p(\theta)$ and $x_1^{(i)}\sim N(x_0,P_0)$, 
 \For{$i=1,\ldots,N$}{
 Propagate. $x_k^{p(i)} = G\left(x_{k-1}^{(i)}\right)$.\\
 Approximate likelihood function by \eqref{esembleKalmanLikeli}.\\
-Update. Draw $\theta$ either use normal approximation or grid-based approximation to find \eqref{jointposteriorterm2}. \\
-Draw $\theta^{(i)}\sim p(\theta\mid y_{1:k})$.\\
+Update the analytical parameter distribution using either use normal approximation or grid-based approximation to find \eqref{jointposteriorterm2}. \\
+Draw $\theta^{(i)}\sim \hat{p}(\theta\mid y_{1:k})$.\\
 Generate forecast ensemble by $x_k^{f(i)} = x_k^{p(i)}+w_k$.\\
 Draw posterior ensemble using equation \eqref{ensembleKalmanForecast}.
 }
@@ -752,9 +743,9 @@ $\frac{1}{n}\sum_i(\hat{x}_i-x_i)^2$ & 0.5745 & 0.5739 & 0.5737 & 0.5875&  0.574
 %\end{table}
 
 
-From figure \ref{FilterRiewComparesion01}, it can be seen that the former three algorithms converge to the true parameter $\phi$ at similar speeds along with the time $t$. LW filter has a larger distance to the true parameter comparing with St and PL filters. The proposed MCMC with 100 length data in estimation phase has the largest variance. By setting a longer length $L$, the proposed adaptive MCMC becomes stable. 
+From Figure \ref{FilterRiewComparesion01}, it can be seen that the former three algorithms converge to the true parameter $\phi$ at similar speeds along with the time $t$. LW filter has a larger distance to the true parameter comparing with St and PL filters. The proposed MCMC with 100 length data in estimation phase has the largest variance. By setting a longer length $L$, the proposed adaptive MCMC becomes stable. 
 
-The estimations for $x_t$ from $t=300$ to $897$ are very close and the differences are hard to tell visually. From table \ref{FilterRiewComparesionTable}, we can see that, by repeatedly running 50 simulations, the proposed MCMC algorithm is more stable in estimating parameter $\phi$ as it has the lowest standard error (SE) among all the algorithms. The MSE of all the algorithms on estimating $x$ is on the similar level.  
+The estimations for $x_t$ from $t=300$ to $897$ are very close and the differences are hard to tell visually. From Table \ref{FilterRiewComparesionTable}, we can see that, by repeatedly running 50 simulations, the proposed MCMC algorithm is more stable in estimating parameter $\phi$ as it has the lowest standard error (SE) among all the algorithms. The MSE of all the algorithms on estimating $x$ is on the similar level.  
 
 
 \section{Conclusion}

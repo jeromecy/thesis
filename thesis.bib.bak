@@ -173,12 +173,13 @@
   year = {2006}
 }
 
-@ARTICLE{atchade2009adaptive,
+@TECHREPORT{atchade2009adaptive,
   author = {Atchade, Yves and Fort, Gersende and Moulines, Eric and Priouret,
 	Pierre},
   title = {Adaptive Markov chain Monte Carlo: theory and methods},
-  journal = {Preprint},
-  year = {2009}
+  institution = {Department of Statistics at the University of Michigan},
+  year = {2009},
+  journal = {Preprint}
 }
 
 @ARTICLE{Atkinson2004,
@@ -220,7 +221,8 @@
   author = {B{\'e}dard, Mylene},
   title = {Weak convergence of Metropolis algorithms for non-iid target distributions},
   journal = {The Annals of Applied Probability},
-  year = {2007},
+  year = {Number 4 (2007)},
+  volume = {17},
   pages = {1222--1244},
   owner = {zcao},
   publisher = {JSTOR},
@@ -253,7 +255,9 @@
   author = {Bar-Shalom, Yaakov and Li, Xiao-Rong},
   title = {Estimation and tracking- Principles, techniques, and software},
   journal = {Norwood, MA: Artech House, Inc, 1993.},
-  year = {1993}
+  year = {1996},
+  volume = {38},
+  pages = {62}
 }
 
 @ARTICLE{bartlett1951inverse,
@@ -305,21 +309,32 @@
 
 @ARTICLE{beskos2009optimal,
   author = {Beskos, Alexandros and Roberts, Gareth and Stuart, Andrew},
-  title = {Optimal scalings for local Metropolis-Hastings chains on nonproduct
+  title = {Optimal scalings for local Metropolis–Hastings chains on nonproduct
 	targets in high dimensions},
-  journal = {The Annals of Applied Probability},
+  journal = {Ann. Appl. Probab.},
   year = {2009},
+  volume = {19},
   pages = {863--898},
-  owner = {zcao},
-  publisher = {JSTOR},
-  timestamp = {2017.10.27}
+  number = {3},
+  month = {06},
+  doi = {10.1214/08-AAP563},
+  fjournal = {The Annals of Applied Probability},
+  publisher = {The Institute of Mathematical Statistics},
+  url = {https://doi.org/10.1214/08-AAP563}
 }
 
 @ARTICLE{betancourt2017conceptual,
-  author = {Betancourt, Michael},
+  author = {Betancourt, M.},
   title = {A Conceptual Introduction to Hamiltonian Monte Carlo},
-  journal = {arXiv preprint arXiv:1701.02434},
-  year = {2017}
+  journal = {ArXiv e-prints},
+  year = {2017},
+  month = jan,
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System},
+  adsurl = {http://adsabs.harvard.edu/abs/2017arXiv170102434B},
+  archiveprefix = {arXiv},
+  eprint = {1701.02434},
+  keywords = {Statistics - Methodology},
+  primaryclass = {stat.ME}
 }
 
 @INPROCEEDINGS{beygelzimer2015online,
@@ -394,11 +409,11 @@
   publisher = {International Society for Bayesian Analysis}
 }
 
-@ARTICLE{bodewig1956matrix,
-  author = {Bodewig, Ewald},
-  title = {Matrix calculus},
-  year = {1956},
-  publisher = {North-Holland}
+@BOOK{bodewig1956matrix,
+  title = {Matrix Calculus 3rd Edition},
+  publisher = {North-Holland},
+  year = {1959},
+  author = {Bodewig, Ewald}
 }
 
 @BOOK{box2011bayesian,
@@ -522,6 +537,7 @@
   title = {Generalized accept-reject sampling schemes},
   journal = {Lecture Notes-Monograph Series},
   year = {2004},
+  volume = {45},
   pages = {342--347},
   owner = {zcao},
   publisher = {JSTOR},
@@ -674,12 +690,18 @@
 }
 
 @ARTICLE{cox1993analysis,
-  author = {Cox, Dennis D},
-  title = {An analysis of Bayesian inference for nonparametric regression},
-  journal = {The Annals of Statistics},
+  author = {Cox, Dennis D.},
+  title = {An Analysis of Bayesian Inference for Nonparametric Regression},
+  journal = {Ann. Statist.},
   year = {1993},
+  volume = {21},
   pages = {903--923},
-  publisher = {JSTOR}
+  number = {2},
+  month = {06},
+  doi = {10.1214/aos/1176349157},
+  fjournal = {The Annals of Statistics},
+  publisher = {The Institute of Mathematical Statistics},
+  url = {https://doi.org/10.1214/aos/1176349157}
 }
 
 @INCOLLECTION{cox1982practical,
@@ -716,6 +738,7 @@
   title = {The likelihood for a state space model},
   journal = {Biometrika},
   year = {1988},
+  volume = {75},
   pages = {165--169},
   owner = {zcao},
   publisher = {JSTOR},
@@ -740,6 +763,7 @@
   title = {Maximum likelihood from incomplete data via the EM algorithm},
   journal = {Journal of the royal statistical society. Series B (methodological)},
   year = {1977},
+  volume = {39},
   pages = {1--38},
   publisher = {JSTOR}
 }
@@ -812,6 +836,7 @@
   title = {Wavelet shrinkage: asymptopia?},
   journal = {Journal of the Royal Statistical Society. Series B (Methodological)},
   year = {1995},
+  volume = {57},
   pages = {301--369},
   publisher = {JSTOR}
 }
@@ -911,6 +936,7 @@
   title = {Flexible smoothing with B-splines and penalties},
   journal = {Statistical science},
   year = {1996},
+  volume = {11},
   pages = {89--102},
   publisher = {JSTOR}
 }
@@ -1002,6 +1028,7 @@
   title = {Greedy function approximation: a gradient boosting machine},
   journal = {Annals of statistics},
   year = {2001},
+  volume = {29},
   pages = {1189--1232},
   publisher = {JSTOR}
 }
@@ -1055,6 +1082,7 @@
 	other regression models},
   journal = {The Annals of Applied Statistics},
   year = {2008},
+  volume = {2},
   pages = {1360--1383},
   owner = {zcao},
   publisher = {JSTOR},
@@ -1092,6 +1120,7 @@
   title = {Inference from iterative simulation using multiple sequences},
   journal = {Statistical science},
   year = {1992},
+  volume = {7},
   pages = {457--472},
   publisher = {JSTOR}
 }
@@ -1102,6 +1131,7 @@
 	of images},
   journal = {IEEE Transactions on pattern analysis and machine intelligence},
   year = {1984},
+  volume = {6},
   pages = {721--741},
   number = {6},
   owner = {zcao},
@@ -1114,6 +1144,7 @@
   title = {Bayesian inference in econometric models using Monte Carlo integration},
   journal = {Econometrica: Journal of the Econometric Society},
   year = {1989},
+  volume = {57},
   pages = {1317--1339},
   owner = {zcao},
   publisher = {JSTOR},
@@ -1125,6 +1156,7 @@
   title = {Practical markov chain monte carlo},
   journal = {Statistical science},
   year = {1992},
+  volume = {7},
   pages = {473--483},
   owner = {zcao},
   publisher = {JSTOR},
@@ -1140,7 +1172,18 @@
   timestamp = {2017.10.23}
 }
 
-@ARTICLE{gloderer2010spline,
+@ARTICLE{girolami2011riemann,
+  author = {Girolami, Mark and Calderhead, Ben},
+  title = {Riemann manifold langevin and hamiltonian monte carlo methods},
+  journal = {Journal of the Royal Statistical Society: Series B (Statistical Methodology)},
+  year = {2011},
+  volume = {73},
+  pages = {123--214},
+  number = {2},
+  publisher = {Wiley Online Library}
+}
+
+@INPROCEEDINGS{gloderer2010spline,
   author = {Gloderer, Martin and Hertle, Andreas},
   title = {Spline-based Trajectory Optimization for Autonomous Vehicles with
 	Ackerman drive},
@@ -1159,10 +1202,11 @@
   publisher = {Springer}
 }
 
-@ARTICLE{godsill2000methodology,
+@CONFERENCE{godsill2000methodology,
   author = {Godsill, SJ and Doucet, A and West, M},
   title = {Methodology for Monte Carlo smoothing with application to time-varying
 	autoregressions},
+  booktitle = {International Symposium on Frontiers of Time Series Modeling},
   year = {2000}
 }
 
@@ -1198,9 +1242,8 @@
   title = {Beyond the kalman filter: Particle filters for tracking applications},
   journal = {Artech House, London},
   year = {2004},
-  volume = {830},
-  owner = {zcao},
-  timestamp = {2017.10.23}
+  volume = {3},
+  pages = {1077--2626}
 }
 
 @INPROCEEDINGS{gordon1993novel,
@@ -1259,6 +1302,7 @@
 	function estimation},
   journal = {Statistica Sinica},
   year = {1998},
+  volume = {8},
   pages = {607--623},
   publisher = {JSTOR}
 }
@@ -1431,15 +1475,17 @@
   title = {Minimax Bayes estimation in nonparametric regression},
   journal = {The Annals of Statistics},
   year = {1991},
+  volume = {19},
   pages = {2003--2014},
   publisher = {JSTOR}
 }
 
-@ARTICLE{Hermite1863Remarque,
-  author = {Charles Hermite},
+@BOOK{Hermite1863Remarque,
   title = {Remarque sur le développement de Comptes Rendus de l’Académie des
 	Sciences.},
+  publisher = {Elsevier of behalf of the French Academy of Sciences (France)},
   year = {1863},
+  author = {Charles Hermite},
   volume = {57},
   pages = {613-618},
   owner = {zcao},
@@ -1466,6 +1512,20 @@
   pages = {429--444},
   owner = {zcao},
   timestamp = {2017.10.27}
+}
+
+@ARTICLE{hintzen2010improved,
+  author = {Hintzen, Niels T and Piet, Gerjan J and Brunel, Thomas},
+  title = {Improved estimation of trawling tracks using cubic Hermite spline
+	interpolation of position registration data},
+  journal = {Fisheries Research},
+  year = {2010},
+  volume = {101},
+  pages = {108--115},
+  number = {1},
+  owner = {zcao},
+  publisher = {Elsevier},
+  timestamp = {2018.03.03}
 }
 
 @INPROCEEDINGS{jhuaadaptive2013,
@@ -1514,11 +1574,15 @@
   publisher = {Elsevier}
 }
 
-@ARTICLE{jaynes1983papers,
-  author = {Jaynes, Edwin T},
-  title = {Papers On Probability},
-  journal = {Statistics and Statistical Physics},
+@BOOK{jaynes1983papers,
+  title = {E. T. Jaynes: Papers on Probability, Statistics and Statistical Physics},
+  publisher = {Springer Netherlands},
   year = {1983},
+  editor = {R.D. Rosenkrantz},
+  author = {Jaynes, Edwin T},
+  volume = {158},
+  doi = {10.1007/978-94-009-6581-2},
+  journal = {Statistics and Statistical Physics},
   owner = {zcao},
   timestamp = {2017.10.23}
 }
@@ -1693,14 +1757,33 @@
 }
 
 @ARTICLE{kitagawa1998self,
-  author = {Kitagawa, Genshiro},
-  title = {A self-organizing state-space model},
+  author = {Genshiro Kitagawa},
+  title = {A Self-Organizing State-Space Model},
   journal = {Journal of the American Statistical Association},
   year = {1998},
+  volume = {93},
   pages = {1203--1215},
-  owner = {zcao},
-  publisher = {JSTOR},
-  timestamp = {2017.10.23}
+  number = {443},
+  abstract = {A self-organizing filter and smoother for the general nonlinear non-Gaussian
+	state-space model is proposed. An expanded state-space model is defined
+	by augmenting the state vector with the unknown parameters of the
+	original state-space model. The state of the augmented state-space
+	model, and hence the state and the parameters of the original state-space
+	model, are estimated simultaneously by either a non-Gaussian filter/smoother
+	or a Monte Carlo filter/smoother. In contrast to maximum likelihood
+	estimation of model parameters in ordinary state-space modeling,
+	for which the recursive filter computation has to be done many times,
+	model parameter estimation in the proposed self-organizing filter/smoother
+	is achieved with only two passes of the recursive filter and smoother
+	operations. Examples such as automatic tuning of dispersion and the
+	shape parameters, adaptation to changes of the amplitude of a signal
+	in seismic data, state estimation for a nonlinear state space model
+	with unknown parameters, and seasonal adjustment with a nonlinear
+	model with changing variance parameters are shown to exemplify the
+	usefulness of the proposed method.},
+  issn = {01621459},
+  publisher = {[American Statistical Association, Taylor \& Francis, Ltd.]},
+  url = {http://www.jstor.org/stable/2669862}
 }
 
 @ARTICLE{kitagawa1996monte,
@@ -1723,6 +1806,7 @@
 	of integration by Monte Carlo},
   journal = {Econometrica: Journal of the Econometric Society},
   year = {1978},
+  volume = {46},
   pages = {1--19},
   publisher = {JSTOR}
 }
@@ -1739,12 +1823,24 @@
   publisher = {Oxford University Press}
 }
 
-@ARTICLE{kokkala2016particle,
-  author = {Kokkala, Juho and others},
+@PHDTHESIS{kokkala2016particle,
+  author = {Kokkala, Juho},
   title = {Particle and Sigma-Point Methods for State and Parameter Estimation
-	in Nonlinear Dynamic Systems},
+	in Nonlinear Dynamic Systems; Partikkeli- ja sigmapistemenetelmiä
+	epälineaaristen dynaamisten systeemien tila- ja parametriestimointiin},
+  school = {Aalto University},
   year = {2016},
-  publisher = {Aalto University}
+  type = {G5 Artikkeliväitöskirja},
+  isbn = {978-952-60-6664-6 (electronic); 978-952-60-6663-9 (printed)},
+  issn = {1799-4942 (electronic); 1799-4934 (printed); 1799-4934 (ISSN-L)},
+  keyword = {Bayesian filtering and smoothing; state-space models; dynamic systems;
+	particle filters; sigma-point filters; bayesilainen suodatus ja silotus;
+	tila-avaruusmallit; dynaamiset systeemit; partikkelisuotimet; sigmapistesuotimet},
+  language = {en},
+  pages = {72 + app. 54},
+  publisher = {Aalto University; Aalto-yliopisto},
+  series = {Aalto University publication series DOCTORAL DISSERTATIONS; 30/2016},
+  url = {http://urn.fi/URN:ISBN:978-952-60-6664-6}
 }
 
 @INPROCEEDINGS{komoriya1989trajectory,
@@ -1849,6 +1945,7 @@
   title = {Bayes estimates for the linear model},
   journal = {Journal of the Royal Statistical Society. Series B (Methodological)},
   year = {1972},
+  volume = {34},
   pages = {1--41},
   owner = {zcao},
   publisher = {JSTOR},
@@ -1901,6 +1998,7 @@
   title = {Data driven adaptive spline smoothing},
   journal = {Statistica Sinica},
   year = {2010},
+  volume = {20},
   pages = {1143--1163},
   publisher = {JSTOR}
 }
@@ -2058,6 +2156,7 @@
   journal = {Handbook of Markov Chain Monte Carlo},
   year = {2011},
   volume = {2},
+  pages = {113-162},
   number = {11},
   publisher = {CRC Press New York, NY}
 }
@@ -2078,6 +2177,7 @@
   title = {Nonparametric regression with correlated errors},
   journal = {Statistical Science},
   year = {2001},
+  volume = {16},
   pages = {134--153},
   publisher = {JSTOR}
 }
@@ -2103,32 +2203,25 @@
   timestamp = {2017.10.27}
 }
 
-@ARTICLE{peng1983,
+@ARTICLE{peng1983linear,
   author = {Fenguo Peng},
-  title = {A Necessary and Sufficient Condition to Judg Function Linearly Independent},
+  title = {A Necessary and Sufficient Condition to Judge Function Linearly Independent},
   journal = {JOURNAL OF JISHOU UNIVERSITY(NATURAL SCIENCE EDITION)},
   year = {1983},
+  volume = {1},
   pages = {25-28},
   number = {0}
 }
 
-@ARTICLE{Peng1983linear,
-  author = {Guofen Peng},
-  title = {Necessary and sufficient conditions on Linearly Independent Functions},
-  journal = {Journal of Jishou University(Natural Sciences Edition)},
-  year = {1983},
-  pages = {005},
-  number = {0}
-}
-
-@ARTICLE{petris2009dynamic,
-  author = {Petris, Giovanni and Petrone, Sonia and Campagnoli, Patrizia},
-  title = {Dynamic linear models},
-  journal = {Dynamic Linear Models with R},
-  year = {2009},
-  pages = {31--84},
-  owner = {zcao},
+@BOOK{petris2009dynamic,
+  title = {Dynamic Linear Models with R},
   publisher = {Springer},
+  year = {2009},
+  editor = {Petris, Giovanni and Petrone, Sonia and Campagnoli, Patrizia},
+  author = {Petris, Giovanni and Petrone, Sonia and Campagnoli, Patrizia},
+  pages = {31--84},
+  journal = {Dynamic Linear Models with R},
+  owner = {zcao},
   timestamp = {2017.10.27}
 }
 
@@ -2234,7 +2327,7 @@
 @ARTICLE{roberts1997weak,
   author = {Roberts, Gareth O and Gelman, Andrew and Gilks, Walter R and others},
   title = {Weak convergence and optimal scaling of random walk Metropolis algorithms},
-  journal = {The annals of applied probability},
+  journal = {Annals of Applied Probability},
   year = {1997},
   volume = {7},
   pages = {110--120},
@@ -2290,6 +2383,16 @@
   year = {2013},
   author = {S{\"a}rkk{\"a}, Simo},
   volume = {3}
+}
+
+@ARTICLE{Schobel1999Stochastic,
+  author = {Schöbel, Rainer and Zhu, Jianwei},
+  title = {Stochastic Volatility With an Ornstein–Uhlenbeck Process: An Extension},
+  journal = {Review of Finance},
+  year = {1999},
+  volume = {3},
+  pages = {23-46},
+  number = {1}
 }
 
 @ARTICLE{schoenberg1964spline,
@@ -2369,6 +2472,7 @@
 	case study},
   journal = {Statistical Science},
   year = {2010},
+  volume = {25},
   pages = {172--190},
   owner = {zcao},
   publisher = {JSTOR},
@@ -2376,14 +2480,18 @@
 }
 
 @ARTICLE{sherlock2016adaptive,
-  author = {Sherlock, Chris and Golightly, Andrew and Henderson, Daniel A},
-  title = {Adaptive, delayed-acceptance MCMC for targets with expensive likelihoods},
+  author = {Chris Sherlock and Andrew Golightly and Daniel A. Henderson},
+  title = {Adaptive, Delayed-Acceptance MCMC for Targets With Expensive Likelihoods},
   journal = {Journal of Computational and Graphical Statistics},
-  year = {2016},
-  number = {just-accepted},
-  owner = {zcao},
+  year = {2017},
+  volume = {26},
+  pages = {434-444},
+  number = {2},
+  doi = {10.1080/10618600.2016.1231064},
+  eprint = { https://doi.org/10.1080/10618600.2016.1231064 },
   publisher = {Taylor \& Francis},
-  timestamp = {2017.10.27}
+  url = { https://doi.org/10.1080/10618600.2016.1231064 
+}
 }
 
 @ARTICLE{sherlock2009optimal,
@@ -2429,6 +2537,7 @@
 	curve fitting},
   journal = {Journal of the Royal Statistical Society. Series B (Methodological)},
   year = {1985},
+  volume = {47},
   pages = {1--52},
   publisher = {JSTOR}
 }
@@ -2444,7 +2553,7 @@
   publisher = {IEEE}
 }
 
-@ARTICLE{sinhavery,
+@UNPUBLISHED{sinhavery,
   author = {Sinha, Samiran},
   title = {A very short note on B-splines}
 }
@@ -2454,6 +2563,7 @@
   title = {A general Bayesian linear model},
   journal = {Journal of the Royal Statistical Society. Series B (Methodological)},
   year = {1973},
+  volume = {35},
   pages = {67--75},
   owner = {zcao},
   publisher = {JSTOR},
@@ -2466,6 +2576,7 @@
 	Monte Carlo methods},
   journal = {Journal of the Royal Statistical Society. Series B (Methodological)},
   year = {1993},
+  volume = {55},
   pages = {3--23},
   owner = {zcao},
   publisher = {JSTOR},
@@ -2493,9 +2604,12 @@
 
 @BOOK{sorenson1985kalman,
   title = {Kalman filtering: theory and application},
-  publisher = {IEEE},
+  publisher = {IEEE Press},
   year = {1985},
-  author = {Sorenson, Harold Wayne}
+  editor = {Sorenson, Harold W.},
+  author = {Sorenson, H. W. (Harold Wayne), 1936-
+	
+	IEEE Control Systems Society}
 }
 
 @ARTICLE{speckman2003fully,
@@ -2556,21 +2670,25 @@
   timestamp = {2017.09.06}
 }
 
-@ARTICLE{stroud2016bayesian,
+@ARTICLE{stroud2018bayesian,
   author = {Stroud, Jonathan R and Katzfuss, Matthias and Wikle, Christopher
 	K},
   title = {A Bayesian adaptive ensemble Kalman filter for sequential state and
 	parameter estimation},
-  journal = {arXiv preprint arXiv:1611.03835},
-  year = {2016},
-  owner = {zcao},
-  timestamp = {2017.10.23}
+  journal = {Monthly Weather Review},
+  year = {2018},
+  volume = {146},
+  pages = {373--386},
+  number = {1}
 }
 
-@ARTICLE{syed2011review,
+@MASTERSTHESIS{syed2011review,
   author = {Syed, Ali R},
   title = {A review of cross validation and adaptive model selection},
-  year = {2011}
+  school = {Georgia State University, Arlanta, GA},
+  year = {2011},
+  owner = {zcao},
+  timestamp = {2018.05.07}
 }
 
 @ARTICLE{tandeo2011linear,
@@ -2615,6 +2733,7 @@
   title = {Markov chains for exploring posterior distributions},
   journal = {the Annals of Statistics},
   year = {1994},
+  volume = {22},
   pages = {1701--1728},
   owner = {zcao},
   publisher = {JSTOR},
@@ -2633,10 +2752,11 @@
 
 @BOOK{esl2009,
   title = {The Elements of Statistical Learning: Data Mining, Inference, and
-	Prediction. Second Edition},
+	Prediction.Second Edition},
   publisher = {Springer-Verlag},
   year = {2009},
   author = {Trevor Hastie, Robert Tibshirani, Jerome Friedman},
+  edition = {Second Edition},
   owner = {zcao},
   timestamp = {2015.12.02}
 }
@@ -2683,7 +2803,7 @@
   year = {2013}
 }
 
-@ARTICLE{vaughan2015goodness,
+@INPROCEEDINGS{vaughan2015goodness,
   author = {Vaughan, Audrey},
   title = {Goodness of Fit Test: Ornstein-Uhlenbeck Process},
   year = {2015},
@@ -2715,6 +2835,7 @@
 	in the generalized spline smoothing problem},
   journal = {The Annals of Statistics},
   year = {1985},
+  volume = {13},
   pages = {1378--1402},
   publisher = {JSTOR}
 }
@@ -2725,6 +2846,7 @@
 	model errors in regression},
   journal = {Journal of the Royal Statistical Society. Series B (Methodological)},
   year = {1978},
+  volume = {40},
   pages = {364--372},
   publisher = {JSTOR}
 }
@@ -2821,6 +2943,7 @@
   title = {Mixture models, Monte Carlo, Bayesian updating, and dynamic models},
   journal = {Computing Science and Statistics},
   year = {1993},
+  volume = {24},
   pages = {325--325},
   owner = {zcao},
   publisher = {PROCEEDINGS PUBLISHED BY VARIOUS PUBLISHERS},
@@ -2837,10 +2960,12 @@
   publisher = {Cambridge University Press}
 }
 
-@ARTICLE{wolberg1988cubic,
+@TECHREPORT{wolberg1988cubic,
   author = {Wolberg, George},
   title = {Cubic spline interpolation: A review},
+  institution = {Department of Computer Science, Columbia University},
   year = {1988},
+  journal = {Columbia University Computer Science Technical Reports},
   publisher = {Department of Computer Science, Columbia University}
 }
 
