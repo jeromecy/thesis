@@ -175,7 +175,7 @@ Then the process of SIS particle filter with resampling is summarized in followi
 \SetAlgoLined 
 %\KwResutt{Write here the resutt }
 Initialization: Initialize particles at $t=0$. For $i=1, \ldots, N$, draw samples $\lbrace x_0^{(i)}\rbrace$ from $p(x_0)$.\\
-\For{$t=1,2,\ldots, n$} {Importance sampling: draw sample $\left\lbrace \tilde{x}_t^{(i)}\right\rbrace_{i=1}^N$ from $q(x_t \mid y_{1:t})$, calculate their weights $\tilde{w}_t^{(i)}$ and normalize them. \\
+\For{$t=1,2,\ldots, n$} {Importance sampling: draw sample $\left\lbrace \tilde{x}_t^{(i)}\right\rbrace_{i=1}^N$ from $q(x_t \mid y_{1:t})$, calculate their weights $w_t^{(i)}$ and normalize them. \\
 Resampling: Resample $\left\lbrace \tilde{x}_t^{(i)}, \tilde{w}_t^{(i)}\right\rbrace$ and get a new set $\left\lbrace x_t^{(i)},\frac{1}{N}\right\rbrace$.\\
 Output the status at time $t$: $\hat{x}_t =\sum_{i=1}^{N}\tilde{x}_t^{(i)}\tilde{w}_t^{(i)}$.}
  \caption{Sampling and Importance Sampling}\label{algorithmSIS}
@@ -448,12 +448,12 @@ A general algorithm is summarized bellow:
 \For{$k=1,\ldots,t$}{
 \For{$i=1,\ldots,N$}{Identify the prior estimation of $(x_k,\theta)$ by $(\mu_{k+1}^{(i)},m_k^{(i)})$, where
 $\mu_{k+1}^{(i)}=\E (x_{k+1}\mid x_k^{(i)},\theta_k^{(i)})$, and $m_k^{(i)}=\alpha \theta_k^{(i)} + (1-\alpha)\bar{\theta}_k$. \\
-Sample an auxiliary integer index $I$ from $\left\lbrace 1,\ldots,N\right\rbrace$ with probability proportional to $g_{k+1}^{(i)}\propto w_k^{(i)}p(y_{k+1}\mid \mu_{k+1}^{(i)},m_k^{(i)})$.\\
+Sample an auxiliary integer index $I$ from $\left\lbrace 1,\ldots,N\right\rbrace$ with probability proportional to $g_{k+1}^{(i)}\propto \tilde{w}_k^{(i)}p(y_{k+1}\mid \mu_{k+1}^{(i)},m_k^{(i)})$.\\
 Sample a new parameter vector $\theta_{k+1}^{(I)}$ from $N(\theta_{k+1}\mid m_k^{(I)},h^2V_k)$.\\
 Sample current state vector $x_{k+1}^{(I)}$ from $p(x_{k+1}\mid x_k^{(I)},\theta_{k+1}^{(I)})$.\\
-Evaluate weights $\tilde{w}_{k+1}^{(i)}\propto \frac{ p(y_{k+1}\mid x_{k+1}^{(I)},\theta_{k+1}^{(I)}) }{ p(y_{k+1}\mid \mu_{k+1}^{(I)},m_k^{(I)})   }$
+Evaluate weights $w_{k+1}^{(i)}\propto \frac{ p(y_{k+1}\mid x_{k+1}^{(I)},\theta_{k+1}^{(I)}) }{ p(y_{k+1}\mid \mu_{k+1}^{(I)},m_k^{(I)})   }$
 }
-Normalize weights: $w_{k+1}^{(i)} = \frac{\tilde{w}_{k+1}^{(i)}}{\sum \tilde{w}_{k+1}^{(i)}}$.
+Normalize weights: $\tilde{w}_{k+1}^{(i)} = \frac{w_{k+1}^{(i)}}{\sum w_{k+1}^{(i)}}$.
 }
 \caption{Liu and West's Filter}\label{algorithmLWFilter}
 \end{algorithm}
@@ -478,8 +478,8 @@ The Storvik filter is summarized bellow:
 \For{$k=1,\ldots,t$}{
 \For{$i=1,\ldots,N$}{
 Sample $x_{k}^{(i)}$ from $p\left(x_{k}\mid x_{k-1}^{(i)},y_{1:k},\theta^{(i)} \right)$. \\
-Calculate weights $\tilde{w}_{k} \propto p\left(y_{k}\mid x_{k}^{(i)}, \theta^{(i)}\right)$ and normalize it by $w_{k}^{(i)}=\frac{ \tilde{w}_{k}^{(i)} }{ \sum \tilde{w}_{k}^{(i)}}$.\\
-Re-sample $\left\lbrace  \theta_{k}^{(i)},x_{k}^{(i)},s_{k}^{(i)}  \right\rbrace$ according to $w_{k}$.\\
+Calculate weights $w_{k} \propto p\left(y_{k}\mid x_{k}^{(i)}, \theta^{(i)}\right)$ and normalize it by $\tilde{w}_{k}^{(i)}=\frac{ w_{k}^{(i)} }{ \sum w_{k}^{(i)}}$.\\
+Re-sample $\left\lbrace  \theta_{k}^{(i)},x_{k}^{(i)},s_{k}^{(i)}  \right\rbrace$ according to $\tilde{w}_{k}$.\\
 Update sufficient statistics $s_{k}^{(i)}=S\left(s_{k-1}^{(i)},x_{k},y_{k}\right)$.\\
 Sample $\theta^{(i)}$ from $p\left(\theta\mid s_{k}^{(i)}\right)$.
 }
@@ -493,22 +493,15 @@ Sample $\theta^{(i)}$ from $p\left(\theta\mid s_{k}^{(i)}\right)$.
 \cite{carvalho2010particle} propose the  \textit{Particle Learning} that uses the similar sufficient statistics as Storvik filter does, in which the set of sufficient statistics is used for parameters estimation only. As an extension to the mixture Kalman filter \citep{chen2000mixture}, Particle Learning allows parameters learning throughout the process and utilize a resampling propagate framework together with a set of particles that includes a set of sufficient statistics (if it is available) for the states. 
 
 By denoting $s_t$ and $s_t^x$ the sufficient statistics for the parameter and state respectively, the updating rules are satisfied: $s_t=S(s_{t-1},x_t,y_t)$ and $s_t^x=K\left(s_{t-1}^x,\theta,y_t\right)$, where $K(\cdot)$ is the Kalman filter recursions. In Particle Learning, the prior to sampling from the proposal distribution uses a predictive likelihood and takes $y_{t+1}$ into account \citep{vieira2016online}. This algorithm is summarized in the following: 
-%\begin{itemize}
-%\item{Step 1.} Resample $\left\lbrace \tilde{z}_t^{(i)}\right\rbrace_{i=1}^N=(\tilde{s}_t^{x(i)},\tilde{s}_t^{(i)},\tilde{\theta}^{(i)})$ from $p(z_t\mid s_t^x,s_t,\theta)$ with weight $w\propto p(y_{t+1}\mid s_{t}^x,\theta)$.
-%\item{Step 2.} Draw $x_{t+1}^{(i)}$ from $p(x_{t+1}\mid \tilde{s}_t^x,\tilde{\theta},y_{1:t+1})$. 
-%\item{Step 3.} Update sufficient statistics  $s_{t+1}=S(\tilde{s}_{t}, x_{t+1},y_{t+1})$.
-%\item{Step 4.} Sample $\theta^{(i)}$ from $p(\theta \mid  s_{t+1})$.
-%\item{Step 5.} Update $s_{t+1}^x = K(s_{t}^x,\theta,y_{t+1})$.
-%\end{itemize}
 \begin{algorithm}[h]
 \SetAlgoLined 
 %\KwResutt{Write here the resutt }
 \For{$k=1,\ldots,t$}{
 \For{$i=1,\ldots,N$}{
-Re-sample $\tilde{z}_k^{\left(i\right)}=\left(\tilde{s}_k^{x\left(i\right)},\tilde{s}_k^{\left(i\right)},\tilde{\theta}^{\left(i\right)}\right)$ from $p\left(z_k\mid s_k^x,s_k,\theta\right)$ with weight $w\propto p\left(y_{k+1}\mid s_{k}^x,\theta\right)$.\\
-Draw $x_{k+1}^{\left(i\right)}$ from $p\left(x_{k+1}\mid \tilde{s}_k^x,\tilde{\theta},y_{1:k+1}\right)$. \\
-Update sufficient statistics  $s_{k+1}=S\left(\tilde{s}_{k}, x_{k+1},y_{k+1}\right)$. \\
-Sample $\theta^{\left(i\right)}$ from $p\left(\theta \mid  s_{k+1}\right)$. \\
+Re-sample $\tilde{z}_k^{\left(i\right)}=\left(\tilde{s}_k^{x\left(i\right)},\tilde{s}_k^{\left(i\right)},\tilde{\theta}^{\left(i\right)}\right)$ from $z_k^{(i)} = \left( s_k^x,s_k,\theta\right)^{(i)}$ with weight $w_k\propto p\left(y_{k+1}\mid z_t^{(i)} \right)$.\\
+Draw $x_{k+1}^{(i)}$ from $p\left(x_{k+1}\mid \tilde{z}_t^{(i)},y_{1:k+1}\right)$. \\
+Update sufficient statistics  $s_{k+1}^{(i)}=S\left(\tilde{s}_{k}^{(i)}, x_{k+1}^{(i)},y_{k+1}\right)$. \\
+Sample $\theta^{(i)}$ from $p\left(\theta \mid  s_{k+1}^{(i)}\right)$. \\
 Update $s_{k+1}^x = K\left(s_{k}^x,\theta,y_{k+1}\right)$.
 }
 }
