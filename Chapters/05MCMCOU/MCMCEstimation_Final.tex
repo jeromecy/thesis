@@ -26,7 +26,7 @@ In this chapter, an adaptive Delayed-Acceptance Metropolis-Hastings algorithm is
 %\end{align}
 %where $G$ and $F$ are linear processes with Gaussian white noise $\varepsilon\sim N\left( 0,R(\theta) \right)$ and $\varepsilon'\sim N\left( 0,Q(\theta) \right)$. 
 
-In a general state-space model, a forward map $F$ controls the stochastic evolution of the state $x_t$ and an observation model $G$ connects the observation $y_t$ to the state $x_t$. The goal of inference is to estimate the state of the system and the parameters of the forward map and the observation model. Given a probability for the initial state, $p(x_0\mid \theta)$, where $\theta$ are the parameters to be estimated, and a prior distribution over the parameters, $p(\theta)$, the general Bayesian filtering problem requires computing the posterior distribution of the current state, $p(x_t \mid y_{1:t})$. If we assume that, given $x_{t-1}$, $x_t$ is conditionally independent of states at all other times and all observations, then
+In a general state-space model, a forward map $F$ controls the stochastic evolution of the state $x_t$ and an observation model $G$ connects the observation $y_t$ to the state $x_t$. The goal of inference is to estimate the state of the system and the parameters of the forward map and the observation model. Given a probability for the initial state, $p(x_1\mid \theta)$, where $\theta$ are the parameters to be estimated, and a prior distribution over the parameters, $p(\theta)$, the general Bayesian filtering problem requires computing the posterior distribution of the current state, $p(x_t \mid y_{1:t})$. If we assume that, given $x_{t-1}$, $x_t$ is conditionally independent of states at all other times and all observations, then
 \begin{equation*}
 p(x_t\mid y_{1:t},\theta) = \int p(x_t\mid x_{t-1},\theta)p(x_{t-1}\mid y_{1:t},\theta) dx_{t-1}, 
 \end{equation*}
@@ -34,7 +34,7 @@ where $y_{1:t} = \left\lbrace y_1,\dots,y_t\right\rbrace$ is the observation inf
 \begin{align}\label{objecfun}
 p(x_t \mid y_{1:t}) = \int p(x_t \mid y_{1:t},\theta)p(\theta\mid y_{1:t})d\theta.
 \end{align}
-The approach in equation \eqref{objecfun} relies on the two terms : (\romannum{1}) a conditional posterior distribution for the states with given parameters and observations; (\romannum{2}) a marginal posterior distribution for parameter $\theta$. Several methods can be used in finding the second term, such as cross validation, Expectation Maximization algorithm, Gibbs sampling, Metropolis-Hastings algorithm and so on. A Monte Carlo method is popular in research area solving this problem. Monte Carlo method is an algorithm that relies on repeated random sampling to obtain numerical results. To compute an integration of $\int f(x)dx$, one has to sample as many independent $x_i$, $(i = 1,\dots, N)$, as possible and numerically to find $\frac{1}{N}\sum_i f(x_i)$ to approximate the target function. In the target function \eqref{objecfun}, we draw samples of $\theta$ and use a numerical way to calculate its posterior distribution  $p(\theta\mid y_{1:t})$. 
+The approach in equation \eqref{objecfun} relies on the two terms: (\romannum{1}) a conditional posterior distribution for the states with given parameters and observations; (\romannum{2}) a marginal posterior distribution for parameter $\theta$. Several methods can be used in finding the second term, such as cross validation, Expectation Maximization algorithm, Gibbs sampling, Metropolis-Hastings algorithm and so on. A Monte Carlo method is popular in research area solving this problem. Monte Carlo method is an algorithm that relies on repeated random sampling to obtain numerical results. To compute an integration of $\int f(x)dx$, one has to sample as many independent $x_i$, $(i = 1,\dots, N)$, as possible and numerically to find $\frac{1}{N}\sum_i f(x_i)$ to approximate the target function. In the target function \eqref{objecfun}, we draw samples of $\theta$ and use a numerical way to calculate its posterior distribution $p(\theta\mid y_{1:t})$. 
 
 
 Additionally, the marginal posterior distribution for the parameter can be written in two different ways: 
@@ -47,24 +47,30 @@ The above formula \eqref{M1} is a standard Bayesian inference requiring a prior 
 
 Therefore the question becomes finding an efficient way to draw samples of $\theta$, such as Importance sampling \citep{hammersley1964percolation, geweke1989bayesian}, Rejection sampling \citep{casella2004generalized, martino2010generalized}, Gibbs sampling \citep{geman1984stochastic}, Metropolis-Hastings method \citep{metropolis1953equation, hastings1970monte} and so on. 
 
+In this chapter, we propose the use of a \textit{linear}  state-space model to infer the trajectory of a moving vehicle. Specifically, we suppose that the forward map and the observation model are linear and homogeneous, and the noise is Gaussian. Even in the linear state-space model, parameter and state estimation is difficult. Our goal is to develop a fast and efficient MCMC algorithm for online estimation. 
+
+% cite ref to dlm, state-space....
+
+
+
 \subsection{The Posterior Distribution}\label{sectionlogParameter}
 
-To sampling $\theta$, we should find its distribution function first from the covariance matrix of the joint $x_{0:t}$ and $y_{1:t}$. With a given $\theta$, suppose the joint distribution of the states and observations is  
+For sampling $\theta$, we should find its distribution function first from the covariance matrix of the joint $x_{1:t}$ and $y_{1:t}$. Under the assumption that the forward map and the observation model are linear and homogeneous, the joint distribution of the states and observations is  
 \begin{equation}\label{generaljointmatrix}
 \begin{bmatrix} \begin{matrix} x_{1:t}\\ y_{1:t}  \end{matrix} \biggr\rvert \theta \end{bmatrix}
 \sim N\left(0, \Sigma_t \right),
 \end{equation}
-where $x_{1:t}$ represents the hidden states $\left\lbrace x_0,x_1,\dots,x_t\right\rbrace$, $y_{1:t}$ represents observed $\left\lbrace y_1,\dots,y_t\right\rbrace$ and $\theta$ is a set of all known and unknown parameters. The inverse of the covariance matrix $\Sigma_t^{-1}$ is the precision matrix. In fact, it is a block matrix in the form of 
+where $x_{1:t}$ represents the hidden states $\left\lbrace x_1,\dots,x_t\right\rbrace$, $y_{1:t}$ represents observed $\left\lbrace y_1,\dots,y_t\right\rbrace$ and $\theta$ is a set of all known and unknown parameters. The inverse of the covariance matrix $\Sigma_t^{-1}$ is the precision matrix. In our application, as we will see, it is a block matrix in the form  
 \begin{align*} \Sigma_t^{-1}=
 \begin{bmatrix}
 A_t& -B_t \\ -B_t^\top & B_t
 \end{bmatrix}, 
 \end{align*}
-where $A_t$ is a $t \times t$ matrix of forward map hidden states, $B_t$ is a $t\times t$ matrix of observation errors up to time $t$. The structure of the matrices, such as bandwidth, sparse density, depending on the structure of the model. %Temporally, we use $A$ and $B$ to stand for the $A_t$ and $B_t$ here. 
+where $A_t$ is a $t \times t$ matrix coming from the forward map, $B_t$ is a $t\times t$ diagonal matrix coming from the observation model. The structure of the matrices, such as bandwidth, sparse density, depends on the details of the model. %Temporally, we use $A$ and $B$ to stand for the $A_t$ and $B_t$ here. 
 Then, we may find the covariance matrix by calculating the inverse of the precision matrix 
 \begin{align*}
 \Sigma_t &= \begin{bmatrix}
-\left(A_t-B_t^\top B_t^{-1}B\right) ^{-1} & -\left(A_t-B_t^\top B_t^{-1}B_t\right)^{-1}B_t^\top B_t^{-1}\\
+\left(A_t-B_t^\top B_t^{-1}B_t\right) ^{-1} & -\left(A_t-B_t^\top B_t^{-1}B_t\right)^{-1}B_t^\top B_t^{-1}\\
 - B_t^{-1}B_t\left(A_t-B_t^\top B_t^{-1}B_t\right)^{-1} & \left(B_t-B_t^\top A_t^{-1}B_t\right) ^{-1}
 \end{bmatrix} \\
 &= \begin{bmatrix}
@@ -471,20 +477,19 @@ We define $\Delta_k = T_k-T_{k-1}$. If $\Delta_t$ is constant, we retrieve a sta
 
 \subsection{Simulation on Regularly Sampled Time Series Data}
 
-If the time steps are even spaced, the model can be written as a simple linear model in the following 
+If the time steps are evenly spaced, the model can be written as a simple linear homogeneous state-space model: 
 \begin{align*}
 y_t\mid x_t      &\sim N\left(x_t,\sigma^2\right) \\
 x_t\mid x_{t-1} &\sim N\left(\phi x_{t-1},\tau^2\right),
 \end{align*}
-where $\sigma$ and $\tau$ are \iid  errors occurring in processes and $\phi$ is a static process parameter in forward map. An initial value $x_0\sim N(0,L)$ is known. 
+where $\sigma$ and $\tau$ are \iid  errors occurring in processes and $\phi$ is a static process parameter in the forward map. An initial value $x_1\sim N(0,L^2)$. 
 
-
-To get the joint distribution for $x_{0:t}$ and $y_{1:t}$
+The joint distribution is $p(x_{1:t},y_{1:t}) = p(y_t\mid x_t)p(x_t\mid x_{t-1})\cdots p(y_1\mid x_1)p(x_1)$. Given the form of the Gaussian density, the joint distribution becomes 
 \begin{equation*}
 \left[ \begin{matrix} x\\y  \end{matrix}\bigg\rvert \theta \right]
 \sim N\left(0, \Sigma  \right),
 \end{equation*}
-where $\theta = \left\lbrace \phi,\sigma,\tau\right\rbrace$, we should start from the precision matrix $\Sigma^{-1}$, which looks like 
+where $\theta = \left\lbrace \phi,\sigma,\tau\right\rbrace$, and the precision matrix $\Sigma^{-1}$ is  
 \begin{equation*}
 \begin{bmatrix}
 \frac{1}{L^2}+\frac{\phi^2}{\tau^2} & \frac{-\phi}{\tau^2} & \cdots & 0 & 0 & 0& \cdots & 0\\
@@ -498,14 +503,15 @@ where $\theta = \left\lbrace \phi,\sigma,\tau\right\rbrace$, we should start fro
 0 & 0& \cdots &-\frac{1}{\sigma^2} & 0 & 0 & \cdots &  \frac{1}{\sigma^2}
 \end{bmatrix},
 \end{equation*}
-and denoted as $\Sigma^{-1}=\begin{bmatrix} A_t & -B_t \\ -B_t & B_t \end{bmatrix}$. Its inverse is the covariance matrix 
-\begin{equation}
-\Sigma=\begin{bmatrix} (A_t-B_t)^{-1} &  (A_t-B_t)^{-1} \\ (A_t-B_t)^{-1} & (I_{t}-A_t^{-1}B_t)^{-1}B_t^{-1} \end{bmatrix} \triangleq \begin{bmatrix}
-\Sigma_{XX} & \Sigma_{XY}  \\ \Sigma_{YX} & \Sigma_{YY} 
-\end{bmatrix},
-\end{equation}
-where $B$ is a $t\times t$ diagonal matrix with elements $\frac{1}{\sigma^2}$. The covariance matrices $\Sigma_{XX} =  \left(A_t-B_t\right)^{-1}$ and $\Sigma_{YY}=\left(I_{t}-A_t^{-1}B_t\right)^{-1}B_t^{-1}$ are found. 
-
+and denoted as $\Sigma^{-1}\triangleq\begin{bmatrix} A_t & -B_t \\ -B_t & B_t \end{bmatrix}$, 
+%Its inverse is the covariance matrix 
+%\begin{equation}
+%\Sigma=\begin{bmatrix} (A_t-B_t)^{-1} &  (A_t-B_t)^{-1} \\ (A_t-B_t)^{-1} & (I_{t}-A_t^{-1}B_t)^{-1}B_t^{-1} \end{bmatrix} \triangleq \begin{bmatrix}
+%\Sigma_{XX} & \Sigma_{XY}  \\ \Sigma_{YX} & \Sigma_{YY} 
+%\end{bmatrix},
+%\end{equation}
+%where $B$ is a $t\times t$ diagonal matrix with elements $\frac{1}{\sigma^2}$. The covariance matrices $\Sigma_{XX} =  \left(A_t-B_t\right)^{-1}$ and $\Sigma_{YY}=\left(I_{t}-A_t^{-1}B_t\right)^{-1}B_t^{-1}$ are found. 
+where $B_t$ is a diagonal matrix $\frac{1}{\sigma^2}I$ proportional to an identity matrix. 
 
 
 \subsubsection*{Parameter Estimation}

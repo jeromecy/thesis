@@ -11,7 +11,9 @@ GPS units in vehicles typically record position, speed, and direction of travel.
 %It is suggested that the smoothing spline fitting through the measured values reflecting the movements is an alternative approach. Even though fitting a univariate local linear trend model using a Kalman filter is equivalent to fitting a cubic spline, see \citep{eubank2004simple, durbin2012time}, the latter algorithm overcomes the current limitation and can approximate data points throughout the whole process. 
 
 
-The \textit{TracMap} company, located in New Zealand and USA, produces GPS display units to aid precision farming in agriculture, horticulture and viticulture. Operational data is collected and sent by these units to a remote server for further analysis. Generally, this data is irregularly sampled every 1 to 30 seconds over the whole day. 
+The \textit{TracMap} company, located in New Zealand and USA, produces GPS display units to aid precision farming in agriculture, horticulture and viticulture. Operational data is collected and sent by these units to a remote server for further analysis. An example of position data, which has been subsampled at irregular time points, is given in Figure \ref{tracoverview}. 
+
+%Generally, this data is irregularly sampled every 1 to 30 seconds over the whole day. 
 
 
 
