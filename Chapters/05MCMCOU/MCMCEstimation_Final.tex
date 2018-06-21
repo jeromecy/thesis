@@ -54,7 +54,7 @@ To sampling $\theta$, we should find its distribution function first from the co
 \begin{bmatrix} \begin{matrix} x_{1:t}\\ y_{1:t}  \end{matrix} \biggr\rvert \theta \end{bmatrix}
 \sim N\left(0, \Sigma_t \right),
 \end{equation}
-where $x_{1:t}$ represents the hidden states $\left\lbrace x_0,x_1,\dots,x_t\right\rbrace$, $y_{1:t}$ represents observed $\left\lbrace y_1,\dots,y_t\right\rbrace$ and $\theta$ is the set of all known and unknown parameters. The inverse of the covariance matrix $\Sigma_t^{-1}$ is the precision matrix. In fact, it is a block matrix in the form of 
+where $x_{1:t}$ represents the hidden states $\left\lbrace x_0,x_1,\dots,x_t\right\rbrace$, $y_{1:t}$ represents observed $\left\lbrace y_1,\dots,y_t\right\rbrace$ and $\theta$ is a set of all known and unknown parameters. The inverse of the covariance matrix $\Sigma_t^{-1}$ is the precision matrix. In fact, it is a block matrix in the form of 
 \begin{align*} \Sigma_t^{-1}=
 \begin{bmatrix}
 A_t& -B_t \\ -B_t^\top & B_t
