@@ -504,21 +504,20 @@ where $\theta = \left\lbrace \phi,\sigma,\tau\right\rbrace$, and the precision m
 %0 & 0& \cdots &-\frac{1}{\sigma^2} & 0 & 0 & \cdots &  \frac{1}{\sigma^2}
 %\end{bmatrix},
 %\end{equation*}
-\begin{equation*}
+\begin{equation}
 \begin{bmatrix}
-\frac{1}{L^2}+\frac{\phi^2}{\tau^2} & -\frac{\phi}{\tau^2} & \cdots & 0 & 0 & 0 & 0& \cdots & 0 & 0\\
--\frac{\phi}{\tau^2}   & \frac{1+\phi^2}{\tau^2}+\frac{1}{\sigma^2}& \cdots & 0 & 0 & -\frac{1}{\sigma^2} &0 & \cdots & 0 & 0 \\
-0 & -\frac{\phi}{\tau^2}   &  \cdots & 0 & 0 & 0& -\frac{1}{\sigma^2} & \cdots & 0 & 0\\
+\frac{1}{L^2}+\frac{\phi^2}{\tau^2} +\frac{1}{\sigma^2} & -\frac{\phi}{\tau^2}  & \cdots & 0 & 0 & -\frac{1}{\sigma^2}  & 0 & \cdots & 0 & 0 \\
+-\frac{\phi}{\tau^2}   & \frac{1+\phi^2}{\tau^2}+\frac{1}{\sigma^2}  & \cdots & 0 & 0 & 0 & -\frac{1}{\sigma^2} & \cdots & 0 & 0 \\
 \vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
 0 & 0  &  \cdots & \frac{1+\phi^2}{\tau^2} + \frac{1}{\sigma^2} & -\frac{\phi}{\tau^2} & 0 & 0 & \cdots & -\frac{1}{\sigma^2} & 0 \\
 0 & 0   &  \cdots & -\frac{\phi}{\tau^2}  & \frac{1}{\tau^2}+\frac{1}{\sigma^2} & 0 & 0 & \cdots & 0 & -\frac{1}{\sigma^2}\\
-0 & -\frac{1}{\sigma^2}  & \cdots & 0 & 0 & \frac{1}{\sigma^2} & 0 & \cdots & 0 & 0\\
-0& 0 & \cdots & 0 & 0 & 0 &  \frac{1}{\sigma^2} & \cdots & 0& 0\\
+-\frac{1}{\sigma^2}  & 0 & \cdots & 0 & 0 & \frac{1}{\sigma^2} & 0 & \cdots & 0 & 0\\
+0&-\frac{1}{\sigma^2}   & \cdots & 0 & 0 & 0 &  \frac{1}{\sigma^2} & \cdots & 0& 0\\
 \vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \vdots & \ddots & \vdots &  \vdots\\
 0 & 0& \cdots &-\frac{1}{\sigma^2} & 0 &  0 & 0 & \cdots &  \frac{1}{\sigma^2}  & 0\\ 
 0 & 0& \cdots & 0 & -\frac{1}{\sigma^2} & 0 & 0 & \cdots & 0 &  \frac{1}{\sigma^2}
 \end{bmatrix},
-\end{equation*}
+\end{equation}\label{precisionMatrix}
 and denoted as $\Sigma^{-1}\triangleq\begin{bmatrix} A_t & -B_t \\ -B_t & B_t \end{bmatrix}$, 
 %Its inverse is the covariance matrix 
 %\begin{equation}
@@ -622,14 +621,15 @@ where $K_1=\frac{\sigma^4}{\sigma^2+\tau^2+L^2\phi^2}$. For calculation details,
 
 As discussed in Section \ref{generalEstDistr}, from the joint distribution of $x_{1:t}$ and $y_{1:t}$, one can find the best estimation with a given $\theta$ by
 \begin{align*}
-\hat{x}_{1:t} \mid y_{1:t},\theta \sim N\left(L_t^{-\top}W_t,L_t^{-\top}L_t^{-1}\right),
+x_{1:t} \mid y_{1:t},\theta \sim N\left(L_t^{-\top}W_t,L_t^{-\top}L_t^{-1}\right),
 \end{align*}
 where $W_t = L_t^{-1}B_{t}y_{1:t-1}$. 
-Consequently 
-\begin{align*}
-\hat{x}_{1:t} = L_t^{-\top}(W_t+Z_t),
-\end{align*}
-where $Z_t \sim N\left(0, I(\varepsilon)_{t}\right)$ is independent and identically distributed and drawn from a zero-mean normal distribution with variance $ I(\varepsilon)_t$. Moreover, the mixture Gaussian distribution $p(x_t \mid y_{1:t})$ can be found by 
+%%Consequently 
+%\begin{align*}
+%x_{1:t} = L_t^{-\top}(W_t+Z_t),
+%\end{align*}
+%where $Z_t \sim N\left(0, I(\varepsilon)_{t}\right)$ is independent and identically distributed and drawn from a zero-mean normal distribution with variance $ I(\varepsilon)_t$. Moreover, 
+The mixture Gaussian distribution $p(x_t \mid y_{1:t})$ can be found by 
 \begin{align}
 \mu_t^{(x)} &= \frac{1}{N} \sum_i \mu_{ti}^{(x)} \label{linearmu}  \\
 \Var(x_t) &= \frac{1}{N} \sum_i \left( \mu_{ti}^{(x)}  \mu_{ti}^{(x)\top} +\Var(x_{ti})\right) -\frac{1}{N^2} \left(  \sum_i  \mu_{ti}^{(x)} \right) \left( \sum_i \mu_{ti}^{(x)} \right) ^\top.\label{linearsigma} 
@@ -644,7 +644,7 @@ Because of
 \begin{align*}
 C_{t}^\top A_{t}^{-1} = \begin{bmatrix} - b_{t}^\top & \sigma^2- K_{t} \end{bmatrix},
 \end{align*}
-thus, for any given $\theta$, we have $\hat{x}_{t}\mid y_{1:t},\theta \sim N\left( \mu_{t}^{(x)},\Var(x_t) \right)$, where
+thus, for any given $\theta$, we have $x_{t}\mid y_{1:t},\theta \sim N\left( \mu_{t}^{(x)},\Var(x_t) \right)$, where
 \begin{align}
 \mu_{t}^{(x)} &  =  \frac{K_{t}\bar{\mu}_{t}}{\sigma^2}+\left(1-\frac{K_{t}}{\sigma^2}\right)y_{t} \\
 \Var(x_t)&= \sigma^2-K_{t}.
@@ -721,32 +721,33 @@ To run the simulations, we generate an irregular time-lag sequence $\left\lbrace
 \end{figure}
 
 
-Similarly, we can get the joint distribution for $x_{0:t}$ and $y_{1:t}$ 
+Similarly, we can get the joint distribution for $x_{1:t}$ and $y_{1:t}$ 
 \begin{equation*}
 \begin{bmatrix} \begin{matrix} x\\y \end{matrix} \bigg\rvert \theta \end{bmatrix}
-\sim N\left(0, \Sigma  \right),
+\sim N\left(0, \Sigma  \right)
 \end{equation*}
-from the precision matrix 
-\begin{equation*}
-\begin{bmatrix}
-\frac{1}{L^2}+\frac{\phi_1^2}{\tau_1^2} & \frac{-\phi_1}{\tau_1^2} & \cdots & 0 & 0 & 0& \cdots & 0\\ 
-\frac{-\phi_1}{\tau_1^2}   &\frac{1}{\tau_1^2}+\frac{\phi_2^2}{\tau_2^2}+\frac{1}{\sigma^2}& \cdots & 0 & -\frac{1}{\sigma^2} &0 & \cdots & 0 \\
-0 & \frac{-\phi_2}{\tau_2^2}   &  \cdots & 0 & 0& -\frac{1}{\sigma^2} & \cdots & 0\\
-\vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \ddots & \vdots \\
-0 & 0   &  \cdots & \frac{1}{\tau_t^2}+\frac{1}{\sigma^2} & 0 & 0 & \cdots &-\frac{1}{\sigma^2}\\
-0 & -\frac{1}{\sigma^2}  & \cdots & 0 & \frac{1}{\sigma^2} & 0 & \cdots & 0 \\
-0& 0 & \cdots & 0 & 0 &  \frac{1}{\sigma^2} & \cdots & 0\\
-\vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \ddots & \vdots\\
-0 & 0& \cdots &-\frac{1}{\sigma^2} & 0 & 0 & \cdots &  \frac{1}{\sigma^2}
-\end{bmatrix}
-\end{equation*}
-where $\phi_t = e^{-\gamma\Delta_t}, \tau^2_t = \frac{\lambda^2}{2\gamma}\left(1-e^{-2\gamma\Delta_t}\right)$, $\theta$ represents unknown parameters. Denoted by $\Sigma^{-1}=\begin{bmatrix} A_t & -B_t \\ -B_t & B_t\end{bmatrix}$, covariance matrix is 
-\begin{equation}
-\Sigma=\begin{bmatrix} \left(A_t-B_t\right)^{-1} &  \left(A_t-B_t\right)^{-1} \\ \left(A_t-B_t\right)^{-1} & \left(I-A_t^{-1}B_t\right)^{-1}B_t^{-1} \end{bmatrix} \triangleq \begin{bmatrix}
-\Sigma_{XX} & \Sigma_{XY}  \\ \Sigma_{YX} & \Sigma_{YY} 
-\end{bmatrix},
-\end{equation}
-where $B_t$ is a $t\times t$ diagonal matrix with elements $\frac{1}{\sigma^2}$. The covariance matrices $\Sigma_{XX} =  \left(A_t-B_t\right)^{-1}$ and $\Sigma_{YY} =  \left(I-A_t^{-1}B_t\right)^{-1}B_t^{-1}$. 
+%from the precision matrix 
+%\begin{equation*}
+%\begin{bmatrix}
+%\frac{1}{L^2}+\frac{\phi_1^2}{\tau_1^2} +\frac{1}{\sigma^2}& \frac{-\phi_1}{\tau_1^2} & \cdots & 0 & 0 & 0& \cdots & 0\\ 
+%\frac{-\phi_1}{\tau_1^2}   &\frac{1}{\tau_1^2}+\frac{\phi_2^2}{\tau_2^2}+\frac{1}{\sigma^2}& \cdots & 0 & -\frac{1}{\sigma^2} &0 & \cdots & 0 \\
+%0 & \frac{-\phi_2}{\tau_2^2}   &  \cdots & 0 & 0& -\frac{1}{\sigma^2} & \cdots & 0\\
+%\vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+%0 & 0   &  \cdots & \frac{1}{\tau_t^2}+\frac{1}{\sigma^2} & 0 & 0 & \cdots &-\frac{1}{\sigma^2}\\
+%0 & -\frac{1}{\sigma^2}  & \cdots & 0 & \frac{1}{\sigma^2} & 0 & \cdots & 0 \\
+%0& 0 & \cdots & 0 & 0 &  \frac{1}{\sigma^2} & \cdots & 0\\
+%\vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \ddots & \vdots\\
+%0 & 0& \cdots &-\frac{1}{\sigma^2} & 0 & 0 & \cdots &  \frac{1}{\sigma^2}
+%\end{bmatrix}
+%\end{equation*}
+having a similar precision matrix shown in equation \eqref{precisionMatrix}, where $\phi_t = e^{-\gamma\Delta_t}, \tau^2_t = \frac{\lambda^2}{2\gamma}\left(1-e^{-2\gamma\Delta_t}\right)$, $\theta$ represents for the unknown parameters. 
+%Denoted by $\Sigma^{-1}=\begin{bmatrix} A_t & -B_t \\ -B_t & B_t\end{bmatrix}$, covariance matrix is 
+%\begin{equation}
+%\Sigma=\begin{bmatrix} \left(A_t-B_t\right)^{-1} &  \left(A_t-B_t\right)^{-1} \\ \left(A_t-B_t\right)^{-1} & \left(I-A_t^{-1}B_t\right)^{-1}B_t^{-1} \end{bmatrix} \triangleq \begin{bmatrix}
+%\Sigma_{XX} & \Sigma_{XY}  \\ \Sigma_{YX} & \Sigma_{YY} 
+%\end{bmatrix},
+%\end{equation}
+%where $B_t$ is a $t\times t$ diagonal matrix with elements $\frac{1}{\sigma^2}$. The covariance matrices $\Sigma_{XX} =  \left(A_t-B_t\right)^{-1}$ and $\Sigma_{YY} =  \left(I-A_t^{-1}B_t\right)^{-1}B_t^{-1}$. 
 
 
 
@@ -802,7 +803,7 @@ where $K_1=\frac{\sigma^4}{\sigma^2+\tau_1^2+L^2\phi_1^2}$.
 
 Additionally, as discussed in Section \ref{generalEstDistr}, the best estimation of $x_{1:t}$ with a given $\theta$ is 
 \begin{align*}
-\hat{x}_{1:t} \mid y_{1:t},\theta \sim N\left(L_t^{-\top}W_t,L_t^{-\top}L_t^{-1}\right),
+x_{1:t} \mid y_{1:t},\theta \sim N\left(L_t^{-\top}W_t,L_t^{-\top}L_t^{-1}\right),
 \end{align*}
 where $W_t = L_t^{-1}B_{t}y_{1:t-1}$, and the mixture Gaussian distribution for $p(x_t \mid y_{1:t})$ is 
 \begin{align}
@@ -960,15 +961,15 @@ where $B_t$ is a $2t\times 2t$ diagonal matrix of observation errors at time $t$
 \end{bmatrix}$. 
 In fact, the matrix $A_t$ is a $2t \times 2t$ bandwidth six sparse matrix at time $t$ in the process. Then, we may find the covariance matrix by calculating the inverse of the precision matrix as 
 \begin{align*}
-\Sigma &= \begin{bmatrix}
-\left(A_t-B_t^\top B_t^{-1}B_t\right) ^{-1} & -\left(A_t-B_t^\top B_t^{-1}B_t\right)^{-1}B_t^\top B_t^{-1}\\
-- B_t^{-1}B_t\left(A_t-B_t^\top B_t^{-1}B_t\right)^{-1} & \left(B_t-B_t^\top A_t^{-1}B_t\right) ^{-1}
-\end{bmatrix} \\
-&= \begin{bmatrix}
-\left(A_t-B_t\right) ^{-1} & \left(A_t-B_t\right)^{-1}\\
-\left(A_t-B_t\right)^{-1} & \left(I_t- A_t^{-1}B_t\right) ^{-1}B_t^{-1}
-\end{bmatrix} \\
-&\triangleq \begin{bmatrix}
+\Sigma & %=\begin{bmatrix}
+%\left(A_t-B_t^\top B_t^{-1}B_t\right) ^{-1} & -\left(A_t-B_t^\top B_t^{-1}B_t\right)^{-1}B_t^\top B_t^{-1}\\
+%- B_t^{-1}B_t\left(A_t-B_t^\top B_t^{-1}B_t\right)^{-1} & \left(B_t-B_t^\top A_t^{-1}B_t\right) ^{-1}
+%\end{bmatrix} 
+%&= \begin{bmatrix}
+%\left(A_t-B_t\right) ^{-1} & \left(A_t-B_t\right)^{-1}\\
+%\left(A_t-B_t\right)^{-1} & \left(I_t- A_t^{-1}B_t\right) ^{-1}B_t^{-1}
+%\end{bmatrix} \\
+\triangleq \begin{bmatrix}
 \Sigma_{XX} & \Sigma_{XY} \\
 \Sigma_{YX}  &\Sigma_{YY} 
 \end{bmatrix}.
@@ -997,9 +998,9 @@ Then, by taking natural logarithm on the posterior of $\theta$ and by using the 
 
 It is known that 
 \begin{align*}
-p(Y_{1:t-1},\theta) &\sim N\left( 0,\Sigma_{YY}^{(t-1)} \right)\\
-p(Y_{t},Y_{1:t-1},\theta) &\sim N\left( 0,\Sigma_{YY}^{(t)} \right)\\
-p(Y_{t}\mid Y_{1:t},\theta) &\sim N\left( \bar{\mu}_{t},\bar{\Sigma}_{t} \right)
+p(Y_{1:t-1},\theta) &= N\left( 0,\Sigma_{YY}^{(t-1)} \right)\\
+p(Y_{t},Y_{1:t-1},\theta) &= N\left( 0,\Sigma_{YY}^{(t)} \right)\\
+p(Y_{t}\mid Y_{1:t},\theta) &= N\left( \bar{\mu}_{t},\bar{\Sigma}_{t} \right)
 \end{align*}
 where the covariance matrix of the joint distribution is $\Sigma_{YY}^{(t)} = \left(I_{t}-A_{t}^{-1}B_{t}\right)^{-1}B_{t}^{-1}$. Then, by taking its inverse, one can obtain 
 \begin{align*}
@@ -1086,7 +1087,7 @@ X_{1:t} \mid Y_{1:t},\theta \sim N\left(L_t^{-\top}W_t,L_t^{-\top}L_t^{-1}\right
 \end{equation*}
 thus
 \begin{align*}
-\hat{X} _{1:t}= L_t^{-\top}\left(W_t+Z_t\right),
+X _{1:t}= L_t^{-\top}\left(W_t+Z_t\right),
 \end{align*}
 where $Z_t \sim N\left(0, I(\sigma,\tau)_t\right)$.
 
