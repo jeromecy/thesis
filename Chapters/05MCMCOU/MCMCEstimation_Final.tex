@@ -124,7 +124,7 @@ Then, by taking natural logarithm on the posterior of $\theta$ and by using the 
 
 From equation \eqref{M2}, a sequential way for estimating the forecast distribution is needed. Suppose it is 
 \begin{equation}
-p(y_{t}\mid y_{1:t-1},\theta) \sim N\left( \bar{\mu}_{t},\bar{\sigma}_{t} \right). 
+y_{t}\mid y_{1:t-1},\theta \sim N\left( \bar{\mu}_{t},\bar{\sigma}_{t} \right). 
 \end{equation}
 Look back to the covariance matrices of observations that we found in the previous section 
 \begin{align*}
@@ -152,7 +152,7 @@ B_t^{-1} \left(Z_{t}-b_{t}K_{t}^{-1}b_{t}^\top\right)^{-1}B_t^{-1}  & - B_t^{-1}
 So, from the above covariance matrix, we can find the mean and variance of $p\left(y_{t}\mid y_{1:t-1},\theta\right)$ are 
 \begin{align}
 \bar{\mu}_{t} & =  B_1^{-1}K_{t}^{-1}b_{t}^\top B_{t-1}^{-1}y_{1:t-1} ,\\
-\bar{\sigma}_{t} & =  B_1^{-1}K_{t}B_1^{-1}  .
+\bar{\sigma}_{t}^2 & =  B_1^{-1}K_{t}B_1^{-1}  .
 \end{align}
 
 
@@ -162,15 +162,15 @@ So, from the above covariance matrix, we can find the mean and variance of $p\le
 
 From the joint distribution \eqref{generaljointmatrix}, one can find the best estimation with a given $\theta$ by
 \begin{align*}
-\hat{x}_{1:t} \mid y_{1:t},\theta &\sim N \left( A_{t}^{-1}B_{t}y_{1:t}, A_{t}^{-1} \right) \\
+x_{1:t} \mid y_{1:t},\theta &\sim N \left( A_{t}^{-1}B_{t}y_{1:t}, A_{t}^{-1} \right) \\
 &\sim N(L_t^{-\top}L_t^{-1}B_{t}y_{1:t-1},L^{-\top}L_t^{-1})\\
 &\sim N(L_t^{-\top}W_t,L^{-\top}L_t^{-1}).
 \end{align*}
-Consequently 
-\begin{align*}
-\hat{x}_{1:t} = L_t^{-\top}(W_t+Z_t),
-\end{align*}
-where $Z_t \sim N(0, I(\varepsilon)_{t})$ is independent and identically distributed and drawn from a zero-mean normal distribution with variance $I(\varepsilon)_{t}$. 
+%Consequently 
+%\begin{align*}
+%x_{1:t} = L_t^{-\top}(W_t+Z_t),
+%\end{align*}
+%where $Z_t \sim N(0, I(\varepsilon)_{t})$ is independent and identically distributed and drawn from a zero-mean normal distribution with variance $I(\varepsilon)_{t}$. 
 
 For sole $x_{t}$, its joint distribution with $y_{1:t}$ is 
 \begin{align*}
@@ -179,9 +179,10 @@ C_{t}^\top(A_{t}-B_{t}) ^{-1}C_{t} & C_{t}^\top (A_{t}-B_{t})^{-1}\\
 (A_{t}-B_{t})^{-1}C_{t} & (I_t- A_{t}^{-1}B_{t}) ^{-1}B_{t}^{-1}
 \end{bmatrix} \right),
 \end{align*}
-where $C_t^\top = \begin{bmatrix}0 & \cdots & 0 & 1\end{bmatrix}$ helps to  achieve the last element in the matrix. Thus, the filtering distribution of the state is 
+where $C_t^\top = \begin{bmatrix}0 & \cdots & 0 & 1\end{bmatrix}$ is $t\times 1$ vector. % that helps to extract the last element in the matrix. 
+Thus, the filtering distribution of the state is 
 \begin{align*}
-p(x_{t}\mid y_{1:t},\theta) \sim N\left( \mu_{t}^{(x)},\Var(x_{t}) \right),
+x_{t}\mid y_{1:t},\theta \sim N\left( \mu_{t}^{(x)},\Var(x_{t}) \right),
 \end{align*}
 where, after simplifying, the mean and variance are  
 \begin{align}\label{generalmux}

@@ -11,43 +11,50 @@ GPS units in vehicles typically record position, speed, and direction of travel.
 %It is suggested that the smoothing spline fitting through the measured values reflecting the movements is an alternative approach. Even though fitting a univariate local linear trend model using a Kalman filter is equivalent to fitting a cubic spline, see \citep{eubank2004simple, durbin2012time}, the latter algorithm overcomes the current limitation and can approximate data points throughout the whole process. 
 
 
+Given time series data from a vehicle-mounted GPS unit, an important question is how to infer the trajectory of the vehicle. This is known as trajectory reconstruction and is the motivating question of this thesis. 
+
+
+
+
+\section{The Problem}
+
+Two keys issues for reconstruction are (\romannum{1}) how to handle observations that are inherently noisy measurements of the truth, and (\romannum{2}) how to interpolate appropriately between observation times.
+
+GPS units in vehicles provide $y_t$, noisy measurements of the actual position $x_t$, and $v_t$, noisy measurements of the actual velocity $u_t$, for a sequence of times $t\in T$. These data may also be augmented with information on operating characteristics of the vehicle, $b_t$. The trajectory reconstruction problem is the problem of estimating $x_s$, for an arbitrary time $s$, given a subset of the observations $\{y_t,v_t,b_t\mid t\in T\}$. Note that in this definition of trajectory reconstruction, we are not explicitly interested in estimating $u_s$.
+
+
 The \textit{TracMap} company, located in New Zealand and USA, produces GPS display units to aid precision farming in agriculture, horticulture and viticulture. Operational data is collected and sent by these units to a remote server for further analysis. An example of position data, which has been subsampled at irregular time points, is given in Figure \ref{tracoverview}. 
 
 %Generally, this data is irregularly sampled every 1 to 30 seconds over the whole day. 
-
-
-
 \begin{figure}[h]
-\centering
-\begin{tikzpicture}
-     \node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=0.45\textwidth]{Chapters/01Intro/plots/tracoverview01.pdf}};
-     \begin{scope}[
-         x={(image.south east)},
-         y={(image.north west)}
-     ]
-     \node [black, font=\bfseries] at (0.5,-0.05) {Easting};
-     \node [black, font=\bfseries,rotate=90] at (-0.05,0.5) {Northing};
-     \end{scope}
-\end{tikzpicture}
-\begin{tikzpicture}
-     \node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=0.45\textwidth]{Chapters/01Intro/plots/tracoverview02.pdf}};
-     \begin{scope}[
-         x={(image.south east)},
-         y={(image.north west)}
-     ]
-     \node [black, font=\bfseries] at (0.5,-0.05) {Easting};
-     \node [black, font=\bfseries,rotate=90] at (-0.05,0.5) {Northing};
-     \end{scope}
-\end{tikzpicture}
-\caption{Examples of GPS data. Observed position is augmented with velocity information and other operating characteristics.}
-\label{tracoverview}
+	\centering
+	\begin{tikzpicture}
+	\node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=0.45\textwidth]{Chapters/01Intro/plots/tracoverview01.pdf}};
+	\begin{scope}[
+	x={(image.south east)},
+	y={(image.north west)}
+	]
+	\node [black, font=\bfseries] at (0.5,0.0) {Easting};
+	\node [black, font=\bfseries,rotate=90] at (0.05,0.5) {Northing};
+	\end{scope}
+	\end{tikzpicture}
+	\begin{tikzpicture}
+	\node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=0.45\textwidth]{Chapters/01Intro/plots/tracoverview02.pdf}};
+	\begin{scope}[
+	x={(image.south east)},
+	y={(image.north west)}
+	]
+	\node [black, font=\bfseries] at (0.5,0.0) {Easting};
+	\node [black, font=\bfseries,rotate=90] at (0.05,0.5) {Northing};
+	\end{scope}
+	\end{tikzpicture}
+	\caption{Examples of GPS data. Observed positions $y_t$ are shown. In trajectory reconstruction, the $y_t$ are combined with velocity information $v_t$ and operating characteristics $b_t$ to infer actual positions $x_s$, for times of interest $s$.}
+	\label{tracoverview}
 \end{figure}
 
 
 
 
-
-Given time series data from a vehicle-mounted GPS unit, an important question is how to infer the trajectory of the vehicle. This is known as trajectory reconstruction and is the motivating question of this thesis. 
 
 \section{Smoothing Spline Based Reconstruction}
 
