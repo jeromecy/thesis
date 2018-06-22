@@ -490,17 +490,32 @@ The joint distribution is $p(x_{1:t},y_{1:t}) = p(y_t\mid x_t)p(x_t\mid x_{t-1})
 \sim N\left(0, \Sigma  \right),
 \end{equation*}
 where $\theta = \left\lbrace \phi,\sigma,\tau\right\rbrace$, and the precision matrix $\Sigma^{-1}$ is  
+%\begin{equation*}
+%\begin{bmatrix}
+%\frac{1}{L^2}+\frac{\phi^2}{\tau^2} & \frac{-\phi}{\tau^2} & \cdots & 0 & 0 & 0& \cdots & 0\\
+%\frac{-\phi}{\tau^2}   & \frac{1+\phi^2}{\tau^2}+\frac{1}{\sigma^2}& \cdots & 0 & -\frac{1}{\sigma^2} &0 & \cdots & 0 \\
+%0 & \frac{-\phi}{\tau^2}   &  \cdots & 0 & 0& -\frac{1}{\sigma^2} & \cdots & 0\\
+%\vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+%0 & 0   &  \cdots & \frac{1}{\tau^2}+\frac{1}{\sigma^2} & 0 & 0 & \cdots &-\frac{1}{\sigma^2}\\
+%0 & -\frac{1}{\sigma^2}  & \cdots & 0 & \frac{1}{\sigma^2} & 0 & \cdots & 0 \\
+%0& 0 & \cdots & 0 & 0 &  \frac{1}{\sigma^2} & \cdots & 0\\
+%\vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \ddots & \vdots\\
+%0 & 0& \cdots &-\frac{1}{\sigma^2} & 0 & 0 & \cdots &  \frac{1}{\sigma^2}
+%\end{bmatrix},
+%\end{equation*}
 \begin{equation*}
 \begin{bmatrix}
-\frac{1}{L^2}+\frac{\phi^2}{\tau^2} & \frac{-\phi}{\tau^2} & \cdots & 0 & 0 & 0& \cdots & 0\\
-\frac{-\phi}{\tau^2}   & \frac{1+\phi^2}{\tau^2}+\frac{1}{\sigma^2}& \cdots & 0 & -\frac{1}{\sigma^2} &0 & \cdots & 0 \\
-0 & \frac{-\phi}{\tau^2}   &  \cdots & 0 & 0& -\frac{1}{\sigma^2} & \cdots & 0\\
-\vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \ddots & \vdots \\
-0 & 0   &  \cdots & \frac{1}{\tau^2}+\frac{1}{\sigma^2} & 0 & 0 & \cdots &-\frac{1}{\sigma^2}\\
-0 & -\frac{1}{\sigma^2}  & \cdots & 0 & \frac{1}{\sigma^2} & 0 & \cdots & 0 \\
-0& 0 & \cdots & 0 & 0 &  \frac{1}{\sigma^2} & \cdots & 0\\
-\vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \ddots & \vdots\\
-0 & 0& \cdots &-\frac{1}{\sigma^2} & 0 & 0 & \cdots &  \frac{1}{\sigma^2}
+\frac{1}{L^2}+\frac{\phi^2}{\tau^2} & -\frac{\phi}{\tau^2} & \cdots & 0 & 0 & 0 & 0& \cdots & 0 & 0\\
+-\frac{\phi}{\tau^2}   & \frac{1+\phi^2}{\tau^2}+\frac{1}{\sigma^2}& \cdots & 0 & 0 & -\frac{1}{\sigma^2} &0 & \cdots & 0 & 0 \\
+0 & -\frac{\phi}{\tau^2}   &  \cdots & 0 & 0 & 0& -\frac{1}{\sigma^2} & \cdots & 0 & 0\\
+\vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+0 & 0  &  \cdots & \frac{1+\phi^2}{\tau^2} + \frac{1}{\sigma^2} & -\frac{\phi}{\tau^2} & 0 & 0 & \cdots & -\frac{1}{\sigma^2} & 0 \\
+0 & 0   &  \cdots & -\frac{\phi}{\tau^2}  & \frac{1}{\tau^2}+\frac{1}{\sigma^2} & 0 & 0 & \cdots & 0 & -\frac{1}{\sigma^2}\\
+0 & -\frac{1}{\sigma^2}  & \cdots & 0 & 0 & \frac{1}{\sigma^2} & 0 & \cdots & 0 & 0\\
+0& 0 & \cdots & 0 & 0 & 0 &  \frac{1}{\sigma^2} & \cdots & 0& 0\\
+\vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \vdots & \ddots & \vdots &  \vdots\\
+0 & 0& \cdots &-\frac{1}{\sigma^2} & 0 &  0 & 0 & \cdots &  \frac{1}{\sigma^2}  & 0\\ 
+0 & 0& \cdots & 0 & -\frac{1}{\sigma^2} & 0 & 0 & \cdots & 0 &  \frac{1}{\sigma^2}
 \end{bmatrix},
 \end{equation*}
 and denoted as $\Sigma^{-1}\triangleq\begin{bmatrix} A_t & -B_t \\ -B_t & B_t \end{bmatrix}$, 
