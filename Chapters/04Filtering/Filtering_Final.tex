@@ -59,27 +59,28 @@ The use of \textit{Monte Carlo} methods for filtering can be traced back to the 
 
 In the state-space model, a generic particle filter estimates the posterior distribution of the hidden states using the observation measurement process. The filtering problem is to estimate sequentially the values of the hidden states $x_t$ given the values of the observation process $y_{1:t}$ at any time $t$. In another word, it is to find the value of $p(x_t  \mid  y_{1:t})$. The process is divided into two steps: prediction and updating. In the prediction step, the assumption of Markov chain is the current status $x_t $ only depends on the previous one $x_{t-1}$. Then we can calculate the probability of $x_t$ by 
 \begin{align*}
-p(x_t \mid y_{1:t-1})=&\int p(x_t ,x_{k-1}\mid y_{1:t-1}) dx_{t-1}\\
+p(x_t \mid y_{1:t-1})=&\int p(x_t ,x_{t-1}\mid y_{1:t-1}) dx_{t-1}\\
 =&\int p(x_t \mid x_{t-1},y_{1:t-1}) p(x_{t-1}\mid y_{1:t-1})dx_{t-1}\\
 =&\int p(x_t \mid x_{t-1}) p(x_{t-1}\mid y_{1:t-1})dx_{t-1}.
 \end{align*}
-Continuous, in the updating phase, $p(x_t \mid y_{1:t})$ is easily found, as long as $p(x_t \mid y_{1:t-1})$ is known, by
+Continuously, in the updating phase, $p(x_t \mid y_{1:t})$ is easily found, as long as $p(x_t \mid y_{1:t-1})$ is known, by
 \begin{align*}
 p(x_t \mid y_{1:t})=&\frac{p(y_t \mid x_t ,y_{1:t-1})p(x_{t}\mid y_{1:t-1})}{p(y_t \mid  y_{1:t-1})} \\
 =&\frac{p(y_t \mid x_t )p(x_{t}\mid y_{1:t-1})}{p(y_t \mid  y_{1:t-1})},
 \end{align*}
 where $p(y_t \mid  y_{1:t-1})=\int p(y_t \mid x_t )p(x_t \mid  y_{1:t-1}) dx_t$ is  the normalization \citep{arulampalam2002tutorial}.
 
-Imagine that the state-space is partitioned as many parts, in which the particles are filled according to some probability measure. The higher probability, the denser the particles are concentrated. Suppose the particles $x_k^{(1)}, \ldots, x_k^{(N)}$ at time $k$ are drawn from the target probability density function $p(x)$, then these particles are used to estimate the expectation and variance of $f(x)$ by
+Imagine that the state-space is partitioned as many parts, in which the particles are filled according to some probability measure. The higher probability, the denser the particles are concentrated. Suppose the particles $x_k^{(1)}, \ldots, x_k^{(N)}$ at time $k$ are drawn from the target probability density function $p(\cdot\mid y_{1:t})$, then for any function of interest $f(x)$ these particles are used to estimate its expectation,
 \begin{align*}
-\E\lbrack f(x) \rbrack &= \int_a^bf(x)p(x)dx\\
-\Var\lbrack f(x)\rbrack &= \E\lbrack f(x)-\E\left( f(x)\right) \rbrack^2p(x)dx.
+\E\lbrack f(x) \rbrack &= \int_a^bf(x)p(x\mid y_{1:t})dx.
+%\Var\lbrack f(x)\rbrack &= \E\lbrack f(x)-\E\left( f(x)\right) \rbrack^2p(x)dx.
 \end{align*}
-Back to our target, the posterior distribution or density is empirically represented by a weighted sum of samples $x_k^{(1)}, \ldots, x_k^{(N)}$  
+The posterior distribution or density is empirically represented by a weighted sum of samples $x_k^{(1)}, \ldots, x_k^{(N)}$  
 \begin{equation}\label{rawParticleFilter}
-\hat{p}(x_k\mid y_{1:t})=\frac{1}{N}\sum_{i=1}^N\delta \left(x_k-x_k^{(i)}\right)\approx p(x_k\mid y_{1:t}),
+p(x_k\mid y_{1:t})\approx\hat{p}(x_k\mid y_{1:t})=\frac{1}{N}\sum_{i=1}^N\delta \left(x_k-x_k^{(i)}\right) .
 \end{equation}
-where $f(x)=\delta (x_k-x_k^{(i)})$ is Dirac delta function. Hence, a continuous variable is approximated by a discrete one with a random support. When $N$ is sufficiently large, $\hat{p}(x_k\mid y_{1:t})$ was treated by particle filter as the true posterior $p(x_k\mid y_{1:t})$. By this approximation, the filtering problem becomes to get the expectation of current status 
+%where $f(x)=\delta (x_k-x_k^{(i)})$ is Dirac delta function.
+Hence, a continuous variable is approximated by a discrete one with a random support. When $N$ is sufficiently large, $\hat{p}(x_k\mid y_{1:t})$ is treated by particle filter as the true posterior $p(x_k\mid y_{1:t})$. By this approximation, the expectation of $f(x)$ at time $k$ is 
 \begin{align*}
 \E\lbrack f(x_k)\rbrack &\approx \int f(x_k)\hat{p}(x_k\mid y_{1:t})dx_k \\
  & =\frac{1}{N} \sum_{i=1}^N\int f(x_k) \delta (x_k-x_k^{(i)}) dx_k\\
@@ -94,25 +95,25 @@ However, the posterior distribution is unknown and impossible to sample from the
 
 It is common to sample from an easy-to-implement distribution, the so-called proposal distribution $q(x\mid y)$, hence
 \begin{align*}
-\E\lbrack f(x) \rbrack &= \int f(x_t )\frac{p(x_t \mid y_{1:t})}{q(x_t \mid y_{1:t})} q(x_t \mid y_{1:t})dx_x\\
-&= \int f(x_t )\frac{p(x_t )p(y_{1:t}\mid x_t )}{p(y_{1:t})q(x_t \mid y_{1:t})} q(x_t \mid y_{1:t})dx_x\\
-&= \int f(x_t )\frac{W_t (x_t )}{p(y_{1:t})} q(x_t \mid y_{1:t})dx_x,
+\E\lbrack f(x) \rbrack &= \int f(x_t )\frac{p(x_t \mid y_{1:t})}{q(x_t \mid y_{1:t})} q(x_t \mid y_{1:t})dx_t\\
+&= \int f(x_t )\frac{p(x_t )p(y_{1:t}\mid x_t )}{p(y_{1:t})q(x_t \mid y_{1:t})} q(x_t \mid y_{1:t})dx_t\\
+&= \int f(x_t )\frac{w_t (x_t )}{p(y_{1:t})} q(x_t \mid y_{1:t})dx_t,
 \end{align*}
-where $W_t (x_t )=\frac{p(x_t )p(y_{1:t}\mid x_t )}{q(x_t \mid y_{1:t})} \propto \frac{p(x_t \mid y_{1:t})}{q(x_t \mid y_{1:t})}$. Because of $p(y_{1:t})=\int p(y_{1:t}\mid x_t )p(x_t )dx_t $, the above equation can be rewritten as
+where $w_t (x_t )=\frac{p(x_t )p(y_{1:t}\mid x_t )}{q(x_t \mid y_{1:t})} \propto \frac{p(x_t \mid y_{1:t})}{q(x_t \mid y_{1:t})}$. Because of $p(y_{1:t})=\int p(y_{1:t}\mid x_t )p(x_t )dx_t $, the above equation can be rewritten as
 \begin{align*}
 \E\lbrack f(x)\rbrack&= \frac{1}{p(y_{1:t})}\int f(x_t )W_t (x_t )q(x_t \mid y_{1:t})dx_t \\
-&= \frac{ \int f(x_t )W_t (x_t )q(x_t \mid y_{1:t})dx_t  }{\int p(y_{1:t}\mid x_t )p(x_t )dx_t } \\
-&= \frac{ \int f(x_t )W_t (x_t )q(x_t \mid y_{1:t})dx_t  }{\int W_t (x_t )q(x_t \mid y_{1:t})dx_t } \\
-&= \frac{\E_{q(x_t \mid y_{1:t})}[W_t (x_t )f(x_t )]}{\E_{q(x_t \mid y_{1:t})}[W_t (x_t )]}.
+&= \frac{ \int f(x_t )w_t (x_t )q(x_t \mid y_{1:t})dx_t  }{\int p(y_{1:t}\mid x_t )p(x_t )dx_t } \\
+&= \frac{ \int f(x_t )w_t (x_t )q(x_t \mid y_{1:t})dx_t  }{\int w_t (x_t )q(x_t \mid y_{1:t})dx_t } \\
+&= \frac{\E_{q(x_t \mid y_{1:t})}[w_t (x_t )f(x_t )]}{\E_{q(x_t \mid y_{1:t})}[w_t (x_t )]}.
 \end{align*}
 To solve the above equation, we can use Monte Carlo method by drawing samples $\left\lbrace x_t^{(i)}\right\rbrace$ from $q(x_t \mid y_{1:t})$ and get its expectation, which is approximated by 
 \begin{align}\label{PFexpectation}
 \begin{split}
-\E\lbrack f(x_t )\rbrack &\approx \frac{\frac{1}{N} \sum_{i=1}^{N} W_t\left(x_t^{(i)}\right)f\left(x_t^{(i)}\right)} {\frac{1}{N} \sum_{i=1}^{N} W_t\left(x_t^{(i)}\right)}\\
-&= \sum_{i=1}^{N} \tilde{W}_t\left(x_t^{(i)}\right)f\left(x_t^{(i)}\right),
+\E\lbrack f(x_t )\rbrack &\approx \frac{\frac{1}{N} \sum_{i=1}^{N} w_t\left(x_t^{(i)}\right)f\left(x_t^{(i)}\right)} {\frac{1}{N} \sum_{i=1}^{N} w_t\left(x_t^{(i)}\right)}\\
+&= \sum_{i=1}^{N} \tilde{w}_t\left(x_t^{(i)}\right)f\left(x_t^{(i)}\right),
 \end{split}
 \end{align}
-where $\tilde{W}_t\left(x_t^{(i)}\right) = \frac{ W_t\left(x_t^{(i)}\right)}{\sum_{i=1}^NW_t\left(x_t^{(i)}\right)}$ is factorized weight. Each particle has its own weighted value, so the overall expectation is a weighted mean. However, the drawback of this method is that the computation is expensive. A smarter way is to update $W_t^{(i)}$ recursively. Suppose the proposal distribution 
+where $\tilde{w}_t\left(x_t^{(i)}\right) = \frac{ w_t\left(x_t^{(i)}\right)}{\sum_{i=1}^Nw_t\left(x_t^{(i)}\right)}$ is factorized weight. Each particle has its own weighted value, so the overall expectation is a weighted mean. However, the drawback of this method is that the computation is expensive. A smarter way is to update $W_t^{(i)}$ recursively. Suppose the proposal distribution 
 \begin{align*}
 q(x_{0:t}\mid y_{1:t}) = q(x_{0:t-1}\mid y_{1:t-1}) q(x_t \mid  x_{0:t-1},y_{1:t}),
 \end{align*}
@@ -125,33 +126,33 @@ p(x_{0:t}\mid y_{1:t}) &= \frac{p(y_t \mid x_{0:t},y_{1:t-1})p(x_{0:t}\mid y_{1:
 \end{align*}
 the recursive form of the weights are
 \begin{align*}
-W_t^{(i)} &\propto \frac{p\left(x_{0:t}^{(i)}\mid y_{1:t}\right)}{q\left(x_{0:t}^{(i)}\mid y_{1:t}\right)}\\
+w_t^{(i)} &\propto \frac{p\left(x_{0:t}^{(i)}\mid y_{1:t}\right)}{q\left(x_{0:t}^{(i)}\mid y_{1:t}\right)}\\
 &= \frac{ p\left(y_{t}\mid x_{t}^{(i)}\right) p\left(x_{t}^{(i)}\mid x_{t-1}^{(i)}\right)  p\left(x_{0:t-1}^{(i)}\mid y_{1:t-1}\right)}   { q\left(x_{t}^{(i)}\mid x_{0:t-1}^{(i)},y_{t}\right)  q\left(x_{0:t-1}^{(i)}\mid y_{1:t-1}\right) } \\
-&= W_{t-1}^{(i)} \frac{ p\left(y_{t}\mid x_{t}^{(i)}\right) p\left(x_{t}^{(i)}\mid x_{t-1}^{(i)}\right) }   {q\left(x_{t}^{(i)}\mid x_{0:t-1}^{(i)},y_{t}\right)}.
+&= w_{t-1}^{(i)} \frac{ p\left(y_{t}\mid x_{t}^{(i)}\right) p\left(x_{t}^{(i)}\mid x_{t-1}^{(i)}\right) }   {q\left(x_{t}^{(i)}\mid x_{0:t-1}^{(i)},y_{t}\right)}.
 \end{align*}
 
 \subsection{Sequential Importance Sampling and Resampling}
  
-In practice, we are more interested in the current estimation $p(x_t \mid y_{1:t})$ instead of $p(x_{0:t}\mid y_{1:t})$. Provided 
+In practice, we are more interested in the current estimation $p(x_t \mid y_{1:t})$ instead of $p(x_{0:t}\mid y_{1:t})$. If  
 \begin{align*}
 q(x_t \mid  x_{0:t-1},y_{1:t})=q(x_t \mid  x_{t-1},y_t ),
 \end{align*}
-the importance weights $W_t^{(i)}$ can be updated recursively via 
+the importance weights $w_t^{(i)}$ can be updated recursively via 
 \begin{align*}
-W_t^{(i)} &\propto W_{t-1}^{(i)} \frac{ p\left(y_t \mid x_t^{(i)}\right) p\left(x_{t}^{(i)}\mid x_{t-1}^{(i)}\right) }   {q\left(x_{t}^{(i)}\mid x_{t-1}^{(i)},y_{t}\right)}.
+w_t^{(i)} &\propto w_{t-1}^{(i)} \frac{ p\left(y_t \mid x_t^{(i)}\right) p\left(x_{t}^{(i)}\mid x_{t-1}^{(i)}\right) }   {q\left(x_{t}^{(i)}\mid x_{t-1}^{(i)},y_{t}\right)}.
 \end{align*}
 
 The problem of SIS filter is that the distribution of importance weights becomes more and more skewed as time increases. Hence, after several iterations, only few particles have non-zero importance weights. This phenomenon is called \textit{weight degeneracy} or \textit{sample impoverishment} \citep{smcmip2011}.
 
-The effective sample size $N_{\mbox{\scriptsize eff}}$ is suggested to monitor how bad the degeneration is, which is defined as 
+The effective sample size $N_{\mbox{\scriptsize ess}}$ is suggested to monitor how bad the degeneration is, which is defined as 
 \begin{align*}
-N_{\mbox{\scriptsize eff}}=\frac{N}{1+\Var\left(w_t^{*(i)}\right)},
+N_{\mbox{\scriptsize ess}}=\frac{N}{1+\Var\left(w_t^{*(i)}\right)},
 \end{align*}
 where $w_t^{*(i)}=\frac{p\left(x_t^{(i)}\mid y_{1:t}\right)}{q\left(x_t^{(i)}\mid x_{t-1}^{(i)},y_{1:t}\right)}$. The more difference of the biggest and smallest weights, the worse the degeneration is. In practice, the effective sample size is approximated by
 \begin{align*}
-\hat{N}_{\mbox{\scriptsize eff}}\approx \frac{1}{\sum_{i=1}^{N}\left(w_t^{(i)}\right)^2}.
+\hat{N}_{\mbox{\scriptsize ess}}\approx \frac{1}{\sum_{i=1}^{N}\left(w_t^{(i)}\right)^2}.
 \end{align*}
-If the value of $N_{\mbox{\scriptsize eff}}$ is less than some threshold, some procedure should be used to avoid a worse degeneration. There are two ways one can do: choose an appropriate probability density function for importance sampling, or use resampling after SIS. 
+If the value of $N_{\mbox{\scriptsize ess}}$ is less than some threshold, some procedure should be used to avoid a worse degeneration. There are two ways one can do: choose an appropriate probability density function for importance sampling, or use resampling after SIS. 
 
 The idea of resampling is keeping the same size of particles, replacing the low weights particles with new ones. As discussed before, 
 \begin{align*}
@@ -222,7 +223,7 @@ w_t^{\left(i\right)}\propto \frac{ p\left(y_t\mid x_t^{\left(i\right)}\right) }{
 \end{equation*}
 This auxiliary variable based SIR requires only the ability to propagate and evaluate the likelihood, just as the original SIR suggested by \cite{gordon1993novel}.  
 
-The main idea behind the APF is modifying the original sequence of target distributions to guide particles in promising regions, can be extended outside the filtering framework \citep{JOHANSEN20081498}. It is also recommended in the literature \citep{liu2008monte} that the particles can be resampled not according to the normalized weights $w_t^{\mbox{\tiny SISR}}(x_{1:t})=\frac{p(x_{1:t})}{ p(x_{1:t-1}q(x_t\mid x_{1:t-1})  }$  but according to a generic score function $w_t(x_{1:t})>0$ at time $t$
+The main idea behind the APF is modifying the original sequence of target distributions to guide particles in promising regions, can be extended outside the filtering framework \citep{JOHANSEN20081498}. It is also recommended in the literature \citep{liu2008monte} that the particles can be resampled not according to the normalized weights $w_t^{\mbox{\tiny SISR}}(x_{1:t})=\frac{p(x_{1:t})}{ p(x_{1:t-1})q(x_t\mid x_{1:t-1})  }$  but according to a generic score function $w_t(x_{1:t})>0$ at time $t$
 \begin{equation*}
 w_t(x_{1:t}) = g\left(w_t^{\mbox{\tiny SISR}}(x_{1:t})\right),
 \end{equation*}
@@ -239,7 +240,7 @@ As a complementary solution, \textit{sequential particle filter} method was prop
 
 In a batch mode, we are assuming that the parameter $\theta$ is static. When the first $k$ observations become available, we can find the posterior distribution $\pi(\theta\mid y_{1:k})$. After that, with length of $l (<\infty)$ observations coming into data stream, the posterior becomes $\pi(\theta\mid y_{1:k+l})$ and it is likely to be similar with $\pi(\theta\mid y_{1:k})$.  Hence, a set of proper re-weighted particles by the incremental weight is 
 \begin{align*}
-w_{k,l}(\theta) &\propto \frac{\pi(\theta\mid y_{1:k+l}) }{\pi(\theta\mid y_{1:k}} \\
+w_{k,l}(\theta) &\propto \frac{\pi(\theta\mid y_{1:k+l}) }{\pi(\theta\mid y_{1:k})} \\
 &\propto \frac{p(y_{1:k+l}\mid \theta) }{p(y_{1:k}\mid\theta)} \\
 &=p(y_{k+1:k+l}\mid y_{1:k},\theta). 
 \end{align*}
@@ -502,9 +503,9 @@ By denoting $s_t$ and $s_t^x$ the sufficient statistics for the parameter and st
 \For{$i=1,\ldots,N$}{
 Re-sample $\tilde{z}_k^{\left(i\right)}=\left(\tilde{s}_k^{x\left(i\right)},\tilde{s}_k^{\left(i\right)},\tilde{\theta}^{\left(i\right)}\right)$ from $z_k^{(i)} = \left( s_k^x,s_k,\theta\right)^{(i)}$ with weight $w_k\propto p\left(y_{k+1}\mid z_t^{(i)} \right)$.\\
 Draw $x_{k+1}^{(i)}$ from $p\left(x_{k+1}\mid \tilde{z}_t^{(i)},y_{1:k+1}\right)$. \\
-Update sufficient statistics  $s_{k+1}^{(i)}=S\left(\tilde{s}_{k}^{(i)}, x_{k+1}^{(i)},y_{k+1}\right)$. \\
+Update parameter-sufficient statistics  $s_{k+1}^{(i)}=S\left(\tilde{s}_{k}^{(i)}, x_{k+1}^{(i)},y_{k+1}\right)$. \\
 Sample $\theta^{(i)}$ from $p\left(\theta \mid  s_{k+1}^{(i)}\right)$. \\
-Update $s_{k+1}^x = K\left(s_{k}^x,\theta,y_{k+1}\right)$.
+Update state-sufficient statistics $s_{k+1}^{x(i)} = K\left(s_{k}^{x(i)},\theta^{(i)},y_{k+1}\right)$.
 }
 }
 \caption{Particle Learning Algorithm}\label{algorithmPL}

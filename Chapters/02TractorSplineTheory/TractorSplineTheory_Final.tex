@@ -868,7 +868,7 @@ Thereafter, we convert the longitude and latitude information from a 3D sphere t
 u &=s\cdot \sin \left(\omega\frac{\pi}{180}\right),\\
 v &= s\cdot \cos \left(\omega\frac{\pi}{180}\right),
 \end{align}
-where $\omega$ is the bearing in degrees. Boom status is tagged as 0 if it is not operating and 1 if it is. Time marks are transformed by subtracting the first mark, in which way the time starts from 0. Time duplicated data, caused by errors, had been removed from the dataset. In the convenience of comparing with wavelet algorithm, we choose the first 512 out of 928 rows of data. The original measurements are plotted in Figure \ref{original512}.
+where $\omega$ is the bearing in degrees. Boom status is tagged as 0 if it is not operating and 1 if it is. Time marks are transformed by subtracting the first mark, in which way the time starts from 0. Time duplicated data, caused by errors, have been removed from the dataset\footnote{In some cases, further data simplification to remove spurious or non-informative observations may be warranted. In Appendix \ref{appendSimp}, we introduce a new data simplification method for vehicle trajectories which compares favorably with Douglas-Peucker algorithm.  }. For the convenience of comparing with wavelet algorithm, we choose the first 512 out of 928 rows of data. The original measurements are plotted in Figure \ref{original512}.
 
 
 \begin{figure}

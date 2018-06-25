@@ -21,7 +21,7 @@
 \contentsline {subsection}{\numberline {2.4.2}Irregularly Sampled Time Series Data}{37}
 \contentsline {section}{\numberline {2.5}Inference of Tractor Trajectories}{39}
 \contentsline {subsection}{\numberline {2.5.1}1-Dimensional Trajectory}{40}
-\contentsline {subsection}{\numberline {2.5.2}2-Dimensional Trajectory}{41}
+\contentsline {subsection}{\numberline {2.5.2}2-Dimensional Trajectory}{42}
 \contentsline {section}{\numberline {2.6}Conclusion and Discussion}{42}
 \contentsline {chapter}{\numberline {3}V-Spline as Bayes Estimate}{53}
 \contentsline {section}{\numberline {3.1}Introduction}{53}
@@ -41,67 +41,67 @@
 \contentsline {section}{\numberline {4.2}State Estimation Filters}{69}
 \contentsline {subsection}{\numberline {4.2.1}Sequential Monte Carlo Method}{69}
 \contentsline {subsection}{\numberline {4.2.2}Importance sampling}{71}
-\contentsline {subsection}{\numberline {4.2.3}Sequential Importance Sampling and Resampling}{73}
-\contentsline {subsection}{\numberline {4.2.4}Auxiliary Particle Filter}{75}
-\contentsline {subsection}{\numberline {4.2.5}Sequential Particle Filter}{76}
+\contentsline {subsection}{\numberline {4.2.3}Sequential Importance Sampling and Resampling}{72}
+\contentsline {subsection}{\numberline {4.2.4}Auxiliary Particle Filter}{74}
+\contentsline {subsection}{\numberline {4.2.5}Sequential Particle Filter}{75}
 \contentsline {subsection}{\numberline {4.2.6}MCMC-Based Particle Algorithm}{77}
 \contentsline {section}{\numberline {4.3}On-line State and Parameter Estimation}{78}
-\contentsline {subsection}{\numberline {4.3.1}Artificial Dynamic Noise}{80}
-\contentsline {subsection}{\numberline {4.3.2}Practical Filtering}{80}
-\contentsline {subsection}{\numberline {4.3.3}Liu and West's Filter}{81}
+\contentsline {subsection}{\numberline {4.3.1}Artificial Dynamic Noise}{79}
+\contentsline {subsection}{\numberline {4.3.2}Practical Filtering}{79}
+\contentsline {subsection}{\numberline {4.3.3}Liu and West's Filter}{80}
 \contentsline {subsection}{\numberline {4.3.4}Storvik Filter}{82}
-\contentsline {subsection}{\numberline {4.3.5}Particle Learning}{84}
+\contentsline {subsection}{\numberline {4.3.5}Particle Learning}{82}
 \contentsline {subsection}{\numberline {4.3.6}Adaptive Ensemble Kalman Filter}{84}
 \contentsline {subsection}{\numberline {4.3.7}On-line Pseudo-Likelihood Estimation}{86}
-\contentsline {section}{\numberline {4.4}Simulation Study}{87}
-\contentsline {section}{\numberline {4.5}Conclusion}{89}
-\contentsline {chapter}{\numberline {5}Adaptive Sequential MCMC for On-line State and Parameter Estimation}{95}
-\contentsline {section}{\numberline {5.1}Introduction}{95}
-\contentsline {section}{\numberline {5.2}Bayesian Inference on Combined State and Parameter}{96}
-\contentsline {subsection}{\numberline {5.2.1}The Posterior Distribution}{98}
-\contentsline {subsection}{\numberline {5.2.2}The Forecast Distribution}{99}
-\contentsline {subsection}{\numberline {5.2.3}The Estimation Distribution}{100}
-\contentsline {section}{\numberline {5.3}Random Walk Metropolis-Hastings Algorithm}{101}
-\contentsline {subsection}{\numberline {5.3.1}The Self-tuning Metropolis-Hastings Algorithm}{102}
-\contentsline {subsection}{\numberline {5.3.2}Adaptive Delayed-Acceptance Metropolis-Hastings Algorithm}{104}
-\contentsline {subsection}{\numberline {5.3.3}Efficiency of Metropolis-Hastings Algorithm}{106}
-\contentsline {section}{\numberline {5.4}Simulation Studies}{109}
-\contentsline {subsection}{\numberline {5.4.1}Simulation on Regularly Sampled Time Series Data}{110}
-\contentsline {subsection}{\numberline {5.4.2}Simulation on Irregularly Sampled Time Series Data}{114}
-\contentsline {section}{\numberline {5.5}High Dimensional Ornstein-Uhlenbeck Process Application}{118}
-\contentsline {subsection}{\numberline {5.5.1}The Posterior Distribution}{121}
-\contentsline {subsection}{\numberline {5.5.2}The Forecast Distribution}{122}
-\contentsline {subsection}{\numberline {5.5.3}The Estimation Distribution}{124}
-\contentsline {subsection}{\numberline {5.5.4}Prior Distribution for Parameters}{124}
-\contentsline {subsection}{\numberline {5.5.5}Efficiency of Delayed-Acceptance Metropolis-Hastings Algorithm}{126}
-\contentsline {subsection}{\numberline {5.5.6}A Sliding Window State and Parameter Estimation Approach}{127}
-\contentsline {subsection}{\numberline {5.5.7}Implementation}{132}
-\contentsline {section}{\numberline {5.6}Discussion and Future Work}{137}
-\contentsline {chapter}{\numberline {6}Future Work}{139}
-\contentsline {chapter}{\numberline {7}Summary}{143}
-\contentsline {chapter}{Appendices}{147}
+\contentsline {section}{\numberline {4.4}Simulation Study}{86}
+\contentsline {section}{\numberline {4.5}Conclusion}{88}
+\contentsline {chapter}{\numberline {5}Adaptive Sequential MCMC for On-line State and Parameter Estimation}{93}
+\contentsline {section}{\numberline {5.1}Introduction}{93}
+\contentsline {section}{\numberline {5.2}Bayesian Inference on Combined State and Parameter}{94}
+\contentsline {subsection}{\numberline {5.2.1}The Posterior Distribution}{96}
+\contentsline {subsection}{\numberline {5.2.2}The Forecast Distribution}{97}
+\contentsline {subsection}{\numberline {5.2.3}The Estimation Distribution}{98}
+\contentsline {section}{\numberline {5.3}Random Walk Metropolis-Hastings Algorithm}{99}
+\contentsline {subsection}{\numberline {5.3.1}The Self-tuning Metropolis-Hastings Algorithm}{100}
+\contentsline {subsection}{\numberline {5.3.2}Adaptive Delayed-Acceptance Metropolis-Hastings Algorithm}{102}
+\contentsline {subsection}{\numberline {5.3.3}Efficiency of Metropolis-Hastings Algorithm}{104}
+\contentsline {section}{\numberline {5.4}Simulation Studies}{107}
+\contentsline {subsection}{\numberline {5.4.1}Simulation on Regularly Sampled Time Series Data}{108}
+\contentsline {subsection}{\numberline {5.4.2}Simulation on Irregularly Sampled Time Series Data}{112}
+\contentsline {section}{\numberline {5.5}High Dimensional Ornstein-Uhlenbeck Process Application}{116}
+\contentsline {subsection}{\numberline {5.5.1}The Posterior Distribution}{119}
+\contentsline {subsection}{\numberline {5.5.2}The Forecast Distribution}{120}
+\contentsline {subsection}{\numberline {5.5.3}The Estimation Distribution}{122}
+\contentsline {subsection}{\numberline {5.5.4}Prior Distribution for Parameters}{122}
+\contentsline {subsection}{\numberline {5.5.5}Efficiency of Delayed-Acceptance Metropolis-Hastings Algorithm}{124}
+\contentsline {subsection}{\numberline {5.5.6}A Sliding Window State and Parameter Estimation Approach}{125}
+\contentsline {subsection}{\numberline {5.5.7}Implementation}{130}
+\contentsline {section}{\numberline {5.6}Discussion and Future Work}{135}
+\contentsline {chapter}{\numberline {6}Future Work}{137}
+\contentsline {chapter}{\numberline {7}Summary}{141}
+\contentsline {chapter}{Appendices}{145}
 \setcounter {tocdepth}{1}
 \begingroup \let \l@chapter \l@section \let \l@section \l@subsection 
-\contentsline {chapter}{\numberline {A}Proofs and Figures of V-Spline Theorems}{148}
-\contentsline {section}{\numberline {A.1}Penalty Matrix in \textup {\hbox {\mathsurround \z@ \normalfont (\ignorespaces 2.11\hbox {}\unskip \@@italiccorr )}}}{149}
-\contentsline {section}{\numberline {A.2}Proof of Theorem 1\hbox {}}{150}
-\contentsline {section}{\numberline {A.3}Proof of Corollary 1\hbox {}}{150}
-\contentsline {section}{\numberline {A.4}Proof of Lemma 2\hbox {}}{152}
-\contentsline {section}{\numberline {A.5}Proof of Theorem 2\hbox {}}{152}
-\contentsline {section}{\numberline {A.6}Reconstructions at SNR=3}{153}
-\contentsline {section}{\numberline {A.7}Residual Analysis of Simulations}{153}
-\contentsline {chapter}{\numberline {B}Calculations and Figures of Adaptive Sequential MCMC}{158}
-\contentsline {section}{\numberline {B.1}Linear Simulation Calculations}{158}
-\contentsline {section}{\numberline {B.2}OU-Process Calculation}{162}
-\contentsline {section}{\numberline {B.3}Covariance Matrix in Details}{167}
-\contentsline {section}{\numberline {B.4}Real Data Implementation}{169}
-\contentsline {section}{\numberline {B.5}Comparison Between Batch and Sliding Window Methods}{173}
-\contentsline {section}{\numberline {B.6}Parameter Evolution Visualization}{175}
-\contentsline {chapter}{\numberline {C}A Spin-off Outcome: Data Simplification Method}{179}
-\contentsline {section}{\numberline {C.1}Introduction}{179}
-\contentsline {section}{\numberline {C.2}Simplification Algorithm}{180}
-\contentsline {section}{\numberline {C.3}Evaluation}{181}
-\contentsline {section}{\numberline {C.4}Numerical Study}{182}
-\contentsline {section}{\numberline {C.5}Conclusion}{185}
+\contentsline {chapter}{\numberline {A}Proofs and Figures of V-Spline Theorems}{146}
+\contentsline {section}{\numberline {A.1}Penalty Matrix in \textup {\hbox {\mathsurround \z@ \normalfont (\ignorespaces 2.11\hbox {}\unskip \@@italiccorr )}}}{147}
+\contentsline {section}{\numberline {A.2}Proof of Theorem 1\hbox {}}{148}
+\contentsline {section}{\numberline {A.3}Proof of Corollary 1\hbox {}}{148}
+\contentsline {section}{\numberline {A.4}Proof of Lemma 2\hbox {}}{150}
+\contentsline {section}{\numberline {A.5}Proof of Theorem 2\hbox {}}{150}
+\contentsline {section}{\numberline {A.6}Reconstructions at SNR=3}{151}
+\contentsline {section}{\numberline {A.7}Residual Analysis of Simulations}{151}
+\contentsline {chapter}{\numberline {B}Calculations and Figures of Adaptive Sequential MCMC}{156}
+\contentsline {section}{\numberline {B.1}Linear Simulation Calculations}{156}
+\contentsline {section}{\numberline {B.2}OU-Process Calculation}{160}
+\contentsline {section}{\numberline {B.3}Covariance Matrix in Details}{165}
+\contentsline {section}{\numberline {B.4}Real Data Implementation}{167}
+\contentsline {section}{\numberline {B.5}Comparison Between Batch and Sliding Window Methods}{171}
+\contentsline {section}{\numberline {B.6}Parameter Evolution Visualization}{173}
+\contentsline {chapter}{\numberline {C}A Spin-off Outcome: Data Simplification Method}{177}
+\contentsline {section}{\numberline {C.1}Introduction}{177}
+\contentsline {section}{\numberline {C.2}Simplification Algorithm}{178}
+\contentsline {section}{\numberline {C.3}Evaluation}{179}
+\contentsline {section}{\numberline {C.4}Numerical Study}{180}
+\contentsline {section}{\numberline {C.5}Conclusion}{183}
 \endgroup 
-\contentsline {chapter}{\hbox to\@tempdima {\hfil }References}{185}
+\contentsline {chapter}{\hbox to\@tempdima {\hfil }References}{183}
