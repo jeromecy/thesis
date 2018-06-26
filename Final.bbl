@@ -76,11 +76,6 @@ Arlot, S., Celisse, A., {\em et~al.} (2010).
 \newblock A survey of cross-validation procedures for model selection.
 \newblock {\em Statistics surveys\/},~{\em 4}, 40--79.
 
-\bibitem[\protect\citeauthoryear{Arnaud~Doucet}{Arnaud~Doucet}{2011}]{smcmip2011}
-Arnaud~Doucet, Nando de~Freitas, N.~G. (2011).
-\newblock {\em Sequential Monte Carlo Methods in Practice}.
-\newblock Springer-Verlag New York.
-
 \bibitem[\protect\citeauthoryear{Aronszajn}{Aronszajn}{1950}]{aronszajn1950theory}
 Aronszajn, N. (1950).
 \newblock Theory of reproducing kernels.
@@ -490,6 +485,12 @@ Donoho, D.~L. and Johnstone, J.~M. (1994).
 \newblock Ideal spatial adaptation by wavelet shrinkage.
 \newblock {\em biometrika\/},~{\em 81\/}(3), 425--455.
 
+\bibitem[\protect\citeauthoryear{Doucet, de~Freitas, and Gordon}{Doucet {\em
+  et~al.}}{2011}]{smcmip2011}
+Doucet, A., de~Freitas, N., and Gordon, N. (2011).
+\newblock {\em Sequential Monte Carlo Methods in Practice}.
+\newblock Springer-Verlag New York.
+
 \bibitem[\protect\citeauthoryear{Doucet, De~Freitas, Murphy, and
   Russell}{Doucet {\em et~al.}}{2000}]{doucet2000rao}
 Doucet, A., De~Freitas, N., Murphy, K., and Russell, S. (2000).
@@ -547,6 +548,13 @@ Einstein, A. (1956).
   notes by, R. F̈urth, translated by AD Cowper Dover Publications, Reprinted
   from (1905).
 \newblock {\em Ann. Phys\/},~{\em 17}, 549--560.
+
+\bibitem[\protect\citeauthoryear{Elliott, Aggoun, and Moore}{Elliott {\em
+  et~al.}}{1995}]{elliott1995estimation}
+Elliott, R.~J., Aggoun, L., and Moore, J.~B. (1995).
+\newblock {\em Hidden Markov Models: Estimation and control\/} (1 ed.),
+  Volume~29 of {\em 0172-4568}.
+\newblock Springer-Verlag New York.
 
 \bibitem[\protect\citeauthoryear{Ellis, Sommerlade, and Reid}{Ellis {\em
   et~al.}}{2009}]{ellis2009}
@@ -816,6 +824,13 @@ Hartmann, M., Nowak, T., Pfandenhauer, O., Thielecke, J., and Heuberger, A.
   measurements.
 \newblock In {\em Wireless On-demand Network Systems and Services (WONS), 2016
   12th Annual Conference on},  1--8. IEEE.
+
+\bibitem[\protect\citeauthoryear{Hastie, Tibshirani, and Friedman}{Hastie {\em
+  et~al.}}{2009}]{esl2009}
+Hastie, T., Tibshirani, R., and Friedman, J. (2009).
+\newblock {\em The Elements of Statistical Learning: Data Mining, Inference,
+  and Prediction.\/} (Second Edition ed.).
+\newblock Springer-Verlag.
 
 \bibitem[\protect\citeauthoryear{Hastie and Tibshirani}{Hastie and
   Tibshirani}{1990}]{hastie1990generalized}
@@ -1287,13 +1302,6 @@ Robert, C.~P. (2004).
 \newblock {\em Monte carlo methods}.
 \newblock Wiley Online Library.
 
-\bibitem[\protect\citeauthoryear{Robert J~Elliott}{Robert
-  J~Elliott}{1995}]{elliott1995estimation}
-Robert J~Elliott, Lakhdar~Aggoun, J. B.~M. (1995).
-\newblock {\em Estimation and control: Estimation and Control}, Volume~29 of
-  {\em 0172-4568}.
-\newblock Springer-Verlag New York.
-
 \bibitem[\protect\citeauthoryear{Roberts, Gelman, Gilks, {\em et~al.}}{Roberts
   {\em et~al.}}{1997}]{roberts1997weak}
 Roberts, G.~O., Gelman, A., Gilks, W.~R., {\em et~al.} (1997).
@@ -1330,6 +1338,13 @@ S{\"a}rkk{\"a}, S. (2013).
 \newblock {\em Bayesian filtering and smoothing}, Volume~3.
 \newblock Cambridge University Press.
 
+\bibitem[\protect\citeauthoryear{Schöbel and Zhu}{Schöbel and
+  Zhu}{1999}]{Schobel1999Stochastic}
+Schöbel, R. and Zhu, J. (1999).
+\newblock Stochastic Volatility With an Ornstein–Uhlenbeck Process: An
+  Extension.
+\newblock {\em Review of Finance\/},~{\em 3\/}(1), 23--46.
+
 \bibitem[\protect\citeauthoryear{Schoenberg}{Schoenberg}{1964}]{schoenberg1964spline}
 Schoenberg, I.~J. (1964).
 \newblock Spline functions and the problem of graduation.
@@ -1341,13 +1356,6 @@ Schwarz, K.-P. (2012).
 \newblock {\em Geodesy Beyond 2000: The Challenges of the First Decade, IAG
   General Assembly Birmingham, July 19--30, 1999}, Volume 121.
 \newblock Springer Science \& Business Media.
-
-\bibitem[\protect\citeauthoryear{Schöbel and Zhu}{Schöbel and
-  Zhu}{1999}]{Schobel1999Stochastic}
-Schöbel, R. and Zhu, J. (1999).
-\newblock Stochastic Volatility With an Ornstein–Uhlenbeck Process: An
-  Extension.
-\newblock {\em Review of Finance\/},~{\em 3\/}(1), 23--46.
 
 \bibitem[\protect\citeauthoryear{Sealfon, Verde, and Jimenez}{Sealfon {\em
   et~al.}}{2005}]{sealfon2005smoothing}
@@ -1441,7 +1449,7 @@ Sokal, A. (1997).
 \newblock In {\em Functional integration},  131--192. Springer.
 
 \bibitem[\protect\citeauthoryear{Sorenson}{Sorenson}{1985}]{sorenson1985kalman}
-Sorenson, H. W. (Harold~Wayne), .-I. C. S.~S. (1985).
+Sorenson, H.~W. (1985).
 \newblock {\em Kalman filtering: theory and application}.
 \newblock IEEE Press.
 
@@ -1526,12 +1534,6 @@ Toloei, A. and Niazi, S. (2014).
 \newblock {\em International Journal of Computer Applications\/},~{\em
   98\/}(17), 30--36.
 \newblock Full text available.
-
-\bibitem[\protect\citeauthoryear{Trevor~Hastie}{Trevor~Hastie}{2009}]{esl2009}
-Trevor~Hastie, Robert~Tibshirani, J.~F. (2009).
-\newblock {\em The Elements of Statistical Learning: Data Mining, Inference,
-  and Prediction.Second Edition\/} (Second Edition ed.).
-\newblock Springer-Verlag.
 
 \bibitem[\protect\citeauthoryear{Turitsyn, Chertkov, and Vucelja}{Turitsyn {\em
   et~al.}}{2011}]{turitsyn2011irreversible}

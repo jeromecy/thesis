@@ -59,9 +59,9 @@ A further minimizer of \eqref{tractorsplineObjective} is called a \textit{V-spli
 \subsection{Constructing Basis Functions}
 
 To construct basis functions cooperating with position and velocity, it is recommended to use the cubic Hermite spline \citep{Hermite1863Remarque}, by which the combination of heading and speeding at both registration points are treated at two points \citep{hintzen2010improved}. The following equation describes the cubic Hermite spline on interval $[0,1]$
-\begin{equation*}
+\begin{equation}
 f(s)=\left(2s^3-3s^2+1\right)y_0+\left(s^3-2s^2+s\right)v_0+\left(-2s^3+3s^2\right)y_1+\left(s^3-s^2\right)v_1.
-\end{equation*}
+\end{equation}
 For an arbitrary interval $[t_i, t_{i+1})$, one can replace $s$ with $(t-t_i)/(t_{i+1}-t_i)$ and the cubic spline basis functions are 
 \begin{align}\label{hermitebasis1}
 & h_{00}^{\left(i\right)}\left(t\right)=
@@ -89,19 +89,19 @@ f^{(i)}(t)=h_{00}^{(i)}(t)y_i+h_{10}^{(i)}(t) \left(t_{i+1}-t_i\right)  v_i+h_{0
 \end{equation}
 
 To construct basis function for a V-spline on the entire interval $[a,b]$, the new basis functions are defined in such way, that $N_1 = h^{(1)}_{00}$, $N_2 = h^{(1)}_{10}$, and for all $i=1,2,\ldots,n-2$, 
-\begin{align*}
+\begin{align}
 N_{2i+1}(t)&=h_{01}^{(i)}(t)+h_{00}^{(i+1)}(t), \\
 N_{2i+2}(t)&= h_{11}^{(i)}(t)+h_{10}^{(i+1)}(t),
-\end{align*}
+\end{align}
 and
-\begin{align*}
+\begin{align}
 N_{2n-1}(t) &= 
 \begin{cases}
 h_{01}^{(n-1)}(t) & \mbox{if $t<t_n$}\\ 
 1 & \mbox{if $t=t_n$}
 \end{cases},\\
 N_{2n}(t) &= h_{11}^{(n-1)}(t).
-\end{align*}
+\end{align}
 Any $f$ in the function space can be represented in the form of
 \begin{equation}
 f=\sum_{k=1}^{2n}N_k(t)\theta_k,
@@ -192,20 +192,22 @@ The proof of the Corollary \ref{TractorsplineCorollary} is in Appendix \ref{proo
 
 
 The polynomial in cubic Hermite spline form consists of two points with two positions and two velocities. Suppose there are two points $P_1=\{t_1,y_1,v_1\}$ and $P_2=\{t_2,y_2,v_2\}$ on the an arbitrary interval $[t_1,t_2]$. For sake of simplicity, by assuming $t_1=0$ and $y_1=0$, one can achieve a simple cubic Hermite spline from equation \eqref{cubicHermitesplineform} 
-\begin{equation*}
+\begin{equation}
 f(t) =\left\{ \left(s^3-2s^2+s\right) v_1+\left(-2s^3+3s^2\right)\frac{\Delta d_1}{\Delta T_1}+\left(s^3-s^2\right)v_2 \right\}\Delta T_1, 
-\end{equation*}
+\end{equation}
 where $s=\frac{t}{\Delta T_1}$. Thus, the second derivative of $f$ is  
-\begin{align*}
+\begin{equation}
 f''(t)=\frac{1}{\Delta T_1}\left\{ 6\left(\varepsilon_1+\varepsilon_2\right)s-2\left(2\varepsilon_1+\varepsilon_2\right)\right\},
-\end{align*}
+\end{equation}
 where $\varepsilon_1=v_1-\bar{v}$, $\varepsilon_2=v_2-\bar{v}$ and $\bar{v}$ is the average velocity $\Delta d_1/\Delta T_1$. Hence, the penalty term $\lambda \int_{t_1}^{t_2}\left(f''(t)\right)^2dt = \lambda \int_0^1 \left(f''(s)\right)^2\Delta T_1 ds$. Being more explicit, the penalty term becomes 
 \begin{equation}\label{VSplinePenaltyLambda}
 \lambda \int_0^1\left( \frac{f''(s)}{\Delta T_1}\right)^2\Delta T_1 ds = \lambda \frac{\left(2\varepsilon_1+\varepsilon_2\right)^2+3\varepsilon_2^2}{\Delta T_1}. 
 \end{equation}
 Given a constant $\lambda = \frac{\left(\Delta T_1\right)^3}{\left(\Delta d_1\right)^2}\eta$, the penalty term \eqref{VSplinePenaltyLambda} becomes
 \begin{equation}\label{APTintroequation}
-\eta \frac{\left(\Delta T_1\right)^2}{\left(\Delta d_1\right)^2} \left(\left(2\varepsilon_1+\varepsilon_2\right)^2+3\varepsilon_2^2\right)= \eta \frac{\left(2\varepsilon_1+\varepsilon_2\right)^2+3\varepsilon_2^2}{\bar{v}^2}\sim \left(\frac{\mbox{discrepancy in velocity}}{\mbox{average velocity}}\right)^2, 
+\begin{split}
+\eta \frac{\left(\Delta T_1\right)^2}{\left(\Delta d_1\right)^2} \left(\left(2\varepsilon_1+\varepsilon_2\right)^2+3\varepsilon_2^2\right) &= \eta \frac{\left(2\varepsilon_1+\varepsilon_2\right)^2+3\varepsilon_2^2}{\bar{v}^2} \\ &\sim \left(\frac{\mbox{discrepancy in velocity}}{\mbox{average velocity}}\right)^2, 
+\end{split}
 \end{equation}
 which will be enormous with large measured errors in velocity $v_1$ or $v_2$ comparing to average velocity $\bar{v}$. 
 
@@ -296,22 +298,22 @@ Now, focus on an observation $y_i$ at point $t_i$ as being a new observation by 
 \frac{1}{n}\sum_{j \neq i}\left(y_j-f(t_j) \right)^2+\lambda\int (f'')^2dt,
 \end{equation}
 and can be quantified by the cross-validation score function
-\begin{equation*}
+\begin{equation}\label{cvform}
 \mbox{CV}(\lambda)=\frac{1}{n}\sum_{i=1}^{n}\left(  y_i-\hat{f}^{(-i)}(t_i,\lambda)\right) ^2.
-\end{equation*}
+\end{equation}
 The basis idea of the cross-validation is to choose the value of $\lambda$ that minimizes $\mbox{CV}(\lambda)$ \citep{green1993nonparametric}. 
 
 %An efficient way to calculate the cross-validation score is introduced by \citep{green1993nonparametric}. 
 Through the equation \eqref{fhy}, it is known that the value of the smoothing spline $\hat{f}$ depends linearly on the data $y_1,\ldots,y_n$. Define the matrix $A(\lambda)$, which is a map vector of observed values $y_i$ to predicted values $\hat{f}(t_i)$. Then we have
-\begin{equation*}\label{crossvalidationmatrixA}
+\begin{equation}\label{crossvalidationmatrixA}
 \hat{\mathbf{f}}=A(\lambda)\mathbf{y}
-\end{equation*}
+\end{equation}
 and the following lemma.
 \begin{lemma}\citep{green1993nonparametric}\label{cvlema}
 The cross-validation score satisfies
-\begin{equation*}
+\begin{equation}
 \mbox{CV}(\lambda)=\frac{1}{n} \sum_{i=1}^n \left(\frac{y_i-\hat{f}(t_i)}{1-A_{ii}(\lambda)}\right)^2
-\end{equation*}
+\end{equation}
 where $\hat{f}$ is the spline smoother calculated from the full data set $\left\lbrace (t_i,y_i)\right\rbrace$ with smoothing parameter $\lambda$.
 \end{lemma}
 
@@ -1065,9 +1067,9 @@ In the adjusted penalty term, $\Delta d$ is the Euclidean distance $\Delta_d(p_1
 \end{figure}
 
 The penalty function $\lambda(t)$ of a 2-dimensional reconstruction is shared by $x$ and $y$ axes and presented in Figure \ref{2dpenalty}. The complete penalty term is 
-\begin{equation*}
+\begin{equation}
 n\theta_x^\top\Omega_{\eta_d,\eta_u}\theta_x + n\theta_y^\top\Omega_{\eta_d,\eta_u}\theta_y.
-\end{equation*}
+\end{equation}
 Similarly, most of the large penalty values appear at long-time-gap knots and turning points. A histogram plot of penalty function shows that most of the values are small and only a couple of them are large. 
 \begin{figure}
   \centering

@@ -69,12 +69,12 @@ Some form of interpolation is an obvious approach to trajectory reconstruction. 
 %\end{equation*}
 %The key step of a spline interpolation is the choice of basis functions. Once the $h_i(t)$ have been determined, the models are linear in the variables space. 
 
-A number of splines are commonly in use, see \cite{esl2009} for discussions. The B-spline, short for basis spline, gives a closed-form expression for the trajectory with continuous second derivatives and goes through the points smoothly while ignoring outliers \citep{komoriya1989trajectory, ben2004geometric}. It is flexible and has minimal support with respect to a given degree, smoothness, and domain partition. Once the knots are given, it is easy to compute the B-spline recursively for any desired degree of the polynomial \citep{de1978practical, cox1982practical}. An attractive feature of the B-spline is its flexibility for univariate regression and its appealing simplicity of the method is explained in \citep{dierckx1995curve, eilers1996flexible}. \cite{gasparetto2007new} use a fifth-order B-spline to compose the overall trajectory. Almost every spline can be represented as a B-spline. 
+A number of splines are commonly in use, see Chapter 5 of \cite{esl2009} for discussions. The B-spline, short for basis spline, gives a closed-form expression for the trajectory with continuous second derivatives and goes through the points smoothly while ignoring outliers \citep{komoriya1989trajectory, ben2004geometric}. It is flexible and has minimal support with respect to a given degree, smoothness, and domain partition. Once the knots are given, it is easy to compute the B-spline recursively for any desired degree of the polynomial \citep{de1978practical, cox1982practical}. An attractive feature of the B-spline is its flexibility for univariate regression and its appealing simplicity of the method is explained in \citep{dierckx1995curve, eilers1996flexible}. \cite{gasparetto2007new} use a fifth-order B-spline to compose the overall trajectory. Almost every spline can be represented as a B-spline. 
 
 Another widely used spline is the piecewise cubic spline, which is continuous on an interval $[a,b]$ and has continuous first and second derivatives \citep{wolberg1988cubic}. Let $f(t)$ denote a trajectory reconstruction, \ie the location of the vehicle at time $t$. For the piecewise cubic spline,  
-\begin{equation*}
+\begin{equation}
 f(t)=d_j(t-t_j)^3+c_j(t-t_j)^2+b_j(t-t_j)+a_j,
-\end{equation*}
+\end{equation}
 on the subinterval $[t_j,t_{j+1})$ with given coefficients $d_j, c_j, b_j$ and $a_j$, $j=1,2,\ldots,K$. The coefficients are chose in such a way that $f$ and its first and second derivatives are continuous at each knot $t_j$. If the second derivative of $f$ is zero at $a$ and $b$, $f$ is said to be a \textit{natural cubic spline} and these conditions are called the \textit{natural boundary conditions}  \citep{green1993nonparametric}. 
 
 
@@ -137,21 +137,21 @@ Vary  $\lambda$ systematically and repeat steps \ref{kfoldCV01} to \ref{kfoldCV0
 \caption{$k$-fold Cross-Validation}\label{kfoldCV}
 \end{algorithm}
 Mathematically, we denote the CV score as 
-\begin{equation*}
+\begin{equation}\label{chapOneCVform}
 \mbox{CV}(\hat{f},\lambda) = \frac{1}{n}\sum_i^n \left( y_i -\hat{f}^{-k(i)}(t_i,\lambda) \right)^2,
-\end{equation*}
-where $\hat{f}^{(-k)}(t)$ denotes the fitted function computed with the $k$th part of the data removed. Typical choices for $k$ are 5 and 10 \citep{esl2009}.  The function $\mbox{CV}(\hat{f},\lambda)$ provides an estimate of the test error curve, and the tuning parameter $\lambda$ that minimizes it will be the optimal solution. 
+\end{equation}
+where $\hat{f}^{(-k)}(t)$ denotes the fitted function computed with the $k$-th part of the data removed. Typical choices for $k$ are 5 and 10 \citep{esl2009}.  The function $\mbox{CV}(\hat{f},\lambda)$ provides an estimate of the test error curve, and the tuning parameter $\lambda$ that minimizes it will be the optimal solution. 
 
 A special case of $k$-fold CV is setting $k=n$, which is known as \textit{leave-one-out cross-validation}. In this scenario, the CV function takes each of the data out and calculate the errors of $\hat{f}^{(-i)}$ from the remaining $n-1$ points. In fact, with the property that taking one point out does not affect the estimation, the fitting of a smoothing spline allows us to implement CV methods without hesitation. 
 
 As an improvement of CV, the GCV algorithm was proposed to calculate the trace of the estimation matrix $A(\lambda)$ instead of calculating individual elements for linear fitting under squared error loss, in which way it provides further computational savings. Suppose we have a solution $\hat{f}=A(\lambda)y$ with a given $\lambda$, for many linear fittings, the CV score is 
-\begin{equation*}
+\begin{equation}
 \mbox{CV} = \frac{1}{n}\sum_{i=1}^{n} \left( y_i - \hat{f}^{(-i)}(t_i)\right)^2 = \frac{1}{n} \sum_{i=1}^{n}\left( \frac{y_i-\hat{f}(t_i)}{1-A_{ii}}  \right)^2, 
-\end{equation*}
+\end{equation}
 where $A_{ii}$ is the $i$th diagonal element of $A(\lambda)$. Then, the GCV approximation score is 
-\begin{equation*}
+\begin{equation}
 \mbox{GCV} =\frac{1}{n} \sum_{i=1}^{n}\left( \frac{y_i-\hat{f}(t_i)}{1-\tr(A)/n}  \right)^2.
-\end{equation*}
+\end{equation}
 In smoothing problems, GCV can also alleviate the tendency of cross-validation to under-smooth \citep{esl2009}. 
 
 
@@ -204,9 +204,9 @@ in which $x_t=F(x_{t-1})+\varepsilon_x$ is the true hidden state propagating thr
 
 To estimate the filtering state $x_t$ from $y_{1:t}=\left\lbrace y_1,\ldots,y_t\right\rbrace$, Bayesian wants to maximize the posterior $p(x_t\mid y_{1:t})$ by marginalizing out all the previous measurements. Given the joint distribution of $p(x_t,x_{t-1},y_{1:t})$, Kalman filter supposes the expectation $\hat{x}_{t-1}$ and its variance $S_{t-1}$ are known and passing through the system by $\hat{x}_t=F\hat{x}_{t-1}$ and $S_t=FS_{t-1}F^\top + Q_t$, here $Q_t$ is the covariance of $\varepsilon_x$. Because of the log-likelihood function is written in such way: 
 $\ln p(x_t\mid y_{1:t}) \propto -\frac{1}{2}(y_t-Gx_t)^\top R_t^{-1}(y_t-Gx_t)-\frac{1}{2}(x_t-\hat{x}_{t-1})^\top S_{t-1}^{-1}(x_t-\hat{x}_{t-1})$, and $R_t$ is the covariance of $\varepsilon_y$. As a result, the solution is 
-\begin{equation*}
+\begin{equation}
 \hat{x}_t = \left(G^\top R_t^{-1}G+S_{t-1}^{-1}\right)^{-1}\left( G^\top R_t^{-1}y_t+S_{t-1}^{-1}\hat{x}_{t-1} \right).
-\end{equation*}
+\end{equation}
 Additionally, by setting $S_t^{-1} = G^\top R_t^{-1}G+S_{t-1}^{-1}$, the recursive estimation of covariance matrix is $S_t = S_{t-1} - K_t GS_{t-1}$, 
 and $K_t = S_{t-1} G^\top (R_t +GS_{t-1}G^\top)^{-1}$ is named Kalman gain matrix. Consequently, the recursive estimation is 
 \begin{equation}\label{KalmanEstimation}
@@ -236,26 +236,26 @@ A more generic algorithm is investigated in the following section.
 The important advantage of Monte Carlo is that a large number of posterior moments can be estimated at a reasonable computational effort and that estimates of the numerical accuracy of these results are obtained in a simple way \citep{kloek1978bayesian}. \textit{Sequential Monte Carlo} method uses Monte Carlo approaches to estimate and to compute recursively. One of the attractive merits is in the fact that they allow on-line estimation by combining the powerful Monte Carlo sampling methods with Bayesian inference at an expense of reasonable computational cost \citep{chen2003bayesian}. 
 
 For example, consider the model \eqref{introKFmodel} with parameter $\theta$. The likelihood approximation is $p(y_t\mid y_{1:t-1},\theta)$ and can be written by
-\begin{equation*}
+\begin{equation}
 p(y_t\mid y_{1:t-1},\theta) = \int p(y_t\mid x_t,\theta)p(x_t\mid y_{1:t-1},\theta) dx_t = \E \lbrack y_t\mid x_t,\theta \rbrack.
-\end{equation*}
+\end{equation}
 The standard Monte Carlo algorithm is trying to compute the integration by drawing $N$ independent samples $x_t^{(i)}$ from $p(x_t\mid y_{1:t-1},\theta)$ first and then, by adding them up, to approximate the integration for large $N$ in the following way 
-\begin{equation*}
+\begin{equation}
 \E\left[ y_t\mid x_t,\theta \right]\approx \frac{1}{N}\sum_i p(y_t\mid x_t^{(i)},\theta), 
-\end{equation*}
+\end{equation}
 \citep{kalos2008monte}.
 
-In terms of getting good samples of $x_t^{(i)}$, which can be used for representing $p(y_t\mid x_t^{(i)},\theta)$, an importance sampling method was devised. The idea of this method is by assigning weights $W_t^{(i)}$ to samples, the most important ones are evaluated for computing the integral. Further, sequential importance sampling (SIS) allows a sequential update of the importance weights by 
-\begin{equation*}
-W_t^{(i)} \propto W_{t-1}^{(i)} \frac{ p\left(y_t \mid x_t^{(i)}\right) p\left(x_{t}^{(i)}\mid x_{t-1}^{(i)}\right) }{q\left(x_{t}^{(i)}\mid x_{t-1}^{(i)},y_{t}\right)}
-\end{equation*}
+In terms of getting good samples of $x_t^{(i)}$, which can be used for representing $p(y_t\mid x_t^{(i)},\theta)$, an importance sampling method was devised. The idea of this method is by assigning weights $w_t^{(i)}$ to samples, the most important ones are evaluated for computing the integral. Further, sequential importance sampling (SIS) allows a sequential update of the importance weights by 
+\begin{equation}
+w_t^{(i)} \propto w_{t-1}^{(i)} \frac{ p\left(y_t \mid x_t^{(i)}\right) p\left(x_{t}^{(i)}\mid x_{t-1}^{(i)}\right) }{q\left(x_{t}^{(i)}\mid x_{t-1}^{(i)},y_{t}\right)}
+\end{equation}
 with an appropriate chosen \textit{proposal distribution} $q(x_{t}\mid  x_{t-1},y_{t})$. It is also called \textit{importance density} or \textit{important function}  \citep{chen2003bayesian}. 
 
 
 Nevertheless, the SIS makes samples skewed that only a few samples have proper weights as time increases and most of them have small but positive weights. This phenomenon is often called \textit{weight degeneracy} or \textit{sample impoverishment} \citep{green1995reversible, berzuini1997dynamic}. 
 
 
-Besides the SIS processes, a resampling step, also known as a selection step, is trying to eliminate the samples with small weights and duplicate the samples with large weights in a principled way \citep{rubin2004multiple, tanner1987calculation}. This method is named \textit{sampling and importance resampling} (SIR). Suppose samples with associated weights are $\left\lbrace x_t^{(i)},W_t^{(i)}\right\rbrace$, a resampling step is executed by generating new samples $\tilde{x}_t^{(i)}$ according to normalized weights $\tilde{W}_t^{(i)}$. It is pointed out that the resampling step does not prevent weights degeneracy but improve further calculation. 
+Besides the SIS processes, a resampling step, also known as a selection step, is trying to eliminate the samples with small weights and duplicate the samples with large weights in a principled way \citep{rubin2004multiple, tanner1987calculation}. This method is named \textit{sampling and importance resampling} (SIR). Suppose samples with associated weights are $\left\lbrace x_t^{(i)},w_t^{(i)}\right\rbrace$, a resampling step is executed by generating new samples $\tilde{x}_t^{(i)}$ according to normalized weights $\tilde{w}_t^{(i)}$. It is pointed out that the resampling step does not prevent weights degeneracy but improve further calculation. 
 
 The common feature of SIS and SIR is that both of these methods are based on importance sampling and updating samples weights recursively. The difference is that in SIR, the resampling step is always performed. Whereas, in SIS, the resampling is only taken when needed. 
 
@@ -264,10 +264,10 @@ The common feature of SIS and SIR is that both of these methods are based on imp
 
 
 A generic PF generates $N$ uniformly weighted random measurements $\left\lbrace x_{t-1}^{(i)},\frac{1}{N} \right\rbrace$ first at time $t-1$. Once a new observation $y_t$ comes into the system, the weights will be updated recursively by involving the likelihood function $p(y_t\mid x_t^{(i)})$ and propagation function $p(x_t^{(i)}\mid x_{t-1}^{(i)})$. In fact, it is the SIS step. To monitor how bad is the weight degeneracy, a suggested measurement \textit{effective sample size} is introduced in \citep{kong1994sequential}. It is the reciprocal of the sum of squared weights in the form of 
-\begin{equation*}
-N_{\mbox{\scriptsize eff}} = \frac{1}{\sum_{i=1}^{N}\left(W_t^{(i)} \right)^2}. 
-\end{equation*}
-If the $N_{\mbox{\scriptsize eff}}$ is less than a predefined threshold, the resampling procedure is executed and the set of particles remains the same size $N$. 
+\begin{equation}
+N_{\mbox{\scriptsize ess}} = \frac{1}{\sum_{i=1}^{N}\left(w_t^{(i)} \right)^2}. 
+\end{equation}
+If the $N_{\mbox{\scriptsize ess}}$ is less than a predefined threshold, the resampling procedure is executed and the set of particles remains the same size $N$. 
 
 
 
@@ -293,14 +293,14 @@ MCMC methods are a set of powerful stochastic algorithms that allow us to solve 
 \subsection*{Metropolis-Hastings Algorithm}
 
 The \textit{Metropolis-Hastings} (MH) algorithm is an important class of MCMC algorithms \citep{smith1993bayesian, tierney1994markov, gilks1995markov}. Given essentially a probability distribution $\pi(\cdot)$ (the target distribution), MH algorithm provides a way to generate a Markov chain $x_1, x_2,\ldots, x_t$, who has the target distribution as a stationary distribution, for the uncertain parameters $x$ requiring only that this density can be calculated at $x$. Suppose that we can evaluate $\pi(x)$ for any $x$. The transition probabilities should satisfy the detailed balance condition
-\begin{equation*}
+\begin{equation}
 \pi\left(x^{(t)}\right)q\left(x', x^{(t)}\right) = \pi\left(x'\right)q\left(x^{(t)}, x'\right),
-\end{equation*}
+\end{equation}
 which means that the transition from the current state $\pi\left(x^{\left(t\right)}\right)$ to the new state $\pi\left(x'\right)$ has the same probability as that 
 from $\pi\left(x'\right)$ to $\pi\left(x^{\left(t\right)}\right)$. In sampling method, drawing $x_i$ first and then drawing $x_j$ should have the same probability as drawing $x_j$ and then drawing $x_i$. However, in most situations, the details balance condition is not satisfied. Therefore, a function $\alpha\left(x,y\right)$ is introduced for satisfying 
-\begin{equation*}
+\begin{equation}
 \pi\left(x'\right)q\left(x', x^{\left(t\right)}\right)\alpha\left(x',x^{\left(t\right)}\right) = \pi\left(x^{\left(t\right)}\right)q\left(x^{\left(t\right)}, x'\right)\alpha\left(x^{\left(t\right)},x'\right).
-\end{equation*}
+\end{equation}
 In this way, a tentative new state $x'$ is generated from the proposal density $q\left(x';x^{\left(t\right)}\right)$ and it is then accepted or rejected according to acceptance probability 
 \begin{equation}\label{IntroAccp}
 \alpha=\frac{\pi\left(x'\right)}{\pi\left(x^{\left(t\right)}\right)}\frac{q\left(x^{\left(t\right)}, x'\right)}{q\left(x', x^{\left(t\right)}\right)}.
@@ -420,13 +420,13 @@ tune the Markov chain parameters can be found at \citep{roberts2009examples}.
 The \textit{Hamiltonian Monte Carlo} (HMC), devised by \cite{duane1987hybrid} as hybrid Monte Carlo, uses Hamiltonian dynamics to produce distant proposals for the Metropolis algorithm in order to avoid slow exploration of the state-space that results from the diffusive behavior of simple random walk proposals \citep{neal2011mcmc}. In practice, the HMC sampler is more efficient for sampling in high-dimensional distributions than MH.
 
 The key feature of HMC is the Hamiltonian system equation as follows: 
-\begin{equation*}
+\begin{equation}
 H(x,v) = U(x)+K(v),
-\end{equation*}
+\end{equation}
 which is consisting of potential energy $U(x)$ with a $d$-dimensional momentum vector (position) $x$ and kinetic energy function $K(v)=\frac{v^\top M^{-1}v}{2}$ with a $d$-dimensional momentum vector (velocity) $v$. To propose $\left\lbrace x',v'\right\rbrace$, HMC uses the leapfrog method, which is based on Euler's method and modified Euler's method, to increase the proposing accuracy \citep{betancourt2017conceptual}. It is accepted with the probability
-\begin{equation*}
+\begin{equation}
 \alpha = \min\left\lbrace\exp\lbrack H(x,v)-H(x',v') \rbrack, 1\right\rbrace.
-\end{equation*}
+\end{equation}
 
 Compared with MH sampler, the HMC has a higher efficiency in most of the high-dimensional cases. It is incorporating not only with energy $U(x)$ but also with a gradient. In this way, HMC explores a larger area and converges to balance faster. 
 
@@ -434,9 +434,9 @@ Compared with MH sampler, the HMC has a higher efficiency in most of the high-di
 The \textit{Zig-Zag Monte Carlo} uses a continuous-time piecewise zig-zag process to increase the sampling efficiency \citep{bierkens2016piecewise}. It is an application of the Curie-Weiss model in high dimension and provides a practically efficient sampling scheme for sampling in the big data regime with some remarkable properties \citep{turitsyn2011irreversible, bierkens2017limit}. 
 
 Given a target density $\pi(\cdot)$, the Zig-Zag process $f(x,\theta)$ is defined in a $d \otimes 2$ space $\mathcal{E}$. $x$ is in the $d$-dimensional topological subspace and $\theta$ is in a binary discrete $\left\lbrace -1,1\right\rbrace_d$ subspace denoting the flipping statues. The switching rate $\lambda(x,\theta)$ agrees with the target distribution $\pi(\cdot)$ in a certain way and is defined as $\lambda(x,\theta) = \max \left\lbrace 0,\theta U'(x) \right\rbrace +\gamma(x)$, where $U'(x)  = \lambda(x,\theta) - \lambda(x,-\theta)$. Then, the Zig-Zag operator $L$ is 
-\begin{equation*}
+\begin{equation}
 Lf(x,\theta)=\theta\partial f_x+\lambda(x,\theta)\lbrack f(x,-\theta)-f(x,\theta )\rbrack,
-\end{equation*}
+\end{equation}
 for all $(x,\theta)\in \mathcal{E}$. 
 
 Thereafter, the obtained sequence of the Zig-Zag process is used to approximate expectations with respect to $\pi(\cdot)$ according to the law of large numbers. 
@@ -449,16 +449,16 @@ The application of Zig-Zag process in big data scheme and some properties are gi
 \textit{The t-walk} given by \cite{christen2010general} is a self-adjusting MCMC algorithm that requires no tuning and has been shown to provide good results in many cases of up to 400 dimensions. Because of the t-walk is not adaptive, it does not require new restricting conditions but only the log of the posterior and two initial points \citep{blaauw2011flexible}. 
 
 Given a posterior distribution $\pi(\cdot)$, the new objective function $f(x,x')$ is the product of $\pi(x)\pi(x')$ from $X \otimes X$. The new proposal $(y,y')$ is given by
-\begin{equation*} (y,y') =
+\begin{equation} (y,y') =
 \begin{cases}
 \left(x,h(x',x)\right) & \mbox{with probability 0.5}\\
 \left(h(x',x),x'\right) & \mbox{with probability 0.5}
 \end{cases}
-\end{equation*}
+\end{equation}
 where $h(x,x')$ is a preselected proposing strategy. In each iteration, only one of the two chains $x$ and $x'$ moves according to a random walk. For example, suppose in the first step the $x$ stays the same but $y'$ is proposed from $q(\cdot\mid x,x')$, then the acceptance ratio is 
-\begin{equation*}
+\begin{equation}
 \frac{\pi\left(y'\right)}{\pi\left(x'\right)}\frac{q\left(x'\mid y',x\right) }{q\left(y'\mid x',x\right)}. 
-\end{equation*}
+\end{equation}
 After a few iterations, there are two dual and coupled chains obtained. Hence, the t-walk is a kind of multiple chain approach. 
 
 Four recommendations for the choices of $h\left(x,x'\right)$ including a scaled random walk, referred to \textit{the walk move}, \textit{traverse move}, \textit{hop moves} and \textit{blow moves} are given in \citep{christen2010general}. The t-walk is now available in a complete set of computer packages, including \textit{R}, \textit{Python}. It is convenient for researchers to go a deeper implementation. 

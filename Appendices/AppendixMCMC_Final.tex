@@ -4,7 +4,7 @@
 
 \subsection*{The Forecast Distribution} 
 
-Calculating the log-posterior of parameters requires finding out the forecast distribution of $p\left(y_{1:t}\mid y_{1:t-1},\theta\right)$. A general way is to use the joint distribution of $y_{t}$ and $y_{1:t-1}$, which is $p\left(y_{1:t}\mid \theta\right)\sim N\left(0,\Sigma_{YY}\right)$ and following the procedure in Section \ref{sectionforecast} to work out the inverse matrix of a multivariate normal distribution. For example, one may find the inverse of the covariance matrix 
+Calculating the log-posterior of parameters requires finding out the forecast distribution of $p\left(y_{1:t}\mid y_{1:t-1},\theta\right)$. A general way is to use the joint distribution of $y_{t}$ and $y_{1:t-1}$, which is $p\left(y_{1:t}\mid \theta\right)= N\left(0,\Sigma_{YY}\right)$ and following the procedure in Section \ref{sectionforecast} to work out the inverse matrix of a multivariate normal distribution. For example, one may find the inverse of the covariance matrix 
 \begin{align*}
 \Sigma_{YY}^{-1} = B\left(I_t-A_t^{-1}B_t\right) =\frac{1}{\sigma^4}\left(\sigma^2 I_t-A_t^{-1}\right) \triangleq \frac{1}{\sigma^4}
 \begin{bmatrix} 
@@ -136,9 +136,9 @@ By substituting them into the equation \eqref{linearmu} and \eqref{linearsigma},
 \subsection*{The Forecast Distribution}
 We are now using the capital letter $Y$ to represent the joint $\{y,v\}$ and $Y_{1:t} = \{y_1,v_1,y_2,v_2,\cdots, y_t, v_t \}$, $Y_{t+1} = \{y_{t+1}, v_{t+1}\}$. It is known that 
 \begin{align*}
-p\left(Y_{1:t},\theta\right) &\sim N\left( 0,\Sigma_{YY}^{\left(t\right)} \right)\\
-p\left(Y_{t+1},Y_{1:t},\theta\right) &\sim N\left( 0,\Sigma_{YY}^{\left(t+1\right)} \right)\\
-p\left(Y_{t+1}\mid Y_{1:t},\theta\right) &\sim N\left( \bar{\mu}_{t+1},\bar{\Sigma}_{t+1} \right)
+p\left(Y_{1:t},\theta\right) &= N\left( 0,\Sigma_{YY}^{\left(t\right)} \right)\\
+p\left(Y_{t+1},Y_{1:t},\theta\right) &= N\left( 0,\Sigma_{YY}^{\left(t+1\right)} \right)\\
+p\left(Y_{t+1}\mid Y_{1:t},\theta\right) &= N\left( \bar{\mu}_{t+1},\bar{\Sigma}_{t+1} \right)
 \end{align*}
 where the covariance matrix of the joint distribution is $\Sigma_{YY}^{\left(t+1\right)} = \left(I_{t+1}-A_{t+1}^{-1}B_{t+1}\right)^{-1}B_{t+1}^{-1}$. Then, by taking its inverse, we will get
 \begin{align*}
@@ -326,7 +326,7 @@ X_t \mid Y_{1:t},\theta &\sim N \left( A_t^{-1}B_tY_{1:t}, A_t^{-1} \right) \\
 \end{align*}
 thus
 \begin{align*}
-\hat{X_t} = L_t^{-\top}\left(W_t+Z_t\right),
+X_t = L_t^{-\top}\left(W_t+Z_t\right),
 \end{align*}
 where $Z_t \sim N\left(0, I_t\left(\sigma,\tau\right) \right)$.
 
@@ -352,7 +352,7 @@ where
 \end{align*}
 and $U_{t+1} = L_{t+1}^{-1} C_{t+1}$. %$= \mbox{solve}\left(L_{t+1},C_{t+1}\right)$.
 
-The filtering distribution of the state with given parameters is $p\left(X_{t+1}\mid Y_{1:t+1}, \theta \right)$. To find its form, one can use the joint distribution of $X_{t+1}$ and $Y_{1:t+1}$, which is $p\left(X_{t+1}, Y_{1:t+1}  \mid  \theta\right)\sim N\left(0,\Gamma\right)$, where
+The filtering distribution of the state with given parameters is $p\left(X_{t+1}\mid Y_{1:t+1}, \theta \right)$. To find its form, one can use the joint distribution of $X_{t+1}$ and $Y_{1:t+1}$, which is $p\left(X_{t+1}, Y_{1:t+1}  \mid  \theta\right)= N\left(0,\Gamma\right)$, where
 \begin{equation*}
 \Gamma=\begin{bmatrix} C_{t+1}^\top\left(A_{t+1}-B_{t+1}\right)^{-1}C_{t+1} & C_{t+1}^\top\left(A_{t+1}-B_{t+1}\right)^{-1}\\\left(A_{t+1}-B_{t+1}\right)^{-1}C_{t+1} & \left(I-A_{t+1}^{-1}B_{t+1}\right)^{-1}B_{t+1}^{-1} \end{bmatrix}.
 \end{equation*}

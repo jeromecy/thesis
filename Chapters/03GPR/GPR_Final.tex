@@ -3,9 +3,9 @@
 \section{Introduction}
 
 A Hilbert space is a real or complex inner product space with respect to the distance function induced by the inner product \citep{dieudonne2013foundations}. In particular, the Hilbert space $\mathcal{L}_2[0,1]$ is the set of square integrable functions $f(t):[0,1]\mapsto \mathbb{R}$, where all functions satisfy 
-\begin{equation*}
+\begin{equation}
 \mathcal{L}_2[0,1] =\left\lbrace f:\int_0^1f^2dt <\infty \right\rbrace
-\end{equation*}
+\end{equation}
 with an inner product $\langle f,g\rangle=\int_0^1fgdt$. 
 
 Consider a regression problem with observations modeled as $y_i = f(t_i)+\varepsilon_i$, $i=1,\ldots,n$, where $\varepsilon_i\sim N(0,\sigma^2)$ are \iid Gaussian noise and $f\in\mathcal{C}^{(m)}[0,1]=\{f:f^{(m)}\in \mathit{L}_2[0,1]\}$. The classic nonparametric or semi-parametric regression is a function that minimizes the following penalized sum of squares functional 
@@ -85,12 +85,12 @@ Consider $f=f_0+f_1$ on $[0,1]$, with $f_0$ and $f_1$ having independent Gaussia
 \E \lbrack f_1(s)f_1(t) \rbrack &= bR_1(s,t) = b\int_{0}^{1} \frac{(s-u)_+^{m-1}}{(m-1)!} \frac{(t-u)_+^{m-1}}{(m-1)!},\label{Ef1f1}
 \end{align}
 where $R_0$ and $R_1$ are from \eqref{GaussianProcessKernelR}. Because of the observations are normally distributed as $y_i\sim N(f(t_i),\sigma^2)$, then the joint distribution for $\mathbf{y} = \left\lbrace y_1,\ldots,y_n\right\rbrace$ and $f(t)$ is normal with zero mean and the following covariance matrix 
-\begin{align*}\Cov (f,\mathbf{y}) = 
+\begin{align}\Cov (f,\mathbf{y}) = 
 \begin{bmatrix}
 bQ+\tau SS^\top+\sigma^2 I & b\xi +\tau^2 S\phi \\
 b\xi^\top + \tau^2\phi^\top S^\top & bR_1(t,t) +\tau^2\phi^\top \phi
 \end{bmatrix},
-\end{align*}
+\end{align}
 where $\left\lbrace Q_{i,j}\right\rbrace_{n\times n}=R_1(t_i,t_j)$, $\left\lbrace S_{i,\nu}\right\rbrace_{n\times m}=t_i^{\nu-1}/(\nu-1)!$, $\left\lbrace \xi_{i,1}\right\rbrace_{n\times 1}=R_1(t_i,t)$ and $\left\lbrace \phi_{\nu,1}\right\rbrace_{m\times 1}=t^{\nu-1}/(\nu-1)!$. 
 Consequently, the posterior is 
 \begin{equation}
@@ -107,9 +107,9 @@ where $\rho = \tau^2/b$ and $n\lambda=\sigma^2/b$. Furthermore, by denoting $M=Q
 
 \begin{theorem}\citep{gu2013smoothing}
 The polynomial smoothing spline of \eqref{GaussianProcessGeneralObjective} is the posterior mean of $f = f_0 +f_1$, where $f_0$ diffuses in span $\left\lbrace t^{\nu-1}, \nu= 1, \ldots , m\right\rbrace$ and $f_1$ has a Gaussian process prior with mean zero and a covariance function
-\begin{equation*}
+\begin{equation}
 bR_1(s,t) = b\int_{0}^{1} \frac{\left(s-u\right)_+^{m-1}}{(m-1)!} \frac{\left(t-u\right)_+^{m-1}}{(m-1)!},
-\end{equation*}
+\end{equation}
 for $b=\sigma^2/n\lambda$. 
 \end{theorem}
 
@@ -119,20 +119,20 @@ for $b=\sigma^2/n\lambda$.
 \subsection{Gaussian Process Regression}
 
 Gaussian processes are the extension of multivariate Gaussian to infinite-sized collections of real value variables, any finite number of which have a joint Gaussian distribution \citep{rasmussen2006gaussian}. Gaussian process regression is a probability distribution over functions. It is fully defined by its mean $m(t)$ and covariance $K(s,t)$ function as 
-\begin{align*}
+\begin{align}
 m(t)&=\E \lbrack f(t)\rbrack \\
 K(s,t)&=\E \lbrack \left(f(s)-m(s)\right) \left(f(t)-m(t)\right)\rbrack,
-\end{align*}
+\end{align}
 where $s$ and $t$ are two variables. A function $f$ distributed as such is denoted in form of 
-\begin{equation*}
+\begin{equation}
 f \sim GP\left(m(t),K(s,t) \right).
-\end{equation*}
+\end{equation}
 Usually the mean function is assumed to be zero everywhere. 
 
 Given a set of input variables $\mathbf{t} = \left\lbrace t_1,\ldots,t_n\right\rbrace$ for function $f(t)$ and the output $\mathbf{y}=f(\mathbf{t})+\varepsilon$ with \iid  Gaussian noise $\varepsilon$ of variance $\sigma_n^2$,  we can use the above definition to predict the value of the function $f_*=f(t_*)$ at a particular input $t_*$. As the noisy observations becoming
-\begin{equation*} %\label{GaussianProcessCovDef}
+\begin{equation} \label{GaussianProcessCovDef}
 \Cov (y_p,y_q) = K(t_p,t_q)+\sigma_n^2 \delta_{pq}
-\end{equation*}
+\end{equation}
 where $\delta_{pq}$ is a Kronecker delta which is one if and only if $p=q$ and zero otherwise, the joint distribution of the observed outputs $\mathbf{y}$ and the estimated output $f_*$ according to prior is
 \begin{equation}
 \begin{bmatrix}
@@ -146,9 +146,9 @@ K(t_*,\mathbf{t}) & K(t_*,t_*)
 \right).
 \end{equation}
 The posterior distribution over the predicted value is obtained by conditioning on the observed data
-\begin{equation*}
+\begin{equation}
 f_* \mid  \mathbf{y},\mathbf{t},t_* \sim N\left(\bar{f_*},\Cov (f_*)\right)
-\end{equation*}
+\end{equation}
 where 
 \begin{align}
 \bar{f_*}&=\E \left( f_* \mid  \mathbf{y},\mathbf{t},t_*\right) = K(t_*,\mathbf{t})\left( K(\mathbf{t},\mathbf{t})+\sigma_n^2\right) ^{-1}\mathbf{y},\\
@@ -192,25 +192,25 @@ the space $\mathcal{C}_{\mbox{\scriptsize p.w.}}^{(2)}[0,1]$ is made a reproduci
 R_s(t)=1+st+\int_{0}^{1} (s-u)_+(t-u)_+du.
 \end{equation}
 It can be seen that $R_s(0)=1, R'_s(0)=s$, and $R''_s(t)=(s-t)_+$. The two terms of the reproducing kernel $R(s,t)=R_s(t)\triangleq R_0(s,t)+R_1(s,t)$, where
-\begin{align*} %\label{TractorSplineKernelR0}
-R_0(s,t)&=1+st \\ %\label{TractorSplineKernelR1}
+\begin{align} \label{TractorSplineKernelR0}
+R_0(s,t)&=1+st \\ \label{TractorSplineKernelR1}
 R_1(s,t)&=\int_{0}^{1} (s-u)_+(t-u)_+du
-\end{align*}
+\end{align}
 are both non-negative definite themselves.
 
 
 According to Theorem \ref{theoremKernel}, $R_0$ can correspond the space of polynomials $\mathcal{H}_0=\left\lbrace f:f''=0\right\rbrace$ with an inner product $\langle f,g \rangle_0= f(0)g(0)+f'(0)g'(0)$, and $R_1$ corresponds the orthogonal complement of $\mathcal{H}_0$
-\begin{equation*}
+\begin{equation}
 \mathcal{H}_1=\left\lbrace f:f(0)=0, f'(0)=0, \int_{0}^{1}f''^2dt<\infty\right\rbrace
-\end{equation*}
+\end{equation}
 with inner product $\langle f,g \rangle_1=\int_{0}^{1}f''g''dt$. Thus, $\mathcal{H}_0$ and $\mathcal{H}_1$ are two subspaces of the $\mathcal{C}_{\mbox{\scriptsize p.w.}}^{(2)}[0,1]$, and the reproducing kernel is $R_s(\cdot) = R_0(s,\cdot)+R_1(s,\cdot)$.
 
 
 Define a new notation $\dot{R}(s,t)=\frac{\partial R}{\partial s}(s,t)=\frac{\partial R_0}{\partial s}(s,t)+\frac{\partial R_1}{\partial s}(s,t)=t+\int_0^s(t-u)_+du$. Obviously $\dot{R}_s(t) \in \mathcal{C}_{\mbox{\scriptsize p.w.}}^{(2)}[0,1]$. Additionally, we have $\dot{R}_s(0)=0, \dot{R}'_s(0)=\frac{\partial \dot{R}_s}{\partial t}(0)=1$, and $ \dot{R}''_s(t)=\begin{cases}
 0 & s\leq t \\ 1 & s>t \end{cases}$. Then, for any $f\in \mathcal{C}_{\mbox{\scriptsize p.w.}}^{(2)}[0,1]$, we have 
-\begin{equation*}
+\begin{equation}
 \langle \dot{R}_s,f\rangle =\dot{R}_s(0)f(0)+\dot{R}'_s(0)f'(0)+\int_0^1\dot{R}''_s f''	 du=f'(0)+\int_0^t f''du=f'(t).
-\end{equation*}
+\end{equation}
 % % % % % % % % % % % % % % % %  Old version, space H* might be wrong % % % % %
 % % % % % % % % % % % % % % % %
 %It can be seen that the first term $\dot{R}_0=t\in \mathcal{H}_0$, and the space spanned by the second term $\dot{R}_1=\int_0^s(t-u)_+du$, denoted as $\mathcal{\dot{H}}$, is not in $\mathcal{H}_1$, but $\mathcal{\dot{H}} \cap \mathcal{H}_1\neq \emptyset$. Then we have a new space $\mathcal{H}_*=\mathcal{\dot{H}} \cup \mathcal{H}_1$. Thus, the two new sub spaces in $\mathcal{C}_{\mbox{\scriptsize p.w.}}^2[0,1]$ are $\mathcal{H}_0$ and $\mathcal{H}_*$.
@@ -225,9 +225,9 @@ Define a new notation $\dot{R}(s,t)=\frac{\partial R}{\partial s}(s,t)=\frac{\pa
 %\end{equation}
 %where $\mathbf{d},\mathbf{c}$ and $\mathbf{b}$ are coefficients, and $\rho(t) \in \mathcal{H}_* \ominus \mathcal{A}$. 
 It can be seen that the first term $\dot{R}_0=t\in \mathcal{H}_0$, and the space spanned by the second term $\dot{R}_1=\int_0^s(t-u)_+du$, denoted as $\mathcal{\dot{H}}$, is a subspace of $\mathcal{H}_1$, and $\mathcal{\dot{H}} \ominus \mathcal{H}_1\neq \emptyset$. Given the sample points $t_j, j=1, \ldots, n$, in equation \eqref{maineq} and noting that the space
-\begin{equation*}
+\begin{equation}
 \mathcal{A}=\left\lbrace f: f=\sum_{j=1}^{n}\alpha_jR_1(t_j,\cdot)+\sum_{j=1}^{n}\beta_j\dot{R}_1(t_j,\cdot)\right\rbrace 
-\end{equation*}
+\end{equation}
 is a closed linear subspace of $\mathcal{H}_1$. Then, we have a new space $\mathcal{H}_*=\mathcal{\dot{H}} \cup \mathcal{A}$. Thus, the two new sub spaces in $\mathcal{C}_{\mbox{\scriptsize p.w.}}^{(2)}[0,1]$ are $\mathcal{H}_0$ and $\mathcal{H}_*$.
 
 
@@ -338,38 +338,38 @@ where $\phi$ is $2 \times 1$ matrix with entry $1$ and $t$, $\xi$ is $n\times 1$
 
 \begin{lemma}\label{GPLemma}
 	Suppose $M$ is symmetric and nonsingular and $T$ is of full column rank. 
-	\begin{align*}
+	\begin{align}
 	&\lim\limits_{\rho \rightarrow \infty}\left(\rho TT^\top+M\right)^{-1}=M^{-1}-M^{-1}T\left(T^\top M^{-1}T\right)^{-1}T^\top M^{-1},\\
 	&\lim\limits_{\rho \rightarrow \infty}\rho T^\top\left(\rho TT^\top+M\right)^{-1}=\left(T^\top M^{-1}T\right)^{-1}T^\top M^{-1}.
-	\end{align*}
+	\end{align}
 \end{lemma}
 
 Setting $\rho \rightarrow \infty$ in equation \eqref{GPrhoeq} and applying Lemma \ref{GPLemma}, the posterior mean $\E (f(t)\mid \mathbf{y},\mathbf{v})$ is $\hat{f}  = \mathbf{\phi}^\top \mathbf{d}+\mathbf{\xi}^\top \mathbf{c}+\mathbf{\psi}^\top \mathbf{b}$, with the coefficients given by
-\begin{align*} 
+\begin{align} 
 \mathbf{d}&=\left(T^\top M^{-1}T\right)^{-1}T^\top M^{-1}\begin{bmatrix}\mathbf{y} \\ \mathbf{v} \end{bmatrix},\\
 \begin{bmatrix}\mathbf{c}\\ \mathbf{b}\end{bmatrix} &=
 \left(M^{-1}-M^{-1}T\left(T^\top M^{-1} T\right)^{-1}T^\top M^{-1}\right)\begin{bmatrix}\mathbf{y}\\ \mathbf{v} \end{bmatrix},
-\end{align*} 
+\end{align} 
 where $T=\begin{bmatrix} S\\S' \end{bmatrix}$ and $M=\begin{bmatrix} Q+n\lambda I& P\\
 Q'& P'+\frac{n\lambda}{\gamma}I
 \end{bmatrix}$.
 
 It is easy to verify that $\mathbf{d},\mathbf{c},\mathbf{b}$ are the solutions to
-\begin{align*}
-&\begin{cases}
+\begin{equation}
+\begin{cases}
 S^\top \left(S\mathbf{d} +Q\mathbf{c}+P\mathbf{b}-\mathbf{y}\right) +\gamma S'^\top\left( S'\mathbf{d}+ P^\top \mathbf{c}+ P'\mathbf{b}-\mathbf{v}\right)=0, \\
 Q\left(S\mathbf{d}+\left(Q+n\lambda I\right)\mathbf{c}+P\mathbf{b}-\mathbf{y}\right) + P \left( \gamma S' \mathbf{d} + \gamma P^\top \mathbf{c}+ \left(\gamma P'+n\lambda I\right) \mathbf{b}- \gamma \mathbf{v}\right)=0, \\
 P^\top \left(S\mathbf{d}+\left(Q+n\lambda I\right) \mathbf{c} +P\mathbf{b}-\mathbf{y}\right)+P'\left(\gamma S'\mathbf{d}+P^\top \mathbf{c}+\left(\gamma P'+n\lambda I\right)\mathbf{b}- \gamma\mathbf{v}\right)=0.
 \end{cases}
-\end{align*}
+\end{equation}
 Finally we obtain the following theorem: 
 \begin{theorem}
 The smoothing V-spline of \eqref{maineq} is the posterior
 mean of $f=f_0+f_1 + \dot{f}_1$, where $f_0$ diffuses in span $\left\lbrace 1,t\right\rbrace$ and $f_1$, $\dot{f}_1$ have Gaussian process priors with mean zero and covariance functions
-\begin{align*}
+\begin{align}
 \Cov \left(f_1,f_1\right)   &= R_1\left(s,t\right)   =\beta \int_{0}^{1} \left(s-u\right)_+\left(t-u\right)_+du, \\
 \Cov \left(\dot{f}_1,f_1\right)  &= \dot{R}\left(s,t\right) =\beta \left(t+\int_0^s\left(t-u\right)_+du \right)
-\end{align*}
+\end{align}
 for $\beta = \sigma^2/n\lambda$.
 \end{theorem}
 
@@ -400,17 +400,17 @@ Q'& P'+\frac{n\lambda}{\gamma}U
 
 
 Recall the leave-one-out cross-validation score of a V-spline, 
-\begin{equation*}
+\begin{equation}
 \mbox{LOOCV}(\lambda,\gamma)=\frac{1}{n}\sum_{i=1}^{n}\left( \frac{\hat{f}(t_i)-y_i+\frac{\gamma T_{ii}}{1-\gamma V_{ii}}(\hat{f}'(t_i)-v_i)}{1-S_{ii}-\frac{\gamma T_{ii}}{1-\gamma V_{ii}}U_{ii}} \right)^2.
-\end{equation*}
+\end{equation}
 Followed by the approximation $S_{ii}\approx\frac{1}{n}\tr(S)$, $T_{ii}\approx\frac{1}{n}\tr(T)$, $U_{ii}\approx\frac{1}{n}\tr(U)$ and $V_{ii}\approx\frac{1}{n}\tr(V)$ \citep{syed2011review}, the GCV for the V-spline will be 
-\begin{equation*}
+\begin{equation}
 \mbox{GCV}(\lambda,\gamma)=\frac{1}{n}\sum_{i=1}^{n}\left( \frac{\hat{f}(t_i)-y_i+ \frac{\gamma\tr(T)/n}{1-\gamma \tr(V)/n}(\hat{f}'(t_i)-v_i)}{1-\tr(S)/n-\frac{\gamma\tr(T)/n}{1-\gamma \tr(V)/n} \tr(U)/n} \right)^2,
-\end{equation*}
+\end{equation}
 which may provide further computational savings since it requires finding the trace rather than the individual diagonal entries of the hat matrix. Hence, it can be written in the form of \footnotesize
-\begin{equation*}
+\begin{equation}
 \mbox{GCV}(\lambda,\gamma)=\frac{\left(\mathbf{\hat{f}}-\mathbf{y}\right)^\top \left(\mathbf{\hat{f}}-\mathbf{y}\right) + \frac{2\tr\left(\gamma T\right)}{\tr\left(I-\gamma V\right)}\left(\mathbf{\hat{f}}-\mathbf{y}\right)^\top \left(\mathbf{\hat{f}}'-\mathbf{v}\right) + \left( \frac{\tr(\gamma T)}{\tr(I-\gamma V)} \right)^2 \left(\mathbf{\hat{f}}'-\mathbf{v}\right)^\top \left(\mathbf{\hat{f}}'-\mathbf{v}\right)}{\left( \tr(I-S-\frac{\tr(\gamma T)}{\tr(I-\gamma V)}U) \right)^2}.
-\end{equation*} \normalsize
+\end{equation} \normalsize
 A natural extension to the above GCV for V-spline with correlated errors is \scriptsize
 \begin{equation}
 \mbox{GCV}\left(\lambda,\gamma\right)=\frac{\left(\mathbf{\hat{f}}-\mathbf{y}\right)^\top W\left(\mathbf{\hat{f}}-\mathbf{y}\right)+\frac{2\tr\left(\gamma T\right)}{\tr\left(I-\gamma V\right)}\left(\mathbf{\hat{f}}-\mathbf{y}\right)^\top W^{1/2}U^{\top 1/2}\left(\mathbf{\hat{f}}'-\mathbf{v}\right) + \left( \frac{\tr\left(\gamma T\right)}{\tr\left(I-\gamma V\right)} \right)^2 \left(\mathbf{\hat{f}}'-\mathbf{v}\right)^\top U\left(\mathbf{\hat{f}}'-\mathbf{v}\right)}{\left( \tr\left(I-S-\frac{\tr\left(\gamma T\right)}{\tr\left(I-\gamma V\right)}U\right) \right)^2}.
@@ -449,9 +449,9 @@ In this chapter, we take a review of the work that has been done for the relatio
 
 
 In order to find the Bayes estimate for the real V-spline with a piecewise penalty term $\lambda(t)$, we conjecture that the methods discussed in this chapter can be extended using the inner product 
-\begin{equation*}
+\begin{equation}
 \langle f,g \rangle=f(0) g(0)+f'(0) g'(0)+\sum_{i=1}^{n-1}w_i^{-1}\int_{t_i}^{t_{i+1}}f''(t)g''(t)dt,
-\end{equation*}
+\end{equation}
 on $\mathcal{C}^{(2)}_{\mbox{\scriptsize p.w.}}[0,1]$, where $\sum_i w_i=1$ and $w_i>0$. 
 
 Besides GCV, other methods, such as EM and UBR are worth being investigated in further research. 
