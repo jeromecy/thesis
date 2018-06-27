@@ -19,7 +19,7 @@ Therefore the original form of this covariance is
 -K_t^{-1}b_t^\top \left(Z_t-b_tK_t^{-1}b_t^\top\right)^{-1} & \left(K_t-b_t^\top Z_t^{-1}b_t\right)^{-1}
 \end{bmatrix}.
 \end{align*}
-For sake of simplicity, $Z_t$ is a $t\times t$ matrix, $b_t$ is a $t \times 1$ vector and $K_t$ is a $1\times 1$ constant number. By denoting $C_{t}^\top = \begin{bmatrix} 0 & \cdots & 0 & 1\end{bmatrix}$ and post-multiplying $\Sigma_{YY}^{-1}$, it gives us 
+For sake of simplicity, $Z_t$ is a $t\times t$ matrix, $b_t$ is a $t \times 1$ vector and $K_t$ is a $1\times 1$ constant number. By denoting $C_{t}^\top = \begin{bmatrix} 0 & \cdots & 0 & 1\end{bmatrix}$, a $1\times t$ vector,  and post-multiplying $\Sigma_{YY}^{-1}$, it gives us 
 \begin{equation}
 \Sigma_{YY}^{-1} C_{t}= \frac{1}{\sigma^4}\left(\sigma^2 I_t-A_t^{-1}\right) C_{t}= \frac{1}{\sigma^4} \begin{bmatrix} b_{t} \\ K_{t} \end{bmatrix}.
 \end{equation} 
@@ -108,7 +108,7 @@ As discussed before, $p\left(x_t \mid y_{1:t}\right)$ is a mixture Gaussian dist
 \end{split}
 \end{align}
 
-To find $\mu_i$ and $\Sigma_i$, we will use the joint distribution of $x_{t}$ and $y_{1:t}$, which is $p\left(x_{t}, y_{1:t}  \mid  \theta\right)\sim N\left(0,\Gamma\right)$ and 
+To find $\mu_i$ and $\Sigma_i$, we will use the joint distribution of $x_{t}$ and $y_{1:t}$, which is $p\left(x_{t}, y_{1:t}  \mid  \theta\right)= N\left(0,\Gamma\right)$ and 
 \begin{equation*}
 \Gamma=\begin{bmatrix} C_{t}^\top\left(A_t-B_t\right)^{-1}C_{t} & C_{t}^\top\left(A_t-B_t\right)^{-1}\\\left(A_t-B_t\right)^{-1}C_{t} & \left(I_t-A_t^{-1}B_t\right)^{-1}B_t^{-1} \end{bmatrix}.
 \end{equation*}
@@ -118,8 +118,8 @@ C_{t}^\top A_t^{-1} = \begin{bmatrix} - b_{t}^\top & \sigma^2- K_{t} \end{bmatri
 \end{align*}
 thus, for any given $\theta_i$, $x_{t}\mid y_{1:t},\theta_i \sim N\left(\mu_{t}^{\left(x\right)},\sigma_{t}^{\left(x\right)2}\right)$, where
 \begin{align*}
-\mu_i  &= \phi \hat{x}_{t-1} +  C_{t}^\top \left(A_t-B_t\right)^{-1}B_t \left(I_t-A_t^{-1}B_t\right)y_{1:t}\\
-                      &= \phi \hat{x}_{t-1} +  C_{t}^\top A_t^{-1}B_t y_{1:t} \\ &= \phi \hat{x}_{t-1} +  \frac{1}{\sigma^2}C_{t}^\top A_t^{-1} y_{1:t}\\
+\mu_i  &= \phi x_{t-1} +  C_{t}^\top \left(A_t-B_t\right)^{-1}B_t \left(I_t-A_t^{-1}B_t\right)y_{1:t}\\
+                      &= \phi x_{t-1} +  C_{t}^\top A_t^{-1}B_t y_{1:t} \\ &= \phi x_{t-1} +  \frac{1}{\sigma^2}C_{t}^\top A_t^{-1} y_{1:t}\\
                       &=0+  \frac{1}{\sigma^2}\begin{bmatrix} - b_{t}^\top & \sigma^2- K_{t} \end{bmatrix} \begin{bmatrix} y_{1:t-1} \\ y_{t} \end{bmatrix}  \\
                       &= - \frac{1}{\sigma^2}b_{t-1}^\top y_{1:t-1}+\left(1-\frac{K_{t}}{\sigma^2}\right)y_{t}\\
                       &=\frac{K_{t}\bar{\mu}_{t}}{\sigma^2}+\left(1-\frac{K_{t}}{\sigma^2}\right)y_{t} \\
@@ -127,7 +127,7 @@ thus, for any given $\theta_i$, $x_{t}\mid y_{1:t},\theta_i \sim N\left(\mu_{t}^
                       &= C_{t}^\top\left(A_t-B_t\right)^{-1}C_{t} -  C_{t}^\top A_t^{-1}B_t\left(A_t-B_t\right)^{-1}C_{t}\\
                       &= C_{t}^\top A_t^{-1}C_{t} \\ &= \sigma^2-K_{t}.
 \end{align*}
-By substituting them into the equation \eqref{linearmu} and \eqref{linearsigma}, the estimated $\hat{x}_t$ is obtained. 
+By substituting them into the equation \eqref{mixturemean} and \eqref{mixturevariance}, the estimated $x_t$ is obtained. 
 
 
 
@@ -322,13 +322,13 @@ Because of the joint distribution \eqref{jointmatrix}, one can find the best est
 \begin{align*}
 X_t \mid Y_{1:t},\theta &\sim N \left( A_t^{-1}B_tY_{1:t}, A_t^{-1} \right) \\
 &\sim N\left(L_t^{-\top}L_t^{-1}B_tY_{1:t},L_t^{-\top}L_t^{-1}\right)\\
-&\sim N\left(L_t^{-\top}W_t,L_t^{-\top}L_t^{-1}\right),
+&\sim N\left(L_t^{-\top}W_t,L_t^{-\top}L_t^{-1}\right). 
 \end{align*}
-thus
-\begin{align*}
-X_t = L_t^{-\top}\left(W_t+Z_t\right),
-\end{align*}
-where $Z_t \sim N\left(0, I_t\left(\sigma,\tau\right) \right)$.
+%thus
+%\begin{align*}
+%X_t = L_t^{-\top}\left(W_t+Z_t\right).
+%\end{align*}
+%where $Z_t \sim N\left(0, I_t\left(\sigma,\tau\right) \right)$.
 
 
 For $X_{t+1}$, the joint distribution with $Y_{1:t+1}$ updated to stage $t+1$ is 
