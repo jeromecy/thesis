@@ -1411,7 +1411,7 @@ Shift the window by setting $t = t+1$ and go back to step \ref{algorithmestimait
 
 \subsection{Implementation}
 
-To implement the Algorithm \ref{algorithmslidingwindow}, we should get an idea of what the hyper parameter space looks like by running step \ref{algorithmlearningsurface} of the algorithm with some observed data. By setting $L=100$ and running 5\,000 iterations, we can find the whole $\theta$ samples in 59 seconds. For each parameter of $\theta$, we take 1\,000 sub-samples out of 5\,000 as new sequences. The new $\theta^*$ is representative for the hyper parameter space. Then,the traces and correlation is derived from $\theta^*$. Meanwhile, the acceptance rates for each parameter are $\alpha_\gamma = 0.453,\alpha_{\xi^2}=0.433, \alpha_{\lambda^2}=0.435, \alpha_{\sigma^2}=0.414, \alpha_{\tau^2}=0.4490$ respectively. Hence, the structure of  $\hat{\theta}\sim N\left( m_t,C_t\right)$ is achieved. That can be seen in Figure \ref{realdatacorMatrix}. 
+To implement the Algorithm \ref{algorithmslidingwindow}, we should get an idea of what the hyper parameter space looks like by running step \ref{algorithmlearningsurface} of the algorithm with a subset of observations. By setting $L=100$ and running 5\,000 iterations, we can find the whole $\theta$ samples in 59 seconds. For each parameter of $\theta$, we take 1\,000 sub-samples out of 5\,000 as new sequences. The new $\theta^*$ is representative for the hyper parameter space. Then,the traces and correlation is derived from $\theta^*$. Meanwhile, the acceptance rates for each parameter are $\alpha_\gamma = 0.453,\alpha_{\xi^2}=0.433, \alpha_{\lambda^2}=0.435, \alpha_{\sigma^2}=0.414, \alpha_{\tau^2}=0.4490$ respectively. Hence, the structure of  $\hat{\theta}\sim N\left( m_t,C_t\right)$ is achieved. That can be seen in Figure \ref{realdatacorMatrix}. 
 %In fact, as assuming the parameter does not vary too much through out the process, the correlation changes a little.  
 \begin{figure}[h]
 \centering
@@ -1450,8 +1450,18 @@ Since a cheap surrogate $\hat{\pi}(\cdot)$ for the true $\pi(\cdot)$ is found in
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.8\textwidth]{Chapters/05MCMCOU/plots/realdatabatchPosition2.pdf}
-\includegraphics[width=0.8\textwidth]{Chapters/05MCMCOU/plots/realdatabatchVelocity2.pdf}
+%\includegraphics[width=0.8\textwidth]{Chapters/05MCMCOU/plots/realdatabatchPosition2whole.pdf}
+%\includegraphics[width=0.8\textwidth]{Chapters/05MCMCOU/plots/realdatabatchVelocity2.pdf}
+\begin{tikzpicture}
+	\node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=0.9\textwidth]{Chapters/05MCMCOU/plots/realdatabatchPosition2whole.pdf}};
+	\begin{scope}[
+	x={(image.south east)},
+	y={(image.north west)}
+	]
+	\node [black, font=\bfseries] at (0.5,0) {Easting};
+	\node [black, font=\bfseries,rotate=90] at (0,0.5) {Northing};
+	\end{scope}
+\end{tikzpicture}
 \caption{Estimations of $X$ and $Y$ found by combined batch and sequential methods. The black line is the estimation by batch method and the blue line is the sequential MCMC filtering estimation. Red dots are the measurements.}
 \end{figure}
 
