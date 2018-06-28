@@ -303,7 +303,7 @@ p(x_t\mid y_{1:t}) \propto \int p(y_t\mid x_t)p(x_t\mid x_{t-1})p(x_{t-1}\mid y_
 In particle filter, the posterior is approximated by particles $x_t^{(1)},\ldots,x_t^{(N)}$ in equation \eqref{rawParticleFilter}. A MCMC procedure is designed using \eqref{rawParticleFilter} as the target distribution with a proposal distribution of $q\left(x_t\mid x_t^{(i)}\right)$. Therefore, like MCMC, the desired approximation $\hat{p}(x_t\mid y_{1:t})$ is obtained by storing every accepted samples after the initial burn-in iterations \citep{septier2009mcmc}. The drawback is excessive computation occurs as the number of particles increases at each iteration. 
 
 To avoid this issue, an MCMC-based particle algorithm in \citep{pang2008models} considers the joint posterior distribution of $x_t$ and $x_{t-1}$:
-\begin{equation}
+\begin{equation}\label{mcmcbasedposterior}
 p(x_t,x_{t-1}\mid y_{1:t})\propto p(y_t\mid x_t)p(x_t\mid x_{t-1})p(x_{t-1}\mid y_{1:t-1}),
 \end{equation}
 which becomes the new target distribution. At the $i$th sampling iteration, the joint $x_k$ and $x_{k-1}$ was proposed in a Metropolis-Hastings sampling step. After that, a refinement Metropolis-within-Gibbs step update $x_k$ and $x_{k-1}$ individually. Hence, the algorithm is summarized in Algorithm \ref{algorithmMCMCParticle}:
@@ -327,7 +327,7 @@ Initialization: Initialize particles $x_0^{(j)}, j =1, \ldots,N$. \\
 \For{$k = 1,\ldots,t$}{
 \For{$i = 1,\ldots,M$}{
 Propose $\left\lbrace x_k^*,x_{k-1}^*\right\rbrace\sim q_1\left(x_k,x_{k-1}\mid x_{k}^{\left(i-1\right)},x_{k-1}^{\left(i-1\right)}\right)$. \\
-Accept $\left\lbrace x_k^*,x_{k-1}^*\right\rbrace$ with probability $\alpha_1=\min\left\lbrace 1, \frac{ p\left(x_k^*,x_{k-1}^*\mid y_{1:t} \right)  }{ p\left(x_k^{\left(i-1\right)},x_{k-1}^{\left(i-1\right)}\mid y_{1:t} \right)  }  \frac{ q_1\left(x_k^{\left(i-1\right)},x_{k-1}^{\left(i-1\right)}\mid x_k^*,x_{k-1}^*\right)  }{ q_1\left(x_k^*,x_{k-1}^* \mid x_k^{\left(i-1\right)},x_{k-1}^{\left(i-1\right)}\right)  }   \right\rbrace$\\
+Accept $\left\lbrace x_k^*,x_{k-1}^*\right\rbrace$ with probability $\alpha_1=\min\left\lbrace 1, \frac{ p\left(x_k^*,x_{k-1}^*\mid y_{1:t} \right)  }{ p\left(x_k^{\left(i-1\right)},x_{k-1}^{\left(i-1\right)}\mid y_{1:t} \right)  }  \frac{ q_1\left(x_k^{\left(i-1\right)},x_{k-1}^{\left(i-1\right)}\mid x_k^*,x_{k-1}^*\right)  }{ q_1\left(x_k^*,x_{k-1}^* \mid x_k^{\left(i-1\right)},x_{k-1}^{\left(i-1\right)}\right)  }   \right\rbrace$, where $p(\cdot\mid y_{1:t})$ is from equation \eqref{mcmcbasedposterior}\\
 Propose $x_{k-1}^*\sim q_2\left(x_{k-1}\mid  x_k^{(i)},x_{k-1}^{(i)}  \right)$ \\
 Accept $x_{k-1}^{(i)} = x_{k-1}^*$ with probability $\alpha_2 = \min \left\lbrace 1, \frac{ p\left(x_{k-1}^*\mid x_k^{(i)},y_{1:t}\right) }{  p\left(x_{k-1}^{(i)}\mid x_{k}^{(i)},y_{1:t}\right)  }  \frac{ q_2\left(x_{k-1}^{(i)} \mid x_{k-1}^*, x_k^{(i)} \right) }{ q_2\left(x_{k-1}^*\mid x_{k}^{(i)},x_{k-1}^{(i)}\right)  } \right\rbrace$. \\
 Propose $x_k^* \sim q_3\left(x_k\mid x_k^{(i)}, x_{k-1}^{(i)}\right)$. \\

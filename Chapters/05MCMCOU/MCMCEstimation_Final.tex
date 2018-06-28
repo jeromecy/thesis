@@ -1344,10 +1344,13 @@ In addition, from a practical point of view, the observation error $\sigma$ shou
 For the true posterior, the algorithm requires a cheap estimation $\hat{\pi}(\cdot)$, which is found by one-variable-at-a-time Metropolis-Hastings algorithm. The advantage is getting a precise estimation of the parameter structure, and disadvantage is, obviously, lower efficiency. Luckily, we find that it is not necessary to run this MH every time when estimate a new state from $x_{t-1}$ to $x_t$. In fact, in the DA MH process, the cheap $\hat{\pi}$ does not vary too much in the filtering process with new data coming into the dataset. We may use this property in the algorithm. First of all, we use all available data from $1$ to $t$ with length up to $L$ to learn the structure of $\theta$ and find out the cheap approximation $\hat{\pi}$. Then, use DA MH to estimate the true posterior $\pi$ for $\theta$ and $x_t$. After that, extend dataset to $1:t+1$ if $t\leq L$ or shift the data window to $2:t+1$ if $t>L$ and run DA MH again to estimate $\theta$ and $x_{t+1}$. From figures \ref{batchwindowkeyfeature} and \ref{batchwindowparameter}, we can see that the main features and parameters in the estimating process between batch method and sliding window method have not significant differences. 
 
 
-To avoid estimation bias in the algorithm, we are introducing the \textit{threshold} criterion and a \textit{cutting-off} value. The \textit{threshold} criterion is used to test  a bias in the algorithm. In a certain circumstance, the cheap $\hat{\pi}$ is not accurate and is replaced by a new one $\hat{\pi}_{\mbox{\scriptsize new}}$. A \textit{cutting-off} procedure stops the algorithm when a large $\Delta_t$ occurs in the process. A large time gap indicates a break of the vehicle at a time point and it causes irregularity and bias. A smart way is to stop the process and to wait for new data coming in. By running testings on real data, the \textit{threshold} is chosen $\alpha_2<0.7$ and the \textit{cutting-off} value is set at $\Delta_t\geq 300$. For each time, if the acceptance rate $\alpha_2$ is less than $0.7$, we update the mean of $\hat{\pi}$ and remain the covariance unchanged. In fact, the mean of the estimation may vary upon the data we use but the covariance matrix does not change too much, as is shown in Figure \ref{ParameterEvolutionVisualization}. Actually, these two values are on researchers' choices. Figures \ref{comparenotanupDAL} and \ref{comparenotanupfeatures} compare the performances of using and not using the \textit{threshold} criterion to update the mean of parameters. We can see that by using the \textit{threshold} criterion, we effectively avoid estimation bias and obtain more effective samples. 
+To avoid estimation bias, which is caused by sampling degeneracy, we are introducing a \textit{threshold} criterion and a \textit{cutting-off} value. In a certain circumstance, the cheap $\hat{\pi}(\cdot)$ is not accurate and is replaced by a new one $\hat{\pi}_{\mbox{\scriptsize new}}(\cdot)$. The \textit{cutting-off} procedure stops the algorithm when a large $\Delta_t$ occurs in the progress. A large time gap indicates a break of the vehicle at a time point and it causes irregularity and bias. A smart way is to stop the process and to wait for new data coming in. By running testings on real data, the \textit{threshold} is chosen $\alpha_2<0.7$ and the \textit{cutting-off} value is set at $\Delta_t\geq 300$. For each time, if the acceptance rate $\alpha_2$ is less than $0.7$, we update the mean of $\hat{\pi}$ and remain the covariance unchanged. 
+
+
+In fact, the mean of the estimation may vary upon the data but the covariance matrix does not change too much, as is shown in Figure \ref{ParameterEvolutionVisualization}. Actually, these two values are on researchers' choices. Figures \ref{comparenotanupDAL} and \ref{comparenotanupfeatures} compare the performances of using and not using the \textit{threshold} criterion to update the mean of the parameters. We can see that by using the \textit{threshold} criterion, we effectively avoid estimation bias and obtain more effective samples. 
 
  
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \begin{subfigure}[t]{0.45\textwidth}
 	\includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/realdataestbiaslogDAnoupdate.pdf}
@@ -1365,10 +1368,10 @@ To avoid estimation bias in the algorithm, we are introducing the \textit{thresh
 	\includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/realdataestbiaslogLupdate.pdf}
 	\caption{$\ln L$ surfaces of updating-mean}
 \end{subfigure}
-\caption{Comparison of $\ln DA$ and $\ln L$ surfaces between not-updating-mean and updating-mean methods. It is obviously that the updating-mean method has dense log-surfaces indicating more effective samples.} \label{comparenotanupDAL}
+\caption{Comparing $\ln DA$ and $\ln L$ surfaces between not-updating-mean and updating-mean methods. It is obviously that the updating-mean method has higher dense log-surfaces, which contain more effective samples.} \label{comparenotanupDAL}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \begin{subfigure}[t]{0.45\textwidth}
 \includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/realdatacomparea1notupandup2.pdf}
@@ -1386,16 +1389,16 @@ To avoid estimation bias in the algorithm, we are introducing the \textit{thresh
 \includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/realdatacompareessutnotupandup2.pdf}
    \caption{Comparing ESSUT}
 \end{subfigure}
-\caption{Comparison of acceptance rates $\alpha_1$, $\alpha_2$, EffUT and ESSUT between not-updating-mean and updating-mean methods. Black solid dots $\bullet$ indicate values obtained from not-updating-mean method and black solid triangular $\blacktriangle$ indicate values obtained from updating-mean method. The acceptance rates of the updating-mean method are more stable and effective samples are larger in unit computation time. }\label{comparenotanupfeatures}
+\caption{Comparing acceptance rates $\alpha_1$, $\alpha_2$, EffUT and ESSUT between not-updating-mean and updating-mean methods. Black solid dots $\bullet$ indicate values obtained from not-updating-mean method and black solid triangular $\blacktriangle$ indicate values obtained from updating-mean method. The acceptance rates of the updating-mean method are more stable and effective samples are larger in unit computation time. }\label{comparenotanupfeatures}
 \end{figure}
 
 
-So far, the complete algorithm is summarized in the following Algorithm \ref{algorithmslidingwindow}: 
-\begin{algorithm}[h]
+Consequently, a complete form of this algorithm is summarized in the following Algorithm \ref{algorithmslidingwindow}: 
+\begin{algorithm}[ht]
 \SetAlgoLined 
 Initialization: Set up $L$, \textit{threshold} and  \textit{cutting-off} criteria. \\
-Learning process: Estimate $\theta$ with $p\left(\theta\mid Y_{1:\min \left\lbrace t,L\right\rbrace } \right) \propto p\left(Y_{1:\min \left\lbrace t,L\right\rbrace } \mid \theta \right)p\left(\theta \right)$ by one-variable-at-a-time Random Walk Metropolis-Hastings algorithm gaining the target acceptance rates and find out the structure of $\theta\sim N\left(\mu,\Sigma\right)$ and the approximation $\hat{\pi}\left(\cdot\right)$. \label{algorithmlearningsurface}\\
-Estimate $X_{ \max\left\lbrace 1,t-L+1 \right\rbrace :\min \left\lbrace t,L\right\rbrace }$ with $Y_{ \max\left\lbrace 1,t-L+1 \right\rbrace :\min \left\lbrace t,L\right\rbrace }$: \For{$i$ from 1 to $N$}{ \label{algorithmestimaiton}
+Learning phase: Estimate $\theta$ with $p\left(\theta\mid Y_{1:\min \left\lbrace t,L\right\rbrace } \right) \propto p\left(Y_{1:\min \left\lbrace t,L\right\rbrace } \mid \theta \right)p\left(\theta \right)$ by one-variable-at-a-time Random Walk Metropolis-Hastings algorithm gaining the target acceptance rates and find out the structure of $\theta\sim N\left(\mu,\Sigma\right)$ and the approximation $\hat{\pi}\left(\cdot\right)$. \label{algorithmlearningsurface}\\
+Estimation phase: $X_{ \max\left\lbrace 1,t-L+1 \right\rbrace :\min \left\lbrace t,L\right\rbrace }$ with $Y_{ \max\left\lbrace 1,t-L+1 \right\rbrace :\min \left\lbrace t,L\right\rbrace }$: \For{$i$ from 1 to $N$}{ \label{algorithmestimaiton}
 Propose $\theta_i^*$ from $N\left(\theta_i\mid\mu,\Sigma\right)$, accept it with probability $\alpha_1=\min\left\lbrace  1,\frac{\hat{\pi}\left(\theta_i^*\right)q\left(\theta_i, \theta_i^*\right)}{\hat{\pi}\left(\theta_i\right)q\left(\theta_i^*, \theta_i\right)}  \right\rbrace$ and go to next step; otherwise go to step \ref{algorithmDA}.\label{algorithmDA}\\
 Accept $\theta_i^*$ with probability $\alpha_2=\min \left\lbrace  1,\frac{\pi\left(\theta_i^*\right)\hat{\pi}\left(\theta_i\right) }{\pi\left(\theta_i\right)\hat{\pi}\left(\theta_i^*\right)} \right\rbrace$ and go to next step; otherwise go to step \ref{algorithmDA}. \\
 Calculate $\mu_i^{\left(t\right)},\Sigma_i^{\left(t\right)}$ for $X_t$ and $\mu_i^{\left(t+s\right)},\Sigma_i^{\left(t+s\right)}$ for $X_{t+s}$.\\
@@ -1408,17 +1411,17 @@ Shift the window by setting $t = t+1$ and go back to step \ref{algorithmestimait
 \end{algorithm}
 
 
+\clearpage
 
-\subsection{Implementation}
+\subsection{Application}
 
-To implement the Algorithm \ref{algorithmslidingwindow}, we should get an idea of what the hyper parameter space looks like by running step \ref{algorithmlearningsurface} of the algorithm with a subset of observations. By setting $L=100$ and running 5\,000 iterations, we can find the whole $\theta$ samples in 59 seconds. For each parameter of $\theta$, we take 1\,000 sub-samples out of 5\,000 as new sequences. The new $\theta^*$ is representative for the hyper parameter space. Then,the traces and correlation is derived from $\theta^*$. Meanwhile, the acceptance rates for each parameter are $\alpha_\gamma = 0.453,\alpha_{\xi^2}=0.433, \alpha_{\lambda^2}=0.435, \alpha_{\sigma^2}=0.414, \alpha_{\tau^2}=0.4490$ respectively. Hence, the structure of  $\hat{\theta}\sim N\left( m_t,C_t\right)$ is achieved. That can be seen in Figure \ref{realdatacorMatrix}. 
-%In fact, as assuming the parameter does not vary too much through out the process, the correlation changes a little.  
+An application of the Algorithm \ref{algorithmslidingwindow} is to track the position of a moving tractor on a farm. To speed up the instant estimation, we should get an idea of what the hyper parameter space looks like by running step \ref{algorithmlearningsurface} of the algorithm with a subset of observations. By setting $L=100$ and running 5\,000 iterations, we find 5\,000 samples for $\theta$ in 59 seconds. For each parameter of $\theta$, we take 1\,000 sub-samples out as a new sequence. The new $\theta^*$ is representative for the hyper parameter space. Then,the traces and correlation are derived from $\theta^*$. Meanwhile, the acceptance rates for each parameter are $\alpha_\gamma = 0.453,\alpha_{\xi^2}=0.433, \alpha_{\lambda^2}=0.435, \alpha_{\sigma^2}=0.414, \alpha_{\tau^2}=0.4490$ respectively. Hence, the structure of $\hat{\theta}\sim N\left( m_t,C_t\right)$, which is depicted in Figure \ref{realdatacorMatrix}, is obtained. 
+
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.8\textwidth,height=8cm]{Chapters/05MCMCOU/plots/realdatalearningcorMatrix.pdf}
-\caption{Visualization of the parameters correlation matrix, which is found in learning phase. }\label{realdatacorMatrix}
+\caption{Visualization of the parameters correlation matrix, which is found in the learning phase. }\label{realdatacorMatrix}
 \end{figure}
-
 
 \begin{figure}[h]
 \centering
@@ -1442,11 +1445,14 @@ To implement the Algorithm \ref{algorithmslidingwindow}, we should get an idea o
 	\includegraphics[width=\linewidth]{Chapters/05MCMCOU/plots/realdatalearningtau2.pdf}
 	\caption{Trace plot of $\tau^2$}
 \end{subfigure}
-\caption{Trace plots of $\theta$ from learning phase after taking 1\,000 burn-in samples out from 5\,000. }
+\caption{Trace plots of $\theta$ after taking 1\,000 burn-in samples out from 5\,000 from the learning phase.}
 \end{figure}
 
+\clearpage
 
-Since a cheap surrogate $\hat{\pi}(\cdot)$ for the true $\pi(\cdot)$ is found in step \ref{algorithmlearningsurface}, it is time to move to the next step. Algorithm \ref{algorithmslidingwindow} takes fixed $L$ length data from $Y_{1:L}$ to $Y_{t-L+1:t}$ until an irregular large time lag meets the \textit{cutting-off} criterion. In the implementation, the first \textit{cutting-off} occurs at the $648$th data point. The first estimated $\hat{X}_{1:L}$ was found by the batch method and $\hat{X}_{L+1}$ to $\hat{X}_{t}$ were found sequentially around 9 seconds with 10\,000 iterations each time. 
+Since a cheap surrogate $\hat{\pi}(\cdot)$ for the true $\pi(\cdot)$ is found in step \ref{algorithmlearningsurface}, the learning phase, it is time to move on to the estimation phase. Algorithm \ref{algorithmslidingwindow} takes fixed $L$ length data from $Y_{1:L}$ to $Y_{t-L+1:t}$ until an irregular large time lag meets the cutting-off criterion. In the implementation, the first cutting-off occurs at the $648$-th point. The first $L$ estimated $X_{1:L}$ was found by a  batch of data in the learning phase and $X_{L+1:t}$ was found sequentially in the estimation phase with approximate 9 seconds per 10\,000 iterations for each $X_s, s\in \lbrack L+1,t\rbrack$.  
+
+
 
 \begin{figure}[h]
 \centering
@@ -1466,8 +1472,6 @@ Since a cheap surrogate $\hat{\pi}(\cdot)$ for the true $\pi(\cdot)$ is found in
 \end{figure}
 
 
-
-\clearpage
 
 \begin{figure}[h]
 \centering
