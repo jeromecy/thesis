@@ -371,7 +371,7 @@ To accelerate the MH algorithm, DA MH requires a cheap approximate estimation $\
 A lazy $C_t$ is chosen as an identity matrix, in which way all the parameters are independent. In terms of $m_t$, in most of circumstances, 0 is not an idea choice. To find an optimal or suboptimal $m_t$ and $C_t$, several algorithms have been discussed. \cite{stroud2018bayesian} use a second-order expansion of $l(\theta)$ at the mode and the mean and covariance become $m_t=\arg \max l(\theta)$ and $C_t = - \left[ \frac{\partial l(\theta)}{\partial \theta_i \partial \theta_j} \right]_{\theta=m_t}^{-1}$ respectively. The drawback of this estimation is a global optimum is not guaranteed. \cite{mathew2012bayesian} propose a fast adaptive MCMC sampling algorithm, which is a consist of two phases. In the learning phase, they use hybrid Gibbs sampler to learn the covariance structure of the variance components. In phase two, the covariance structure is used to formulate an effective proposal distribution for a MH algorithm. 
 
 
-Likewise, we are suggesting that use a batch of data with length $L<t$ to learn the parameter space by using self-tuning random walk MH algorithm in the learning phase first. This algorithm tunes each parameter at its own optimal step size and explores the surface in different directions. When the process is done, we have a sense of Hyper-surface of $\theta\approx\hat{\theta}$ and its mean $\hat{\mu}\approx m_L$ and covariance $\hat{\Sigma}\approx C_L$ can be estimated. Then, we can move to the second phase: DA MH algorithm. The new $\theta'$ is proposed from  $N\left(\theta^{(t)}\mid m_L,C_L\right)$, which is in the following form 
+Likewise, we are suggesting that use a batch of data with length $L<t$ to learn the parameter space by using self-tuning random walk MH algorithm in the learning phase first. This algorithm tunes each parameter at its own optimal step size and explores the surface in different directions. When the process is done, we have a sense of the surface for $\theta\approx\hat{\theta}$ and its mean $\hat{\mu}\approx m_L$ and covariance $\hat{\Sigma}\approx C_L$ can be estimated. Then, we can move to the second phase: DA MH algorithm. The new $\theta'$ is proposed from  $N\left(\theta^{(t)}\mid m_L,C_L\right)$, which is in the following form 
 \begin{equation}
 \theta' = \theta^{(t)} + R\epsilon z,
 \end{equation}
@@ -1156,7 +1156,7 @@ Various informative and non-informative prior distributions have been suggested 
 \omega_t &\sim N(0,\alpha Q),\\
 \varepsilon_t &\sim N(0,\alpha R),
 \end{align}
-where the two matrices $R$ and $Q$ are known and $\alpha$ is an unknown scale factor to be estimated. (Note that a perfect model is obtained by setting $Q= 0$.) The density of the Gaussian state-space model therefore becomes 
+where the two matrices $R$ and $Q$ are known and $\alpha$ is an unknown scale factor to be estimated. (Note that the forward map will be deterministic if $Q=0$.) The density of the Gaussian state-space model therefore becomes 
 \begin{align}
 p(y_t\mid x_t,\alpha) &= N(F(x_t),\alpha R),\\
 p(x_t\mid x_{t-1},\alpha) &= N(G(x_{t-1}),\alpha Q).
@@ -1412,14 +1412,17 @@ Shift the window by setting $t = t+1$ and go back to step \ref{algorithmestimait
 
 \clearpage
 
-\subsection{Application}
+\subsection{Application on 2-Dimensional GPS Data}
 
-An application of the Algorithm \ref{algorithmslidingwindow} is to track the position of a moving tractor on a farm. To speed up the instant estimation, we should get an idea of what the hyper parameter space looks like by running step \ref{algorithmlearningsurface} of the algorithm with a subset of observations. By setting $L=100$ and running 5\,000 iterations, we find 5\,000 samples for $\theta$ in 59 seconds. For each parameter of $\theta$, we take 1\,000 sub-samples out as a new sequence. The new $\theta^*$ is representative for the hyper parameter space. Then,the traces and correlation are derived from $\theta^*$. Meanwhile, the acceptance rates for each parameter are $\alpha_\gamma = 0.453,\alpha_{\xi^2}=0.433, \alpha_{\lambda^2}=0.435, \alpha_{\sigma^2}=0.414, \alpha_{\tau^2}=0.4490$ respectively. Hence, the structure of $\hat{\theta}\sim N\left( m_t,C_t\right)$, which is depicted in Figure \ref{realdatacorMatrix}, is obtained. 
+An application of the Algorithm \ref{algorithmslidingwindow} is to track the position of a moving tractor on a farm. The original GPS dataset is plotted in Figure \ref{realGPSdataset}. In a 2-dimensional trajectory filtering problem, we use the same parameter $\theta=\lbrace \gamma,\xi^2,\lambda^2,\sigma^2,\tau^2 \rbrace$ for both easting and northing directions. The observations on these two directions are denoted as $Y_E$ and $Y_N$ respectively. The hidden states on easting and northing directions are $X_E$ and $X_N$. 
+
+
+To speed up the estimation, we should get an idea of what the parameter space looks like by running step \ref{algorithmlearningsurface} of the algorithm with a subset of observations. By setting $L=100$ and running 5\,000 iterations, we find 5\,000 samples for $\theta$ in 59 seconds. For each parameter of $\theta$, we take 1\,000 sub-samples out as a new sequence. The new $\theta^*$ is representative for the parameter space. Then the traces and correlation are derived from $\theta^*$. Meanwhile, the acceptance rates for each parameter are $\alpha_\gamma = 0.453,\alpha_{\xi^2}=0.433, \alpha_{\lambda^2}=0.435, \alpha_{\sigma^2}=0.414, \alpha_{\tau^2}=0.4490$ respectively. Hence, the structure of $\hat{\theta}\sim N\left( m_t,C_t\right)$, which is depicted in Figure \ref{realdatacorMatrix}, is obtained. 
 
 \begin{figure}[h]
-\centering
-\includegraphics[width=0.8\textwidth,height=8cm]{Chapters/05MCMCOU/plots/realdatalearningcorMatrix.pdf}
-\caption{Visualization of the parameters correlation matrix, which is found in the learning phase. }\label{realdatacorMatrix}
+	\centering
+	\includegraphics[width=0.5\textwidth]{Chapters/05MCMCOU/plots/realdatalearningcorMatrix.pdf}
+	\caption{Visualization of the parameters correlation matrix, which is found in the learning phase. }\label{realdatacorMatrix}
 \end{figure}
 
 \begin{figure}[h]
@@ -1447,9 +1450,11 @@ An application of the Algorithm \ref{algorithmslidingwindow} is to track the pos
 \caption{Trace plots of $\theta$ after taking 1\,000 burn-in samples out from 5\,000 from the learning phase.}
 \end{figure}
 
+
+
 \clearpage
 
-Since a cheap surrogate $\hat{\pi}(\cdot)$ for the true $\pi(\cdot)$ is found in step \ref{algorithmlearningsurface} (the learning phase), it is time to move on to the estimation phase. Algorithm \ref{algorithmslidingwindow} takes fixed $L$ length data from $Y_{1:L}$ to $Y_{t-L+1:t}$ until an irregular large time lag meets the cutting-off criterion. In the implementation, the first cutting-off occurs after the $648$-th point. Therefore, the first $100$ estimation $X_{1:100}$ was found by a  batch of data in the learning phase and $X_{101:648}$ was found sequentially in the estimation phase with approximate 9 seconds per 10\,000 iterations for each $X_s, s\in \lbrack 101,648\rbrack$. The outcome is depicted in Figure \ref{MCMCfirstportionestimation}. 
+Since a cheap surrogate $\hat{\pi}(\cdot)$ for the true $\pi(\cdot)$ is found in step \ref{algorithmlearningsurface} (the learning phase), it is time to move on to the estimation phase. Algorithm \ref{algorithmslidingwindow} takes fixed $L$ length data from $\{Y_E,Y_N\}_{1:L}$ to $\{Y_E,Y_N\}_{t-L+1:t}$ until an irregular large time lag meets the cutting-off criterion. In the implementation, the first cutting-off occurs after the $648$-th point. The first $100$ estimates $\{X_E,X_N\}_{1:100}$ were found in the learning phase and $\{X_E,X_N\}_{101:648}$ were found sequentially in the estimation phase with approximate 9 seconds per 10\,000 iterations for each $\{X_E,X_N\}_s, s\in \lbrack 101,648\rbrack$. The outcome is depicted in Figure \ref{MCMCfirstportionestimation}. 
 
 
 \begin{figure}[h]
@@ -1466,7 +1471,7 @@ Since a cheap surrogate $\hat{\pi}(\cdot)$ for the true $\pi(\cdot)$ is found in
 	\node [black, font=\bfseries,rotate=90] at (0,0.5) {Northing};
 	\end{scope}
 \end{tikzpicture}
-\caption{Estimations of $X$ and $Y$ found by combined batch and sequential methods. The red line is the estimation by batch method and the green line is the sequential MCMC filtering estimation. Black dots are the measurements.}\label{MCMCfirstportionestimation}
+\caption{Estimations of $Z$ found by combined batch and sequential methods. The red line is the estimation by batch method and the green line is the sequential MCMC filtering estimation. Black dots are the measurements.}\label{MCMCfirstportionestimation}
 \end{figure}
 
 
@@ -1479,31 +1484,44 @@ Since a cheap surrogate $\hat{\pi}(\cdot)$ for the true $\pi(\cdot)$ is found in
 %\end{figure}
 
 
-After a cutting-off procedure being activated, the adaptive MCMC algorithm goes off-line and accumulates measurements until they are enough, for example 100, for a further estimation. In the application, we can see that the first 100 observations are used for parameter estimation in the learning phase. Once this step is done, the sequential estimation phase goes on-line for filtering calculation. Because there is a large time lag between the 648-th and 649-th points, the algorithm goes off-line again for accumulating data in the learning phase, and then goes back to on-line for filtering estimation. 
+After a cutting-off procedure is activated, the adaptive MCMC algorithm goes off-line and accumulates measurements until there are enough, for example 100, for continued estimation \footnote{Alternatively, a ``hot start'' is possible in which the priors are the posteriors of the previous estimation phase and no learning phase is required.}. In the application, we can see that the first 100 observations are used for parameter estimation in the learning phase. Once this step is done, the sequential estimation phase goes on-line for filtering calculation. Because there is a large time lag between the 648-th and 649-th points, the algorithm goes off-line again to accumulate data in the learning phase, and then goes back to on-line for filtering estimation. 
 
-Figure \ref{MCMCwholeestimation} gives the whole estimated trajectory by the proposed sliding window adaptive MCMC algorithm. There are two main learning phase occur on the entire dataset. The first learning phase uses the first 100 data and the second learning phase uses the data from 649 to 748. With the information obtained from the learning phase, two sequential estimation phases estimate the data from 101 to 648 and from 749 to 1121 respectively. However, when the third large time lag occurs after the 1121-th point, the algorithm is not able to run a third learning phase with few of observations, the amount of which is less than 100.  
+Figure \ref{MCMCwholeestimation} gives the whole estimated trajectory by the proposed sliding window MCMC algorithm. There are two main learning phase occur on the entire dataset. The first learning phase uses the first 100 data and the second learning phase uses the data from 649 to 748. With the information obtained from the learning phase, two sequential estimation phases estimate the data from 101 to 648 and from 749 to 1121 respectively. However, when the third large time lag occurs after the 1121-th point, the algorithm has insufficient observations to run a third learning phase. In this figure, the on-line/off-line switching points are colored in yellow. 
 
 
 \begin{figure}[h]
 	\centering
 	\begin{tikzpicture}
-	\node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=0.9\textwidth]{Chapters/05MCMCOU/plots/realdatabatchPositionwhole.pdf}};
+	\node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=0.9\textwidth]{Chapters/05MCMCOU/plots/realdatabatchPositionwhole2.pdf}};
 	\begin{scope}[
 	x={(image.south east)},
 	y={(image.north west)}
 	]
 	\node [black, font=\bfseries] at (0.5,0) {Easting};
 	\node [black, font=\bfseries,rotate=90] at (0,0.5) {Northing};
+	\node [black, font=\bfseries] at (0.68,0.68) {1};
+	\node [black, font=\bfseries] at (0.15,0.75) {2};
+	\node [black, font=\bfseries] at (0.94,0.83) {3};
+	\node [black, font=\bfseries] at (0.64,0.08) {4};
 	\end{scope}
 	\end{tikzpicture}
-	\caption{Two learning phases are colored by red and two sequential estimation phases are colored by green. The algorithm is not able to estimate the data from 1121 till the end because of the lack of observations. }\label{MCMCwholeestimation}
+	\caption{Two learning phases are colored by red and two sequential estimation phases are colored by green. The algorithm is not able to estimate the data from 1121 till the end because of the lack of observations. Point 1 is the first point of the data stream. Points 2 and 3 are the switching points. Point 4 is the last point of the data stream. }\label{MCMCwholeestimation}
 \end{figure}
 
 
 
 \section{Discussion and Future Work}
-%%% need to write better
-In this chapter, we use the self-tuning one-variable-at-a-time random walk Metropolis-Hastings to learn the parameter hyper space for a linear state-space model. With the joint distribution of $X$ and $Y$, we have a recursive way to update the mean and covariance sequentially. After getting the cheap approximation posterior distribution, DA MH algorithm accelerates the estimating process. The advantage of this algorithm is that it is easy to understand and implement in practice. By contrast, Particle Learning algorithm is highly efficient, however, the sufficient statistics are not available at all time . 
 
-Some future work can be done on inferring state from precious movement with other kinetic information, not just with diffusive  velocity. Besides, I am more interested in increasing the efficiency and accuracy of MCMC method. 
+
+In this chapter, an adaptive MCMC algorithm is proposed for estimating combined state and parameter in a homogeneous linear state-space model. The whole process is split into two phases: learning phase and estimation phase. In the learning phase, a self-tuning one-variable-at-a-time random walk Metropolis-Hastings algorithm is used to learn the structure of the parameter space. After getting a cheap surrogate for the expensive posterior distribution, it is then used in a delayed-acceptance algorithm in the estimation phase. 
+
+
+In on-line mode, the algorithm is adaptive to maintain sampling efficiency and uses a sliding window approach to maintain sampling speed. At the end of this chapter, the algorithm is applied to on-line estimation on a 2-dimensional GPS dataset. 
+
+
+The advantage of this algorithm is that it is easy to understand and to implement in practice. In contrast, Particle Learning algorithm is highly efficient, however, the sufficient statistics are not available at all times. 
+
+The sliding window adaptive MCMC algorithm should be contrasted with the V-spline algorithm proposed in Chapter \ref{ChapterTS}. The sliding window adaptive MCMC algorithm is a filtering algorithm that is designed for fast estimation. The V-spline is a smoothing algorithm that uses all the data for entire trajectory estimation and parameter optimization can be time consuming. On the other hand, the V-spline has piecewise continuous second derivatives, whereas the forward map \eqref{OUprocess} built into our sliding window adaptive MCMC algorithm implies sample paths are not twice differentiable.
+
+The gradient boosting V-spline, discussed in Chapter \ref{ChapterFuture}, is potentially a much faster algorithm that could also be employed in on-line mode. Like the V-spline, the forward map used in the adaptive MCMC algorithm could also incorporate vehicle operating characteristics. However, it would be important to maintain the efficiency of the MCMC sampler in higher dimensions. 
 
