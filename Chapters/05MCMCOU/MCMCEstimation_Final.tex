@@ -628,7 +628,9 @@ With the above formula, the recursive way of updating the mean and covariance is
 \bar{\mu}_{t}       & = \frac{\phi}{\sigma^2}K_{t-1}\bar{\mu}_{t-1} + \phi \left(1 - \frac{K_{t-1}}{\sigma^2}\right)y_{t-1}, \\
 \bar{\Sigma}_{t}  &= \sigma^4K_{t}^{-1},
 \end{align}
-where $K_1=\frac{\sigma^4}{\sigma^2+\tau^2+L^2\phi^2}$. For calculation details, we refer readers to Appendix \ref{linearcalculation}.
+%where $K_1=\frac{\sigma^4}{\sigma^2+\tau^2+L^2\phi^2}$. 
+where $K_1=\frac{\sigma^4}{\sigma^2+L^2}$. 
+For calculation details, we refer readers to Appendix \ref{linearcalculation}.
 
 
 \subsubsection*{The Estimation Distribution}
@@ -817,7 +819,8 @@ With the above formula, the recursive way of updating the mean and covariance ar
 \bar{\mu}_{t}       & = \frac{\phi_t}{\sigma^2}K_{t-1}\bar{\mu}_{t-1} + \phi_t \left(1 - \frac{K_{t-1}}{\sigma^2}\right)y_{t-1}, \\
 \bar{\Sigma}_{t}  &= \sigma^4K_{t}^{-1}, \label{linearOUsigma}
 \end{align}
-where $K_1=\frac{\sigma^4}{\sigma^2+\tau_1^2+L^2\phi_1^2}$. 
+%where $K_1=\frac{\sigma^4}{\sigma^2+\tau_1^2+L^2\phi_1^2}$. 
+where $K_1=\frac{\sigma^4}{\sigma^2+L^2}$. 
 %
 %Additionally, as discussed in Section \ref{generalEstDistr}, the best estimation of $x_{1:t}$ with a given $\theta$ is 
 %\begin{align}
@@ -925,7 +928,9 @@ and
 \rho_t\sigma_t^{(x)}\sigma_t^{(u)} & =\frac{\lambda ^2 \left(e^{\gamma\Delta_t} -1\right) \left(1-e^{-2\gamma\Delta_t}\right)}{2 \gamma ^2}
 \end{cases}
 \end{align}
-In the above equations $\Delta_t = T_t-T_{t-1}$ and initial values are $\Delta_1=0$, $x_0\sim N\left(0,L_x^2\right), u_0\sim N(0,L_u^2)$, $\rho_t^2 = 1-\frac{\xi^2 \Delta_t}{\sigma_t^{(x)^2}}$. To be useful, we use $\frac{1}{1-\rho_t^2} =\frac{\sigma_t^{(x)2}}{\xi^2 \Delta_t}$ instead in the calculation. 
+In the above equations $\Delta_t = T_t-T_{t-1}$ and initial values are $\Delta_1=0$, %$x_0\sim N\left(0,L_x^2\right), u_0\sim N(0,L_u^2)$, %% was x_0
+$x_1\sim N\left(0,L_x^2\right), u_1\sim N(0,L_u^2)$, 
+$\rho_t^2 = 1-\frac{\xi^2 \Delta_t}{\sigma_t^{(x)^2}}$. To be useful, we use $\frac{1}{1-\rho_t^2} =\frac{\sigma_t^{(x)2}}{\xi^2 \Delta_t}$ in the calculation. 
 
 Furthermore, the independent observation process is 
 \begin{equation}\label{obseq}
@@ -1310,7 +1315,7 @@ p(x_{0:n-L},\theta\mid y_{0:n-1}) \approx p(x_{0:n-L},\theta \mid y_{0:n})
 \end{equation}
 for large $L$. The new observations coming after the $n$th data has little influence on $x_{0:n-L}$. 
 
-Being inspired, we do not use the first $0$ to $n-1$ date and ignore the latest $n$th, on contrary, use all the latest date with truncating the first few history ones. Suppose we are given a fixed-length $L$, up to time $t$ ($t>L$),  we estimate the $x_t$ by using all the retrospective observations to the point at $t-L+1$. In another word, the estimation distribution for the current state is 
+Being inspired, we do not use the first $0$ to $n-1$ date and ignore the latest $n$th, on the contrary, use all the latest date with truncating the first few history ones. Suppose we are given a fixed-length $L$, up to time $t$ ($t>L$),  we estimate the $x_t$ by using all the retrospective observations to the point at $t-L+1$. In another word, the estimation distribution for the current state is 
 \begin{equation}
 p(X_{t}\mid Y_{t-L+1:t},\theta),
 \end{equation}
