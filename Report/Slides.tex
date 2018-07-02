@@ -42,7 +42,7 @@ University of Otago % Your institution for the title page
 %\medskip
 %\textit{zcao@maths.otago.ac.nz} % Your email address
 }
-\date{20 June 2018} % Date, can be changed to a custom date
+\date{4th July 2018} % Date, can be changed to a custom date
 
 \begin{document}
 
@@ -50,26 +50,38 @@ University of Otago % Your institution for the title page
 \titlepage % Print the title page as the first slide
 \end{frame}
 
-\begin{frame}
-\frametitle{Overview} % Table of contents slide, comment this block out to remove it
-\tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
-\end{frame}
+%\begin{frame}
+%\frametitle{Overview} % Table of contents slide, comment this block out to remove it
+%\tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+%\end{frame}
 
 %----------------------------------------------------------------------------------------
 %	PRESENTATION SLIDES
 %----------------------------------------------------------------------------------------
 
 %------------------------------------------------ 
-\section{Problem Statement} 
+
 %\section{Project} 
 %------------------------------------------------
+\begin{frame}
+\frametitle{Main Contributions in The Past Three Years}
+\begin{itemize}
+	\item Non-parametric V-spline for trajectory reconstruction
+	\item Corresponding between V-spline and its Bayes estimate
+	\item A practical adaptive MCMC sampler for combined state and parameter estimation
+\end{itemize}
 
+\end{frame}
+%------------------------------------------------
+%------------------------------------------------
+
+\section{Problem Statement} 
 \begin{frame}
 	\frametitle{GPS points and Trajectory}
 	
 GPS units irregularly record time series data of a moving object. These data are in the form of
 \begin{equation}
-T=\{p_t=[x_t,y_t,v_t,\omega_t, b_t, \cdots] | t \in \mathbb{R} \}.
+P_t=\{x_t,y_t,v_t,\omega_t, b_t, \cdots | t \in \mathbb{R} \}.
 \end{equation}
 \begin{table}[]
 \centering
@@ -86,6 +98,8 @@ $b$     & boom status \\ \hline
 Trajectory is a connection by a time series successive position recorded by GPS devices. 
 
 \end{frame}
+
+
 %------------------------------------------------
 %\begin{frame}
 %
@@ -224,10 +238,10 @@ Q'& P'+\frac{n\lambda}{\gamma}I
 \frametitle{Simulation and Application}
 \begin{figure}
 \centering
-\includegraphics[width=5cm,height=3.5cm]{Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSine.pdf}
-\includegraphics[width=5cm,height=3.5cm]{Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSinePositionNoise}\\
-\includegraphics[width=5cm,height=3.5cm]{Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSinePSpline}
-\includegraphics[width=5cm,height=3.5cm]{Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSineSure}
+\includegraphics[width=5cm,height=3.5cm]{../Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSine.pdf}
+\includegraphics[width=5cm,height=3.5cm]{../Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSinePositionNoise}\\
+\includegraphics[width=5cm,height=3.5cm]{../Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSinePSpline}
+\includegraphics[width=5cm,height=3.5cm]{../Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSineSure}
 \end{figure}
 \end{frame}
 %--------------------------------------------------------------------------------------
@@ -235,10 +249,10 @@ Q'& P'+\frac{n\lambda}{\gamma}I
 \begin{frame}
 \begin{figure}
 \centering
-\includegraphics[width=5cm,height=3.5cm]{Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSineGamma}
-\includegraphics[width=5cm,height=3.5cm]{Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSineTractorAPT}\\
-\includegraphics[width=5cm,height=3.5cm]{Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSineTractorVelocity}
-\includegraphics[width=5cm,height=3.5cm]{Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSineTractor}
+\includegraphics[width=5cm,height=3.5cm]{../Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSineGamma}
+\includegraphics[width=5cm,height=3.5cm]{../Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSineTractorAPT}\\
+\includegraphics[width=5cm,height=3.5cm]{../Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSineTractorVelocity}
+\includegraphics[width=5cm,height=3.5cm]{../Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSineTractor}
 \end{figure}
 \end{frame}
 %--------------------------------------------------------------------------------------
@@ -248,7 +262,7 @@ Q'& P'+\frac{n\lambda}{\gamma}I
 
 \begin{figure}
 \centering
-\includegraphics[width=0.9\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataCompleteXY.pdf}
+\includegraphics[width=0.9\linewidth]{../Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataCompleteXY.pdf}
 \caption{2-dimensional reconstruction. Larger dots indicate bigger values of penalty function $\lambda(t)$.}
 \end{figure}
 
@@ -341,7 +355,7 @@ where $IG(\alpha,\beta)$ represents the \textit{Inverse Gamma} distribution with
 \begin{frame}
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.8\textwidth]{Chapters/05MCMCOU/plots/realdatalearningcorMatrix.pdf}
+\includegraphics[width=0.8\textwidth]{../Chapters/05MCMCOU/plots/realdatalearningcorMatrix.pdf}
 \caption{Visualization of the parameters correlation matrix, which is found in learning phase. }\label{realdatacorMatrix}
 \end{figure}
 
@@ -353,20 +367,27 @@ where $IG(\alpha,\beta)$ represents the \textit{Inverse Gamma} distribution with
 
 \begin{frame}
 
+
 \begin{figure}[h]
-\centering
-\begin{tikzpicture}
-    \node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=0.8\textwidth]{Chapters/05MCMCOU/plots/realdatabatchPosition2.pdf}};
-    \begin{scope}[
-        x={(image.south east)},
-        y={(image.north west)}
-    ]
-    \node [black, font=\bfseries] at (-0.02,0.52) {\rotatebox{90}{\small northing}};
-    \node [black, font=\bfseries] at (0.52,-0.02) {\small easting};
-    \end{scope}
-\end{tikzpicture}
-\caption{Posterior mean trajectory in two dimensions. The orange line is the reconstruction from the learning phase and the green line is the filtering from the estimation phase. Red dots are the measurements.}
-\end{figure} 
+	\centering
+	\begin{tikzpicture}
+	\node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=0.9\textwidth]{../Chapters/05MCMCOU/plots/realdatabatchPositionwhole2.pdf}};
+	\begin{scope}[
+	x={(image.south east)},
+	y={(image.north west)}
+	]
+	\node [black, font=\bfseries] at (0.5,0) {Easting};
+	\node [black, font=\bfseries,rotate=90] at (0,0.5) {Northing};
+	\node [black, font=\bfseries] at (0.68,0.68) {1};
+	\node [black, font=\bfseries] at (0.15,0.75) {2};
+	\node [black, font=\bfseries] at (0.94,0.83) {3};
+	\node [black, font=\bfseries] at (0.64,0.08) {4};
+	\end{scope}
+	\end{tikzpicture}
+	%\caption{Two learning phases are colored by red and two sequential estimation phases are colored by green. The algorithm is not able to estimate the data from 1121 till the end because of the lack of observations. Point 1 is the first point of the data stream. Points 2 and 3 are the switching points. Point 4 is the last point of the data stream. }\label{MCMCwholeestimation}
+\end{figure}
+
+
 \end{frame}
 
 %--------------------------------------------------------------------------------------
@@ -386,6 +407,24 @@ Further videos at:
 \end{frame}
 
 
+%--------------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------------
+
+
+\begin{frame}
+\frametitle{Amendments}
+\begin{itemize}
+	\item Chapter one: introduction for GPS data.
+	\item Chapter two: larger labels in figures.
+	\item Chapter three: the conjecture has been resolve.
+	\item Chapter four: fixed typographical errors.
+	\item Chapter five: explicit explanation, better figures.
+	\item Others: references are properly cited.
+\end{itemize}
+
+
+\end{frame}
+
 
 %--------------------------------------------------------------------------------------
 %--------------------------------------------------------------------------------------
@@ -397,7 +436,8 @@ Further videos at:
  \hskip 0.5cm -- Grant UOOX 1208\\
 \item TracMap\\
 \item Dr Matthew Parry\\
-\item Professor David Bryant
+\item Professor David Bryant \\
+\item All ex000aminers 
 \end{itemize}
 \end{frame}
 
@@ -447,31 +487,21 @@ Further videos at:
 
 %------------------------------------------------
 
-\begin{frame}
-\frametitle{Main Contributions in The Past Three Years}
-\begin{itemize}
-\item Non-parametric V-spline
-\item Corresponding between V-spline and its Bayes estimate
-\item A practical adaptive MCMC sampler for combined state and parameter estimation
-\end{itemize}
-
-\end{frame}
-
-
-\begin{frame}
-\frametitle{Future Research Plans in Academic Career}
-\begin{itemize}
-\item Gradient boosting V-spline: to speed up computation
-
-\item MCMC algorithms, such as adaptive MCMC, grid-based MCMC and parallel MCMC algorithms, subsample MCMC. 
-
-\item Computational biology: such as genotype imputation, epidemiological forecasting. 
-
-\item Statistical methodologies and their applications.  
-
-\end{itemize}
-
-\end{frame}
+%
+%\begin{frame}
+%\frametitle{Future Research Plans in Academic Career}
+%\begin{itemize}
+%\item Gradient boosting V-spline: to speed up computation
+%
+%\item MCMC algorithms, such as adaptive MCMC, grid-based MCMC and parallel MCMC algorithms, subsample MCMC. 
+%
+%\item Computational biology: such as genotype imputation, epidemiological forecasting. 
+%
+%\item Statistical methodologies and their applications.  
+%
+%\end{itemize}
+%
+%\end{frame}
 
 
 %\begin{frame}

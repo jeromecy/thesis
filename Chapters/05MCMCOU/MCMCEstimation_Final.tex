@@ -481,7 +481,7 @@ In this section, we consider the model in regular and irregular spaced time diff
 \mbox{Time } & &       & T_1               &          & T_k               &        & T_t               &   \\
 \end{matrix}
 \end{align}
-We define $\Delta_k = T_k-T_{k-1}$. If $\Delta_t$ is constant, we retrieve a standard  $\textit{AR(1)}$ model process with regular spaced time steps; if $\Delta_t$ is not constant, then the model becomes more complicated with irregular spaced time steps. 
+We define $\Delta_k = T_k-T_{k-1}$. If $\Delta_t$ is constant, we retrieve a standard  $\textit{AR(1)}$ model process with regular spaced time steps; if $\Delta_t$ is not constant, then the model becomes more complicated with irregular spaced time steps. (Note that we do not consider $x_0$ below: given an appropriate prior, $x_0$ can always be integrated out of the model probability.)
 
 %If the transition processes $F$ and $G$ are linear and normal distributed, we call this model $\textit{Linear Gaussian State-Space Model}$. 
 
@@ -1479,6 +1479,35 @@ Since a cheap surrogate $\hat{\pi}(\cdot)$ for the true $\pi(\cdot)$ is found in
 \caption{Estimations of $Z$ found by combined batch and sequential methods. The red line is the estimation by batch method and the green line is the sequential MCMC filtering estimation. Black dots are the measurements.}\label{MCMCfirstportionestimation}
 \end{figure}
 
+The means of uncertainties in the estimation for each direction are about 0.5 meters. Figure \ref{MCMCErrorFill} depicts uncertainties of the estimation before the first cutting-off procedure activated. The shaded blue filling indicates that there are larger uncertainties at turning points. In the estimation phase, Algorithm \ref{algorithmslidingwindow} is able to estimate $X_t$ and to predict $X_{t+s}$. However, when $s$ goes along time $t$, the uncertainty becomes larger. When a new observation $X_{t+1}$ comes into the data stream, the uncertainty shrinks. 
+
+
+
+\begin{figure}[h]
+	\centering
+	\begin{tikzpicture}
+	\node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=0.45\textwidth]{Chapters/05MCMCOU/plots/tracErrorFillX.pdf}};
+	\begin{scope}[
+	x={(image.south east)},
+	y={(image.north west)}
+	]
+	\node [black, font=\bfseries] at (0.5,0) {$t$};
+	\node [black, font=\bfseries,rotate=90] at (0,0.5) {Easting};
+	\end{scope}
+	\end{tikzpicture}
+		\begin{tikzpicture}
+	\node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=0.45\textwidth]{Chapters/05MCMCOU/plots/tracErrorFillY.pdf}};
+	\begin{scope}[
+	x={(image.south east)},
+	y={(image.north west)}
+	]
+	\node [black, font=\bfseries] at (0.5,0) {$t$};
+	\node [black, font=\bfseries,rotate=90] at (0,0.5) {Northing};
+	\end{scope}
+	\end{tikzpicture}
+	\caption{Uncertainties on easting and northing directions before the first cutting-off procedure. The means of uncertainties on each direction are about 0.5 meters. }\label{MCMCErrorFill}
+\end{figure}
+
 
 
 %\begin{figure}[h]
@@ -1519,6 +1548,8 @@ Figure \ref{MCMCwholeestimation} gives the whole estimated trajectory by the pro
 
 
 In this chapter, an adaptive MCMC algorithm is proposed for estimating combined state and parameter in a homogeneous linear state-space model. The whole process is split into two phases: learning phase and estimation phase. In the learning phase, a self-tuning one-variable-at-a-time random walk Metropolis-Hastings algorithm is used to learn the structure of the parameter space. After getting a cheap surrogate for the expensive posterior distribution, it is then used in a delayed-acceptance algorithm in the estimation phase. 
+
+Note that in the learning phase, we determine an approximation for the posterior distribution to be used in the delayed-acceptance MH algorithm. This is quite different to population MCMC \citep{laskey2003population}, in which multiple chains are used to determine a better proposal distribution. This does, however, suggest that multiple chains could be used to improve the learning phase. 
 
 
 In on-line mode, the algorithm is adaptive to maintain sampling efficiency and uses a sliding window approach to maintain sampling speed. At the end of this chapter, the algorithm is applied to on-line estimation on a 2-dimensional GPS dataset. 
