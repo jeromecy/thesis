@@ -11,6 +11,7 @@ Warning--page numbers missing in branson2017nonparametric
 Warning--no number and no volume in chopin2010particle
 Warning--page numbers missing in chopin2010particle
 Warning--can't use both author and editor fields in smcmip2011
+Warning--can't use both author and editor fields in einstein1956investigations
 Warning--empty booktitle in gloderer2010spline
 Warning--can't use both volume and number fields in gordon1993novel
 Warning--no number and no volume in graves2011automatic
@@ -30,43 +31,43 @@ Warning--no number and no volume in vieira2016online
 Warning--page numbers missing in vieira2016online
 You've used 261 entries,
             2855 wiz_defined-function locations,
-            1982 strings with 46479 characters,
-and the built_in function-call counts, 185551 in all, are:
-= -- 15687
+            1986 strings with 46913 characters,
+and the built_in function-call counts, 185467 in all, are:
+= -- 15668
 > -- 13552
-< -- 59
+< -- 60
 + -- 4098
 - -- 4636
-* -- 16572
-:= -- 33570
+* -- 16568
+:= -- 33562
 add.period$ -- 822
 call.type$ -- 261
 change.case$ -- 1637
 chr.to.int$ -- 261
-cite$ -- 285
+cite$ -- 286
 duplicate$ -- 5158
-empty$ -- 11330
+empty$ -- 11324
 format.name$ -- 5368
-if$ -- 34760
+if$ -- 34739
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 301
+missing$ -- 302
 newline$ -- 1308
 num.names$ -- 2610
-pop$ -- 1481
+pop$ -- 1483
 preamble$ -- 1
 purify$ -- 3459
 quote$ -- 0
-skip$ -- 5423
+skip$ -- 5425
 stack$ -- 0
-substring$ -- 10175
-swap$ -- 1773
-text.length$ -- 59
+substring$ -- 10150
+swap$ -- 1774
+text.length$ -- 60
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 4760
-warning$ -- 24
-while$ -- 2622
+type$ -- 4750
+warning$ -- 25
+while$ -- 2620
 width$ -- 0
-write$ -- 3498
-(There were 24 warnings)
+write$ -- 3499
+(There were 25 warnings)

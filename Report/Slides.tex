@@ -132,9 +132,10 @@ A {\bf trajectory} is a curve relating (not necessarily connecting) a sequence o
 %------------------------------------------------
 \begin{frame}
 \frametitle{A New Objective Function}
-Given $n$ observation times such that $a<t_1<\cdots <t_n<b$, with associated position data $z_i=(x_i,y_i)$, velocity data $w_i=(u_i,v_i)$, for $i=1,2,\cdots,n$, and a positive piecewise parameter $\lambda(t)$, which will control penalty functions, then the equation
+Given $n$ observation times such that $a<t_1<\cdots <t_n<b$, with associated position data $y_i$, velocity data $v_i$, for $i=1,2,\cdots,n$, and a positive piecewise parameter $\lambda(t)$, which will control penalty functions, then the equation
 \begin{equation}\label{obtractor}
-J[f]=\frac{1}{n}\sum_{i=1}^n|f(t_i)-z_i|^2+\frac{\gamma}{n}\sum_{i=1}^{n}|f'(t_i)-w_i|^2+\sum_{i=1}^n\lambda_i\int_{t_i}^{t_{i+1}}|f''(t)|^2 dt
+%J[f]=\frac{1}{n}\sum_{i=1}^n|f(t_i)-y_i|^2+\frac{\gamma}{n}\sum_{i=1}^{n}|f'(t_i)-v_i|^2+\sum_{i=1}^n\lambda_i\int_{t_i}^{t_{i+1}}|f''(t)|^2 dt
+J[f]=\frac{1}{n}\sum_{i=1}^n|f(t_i)-y_i|^2+\frac{\gamma}{n}\sum_{i=1}^{n}|f'(t_i)-v_i|^2+\sum_{i=1}^n\int_{t_i}^{t_{i+1}}\lambda(t)|f''(t)|^2 dt
 \end{equation}
 is minimized by a V-spline, which is linear outside the knots. 
 \end{frame}
@@ -145,14 +146,19 @@ is minimized by a V-spline, which is linear outside the knots.
 \begin{frame}
 \frametitle{Solution to The New Objective Function}
 The V-spline $f(t)$ is a linear combination of basis functions
-\begin{equation*}
+\begin{equation}
 f(t)=\sum_{j=1}^{2n} N_j(t)\theta_j 
-\end{equation*}
-and the objective function reduces to
-\begin{equation*}
-\mbox{MSE}(\theta,\lambda,\gamma)=(\mathbf{z}-\mathbf{B}\mathbf{\theta})^T(\mathbf{z}-\mathbf{B}\mathbf{\theta})+\gamma(\mathbf{w}-\mathbf{C}\mathbf{\theta})^T(\mathbf{w}-\mathbf{C}\mathbf{\theta})+n\mathbf{\theta}^T\mathbf{\Omega_\lambda}\mathbf{\theta},
-\end{equation*}
-where $\mathbf{z}=\{z(x_i,y_i)\}$ are the knots and $\mathbf{w}=\{(u_i,v_i)\}$ are the tangent at knots.
+\end{equation}
+and the objective function becomes 
+\begin{equation}
+nJ[f]=(\mathbf{y}-B\mathbf{\theta})^T(\mathbf{y}-B\mathbf{\theta})+\gamma(\mathbf{v}-C\mathbf{\theta})^T(\mathbf{v}-C\mathbf{\theta})+n\mathbf{\theta}^T\Omega_\lambda\mathbf{\theta}.
+\end{equation}
+Therefore, the solution is 
+\begin{equation}
+\hat{\theta}=\left(B^\top B+\gamma C^\top C+n\Omega_\lambda\right)^{-1}\left(B^\top\mathbf{y}+\gamma C^\top\mathbf{v}\right)\label{thetahat}.
+\end{equation}
+
+
 \end{frame}
 
 %------------------------------------------------
@@ -162,19 +168,23 @@ where $\mathbf{z}=\{z(x_i,y_i)\}$ are the knots and $\mathbf{w}=\{(u_i,v_i)\}$ a
 
 \begin{frame}
 \frametitle{Cross Validation of V-Spline}
+
+The formula of cross validation score is 
 \begin{equation}
-\mbox{CV}=\frac{1}{n}\sum_i (\hat{f}^{(-i)}(t_i)-z_i)^2
+\mbox{CV}=\frac{1}{n}\sum_i (\hat{f}^{(-i)}(t_i)-y_i)^2
 \end{equation}
 
 Because $\hat{f}$ and $\hat{f'}$ can be written in the form of
-\begin{align*}
-\hat{f}=B\hat{\theta}=Sz+\gamma Tw\\
-\hat{f'}=C\hat{\theta}=Uz+\gamma Vw
-\end{align*}
+\begin{equation}\label{linearformofF}
+\begin{split}
+\hat{f} &=B\hat{\theta}=S\mathbf{y}+\gamma T\mathbf{v}\\
+\hat{f'}&=C\hat{\theta}=U\mathbf{y}+\gamma V\mathbf{v}
+\end{split}
+\end{equation}
 %Generalized CV provides a convenient approximation to LOO-CV, for linear fitting under squared error loss.
 Then for V-spline, 
 \begin{equation}
-\mbox{CV}=\frac{1}{n}\sum_i \left(\frac{\hat{f}(t_i)-z_i+\gamma \frac{T_{ii}}{1-\gamma V_{ii}}(\hat{f}'(t_i)-w_i)) }{1-S_{ii}-\gamma \frac{T_{ii}}{1-\gamma V_{ii}}U_{ii}}\right)^2
+\mbox{CV}=\frac{1}{n}\sum_i \left(\frac{\hat{f}(t_i)-y_i+\gamma \frac{T_{ii}}{1-\gamma V_{ii}}(\hat{f}'(t_i)-v_i)) }{1-S_{ii}-\gamma \frac{T_{ii}}{1-\gamma V_{ii}}U_{ii}}\right)^2
 \end{equation}
 \end{frame}
 
@@ -231,7 +241,13 @@ In a generic process, we know that $p(\mathbf{y},\mathbf{v}\mid f) = N(f,\sigma^
 \begin{equation}
 p(f\mid \mathbf{y},\mathbf{v}) \propto p(\mathbf{y},\mathbf{v}\mid f)p(f)
 \end{equation}
-where $f\sim GP(0,\Sigma)$ has Gaussian process prior. Particularly, in $\mathcal{C}_{p.w.}^{2}[0,1]$, $\Sigma$ is associated with $R(s,t)$. 
+where $f\sim GP(0,\Sigma)$ is a Gaussian process prior. Particularly, in $\mathcal{C}_{p.w.}^{2}[0,1]$ 
+%$\Sigma$ is associated with $R(s,t)$. 
+\begin{equation}
+\Sigma\propto  \rho\begin{bmatrix}
+R_0(s,t) & \dot{R}_0(s,t)\\R'_0(s,t) &\dot{R}'_0(s,t) \end{bmatrix} + \begin{bmatrix}
+R_1(s,t) & \dot{R}_1(s,t)\\R'_1(s,t) &\dot{R}'_1(s,t) \end{bmatrix}
+\end{equation}
 
 \end{frame}
 
@@ -247,8 +263,9 @@ The posterior mean $E(f \mid \mathbf{y},\mathbf{v})$ is $\hat{f}  = \mathbf{\phi
 \begin{bmatrix}\mathbf{c}\\ \mathbf{b}\end{bmatrix} &=
 \left(M^{-1}-M^{-1}T\left(T^\top M^{-1} T\right)^{-1}T^\top M^{-1}\right)\begin{bmatrix}\mathbf{y}\\ \mathbf{v} \end{bmatrix},
 \end{align} 
-where $M=\begin{bmatrix} Q+n\lambda I& P\\ Q'& P'+\frac{n\lambda}{\gamma}I \end{bmatrix}$ (when the $\rho\rightarrow \infty$).
+where $M=\begin{bmatrix} Q+n\lambda I& P\\ Q'& P'+\frac{n\lambda}{\gamma}I \end{bmatrix}$ (when $\rho\rightarrow \infty$).
 
+The posterior mean is the solution to the objective function and is correspondence to \eqref{linearformofF} if the sequence is converted to the interval $[0,1]$. 
 
 \end{frame}
 
@@ -348,6 +365,22 @@ In the learning phase, a cheap Gaussian surrogate $\hat{p}(\theta)$ is obtained 
 Specifically, a self-tuning random walk Metropolis-Hastings algorithm, in which the parameters are updated one at a time, is used to obtain the mean and covariance structure of $\hat{p}(\theta)$  
 
 \end{frame}
+%--------------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------------
+
+
+\begin{frame}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{../Chapters/05MCMCOU/plots/realdatalearningcorMatrix.pdf}
+	\caption{Visualization of the parameters correlation matrix, which is found in learning phase. }\label{realdatacorMatrix}
+\end{figure}
+
+\end{frame}
+
+%--------------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------------
+
 
 \begin{frame}
 \frametitle{Estimation Phase}
@@ -363,7 +396,8 @@ To maintain sampling speed, we introduce a \textit{Sliding Window MCMC} algorith
 
 
 
-
+%--------------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------------
 
 
 \begin{frame}
@@ -396,17 +430,6 @@ and transmits data to a remote server. The data is an irregularly spaced time se
 %--------------------------------------------------------------------------------------
 %--------------------------------------------------------------------------------------
 
-\begin{frame}
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.8\textwidth]{../Chapters/05MCMCOU/plots/realdatalearningcorMatrix.pdf}
-\caption{Visualization of the parameters correlation matrix, which is found in learning phase. }\label{realdatacorMatrix}
-\end{figure}
-
-\end{frame}
-
-%--------------------------------------------------------------------------------------
-%--------------------------------------------------------------------------------------
 
 
 \begin{frame}
@@ -546,7 +569,7 @@ on $\mathcal{C}^{(2)}_{\mbox{\scriptsize p.w.}}[0,1]$, where $\sum_i w_i=1$ and 
 \item TracMap\\
 \item Dr Matthew Parry\\
 \item Professor David Bryant \\
-\item All examiners 
+\item All examiners and convenor. 
 \end{itemize}
 \end{frame}
 
