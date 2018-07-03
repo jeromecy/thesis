@@ -37,7 +37,7 @@
 \author{Zhanglong Cao} % Your name
 \institute[UO] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
 {
-Department of Maths \& Stats  \\
+Department of Mathematics \& Statistics \\
 University of Otago % Your institution for the title page
 %\medskip
 %\textit{zcao@maths.otago.ac.nz} % Your email address
@@ -67,7 +67,7 @@ University of Otago % Your institution for the title page
 \frametitle{Main Contributions in The Past Three Years}
 \begin{itemize}
 	\item Non-parametric V-spline for trajectory reconstruction
-	\item Corresponding between V-spline and its Bayes estimate
+	\item Correspondence between V-spline and Bayes estimate
 	\item A practical adaptive MCMC sampler for combined state and parameter estimation
 \end{itemize}
 
@@ -81,7 +81,7 @@ University of Otago % Your institution for the title page
 	
 GPS units irregularly record time series data of a moving object. These data are in the form of
 \begin{equation}
-P_t=\{x_t,y_t,v_t,\omega_t, b_t, \cdots | t \in \mathbb{R} \}.
+P=\{x_t,y_t,v_t,\omega_t, b_t, \cdots | t \in \mathbb{R} \}.
 \end{equation}
 \begin{table}[]
 \centering
@@ -95,7 +95,8 @@ $b$     & boom status \\ \hline
 \end{tabular}
 \end{table}
 
-Trajectory is a connection by a time series successive position recorded by GPS devices. 
+A {\bf trajectory} is a curve relating (not necessarily connecting) a sequence of successive positions. 
+ 
 
 \end{frame}
 
@@ -110,16 +111,16 @@ Trajectory is a connection by a time series successive position recorded by GPS 
 %
 %\end{frame}
 %------------------------------------------------
-\begin{frame}
-	
-\begin{figure}
-\vspace*{1cm}
-\centering
-\includegraphics[width=6cm,height=5cm]{plots/linetrajectory}
-\includegraphics[width=6cm,height=5cm]{plots/smoothtrajectory}
-\end{figure}
-
-\end{frame}
+%\begin{frame}
+%	
+%\begin{figure}
+%\vspace*{1cm}
+%\centering
+%\includegraphics[width=6cm,height=5cm]{plots/linetrajectory}
+%\includegraphics[width=6cm,height=5cm]{plots/smoothtrajectory}
+%\end{figure}
+%
+%\end{frame}
 
 
 \section{V-Spline}
@@ -131,7 +132,7 @@ Trajectory is a connection by a time series successive position recorded by GPS 
 %------------------------------------------------
 \begin{frame}
 \frametitle{A New Objective Function}
-If we have some knots, such that $a<t_1<\cdots <t_n<b$, and $z_i=(x_i,y_i)$, $w_i=(u_i,v_i)$, for $i=1,2,\cdots,n$, and a positive piecewise parameter $\lambda(t)$, which will control penalty functions, then the equation
+Given $n$ observation times such that $a<t_1<\cdots <t_n<b$, with associated position data $z_i=(x_i,y_i)$, velocity data $w_i=(u_i,v_i)$, for $i=1,2,\cdots,n$, and a positive piecewise parameter $\lambda(t)$, which will control penalty functions, then the equation
 \begin{equation}\label{obtractor}
 J[f]=\frac{1}{n}\sum_{i=1}^n|f(t_i)-z_i|^2+\frac{\gamma}{n}\sum_{i=1}^{n}|f'(t_i)-w_i|^2+\sum_{i=1}^n\lambda_i\int_{t_i}^{t_{i+1}}|f''(t)|^2 dt
 \end{equation}
@@ -161,34 +162,36 @@ where $\mathbf{z}=\{z(x_i,y_i)\}$ are the knots and $\mathbf{w}=\{(u_i,v_i)\}$ a
 
 \begin{frame}
 \frametitle{Cross Validation of V-Spline}
+\begin{equation}
+\mbox{CV}=\frac{1}{n}\sum_i (\hat{f}^{(-i)}(t_i)-z_i)^2
+\end{equation}
 
-Because $\hat{f}$ and $\hat{f'}$ could be written in the form of
+Because $\hat{f}$ and $\hat{f'}$ can be written in the form of
 \begin{align*}
 \hat{f}=B\hat{\theta}=Sz+\gamma Tw\\
 \hat{f'}=C\hat{\theta}=Uz+\gamma Vw
 \end{align*}
 %Generalized CV provides a convenient approximation to LOO-CV, for linear fitting under squared error loss.
-Then
-\begin{align*}
-\mbox{CV}&=\frac{1}{n}\sum (\hat{f}^{(-i)}(t_i)-z_i)^2\\
-&=\frac{1}{n}\sum \left(\frac{\hat{f}(t_i)-z_i+\gamma \frac{T_{ii}}{1-\gamma V_{ii}}(\hat{f}'(t_i)-w_i)) }{1-S_{ii}-\gamma \frac{T_{ii}}{1-\gamma V_{ii}}U_{ii}}\right)^2
-\end{align*}
+Then for V-spline, 
+\begin{equation}
+\mbox{CV}=\frac{1}{n}\sum_i \left(\frac{\hat{f}(t_i)-z_i+\gamma \frac{T_{ii}}{1-\gamma V_{ii}}(\hat{f}'(t_i)-w_i)) }{1-S_{ii}-\gamma \frac{T_{ii}}{1-\gamma V_{ii}}U_{ii}}\right)^2
+\end{equation}
 \end{frame}
 
 %------------------------------------------------
 %------------------------------------------------
 
 %\subsection{Adjusted Penalty Term}
-\begin{frame}
-\frametitle{The Penalty Term}
-Given a constant $\lambda = \frac{\left(\Delta T_1\right)^3}{\left(\Delta d_1\right)^2}\eta$, the penalty term becomes
-\begin{equation}\begin{split}
-\eta \frac{\left(\Delta T_1\right)^2}{\left(\Delta d_1\right)^2} \left(\left(2\varepsilon_1+\varepsilon_2\right)^2+3\varepsilon_2^2\right)
-&= \eta \frac{\left(2\varepsilon_1+\varepsilon_2\right)^2+3\varepsilon_2^2}{\bar{v}^2} \\&\sim \left(\frac{\mbox{discrepancy in velocity}}{\mbox{average velocity}}\right)^2
-\end{split}
-\end{equation}
-which will be enormous with large measured errors in velocity $v_1$ or $v_2$ comparing to average velocity $\bar{v}$. 
-\end{frame}
+%\begin{frame}
+%\frametitle{The Penalty Term}
+%Given a constant $\lambda = \frac{\left(\Delta T_1\right)^3}{\left(\Delta d_1\right)^2}\eta$, the penalty term becomes
+%\begin{equation}\begin{split}
+%\eta \frac{\left(\Delta T_1\right)^2}{\left(\Delta d_1\right)^2} \left(\left(2\varepsilon_1+\varepsilon_2\right)^2+3\varepsilon_2^2\right)
+%&= \eta \frac{\left(2\varepsilon_1+\varepsilon_2\right)^2+3\varepsilon_2^2}{\bar{v}^2} \\&\sim \left(\frac{\mbox{discrepancy in velocity}}{\mbox{average velocity}}\right)^2
+%\end{split}
+%\end{equation}
+%which will be enormous with large measured errors in velocity $v_1$ or $v_2$ comparing to average velocity $\bar{v}$. 
+%8	\end{frame}
 %------------------------------------------------
 
 %------------------------------------------------
@@ -200,35 +203,76 @@ which will be enormous with large measured errors in velocity $v_1$ or $v_2$ com
 \begin{frame}
 \frametitle{Reproducing Kernel Hilbert Space for V-Spline}
 
-For any $f \in \mathbb{H}$, $f=\sum_{i=1}^{2n} \theta_i N_i(t).$ Building up a new space \begin{align*}
+%For any $f \in \mathbb{H}$, $f=\sum_{i=1}^{2n} \theta_i N_i(t).$
+In the space \begin{align*}
 \mathcal{C}_{p.w.}^{2}[0,1]=\{f:f,f' \mbox{ continuous, } f'' \mbox{ piecewise continuous on } [0,1] \}.
 \end{align*} 
-Equipped with an appropriate inner product
+given an appropriate inner product
 \begin{equation}
 (f,g)=f(0) g(0)+f'(0) g'(0)+\int_{0}^{1}f''g''dt,
 \end{equation}
-the space $\mathcal{C}_{p.w.}^{2}[0,1]$ is made a reproducing kernel Hilbert space.
+the space $\mathcal{C}_{p.w.}^{2}[0,1]$ is made a reproducing kernel Hilbert space. The reproducing kernel is $R(s,t)=R_0(s,t)+R_1(s,t)$, where
+\begin{align} \label{TractorSplineKernelR0}
+R_0(s,t)&=1+st \\ \label{TractorSplineKernelR1}
+R_1(s,t)&=\int_{0}^{1} (s-u)_+(t-u)_+du
+\end{align}
+are both non-negative definite themselves.
+
+
 \end{frame}
 
-%------------------------------------------------%------------------------------------------------
 %------------------------------------------------%------------------------------------------------
 
 \begin{frame}
-$f \in \mathcal{C}_{p.w.}^2[0,1]$ can be written as
-\begin{equation}\label{etaeq}
-f(t)=d_1+d_2t+\sum_{j=1}^{n}c_jR_1(t_j,t)+\sum_{i=j}^{n}b_j\dot{R}_1(t_j,\cdot),
+\frametitle{Bayes Estimate}
+
+
+In a generic process, we know that $p(\mathbf{y},\mathbf{v}\mid f) = N(f,\sigma^2)$. However, we are more interested in $f$ given measurements, such as 
+\begin{equation}
+p(f\mid \mathbf{y},\mathbf{v}) \propto p(\mathbf{y},\mathbf{v}\mid f)p(f)
 \end{equation}
-where $\mathbf{d},\mathbf{c}$ and $\mathbf{b}$ are coefficients. 
- $f= \mathbf{\phi}^\top \mathbf{d}+\mathbf{\xi}^\top \mathbf{c}+\mathbf{\psi}^\top \mathbf{b}$, with the coefficients given by
-\begin{align*}
-\mathbf{d}&=(T^\top M^{-1}T)^{-1}T^\top M^{-1}\begin{bmatrix}Y\\V \end{bmatrix},\\
-\begin{bmatrix}\mathbf{c}\\\mathbf{b}\end{bmatrix} &=
-(M^{-1}-M^{-1}T(T^\top M^{-1} T)^{-1}T^\top M^{-1})\begin{bmatrix}Y\\V \end{bmatrix},
-\end{align*} where $T=\begin{bmatrix} S\\S' \end{bmatrix}$ and $M=\begin{bmatrix}
-Q+n\lambda I& P\\
-Q'& P'+\frac{n\lambda}{\gamma}I
-\end{bmatrix}$.
+where $f\sim GP(0,\Sigma)$ has Gaussian process prior. Particularly, in $\mathcal{C}_{p.w.}^{2}[0,1]$, $\Sigma$ is associated with $R(s,t)$. 
+
 \end{frame}
+
+
+
+\begin{frame}
+\frametitle{Posterior Mean}
+
+
+The posterior mean $E(f \mid \mathbf{y},\mathbf{v})$ is $\hat{f}  = \mathbf{\phi}^\top \mathbf{d}+\mathbf{\xi}^\top \mathbf{c}+\mathbf{\psi}^\top \mathbf{b}$, with the coefficients given by
+\begin{align} 
+\mathbf{d}&=\left(T^\top M^{-1}T\right)^{-1}T^\top M^{-1}\begin{bmatrix}\mathbf{y} \\ \mathbf{v} \end{bmatrix},\\
+\begin{bmatrix}\mathbf{c}\\ \mathbf{b}\end{bmatrix} &=
+\left(M^{-1}-M^{-1}T\left(T^\top M^{-1} T\right)^{-1}T^\top M^{-1}\right)\begin{bmatrix}\mathbf{y}\\ \mathbf{v} \end{bmatrix},
+\end{align} 
+where $M=\begin{bmatrix} Q+n\lambda I& P\\ Q'& P'+\frac{n\lambda}{\gamma}I \end{bmatrix}$ (when the $\rho\rightarrow \infty$).
+
+
+\end{frame}
+
+
+%------------------------------------------------%------------------------------------------------
+
+%\begin{frame}
+%$f \in \mathcal{C}_{p.w.}^2[0,1]$ can be written as
+%\begin{equation}\label{etaeq}
+%f(t)=d_1+d_2t+\sum_{j=1}^{n}c_jR_1(t_j,t)+\sum_{i=j}^{n}b_j\dot{R}_1(t_j,\cdot),
+%\end{equation}
+%where $\mathbf{d},\mathbf{c}$ and $\mathbf{b}$ are coefficients. 
+% $f= \mathbf{\phi}^\top \mathbf{d}+\mathbf{\xi}^\top \mathbf{c}+\mathbf{\psi}^\top \mathbf{b}$, with the coefficients given by
+%\begin{align*}
+%\mathbf{d}&=(T^\top M^{-1}T)^{-1}T^\top M^{-1}\begin{bmatrix}Y\\V \end{bmatrix},\\
+%\begin{bmatrix}\mathbf{c}\\\mathbf{b}\end{bmatrix} &=
+%(M^{-1}-M^{-1}T(T^\top M^{-1} T)^{-1}T^\top M^{-1})\begin{bmatrix}Y\\V \end{bmatrix},
+%\end{align*} 
+%where %$T=\begin{bmatrix} S\\S' \end{bmatrix}$ and
+%$M=\begin{bmatrix}
+%Q+n\lambda I& P\\
+%Q'& P'+\frac{n\lambda}{\gamma}I
+%\end{bmatrix}$.
+%\end{frame}
 
 
 \section{Simulation and Application}
@@ -331,23 +375,23 @@ and transmits data to a remote server. The data is an irregularly spaced time se
 %--------------------------------------------------------------------------------------
 %--------------------------------------------------------------------------------------
 
-
-\begin{frame}
-For the priors of all the parameters in an OU-process, the reciprocal of $\gamma$ is typical velocity falling in the reasonable range of 0.1 to 100 $m/s$. $\xi$ is the error occurs in transition process, $\sigma$ and $\tau$ are errors in the forward map for position and velocity respectively. 
-\begin{align*}
-\gamma   &\sim IG(10,0.5),\\
-\xi^2        &\sim IG(5,2.5),\\
-\sigma^2 &\sim IG(5,2.5),
-\end{align*}
-where $IG(\alpha,\beta)$ represents the \textit{Inverse Gamma} distribution with two parameters $\alpha$ and $\beta$. 
-%\begin{figure}[h]
-%\centering
-%\includegraphics[width=0.45\textwidth]{Chapters/05MCMCOU/plots/ggIGPDF.pdf}
-%\includegraphics[width=0.45\textwidth]{Chapters/05MCMCOU/plots/ggIGCDF.pdf}
-%\caption{Probability density function and cumulative distribution function of \textit{Inverse Gamma} with two parameters $\alpha$ and $\beta$. }
-%\label{IGPDFCDF}
-%\end{figure}
-\end{frame}
+%
+%\begin{frame}
+%For the priors of all the parameters in an OU-process, the reciprocal of $\gamma$ is typical velocity falling in the reasonable range of 0.1 to 100 $m/s$. $\xi$ is the error occurs in transition process, $\sigma$ and $\tau$ are errors in the forward map for position and velocity respectively. 
+%\begin{align*}
+%\gamma   &\sim IG(10,0.5),\\
+%\xi^2        &\sim IG(5,2.5),\\
+%\sigma^2 &\sim IG(5,2.5),
+%\end{align*}
+%where $IG(\alpha,\beta)$ represents the \textit{Inverse Gamma} distribution with two parameters $\alpha$ and $\beta$. 
+%%\begin{figure}[h]
+%%\centering
+%%\includegraphics[width=0.45\textwidth]{Chapters/05MCMCOU/plots/ggIGPDF.pdf}
+%%\includegraphics[width=0.45\textwidth]{Chapters/05MCMCOU/plots/ggIGCDF.pdf}
+%%\caption{Probability density function and cumulative distribution function of \textit{Inverse Gamma} with two parameters $\alpha$ and $\beta$. }
+%%\label{IGPDFCDF}
+%%\end{figure}
+%\end{frame}
 
 %--------------------------------------------------------------------------------------
 %--------------------------------------------------------------------------------------
@@ -414,18 +458,83 @@ Further videos at:
 \begin{frame}
 \frametitle{Amendments}
 \begin{itemize}
-	\item Chapter one: introduction for GPS data.
+	\item Chapter one: separate description for GPS data.
 	\item Chapter two: larger labels in figures.
-	\item Chapter three: the conjecture has been resolve.
+	\item Chapter three: the conjecture has been resolved.
 	\item Chapter four: fixed typographical errors.
 	\item Chapter five: explicit explanation, better figures.
-	\item Others: references are properly cited.
+	\item Others: references are properly cited; typographical errors are fixed.
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Chapter one: separate description for GPS data}
+\begin{figure}[h]
+	\centering
+	\begin{tikzpicture}
+	\node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=0.45\textwidth]{../Chapters/01Intro/plots/tracoverview01.pdf}};
+	\begin{scope}[
+	x={(image.south east)},
+	y={(image.north west)}
+	]
+	\node [black, font=\bfseries] at (0.5,-0.05) {Easting};
+	\node [black, font=\bfseries,rotate=90] at (0,0.5) {Northing};
+	\end{scope}
+	\end{tikzpicture}
+	\begin{tikzpicture}
+	\node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=0.45\textwidth]{../Chapters/01Intro/plots/tracoverview02.pdf}};
+	\begin{scope}[
+	x={(image.south east)},
+	y={(image.north west)}
+	]
+	\node [black, font=\bfseries] at (0.5,-0.05) {Easting};
+	\node [black, font=\bfseries,rotate=90] at (0,0.5) {Northing};
+	\end{scope}
+	\end{tikzpicture}
+	\caption{Examples of GPS data. Observed positions $y_t$ are shown. In trajectory reconstruction, the $y_t$ are combined with velocity information $v_t$ and operating characteristics $b_t$ to infer actual positions $x_s$, for times of interest $s$.}\label{realGPSdataset}
+	\label{tracoverview}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Chapter three: a new inner product }
+
+\begin{equation}
+\langle f,g \rangle=f(0) g(0)+f'(0) g'(0)+\sum_{i=1}^{n-1}w_i^{-1}\int_{t_i}^{t_{i+1}}f''(t)g''(t)dt,
+\end{equation}
+on $\mathcal{C}^{(2)}_{\mbox{\scriptsize p.w.}}[0,1]$, where $\sum_i w_i=1$ and $w_i>0$.
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Chapter five: explicit explanation and better figures}
+
+\begin{itemize}
+	\item Remove repeated equations.
+	\item Introduction to a new concept: delayed-acceptance.
+	\item A homogeneous linear state-space model explains the joint distribution of $X,Y \sim N(0,\Sigma)$.
+	\item New figures for uncertainty 
+	\begin{figure}[h]
+		\centering
+		\begin{tikzpicture}
+		\node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=0.45\textwidth]{../Chapters/05MCMCOU/plots/tracErrorFillX.pdf}};
+		\begin{scope}[
+		x={(image.south east)},
+		y={(image.north west)}
+		]
+		\node [black, font=\bfseries] at (0.5,0) {$t$};
+		\node [black, font=\bfseries,rotate=90] at (0,0.5) {Easting};
+		\end{scope}
+		\end{tikzpicture}
+		%\caption{Uncertainties on easting and northing directions before the first cutting-off procedure. The means of uncertainties on each direction are about 0.5 meters. }\label{MCMCErrorFill}
+	\end{figure}
 \end{itemize}
 
 
 \end{frame}
-
-
 %--------------------------------------------------------------------------------------
 %--------------------------------------------------------------------------------------
 
@@ -437,7 +546,7 @@ Further videos at:
 \item TracMap\\
 \item Dr Matthew Parry\\
 \item Professor David Bryant \\
-\item All ex000aminers 
+\item All examiners 
 \end{itemize}
 \end{frame}
 
