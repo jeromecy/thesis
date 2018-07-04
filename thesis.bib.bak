@@ -1,48 +1,49 @@
 % Encoding: UTF-8
 
+@Article{laskey2003population,
+  author    = {Laskey, Kathryn Blackmond and Myers, James W.},
+  title     = {Population {M}arkov chain {M}onte {C}arlo},
+  journal   = {Machine Learning},
+  year      = {2003},
+  volume    = {50},
+  number    = {1-2},
+  pages     = {175--196},
+  publisher = {Springer},
+}
 
+@Article{abramovich1998wavelet,
+  author    = {Abramovich, Felix and Sapatinas, Theofanis and Silverman, Bernard W.},
+  title     = {Wavelet thresholding via a {B}ayesian approach},
+  journal   = {Journal of the Royal Statistical Society: Series B (Statistical Methodology)},
+  year      = {1998},
+  volume    = {60},
+  number    = {4},
+  pages     = {725--749},
+  publisher = {Wiley Online Library},
+}
 
+@Article{agarwal2003indexing,
+  author    = {Agarwal, Pankaj K. and Arge, Lars and Erickson, Jeff},
+  title     = {Indexing moving points},
+  journal   = {Journal of Computer and System Sciences},
+  year      = {2003},
+  volume    = {66},
+  number    = {1},
+  pages     = {207--243},
+  publisher = {Elsevier},
+}
 
-@article{laskey2003population,
-	Author = {Laskey, Kathryn Blackmond and Myers, James W},
-	Journal = {Machine Learning},
-	Number = {1-2},
-	Pages = {175--196},
-	Publisher = {Springer},
-	Title = {Population {M}arkov chain {M}onte {C}arlo},
-	Volume = {50},
-	Year = {2003}}
-
-@article{abramovich1998wavelet,
-	Author = {Abramovich, Felix and Sapatinas, Theofanis and Silverman, Bernard W},
-	Journal = {Journal of the Royal Statistical Society: Series B (Statistical Methodology)},
-	Number = {4},
-	Pages = {725--749},
-	Publisher = {Wiley Online Library},
-	Title = {Wavelet thresholding via a {B}ayesian approach},
-	Volume = {60},
-	Year = {1998}}
-
-@article{agarwal2003indexing,
-	Author = {Agarwal, Pankaj K and Arge, Lars and Erickson, Jeff},
-	Journal = {Journal of Computer and System Sciences},
-	Number = {1},
-	Pages = {207--243},
-	Publisher = {Elsevier},
-	Title = {Indexing moving points},
-	Volume = {66},
-	Year = {2003}}
-
-@book{agrawal2015introduction,
-	Author = {Agrawal, Dharma P and Zeng, Qing-An},
-	Owner = {zcao},
-	Publisher = {Cengage learning},
-	Timestamp = {2017.11.28},
-	Title = {Introduction to wireless and mobile systems},
-	Year = {2015}}
+@Book{agrawal2015introduction,
+  title     = {Introduction to wireless and mobile systems},
+  publisher = {Cengage learning},
+  year      = {2015},
+  author    = {Agrawal, Dharma P. and Zeng, Qing-An},
+  owner     = {zcao},
+  timestamp = {2017.11.28},
+}
 
 @Book{Almasi1994Highly,
-  title     = {Highly Parallel Computing},
+  title     = {Highly parallel computing},
   publisher = {Benjamin-Cummings Publishing Co., Inc.},
   year      = {1994},
   author    = {Almasi, George S. and Gottlieb, Allan},
@@ -51,22 +52,24 @@
   isbn      = {0-8053-0443-6},
 }
 
-@article{anderson1979optimal,
-	Author = {Anderson, Brian DO and Moore, John B},
-	Journal = {Englewood Cliffs},
-	Pages = {22--95},
-	Title = {Optimal filtering},
-	Volume = {21},
-	Year = {1979}}
+@Article{anderson1979optimal,
+  author  = {Brian D. O. Anderson and John B. Moore},
+  title   = {Optimal filtering},
+  journal = {Englewood Cliffs},
+  year    = {1979},
+  volume  = {21},
+  pages   = {22--95},
+}
 
-@article{anderson2001ensemble,
-	Author = {Anderson, Jeffrey L},
-	Journal = {Monthly weather review},
-	Number = {12},
-	Pages = {2884--2903},
-	Title = {An ensemble adjustment {K}alman filter for data assimilation},
-	Volume = {129},
-	Year = {2001}}
+@Article{anderson2001ensemble,
+  author  = {Anderson, Jeffrey L.},
+  title   = {An ensemble adjustment {K}alman filter for data assimilation},
+  journal = {Monthly weather review},
+  year    = {2001},
+  volume  = {129},
+  number  = {12},
+  pages   = {2884--2903},
+}
 
 @InProceedings{andrieu1999sequential,
   author       = {Andrieu, Christophe and De Freitas, Nando and Doucet, Arnaud},
@@ -79,15 +82,16 @@
   timestamp    = {2017.10.27},
 }
 
-@article{andrieu2001model,
-	Author = {Andrieu, Christophe and Djuri{\'c}, PM and Doucet, Arnaud},
-	Journal = {Signal Processing},
-	Number = {1},
-	Pages = {19--37},
-	Publisher = {Elsevier},
-	Title = {Model selection by {MCMC} computation},
-	Volume = {81},
-	Year = {2001}}
+@Article{andrieu2001model,
+  author    = {Andrieu, Christophe and Djuri{\'c}, P. M. and Doucet, Arnaud},
+  title     = {Model selection by {MCMC} computation},
+  journal   = {Signal Processing},
+  year      = {2001},
+  volume    = {81},
+  number    = {1},
+  pages     = {19--37},
+  publisher = {Elsevier},
+}
 
 @article{andrieu2010particle,
 	Author = {Andrieu, Christophe and Doucet, Arnaud and Holenstein, Roman},
@@ -99,13 +103,14 @@
 	Volume = {72},
 	Year = {2010}}
 
-@inproceedings{andrieu2005line,
-	Author = {Andrieu, Christophe and Doucet, Arnaud and Tadic, Vladislav B},
-	Booktitle = {Decision and Control, 2005 and 2005 European Control Conference. CDC-ECC'05. 44th IEEE Conference on},
-	Organization = {IEEE},
-	Pages = {332--337},
-	Title = {On-line parameter estimation in general state-space models},
-	Year = {2005}}
+@Conference{andrieu2005line,
+  author       = {Andrieu, Christophe and Doucet, Arnaud and Tadic, Vladislav B.},
+  title        = {On-line parameter estimation in general state-space models},
+  booktitle    = {Proceedings of the 44th IEEE Conference on Decision and Control},
+  year         = {2005},
+  pages        = {332--337},
+  organization = {IEEE},
+}
 
 @article{andrieu2008tutorial,
 	Author = {Andrieu, Christophe and Thoms, Johannes},
@@ -117,14 +122,15 @@
 	Volume = {18},
 	Year = {2008}}
 
-@article{arlot2010survey,
-	Author = {Arlot, Sylvain and Celisse, Alain and others},
-	Journal = {Statistics surveys},
-	Pages = {40--79},
-	Publisher = {The author, under a Creative Commons Attribution License},
-	Title = {A survey of cross-validation procedures for model selection},
-	Volume = {4},
-	Year = {2010}}
+@Article{arlot2010survey,
+  author    = {Sylvain Arlot and Alain Celisse},
+  title     = {A survey of cross-validation procedures for model selection},
+  journal   = {Statistics surveys},
+  year      = {2010},
+  volume    = {4},
+  pages     = {40--79},
+  publisher = {The author, under a Creative Commons Attribution License},
+}
 
 @article{aronszajn1950theory,
 	Author = {Aronszajn, Nachman},
@@ -136,20 +142,21 @@
 	Volume = {68},
 	Year = {1950}}
 
-@article{arulampalam2002tutorial,
-	Author = {Arulampalam, M Sanjeev and Maskell, Simon and Gordon, Neil and Clapp, Tim},
-	Journal = {IEEE Transactions on signal processing},
-	Number = {2},
-	Owner = {zcao},
-	Pages = {174--188},
-	Publisher = {Ieee},
-	Timestamp = {2017.10.23},
-	Title = {A tutorial on particle filters for online nonlinear/non-{G}aussian {B}ayesian tracking},
-	Volume = {50},
-	Year = {2002}}
+@Article{arulampalam2002tutorial,
+  author    = {Arulampalam, M. Sanjeev and Maskell, Simon and Gordon, Neil and Clapp, Tim},
+  title     = {A tutorial on particle filters for online nonlinear/non-{G}aussian {B}ayesian tracking},
+  journal   = {IEEE Transactions on signal processing},
+  year      = {2002},
+  volume    = {50},
+  number    = {2},
+  pages     = {174--188},
+  owner     = {zcao},
+  publisher = {Ieee},
+  timestamp = {2017.10.23},
+}
 
 @TechReport{asanovic2006landscape,
-  author      = {Asanovic, Krste and Bodik, Ras and Catanzaro, Bryan Christopher and Gebis, Joseph James and Husbands, Parry and Keutzer, Kurt and Patterson, David A and Plishker, William Lester and Shalf, John and Williams, Samuel Webb and others},
+  author      = {Asanovic, Krste and Bodik, Ras and Catanzaro, Bryan Christopher and Gebis, Joseph James and Husbands, Parry and Keutzer, Kurt and Patterson, David A. and Plishker, William Lester and Shalf, John and Williams, Samuel Webb and Yelick, Katherine A.},
   title       = {The landscape of parallel computing research: a view from berkeley},
   institution = {Technical Report UCB/EECS-2006-183, EECS Department, University of California, Berkeley},
   year        = {2006},
@@ -162,15 +169,16 @@
 	Title = {Adaptive {M}arkov chain {M}onte {C}arlo: theory and methods},
 	Year = {2009}}
 
-@article{Atkinson2004,
-	Author = {Atkinson, A.D. and Sanjo{\'e}, J.J.},
-	Journal = {Datum},
-	Owner = {zcao},
-	Pages = {29-32},
-	Timestamp = {2016.03.04},
-	Title = {Propuesta para el levantamiento de v{\'\i}as de comunicaci{\'o}n para navegaci{\'o}n para mediante {GPS}},
-	Volume = {XXI 9},
-	Year = {2004}}
+@Article{Atkinson2004,
+  author    = {Atkinson, A. D. and Sanjo{\'e}, J. J.},
+  title     = {Propuesta para el levantamiento de v{\'\i}as de comunicaci{\'o}n para navegaci{\'o}n para mediante {GPS}},
+  journal   = {Datum},
+  year      = {2004},
+  volume    = {XXI 9},
+  pages     = {29-32},
+  owner     = {zcao},
+  timestamp = {2016.03.04},
+}
 
 @article{aydin2013smoothing,
 	Author = {Ayd{\i}n, Dursun and Memmedli, Memmeda{\u{g}}a and Omay, Rabia Ece},
@@ -181,15 +189,16 @@
 	Volume = {6},
 	Year = {2013}}
 
-@article{aydin2012smoothing,
-	Author = {Aydin, Dursun and Tuzemen, M Seref},
-	Journal = {Journal of Applied Sciences},
-	Number = {7},
-	Pages = {636},
-	Publisher = {Asian Network for Scientific Information (ANSINET)},
-	Title = {Smoothing parameter selection problem in nonparametric regression based on smoothing spline: a simulation study},
-	Volume = {12},
-	Year = {2012}}
+@Article{aydin2012smoothing,
+  author    = {Aydin, Dursun and Tuzemen, M. Seref},
+  title     = {Smoothing parameter selection problem in nonparametric regression based on smoothing spline: a simulation study},
+  journal   = {Journal of Applied Sciences},
+  year      = {2012},
+  volume    = {12},
+  number    = {7},
+  pages     = {636},
+  publisher = {Asian Network for Scientific Information (ANSINET)},
+}
 
 @article{bedard2007weak,
 	Author = {B{\'e}dard, Mylene},
@@ -202,23 +211,25 @@
 	Volume = {17},
 	Year = {Number 4 (2007)}}
 
-@inproceedings{babenko2009family,
-	Author = {Babenko, Boris and Yang, Ming-Hsuan and Belongie, Serge},
-	Booktitle = {Computer Vision Workshops (ICCV Workshops), 2009 IEEE 12th International Conference on},
-	Organization = {IEEE},
-	Pages = {1346--1353},
-	Title = {A family of online boosting algorithms},
-	Year = {2009}}
+@Conference{babenko2009family,
+  author       = {Babenko, Boris and Yang, Ming-Hsuan and Belongie, Serge},
+  title        = {A family of online boosting algorithms},
+  booktitle    = {2009 IEEE 12th International Conference on Computer Vision Workshops, ICCV Workshops},
+  year         = {2009},
+  pages        = {1346--1353},
+  organization = {IEEE},
+}
 
-@article{bajaj2002gps,
-	Author = {Bajaj, Rashmi and Ranaweera, Samantha Lalinda and Agrawal, Dharma P},
-	Journal = {Computer},
-	Number = {4},
-	Pages = {92--94},
-	Publisher = {IEEE},
-	Title = {{GPS}: location-tracking technology},
-	Volume = {35},
-	Year = {2002}}
+@Article{bajaj2002gps,
+  author    = {Bajaj, Rashmi and Ranaweera, Samantha Lalinda and Agrawal, Dharma P.},
+  title     = {{GPS}: location-tracking technology},
+  journal   = {Computer},
+  year      = {2002},
+  volume    = {35},
+  number    = {4},
+  pages     = {92--94},
+  publisher = {IEEE},
+}
 
 @article{bar1993estimation,
 	Author = {Bar-Shalom, Yaakov and Li, Xiao-Rong},
@@ -228,17 +239,18 @@
 	Volume = {38},
 	Year = {1996}}
 
-@article{bartlett1951inverse,
-	Author = {Bartlett, Maurice S},
-	Journal = {The Annals of Mathematical Statistics},
-	Number = {1},
-	Owner = {zcao},
-	Pages = {107--111},
-	Publisher = {JSTOR},
-	Timestamp = {2017.09.06},
-	Title = {An inverse matrix adjustment arising in discriminant analysis},
-	Volume = {22},
-	Year = {1951}}
+@Article{bartlett1951inverse,
+  author    = {Bartlett, Maurice S.},
+  title     = {An inverse matrix adjustment arising in discriminant analysis},
+  journal   = {The Annals of Mathematical Statistics},
+  year      = {1951},
+  volume    = {22},
+  number    = {1},
+  pages     = {107--111},
+  owner     = {zcao},
+  publisher = {JSTOR},
+  timestamp = {2017.09.06},
+}
 
 @article{ben2004geometric,
 	Author = {Ben-Arieh, David and Chang, Shing and Rys, Margaret and Zhang, Guoxi},
@@ -250,23 +262,25 @@
 	Volume = {130},
 	Year = {2004}}
 
-@book{berlinet2011reproducing,
-	Author = {Berlinet, Alain and Thomas-Agnan, Christine},
-	Publisher = {Springer Science \& Business Media},
-	Title = {Reproducing kernel Hilbert spaces in probability and statistics},
-	Year = {2011}}
+@Book{berlinet2011reproducing,
+  title     = {Reproducing kernel {H}ilbert spaces in probability and statistics},
+  publisher = {Springer Science \& Business Media},
+  year      = {2011},
+  author    = {Berlinet, Alain and Thomas-Agnan, Christine},
+}
 
-@article{berzuini1997dynamic,
-	Author = {Berzuini, Carlo and Best, Nicola G and Gilks, Walter R and Larizza, Cristiana},
-	Journal = {Journal of the American Statistical Association},
-	Number = {440},
-	Owner = {zcao},
-	Pages = {1403--1412},
-	Publisher = {Taylor \& Francis Group},
-	Timestamp = {2017.10.27},
-	Title = {Dynamic conditional independence models and {M}arkov chain {M}onte {C}arlo methods},
-	Volume = {92},
-	Year = {1997}}
+@Article{berzuini1997dynamic,
+  author    = {Berzuini, Carlo and Best, Nicola G. and Gilks, Walter R. and Larizza, Cristiana},
+  title     = {Dynamic conditional independence models and {M}arkov chain {M}onte {C}arlo methods},
+  journal   = {Journal of the American Statistical Association},
+  year      = {1997},
+  volume    = {92},
+  number    = {440},
+  pages     = {1403--1412},
+  owner     = {zcao},
+  publisher = {Taylor \& Francis Group},
+  timestamp = {2017.10.27},
+}
 
 @article{beskos2009optimal,
 	Author = {Beskos, Alexandros and Roberts, Gareth and Stuart, Andrew},
@@ -303,13 +317,14 @@
 	Title = {Online gradient boosting},
 	Year = {2015}}
 
-@inproceedings{biagiotti2013online,
-	Author = {Biagiotti, Luigi and Melchiorri, Claudio},
-	Booktitle = {Intelligent Robots and Systems (IROS), 2013 IEEE/RSJ International Conference on},
-	Organization = {IEEE},
-	Pages = {5668--5673},
-	Title = {Online trajectory planning and filtering for robotic applications via B-spline smoothing filters},
-	Year = {2013}}
+@Conference{biagiotti2013online,
+  author       = {Biagiotti, Luigi and Melchiorri, Claudio},
+  title        = {Online trajectory planning and filtering for robotic applications via {B}-spline smoothing filters},
+  booktitle    = {2013 IEEE/RSJ International Conference on Intelligent Robots and Systems},
+  year         = {2013},
+  pages        = {5668--5673},
+  organization = {IEEE},
+}
 
 @article{bierkens2017limit,
 	Author = {Bierkens, Joris and Duncan, Andrew},
@@ -321,21 +336,23 @@
 	Volume = {49},
 	Year = {2017}}
 
-@article{bierkens2016zig,
-	Author = {Bierkens, Joris and Fearnhead, Paul and Roberts, Gareth},
-	Journal = {arXiv preprint arXiv:1607.03188},
-	Title = {The {Z}ig-{Z}ag process and super-efficient sampling for {B}ayesian analysis of big data},
-	Year = {2016a}}
+@Article{bierkens2016zig,
+  author  = {Bierkens, Joris and Fearnhead, Paul and Roberts, Gareth},
+  title   = {The {Z}ig-{Z}ag process and super-efficient sampling for {B}ayesian analysis of big data},
+  journal = {arXiv preprint arXiv:1607.03188},
+  year    = {2016},
+}
 
-@article{bierkens2016piecewise,
-	Author = {Bierkens, Joris and Roberts, Gareth and others},
-	Journal = {The Annals of Applied Probability},
-	Number = {2},
-	Pages = {846--882},
-	Publisher = {Institute of Mathematical Statistics},
-	Title = {A piecewise deterministic scaling limit of lifted {M}etropolis-{H}astings in the {C}urie-{W}eiss model},
-	Volume = {27},
-	Year = {2016b}}
+@Article{bierkens2016piecewise,
+  author    = {Bierkens, Joris and Roberts, Gareth},
+  title     = {A piecewise deterministic scaling limit of lifted {M}etropolis-{H}astings in the {C}urie-{W}eiss model},
+  journal   = {The Annals of Applied Probability},
+  year      = {2016},
+  volume    = {27},
+  number    = {2},
+  pages     = {846--882},
+  publisher = {Institute of Mathematical Statistics},
+}
 
 @article{bishop2001introduction,
 	Author = {Bishop, Gary and Welch, Greg},
@@ -346,30 +363,34 @@
 	Volume = {8},
 	Year = {2001}}
 
-@article{blaauw2011flexible,
-	Author = {Blaauw, Maarten and Christen, J Andr{\'e}s and others},
-	Journal = {{B}ayesian analysis},
-	Number = {3},
-	Pages = {457--474},
-	Publisher = {International Society for {B}ayesian Analysis},
-	Title = {Flexible paleoclimate age-depth models using an autoregressive gamma process},
-	Volume = {6},
-	Year = {2011}}
+@Article{blaauw2011flexible,
+  author    = {Blaauw, Maarten and Christen, J. Andr{\'e}s},
+  title     = {Flexible paleoclimate age-depth models using an autoregressive gamma process},
+  journal   = {{B}ayesian analysis},
+  year      = {2011},
+  volume    = {6},
+  number    = {3},
+  pages     = {457--474},
+  publisher = {International Society for {B}ayesian Analysis},
+}
 
-@book{bodewig1956matrix,
-	Author = {Bodewig, Ewald},
-	Publisher = {North-Holland},
-	Title = {Matrix Calculus 3rd Edition},
-	Year = {1959}}
+@Book{bodewig1956matrix,
+  title     = {Matrix calculus 3rd edition},
+  publisher = {North-Holland},
+  year      = {1959},
+  author    = {Bodewig, Ewald},
+  edition   = {Third},
+}
 
-@book{box2011bayesian,
-	Author = {Box, George EP and Tiao, George C},
-	Owner = {zcao},
-	Publisher = {John Wiley \& Sons},
-	Timestamp = {2017.10.23},
-	Title = {{B}ayesian inference in statistical analysis},
-	Volume = {40},
-	Year = {2011}}
+@Book{box2011bayesian,
+  title     = {{B}ayesian inference in statistical analysis},
+  publisher = {John Wiley \& Sons},
+  year      = {2011},
+  author    = {Box, George E. P. and Tiao, George C.},
+  volume    = {40},
+  owner     = {zcao},
+  timestamp = {2017.10.23},
+}
 
 @article{bradford1996markov,
 	Author = {Bradford, Russell and Thomas, Alun},
@@ -381,11 +402,12 @@
 	Volume = {6},
 	Year = {1996}}
 
-@article{branson2017nonparametric,
-	Author = {Branson, Zach and Rischard, Maxime and Bornn, Luke and Miratrix, Luke},
-	Journal = {arXiv preprint arXiv:1704.04858},
-	Title = {A Nonparametric {B}ayesian Methodology for Regression Discontinuity Designs},
-	Year = {2017}}
+@Article{branson2017nonparametric,
+  author  = {Branson, Zach and Rischard, Maxime and Bornn, Luke and Miratrix, Luke},
+  title   = {A nonparametric {B}ayesian methodology for regression discontinuity designs},
+  journal = {arXiv preprint arXiv:1704.04858},
+  year    = {2017},
+}
 
 @article{cantoni2001resistant,
 	Author = {Cantoni, Eva and Ronchetti, Elvezio},
@@ -397,17 +419,18 @@
 	Volume = {11},
 	Year = {2001}}
 
-@article{cappe2007overview,
-	Author = {Capp{\'e}, Olivier and Godsill, Simon J and Moulines, Eric},
-	Journal = {Proceedings of the IEEE},
-	Number = {5},
-	Owner = {zcao},
-	Pages = {899--924},
-	Publisher = {IEEE},
-	Timestamp = {2017.10.27},
-	Title = {An overview of existing methods and recent advances in sequential {M}onte {C}arlo},
-	Volume = {95},
-	Year = {2007}}
+@Article{cappe2007overview,
+  author    = {Capp{\'e}, Olivier and Godsill, Simon J. and Moulines, Eric},
+  title     = {An overview of existing methods and recent advances in sequential {M}onte {C}arlo},
+  journal   = {Proceedings of the IEEE},
+  year      = {2007},
+  volume    = {95},
+  number    = {5},
+  pages     = {899--924},
+  owner     = {zcao},
+  publisher = {IEEE},
+  timestamp = {2017.10.27},
+}
 
 @inproceedings{cappe2009inference,
 	Author = {Capp{\'e}, Olivier and Moulines, Eric and Ryd{\'e}n, Tobias},
@@ -418,27 +441,29 @@
 	Title = {Inference in hidden markov models},
 	Year = {2009}}
 
-@article{cargnoni1997bayesian,
-	Author = {Cargnoni, Claudia and M{\"u}ller, Peter and West, Mike},
-	Journal = {Journal of the American Statistical Association},
-	Number = {438},
-	Owner = {zcao},
-	Pages = {640--647},
-	Publisher = {Taylor \& Francis Group},
-	Timestamp = {2017.10.27},
-	Title = {{B}ayesian forecasting of multinomial time series through conditionally Gaussian dynamic models},
-	Volume = {92},
-	Year = {1997}}
+@Article{cargnoni1997bayesian,
+  author    = {Cargnoni, Claudia and M{\"u}ller, Peter and West, Mike},
+  title     = {{B}ayesian forecasting of multinomial time series through conditionally {G}aussian dynamic models},
+  journal   = {Journal of the American Statistical Association},
+  year      = {1997},
+  volume    = {92},
+  number    = {438},
+  pages     = {640--647},
+  owner     = {zcao},
+  publisher = {Taylor \& Francis Group},
+  timestamp = {2017.10.27},
+}
 
-@article{carlin1992monte,
-	Author = {Carlin, Bradley P and Polson, Nicholas G and Stoffer, David S},
-	Journal = {Journal of the American Statistical Association},
-	Number = {418},
-	Pages = {493--500},
-	Publisher = {Taylor \& Francis Group},
-	Title = {A {M}onte {C}arlo approach to nonnormal and nonlinear state-space modeling},
-	Volume = {87},
-	Year = {1992}}
+@Article{carlin1992monte,
+  author    = {Carlin, Bradley P. and Polson, Nicholas G. and Stoffer, David S.},
+  title     = {A {M}onte {C}arlo approach to nonnormal and nonlinear state-space modeling},
+  journal   = {Journal of the American Statistical Association},
+  year      = {1992},
+  volume    = {87},
+  number    = {418},
+  pages     = {493--500},
+  publisher = {Taylor \& Francis Group},
+}
 
 @article{carpenter1999improved,
 	Author = {Carpenter, James and Clifford, Peter and Fearnhead, Paul},
@@ -450,79 +475,87 @@
 	Volume = {146},
 	Year = {1999}}
 
-@article{carvalho2010particle,
-	Author = {Carvalho, Carlos M and Johannes, Michael S and Lopes, Hedibert F and Polson, Nicholas G and others},
-	Journal = {Statistical Science},
-	Number = {1},
-	Owner = {zcao},
-	Pages = {88--106},
-	Publisher = {Institute of Mathematical Statistics},
-	Timestamp = {2017.10.27},
-	Title = {Particle learning and smoothing},
-	Volume = {25},
-	Year = {2010}}
+@Article{carvalho2010particle,
+  author    = {Carlos M. Carvalho and Michael S. Johannes and Hedibert F. Lopes and Nicholas G. Polson},
+  title     = {Particle learning and smoothing},
+  journal   = {Statistical Science},
+  year      = {2010},
+  volume    = {25},
+  number    = {1},
+  pages     = {88--106},
+  owner     = {zcao},
+  publisher = {Institute of Mathematical Statistics},
+  timestamp = {2017.10.27},
+}
 
-@article{casella2004generalized,
-	Author = {Casella, George and Robert, Christian P and Wells, Martin T},
-	Journal = {Lecture Notes-Monograph Series},
-	Owner = {zcao},
-	Pages = {342--347},
-	Publisher = {JSTOR},
-	Timestamp = {2017.10.27},
-	Title = {Generalized accept-reject sampling schemes},
-	Volume = {45},
-	Year = {2004}}
+@Article{casella2004generalized,
+  author    = {Casella, George and Robert, Christian P. and Wells, Martin T.},
+  title     = {Generalized accept-reject sampling schemes},
+  journal   = {Lecture Notes-Monograph Series},
+  year      = {2004},
+  volume    = {45},
+  pages     = {342--347},
+  owner     = {zcao},
+  publisher = {JSTOR},
+  timestamp = {2017.10.27},
+}
 
-@article{castro2006geometric,
-	Author = {Castro, Maria and Iglesias, Luis and Rodr{\'\i}guez-Solano, Roberto and S{\'a}nchez, Jos{\'e} A},
-	Journal = {Transportation Research Part C: Emerging Technologies},
-	Number = {4},
-	Pages = {233--243},
-	Publisher = {Elsevier},
-	Title = {Geometric modelling of highways using global positioning system (GPS) data and spline approximation},
-	Volume = {14},
-	Year = {2006}}
+@Article{castro2006geometric,
+  author    = {Castro, Maria and Iglesias, Luis and Rodr{\'\i}guez-Solano, Roberto and S{\'a}nchez, Jos{\'e} A.},
+  title     = {Geometric modelling of highways using global positioning system {(GPS)} data and spline approximation},
+  journal   = {Transportation Research Part C: Emerging Technologies},
+  year      = {2006},
+  volume    = {14},
+  number    = {4},
+  pages     = {233--243},
+  publisher = {Elsevier},
+}
 
-@inproceedings{chadil2008real,
-	Author = {Chadil, Noppadol and Russameesawang, Apirak and Keeratiwintakorn, Phongsak},
-	Booktitle = {Electrical Engineering/Electronics, Computer, Telecommunications and Information Technology, 2008. ECTI-Con 2008. 5th International Conference on},
-	Organization = {IEEE},
-	Pages = {393--396},
-	Title = {Real-time tracking management system using GPS, GPRS and Google earth},
-	Volume = {1},
-	Year = {2008}}
+@Conference{chadil2008real,
+  author       = {Chadil, Noppadol and Russameesawang, Apirak and Keeratiwintakorn, Phongsak},
+  title        = {Real-time tracking management system using {GPS}, {GPRS} and {G}oogle earth},
+  booktitle    = {2008 5th International Conference on Electrical Engineering/Electronics, Computer, Telecommunications and Information Technology},
+  year         = {2008},
+  volume       = {1},
+  pages        = {393--396},
+  organization = {IEEE},
+}
 
-@inproceedings{chandrasekar2007comparison,
-	Author = {Chandrasekar, J and Ridley, AJ and Bernstein, DS},
-	Booktitle = {American Control Conference, 2007. ACC'07},
-	Organization = {IEEE},
-	Pages = {4431--4436},
-	Title = {A comparison of the extended and unscented {K}alman filters for discrete-time systems with nondifferentiable dynamics},
-	Year = {2007}}
+@InProceedings{chandrasekar2007comparison,
+  author       = {Chandrasekar, J. and Ridley, A. J. and Bernstein, D. S.},
+  title        = {A comparison of the extended and unscented {K}alman filters for discrete-time systems with nondifferentiable dynamics},
+  booktitle    = {American Control Conference, 2007. ACC'07},
+  year         = {2007},
+  pages        = {4431--4436},
+  organization = {IEEE},
+}
 
-@book{chen2012monte,
-	Author = {Chen, Ming-Hui and Shao, Qi-Man and Ibrahim, Joseph G},
-	Publisher = {Springer Science \& Business Media},
-	Title = {{M}onte {C}arlo methods in {B}ayesian computation},
-	Year = {2012}}
+@Book{chen2012monte,
+  title     = {{M}onte {C}arlo methods in {B}ayesian computation},
+  publisher = {Springer Science \& Business Media},
+  year      = {2012},
+  author    = {Chen, Ming-Hui and Shao, Qi-Man and Ibrahim, Joseph G.},
+}
 
-@article{chen2000mixture,
-	Author = {Chen, Rong and Liu, Jun S},
-	Journal = {Journal of the Royal Statistical Society: Series B (Statistical Methodology)},
-	Number = {3},
-	Pages = {493--508},
-	Publisher = {Wiley Online Library},
-	Title = {Mixture {K}alman filters},
-	Volume = {62},
-	Year = {2000}}
+@Article{chen2000mixture,
+  author    = {Chen, Rong and Liu, Jun S.},
+  title     = {Mixture {K}alman filters},
+  journal   = {Journal of the Royal Statistical Society: Series B (Statistical Methodology)},
+  year      = {2000},
+  volume    = {62},
+  number    = {3},
+  pages     = {493--508},
+  publisher = {Wiley Online Library},
+}
 
-@inproceedings{chen2016xgboost,
-	Author = {Chen, Tianqi and Guestrin, Carlos},
-	Booktitle = {Proceedings of the 22nd acm sigkdd international conference on knowledge discovery and data mining},
-	Organization = {ACM},
-	Pages = {785--794},
-	Title = {Xgboost: A scalable tree boosting system},
-	Year = {2016}}
+@InProceedings{chen2016xgboost,
+  author       = {Chen, Tianqi and Guestrin, Carlos},
+  title        = {Xgboost: a scalable tree boosting system},
+  booktitle    = {Proceedings of the 22nd acm sigkdd international conference on knowledge discovery and data mining},
+  year         = {2016},
+  pages        = {785--794},
+  organization = {ACM},
+}
 
 @book{chen2009feedback,
 	Author = {Chen, Wai-Kai},
@@ -540,14 +573,15 @@
 	Title = {Trajectory simplification method for location-based social networking services},
 	Year = {2009}}
 
-@article{chen2003bayesian,
-	Author = {Chen, Zhe and others},
-	Journal = {Statistics},
-	Number = {1},
-	Pages = {1--69},
-	Title = {{B}ayesian filtering: From {K}alman filters to particle filters, and beyond},
-	Volume = {182},
-	Year = {2003}}
+@Article{chen2003bayesian,
+  author  = {Chen, Zhe},
+  title   = {{B}ayesian filtering: from {K}alman filters to particle filters, and beyond},
+  journal = {Statistics},
+  year    = {2003},
+  volume  = {182},
+  number  = {1},
+  pages   = {1--69},
+}
 
 @article{chopin2002sequential,
 	Author = {Chopin, Nicolas},
@@ -561,58 +595,65 @@
 	Volume = {89},
 	Year = {2002}}
 
-@article{chopin2010particle,
-	Author = {Chopin, Nicolas and Iacobucci, Alessandra and Marin, Jean-Michel and Mengersen, Kerrie and Robert, Christian P and Ryder, Robin and Sch{\"a}fer, Christian},
-	Journal = {arXiv preprint arXiv:1006.0554},
-	Owner = {zcao},
-	Timestamp = {2017.10.31},
-	Title = {On particle learning},
-	Year = {2010}}
+@Article{chopin2010particle,
+  author    = {Chopin, Nicolas and Iacobucci, Alessandra and Marin, Jean-Michel and Mengersen, Kerrie and Robert, Christian P. and Ryder, Robin and Sch{\"a}fer, Christian},
+  title     = {On particle learning},
+  journal   = {arXiv preprint arXiv:1006.0554},
+  year      = {2010},
+  owner     = {zcao},
+  timestamp = {2017.10.31},
+}
 
-@article{christen2005markov,
-	Author = {Christen, J Andr{\'e}s and Fox, Colin},
-	Journal = {Journal of Computational and Graphical statistics},
-	Number = {4},
-	Owner = {zcao},
-	Pages = {795--810},
-	Publisher = {Taylor \& Francis},
-	Timestamp = {2017.10.27},
-	Title = {{M}arkov chain {M}onte {C}arlo using an approximation},
-	Volume = {14},
-	Year = {2005}}
+@Article{christen2005markov,
+  author    = {Christen, J. Andr{\'e}s and Fox, Colin},
+  title     = {{M}arkov chain {M}onte {C}arlo using an approximation},
+  journal   = {Journal of Computational and Graphical statistics},
+  year      = {2005},
+  volume    = {14},
+  number    = {4},
+  pages     = {795--810},
+  owner     = {zcao},
+  publisher = {Taylor \& Francis},
+  timestamp = {2017.10.27},
+}
 
-@article{christen2010general,
-	Author = {Christen, J Andr{\'e}s and Fox, Colin and others},
-	Journal = {{B}ayesian Analysis},
-	Number = {2},
-	Pages = {263--281},
-	Publisher = {International Society for {B}ayesian Analysis},
-	Title = {A general purpose sampling algorithm for continuous distributions (the t-walk)},
-	Volume = {5},
-	Year = {2010}}
+@Article{christen2010general,
+  author    = {J. Andr{\'e}s Christen and Colin Fox},
+  title     = {A general purpose sampling algorithm for continuous distributions (the t-walk)},
+  journal   = {{B}ayesian Analysis},
+  year      = {2010},
+  volume    = {5},
+  number    = {2},
+  pages     = {263--281},
+  publisher = {International Society for {B}ayesian Analysis},
+}
 
-@article{cox1993analysis,
-	Author = {Cox, Dennis D.},
-	Doi = {10.1214/aos/1176349157},
-	Fjournal = {The Annals of Statistics},
-	Journal = {Ann. Statist.},
-	Month = {06},
-	Number = {2},
-	Pages = {903--923},
-	Publisher = {The Institute of Mathematical Statistics},
-	Title = {An Analysis of {B}ayesian Inference for Nonparametric Regression},
-	Url = {https://doi.org/10.1214/aos/1176349157},
-	Volume = {21},
-	Year = {1993},
-	Bdsk-Url-1 = {https://doi.org/10.1214/aos/1176349157}}
+@Article{cox1993analysis,
+  author     = {Cox, Dennis D.},
+  title      = {An analysis of {B}ayesian inference for nonparametric regression},
+  journal    = {Ann. Statist.},
+  year       = {1993},
+  volume     = {21},
+  number     = {2},
+  pages      = {903--923},
+  month      = {06},
+  bdsk-url-1 = {https://doi.org/10.1214/aos/1176349157},
+  doi        = {10.1214/aos/1176349157},
+  fjournal   = {The Annals of Statistics},
+  publisher  = {The Institute of Mathematical Statistics},
+  url        = {https://doi.org/10.1214/aos/1176349157},
+}
 
-@incollection{cox1982practical,
-	Author = {Cox, Maurice G},
-	Booktitle = {Topics in Numerical Analysis},
-	Pages = {79--112},
-	Publisher = {Springer},
-	Title = {Practical spline approximation},
-	Year = {1982}}
+@InProceedings{cox1982practical,
+  author    = {Cox, M. G.},
+  title     = {Practical spline approximation},
+  booktitle = {Topics in Numerical Analysis},
+  year      = {1982},
+  editor    = {Turner, Peter R.},
+  pages     = {79--112},
+  address   = {Berlin, Heidelberg},
+  publisher = {Springer Berlin Heidelberg},
+}
 
 @article{craven1978smoothing,
 	Author = {Craven, Peter and Wahba, Grace},
@@ -655,7 +696,7 @@
 	Year = {2006}}
 
 @Article{dempster1977maximum,
-  author    = {Dempster, Arthur P and Laird, Nan M and Rubin, Donald B},
+  author    = {Dempster, Arthur P. and Laird, Nan M. and Rubin, Donald B.},
   title     = {Maximum likelihood from incomplete data via the {EM} algorithm},
   journal   = {Journal of the royal statistical society. Series B (methodological)},
   year      = {1977},
@@ -689,15 +730,16 @@
 	Title = {Foundations of modern analysis},
 	Year = {2013}}
 
-@article{diggle1989spline,
-	Author = {Diggle, Peter J and Hutchinson, Michael F},
-	Journal = {Australian \& New Zealand Journal of Statistics},
-	Number = {1},
-	Pages = {166--182},
-	Publisher = {Wiley Online Library},
-	Title = {On spline smoothing with autocorrelated errors},
-	Volume = {31},
-	Year = {1989}}
+@Article{diggle1989spline,
+  author    = {Diggle, Peter J. and Hutchinson, Michael F.},
+  title     = {On spline smoothing with autocorrelated errors},
+  journal   = {Australian \& New Zealand Journal of Statistics},
+  year      = {1989},
+  volume    = {31},
+  number    = {1},
+  pages     = {166--182},
+  publisher = {Wiley Online Library},
+}
 
 @Article{dongarra2000guest,
   author    = {Dongarra, Jack and Sullivan, Francis},
@@ -712,34 +754,37 @@
   timestamp = {2017.10.23},
 }
 
-@article{donoho1995adapting,
-	Author = {Donoho, David L and Johnstone, Iain M},
-	Journal = {Journal of the american statistical association},
-	Number = {432},
-	Pages = {1200--1224},
-	Publisher = {Taylor \& Francis Group},
-	Title = {Adapting to unknown smoothness via wavelet shrinkage},
-	Volume = {90},
-	Year = {1995}}
+@Article{donoho1995adapting,
+  author    = {Donoho, David L. and Johnstone, Iain M.},
+  title     = {Adapting to unknown smoothness via wavelet shrinkage},
+  journal   = {Journal of the american statistical association},
+  year      = {1995},
+  volume    = {90},
+  number    = {432},
+  pages     = {1200--1224},
+  publisher = {Taylor \& Francis Group},
+}
 
-@article{donoho1995wavelet,
-	Author = {Donoho, David L and Johnstone, Iain M and Kerkyacharian, G{\'e}rard and Picard, Dominique},
-	Journal = {Journal of the Royal Statistical Society. Series B (Methodological)},
-	Pages = {301--369},
-	Publisher = {JSTOR},
-	Title = {Wavelet shrinkage: asymptopia?},
-	Volume = {57},
-	Year = {1995}}
+@Article{donoho1995wavelet,
+  author    = {Donoho, David L. and Johnstone, Iain M. and Kerkyacharian, G{\'e}rard and Picard, Dominique},
+  title     = {Wavelet shrinkage: asymptopia?},
+  journal   = {Journal of the Royal Statistical Society. Series B (Methodological)},
+  year      = {1995},
+  volume    = {57},
+  pages     = {301--369},
+  publisher = {JSTOR},
+}
 
-@article{donoho1994ideal,
-	Author = {Donoho, David L and Johnstone, Jain M},
-	Journal = {biometrika},
-	Number = {3},
-	Pages = {425--455},
-	Publisher = {Oxford University Press},
-	Title = {Ideal spatial adaptation by wavelet shrinkage},
-	Volume = {81},
-	Year = {1994}}
+@Article{donoho1994ideal,
+  author    = {Donoho, David L. and Johnstone, Jain M.},
+  title     = {Ideal spatial adaptation by wavelet shrinkage},
+  journal   = {biometrika},
+  year      = {1994},
+  volume    = {81},
+  number    = {3},
+  pages     = {425--455},
+  publisher = {Oxford University Press},
+}
 
 @InProceedings{doucet2000rao,
   author       = {Doucet, Arnaud and De Freitas, Nando and Murphy, Kevin and Russell, Stuart},
@@ -750,14 +795,15 @@
   organization = {Morgan Kaufmann Publishers Inc.},
 }
 
-@book{smcmip2011,
-	Author = {Arnaud Doucet and Nando de Freitas and Neil Gordon},
-	Editor = {Arnaud Doucet, Nando de Freitas, Neil Gordon},
-	Owner = {zcao},
-	Publisher = {Springer-Verlag New York},
-	Timestamp = {2017.10.27},
-	Title = {Sequential {M}onte {C}arlo Methods in Practice},
-	Year = {2011}}
+@Book{smcmip2011,
+  title     = {Sequential {M}onte {C}arlo pethods in practice},
+  publisher = {Springer-Verlag New York},
+  year      = {2011},
+  author    = {Arnaud Doucet and Nando de Freitas and Neil Gordon},
+  editor    = {Arnaud Doucet and Nando de Freitas and Neil Gordon},
+  owner     = {zcao},
+  timestamp = {2017.10.27},
+}
 
 @article{doucet2000sequential,
 	Author = {Doucet, Arnaud and Godsill, Simon and Andrieu, Christophe},
@@ -770,7 +816,7 @@
 	Year = {2000}}
 
 @Article{doucet2009tutorial,
-  author  = {Doucet, Arnaud and Johansen, Adam M},
+  author  = {Arnaud Doucet and Adam M. Johansen},
   title   = {A tutorial on particle filtering and smoothing: fifteen years later},
   journal = {Handbook of nonlinear filtering},
   year    = {2009},
@@ -779,37 +825,40 @@
   pages   = {3},
 }
 
-@article{douglas1973algorithms,
-	Author = {Douglas, David H and Peucker, Thomas K},
-	Journal = {Cartographica: The International Journal for Geographic Information and Geovisualization},
-	Number = {2},
-	Owner = {zcao},
-	Pages = {112--122},
-	Publisher = {University of Toronto Press},
-	Timestamp = {2017.09.08},
-	Title = {Algorithms for the reduction of the number of points required to represent a digitized line or its caricature},
-	Volume = {10},
-	Year = {1973}}
+@Article{douglas1973algorithms,
+  author    = {Douglas, David H. and Peucker, Thomas K.},
+  title     = {Algorithms for the reduction of the number of points required to represent a digitized line or its caricature},
+  journal   = {Cartographica: The International Journal for Geographic Information and Geovisualization},
+  year      = {1973},
+  volume    = {10},
+  number    = {2},
+  pages     = {112--122},
+  owner     = {zcao},
+  publisher = {University of Toronto Press},
+  timestamp = {2017.09.08},
+}
 
-@article{duane1987hybrid,
-	Author = {Duane, Simon and Kennedy, Anthony D and Pendleton, Brian J and Roweth, Duncan},
-	Journal = {Physics letters B},
-	Number = {2},
-	Pages = {216--222},
-	Publisher = {Elsevier},
-	Title = {Hybrid {M}onte {C}arlo},
-	Volume = {195},
-	Year = {1987}}
+@Article{duane1987hybrid,
+  author    = {Duane, Simon and Kennedy, Anthony D. and Pendleton, Brian J. and Roweth, Duncan},
+  title     = {Hybrid {M}onte {C}arlo},
+  journal   = {Physics letters B},
+  year      = {1987},
+  volume    = {195},
+  number    = {2},
+  pages     = {216--222},
+  publisher = {Elsevier},
+}
 
-@article{dubins1957curves,
-	Author = {Dubins, Lester E},
-	Journal = {American Journal of mathematics},
-	Number = {3},
-	Pages = {497--516},
-	Publisher = {JSTOR},
-	Title = {On curves of minimal length with a constraint on average curvature, and with prescribed initial and terminal positions and tangents},
-	Volume = {79},
-	Year = {1957}}
+@Article{dubins1957curves,
+  author    = {Dubins, Lester E.},
+  title     = {On curves of minimal length with a constraint on average curvature, and with prescribed initial and terminal positions and tangents},
+  journal   = {American Journal of mathematics},
+  year      = {1957},
+  volume    = {79},
+  number    = {3},
+  pages     = {497--516},
+  publisher = {JSTOR},
+}
 
 @book{durbin2012time,
 	Author = {Durbin, James and Koopman, Siem Jan},
@@ -819,7 +868,7 @@
 	Year = {2012}}
 
 @Article{eilers1996flexible,
-  author    = {Eilers, Paul HC and Marx, Brian D},
+  author    = {Eilers, Paul H. C. and Marx, Brian D.},
   title     = {Flexible smoothing with {B}-splines and penalties},
   journal   = {Statistical science},
   year      = {1996},
@@ -842,10 +891,10 @@
 }
 
 @Book{elliott1995estimation,
-  title      = {Hidden Markov Models: estimation and control},
+  title      = {Hidden {M}arkov models: estimation and control},
   publisher  = {Springer-Verlag New York},
   year       = {1995},
-  author     = {Robert J Elliott and Lakhdar Aggoun and John B. Moore},
+  author     = {Robert J. Elliott and Lakhdar Aggoun and John B. Moore},
   volume     = {29},
   series     = {0172-4568},
   edition    = {1},
@@ -853,14 +902,15 @@
   doi        = {10.1007/978-0-387-84854-9},
 }
 
-@inproceedings{ellis2009,
-	Author = {Ellis, David and Sommerlade, Eric and Reid, Ian},
-	Booktitle = {Computer Vision Workshops (ICCV Workshops), 2009 IEEE 12th International Conference on},
-	Date-Modified = {2015-12-02 10:02:32 +0000},
-	Organization = {IEEE},
-	Pages = {1229--1234},
-	Title = {Modelling pedestrian trajectory patterns with gaussian processes},
-	Year = {2009}}
+@Conference{ellis2009,
+  author        = {Ellis, David and Sommerlade, Eric and Reid, Ian},
+  title         = {Modelling pedestrian trajectory patterns with gaussian processes},
+  booktitle     = {2009 IEEE 12th International Conference on Computer Vision Workshops, {ICCV} Workshops},
+  year          = {2009},
+  pages         = {1229--1234},
+  organization  = {IEEE},
+  date-modified = {2015-12-02 10:02:32 +0000},
+}
 
 @Article{erkorkmaz2001high,
   author    = {Erkorkmaz, Kaan and Altintas, Yusuf},
@@ -873,15 +923,16 @@
   publisher = {Elsevier},
 }
 
-@article{eubank2004simple,
-	Author = {Eubank, RL},
-	Journal = {Computational Statistics},
-	Number = {2},
-	Pages = {227--241},
-	Publisher = {Springer},
-	Title = {A simple smoothing spline, III},
-	Volume = {19},
-	Year = {2004}}
+@Article{eubank2004simple,
+  author    = {Eubank, R. L.},
+  title     = {A simple smoothing spline, III},
+  journal   = {Computational Statistics},
+  year      = {2004},
+  volume    = {19},
+  number    = {2},
+  pages     = {227--241},
+  publisher = {Springer},
+}
 
 @article{evensen1994sequential,
 	Author = {Evensen, Geir},
@@ -905,25 +956,27 @@
 	Volume = {11},
 	Year = {2002}}
 
-@inproceedings{freund1995desicion,
-	Author = {Freund, Yoav and Schapire, Robert E},
-	Booktitle = {European conference on computational learning theory},
-	Organization = {Springer},
-	Pages = {23--37},
-	Title = {A desicion-theoretic generalization of on-line learning and an application to boosting},
-	Year = {1995}}
+@InProceedings{freund1995desicion,
+  author       = {Freund, Yoav and Schapire, Robert E.},
+  title        = {A desicion-theoretic generalization of on-line learning and an application to boosting},
+  booktitle    = {European conference on computational learning theory},
+  year         = {1995},
+  pages        = {23--37},
+  organization = {Springer},
+}
 
-@article{friedman2001greedy,
-	Author = {Friedman, Jerome H},
-	Journal = {Annals of statistics},
-	Pages = {1189--1232},
-	Publisher = {JSTOR},
-	Title = {Greedy function approximation: a gradient boosting machine},
-	Volume = {29},
-	Year = {2001}}
+@Article{friedman2001greedy,
+  author    = {Friedman, Jerome H.},
+  title     = {Greedy function approximation: a gradient boosting machine},
+  journal   = {Annals of statistics},
+  year      = {2001},
+  volume    = {29},
+  pages     = {1189--1232},
+  publisher = {JSTOR},
+}
 
 @Article{garcia1996multivariate,
-  author    = {Garc{\'\i}a-Cort{\'e}s, LA and Sorensen, Daniel},
+  author    = {Garc{\'\i}a-Cort{\'e}s, L. A. and Sorensen, Daniel},
   title     = {On a multivariate implementation of the {G}ibbs sampler},
   journal   = {Genetics Selection Evolution},
   year      = {1996},
@@ -933,15 +986,16 @@
   publisher = {BioMed Central},
 }
 
-@article{gasparetto2007new,
-	Author = {Gasparetto, A and Zanotto, V},
-	Journal = {Mechanism and machine theory},
-	Number = {4},
-	Pages = {455--471},
-	Publisher = {Elsevier},
-	Title = {A new method for smooth trajectory planning of robot manipulators},
-	Volume = {42},
-	Year = {2007}}
+@Article{gasparetto2007new,
+  author    = {Gasparetto, A. and Zanotto, V.},
+  title     = {A new method for smooth trajectory planning of robot manipulators},
+  journal   = {Mechanism and machine theory},
+  year      = {2007},
+  volume    = {42},
+  number    = {4},
+  pages     = {455--471},
+  publisher = {Elsevier},
+}
 
 @book{gelb1974applied,
 	Author = {Gelb, Arthur},
@@ -950,7 +1004,7 @@
 	Year = {1974}}
 
 @Article{gelfand1990illustration,
-  author    = {Gelfand, Alan E and Hills, Susan E and Racine-Poon, Amy and Smith, Adrian FM},
+  author    = {Gelfand, Alan E. and Hills, Susan E. and Racine-Poon, Amy and Smith, Adrian F. M.},
   title     = {Illustration of {B}ayesian inference in normal data models using {G}ibbs sampling},
   journal   = {Journal of the American Statistical Association},
   year      = {1990},
@@ -972,7 +1026,7 @@
 	Year = {2008}}
 
 @Article{gelman2006prior,
-  author    = {Gelman, Andrew and others},
+  author    = {Andrew Gelman},
   title     = {Prior distributions for variance parameters in hierarchical models (comment on article by {B}rowne and {D}raper)},
   journal   = {{B}ayesian analysis},
   year      = {2006},
@@ -984,25 +1038,27 @@
   timestamp = {2017.10.27},
 }
 
-@article{gelman1996efficient,
-	Author = {Gelman, Andrew and Roberts, Gareth O and Gilks, Walter R and others},
-	Journal = {{B}ayesian statistics},
-	Number = {599-608},
-	Owner = {zcao},
-	Pages = {42},
-	Timestamp = {2017.10.27},
-	Title = {Efficient {M}etropolis jumping rules},
-	Volume = {5},
-	Year = {1996}}
+@Article{gelman1996efficient,
+  author    = {Gelman, Andrew and Roberts, Gareth O. and Gilks, Walter R.},
+  title     = {Efficient {M}etropolis jumping rules},
+  journal   = {{B}ayesian statistics},
+  year      = {1996},
+  volume    = {5},
+  number    = {599-608},
+  pages     = {42},
+  owner     = {zcao},
+  timestamp = {2017.10.27},
+}
 
-@article{gelman1992inference,
-	Author = {Gelman, Andrew and Rubin, Donald B},
-	Journal = {Statistical science},
-	Pages = {457--472},
-	Publisher = {JSTOR},
-	Title = {Inference from iterative simulation using multiple sequences},
-	Volume = {7},
-	Year = {1992}}
+@Article{gelman1992inference,
+  author    = {Gelman, Andrew and Rubin, Donald B.},
+  title     = {Inference from iterative simulation using multiple sequences},
+  journal   = {Statistical science},
+  year      = {1992},
+  volume    = {7},
+  pages     = {457--472},
+  publisher = {JSTOR},
+}
 
 @Article{geman1984stochastic,
   author    = {Geman, Stuart and Geman, Donald},
@@ -1028,24 +1084,26 @@
 	Volume = {57},
 	Year = {1989}}
 
-@article{geyer1992practical,
-	Author = {Geyer, Charles J},
-	Journal = {Statistical science},
-	Owner = {zcao},
-	Pages = {473--483},
-	Publisher = {JSTOR},
-	Timestamp = {2017.10.27},
-	Title = {Practical {M}arkov chain {M}onte {C}arlo},
-	Volume = {7},
-	Year = {1992}}
+@Article{geyer1992practical,
+  author    = {Geyer, Charles J.},
+  title     = {Practical {M}arkov chain {M}onte {C}arlo},
+  journal   = {Statistical science},
+  year      = {1992},
+  volume    = {7},
+  pages     = {473--483},
+  owner     = {zcao},
+  publisher = {JSTOR},
+  timestamp = {2017.10.27},
+}
 
-@book{gilks1995markov,
-	Author = {Gilks, Walter R and Richardson, Sylvia and Spiegelhalter, David},
-	Owner = {zcao},
-	Publisher = {CRC press},
-	Timestamp = {2017.10.23},
-	Title = {{M}arkov chain {M}onte {C}arlo in practice},
-	Year = {1995}}
+@Book{gilks1995markov,
+  title     = {{M}arkov chain {M}onte {C}arlo in practice},
+  publisher = {CRC press},
+  year      = {1995},
+  author    = {Gilks, Walter R. and Richardson, Sylvia and Spiegelhalter, David},
+  owner     = {zcao},
+  timestamp = {2017.10.23},
+}
 
 @article{girolami2011riemann,
 	Author = {Girolami, Mark and Calderhead, Ben},
@@ -1073,38 +1131,41 @@
 	Volume = {53},
 	Year = {2001}}
 
-@conference{godsill2000methodology,
-	Author = {Godsill, SJ and Doucet, A and West, M},
-	Booktitle = {International Symposium on Frontiers of Time Series Modeling},
-	Title = {Methodology for {M}onte {C}arlo smoothing with application to time-varying autoregressions},
-	Year = {2000}}
+@Conference{godsill2000methodology,
+  author    = {Godsill, S. J. and Doucet, A. and West, M.},
+  title     = {Methodology for {M}onte {C}arlo smoothing with application to time-varying autoregressions},
+  booktitle = {International Symposium on Frontiers of Time Series Modeling},
+  year      = {2000},
+}
 
-@article{golightly2006bayesian,
-	Author = {Golightly, Andrew and Wilkinson, Darren J},
-	Journal = {Statistics and Computing},
-	Number = {4},
-	Owner = {zcao},
-	Pages = {323--338},
-	Publisher = {Springer},
-	Timestamp = {2017.10.27},
-	Title = {{B}ayesian sequential inference for nonlinear multivariate diffusions},
-	Volume = {16},
-	Year = {2006}}
+@Article{golightly2006bayesian,
+  author    = {Golightly, Andrew and Wilkinson, Darren J.},
+  title     = {{B}ayesian sequential inference for nonlinear multivariate diffusions},
+  journal   = {Statistics and Computing},
+  year      = {2006},
+  volume    = {16},
+  number    = {4},
+  pages     = {323--338},
+  owner     = {zcao},
+  publisher = {Springer},
+  timestamp = {2017.10.27},
+}
 
-@article{gong2016practical,
-	Author = {Gong, Lei and Flegal, James M},
-	Journal = {Journal of Computational and Graphical Statistics},
-	Number = {3},
-	Owner = {zcao},
-	Pages = {684--700},
-	Publisher = {Taylor \& Francis},
-	Timestamp = {2017.10.23},
-	Title = {A practical sequential stopping rule for high-dimensional {M}arkov chain {M}onte {C}arlo},
-	Volume = {25},
-	Year = {2016}}
+@Article{gong2016practical,
+  author    = {Gong, Lei and Flegal, James M.},
+  title     = {A practical sequential stopping rule for high-dimensional {M}arkov chain {M}onte {C}arlo},
+  journal   = {Journal of Computational and Graphical Statistics},
+  year      = {2016},
+  volume    = {25},
+  number    = {3},
+  pages     = {684--700},
+  owner     = {zcao},
+  publisher = {Taylor \& Francis},
+  timestamp = {2017.10.23},
+}
 
 @Article{gordon2004beyond,
-  author  = {Gordon, Neil and Ristic, B and Arulampalam, S},
+  author  = {Gordon, Neil and Ristic, B. and Arulampalam, S.},
   title   = {Beyond the {K}alman filter: particle filters for tracking applications},
   journal = {Artech House, London},
   year    = {2004},
@@ -1113,7 +1174,7 @@
 }
 
 @InProceedings{gordon1993novel,
-  author       = {Gordon, Neil J and Salmond, David J and Smith, Adrian FM},
+  author       = {Gordon, Neil J. and Salmond, David J. and Smith, Adrian F. M.},
   title        = {Novel approach to nonlinear/non-{G}aussian {B}ayesian state estimation},
   booktitle    = {IEE Proceedings F (Radar and Signal Processing)},
   year         = {1993},
@@ -1125,29 +1186,32 @@
   timestamp    = {2017.10.23},
 }
 
-@article{graves2011automatic,
-	Author = {Graves, Todd L},
-	Journal = {arXiv preprint arXiv:1103.5986},
-	Owner = {zcao},
-	Timestamp = {2017.10.23},
-	Title = {Automatic step size selection in random walk {M}etropolis algorithms},
-	Year = {2011}}
+@Article{graves2011automatic,
+  author    = {Graves, Todd L.},
+  title     = {Automatic step size selection in random walk {M}etropolis algorithms},
+  journal   = {arXiv preprint arXiv:1103.5986},
+  year      = {2011},
+  owner     = {zcao},
+  timestamp = {2017.10.23},
+}
 
-@article{green1995reversible,
-	Author = {Green, Peter J},
-	Journal = {Biometrika},
-	Number = {4},
-	Pages = {711--732},
-	Publisher = {Oxford University Press},
-	Title = {Reversible jump {M}arkov chain {M}onte {C}arlo computation and {B}ayesian model determination},
-	Volume = {82},
-	Year = {1995}}
+@Article{green1995reversible,
+  author    = {Green, Peter J.},
+  title     = {Reversible jump {M}arkov chain {M}onte {C}arlo computation and {B}ayesian model determination},
+  journal   = {Biometrika},
+  year      = {1995},
+  volume    = {82},
+  number    = {4},
+  pages     = {711--732},
+  publisher = {Oxford University Press},
+}
 
-@book{green1993nonparametric,
-	Author = {Green, Peter J and Silverman, Bernard W},
-	Publisher = {CRC Press},
-	Title = {Nonparametric regression and generalized linear models: a roughness penalty approach},
-	Year = {1993}}
+@Book{green1993nonparametric,
+  title     = {Nonparametric regression and generalized linear models: a roughness penalty approach},
+  publisher = {CRC Press},
+  year      = {1993},
+  author    = {Green, Peter J. and Silverman, Bernard W.},
+}
 
 @Book{gu2013smoothing,
   title     = {Smoothing spline {ANOVA} models},
@@ -1177,20 +1241,22 @@
   publisher = {SIAM},
 }
 
-@book{guzzi2016data,
-	Author = {Guzzi, Rodolfo},
-	Publisher = {Springer},
-	Title = {Data Assimilation: Mathematical Concepts and Instructive Examples},
-	Year = {2016}}
+@Book{guzzi2016data,
+  title     = {Data assimilation: mathematical concepts and instructive examples},
+  publisher = {Springer},
+  year      = {2016},
+  author    = {Guzzi, Rodolfo},
+}
 
-@article{gyorgy2014unscented,
-	Author = {Gy{\"o}rgy, Katalin and Kelemen, Andr{\'a}s and D{\'a}vid, L{\'a}szl{\'o}},
-	Journal = {Procedia Technology},
-	Pages = {65--74},
-	Publisher = {Elsevier},
-	Title = {Unscented {K}alman filters and Particle Filter methods for nonlinear state estimation},
-	Volume = {12},
-	Year = {2014}}
+@Article{gyorgy2014unscented,
+  author    = {Gy{\"o}rgy, Katalin and Kelemen, Andr{\'a}s and D{\'a}vid, L{\'a}szl{\'o}},
+  title     = {Unscented {K}alman filters and particle filter methods for nonlinear state estimation},
+  journal   = {Procedia Technology},
+  year      = {2014},
+  volume    = {12},
+  pages     = {65--74},
+  publisher = {Elsevier},
+}
 
 @book{hardle1990applied,
 	Author = {H{\"a}rdle, Wolfgang},
@@ -1221,121 +1287,133 @@
 	Volume = {14},
 	Year = {1999}}
 
-@article{haario2001adaptive,
-	Author = {Haario, Heikki and Saksman, Eero and Tamminen, Johanna and others},
-	Journal = {Bernoulli},
-	Number = {2},
-	Pages = {223--242},
-	Publisher = {Bernoulli Society for Mathematical Statistics and Probability},
-	Title = {An adaptive {M}etropolis algorithm},
-	Volume = {7},
-	Year = {2001}}
+@Article{haario2001adaptive,
+  author    = {Haario, Heikki and Saksman, Eero and Tamminen, Johanna},
+  title     = {An adaptive {M}etropolis algorithm},
+  journal   = {Bernoulli},
+  year      = {2001},
+  volume    = {7},
+  number    = {2},
+  pages     = {223--242},
+  publisher = {Bernoulli Society for Mathematical Statistics and Probability},
+}
 
-@incollection{hammersley1964percolation,
-	Author = {Hammersley, John M and Handscomb, DC},
-	Booktitle = {{M}onte {C}arlo Methods},
-	Owner = {zcao},
-	Pages = {134--141},
-	Publisher = {Springer},
-	Timestamp = {2017.10.27},
-	Title = {Percolation processes},
-	Year = {1964}}
+@InCollection{hammersley1964percolation,
+  author    = {Hammersley, John M. and Handscomb, D. C.},
+  title     = {Percolation processes},
+  booktitle = {{M}onte {C}arlo Methods},
+  publisher = {Springer},
+  year      = {1964},
+  pages     = {134--141},
+  owner     = {zcao},
+  timestamp = {2017.10.27},
+}
 
-@article{handschin1970monte,
-	Author = {Handschin, JE},
-	Journal = {Automatica},
-	Number = {4},
-	Owner = {zcao},
-	Pages = {555--563},
-	Publisher = {Elsevier},
-	Timestamp = {2017.10.23},
-	Title = {{M}onte {C}arlo techniques for prediction and filtering of non-linear stochastic processes},
-	Volume = {6},
-	Year = {1970}}
+@Article{handschin1970monte,
+  author    = {Handschin, J. E.},
+  title     = {{M}onte {C}arlo techniques for prediction and filtering of non-linear stochastic processes},
+  journal   = {Automatica},
+  year      = {1970},
+  volume    = {6},
+  number    = {4},
+  pages     = {555--563},
+  owner     = {zcao},
+  publisher = {Elsevier},
+  timestamp = {2017.10.23},
+}
 
-@article{handschin1969monte,
-	Author = {Handschin, Johannes Edmund and Mayne, David Q},
-	Journal = {International journal of control},
-	Number = {5},
-	Owner = {zcao},
-	Pages = {547--559},
-	Publisher = {Taylor \& Francis},
-	Timestamp = {2017.10.23},
-	Title = {{M}onte {C}arlo techniques to estimate the conditional expectation in multi-stage non-linear filtering},
-	Volume = {9},
-	Year = {1969}}
+@Article{handschin1969monte,
+  author    = {Handschin, Johannes Edmund and Mayne, David Q.},
+  title     = {{M}onte {C}arlo techniques to estimate the conditional expectation in multi-stage non-linear filtering},
+  journal   = {International journal of control},
+  year      = {1969},
+  volume    = {9},
+  number    = {5},
+  pages     = {547--559},
+  owner     = {zcao},
+  publisher = {Taylor \& Francis},
+  timestamp = {2017.10.23},
+}
 
-@book{hangos2006analysis,
-	Author = {Hangos, Katalin M and Bokor, J{\'o}zsef and Szederk{\'e}nyi, G{\'a}bor},
-	Owner = {zcao},
-	Publisher = {Springer Science \& Business Media},
-	Timestamp = {2017.05.23},
-	Title = {Analysis and control of nonlinear process systems},
-	Year = {2006}}
+@Book{hangos2006analysis,
+  title     = {Analysis and control of nonlinear process systems},
+  publisher = {Springer Science \& Business Media},
+  year      = {2006},
+  author    = {Hangos, Katalin M. and Bokor, J{\'o}zsef and Szederk{\'e}nyi, G{\'a}bor},
+  owner     = {zcao},
+  timestamp = {2017.05.23},
+}
 
-@inproceedings{hartmann2016grid,
-	Author = {Hartmann, Markus and Nowak, Thorsten and Pfandenhauer, Oliver and Thielecke, J{\"o}rn and Heuberger, Albert},
-	Booktitle = {Wireless On-demand Network Systems and Services (WONS), 2016 12th Annual Conference on},
-	Organization = {IEEE},
-	Pages = {1--8},
-	Title = {A grid-based filter for tracking bats applying field strength measurements},
-	Year = {2016}}
+@Conference{hartmann2016grid,
+  author       = {Hartmann, Markus and Nowak, Thorsten and Pfandenhauer, Oliver and Thielecke, J{\"o}rn and Heuberger, Albert},
+  title        = {A grid-based filter for tracking bats applying field strength measurements},
+  booktitle    = {2016 12th Annual Conference on Wireless On-demand Network Systems and Services (WONS)},
+  year         = {2016},
+  pages        = {1--8},
+  organization = {IEEE},
+}
 
-@book{esl2009,
-	Author = {Trevor Hastie and Robert Tibshirani and Jerome Friedman},
-	Edition = {Second Edition},
-	Owner = {zcao},
-	Publisher = {Springer-Verlag},
-	Timestamp = {2015.12.02},
-	Title = {The Elements of Statistical Learning: Data Mining, Inference, and Prediction.},
-	Year = {2009}}
+@Book{esl2009,
+  title     = {The elements of statistical learning: data mining, inference, and prediction.},
+  publisher = {Springer-Verlag},
+  year      = {2009},
+  author    = {Trevor Hastie and Robert Tibshirani and Jerome Friedman},
+  edition   = {Second Edition},
+  owner     = {zcao},
+  timestamp = {2015.12.02},
+}
 
-@book{hastie1990generalized,
-	Author = {Hastie, Trevor J and Tibshirani, Robert J},
-	Publisher = {CRC Press},
-	Title = {Generalized additive models},
-	Volume = {43},
-	Year = {1990}}
+@Book{hastie1990generalized,
+  title     = {Generalized additive models},
+  publisher = {CRC Press},
+  year      = {1990},
+  author    = {Hastie, Trevor J. and Tibshirani, Robert J.},
+  volume    = {43},
+}
 
-@article{hastings1970monte,
-	Author = {Hastings, W Keith},
-	Journal = {Biometrika},
-	Number = {1},
-	Owner = {zcao},
-	Pages = {97--109},
-	Publisher = {Biometrika Trust},
-	Timestamp = {2017.10.23},
-	Title = {{M}onte {C}arlo sampling methods using {M}arkov chains and their applications},
-	Volume = {57},
-	Year = {1970}}
+@Article{hastings1970monte,
+  author    = {Hastings, W. Keith},
+  title     = {{M}onte {C}arlo sampling methods using {M}arkov chains and their applications},
+  journal   = {Biometrika},
+  year      = {1970},
+  volume    = {57},
+  number    = {1},
+  pages     = {97--109},
+  owner     = {zcao},
+  publisher = {Biometrika Trust},
+  timestamp = {2017.10.23},
+}
 
-@book{haykin2001kalman,
-	Author = {Haykin, Simon S and others},
-	Editor = {Haykin, Simon S},
-	Owner = {zcao},
-	Publisher = {Wiley Online Library},
-	Timestamp = {2017.09.06},
-	Title = {{K}alman filtering and neural networks},
-	Year = {2001}}
+@Book{haykin2001kalman,
+  title     = {{K}alman filtering and neural networks},
+  publisher = {John Wiley \& Sons},
+  year      = {2001},
+  author    = {Haykin, Simon S.},
+  editor    = {Simon Haykin},
+  owner     = {zcao},
+  timestamp = {2017.09.06},
+}
 
-@article{heckman1991minimax,
-	Author = {Heckman, Nancy E and Woodroofe, Michael},
-	Journal = {The Annals of Statistics},
-	Pages = {2003--2014},
-	Publisher = {JSTOR},
-	Title = {Minimax Bayes estimation in nonparametric regression},
-	Volume = {19},
-	Year = {1991}}
+@Article{heckman1991minimax,
+  author    = {Heckman, Nancy E. and Woodroofe, Michael},
+  title     = {Minimax {B}ayes estimation in nonparametric regression},
+  journal   = {The Annals of Statistics},
+  year      = {1991},
+  volume    = {19},
+  pages     = {2003--2014},
+  publisher = {JSTOR},
+}
 
-@book{Hermite1863Remarque,
-	Author = {Charles Hermite},
-	Owner = {zcao},
-	Pages = {613-618},
-	Publisher = {Elsevier of behalf of the French Academy of Sciences (France)},
-	Timestamp = {2018.01.19},
-	Title = {Remarque sur le d{\'e}veloppement de Comptes Rendus de l'Acad{\'e}mie des Sciences.},
-	Volume = {57},
-	Year = {1863}}
+@Book{Hermite1863Remarque,
+  title     = {Remarque sur le d{\'e}veloppement de comptes rendus de i'acad{\'e}mie des sciences.},
+  publisher = {Elsevier of behalf of the French Academy of Sciences (France)},
+  year      = {1863},
+  author    = {Charles Hermite},
+  volume    = {57},
+  owner     = {zcao},
+  pages     = {613-618},
+  timestamp = {2018.01.19},
+}
 
 @article{hightower2001location,
 	Author = {Hightower, Jeffrey and Borriello, Gaetano},
@@ -1358,7 +1436,7 @@
 	Year = {2001}}
 
 @Article{hintzen2010improved,
-  author    = {Hintzen, Niels T and Piet, Gerjan J and Brunel, Thomas},
+  author    = {Hintzen, Niels T. and Piet, Gerjan J. and Brunel, Thomas},
   title     = {Improved estimation of trawling tracks using cubic {H}ermite spline interpolation of position registration data},
   journal   = {Fisheries Research},
   year      = {2010},
@@ -1373,13 +1451,14 @@
 @InProceedings{jhuaadaptive2013,
   author    = {Junhao Hua},
   title     = {Adaptive filters: {LMS}, {RLS}, {K}alman filter},
+  booktitle = {Advanced Digital Signal Processing and Noise Reduction, Fourth Edition},
   year      = {2013},
   owner     = {zcao},
   timestamp = {2017.05.24},
 }
 
 @Article{hurvich1998smoothing,
-  author    = {Hurvich, Clifford M and Simonoff, Jeffrey S and Tsai, Chih-Ling},
+  author    = {Hurvich, Clifford M. and Simonoff, Jeffrey S. and Tsai, Chih-Ling},
   title     = {Smoothing parameter selection in nonparametric regression using an improved {A}kaike information criterion},
   journal   = {Journal of the Royal Statistical Society: Series B (Statistical Methodology)},
   year      = {1998},
@@ -1402,28 +1481,30 @@
   timestamp = {2017.09.08},
 }
 
-@article{jauch2017recursive,
-	Author = {Jauch, Jens and Bleimund, Felix and Rhode, Stephan and Gauterin, Frank},
-	Journal = {Engineering Science and Technology, an International Journal},
-	Number = {1},
-	Pages = {28--34},
-	Publisher = {Elsevier},
-	Title = {Recursive B-spline approximation using the {K}alman filter},
-	Volume = {20},
-	Year = {2017}}
+@Article{jauch2017recursive,
+  author    = {Jauch, Jens and Bleimund, Felix and Rhode, Stephan and Gauterin, Frank},
+  title     = {Recursive {B}-spline approximation using the {K}alman filter},
+  journal   = {Engineering Science and Technology, an International Journal},
+  year      = {2017},
+  volume    = {20},
+  number    = {1},
+  pages     = {28--34},
+  publisher = {Elsevier},
+}
 
-@book{jaynes1983papers,
-	Author = {Jaynes, Edwin T},
-	Doi = {10.1007/978-94-009-6581-2},
-	Editor = {R.D. Rosenkrantz},
-	Journal = {Statistics and Statistical Physics},
-	Owner = {zcao},
-	Publisher = {Springer Netherlands},
-	Timestamp = {2017.10.23},
-	Title = {E. T. Jaynes: Papers on Probability, Statistics and Statistical Physics},
-	Volume = {158},
-	Year = {1983},
-	Bdsk-Url-1 = {https://doi.org/10.1007/978-94-009-6581-2}}
+@Book{jaynes1983papers,
+  title      = {{E}. {T}. {J}aynes: papers on probability, statistics and statistical physics},
+  publisher  = {Springer Netherlands},
+  year       = {1983},
+  author     = {Jaynes, Edwin T.},
+  editor     = {R. D. Rosenkrantz},
+  volume     = {158},
+  bdsk-url-1 = {https://doi.org/10.1007/978-94-009-6581-2},
+  doi        = {10.1007/978-94-009-6581-2},
+  journal    = {Statistics and Statistical Physics},
+  owner      = {zcao},
+  timestamp  = {2017.10.23},
+}
 
 @book{jeffries1961theory,
 	Author = {Jeffries, Harold},
@@ -1443,95 +1524,105 @@
 	Volume = {78},
 	Year = {2008}}
 
-@book{judd1998numerical,
-	Author = {Judd, Kenneth L},
-	Publisher = {MIT press},
-	Title = {Numerical methods in economics},
-	Year = {1998}}
+@Book{judd1998numerical,
+  title     = {Numerical methods in economics},
+  publisher = {MIT press},
+  year      = {1998},
+  author    = {Judd, Kenneth L.},
+}
 
-@inproceedings{julier1997new,
-	Author = {Julier, Simon J and Uhlmann, Jeffrey K},
-	Booktitle = {Int. symp. aerospace/defense sensing, simul. and controls},
-	Number = {26},
-	Organization = {Orlando, FL},
-	Pages = {182--193},
-	Title = {A new extension of the {K}alman filter to nonlinear systems},
-	Volume = {3},
-	Year = {1997}}
+@InProceedings{julier1997new,
+  author       = {Julier, Simon J. and Uhlmann, Jeffrey K.},
+  title        = {A new extension of the {K}alman filter to nonlinear systems},
+  booktitle    = {The International Society for Optical Engineering},
+  year         = {1997},
+  volume       = {3},
+  number       = {26},
+  pages        = {182--193},
+  organization = {Orlando, FL},
+}
 
-@incollection{kailath1981lectures,
-	Author = {Kailath, Thomas},
-	Booktitle = {Lectures on Wiener and {K}alman Filtering},
-	Pages = {1--143},
-	Publisher = {Springer},
-	Title = {Lectures on Wiener and {K}alman filtering},
-	Year = {1981}}
+@InCollection{kailath1981lectures,
+  author    = {Kailath, Thomas},
+  title     = {Lectures on {W}iener and {K}alman filtering},
+  booktitle = {Lectures on {W}iener and {K}alman Filtering},
+  publisher = {Springer},
+  year      = {1981},
+  pages     = {1--143},
+}
 
-@article{kalman1960new,
-	Author = {{K}alman, Rudolph Emil and others},
-	Journal = {Journal of basic Engineering},
-	Number = {1},
-	Owner = {zcao},
-	Pages = {35--45},
-	Timestamp = {2017.05.23},
-	Title = {A new approach to linear filtering and prediction problems},
-	Volume = {82},
-	Year = {1960}}
+@Article{kalman1960new,
+  author    = {R. E. Kalman},
+  title     = {A new approach to linear filtering and prediction problems},
+  journal   = {Journal of basic Engineering},
+  year      = {1960},
+  volume    = {82},
+  number    = {1},
+  pages     = {35--45},
+  owner     = {zcao},
+  timestamp = {2017.05.23},
+}
 
-@book{kalos2008monte,
-	Author = {Kalos, Malvin H and Whitlock, Paula A},
-	Publisher = {John Wiley \& Sons},
-	Title = {{M}onte {C}arlo methods},
-	Year = {2008}}
+@Book{kalos2008monte,
+  title     = {{M}onte {C}arlo methods},
+  publisher = {John Wiley \& Sons},
+  year      = {2008},
+  author    = {Kalos, Malvin H. and Whitlock, Paula A.},
+}
 
-@inproceedings{kantas2009overview,
-	Author = {Kantas, N and Doucet, A and Singh, SS and Maciejowski, JM},
-	Booktitle = {in General State-Space Models,'' in IFAC System Identification, no. Ml},
-	Organization = {Citeseer},
-	Owner = {zcao},
-	Timestamp = {2017.09.06},
-	Title = {An overview of sequential {M}onte {C}arlo methods for parameter estimation},
-	Year = {2009}}
+@InProceedings{kantas2009overview,
+  author       = {Kantas, N. and Doucet, A. and Singh, S. S. and Maciejowski, J. M.},
+  title        = {An overview of sequential {M}onte {C}arlo methods for parameter estimation},
+  booktitle    = {in General State-Space Models,'' in IFAC System Identification, no. Ml},
+  year         = {2009},
+  organization = {Citeseer},
+  owner        = {zcao},
+  timestamp    = {2017.09.06},
+}
 
-@book{kaplan2005understanding,
-	Author = {Kaplan, Elliott and Hegarty, Christopher},
-	Publisher = {Artech house},
-	Title = {Understanding GPS: principles and applications},
-	Year = {2005}}
+@Book{kaplan2005understanding,
+  title     = {Understanding {GPS}: principles and applications},
+  publisher = {Artech house},
+  year      = {2005},
+  author    = {Kaplan, Elliott and Hegarty, Christopher},
+}
 
-@article{kass1998markov,
-	Author = {Kass, Robert E and Carlin, Bradley P and Gelman, Andrew and Neal, Radford M},
-	Journal = {The American Statistician},
-	Number = {2},
-	Owner = {zcao},
-	Pages = {93--100},
-	Publisher = {Taylor \& Francis Group},
-	Timestamp = {2017.10.23},
-	Title = {{M}arkov chain {M}onte {C}arlo in practice: a roundtable discussion},
-	Volume = {52},
-	Year = {1998}}
+@Article{kass1998markov,
+  author    = {Kass, Robert E. and Carlin, Bradley P. and Gelman, Andrew and Neal, Radford M.},
+  title     = {{M}arkov chain {M}onte {C}arlo in practice: a roundtable discussion},
+  journal   = {The American Statistician},
+  year      = {1998},
+  volume    = {52},
+  number    = {2},
+  pages     = {93--100},
+  owner     = {zcao},
+  publisher = {Taylor \& Francis Group},
+  timestamp = {2017.10.23},
+}
 
-@article{katzfuss2016understanding,
-	Author = {Katzfuss, Matthias and Stroud, Jonathan R and Wikle, Christopher K},
-	Journal = {The American Statistician},
-	Number = {4},
-	Pages = {350--357},
-	Publisher = {Taylor \& Francis},
-	Title = {Understanding the ensemble {K}alman filter},
-	Volume = {70},
-	Year = {2016}}
+@Article{katzfuss2016understanding,
+  author    = {Katzfuss, Matthias and Stroud, Jonathan R. and Wikle, Christopher K.},
+  title     = {Understanding the ensemble {K}alman filter},
+  journal   = {The American Statistician},
+  year      = {2016},
+  volume    = {70},
+  number    = {4},
+  pages     = {350--357},
+  publisher = {Taylor \& Francis},
+}
 
-@article{khan2005mcmc,
-	Author = {Khan, Zia and Balch, Tucker and Dellaert, Frank},
-	Journal = {IEEE transactions on pattern analysis and machine intelligence},
-	Number = {11},
-	Owner = {zcao},
-	Pages = {1805--1819},
-	Publisher = {IEEE},
-	Timestamp = {2017.10.27},
-	Title = {MCMC-based particle filtering for tracking a variable number of interacting targets},
-	Volume = {27},
-	Year = {2005}}
+@Article{khan2005mcmc,
+  author    = {Khan, Zia and Balch, Tucker and Dellaert, Frank},
+  title     = {{MCMC}-based particle filtering for tracking a variable number of interacting targets},
+  journal   = {IEEE transactions on pattern analysis and machine intelligence},
+  year      = {2005},
+  volume    = {27},
+  number    = {11},
+  pages     = {1805--1819},
+  owner     = {zcao},
+  publisher = {IEEE},
+  timestamp = {2017.10.27},
+}
 
 @book{kijima1997markov,
 	Author = {Kijima, Masaaki},
@@ -1564,15 +1655,16 @@
   publisher = {Elsevier},
 }
 
-@article{kimeldorf1970correspondence,
-	Author = {Kimeldorf, George S and Wahba, Grace},
-	Journal = {The Annals of Mathematical Statistics},
-	Number = {2},
-	Pages = {495--502},
-	Publisher = {JSTOR},
-	Title = {A correspondence between {B}ayesian estimation on stochastic processes and smoothing by splines},
-	Volume = {41},
-	Year = {1970}}
+@Article{kimeldorf1970correspondence,
+  author    = {Kimeldorf, George S. and Wahba, Grace},
+  title     = {A correspondence between {B}ayesian estimation on stochastic processes and smoothing by splines},
+  journal   = {The Annals of Mathematical Statistics},
+  year      = {1970},
+  volume    = {41},
+  number    = {2},
+  pages     = {495--502},
+  publisher = {JSTOR},
+}
 
 @Article{kitagawa1998self,
   author     = {Genshiro Kitagawa},
@@ -1618,24 +1710,26 @@
   timestamp = {2017.05.23},
 }
 
-@article{kloek1978bayesian,
-	Author = {Kloek, Tuen and Van Dijk, Herman K},
-	Journal = {Econometrica: Journal of the Econometric Society},
-	Pages = {1--19},
-	Publisher = {JSTOR},
-	Title = {{B}ayesian estimates of equation system parameters: an application of integration by {M}onte {C}arlo},
-	Volume = {46},
-	Year = {1978}}
+@Article{kloek1978bayesian,
+  author    = {Kloek, Tuen and Van Dijk, Herman K.},
+  title     = {{B}ayesian estimates of equation system parameters: an application of integration by {M}onte {C}arlo},
+  journal   = {Econometrica: Journal of the Econometric Society},
+  year      = {1978},
+  volume    = {46},
+  pages     = {1--19},
+  publisher = {JSTOR},
+}
 
-@article{kohn1992nonparametric,
-	Author = {Kohn, Robert and Ansley, Craig F and Wong, Chi-Ming},
-	Journal = {Biometrika},
-	Number = {2},
-	Pages = {335--346},
-	Publisher = {Oxford University Press},
-	Title = {Nonparametric spline regression with autoregressive moving average errors},
-	Volume = {79},
-	Year = {1992}}
+@Article{kohn1992nonparametric,
+  author    = {Kohn, Robert and Ansley, Craig F. and Wong, Chi-Ming},
+  title     = {Nonparametric spline regression with autoregressive moving average errors},
+  journal   = {Biometrika},
+  year      = {1992},
+  volume    = {79},
+  number    = {2},
+  pages     = {335--346},
+  publisher = {Oxford University Press},
+}
 
 @PhdThesis{kokkala2016particle,
   author     = {Kokkala, Juho},
@@ -1654,23 +1748,25 @@
   url        = {http://urn.fi/URN:ISBN:978-952-60-6664-6},
 }
 
-@inproceedings{komoriya1989trajectory,
-	Author = {Komoriya, Kiyoshi and Tanie, Kazuo},
-	Booktitle = {Intelligent Robots and Systems' 89. The Autonomous Mobile Robots and Its Applications. IROS'89. Proceedings., IEEE/RSJ International Workshop on},
-	Organization = {IEEE},
-	Pages = {398--405},
-	Title = {Trajectory design and control of a wheel-type mobile robot using B-spline curve},
-	Year = {1989}}
+@InProceedings{komoriya1989trajectory,
+  author       = {Komoriya, Kiyoshi and Tanie, Kazuo},
+  title        = {Trajectory design and control of a wheel-type mobile robot using {B}-spline curve},
+  booktitle    = {IEEE/RSJ International Workshop on Intelligent Robots and Systems '. (IROS '89) 'The Autonomous Mobile Robots and Its Applications},
+  year         = {1989},
+  pages        = {398--405},
+  organization = {IEEE},
+}
 
-@article{kong1994sequential,
-	Author = {Kong, Augustine and Liu, Jun S and Wong, Wing Hung},
-	Journal = {Journal of the American statistical association},
-	Number = {425},
-	Pages = {278--288},
-	Publisher = {Taylor \& Francis},
-	Title = {Sequential imputations and {B}ayesian missing data problems},
-	Volume = {89},
-	Year = {1994}}
+@Article{kong1994sequential,
+  author    = {Kong, Augustine and Liu, Jun S. and Wong, Wing Hung},
+  title     = {Sequential imputations and {B}ayesian missing data problems},
+  journal   = {Journal of the American statistical association},
+  year      = {1994},
+  volume    = {89},
+  number    = {425},
+  pages     = {278--288},
+  publisher = {Taylor \& Francis},
+}
 
 @book{kontoghiorghes2005handbook,
 	Author = {Kontoghiorghes, Erricos John},
@@ -1690,37 +1786,40 @@
   timestamp     = {2017.09.13},
 }
 
-@article{krivobokova2008fast,
-	Author = {Krivobokova, Tatyana and Crainiceanu, Ciprian M and Kauermann, G{\"o}ran},
-	Journal = {Journal of Computational and Graphical Statistics},
-	Number = {1},
-	Pages = {1--20},
-	Publisher = {Taylor \& Francis},
-	Title = {Fast adaptive penalized splines},
-	Volume = {17},
-	Year = {2008}}
+@Article{krivobokova2008fast,
+  author    = {Krivobokova, Tatyana and Crainiceanu, Ciprian M. and Kauermann, G{\"o}ran},
+  title     = {Fast adaptive penalized splines},
+  journal   = {Journal of Computational and Graphical Statistics},
+  year      = {2008},
+  volume    = {17},
+  number    = {1},
+  pages     = {1--20},
+  publisher = {Taylor \& Francis},
+}
 
-@article{larson1931shrinkage,
-	Author = {Larson, Selmer C},
-	Journal = {Journal of Educational Psychology},
-	Number = {1},
-	Pages = {45},
-	Publisher = {Warwick \& York},
-	Title = {The shrinkage of the coefficient of multiple correlation.},
-	Volume = {22},
-	Year = {1931}}
+@Article{larson1931shrinkage,
+  author    = {Larson, Selmer C.},
+  title     = {The shrinkage of the coefficient of multiple correlation.},
+  journal   = {Journal of Educational Psychology},
+  year      = {1931},
+  volume    = {22},
+  number    = {1},
+  pages     = {45},
+  publisher = {Warwick \& York},
+}
 
-@inproceedings{laviola2003comparison,
-	Author = {LaViola, Joseph J},
-	Booktitle = {American Control Conference, 2003. Proceedings of the 2003},
-	Organization = {IEEE},
-	Pages = {2435--2440},
-	Title = {A comparison of unscented and extended {K}alman filtering for estimating quaternion motion},
-	Volume = {3},
-	Year = {2003}}
+@InProceedings{laviola2003comparison,
+  author       = {LaViola, Joseph J.},
+  title        = {A comparison of unscented and extended {K}alman filtering for estimating quaternion motion},
+  booktitle    = {American Control Conference, 2003. Proceedings of the 2003},
+  year         = {2003},
+  volume       = {3},
+  pages        = {2435--2440},
+  organization = {IEEE},
+}
 
 @TechReport{lawson2011compression,
-  author      = {Lawson, Catherine T and Ravi, SS and Hwang, Jeong-Hyon},
+  author      = {Lawson, Catherine T. and Ravi, S. S. and Hwang, Jeong-Hyon},
   title       = {Compression and mining of {GPS} trace data: new techniques and applications},
   institution = {Technical Report. Region II University Transportation Research Center},
   year        = {2011},
@@ -1728,27 +1827,29 @@
   timestamp   = {2017.09.08},
 }
 
-@inproceedings{li2004recursibility,
-	Author = {Li, X Rong},
-	Booktitle = {Decision and Control, 2004. CDC. 43rd IEEE Conference on},
-	Organization = {IEEE},
-	Owner = {zcao},
-	Pages = {1761--1766},
-	Timestamp = {2017.10.23},
-	Title = {Recursibility and optimal linear estimation and filtering},
-	Volume = {2},
-	Year = {2004}}
+@Conference{li2004recursibility,
+  author       = {Li, X. Rong},
+  title        = {Recursibility and optimal linear estimation and filtering},
+  booktitle    = {43rd IEEE Conference on Decision and Control (CDC) (IEEE Cat. No.04CH37601)},
+  year         = {2004},
+  volume       = {2},
+  pages        = {1761--1766},
+  organization = {IEEE},
+  owner        = {zcao},
+  timestamp    = {2017.10.23},
+}
 
-@article{lindley1972bayes,
-	Author = {Lindley, Dennis V and Smith, Adrian FM},
-	Journal = {Journal of the Royal Statistical Society. Series B (Methodological)},
-	Owner = {zcao},
-	Pages = {1--41},
-	Publisher = {JSTOR},
-	Timestamp = {2017.10.23},
-	Title = {Bayes estimates for the linear model},
-	Volume = {34},
-	Year = {1972}}
+@Article{lindley1972bayes,
+  author    = {Lindley, Dennis V. and Smith, Adrian F. M.},
+  title     = {Bayes estimates for the linear model},
+  journal   = {Journal of the Royal Statistical Society. Series B (Methodological)},
+  year      = {1972},
+  volume    = {34},
+  pages     = {1--41},
+  owner     = {zcao},
+  publisher = {JSTOR},
+  timestamp = {2017.10.23},
+}
 
 @incollection{liu2001combined,
 	Author = {Liu, Jane and West, Mike},
@@ -1760,23 +1861,25 @@
 	Title = {Combined parameter and state estimation in simulation-based filtering},
 	Year = {2001}}
 
-@book{liu2008monte,
-	Author = {Liu, Jun S},
-	Owner = {zcao},
-	Publisher = {Springer Science \& Business Media},
-	Timestamp = {2017.10.27},
-	Title = {{M}onte {C}arlo strategies in scientific computing},
-	Year = {2008}}
+@Book{liu2008monte,
+  title     = {{M}onte {C}arlo strategies in scientific computing},
+  publisher = {Springer Science \& Business Media},
+  year      = {2008},
+  author    = {Liu, Jun S.},
+  owner     = {zcao},
+  timestamp = {2017.10.27},
+}
 
-@article{liu2000multiple,
-	Author = {Liu, Jun S and Liang, Faming and Wong, Wing Hung},
-	Journal = {Journal of the American Statistical Association},
-	Number = {449},
-	Pages = {121--134},
-	Publisher = {Taylor \& Francis},
-	Title = {The multiple-try method and local optimization in {M}etropolis sampling},
-	Volume = {95},
-	Year = {2000}}
+@Article{liu2000multiple,
+  author    = {Liu, Jun S. and Liang, Faming and Wong, Wing Hung},
+  title     = {The multiple-try method and local optimization in {M}etropolis sampling},
+  journal   = {Journal of the American Statistical Association},
+  year      = {2000},
+  volume    = {95},
+  number    = {449},
+  pages     = {121--134},
+  publisher = {Taylor \& Francis},
+}
 
 @inproceedings{liu2014filtering,
 	Author = {Liu, Yunfeng and Suo, Jidong and Karimi, Hamid Reza and Liu, Xiaoming},
@@ -1795,17 +1898,18 @@
 	Volume = {20},
 	Year = {2010}}
 
-@article{lopes2011particle,
-	Author = {Lopes, Hedibert F and Tsay, Ruey S},
-	Journal = {Journal of Forecasting},
-	Number = {1},
-	Owner = {zcao},
-	Pages = {168--209},
-	Publisher = {Wiley Online Library},
-	Timestamp = {2017.10.23},
-	Title = {Particle filters and {B}ayesian inference in financial econometrics},
-	Volume = {30},
-	Year = {2011}}
+@Article{lopes2011particle,
+  author    = {Lopes, Hedibert F. and Tsay, Ruey S.},
+  title     = {Particle filters and {B}ayesian inference in financial econometrics},
+  journal   = {Journal of Forecasting},
+  year      = {2011},
+  volume    = {30},
+  number    = {1},
+  pages     = {168--209},
+  owner     = {zcao},
+  publisher = {Wiley Online Library},
+  timestamp = {2017.10.23},
+}
 
 @Book{muller1991generic,
   title     = {A generic approach to posterior integration and {G}ibbs sampling},
@@ -1816,19 +1920,21 @@
   timestamp = {2017.10.23},
 }
 
-@book{mackay2003information,
-	Author = {MacKay, David JC},
-	Publisher = {Cambridge university press},
-	Title = {Information theory, inference and learning algorithms},
-	Year = {2003}}
+@Book{mackay2003information,
+  title     = {Information theory, inference and learning algorithms},
+  publisher = {Cambridge university press},
+  year      = {2003},
+  author    = {MacKay, David J. C.},
+}
 
-@inproceedings{magid2006spline,
-	Author = {Magid, Evgeni and Keren, Daniel and Rivlin, Ehud and Yavneh, Irad},
-	Booktitle = {Intelligent Robots and Systems, 2006 IEEE/RSJ International Conference on},
-	Organization = {IEEE},
-	Pages = {2296--2301},
-	Title = {Spline-based robot navigation},
-	Year = {2006}}
+@InProceedings{magid2006spline,
+  author       = {Magid, Evgeni and Keren, Daniel and Rivlin, Ehud and Yavneh, Irad},
+  title        = {Spline-based robot navigation},
+  booktitle    = {2006 IEEE/RSJ International Conference on Intelligent Robots and Systems},
+  year         = {2006},
+  pages        = {2296--2301},
+  organization = {IEEE},
+}
 
 @InProceedings{mahendran2012adaptive,
   author    = {Mahendran, Nimalan and Wang, Ziyu and Hamze, Firas and De Freitas, Nando},
@@ -1850,17 +1956,18 @@
 	Volume = {90},
 	Year = {2010}}
 
-@article{mathew2012bayesian,
-	Author = {Mathew, Boby and Bauer, AM and Koistinen, P and Reetz, TC and L{\'e}on, J and Sillanp{\"a}{\"a}, MJ},
-	Journal = {Heredity},
-	Number = {4},
-	Owner = {zcao},
-	Pages = {235},
-	Publisher = {Nature Publishing Group},
-	Timestamp = {2017.10.23},
-	Title = {{B}ayesian adaptive {M}arkov chain {M}onte {C}arlo estimation of genetic parameters},
-	Volume = {109},
-	Year = {2012}}
+@Article{mathew2012bayesian,
+  author    = {Mathew, Boby and Bauer, A. M. and Koistinen, P. and Reetz, T. C. and L{\'e}on, J. and Sillanp{\"a}{\"a}, M. J.},
+  title     = {{B}ayesian adaptive {M}arkov chain {M}onte {C}arlo estimation of genetic parameters},
+  journal   = {Heredity},
+  year      = {2012},
+  volume    = {109},
+  number    = {4},
+  pages     = {235},
+  owner     = {zcao},
+  publisher = {Nature Publishing Group},
+  timestamp = {2017.10.23},
+}
 
 @Book{mcdonald2006intelligent,
   title     = {Intelligent transport systems in {E}urope: opportunities for future research},
@@ -1878,46 +1985,50 @@
   timestamp = {2017.10.23},
 }
 
-@incollection{meratnia2004spatiotemporal,
-	Author = {Meratnia, Nirvana and Rolf, A},
-	Booktitle = {Advances in Database Technology-EDBT 2004},
-	Owner = {zcao},
-	Pages = {765--782},
-	Publisher = {Springer},
-	Timestamp = {2017.09.08},
-	Title = {Spatiotemporal compression techniques for moving point objects},
-	Year = {2004}}
+@InCollection{meratnia2004spatiotemporal,
+  author    = {Meratnia, Nirvana and Rolf, A.},
+  title     = {Spatiotemporal compression techniques for moving point objects},
+  booktitle = {Advances in Database Technology-EDBT 2004},
+  publisher = {Springer},
+  year      = {2004},
+  pages     = {765--782},
+  owner     = {zcao},
+  timestamp = {2017.09.08},
+}
 
-@article{metropolis1953equation,
-	Author = {{M}etropolis, Nicholas and Rosenbluth, Arianna W and Rosenbluth, Marshall N and Teller, Augusta H and Teller, Edward},
-	Journal = {The journal of chemical physics},
-	Number = {6},
-	Owner = {zcao},
-	Pages = {1087--1092},
-	Publisher = {AIP},
-	Timestamp = {2017.10.23},
-	Title = {Equation of state calculations by fast computing machines},
-	Volume = {21},
-	Year = {1953}}
+@Article{metropolis1953equation,
+  author    = {{M}etropolis, Nicholas and Rosenbluth, Arianna W. and Rosenbluth, Marshall N. and Teller, Augusta H. and Teller, Edward},
+  title     = {Equation of state calculations by fast computing machines},
+  journal   = {The journal of chemical physics},
+  year      = {1953},
+  volume    = {21},
+  number    = {6},
+  pages     = {1087--1092},
+  owner     = {zcao},
+  publisher = {AIP},
+  timestamp = {2017.10.23},
+}
 
-@article{mitchell1972construction,
-	Author = {Mitchell, AR and Phillips, GM},
-	Journal = {BIT Numerical Mathematics},
-	Number = {1},
-	Pages = {81--89},
-	Publisher = {Springer},
-	Title = {Construction of basis functions in the finite element method},
-	Volume = {12},
-	Year = {1972}}
+@Article{mitchell1972construction,
+  author    = {Mitchell, A. R. and Phillips, G. M.},
+  title     = {Construction of basis functions in the finite element method},
+  journal   = {BIT Numerical Mathematics},
+  year      = {1972},
+  volume    = {12},
+  number    = {1},
+  pages     = {81--89},
+  publisher = {Springer},
+}
 
-@article{mitchell2000adaptive,
-	Author = {Mitchell, Herschel L and Houtekamer, PL},
-	Journal = {Monthly Weather Review},
-	Number = {2},
-	Pages = {416--433},
-	Title = {An adaptive ensemble {K}alman filter},
-	Volume = {128},
-	Year = {2000}}
+@Article{mitchell2000adaptive,
+  author  = {Mitchell, Herschel L. and Houtekamer, P. L.},
+  title   = {An adaptive ensemble {K}alman filter},
+  journal = {Monthly Weather Review},
+  year    = {2000},
+  volume  = {128},
+  number  = {2},
+  pages   = {416--433},
+}
 
 @Book{nason2010wavelet,
   title     = {Wavelet methods in statistics with {R}},
@@ -1927,8 +2038,8 @@
 }
 
 @Article{neal2011mcmc,
-  author    = {Neal, Radford M and others},
-  title     = {MCMC using {H}amiltonian dynamics},
+  author    = {Radford M. Neal},
+  title     = {{MCMC} using {H}amiltonian dynamics},
   journal   = {Handbook of {M}arkov chain {M}onte {C}arlo},
   year      = {2011},
   volume    = {2},
@@ -1937,15 +2048,16 @@
   publisher = {CRC Press New York, NY},
 }
 
-@article{nelder1965simplex,
-	Author = {Nelder, John A and Mead, Roger},
-	Journal = {The computer journal},
-	Number = {4},
-	Pages = {308--313},
-	Publisher = {Oxford University Press},
-	Title = {A simplex method for function minimization},
-	Volume = {7},
-	Year = {1965}}
+@Article{nelder1965simplex,
+  author    = {Nelder, John A. and Mead, Roger},
+  title     = {A simplex method for function minimization},
+  journal   = {The computer journal},
+  year      = {1965},
+  volume    = {7},
+  number    = {4},
+  pages     = {308--313},
+  publisher = {Oxford University Press},
+}
 
 @article{opsomer2001nonparametric,
 	Author = {Opsomer, Jean and Wang, Yuedong and Yang, Yuhong},
@@ -1956,27 +2068,29 @@
 	Volume = {16},
 	Year = {2001}}
 
-@inproceedings{oussalah2001adaptive,
-	Author = {Oussalah, M and De Schutter, Joris},
-	Booktitle = {Proceedings of the International Seminar on Modal Analysis},
-	Organization = {KU Leuven; 1998},
-	Pages = {1225--1232},
-	Title = {Adaptive {K}alman filter for noise identification},
-	Volume = {3},
-	Year = {2001}}
+@InProceedings{oussalah2001adaptive,
+  author       = {Oussalah, M. and De Schutter, Joris},
+  title        = {Adaptive {K}alman filter for noise identification},
+  booktitle    = {Proceedings of the International Seminar on Modal Analysis},
+  year         = {2001},
+  volume       = {3},
+  pages        = {1225--1232},
+  organization = {KU Leuven; 1998},
+}
 
-@conference{pang2008models,
-	Author = {Pang, Sze Kim and Li, Jack and Godsill, Simon J},
-	Booktitle = {Aerospace Conference, 2008 IEEE},
-	Organization = {IEEE},
-	Owner = {zcao},
-	Pages = {1--17},
-	Timestamp = {2017.10.27},
-	Title = {Models and algorithms for detection and tracking of coordinated groups},
-	Year = {2008}}
+@Conference{pang2008models,
+  author       = {Pang, Sze Kim and Li, Jack and Godsill, Simon J.},
+  title        = {Models and algorithms for detection and tracking of coordinated groups},
+  booktitle    = {Aerospace Conference, 2008 IEEE},
+  year         = {2008},
+  pages        = {1--17},
+  organization = {IEEE},
+  owner        = {zcao},
+  timestamp    = {2017.10.27},
+}
 
 @Article{payne2018two,
-  author    = {Payne, Richard D and Mallick, Bani K},
+  author    = {Payne, Richard D. and Mallick, Bani K.},
   title     = {Two-stage {M}etropolis-{H}astings for tall data},
   journal   = {Journal of Classification},
   year      = {2018},
@@ -2020,7 +2134,7 @@
 }
 
 @Article{pitt1999filtering,
-  author    = {Pitt, Michael K and Shephard, Neil},
+  author    = {Pitt, Michael K. and Shephard, Neil},
   title     = {Filtering via simulation: auxiliary particle filters},
   journal   = {Journal of the American statistical association},
   year      = {1999},
@@ -2032,24 +2146,26 @@
   timestamp = {2017.10.27},
 }
 
-@article{polson2008practical,
-	Author = {Polson, Nicholas G and Stroud, Jonathan R and M{\"u}ller, Peter},
-	Journal = {Journal of the Royal Statistical Society: Series B (Statistical Methodology)},
-	Number = {2},
-	Owner = {zcao},
-	Pages = {413--428},
-	Publisher = {Wiley Online Library},
-	Timestamp = {2017.10.27},
-	Title = {Practical filtering with sequential parameter learning},
-	Volume = {70},
-	Year = {2008}}
+@Article{polson2008practical,
+  author    = {Polson, Nicholas G. and Stroud, Jonathan R. and M{\"u}ller, Peter},
+  title     = {Practical filtering with sequential parameter learning},
+  journal   = {Journal of the Royal Statistical Society: Series B (Statistical Methodology)},
+  year      = {2008},
+  volume    = {70},
+  number    = {2},
+  pages     = {413--428},
+  owner     = {zcao},
+  publisher = {Wiley Online Library},
+  timestamp = {2017.10.27},
+}
 
-@inproceedings{poyiadjis2005maximum,
-	Author = {Poyiadjis, George and Doucet, Arnaud and Singh, Sumeetpal S},
-	Booktitle = {Proc of the American Stat. Assoc},
-	Organization = {Citeseer},
-	Title = {Maximum likelihood parameter estimation in general state-space models using particle methods},
-	Year = {2005}}
+@InProceedings{poyiadjis2005maximum,
+  author       = {Poyiadjis, George and Doucet, Arnaud and Singh, Sumeetpal S.},
+  title        = {Maximum likelihood parameter estimation in general state-space models using particle methods},
+  booktitle    = {Proc of the American Stat. Assoc},
+  year         = {2005},
+  organization = {Citeseer},
+}
 
 @Article{quiroz2018speeding,
   author    = {Quiroz, Matias and Tran, Minh-Ngoc and Villani, Mattias and Kohn, Robert},
@@ -2072,12 +2188,13 @@
 	Volume = {8},
 	Year = {2010}}
 
-@book{rasmussen2006gaussian,
-	Author = {Rasmussen, Carl Edward and Williams, Christopher KI},
-	Publisher = {MIT press Cambridge},
-	Title = {Gaussian processes for machine learning},
-	Volume = {1},
-	Year = {2006}}
+@Book{rasmussen2006gaussian,
+  title     = {Gaussian processes for machine learning},
+  publisher = {MIT press Cambridge},
+  year      = {2006},
+  author    = {Rasmussen, Carl Edward and Williams, Christopher K. I.},
+  volume    = {1},
+}
 
 @article{rhodes1971tutorial,
 	Author = {Rhodes, Ian},
@@ -2101,28 +2218,30 @@
 	Volume = {19},
 	Year = {2004}}
 
-@book{robert2004monte,
-	Author = {Robert, Christian P},
-	Owner = {zcao},
-	Publisher = {Wiley Online Library},
-	Timestamp = {2017.10.27},
-	Title = {{M}onte {C}arlo methods},
-	Year = {2004}}
+@Book{robert2004monte,
+  title     = {{M}onte {C}arlo methods},
+  publisher = {Wiley Online Library},
+  year      = {2004},
+  author    = {Robert, Christian P.},
+  owner     = {zcao},
+  timestamp = {2017.10.27},
+}
 
-@article{roberts1997weak,
-	Author = {Roberts, Gareth O and Gelman, Andrew and Gilks, Walter R and others},
-	Journal = {Annals of Applied Probability},
-	Number = {1},
-	Owner = {zcao},
-	Pages = {110--120},
-	Publisher = {Institute of Mathematical Statistics},
-	Timestamp = {2017.10.27},
-	Title = {Weak convergence and optimal scaling of random walk {M}etropolis algorithms},
-	Volume = {7},
-	Year = {1997}}
+@Article{roberts1997weak,
+  author    = {A. Gelman and W. R. Gilks and G. O. Roberts},
+  title     = {Weak convergence and optimal scaling of random walk {M}etropolis algorithms},
+  journal   = {Annals of Applied Probability},
+  year      = {1997},
+  volume    = {7},
+  number    = {1},
+  pages     = {110--120},
+  owner     = {zcao},
+  publisher = {Institute of Mathematical Statistics},
+  timestamp = {2017.10.27},
+}
 
 @Article{roberts2009examples,
-  author    = {Roberts, Gareth O and Rosenthal, Jeffrey S},
+  author    = {Roberts, Gareth O. and Rosenthal, Jeffrey S.},
   title     = {Examples of adaptive {MCMC}},
   journal   = {Journal of Computational and Graphical Statistics},
   year      = {2009},
@@ -2132,31 +2251,34 @@
   publisher = {Taylor \& Francis},
 }
 
-@article{roberts2001optimal,
-	Author = {Roberts, Gareth O and Rosenthal, Jeffrey S and others},
-	Journal = {Statistical science},
-	Number = {4},
-	Owner = {zcao},
-	Pages = {351--367},
-	Publisher = {Institute of Mathematical Statistics},
-	Timestamp = {2017.10.27},
-	Title = {Optimal scaling for various {M}etropolis-{H}astings algorithms},
-	Volume = {16},
-	Year = {2001}}
+@Article{roberts2001optimal,
+  author    = {Roberts, Gareth O. and Rosenthal, Jeffrey S.},
+  title     = {Optimal scaling for various {M}etropolis-{H}astings algorithms},
+  journal   = {Statistical science},
+  year      = {2001},
+  volume    = {16},
+  number    = {4},
+  pages     = {351--367},
+  owner     = {zcao},
+  publisher = {Institute of Mathematical Statistics},
+  timestamp = {2017.10.27},
+}
 
-@book{rubin2004multiple,
-	Author = {Rubin, Donald B},
-	Publisher = {John Wiley \& Sons},
-	Title = {Multiple imputation for nonresponse in surveys},
-	Volume = {81},
-	Year = {2004}}
+@Book{rubin2004multiple,
+  title     = {Multiple imputation for nonresponse in surveys},
+  publisher = {John Wiley \& Sons},
+  year      = {2004},
+  author    = {Rubin, Donald B.},
+  volume    = {81},
+}
 
-@book{ruppert2003semiparametric,
-	Author = {Ruppert, David and Wand, Matt P and Carroll, Raymond J},
-	Number = {12},
-	Publisher = {Cambridge university press},
-	Title = {Semiparametric regression},
-	Year = {2003}}
+@Book{ruppert2003semiparametric,
+  title     = {Semiparametric regression},
+  publisher = {Cambridge university press},
+  year      = {2003},
+  author    = {Ruppert, David and Wand, Matt P. and Carroll, Raymond J.},
+  number    = {12},
+}
 
 @book{sarkka2013bayesian,
 	Author = {S{\"a}rkk{\"a}, Simo},
@@ -2185,12 +2307,13 @@
 	Volume = {52},
 	Year = {1964}}
 
-@book{schwarz2012geodesy,
-	Author = {Schwarz, Klaus-Peter},
-	Publisher = {Springer Science \& Business Media},
-	Title = {Geodesy Beyond 2000: The Challenges of the First Decade, IAG General Assembly Birmingham, July 19--30, 1999},
-	Volume = {121},
-	Year = {2012}}
+@Book{schwarz2012geodesy,
+  title     = {Geodesy beyond 2000: the challenges of the first decade, {IAG} general assembly {B}irmingham, {J}uly 19--30, 1999},
+  publisher = {Springer Science \& Business Media},
+  year      = {2012},
+  author    = {Schwarz, Klaus-Peter},
+  volume    = {121},
+}
 
 @article{sealfon2005smoothing,
 	Author = {Sealfon, Carolyn and Verde, Licia and Jimenez, Raul},
@@ -2203,7 +2326,7 @@
 	Year = {2005}}
 
 @InProceedings{septier2009multiple,
-  author       = {Septier, F and Carmi, A and Pang, SK and Godsill, SJ},
+  author       = {Septier, F. and Carmi, A. and Pang, S. K. and Godsill, S. J.},
   title        = {Multiple object tracking using evolutionary and hybrid {MCMC}-based particle algorithms},
   booktitle    = {15th IFAC Symposium on System Identification, 2009},
   year         = {2009},
@@ -2213,10 +2336,10 @@
   timestamp    = {2017.10.27},
 }
 
-@InProceedings{septier2009mcmc,
+@Conference{septier2009mcmc,
   author       = {Septier, Fran{\c{c}}ois and Pang, Sze Kim and Carmi, Avishy and Godsill, Simon},
   title        = {On {MCMC}-based particle methods for {B}ayesian filtering: application to multitarget tracking},
-  booktitle    = {Computational Advances in Multi-Sensor Adaptive Processing (CAMSAP), 2009 3rd IEEE International Workshop on},
+  booktitle    = {2009 3rd IEEE International Workshop on Computational Advances in Multi-Sensor Adaptive Processing (CAMSAP)},
   year         = {2009},
   pages        = {360--363},
   organization = {IEEE},
@@ -2236,16 +2359,17 @@
 	Volume = {50},
 	Year = {2013}}
 
-@article{sherlock2010random,
-	Author = {Sherlock, Chris and Fearnhead, Paul and Roberts, Gareth O},
-	Journal = {Statistical Science},
-	Owner = {zcao},
-	Pages = {172--190},
-	Publisher = {JSTOR},
-	Timestamp = {2017.10.27},
-	Title = {The random walk {M}etropolis: linking theory and practice through a case study},
-	Volume = {25},
-	Year = {2010}}
+@Article{sherlock2010random,
+  author    = {Sherlock, Chris and Fearnhead, Paul and Roberts, Gareth O.},
+  title     = {The random walk {M}etropolis: linking theory and practice through a case study},
+  journal   = {Statistical Science},
+  year      = {2010},
+  volume    = {25},
+  pages     = {172--190},
+  owner     = {zcao},
+  publisher = {JSTOR},
+  timestamp = {2017.10.27},
+}
 
 @Article{sherlock2016adaptive,
   author     = {Chris Sherlock and Andrew Golightly and Daniel A. Henderson},
@@ -2262,17 +2386,18 @@
   url        = {https://doi.org/10.1080/10618600.2016.1231064},
 }
 
-@article{sherlock2009optimal,
-	Author = {Sherlock, Chris and Roberts, Gareth and others},
-	Journal = {Bernoulli},
-	Number = {3},
-	Owner = {zcao},
-	Pages = {774--798},
-	Publisher = {Bernoulli Society for Mathematical Statistics and Probability},
-	Timestamp = {2017.10.27},
-	Title = {Optimal scaling of the random walk {M}etropolis on elliptically symmetric unimodal targets},
-	Volume = {15},
-	Year = {2009}}
+@Article{sherlock2009optimal,
+  author    = {Sherlock, Chris and Roberts, Gareth},
+  title     = {Optimal scaling of the random walk {M}etropolis on elliptically symmetric unimodal targets},
+  journal   = {Bernoulli},
+  year      = {2009},
+  volume    = {15},
+  number    = {3},
+  pages     = {774--798},
+  owner     = {zcao},
+  publisher = {Bernoulli Society for Mathematical Statistics and Probability},
+  timestamp = {2017.10.27},
+}
 
 @article{sherlock2015efficiency,
 	Author = {Sherlock, Chris and Thiery, Alexandre and Golightly, Andrew},
@@ -2282,26 +2407,28 @@
 	Title = {Efficiency of delayed-acceptance random walk {M}etropolis algorithms},
 	Year = {2015}}
 
-@article{sherman1950adjustment,
-	Author = {Sherman, Jack and Morrison, Winifred J},
-	Journal = {The Annals of Mathematical Statistics},
-	Number = {1},
-	Owner = {zcao},
-	Pages = {124--127},
-	Publisher = {JSTOR},
-	Timestamp = {2017.10.27},
-	Title = {Adjustment of an inverse matrix corresponding to a change in one element of a given matrix},
-	Volume = {21},
-	Year = {1950}}
+@Article{sherman1950adjustment,
+  author    = {Sherman, Jack and Morrison, Winifred J.},
+  title     = {Adjustment of an inverse matrix corresponding to a change in one element of a given matrix},
+  journal   = {The Annals of Mathematical Statistics},
+  year      = {1950},
+  volume    = {21},
+  number    = {1},
+  pages     = {124--127},
+  owner     = {zcao},
+  publisher = {JSTOR},
+  timestamp = {2017.10.27},
+}
 
-@article{silverman1985some,
-	Author = {Silverman, Bernhard W},
-	Journal = {Journal of the Royal Statistical Society. Series B (Methodological)},
-	Pages = {1--52},
-	Publisher = {JSTOR},
-	Title = {Some aspects of the spline smoothing approach to non-parametric regression curve fitting},
-	Volume = {47},
-	Year = {1985}}
+@Article{silverman1985some,
+  author    = {Silverman, Bernhard W.},
+  title     = {Some aspects of the spline smoothing approach to non-parametric regression curve fitting},
+  journal   = {Journal of the Royal Statistical Society. Series B (Methodological)},
+  year      = {1985},
+  volume    = {47},
+  pages     = {1--52},
+  publisher = {JSTOR},
+}
 
 @article{simon2004data,
 	Author = {Simon, Dan},
@@ -2318,19 +2445,20 @@
   title  = {A very short note on {B}-splines},
 }
 
-@article{smith1973general,
-	Author = {Smith, Adrian FM},
-	Journal = {Journal of the Royal Statistical Society. Series B (Methodological)},
-	Owner = {zcao},
-	Pages = {67--75},
-	Publisher = {JSTOR},
-	Timestamp = {2017.10.27},
-	Title = {A general {B}ayesian linear model},
-	Volume = {35},
-	Year = {1973}}
+@Article{smith1973general,
+  author    = {Smith, Adrian F. M.},
+  title     = {A general {B}ayesian linear model},
+  journal   = {Journal of the Royal Statistical Society. Series B (Methodological)},
+  year      = {1973},
+  volume    = {35},
+  pages     = {67--75},
+  owner     = {zcao},
+  publisher = {JSTOR},
+  timestamp = {2017.10.27},
+}
 
 @Article{smith1993bayesian,
-  author    = {Smith, Adrian FM and Roberts, Gareth O},
+  author    = {Smith, Adrian F. M. and Roberts, Gareth O.},
   title     = {{B}ayesian computation via the {G}ibbs sampler and related {M}arkov chain {M}onte {C}arlo methods},
   journal   = {Journal of the Royal Statistical Society. Series B (Methodological)},
   year      = {1993},
@@ -2341,21 +2469,23 @@
   timestamp = {2017.10.27},
 }
 
-@incollection{sokal1997monte,
-	Author = {Sokal, A},
-	Booktitle = {Functional integration},
-	Owner = {zcao},
-	Pages = {131--192},
-	Publisher = {Springer},
-	Timestamp = {2017.10.23},
-	Title = {{M}onte {C}arlo methods in statistical mechanics: foundations and new algorithms},
-	Year = {1997}}
+@InCollection{sokal1997monte,
+  author    = {Sokal, A.},
+  title     = {{M}onte {C}arlo methods in statistical mechanics: foundations and new algorithms},
+  booktitle = {Functional integration},
+  publisher = {Springer},
+  year      = {1997},
+  pages     = {131--192},
+  owner     = {zcao},
+  timestamp = {2017.10.23},
+}
 
-@book{sorensen2007likelihood,
-	Author = {Sorensen, Daniel and Gianola, Daniel},
-	Publisher = {Springer Science \& Business Media},
-	Title = {Likelihood, {B}ayesian, and MCMC methods in quantitative genetics},
-	Year = {2007}}
+@Book{sorensen2007likelihood,
+  title     = {Likelihood, {B}ayesian, and {MCMC} methods in quantitative genetics},
+  publisher = {Springer Science \& Business Media},
+  year      = {2007},
+  author    = {Sorensen, Daniel and Gianola, Daniel},
+}
 
 @book{sorenson1985kalman,
 	Author = {Harold W. Sorenson},
@@ -2364,23 +2494,25 @@
 	Title = {{K}alman filtering: theory and application},
 	Year = {1985}}
 
-@article{speckman2003fully,
-	Author = {Speckman, Paul L and Sun, Dongchu},
-	Journal = {Biometrika},
-	Number = {2},
-	Pages = {289--302},
-	Publisher = {Oxford University Press},
-	Title = {Fully {B}ayesian spline smoothing and intrinsic autoregressive priors},
-	Volume = {90},
-	Year = {2003}}
+@Article{speckman2003fully,
+  author    = {Speckman, Paul L. and Sun, Dongchu},
+  title     = {Fully {B}ayesian spline smoothing and intrinsic autoregressive priors},
+  journal   = {Biometrika},
+  year      = {2003},
+  volume    = {90},
+  number    = {2},
+  pages     = {289--302},
+  publisher = {Oxford University Press},
+}
 
-@incollection{stavropoulos2001improved,
-	Author = {Stavropoulos, Photis and Titterington, DM},
-	Booktitle = {Sequential {M}onte {C}arlo Methods in Practice},
-	Pages = {295--317},
-	Publisher = {Springer},
-	Title = {Improved particle filters and smoothing},
-	Year = {2001}}
+@InCollection{stavropoulos2001improved,
+  author    = {Stavropoulos, Photis and Titterington, D. M.},
+  title     = {Improved particle filters and smoothing},
+  booktitle = {Sequential {M}onte {C}arlo Methods in Practice},
+  publisher = {Springer},
+  year      = {2001},
+  pages     = {295--317},
+}
 
 @article{storvik2002particle,
 	Author = {Storvik, Geir},
@@ -2402,33 +2534,36 @@
 	Title = {Comparison between the unscented {K}alman filter and the extended {K}alman filter for the position estimation module of an integrated navigation information system},
 	Year = {2004}}
 
-@article{stroud2007sequential,
-	Author = {Stroud, Jonathan R and Bengtsson, Thomas},
-	Journal = {Monthly Weather Review},
-	Number = {9},
-	Owner = {zcao},
-	Pages = {3194--3208},
-	Timestamp = {2017.09.06},
-	Title = {Sequential state and variance estimation within the ensemble {K}alman filter},
-	Volume = {135},
-	Year = {2007}}
+@Article{stroud2007sequential,
+  author    = {Stroud, Jonathan R. and Bengtsson, Thomas},
+  title     = {Sequential state and variance estimation within the ensemble {K}alman filter},
+  journal   = {Monthly Weather Review},
+  year      = {2007},
+  volume    = {135},
+  number    = {9},
+  pages     = {3194--3208},
+  owner     = {zcao},
+  timestamp = {2017.09.06},
+}
 
-@article{stroud2018bayesian,
-	Author = {Stroud, Jonathan R and Katzfuss, Matthias and Wikle, Christopher K},
-	Journal = {Monthly Weather Review},
-	Number = {1},
-	Pages = {373--386},
-	Title = {A {B}ayesian adaptive ensemble {K}alman filter for sequential state and parameter estimation},
-	Volume = {146},
-	Year = {2018}}
+@Article{stroud2018bayesian,
+  author  = {Stroud, Jonathan R. and Katzfuss, Matthias and Wikle, Christopher K.},
+  title   = {A {B}ayesian adaptive ensemble {K}alman filter for sequential state and parameter estimation},
+  journal = {Monthly Weather Review},
+  year    = {2018},
+  volume  = {146},
+  number  = {1},
+  pages   = {373--386},
+}
 
-@mastersthesis{syed2011review,
-	Author = {Syed, Ali R},
-	Owner = {zcao},
-	School = {Georgia State University, Arlanta, GA},
-	Timestamp = {2018.05.07},
-	Title = {A review of cross validation and adaptive model selection},
-	Year = {2011}}
+@MastersThesis{syed2011review,
+  author    = {Syed, Ali R.},
+  title     = {A review of cross validation and adaptive model selection},
+  school    = {Georgia State University, Arlanta, GA},
+  year      = {2011},
+  owner     = {zcao},
+  timestamp = {2018.05.07},
+}
 
 @Article{tandeo2011linear,
   author    = {Tandeo, Pierre and Ailliot, Pierre and Autret, Emmanuelle},
@@ -2443,25 +2578,27 @@
   timestamp = {2017.10.23},
 }
 
-@article{tanner1987calculation,
-	Author = {Tanner, Martin A and Wong, Wing Hung},
-	Journal = {Journal of the American statistical Association},
-	Number = {398},
-	Pages = {528--540},
-	Publisher = {Taylor \& Francis Group},
-	Title = {The calculation of posterior distributions by data augmentation},
-	Volume = {82},
-	Year = {1987}}
+@Article{tanner1987calculation,
+  author    = {Tanner, Martin A. and Wong, Wing Hung},
+  title     = {The calculation of posterior distributions by data augmentation},
+  journal   = {Journal of the American statistical Association},
+  year      = {1987},
+  volume    = {82},
+  number    = {398},
+  pages     = {528--540},
+  publisher = {Taylor \& Francis Group},
+}
 
-@article{taylor2000integration,
-	Author = {Taylor, Michael AP and Woolley, Jeremy E and Zito, Rocco},
-	Journal = {Transportation Research Part C: Emerging Technologies},
-	Number = {1},
-	Pages = {257--285},
-	Publisher = {Elsevier},
-	Title = {Integration of the global positioning system and geographical information systems for traffic congestion studies},
-	Volume = {8},
-	Year = {2000}}
+@Article{taylor2000integration,
+  author    = {Taylor, Michael A. P. and Woolley, Jeremy E. and Zito, Rocco},
+  title     = {Integration of the global positioning system and geographical information systems for traffic congestion studies},
+  journal   = {Transportation Research Part C: Emerging Technologies},
+  year      = {2000},
+  volume    = {8},
+  number    = {1},
+  pages     = {257--285},
+  publisher = {Elsevier},
+}
 
 @article{tierney1994markov,
 	Author = {Tierney, Luke},
@@ -2495,15 +2632,16 @@
   note    = {Full text available},
 }
 
-@article{turitsyn2011irreversible,
-	Author = {Turitsyn, Konstantin S and Chertkov, Michael and Vucelja, Marija},
-	Journal = {Physica D: Nonlinear Phenomena},
-	Number = {4},
-	Pages = {410--414},
-	Publisher = {Elsevier},
-	Title = {Irreversible {M}onte {C}arlo algorithms for efficient sampling},
-	Volume = {240},
-	Year = {2011}}
+@Article{turitsyn2011irreversible,
+  author    = {Turitsyn, Konstantin S. and Chertkov, Michael and Vucelja, Marija},
+  title     = {Irreversible {M}onte {C}arlo algorithms for efficient sampling},
+  journal   = {Physica D: Nonlinear Phenomena},
+  year      = {2011},
+  volume    = {240},
+  number    = {4},
+  pages     = {410--414},
+  publisher = {Elsevier},
+}
 
 @Article{tusell2011kalman,
   author  = {Tusell, Fernando and others},
@@ -2515,23 +2653,27 @@
   pages   = {1--27},
 }
 
-@inproceedings{van2000unscented,
-	Abstract = {The unscented particle filter},
-	Author = {Van Der Merwe, Rudolph and Doucet, Arnaud and De Freitas, Nando and Wan, Eric},
-	Booktitle = {Nips},
-	Organization = {Denver, CO, USA},
-	Owner = {zcao},
-	Pages = {584--590},
-	Timestamp = {2017.09.06},
-	Title = {The unscented particle filter},
-	Volume = {2000},
-	Year = {2000}}
+@InProceedings{van2000unscented,
+  author    = {Van Der Merwe, Rudolph and Doucet, Arnaud and De Freitas, Nando and Wan, Eric},
+  title     = {The unscented particle filter},
+  booktitle = {Proceedings of the 13th International Conference on Neural Information Processing Systems},
+  year      = {2000},
+  series    = {NIPS'00},
+  pages     = {563--569},
+  address   = {Cambridge, MA, USA},
+  publisher = {MIT Press},
+  acmid     = {3008833},
+  location  = {Denver, CO},
+  numpages  = {7},
+  url       = {http://dl.acm.org/citation.cfm?id=3008751.3008833},
+}
 
-@article{vanderwerken2013parallel,
-	Author = {VanDerwerken, Douglas N and Schmidler, Scott C},
-	Journal = {arXiv preprint arXiv:1312.7479},
-	Title = {Parallel {M}arkov chain {M}onte {C}arlo},
-	Year = {2013}}
+@Article{vanderwerken2013parallel,
+  author  = {VanDerwerken, Douglas N. and Schmidler, Scott C.},
+  title   = {Parallel {M}arkov chain {M}onte {C}arlo},
+  journal = {arXiv preprint arXiv:1312.7479},
+  year    = {2013},
+}
 
 @InProceedings{vaughan2015goodness,
   author    = {Vaughan, Audrey},
@@ -2542,7 +2684,7 @@
 }
 
 @Article{vieira2016online,
-  author    = {Vieira, Rui and Wilkinson, Darren J},
+  author    = {Vieira, Rui and Wilkinson, Darren J.},
   title     = {Online state and parameter estimation in dynamic generalised linear models},
   journal   = {arXiv preprint arXiv:1608.08666},
   year      = {2016},
@@ -2604,23 +2746,25 @@
 	Title = {{B}ayesian and frequentist regression methods},
 	Year = {2013}}
 
-@inproceedings{wan2000unscented,
-	Author = {Wan, Eric A and Van Der Merwe, Rudolph},
-	Booktitle = {Adaptive Systems for Signal Processing, Communications, and Control Symposium 2000. AS-SPCC. The IEEE 2000},
-	Organization = {Ieee},
-	Pages = {153--158},
-	Title = {The unscented {K}alman filter for nonlinear estimation},
-	Year = {2000}}
+@InProceedings{wan2000unscented,
+  author       = {Wan, Eric A. and Van Der Merwe, Rudolph},
+  title        = {The unscented {K}alman filter for nonlinear estimation},
+  booktitle    = {Adaptive Systems for Signal Processing, Communications, and Control Symposium 2000. AS-SPCC. The IEEE 2000},
+  year         = {2000},
+  pages        = {153--158},
+  organization = {Ieee},
+}
 
-@article{wand1997exact,
-	Author = {Wand, MP and Gutierrez, RG},
-	Journal = {Journal of Nonparametric Statistics},
-	Number = {4},
-	Pages = {337--354},
-	Publisher = {Taylor \& Francis},
-	Title = {Exact risk approaches to smoothing parameter selection},
-	Volume = {8},
-	Year = {1997}}
+@Article{wand1997exact,
+  author    = {Wand, M. P. and Gutierrez, R. G.},
+  title     = {Exact risk approaches to smoothing parameter selection},
+  journal   = {Journal of Nonparametric Statistics},
+  year      = {1997},
+  volume    = {8},
+  number    = {4},
+  pages     = {337--354},
+  publisher = {Taylor \& Francis},
+}
 
 @Article{wang2017curvature,
   author    = {Wang, Xiaoliang and Jiang, Peng and Li, Deshi and Sun, Tao},
@@ -2643,15 +2787,16 @@
 	Volume = {93},
 	Year = {1998}}
 
-@article{wecker1983signal,
-	Author = {Wecker, William E and Ansley, Craig F},
-	Journal = {Journal of the American Statistical Association},
-	Number = {381},
-	Pages = {81--89},
-	Publisher = {Taylor \& Francis Group},
-	Title = {The signal extraction approach to nonlinear regression and spline smoothing},
-	Volume = {78},
-	Year = {1983}}
+@Article{wecker1983signal,
+  author    = {Wecker, William E. and Ansley, Craig F.},
+  title     = {The signal extraction approach to nonlinear regression and spline smoothing},
+  journal   = {Journal of the American Statistical Association},
+  year      = {1983},
+  volume    = {78},
+  number    = {381},
+  pages     = {81--89},
+  publisher = {Taylor \& Francis Group},
+}
 
 @article{west1993mixture,
 	Author = {West, Mike},
@@ -2664,14 +2809,15 @@
 	Volume = {24},
 	Year = {1993}}
 
-@article{whittaker1922new,
-	Author = {Whittaker, Edmund T},
-	Journal = {Proceedings of the Edinburgh Mathematical Society},
-	Pages = {63--75},
-	Publisher = {Cambridge University Press},
-	Title = {On a new method of graduation},
-	Volume = {41},
-	Year = {1922}}
+@Article{whittaker1922new,
+  author    = {Whittaker, Edmund T.},
+  title     = {On a new method of graduation},
+  journal   = {Proceedings of the Edinburgh Mathematical Society},
+  year      = {1922},
+  volume    = {41},
+  pages     = {63--75},
+  publisher = {Cambridge University Press},
+}
 
 @TechReport{wolberg1988cubic,
   author      = {Wolberg, George},
@@ -2682,37 +2828,40 @@
   publisher   = {Department of Computer Science, Columbia University},
 }
 
-@article{wood2000modelling,
-	Author = {Wood, Simon N},
-	Journal = {Journal of the Royal Statistical Society: Series B (Statistical Methodology)},
-	Number = {2},
-	Pages = {413--428},
-	Publisher = {Wiley Online Library},
-	Title = {Modelling and smoothing parameter estimation with multiple quadratic penalties},
-	Volume = {62},
-	Year = {2000}}
+@Article{wood2000modelling,
+  author    = {Wood, Simon N.},
+  title     = {Modelling and smoothing parameter estimation with multiple quadratic penalties},
+  journal   = {Journal of the Royal Statistical Society: Series B (Statistical Methodology)},
+  year      = {2000},
+  volume    = {62},
+  number    = {2},
+  pages     = {413--428},
+  publisher = {Wiley Online Library},
+}
 
-@article{woodbury1950inverting,
-	Author = {Woodbury, Max A},
-	Journal = {Memorandum report},
-	Number = {106},
-	Owner = {zcao},
-	Pages = {336},
-	Publisher = {Statistical Research Group, Princeton University},
-	Timestamp = {2017.10.27},
-	Title = {Inverting modified matrices},
-	Volume = {42},
-	Year = {1950}}
+@Article{woodbury1950inverting,
+  author    = {Woodbury, Max A.},
+  title     = {Inverting modified matrices},
+  journal   = {Memorandum report},
+  year      = {1950},
+  volume    = {42},
+  number    = {106},
+  pages     = {336},
+  owner     = {zcao},
+  publisher = {Statistical Research Group, Princeton University},
+  timestamp = {2017.10.27},
+}
 
-@article{wu2012parallel,
-	Author = {Wu, Xiao-Lin and Sun, Chuanyu and Beissinger, Timothy M and Rosa, Guilherme JM and Weigel, Kent A and de Leon Gatti, Natalia and Gianola, Daniel},
-	Journal = {Genetics Selection Evolution},
-	Number = {1},
-	Pages = {29},
-	Publisher = {BioMed Central},
-	Title = {Parallel {M}arkov chain {M}onte {C}arlo-bridging the gap to high-performance {B}ayesian computation in animal breeding and genetics},
-	Volume = {44},
-	Year = {2012}}
+@Article{wu2012parallel,
+  author    = {Wu, Xiao-Lin and Sun, Chuanyu and Beissinger, Timothy M. and Rosa, Guilherme J. M. and Weigel, Kent A. and de Leon Gatti, Natalia and Gianola, Daniel},
+  title     = {Parallel {M}arkov chain {M}onte {C}arlo-bridging the gap to high-performance {B}ayesian computation in animal breeding and genetics},
+  journal   = {Genetics Selection Evolution},
+  year      = {2012},
+  volume    = {44},
+  number    = {1},
+  pages     = {29},
+  publisher = {BioMed Central},
+}
 
 @article{yang2010analytical,
 	Author = {Yang, Kwangjin and Sukkarieh, Salah},
@@ -2724,25 +2873,27 @@
 	Volume = {26},
 	Year = {2010}}
 
-@article{yao2005functional,
-	Author = {Yao, Fang and M{\"u}ller, Hans-Georg and Wang, Jane-Ling and others},
-	Journal = {The Annals of Statistics},
-	Number = {6},
-	Pages = {2873--2903},
-	Publisher = {Institute of Mathematical Statistics},
-	Title = {Functional linear regression analysis for longitudinal data},
-	Volume = {33},
-	Year = {2005}}
+@Article{yao2005functional,
+  author    = {Fang Yao and Hans-Georg M{\"u}ller and Jane-Ling Wang},
+  title     = {Functional linear regression analysis for longitudinal data},
+  journal   = {The Annals of Statistics},
+  year      = {2005},
+  volume    = {33},
+  number    = {6},
+  pages     = {2873--2903},
+  publisher = {Institute of Mathematical Statistics},
+}
 
-@inproceedings{ying2011semantic,
-	Author = {Ying, Josh Jia-Ching and Lee, Wang-Chien and Weng, Tz-Chiao and Tseng, Vincent S},
-	Booktitle = {Proceedings of the 19th ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems},
-	Organization = {ACM},
-	Owner = {zcao},
-	Pages = {34--43},
-	Timestamp = {2017.09.08},
-	Title = {Semantic trajectory mining for location prediction},
-	Year = {2011}}
+@InProceedings{ying2011semantic,
+  author       = {Ying, Josh Jia-Ching and Lee, Wang-Chien and Weng, Tz-Chiao and Tseng, Vincent S.},
+  title        = {Semantic trajectory mining for location prediction},
+  booktitle    = {Proceedings of the 19th ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems},
+  year         = {2011},
+  pages        = {34--43},
+  organization = {ACM},
+  owner        = {zcao},
+  timestamp    = {2017.09.08},
+}
 
 @article{yoshimoto2003data,
 	Author = {Yoshimoto, Fujiichi and Harada, Toshinobu and Yoshimoto, Yoshihide},

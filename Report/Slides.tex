@@ -167,7 +167,7 @@ Therefore, the solution is
 %\subsection{Cross Validation of Tractor Spline}
 
 \begin{frame}
-\frametitle{Cross Validation of V-Spline}
+\frametitle{Cross Validation of V-Splines}
 
 The formula of cross validation score is 
 \begin{equation}
@@ -211,7 +211,7 @@ Then for V-spline,
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{Reproducing Kernel Hilbert Space for V-Spline}
+\frametitle{Reproducing Kernel Hilbert Space for V-Splines}
 
 %For any $f \in \mathbb{H}$, $f=\sum_{i=1}^{2n} \theta_i N_i(t).$
 In the space \begin{align*}
@@ -246,7 +246,8 @@ where $f\sim GP(0,\Sigma)$ is a Gaussian process prior. Particularly, in $\mathc
 \begin{equation}
 \Sigma\propto  \rho\begin{bmatrix}
 R_0(s,t) & \dot{R}_0(s,t)\\R'_0(s,t) &\dot{R}'_0(s,t) \end{bmatrix} + \begin{bmatrix}
-R_1(s,t) & \dot{R}_1(s,t)\\R'_1(s,t) &\dot{R}'_1(s,t) \end{bmatrix}
+R_1(s,t) & \dot{R}_1(s,t)\\R'_1(s,t) &\dot{R}'_1(s,t) \end{bmatrix} + \begin{bmatrix}
+n\lambda I & 0 \\ 0 &\frac{n\lambda}{\gamma} I \end{bmatrix}
 \end{equation}
 
 \end{frame}
@@ -265,7 +266,7 @@ The posterior mean $E(f \mid \mathbf{y},\mathbf{v})$ is $\hat{f}  = \mathbf{\phi
 \end{align} 
 where $M=\begin{bmatrix} Q+n\lambda I& P\\ Q'& P'+\frac{n\lambda}{\gamma}I \end{bmatrix}$ (when $\rho\rightarrow \infty$).
 
-The posterior mean is the solution to the objective function and is correspondence to \eqref{linearformofF} if the sequence is converted to the interval $[0,1]$. 
+The posterior mean is the solution to the objective function and is correspondence to \eqref{linearformofF} if $\lambda(t)$ is constant and the sequence is converted to $[0,1]$. 
 
 \end{frame}
 
@@ -299,7 +300,7 @@ The posterior mean is the solution to the objective function and is corresponden
 \frametitle{Simulation and Application}
 \begin{figure}
 \centering
-\includegraphics[width=5cm,height=3.5cm]{../Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSine.pdf}
+\includegraphics[width=5cm,height=3.5cm]{../Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSinePosition.pdf}
 \includegraphics[width=5cm,height=3.5cm]{../Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSinePositionNoise}\\
 \includegraphics[width=5cm,height=3.5cm]{../Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSinePSpline}
 \includegraphics[width=5cm,height=3.5cm]{../Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSineSure}
@@ -527,7 +528,8 @@ Further videos at:
 \begin{equation}
 \langle f,g \rangle=f(0) g(0)+f'(0) g'(0)+\sum_{i=1}^{n-1}w_i^{-1}\int_{t_i}^{t_{i+1}}f''(t)g''(t)dt,
 \end{equation}
-on $\mathcal{C}^{(2)}_{\mbox{\scriptsize p.w.}}[0,1]$, where $\sum_i w_i=1$ and $w_i>0$.
+on $\mathcal{C}^{(2)}_{\mbox{\scriptsize p.w.}}[0,1]$, where $\sum_i w_i=1$ and $w_i>0$. In fact, $w_i=\frac{\lambda_i}{\sum_i\lambda_i}$.
+
 \end{frame}
 
 
@@ -569,7 +571,8 @@ on $\mathcal{C}^{(2)}_{\mbox{\scriptsize p.w.}}[0,1]$, where $\sum_i w_i=1$ and 
 \item TracMap\\
 \item Dr Matthew Parry\\
 \item Professor David Bryant \\
-\item All examiners and convenor. 
+\item All examiners and convenor \\
+\item Greg and Chris
 \end{itemize}
 \end{frame}
 

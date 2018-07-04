@@ -23,12 +23,12 @@ Agrawal, D.~P. and Zeng, Q.-A. (2015).
 \bibitem[\protect\citeauthoryear{Almasi and Gottlieb}{Almasi and
   Gottlieb}{1994}]{Almasi1994Highly}
 Almasi, G.~S. and Gottlieb, A. (1994).
-\newblock {\em Highly Parallel Computing\/} (Second ed.).
+\newblock {\em Highly parallel computing\/} (Second ed.).
 \newblock Redwood City, CA, USA: Benjamin-Cummings Publishing Co., Inc.
 
 \bibitem[\protect\citeauthoryear{Anderson and Moore}{Anderson and
   Moore}{1979}]{anderson1979optimal}
-Anderson, B.~D. and Moore, J.~B. (1979).
+Anderson, B. D.~O. and Moore, J.~B. (1979).
 \newblock Optimal filtering.
 \newblock {\em Englewood Cliffs\/},~{\em 21}, 22--95.
 
@@ -46,7 +46,7 @@ Andrieu, C., De~Freitas, N., and Doucet, A. (1999).
 
 \bibitem[\protect\citeauthoryear{Andrieu, Djuri{\'c}, and Doucet}{Andrieu {\em
   et~al.}}{2001}]{andrieu2001model}
-Andrieu, C., Djuri{\'c}, P., and Doucet, A. (2001).
+Andrieu, C., Djuri{\'c}, P.~M., and Doucet, A. (2001).
 \newblock Model selection by {MCMC} computation.
 \newblock {\em Signal Processing\/},~{\em 81\/}(1), 19--37.
 
@@ -61,8 +61,8 @@ Andrieu, C., Doucet, A., and Holenstein, R. (2010).
   et~al.}}{2005}]{andrieu2005line}
 Andrieu, C., Doucet, A., and Tadic, V.~B. (2005).
 \newblock On-line parameter estimation in general state-space models.
-\newblock In {\em Decision and Control, 2005 and 2005 European Control
-  Conference. CDC-ECC'05. 44th IEEE Conference on},  332--337. IEEE.
+\newblock In {\em Proceedings of the 44th IEEE Conference on Decision and
+  Control},  332--337. IEEE.
 
 \bibitem[\protect\citeauthoryear{Andrieu and Thoms}{Andrieu and
   Thoms}{2008}]{andrieu2008tutorial}
@@ -70,9 +70,9 @@ Andrieu, C. and Thoms, J. (2008).
 \newblock A tutorial on adaptive {MCMC}.
 \newblock {\em Statistics and computing\/},~{\em 18\/}(4), 343--373.
 
-\bibitem[\protect\citeauthoryear{Arlot, Celisse, {\em et~al.}}{Arlot {\em
-  et~al.}}{2010}]{arlot2010survey}
-Arlot, S., Celisse, A., {\em et~al.} (2010).
+\bibitem[\protect\citeauthoryear{Arlot and Celisse}{Arlot and
+  Celisse}{2010}]{arlot2010survey}
+Arlot, S. and Celisse, A. (2010).
 \newblock A survey of cross-validation procedures for model selection.
 \newblock {\em Statistics surveys\/},~{\em 4}, 40--79.
 
@@ -91,11 +91,11 @@ Arulampalam, M.~S., Maskell, S., Gordon, N., and Clapp, T. (2002).
   174--188.
 
 \bibitem[\protect\citeauthoryear{Asanovic, Bodik, Catanzaro, Gebis, Husbands,
-  Keutzer, Patterson, Plishker, Shalf, Williams, {\em et~al.}}{Asanovic {\em
+  Keutzer, Patterson, Plishker, Shalf, Williams, and Yelick}{Asanovic {\em
   et~al.}}{2006}]{asanovic2006landscape}
 Asanovic, K., Bodik, R., Catanzaro, B.~C., Gebis, J.~J., Husbands, P., Keutzer,
-  K., Patterson, D.~A., Plishker, W.~L., Shalf, J., Williams, S.~W., {\em
-  et~al.} (2006).
+  K., Patterson, D.~A., Plishker, W.~L., Shalf, J., Williams, S.~W., and
+  Yelick, K.~A. (2006).
 \newblock The landscape of parallel computing research: a view from berkeley.
 \newblock Technical report, Technical Report UCB/EECS-2006-183, EECS
   Department, University of California, Berkeley.
@@ -126,8 +126,8 @@ Aydin, D. and Tuzemen, M.~S. (2012).
   et~al.}}{2009}]{babenko2009family}
 Babenko, B., Yang, M.-H., and Belongie, S. (2009).
 \newblock A family of online boosting algorithms.
-\newblock In {\em Computer Vision Workshops (ICCV Workshops), 2009 IEEE 12th
-  International Conference on},  1346--1353. IEEE.
+\newblock In {\em 2009 IEEE 12th International Conference on Computer Vision
+  Workshops, ICCV Workshops},  1346--1353. IEEE.
 
 \bibitem[\protect\citeauthoryear{Bajaj, Ranaweera, and Agrawal}{Bajaj {\em
   et~al.}}{2002}]{bajaj2002gps}
@@ -165,7 +165,7 @@ Ben-Arieh, D., Chang, S., Rys, M., and Zhang, G. (2004).
 \bibitem[\protect\citeauthoryear{Berlinet and Thomas-Agnan}{Berlinet and
   Thomas-Agnan}{2011}]{berlinet2011reproducing}
 Berlinet, A. and Thomas-Agnan, C. (2011).
-\newblock {\em Reproducing kernel Hilbert spaces in probability and
+\newblock {\em Reproducing kernel {H}ilbert spaces in probability and
   statistics}.
 \newblock Springer Science \& Business Media.
 
@@ -200,9 +200,9 @@ Beygelzimer, A., Hazan, E., Kale, S., and Luo, H. (2015).
   Melchiorri}{2013}]{biagiotti2013online}
 Biagiotti, L. and Melchiorri, C. (2013).
 \newblock Online trajectory planning and filtering for robotic applications via
-  B-spline smoothing filters.
-\newblock In {\em Intelligent Robots and Systems (IROS), 2013 IEEE/RSJ
-  International Conference on},  5668--5673. IEEE.
+  {B}-spline smoothing filters.
+\newblock In {\em 2013 IEEE/RSJ International Conference on Intelligent Robots
+  and Systems},  5668--5673. IEEE.
 
 \bibitem[\protect\citeauthoryear{Bierkens and Duncan}{Bierkens and
   Duncan}{2017}]{bierkens2017limit}
@@ -210,9 +210,9 @@ Bierkens, J. and Duncan, A. (2017).
 \newblock Limit theorems for the {Z}ig-{Z}ag process.
 \newblock {\em Advances in Applied Probability\/},~{\em 49\/}(3), 791--825.
 
-\bibitem[\protect\citeauthoryear{Bierkens, Roberts, {\em et~al.}}{Bierkens {\em
-  et~al.}}{2016b}]{bierkens2016piecewise}
-Bierkens, J., Roberts, G., {\em et~al.} (2016b).
+\bibitem[\protect\citeauthoryear{Bierkens and Roberts}{Bierkens and
+  Roberts}{2016}]{bierkens2016piecewise}
+Bierkens, J. and Roberts, G. (2016).
 \newblock A piecewise deterministic scaling limit of lifted
   {M}etropolis-{H}astings in the {C}urie-{W}eiss model.
 \newblock {\em The Annals of Applied Probability\/},~{\em 27\/}(2), 846--882.
@@ -223,21 +223,21 @@ Bishop, G. and Welch, G. (2001).
 \newblock An introduction to the {K}alman filter.
 \newblock {\em Proc of SIGGRAPH, Course\/},~{\em 8\/}(27599-23175), 41.
 
-\bibitem[\protect\citeauthoryear{Blaauw, Christen, {\em et~al.}}{Blaauw {\em
-  et~al.}}{2011}]{blaauw2011flexible}
-Blaauw, M., Christen, J.~A., {\em et~al.} (2011).
+\bibitem[\protect\citeauthoryear{Blaauw and Christen}{Blaauw and
+  Christen}{2011}]{blaauw2011flexible}
+Blaauw, M. and Christen, J.~A. (2011).
 \newblock Flexible paleoclimate age-depth models using an autoregressive gamma
   process.
 \newblock {\em {B}ayesian analysis\/},~{\em 6\/}(3), 457--474.
 
 \bibitem[\protect\citeauthoryear{Bodewig}{Bodewig}{1959}]{bodewig1956matrix}
 Bodewig, E. (1959).
-\newblock {\em Matrix Calculus 3rd Edition}.
+\newblock {\em Matrix calculus 3rd edition\/} (Third ed.).
 \newblock North-Holland.
 
 \bibitem[\protect\citeauthoryear{Box and Tiao}{Box and
   Tiao}{2011}]{box2011bayesian}
-Box, G.~E. and Tiao, G.~C. (2011).
+Box, G. E.~P. and Tiao, G.~C. (2011).
 \newblock {\em {B}ayesian inference in statistical analysis}, Volume~40.
 \newblock John Wiley \& Sons.
 
@@ -251,8 +251,8 @@ Bradford, R. and Thomas, A. (1996).
 \bibitem[\protect\citeauthoryear{Branson, Rischard, Bornn, and
   Miratrix}{Branson {\em et~al.}}{2017}]{branson2017nonparametric}
 Branson, Z., Rischard, M., Bornn, L., and Miratrix, L. (2017).
-\newblock A Nonparametric {B}ayesian Methodology for Regression Discontinuity
-  Designs.
+\newblock A nonparametric {B}ayesian methodology for regression discontinuity
+  designs.
 \newblock {\em arXiv preprint arXiv:1704.04858\/}.
 
 \bibitem[\protect\citeauthoryear{Cantoni and Ronchetti}{Cantoni and
@@ -278,7 +278,7 @@ Capp{\'e}, O., Moulines, E., and Ryd{\'e}n, T. (2009).
   et~al.}}{1997}]{cargnoni1997bayesian}
 Cargnoni, C., M{\"u}ller, P., and West, M. (1997).
 \newblock {B}ayesian forecasting of multinomial time series through
-  conditionally Gaussian dynamic models.
+  conditionally {G}aussian dynamic models.
 \newblock {\em Journal of the American Statistical Association\/},~{\em
   92\/}(438), 640--647.
 
@@ -297,10 +297,9 @@ Carpenter, J., Clifford, P., and Fearnhead, P. (1999).
 \newblock {\em IEE Proceedings-Radar, Sonar and Navigation\/},~{\em 146\/}(1),
   2--7.
 
-\bibitem[\protect\citeauthoryear{Carvalho, Johannes, Lopes, Polson, {\em
-  et~al.}}{Carvalho {\em et~al.}}{2010}]{carvalho2010particle}
-Carvalho, C.~M., Johannes, M.~S., Lopes, H.~F., Polson, N.~G., {\em et~al.}
-  (2010).
+\bibitem[\protect\citeauthoryear{Carvalho, Johannes, Lopes, and
+  Polson}{Carvalho {\em et~al.}}{2010}]{carvalho2010particle}
+Carvalho, C.~M., Johannes, M.~S., Lopes, H.~F., and Polson, N.~G. (2010).
 \newblock Particle learning and smoothing.
 \newblock {\em Statistical Science\/},~{\em 25\/}(1), 88--106.
 
@@ -314,23 +313,23 @@ Casella, G., Robert, C.~P., and Wells, M.~T. (2004).
   S{\'a}nchez}{Castro {\em et~al.}}{2006}]{castro2006geometric}
 Castro, M., Iglesias, L., Rodr{\'\i}guez-Solano, R., and S{\'a}nchez, J.~A.
   (2006).
-\newblock Geometric modelling of highways using global positioning system (GPS)
-  data and spline approximation.
+\newblock Geometric modelling of highways using global positioning system
+  {(GPS)} data and spline approximation.
 \newblock {\em Transportation Research Part C: Emerging Technologies\/},~{\em
   14\/}(4), 233--243.
 
 \bibitem[\protect\citeauthoryear{Chadil, Russameesawang, and
   Keeratiwintakorn}{Chadil {\em et~al.}}{2008}]{chadil2008real}
 Chadil, N., Russameesawang, A., and Keeratiwintakorn, P. (2008).
-\newblock Real-time tracking management system using GPS, GPRS and Google
+\newblock Real-time tracking management system using {GPS}, {GPRS} and {G}oogle
   earth.
-\newblock In {\em Electrical Engineering/Electronics, Computer,
-  Telecommunications and Information Technology, 2008. ECTI-Con 2008. 5th
-  International Conference on}, Volume~1,  393--396. IEEE.
+\newblock In {\em 2008 5th International Conference on Electrical
+  Engineering/Electronics, Computer, Telecommunications and Information
+  Technology}, Volume~1,  393--396. IEEE.
 
 \bibitem[\protect\citeauthoryear{Chandrasekar, Ridley, and
   Bernstein}{Chandrasekar {\em et~al.}}{2007}]{chandrasekar2007comparison}
-Chandrasekar, J., Ridley, A., and Bernstein, D. (2007).
+Chandrasekar, J., Ridley, A.~J., and Bernstein, D.~S. (2007).
 \newblock A comparison of the extended and unscented {K}alman filters for
   discrete-time systems with nondifferentiable dynamics.
 \newblock In {\em American Control Conference, 2007. ACC'07},  4431--4436.
@@ -352,7 +351,7 @@ Chen, R. and Liu, J.~S. (2000).
 \bibitem[\protect\citeauthoryear{Chen and Guestrin}{Chen and
   Guestrin}{2016}]{chen2016xgboost}
 Chen, T. and Guestrin, C. (2016).
-\newblock Xgboost: A scalable tree boosting system.
+\newblock Xgboost: a scalable tree boosting system.
 \newblock In {\em Proceedings of the 22nd acm sigkdd international conference
   on knowledge discovery and data mining},  785--794. ACM.
 
@@ -369,10 +368,9 @@ Chen, Y., Jiang, K., Zheng, Y., Li, C., and Yu, N. (2009).
 \newblock In {\em Proceedings of the 2009 International Workshop on Location
   Based Social Networks},  33--40. ACM.
 
-\bibitem[\protect\citeauthoryear{Chen {\em et~al.}}{Chen {\em
-  et~al.}}{2003}]{chen2003bayesian}
-Chen, Z. {\em et~al.} (2003).
-\newblock {B}ayesian filtering: From {K}alman filters to particle filters, and
+\bibitem[\protect\citeauthoryear{Chen}{Chen}{2003}]{chen2003bayesian}
+Chen, Z. (2003).
+\newblock {B}ayesian filtering: from {K}alman filters to particle filters, and
   beyond.
 \newblock {\em Statistics\/},~{\em 182\/}(1), 1--69.
 
@@ -395,22 +393,23 @@ Christen, J.~A. and Fox, C. (2005).
 \newblock {\em Journal of Computational and Graphical statistics\/},~{\em
   14\/}(4), 795--810.
 
-\bibitem[\protect\citeauthoryear{Christen, Fox, {\em et~al.}}{Christen {\em
-  et~al.}}{2010}]{christen2010general}
-Christen, J.~A., Fox, C., {\em et~al.} (2010).
+\bibitem[\protect\citeauthoryear{Christen and Fox}{Christen and
+  Fox}{2010}]{christen2010general}
+Christen, J.~A. and Fox, C. (2010).
 \newblock A general purpose sampling algorithm for continuous distributions
   (the t-walk).
 \newblock {\em {B}ayesian Analysis\/},~{\em 5\/}(2), 263--281.
 
 \bibitem[\protect\citeauthoryear{Cox}{Cox}{1993}]{cox1993analysis}
 Cox, D.~D. (1993).
-\newblock An Analysis of {B}ayesian Inference for Nonparametric Regression.
+\newblock An analysis of {B}ayesian inference for nonparametric regression.
 \newblock {\em Ann. Statist.\/},~{\em 21\/}(2), 903--923.
 
 \bibitem[\protect\citeauthoryear{Cox}{Cox}{1982}]{cox1982practical}
 Cox, M.~G. (1982).
 \newblock Practical spline approximation.
-\newblock In {\em Topics in Numerical Analysis},  79--112. Springer.
+\newblock In P.~R. Turner (Ed.), {\em Topics in Numerical Analysis}, Berlin,
+  Heidelberg,  79--112. Springer Berlin Heidelberg.
 
 \bibitem[\protect\citeauthoryear{Craven and Wahba}{Craven and
   Wahba}{1978}]{craven1978smoothing}
@@ -488,7 +487,7 @@ Donoho, D.~L. and Johnstone, J.~M. (1994).
 \bibitem[\protect\citeauthoryear{Doucet, de~Freitas, and Gordon}{Doucet {\em
   et~al.}}{2011}]{smcmip2011}
 Doucet, A., de~Freitas, N., and Gordon, N. (2011).
-\newblock {\em Sequential {M}onte {C}arlo Methods in Practice}.
+\newblock {\em Sequential {M}onte {C}arlo pethods in practice}.
 \newblock Springer-Verlag New York.
 
 \bibitem[\protect\citeauthoryear{Doucet, De~Freitas, Murphy, and
@@ -540,7 +539,7 @@ Durbin, J. and Koopman, S.~J. (2012).
 
 \bibitem[\protect\citeauthoryear{Eilers and Marx}{Eilers and
   Marx}{1996}]{eilers1996flexible}
-Eilers, P.~H. and Marx, B.~D. (1996).
+Eilers, P. H.~C. and Marx, B.~D. (1996).
 \newblock Flexible smoothing with {B}-splines and penalties.
 \newblock {\em Statistical science\/},~{\em 11}, 89--102.
 
@@ -553,7 +552,7 @@ Einstein, A. (1956).
 \bibitem[\protect\citeauthoryear{Elliott, Aggoun, and Moore}{Elliott {\em
   et~al.}}{1995}]{elliott1995estimation}
 Elliott, R.~J., Aggoun, L., and Moore, J.~B. (1995).
-\newblock {\em Hidden Markov Models: estimation and control\/} (1 ed.),
+\newblock {\em Hidden {M}arkov models: estimation and control\/} (1 ed.),
   Volume~29 of {\em 0172-4568}.
 \newblock Springer-Verlag New York.
 
@@ -561,8 +560,8 @@ Elliott, R.~J., Aggoun, L., and Moore, J.~B. (1995).
   et~al.}}{2009}]{ellis2009}
 Ellis, D., Sommerlade, E., and Reid, I. (2009).
 \newblock Modelling pedestrian trajectory patterns with gaussian processes.
-\newblock In {\em Computer Vision Workshops (ICCV Workshops), 2009 IEEE 12th
-  International Conference on},  1229--1234. IEEE.
+\newblock In {\em 2009 IEEE 12th International Conference on Computer Vision
+  Workshops, {ICCV} Workshops},  1229--1234. IEEE.
 
 \bibitem[\protect\citeauthoryear{Erkorkmaz and Altintas}{Erkorkmaz and
   Altintas}{2001}]{erkorkmaz2001high}
@@ -573,7 +572,7 @@ Erkorkmaz, K. and Altintas, Y. (2001).
   41\/}(9), 1323--1345.
 
 \bibitem[\protect\citeauthoryear{Eubank}{Eubank}{2004}]{eubank2004simple}
-Eubank, R. (2004).
+Eubank, R.~L. (2004).
 \newblock A simple smoothing spline, III.
 \newblock {\em Computational Statistics\/},~{\em 19\/}(2), 227--241.
 
@@ -615,12 +614,18 @@ Gelb, A. (1974).
 \newblock {\em Applied optimal estimation}.
 \newblock MIT press.
 
-\bibitem[\protect\citeauthoryear{Gelman {\em et~al.}}{Gelman {\em
-  et~al.}}{2006}]{gelman2006prior}
-Gelman, A. {\em et~al.} (2006).
+\bibitem[\protect\citeauthoryear{Gelman}{Gelman}{2006}]{gelman2006prior}
+Gelman, A. (2006).
 \newblock Prior distributions for variance parameters in hierarchical models
   (comment on article by {B}rowne and {D}raper).
 \newblock {\em {B}ayesian analysis\/},~{\em 1\/}(3), 515--534.
+
+\bibitem[\protect\citeauthoryear{Gelman, Gilks, and Roberts}{Gelman {\em
+  et~al.}}{1997}]{roberts1997weak}
+Gelman, A., Gilks, W.~R., and Roberts, G.~O. (1997).
+\newblock Weak convergence and optimal scaling of random walk {M}etropolis
+  algorithms.
+\newblock {\em Annals of Applied Probability\/},~{\em 7\/}(1), 110--120.
 
 \bibitem[\protect\citeauthoryear{Gelman, Jakulin, Pittau, and Su}{Gelman {\em
   et~al.}}{2008}]{gelman2008weakly}
@@ -629,9 +634,9 @@ Gelman, A., Jakulin, A., Pittau, M.~G., and Su, Y.-S. (2008).
   other regression models.
 \newblock {\em The Annals of Applied Statistics\/},~{\em 2}, 1360--1383.
 
-\bibitem[\protect\citeauthoryear{Gelman, Roberts, Gilks, {\em et~al.}}{Gelman
-  {\em et~al.}}{1996}]{gelman1996efficient}
-Gelman, A., Roberts, G.~O., Gilks, W.~R., {\em et~al.} (1996).
+\bibitem[\protect\citeauthoryear{Gelman, Roberts, and Gilks}{Gelman {\em
+  et~al.}}{1996}]{gelman1996efficient}
+Gelman, A., Roberts, G.~O., and Gilks, W.~R. (1996).
 \newblock Efficient {M}etropolis jumping rules.
 \newblock {\em {B}ayesian statistics\/},~{\em 5\/}(599-608), 42.
 
@@ -681,20 +686,20 @@ Gloderer, M. and Hertle, A. (2010).
   ackerman drive.
 
 \bibitem[\protect\citeauthoryear{Godsill, Doucet, and West}{Godsill {\em
-  et~al.}}{2000}]{godsill2000methodology}
-Godsill, S., Doucet, A., and West, M. (2000).
-\newblock Methodology for {M}onte {C}arlo smoothing with application to
-  time-varying autoregressions.
-\newblock In {\em International Symposium on Frontiers of Time Series
-  Modeling}.
-
-\bibitem[\protect\citeauthoryear{Godsill, Doucet, and West}{Godsill {\em
   et~al.}}{2001}]{godsill2001maximum}
 Godsill, S., Doucet, A., and West, M. (2001).
 \newblock Maximum a posteriori sequence estimation using {M}onte {C}arlo
   particle filters.
 \newblock {\em Annals of the Institute of Statistical Mathematics\/},~{\em
   53\/}(1), 82--96.
+
+\bibitem[\protect\citeauthoryear{Godsill, Doucet, and West}{Godsill {\em
+  et~al.}}{2000}]{godsill2000methodology}
+Godsill, S.~J., Doucet, A., and West, M. (2000).
+\newblock Methodology for {M}onte {C}arlo smoothing with application to
+  time-varying autoregressions.
+\newblock In {\em International Symposium on Frontiers of Time Series
+  Modeling}.
 
 \bibitem[\protect\citeauthoryear{Golightly and Wilkinson}{Golightly and
   Wilkinson}{2006}]{golightly2006bayesian}
@@ -713,7 +718,7 @@ Gong, L. and Flegal, J.~M. (2016).
 
 \bibitem[\protect\citeauthoryear{Gordon, Salmond, and Smith}{Gordon {\em
   et~al.}}{1993}]{gordon1993novel}
-Gordon, N.~J., Salmond, D.~J., and Smith, A.~F. (1993).
+Gordon, N.~J., Salmond, D.~J., and Smith, A. F.~M. (1993).
 \newblock Novel approach to nonlinear/non-{G}aussian {B}ayesian state
   estimation.
 \newblock In {\em IEE Proceedings F (Radar and Signal Processing)}, Volume 140,
@@ -758,14 +763,14 @@ Gu, C. and Wahba, G. (1991).
 
 \bibitem[\protect\citeauthoryear{Guzzi}{Guzzi}{2016}]{guzzi2016data}
 Guzzi, R. (2016).
-\newblock {\em Data Assimilation: Mathematical Concepts and Instructive
-  Examples}.
+\newblock {\em Data assimilation: mathematical concepts and instructive
+  examples}.
 \newblock Springer.
 
 \bibitem[\protect\citeauthoryear{Gy{\"o}rgy, Kelemen, and D{\'a}vid}{Gy{\"o}rgy
   {\em et~al.}}{2014}]{gyorgy2014unscented}
 Gy{\"o}rgy, K., Kelemen, A., and D{\'a}vid, L. (2014).
-\newblock Unscented {K}alman filters and Particle Filter methods for nonlinear
+\newblock Unscented {K}alman filters and particle filter methods for nonlinear
   state estimation.
 \newblock {\em Procedia Technology\/},~{\em 12}, 65--74.
 
@@ -776,20 +781,20 @@ Haario, H., Saksman, E., and Tamminen, J. (1999).
   algorithm.
 \newblock {\em Computational Statistics\/},~{\em 14\/}(3), 375--396.
 
-\bibitem[\protect\citeauthoryear{Haario, Saksman, Tamminen, {\em
-  et~al.}}{Haario {\em et~al.}}{2001}]{haario2001adaptive}
-Haario, H., Saksman, E., Tamminen, J., {\em et~al.} (2001).
+\bibitem[\protect\citeauthoryear{Haario, Saksman, and Tamminen}{Haario {\em
+  et~al.}}{2001}]{haario2001adaptive}
+Haario, H., Saksman, E., and Tamminen, J. (2001).
 \newblock An adaptive {M}etropolis algorithm.
 \newblock {\em Bernoulli\/},~{\em 7\/}(2), 223--242.
 
 \bibitem[\protect\citeauthoryear{Hammersley and Handscomb}{Hammersley and
   Handscomb}{1964}]{hammersley1964percolation}
-Hammersley, J.~M. and Handscomb, D. (1964).
+Hammersley, J.~M. and Handscomb, D.~C. (1964).
 \newblock Percolation processes.
 \newblock In {\em {M}onte {C}arlo Methods},  134--141. Springer.
 
 \bibitem[\protect\citeauthoryear{Handschin}{Handschin}{1970}]{handschin1970monte}
-Handschin, J. (1970).
+Handschin, J.~E. (1970).
 \newblock {M}onte {C}arlo techniques for prediction and filtering of non-linear
   stochastic processes.
 \newblock {\em Automatica\/},~{\em 6\/}(4), 555--563.
@@ -826,14 +831,14 @@ Hartmann, M., Nowak, T., Pfandenhauer, O., Thielecke, J., and Heuberger, A.
   (2016).
 \newblock A grid-based filter for tracking bats applying field strength
   measurements.
-\newblock In {\em Wireless On-demand Network Systems and Services (WONS), 2016
-  12th Annual Conference on},  1--8. IEEE.
+\newblock In {\em 2016 12th Annual Conference on Wireless On-demand Network
+  Systems and Services (WONS)},  1--8. IEEE.
 
 \bibitem[\protect\citeauthoryear{Hastie, Tibshirani, and Friedman}{Hastie {\em
   et~al.}}{2009}]{esl2009}
 Hastie, T., Tibshirani, R., and Friedman, J. (2009).
-\newblock {\em The Elements of Statistical Learning: Data Mining, Inference,
-  and Prediction.\/} (Second Edition ed.).
+\newblock {\em The elements of statistical learning: data mining, inference,
+  and prediction.\/} (Second Edition ed.).
 \newblock Springer-Verlag.
 
 \bibitem[\protect\citeauthoryear{Hastie and Tibshirani}{Hastie and
@@ -848,22 +853,21 @@ Hastings, W.~K. (1970).
   applications.
 \newblock {\em Biometrika\/},~{\em 57\/}(1), 97--109.
 
-\bibitem[\protect\citeauthoryear{Haykin {\em et~al.}}{Haykin {\em
-  et~al.}}{2001}]{haykin2001kalman}
-Haykin, S.~S. {\em et~al.} (2001).
+\bibitem[\protect\citeauthoryear{Haykin}{Haykin}{2001}]{haykin2001kalman}
+Haykin, S.~S. (2001).
 \newblock {\em {K}alman filtering and neural networks}.
-\newblock Wiley Online Library.
+\newblock John Wiley \& Sons.
 
 \bibitem[\protect\citeauthoryear{Heckman and Woodroofe}{Heckman and
   Woodroofe}{1991}]{heckman1991minimax}
 Heckman, N.~E. and Woodroofe, M. (1991).
-\newblock Minimax Bayes estimation in nonparametric regression.
+\newblock Minimax {B}ayes estimation in nonparametric regression.
 \newblock {\em The Annals of Statistics\/},~{\em 19}, 2003--2014.
 
 \bibitem[\protect\citeauthoryear{Hermite}{Hermite}{1863}]{Hermite1863Remarque}
 Hermite, C. (1863).
-\newblock {\em Remarque sur le d{\'e}veloppement de Comptes Rendus de
-  l'Acad{\'e}mie des Sciences.}, Volume~57.
+\newblock {\em Remarque sur le d{\'e}veloppement de comptes rendus de
+  i'acad{\'e}mie des sciences.}, Volume~57.
 \newblock Elsevier of behalf of the French Academy of Sciences (France).
 
 \bibitem[\protect\citeauthoryear{Hightower and Borriello}{Hightower and
@@ -903,14 +907,14 @@ Ivanov, R. (2012).
 \bibitem[\protect\citeauthoryear{Jauch, Bleimund, Rhode, and Gauterin}{Jauch
   {\em et~al.}}{2017}]{jauch2017recursive}
 Jauch, J., Bleimund, F., Rhode, S., and Gauterin, F. (2017).
-\newblock Recursive B-spline approximation using the {K}alman filter.
+\newblock Recursive {B}-spline approximation using the {K}alman filter.
 \newblock {\em Engineering Science and Technology, an International
   Journal\/},~{\em 20\/}(1), 28--34.
 
 \bibitem[\protect\citeauthoryear{Jaynes}{Jaynes}{1983}]{jaynes1983papers}
 Jaynes, E.~T. (1983).
-\newblock {\em E. T. Jaynes: Papers on Probability, Statistics and Statistical
-  Physics}, Volume 158.
+\newblock {\em {E}. {T}. {J}aynes: papers on probability, statistics and
+  statistical physics}, Volume 158.
 \newblock Springer Netherlands.
 
 \bibitem[\protect\citeauthoryear{Jeffries}{Jeffries}{1961}]{jeffries1961theory}
@@ -934,18 +938,17 @@ Judd, K.~L. (1998).
   Uhlmann}{1997}]{julier1997new}
 Julier, S.~J. and Uhlmann, J.~K. (1997).
 \newblock A new extension of the {K}alman filter to nonlinear systems.
-\newblock In {\em Int. symp. aerospace/defense sensing, simul. and controls},
-  Volume~3,  182--193. Orlando, FL.
+\newblock In {\em The International Society for Optical Engineering}, Volume~3,
+   182--193. Orlando, FL.
 
 \bibitem[\protect\citeauthoryear{Kailath}{Kailath}{1981}]{kailath1981lectures}
 Kailath, T. (1981).
-\newblock Lectures on Wiener and {K}alman filtering.
-\newblock In {\em Lectures on Wiener and {K}alman Filtering},  1--143.
+\newblock Lectures on {W}iener and {K}alman filtering.
+\newblock In {\em Lectures on {W}iener and {K}alman Filtering},  1--143.
   Springer.
 
-\bibitem[\protect\citeauthoryear{{K}alman {\em et~al.}}{{K}alman {\em
-  et~al.}}{1960}]{kalman1960new}
-{K}alman, R.~E. {\em et~al.} (1960).
+\bibitem[\protect\citeauthoryear{Kalman}{Kalman}{1960}]{kalman1960new}
+Kalman, R.~E. (1960).
 \newblock A new approach to linear filtering and prediction problems.
 \newblock {\em Journal of basic Engineering\/},~{\em 82\/}(1), 35--45.
 
@@ -957,7 +960,7 @@ Kalos, M.~H. and Whitlock, P.~A. (2008).
 
 \bibitem[\protect\citeauthoryear{Kantas, Doucet, Singh, and Maciejowski}{Kantas
   {\em et~al.}}{2009}]{kantas2009overview}
-Kantas, N., Doucet, A., Singh, S., and Maciejowski, J. (2009).
+Kantas, N., Doucet, A., Singh, S.~S., and Maciejowski, J.~M. (2009).
 \newblock An overview of sequential {M}onte {C}arlo methods for parameter
   estimation.
 \newblock In {\em in General State-Space Models,'' in IFAC System
@@ -966,7 +969,7 @@ Kantas, N., Doucet, A., Singh, S., and Maciejowski, J. (2009).
 \bibitem[\protect\citeauthoryear{Kaplan and Hegarty}{Kaplan and
   Hegarty}{2005}]{kaplan2005understanding}
 Kaplan, E. and Hegarty, C. (2005).
-\newblock {\em Understanding GPS: principles and applications}.
+\newblock {\em Understanding {GPS}: principles and applications}.
 \newblock Artech house.
 
 \bibitem[\protect\citeauthoryear{Kass, Carlin, Gelman, and Neal}{Kass {\em
@@ -984,7 +987,7 @@ Katzfuss, M., Stroud, J.~R., and Wikle, C.~K. (2016).
 \bibitem[\protect\citeauthoryear{Khan, Balch, and Dellaert}{Khan {\em
   et~al.}}{2005}]{khan2005mcmc}
 Khan, Z., Balch, T., and Dellaert, F. (2005).
-\newblock MCMC-based particle filtering for tracking a variable number of
+\newblock {MCMC}-based particle filtering for tracking a variable number of
   interacting targets.
 \newblock {\em IEEE transactions on pattern analysis and machine
   intelligence\/},~{\em 27\/}(11), 1805--1819.
@@ -1050,10 +1053,10 @@ Kokkala, J. (2016).
   Tanie}{1989}]{komoriya1989trajectory}
 Komoriya, K. and Tanie, K. (1989).
 \newblock Trajectory design and control of a wheel-type mobile robot using
-  B-spline curve.
-\newblock In {\em Intelligent Robots and Systems' 89. The Autonomous Mobile
-  Robots and Its Applications. IROS'89. Proceedings., IEEE/RSJ International
-  Workshop on},  398--405. IEEE.
+  {B}-spline curve.
+\newblock In {\em IEEE/RSJ International Workshop on Intelligent Robots and
+  Systems '. (IROS '89) 'The Autonomous Mobile Robots and Its Applications},
+  398--405. IEEE.
 
 \bibitem[\protect\citeauthoryear{Kong, Liu, and Wong}{Kong {\em
   et~al.}}{1994}]{kong1994sequential}
@@ -1094,7 +1097,7 @@ LaViola, J.~J. (2003).
 
 \bibitem[\protect\citeauthoryear{Lawson, Ravi, and Hwang}{Lawson {\em
   et~al.}}{2011}]{lawson2011compression}
-Lawson, C.~T., Ravi, S., and Hwang, J.-H. (2011).
+Lawson, C.~T., Ravi, S.~S., and Hwang, J.-H. (2011).
 \newblock Compression and mining of {GPS} trace data: new techniques and
   applications.
 \newblock Technical report, Technical Report. Region II University
@@ -1102,7 +1105,7 @@ Lawson, C.~T., Ravi, S., and Hwang, J.-H. (2011).
 
 \bibitem[\protect\citeauthoryear{Lindley and Smith}{Lindley and
   Smith}{1972}]{lindley1972bayes}
-Lindley, D.~V. and Smith, A.~F. (1972).
+Lindley, D.~V. and Smith, A. F.~M. (1972).
 \newblock Bayes estimates for the linear model.
 \newblock {\em Journal of the Royal Statistical Society. Series B
   (Methodological)\/},~{\em 34}, 1--41.
@@ -1151,8 +1154,8 @@ Lopes, H.~F. and Tsay, R.~S. (2011).
   et~al.}}{2006}]{magid2006spline}
 Magid, E., Keren, D., Rivlin, E., and Yavneh, I. (2006).
 \newblock Spline-based robot navigation.
-\newblock In {\em Intelligent Robots and Systems, 2006 IEEE/RSJ International
-  Conference on},  2296--2301. IEEE.
+\newblock In {\em 2006 IEEE/RSJ International Conference on Intelligent Robots
+  and Systems},  2296--2301. IEEE.
 
 \bibitem[\protect\citeauthoryear{Mahendran, Wang, Hamze, and
   De~Freitas}{Mahendran {\em et~al.}}{2012}]{mahendran2012adaptive}
@@ -1169,8 +1172,8 @@ Martino, L. and M{\'\i}guez, J. (2010).
 
 \bibitem[\protect\citeauthoryear{Mathew, Bauer, Koistinen, Reetz, L{\'e}on, and
   Sillanp{\"a}{\"a}}{Mathew {\em et~al.}}{2012}]{mathew2012bayesian}
-Mathew, B., Bauer, A., Koistinen, P., Reetz, T., L{\'e}on, J., and
-  Sillanp{\"a}{\"a}, M. (2012).
+Mathew, B., Bauer, A.~M., Koistinen, P., Reetz, T.~C., L{\'e}on, J., and
+  Sillanp{\"a}{\"a}, M.~J. (2012).
 \newblock {B}ayesian adaptive {M}arkov chain {M}onte {C}arlo estimation of
   genetic parameters.
 \newblock {\em Heredity\/},~{\em 109\/}(4), 235.
@@ -1203,7 +1206,7 @@ Meratnia, N. and Rolf, A. (2004).
 
 \bibitem[\protect\citeauthoryear{Mitchell and Houtekamer}{Mitchell and
   Houtekamer}{2000}]{mitchell2000adaptive}
-Mitchell, H.~L. and Houtekamer, P. (2000).
+Mitchell, H.~L. and Houtekamer, P.~L. (2000).
 \newblock An adaptive ensemble {K}alman filter.
 \newblock {\em Monthly Weather Review\/},~{\em 128\/}(2), 416--433.
 
@@ -1218,10 +1221,9 @@ Nason, G. (2010).
 \newblock {\em Wavelet methods in statistics with {R}}.
 \newblock Springer Science \& Business Media.
 
-\bibitem[\protect\citeauthoryear{Neal {\em et~al.}}{Neal {\em
-  et~al.}}{2011}]{neal2011mcmc}
-Neal, R.~M. {\em et~al.} (2011).
-\newblock MCMC using {H}amiltonian dynamics.
+\bibitem[\protect\citeauthoryear{Neal}{Neal}{2011}]{neal2011mcmc}
+Neal, R.~M. (2011).
+\newblock {MCMC} using {H}amiltonian dynamics.
 \newblock {\em Handbook of {M}arkov chain {M}onte {C}arlo\/},~{\em 2\/}(11),
   113--162.
 
@@ -1307,7 +1309,7 @@ Ran, C. and Deng, Z. (2010).
 
 \bibitem[\protect\citeauthoryear{Rasmussen and Williams}{Rasmussen and
   Williams}{2006}]{rasmussen2006gaussian}
-Rasmussen, C.~E. and Williams, C.~K. (2006).
+Rasmussen, C.~E. and Williams, C. K.~I. (2006).
 \newblock {\em Gaussian processes for machine learning}, Volume~1.
 \newblock MIT press Cambridge.
 
@@ -1329,12 +1331,11 @@ Robert, C.~P. (2004).
 \newblock {\em {M}onte {C}arlo methods}.
 \newblock Wiley Online Library.
 
-\bibitem[\protect\citeauthoryear{Roberts, Gelman, Gilks, {\em et~al.}}{Roberts
-  {\em et~al.}}{1997}]{roberts1997weak}
-Roberts, G.~O., Gelman, A., Gilks, W.~R., {\em et~al.} (1997).
-\newblock Weak convergence and optimal scaling of random walk {M}etropolis
-  algorithms.
-\newblock {\em Annals of Applied Probability\/},~{\em 7\/}(1), 110--120.
+\bibitem[\protect\citeauthoryear{Roberts and Rosenthal}{Roberts and
+  Rosenthal}{2001}]{roberts2001optimal}
+Roberts, G.~O. and Rosenthal, J.~S. (2001).
+\newblock Optimal scaling for various {M}etropolis-{H}astings algorithms.
+\newblock {\em Statistical science\/},~{\em 16\/}(4), 351--367.
 
 \bibitem[\protect\citeauthoryear{Roberts and Rosenthal}{Roberts and
   Rosenthal}{2009}]{roberts2009examples}
@@ -1342,12 +1343,6 @@ Roberts, G.~O. and Rosenthal, J.~S. (2009).
 \newblock Examples of adaptive {MCMC}.
 \newblock {\em Journal of Computational and Graphical Statistics\/},~{\em
   18\/}(2), 349--367.
-
-\bibitem[\protect\citeauthoryear{Roberts, Rosenthal, {\em et~al.}}{Roberts {\em
-  et~al.}}{2001}]{roberts2001optimal}
-Roberts, G.~O., Rosenthal, J.~S., {\em et~al.} (2001).
-\newblock Optimal scaling for various {M}etropolis-{H}astings algorithms.
-\newblock {\em Statistical science\/},~{\em 16\/}(4), 351--367.
 
 \bibitem[\protect\citeauthoryear{Rubin}{Rubin}{2004}]{rubin2004multiple}
 Rubin, D.~B. (2004).
@@ -1380,8 +1375,8 @@ Schoenberg, I.~J. (1964).
 
 \bibitem[\protect\citeauthoryear{Schwarz}{Schwarz}{2012}]{schwarz2012geodesy}
 Schwarz, K.-P. (2012).
-\newblock {\em Geodesy Beyond 2000: The Challenges of the First Decade, IAG
-  General Assembly Birmingham, July 19--30, 1999}, Volume 121.
+\newblock {\em Geodesy beyond 2000: the challenges of the first decade, {IAG}
+  general assembly {B}irmingham, {J}uly 19--30, 1999}, Volume 121.
 \newblock Springer Science \& Business Media.
 
 \bibitem[\protect\citeauthoryear{Sealfon, Verde, and Jimenez}{Sealfon {\em
@@ -1392,7 +1387,7 @@ Sealfon, C., Verde, L., and Jimenez, R. (2005).
 
 \bibitem[\protect\citeauthoryear{Septier, Carmi, Pang, and Godsill}{Septier
   {\em et~al.}}{2009}]{septier2009multiple}
-Septier, F., Carmi, A., Pang, S., and Godsill, S. (2009).
+Septier, F., Carmi, A., Pang, S.~K., and Godsill, S.~J. (2009).
 \newblock Multiple object tracking using evolutionary and hybrid {MCMC}-based
   particle algorithms.
 \newblock In {\em 15th IFAC Symposium on System Identification, 2009},
@@ -1403,8 +1398,8 @@ Septier, F., Carmi, A., Pang, S., and Godsill, S. (2009).
 Septier, F., Pang, S.~K., Carmi, A., and Godsill, S. (2009).
 \newblock On {MCMC}-based particle methods for {B}ayesian filtering:
   application to multitarget tracking.
-\newblock In {\em Computational Advances in Multi-Sensor Adaptive Processing
-  (CAMSAP), 2009 3rd IEEE International Workshop on},  360--363. IEEE.
+\newblock In {\em 2009 3rd IEEE International Workshop on Computational
+  Advances in Multi-Sensor Adaptive Processing (CAMSAP)},  360--363. IEEE.
 
 \bibitem[\protect\citeauthoryear{Sherlock}{Sherlock}{2013}]{sherlock2013optimal}
 Sherlock, C. (2013).
@@ -1427,9 +1422,9 @@ Sherlock, C., Golightly, A., and Henderson, D.~A. (2017).
 \newblock {\em Journal of Computational and Graphical Statistics\/},~{\em
   26\/}(2), 434--444.
 
-\bibitem[\protect\citeauthoryear{Sherlock, Roberts, {\em et~al.}}{Sherlock {\em
-  et~al.}}{2009}]{sherlock2009optimal}
-Sherlock, C., Roberts, G., {\em et~al.} (2009).
+\bibitem[\protect\citeauthoryear{Sherlock and Roberts}{Sherlock and
+  Roberts}{2009}]{sherlock2009optimal}
+Sherlock, C. and Roberts, G. (2009).
 \newblock Optimal scaling of the random walk {M}etropolis on elliptically
   symmetric unimodal targets.
 \newblock {\em Bernoulli\/},~{\em 15\/}(3), 774--798.
@@ -1456,14 +1451,14 @@ Silverman, B.~W. (1985).
   (Methodological)\/},~{\em 47}, 1--52.
 
 \bibitem[\protect\citeauthoryear{Smith}{Smith}{1973}]{smith1973general}
-Smith, A.~F. (1973).
+Smith, A. F.~M. (1973).
 \newblock A general {B}ayesian linear model.
 \newblock {\em Journal of the Royal Statistical Society. Series B
   (Methodological)\/},~{\em 35}, 67--75.
 
 \bibitem[\protect\citeauthoryear{Smith and Roberts}{Smith and
   Roberts}{1993}]{smith1993bayesian}
-Smith, A.~F. and Roberts, G.~O. (1993).
+Smith, A. F.~M. and Roberts, G.~O. (1993).
 \newblock {B}ayesian computation via the {G}ibbs sampler and related {M}arkov
   chain {M}onte {C}arlo methods.
 \newblock {\em Journal of the Royal Statistical Society. Series B
@@ -1497,7 +1492,7 @@ St-Pierre, M. and Gingras, D. (2004).
 
 \bibitem[\protect\citeauthoryear{Stavropoulos and Titterington}{Stavropoulos
   and Titterington}{2001}]{stavropoulos2001improved}
-Stavropoulos, P. and Titterington, D. (2001).
+Stavropoulos, P. and Titterington, D.~M. (2001).
 \newblock Improved particle filters and smoothing.
 \newblock In {\em Sequential {M}onte {C}arlo Methods in Practice},  295--317.
   Springer.
@@ -1569,9 +1564,8 @@ Turitsyn, K.~S., Chertkov, M., and Vucelja, M. (2011).
 \newblock Irreversible {M}onte {C}arlo algorithms for efficient sampling.
 \newblock {\em Physica D: Nonlinear Phenomena\/},~{\em 240\/}(4), 410--414.
 
-\bibitem[\protect\citeauthoryear{Tusell {\em et~al.}}{Tusell {\em
-  et~al.}}{2011}]{tusell2011kalman}
-Tusell, F. {\em et~al.} (2011).
+\bibitem[\protect\citeauthoryear{Tusell}{Tusell}{2011}]{tusell2011kalman}
+Tusell, F. (2011).
 \newblock {K}alman filtering in {R}.
 \newblock {\em Journal of Statistical Software\/},~{\em 39\/}(2), 1--27.
 
@@ -1636,7 +1630,7 @@ Wan, E.~A. and Van Der~Merwe, R. (2000).
 
 \bibitem[\protect\citeauthoryear{Wand and Gutierrez}{Wand and
   Gutierrez}{1997}]{wand1997exact}
-Wand, M. and Gutierrez, R. (1997).
+Wand, M.~P. and Gutierrez, R.~G. (1997).
 \newblock Exact risk approaches to smoothing parameter selection.
 \newblock {\em Journal of Nonparametric Statistics\/},~{\em 8\/}(4), 337--354.
 
@@ -1685,7 +1679,7 @@ Woodbury, M.~A. (1950).
 
 \bibitem[\protect\citeauthoryear{Wu, Sun, Beissinger, Rosa, Weigel,
   de~Leon~Gatti, and Gianola}{Wu {\em et~al.}}{2012}]{wu2012parallel}
-Wu, X.-L., Sun, C., Beissinger, T.~M., Rosa, G.~J., Weigel, K.~A.,
+Wu, X.-L., Sun, C., Beissinger, T.~M., Rosa, G. J.~M., Weigel, K.~A.,
   de~Leon~Gatti, N., and Gianola, D. (2012).
 \newblock Parallel {M}arkov chain {M}onte {C}arlo-bridging the gap to
   high-performance {B}ayesian computation in animal breeding and genetics.
@@ -1697,9 +1691,9 @@ Yang, K. and Sukkarieh, S. (2010).
 \newblock An analytical continuous-curvature path-smoothing algorithm.
 \newblock {\em Robotics, IEEE Transactions on\/},~{\em 26\/}(3), 561--568.
 
-\bibitem[\protect\citeauthoryear{Yao, M{\"u}ller, Wang, {\em et~al.}}{Yao {\em
+\bibitem[\protect\citeauthoryear{Yao, M{\"u}ller, and Wang}{Yao {\em
   et~al.}}{2005}]{yao2005functional}
-Yao, F., M{\"u}ller, H.-G., Wang, J.-L., {\em et~al.} (2005).
+Yao, F., M{\"u}ller, H.-G., and Wang, J.-L. (2005).
 \newblock Functional linear regression analysis for longitudinal data.
 \newblock {\em The Annals of Statistics\/},~{\em 33\/}(6), 2873--2903.
 
