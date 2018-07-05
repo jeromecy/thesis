@@ -201,7 +201,7 @@ are both non-negative definite themselves.
 
 According to Theorem \ref{theoremKernel}, $R_0$ can correspond the space of polynomials $\mathcal{H}_0=\left\lbrace f:f''=0\right\rbrace$ with an inner product $\langle f,g \rangle_0= f(0)g(0)+f'(0)g'(0)$, and $R_1$ corresponds the orthogonal complement of $\mathcal{H}_0$
 \begin{equation}
-\mathcal{H}_1=\left\lbrace f:f(0)=0, f'(0)=0, \int_{0}^{1}f''^2dt<\infty\right\rbrace
+\mathcal{H}_1=\left\lbrace f:f(0)=0, f'(0)=0, \int_{0}^{1}f''(t)^2dt<\infty\right\rbrace
 \end{equation}
 with inner product $\langle f,g \rangle_1=\int_{0}^{1}f''g''dt$. Thus, $\mathcal{H}_0$ and $\mathcal{H}_1$ are two subspaces of the $\mathcal{C}_{\mbox{\scriptsize p.w.}}^{(2)}[0,1]$, and the reproducing kernel is $R_s(\cdot) = R_0(s,\cdot)+R_1(s,\cdot)$.
 
@@ -209,7 +209,7 @@ with inner product $\langle f,g \rangle_1=\int_{0}^{1}f''g''dt$. Thus, $\mathcal
 Define a new notation $\dot{R}(s,t)=\frac{\partial R}{\partial s}(s,t)=\frac{\partial R_0}{\partial s}(s,t)+\frac{\partial R_1}{\partial s}(s,t)=t+\int_0^s(t-u)_+du$. Obviously $\dot{R}_s(t) \in \mathcal{C}_{\mbox{\scriptsize p.w.}}^{(2)}[0,1]$. Additionally, we have $\dot{R}_s(0)=0, \dot{R}'_s(0)=\frac{\partial \dot{R}_s}{\partial t}(0)=1$, and $ \dot{R}''_s(t)=\begin{cases}
 0 & s\leq t \\ 1 & s>t \end{cases}$. Then, for any $f\in \mathcal{C}_{\mbox{\scriptsize p.w.}}^{(2)}[0,1]$, we have 
 \begin{equation}
-\langle \dot{R}_s,f\rangle =\dot{R}_s(0)f(0)+\dot{R}'_s(0)f'(0)+\int_0^1\dot{R}''_s f''	 du=f'(0)+\int_0^t f''du=f'(t).
+\langle \dot{R}_s,f\rangle =\dot{R}_s(0)f(0)+\dot{R}'_s(0)f'(0)+\int_0^1\dot{R}''_s f''	(u) du=f'(0)+\int_0^t f''(u)du=f'(t).
 \end{equation}
 % % % % % % % % % % % % % % % %  Old version, space H* might be wrong % % % % %
 % % % % % % % % % % % % % % % %
@@ -235,15 +235,15 @@ For any $f\in\mathcal{C}_{\mbox{\scriptsize p.w.}}^{(2)}[0,1]$, it can be writte
 \begin{equation}\label{GaussianProcessFunctionF}
 f(t)=d_1+d_2t+\sum_{j=1}^{n}c_jR_1(t_j,t)+\sum_{j=1}^{n}b_j\dot{R}_1(t_j,\cdot) +\rho(t)
 \end{equation}
-where $\mathbf{d},\mathbf{c}$ and $\mathbf{b}$ are coefficients, and $\rho(t) \in \mathcal{H}_1 \ominus \mathcal{H}_*$. Thus, by substituting to the equation \eqref{maineq}, it can be written as 
+where $\mathbf{d}=\lbrace d_1,d_2\rbrace,\mathbf{c}=\lbrace c_j\rbrace$ and $\mathbf{b}=\lbrace b_j\rbrace$, $j=1,\ldots,n$, are coefficients, and $\rho(t) \in \mathcal{H}_1 \ominus \mathcal{H}_*$. Thus, by substituting to the equation \eqref{maineq}, it can be written as 
 \begin{equation}\label{GassianProcessRawequation}
 \begin{split}
 &\frac{1}{n}\sum_{i=1}^n \left( y_i - d_1-d_2t-\sum_{j=1}^{n}c_jR_1(t_j,t_i)-\sum_{j=1}^{n}b_j\dot{R}_1(t_j,t_i)-\rho(t_i) \right) ^2\\
-&\frac{\gamma}{n}\sum_{i=1}^n \left( v_i - d_2-\sum_{j=1}^{n}c_jR'_1(t_j,t_i)-\sum_{j=1}^{n}b_j\dot{R}'_1(t_j,t_i)-\rho'(t_i) \right) ^2\\
++&\frac{\gamma}{n}\sum_{i=1}^n \left( v_i - d_2-\sum_{j=1}^{n}c_jR'_1(t_j,t_i)-\sum_{j=1}^{n}b_j\dot{R}'_1(t_j,t_i)-\rho'(t_i) \right) ^2\\
 +&\lambda \int_0^1 \left( \sum_{j=1}^{n}c_jR''_1(t_j,t)+\sum_{j=1}^{n}b_j\dot{R}''_1(t_j,t)+\rho''(t)\right)^2dt
 \end{split}
 \end{equation}
-Because of orthogonality, $\rho(t_i) = \left(R_1(t_i,\cdot),\rho\right)=0$, $\rho'(t_i) = \left(\dot{R}_1(t_i,\cdot),\rho'\right)=0$, $i=1,\ldots,n$. By denoting that 
+Because of orthogonality, $\rho(t_i) = \langle R_1(t_i,\cdot),\rho\rangle=0$, $\rho'(t_i) = \langle\dot{R}_1(t_i,\cdot),\rho'\rangle=0$, $i=1,\ldots,n$. By denoting that 
 \begin{align*}
 S&=\left\lbrace S_{ij} \right\rbrace_{n\times 2}=\begin{bmatrix}1 & t_i \end{bmatrix} ,& Q&=\left\lbrace Q_{ij} \right\rbrace_{n\times n}= R_1(t_j,t_i), & P&=\left\lbrace P_{ij} \right\rbrace_{n\times n}= \dot{R}_1(t_j,t_i), \\
 S'&=\left\lbrace S'_{ij} \right\rbrace_{n\times 2}=\begin{bmatrix} 0 & 1 \end{bmatrix} ,& Q'&=\left\lbrace Q'_{ij} \right\rbrace_{n\times n}= R_1'(t_j,t_i), & P'&=\left\lbrace P'_{ij} \right\rbrace_{n\times n}= \dot{R}_1'(t_j,t_i). 
@@ -251,9 +251,9 @@ S'&=\left\lbrace S'_{ij} \right\rbrace_{n\times 2}=\begin{bmatrix} 0 & 1 \end{bm
 and noting that $\int_0^1R''_1(t_i,t)R''_1(t_j,t)dt=R_1(t_i,t_j)$, $\int_0^1R''_1(t_i,t)\dot{R}''_1(t_j,t)dt=\int_0^{v}(t_i-t)dt=\dot{R}_1(t_j,t_i)$, and $\int_0^1\dot{R}''_1(t_i,t)\dot{R}''_1(t_j,t)dt=\int_0^{v}1dt=\dot{R}'_1(t_i,t_j)$, where $v=\mbox{min}(t_i,t_j)$, the above equation \eqref{GassianProcessRawequation} can be written as 
 \begin{equation}\label{matriteq}
 \begin{split}
-\left(\mathbf{y}-S\mathbf{d}-Q\mathbf{c}-P\mathbf{b}\right)^\top \left(\mathbf{y}-S\mathbf{d}-Q\mathbf{c}-P\mathbf{b}\right)+\\
-\gamma\left(\mathbf{v}-S'\mathbf{d}-Q'\mathbf{c}-P'\mathbf{b}\right)^\top \left(\mathbf{v}-S'\mathbf{d}-Q'\mathbf{c}-P'\mathbf{b}\right)\\
-+n\lambda \left(\mathbf{c}^\top Q\mathbf{c} + 2\mathbf{c}^\top P\mathbf{b}+ \mathbf{b}^\top P'\mathbf{b}\right)+n\lambda\left(\rho,\rho\right).
+&\left(\mathbf{y}-S\mathbf{d}-Q\mathbf{c}-P\mathbf{b}\right)^\top \left(\mathbf{y}-S\mathbf{d}-Q\mathbf{c}-P\mathbf{b}\right)\\
++&\gamma\left(\mathbf{v}-S'\mathbf{d}-Q'\mathbf{c}-P'\mathbf{b}\right)^\top \left(\mathbf{v}-S'\mathbf{d}-Q'\mathbf{c}-P'\mathbf{b}\right)\\
++&n\lambda \left(\mathbf{c}^\top Q\mathbf{c} + 2\mathbf{c}^\top P\mathbf{b}+ \mathbf{b}^\top P'\mathbf{b}\right)+n\lambda\left(\rho,\rho\right).
 \end{split}
 \end{equation}
 Note that $\rho$ only appears in the third term and is minimized at $\rho=0$. Hence, a V-spline resides in the space $\mathcal{H}_0\oplus \mathcal{H}_*$ of finite dimension. Thus, the solution to \eqref{maineq} is computed via the minimization of the first three terms in \eqref{matriteq} with respect to $\mathbf{d}$, $\mathbf{c}$ and $\mathbf{b}$.
@@ -276,7 +276,15 @@ Note that $\rho$ only appears in the third term and is minimized at $\rho=0$. He
 %f(t)=(d_1+d_2t)+\sum_{i=1}^{n}c_iR_1(t_i,t)+\sum_{i=1}^{n}b_i\dot{R}_1(t_i,t),
 %\end{equation}
 %where $d\sim N(0,\tau^2I_{2\times 2})$. The covariance functions for $y$, $v$ and $f$, $f'$ are \small
-Suppose the covariance functions for $y$, $v$ and $f$, $f'$ are \small
+
+
+In a general process, we know that $p(\mathbf{y},\mathbf{v}\mid f) = N(f,\Sigma(\varepsilon))$. However, we are more interested in $f$ given measurements 
+\begin{equation}
+p(f\mid \mathbf{y},\mathbf{v}) \propto p(\mathbf{y},\mathbf{v}\mid f)p(f)
+\end{equation}
+where $f\sim GP(0,\Sigma)$ is a Gaussian process prior.
+
+In fact, suppose the covariance functions for $y$, $v$ and $f$, $f'$ are \small
 \begin{align*}
 \E\lbrack f(s)f (t)\rbrack &=\tau^2R_0(s,t)+\beta R_1(s,t) & \E \lbrack f(s)f '(t)\rbrack&=\tau^2R_0'(s,t)+\beta R_1'(s,t) \\
 \E\lbrack f '(s)f (t)\rbrack&=\tau^2\dot{R}_0(s,t)+\beta\dot{R}_1(s,t) & \E\lbrack f '(s)f '(t)\rbrack&=\tau^2\dot{R}'_0(s,t)+\beta\dot{R}'_1(s,t) \\
@@ -368,17 +376,130 @@ The smoothing V-spline of \eqref{maineq} is the posterior
 mean of $f=f_0+f_1 + \dot{f}_1$, where $f_0$ diffuses in span $\left\lbrace 1,t\right\rbrace$ and $f_1$, $\dot{f}_1$ have Gaussian process priors with mean zero and covariance functions
 \begin{align}
 \Cov \left(f_1,f_1\right)   &= R_1\left(s,t\right)   =\beta \int_{0}^{1} \left(s-u\right)_+\left(t-u\right)_+du, \\
-\Cov \left(\dot{f}_1,f_1\right)  &= \dot{R}\left(s,t\right) =\beta \left(t+\int_0^s\left(t-u\right)_+du \right)
+\Cov \left(\dot{f}_1,f_1\right)  &= \dot{R}_1\left(s,t\right) =\beta \left(t+\int_0^s\left(t-u\right)_+du \right)
 \end{align}
 for $\beta = \sigma^2/n\lambda$.
 \end{theorem}
 
 
 
+\section{Bayes Estimate for Non-trivial V-Spline}
+
+
+
+For a sequence $0=t_0 < t_1<\cdots <t_n <t_{n+1}=1$ on the interval $[0,1]$ in the reproducing kernel Hilbert space  $\mathcal{C}_{\mbox{\scriptsize p.w.}}^{(2)}[0,1]$, define an inner product 
+\begin{equation}
+\langle f,g\rangle = f(0)g(0)+f'(0)g'(0)+\sum_{i=0}^{n}w_i\int_{t_i}^{t_{i+1}}f''(t)g''(t)dt,
+\end{equation}
+where $w_i>0$, $i=0,\ldots,n$. The representer is 
+\begin{align}
+R_s(t) &= 1+st+\sum_{i=0}^{n}w_i^{-1}\int_{t_i}^{t_{i+1}}(s-u)_+(t-u)_+du, 
+\end{align}
+having the following properties 
+\begin{align}
+R'_s(t) &= s+\sum_{i=0}^{n}w_i^{-1}\int_{t_i}^{t_{i+1}}(s-u)_+\Theta(t-u) du,\\
+\dot{R}_s(t) &= t+\sum_{i=0}^{n}w_i^{-1}\int_{t_i}^{t_{i+1}}\Theta(s-u)(t-u)_+ du,\\
+R''_s(t) & = \sum_{i=0}^{n}w_i^{-1}\int_{t_i}^{t_{i+1}}\delta(s-u)\delta(t-u)du, 
+\end{align}
+and $R_s(0)=1$, $R'_s(0)=s$. The function $\Theta(t-u)$ is the Heaviside function and $\delta(t-u)$ is the Dirac delta function. 
+
+Further, $R(\cdot)$ and $\dot{R}(\cdot)$ on $\lbrack0,1\rbrack$ have the following properties 
+\begin{align}
+\begin{split}
+\langle R_s, f \rangle &= R_s(0)f(0)+R'_s(0)f'(0)+\sum_{i=0}^{n}w_i\int_{t_i}^{t_{i+1}}R''_s(u)f''(u)du\\
+&=f(0)+sf'(0)+\sum_{i=0}^{n}w_i \int_{t_i}^{t_{i+1}}  \sum_{j=0}^n w_j^{-1} \int_{t_j}^{t_{j+1}} (s-u)_+\delta(v-u)du f''(v)dv\\
+&= f(0)+sf'(0)+\sum_{i=0}^n\int_{t_i}^{t_{i+1}}(s-u)_+f''(u)du \\
+&=f(s)
+\end{split} \\
+\begin{split}
+\langle \dot{R}_s, f \rangle &= \dot{R}_s(0)f(0)+\dot{R}'_s(0)f'(0)+\sum_{i=0}^{n}w_i\int_{t_i}^{t_{i+1}}\dot{R}_s''(u)f''(u)du\\
+&=f'(0)+\sum_{i=0}^{n}w_i \int_{t_i}^{t_{i+1}}  \sum_{j=0}^n w_j^{-1} \int_{t_j}^{t_{j+1}} \Theta(s-u)\delta(v-u)du f''(v)dv\\
+&=f'(0)+\sum_{i=0}^n\int_{t_i}^{t_{i+1}}\Theta(s-u)f''(u)du \\
+&=f'(s)
+\end{split}
+\end{align}
+
+Define the two terms of the reproducing kernel $R(s,t)=R_s(t)=R_0(s,t)+R_1(s,t)$, where
+\begin{align}
+R_0(s,t)&=1+st \\
+R_1(s,t)&=\sum_{i=0}^{n}w_i^{-1}\int_{t_i}^{t_{i+1}}(s-u)_+(t-u)_+du
+\end{align}
+are both non-negative definite themselves. For $R_0$ there corresponds the space of polynomials $\mathcal{H}_0=\lbrace f:f''=0\rbrace$ with an inner product $\langle f,g\rangle = f(0)g(0)+f'(0)g'(0)$, and for $R_1$ there corresponds a sequence of orthogonal spaces $\mathcal{H}^{(i)}$
+\begin{equation*}
+\mathcal{H}^{(i)} = \lbrace f:f(0)=0,f'(0)=0,\int_{t_i}^{t_{i+1}}f''(t)^2dt<\infty \rbrace 
+\end{equation*}
+and $\mathcal{H}_1=\oplus _{i=1}^{n-1}\mathcal{H}^{(i)}$. The inner product through the entire space $\mathcal{H}_1$ is $\langle f,g \rangle = \sum_{i=1}^{n-1}w_i\int_{t_i}^{t_{i+1}}f''(t)g''(t)dt$. 
+
+
+Given a sequence of paired sampling points $\lbrace s_i,y_i,v_i \rbrace, i=1,\ldots,n$ on the interval $\lbrack s_1,s_n\rbrack$, it can be transformed to $\lbrace t_i,y_i,v_i \rbrace$ on the interval $\lbrack 0,1\rbrack$, where $0=t_0<t_1<\cdots <t_n<t_{n+1}=1$. The objective function of a V-spline on $\lbrack 0,1\rbrack$ is  
+\begin{equation}\label{maineq2}
+\frac{1}{n}\sum_{i=1}^{n}\left(y_i-f(t_i)\right)^2+\frac{\gamma}{n}\sum_{i=1}^{n}\left(v_i-f'(t_i)\right)^2+\sum_{i=0}^{n}\lambda_i\int_{t_i}^{t_{i+1}}f''(t)^2dt.
+\end{equation}
+
+Any $f\in\mathcal{C}_{\mbox{\scriptsize p.w.}}^{(2)}[0,1]$ can be written as 
+\begin{equation}\label{GaussianProcessFunctionF2}
+f(t)=d_1+d_2t+\sum_{j=1}^{n}c_jR_1(t_j,t)+\sum_{j=1}^{n}b_j\dot{R}_1(t_j,t) +\rho(t)
+\end{equation}
+%where $\mathbf{d},\mathbf{c}$ and $\mathbf{b}$ are coefficient vectors. 
+Thus, by substituting to the equation \eqref{maineq2}, it can be written as 
+\begin{align}\label{GassianProcessRawequation2}
+%\begin{split}
+%\begin{split}
+%&\frac{1}{n}\sum_{i=1}^{n} \left( y_i - d_1-d_2t_i-\sum_{j=1}^{n}c_jR_1(t_j,t_i)-\sum_{j=1}^{n}b_j\dot{R}_1(t_j,t_i)-\rho(t_i) \right) ^2\\
+%&\frac{\gamma}{n}\sum_{i=1}^{n} \left( v_i - d_2-\sum_{j=1}^{n}c_jR'_1(t_j,t_i)-\sum_{j=1}^{n}b_j\dot{R}'_1(t_j,t_i)-\rho'(t_i) \right) ^2\\
+%+&\sum_{i=1}^{n-1}\lambda_i \int_{t_i}^{t_{i+1}}  \left( \sum_{j=1}^{n}c_jR''_1(t_j,t)+\sum_{j=1}^{n}b_j\dot{R}''_1(t_j,t)+\rho''(t)\right)^2dt
+%\end{split} \\
+\begin{split}
+&\frac{1}{n}\sum_{i=1}^{n} \left( y_i - d_1-d_2t_i-\sum_{j=1}^{n}c_jR_1(t_j,t_i)-\sum_{j=1}^{n}b_j\dot{R}_1(t_j,t_i)-\rho(t_i) \right) ^2\\
++&\frac{\gamma}{n}\sum_{i=1}^{n} \left( v_i - d_2-\sum_{j=1}^{n}c_jR'_1(t_j,t_i)-\sum_{j=1}^{n}b_j\dot{R}'_1(t_j,t_i)-\rho'(t_i) \right) ^2\\
++& \sum_{i=0}^{n}\lambda_i \int_{t_i}^{t_{i+1}}  \left( \sum_{j=1}^{n}c_jR''_1(t_j,t)+\sum_{j=1}^{n}b_j\dot{R}''_1(t_j,t)+\rho''(t)\right)^2dt. 
+\end{split}
+%\end{split}
+\end{align}
+Because of orthogonality, $\rho(t_i) = \left(R_1(t_i,\cdot),\rho\right)=0$, $\rho'(t_i) = \left(\dot{R}_1(t_i,\cdot),\rho'\right)=0$, $i=1,\ldots,n$. 
+For further use, we need to notice the property of the inner product and $R_1$ satisfy 
+%\begin{align}
+%\sum_{i=1}^{n-1}w_i\int_{t_i}^{t_{i+1}}c_kR_1''(t_k,t)c_lR_1''(t_l,t)dt =\sum_{i=1}^{n-1} w_i\int_{t_i}^{t_{i+1}}c_k w_i^{-1}(t_k-t)_+c_lw_i^{-1}(t_l-t)_+dt =c_kR_1(t_k,t_l)c_l\\
+%\sum_{i=1}^{n-1}w_i\int_{t_i}^{t_{i+1}}c_kR_1''(t_k,t)b_l\dot{R}_1''(t_l,t)dt =\sum_{i=1}^{n-1} w_i\int_{t_i}^{t_{i+1}}c_k w_i^{-1}(t_k-t)_+b_lw_i^{-1}\mathbf{1}(t_l)dt=c_k\dot{R}_1(t_k,t_l)b_l\\
+%\sum_{i=1}^{n-1}w_i\int_{t_i}^{t_{i+1}}b_k\dot{R}_1''(t_k,t)b_l\dot{R}_1''(t_l,t)dt =\sum_{i=1}^{n-1} w_i\int_{t_i}^{t_{i+1}}b_k w_i^{-1}\mathbf{1}(t_k)b_lw_i^{-1}\mathbf{1}(t_l)dt=b_k\dot{R}'_1(t_k,t_l)b_l
+%\end{align}
+%\begin{equation}
+%\sum_{i=0}^{n}w_i\int_{t_i}^{t_{i+1}}c_kR_1''(t_k,t)c_lR_1''(t_l,t)dt =\sum_{i=0}^{n} w_i\int_{t_i}^{t_{i+1}}c_k w_i^{-1}(t_k-t)_+c_lw_i^{-1}(t_l-t)_+dt =c_kR_1(t_k,t_l)c_l
+%\end{equation}
+%\begin{equation}
+%\sum_{i=0}^{n}w_i\int_{t_i}^{t_{i+1}}c_kR_1''(t_k,t)b_l\dot{R}_1''(t_l,t)dt =\sum_{i=0}^{n} w_i\int_{t_i}^{t_{i+1}}c_k w_i^{-1}(t_k-t)_+b_lw_i^{-1}\mathbf{1}(t_l)dt=c_k\dot{R}_1(t_k,t_l)b_l
+%\end{equation}
+%\begin{equation}
+%\sum_{i=0}^{n}w_i\int_{t_i}^{t_{i+1}}b_k\dot{R}_1''(t_k,t)b_l\dot{R}_1''(t_l,t)dt =\sum_{i=0}^{n} w_i\int_{t_i}^{t_{i+1}}b_k w_i^{-1}\mathbf{1}(t_k)b_lw_i^{-1}\mathbf{1}(t_l)dt=b_k\dot{R}'_1(t_k,t_l)b_l
+%\end{equation}
+\begin{align}
+\langle R_1(s,\cdot),\dot{R}_1(t,\cdot)\rangle = R'_1(s,t) \\
+\langle \dot{R}_1(s,\cdot),\dot{R}_1(t,\cdot)\rangle = \dot{R}'_1(s,t) 
+\end{align}
+
+
+Similarly, by denoting the matrix $\{S\}_{ij}=(t_i)^{j-1}$, $j=1,2$, $\{Q\}_{ij}=R_1(t_j,t_i)$, $\{P\}_{ij}=\dot{R}_1(t_j,t_i)$ and $\{P'\}_{ij}=\dot{R}'_1(t_j,t_i)$, the above equation \eqref{GassianProcessRawequation2} becomes the matrix form 
+\begin{equation}\label{matriteq2}
+\begin{split}
+&\left(\mathbf{y}-S\mathbf{d}-Q\mathbf{c}-P\mathbf{b}\right)^\top \left(\mathbf{y}-S\mathbf{d}-Q\mathbf{c}-P\mathbf{b}\right)\\
++&\gamma\left(\mathbf{v}-S'\mathbf{d}-Q'\mathbf{c}-P'\mathbf{b}\right)^\top \left(\mathbf{v}-S'\mathbf{d}-Q'\mathbf{c}-P'\mathbf{b}\right)\\
++&n\Lambda\left(\mathbf{c}^\top Q\mathbf{c} + 2\mathbf{c}^\top P\mathbf{b}+ \mathbf{b}^\top P'\mathbf{b}\right)+n\Lambda(\rho,\rho),
+\end{split}
+\end{equation}
+where $\lambda_i=\Lambda w_i$. 
+
+Thus, the solution to \eqref{maineq2} is computed via the minimization of the first three terms in \eqref{matriteq2} with respect to $\mathbf{d}$, $\mathbf{c}$ and $\mathbf{b}$.
+
+
+
+
+
+
 \section{V-Spline with Correlated Random Errors}
 
 
-In most of the studies on polynomial smoothing splines, the random errors are assumed being independent. By contrast,  observations are often correlated in applications, such as time series data and spatial data. It is known that the correlation greatly affects the selection of smoothing parameters, which are critical to the performance of smoothing spline estimates \citep{wang1998smoothing}.  The parameter selection methods, such as generalized maximum likelihood (GML), generalized cross-validation (GCV), underestimate smoothing parameters when data are correlated. 
+In most of the studies on polynomial smoothing splines, the random errors are assumed being independent. By contrast,  observations are often correlated in applications, such as time series data and spatial data. It is known that the correlation greatly affects the selection of smoothing parameters, which are critical to the performance of smoothing spline estimates \citep{wang1998smoothing}. The presence of correlation
+between the errors, if ignored, causes the commonly used automatic tuning parameter selection methods, such as cross-validation and generalized cross-validation (GCV), to break down or underestimate the parameters \citep{opsomer2001nonparametric}. 
 
 
 \cite{diggle1989spline} extend GCV for choosing the degree of smoothing spline to accommodate an autocorrelated error sequence, by which the smoothing parameter and autocorrelation parameters are estimated simultaneously.  \cite{kohn1992nonparametric} propose an algorithm to evaluate the cross-validation functions, whose autocorrelated errors are modeled by an autoregressive moving average. \cite{wang1998smoothing} extend GML and unbiased risk (UBR), other than GCV, to estimate the smoothing parameters and correlation parameters simultaneously. In this section, we explore the extended GCV for V-spline with correlated errors. 
@@ -421,44 +542,47 @@ A natural extension to the above GCV for V-spline with correlated errors is \scr
 The GCV is used for finding the unknown constant parameter $\lambda$, instead of a piecewise constant $\lambda(t)$ at different intervals, and the parameter $\gamma$. The structures of covariance matrices $W$ and $U$ are assumed known. If the errors are independent, in which way $W$ and $U$ become identity matrices, the solution $\hat{f}$ degenerates to a conventional V-spline with constant $\lambda$ through over the entire interval $[0,1]$.  
 
 
-\section{A Numeric Simulation}
 
-Consider a length of 100 even spaced simulation data on $[0,1]$ and the model $f(t)=\sin(2\pi t)$, $f'(t)=\cos(2\pi t)$. With given parameters $\sigma^2=0.01$, $\gamma=0.02$ and covariance matrices $W$, $U$, the simulated data  is generated from  
-\begin{align}
-\begin{cases}
-y_i =f(t_i)+\varepsilon_{i}^{(1)}, \\
-v_i =f'(t_i)+\varepsilon_{i}^{(2)}, 
-\end{cases}
-\end{align}
-where $\varepsilon^{(1)}\sim N\left(0,\sigma^2W^{-1}\right)$, $\varepsilon^{(2)}\sim N\left(0,\frac{\sigma^2}{\gamma}U^{-1}\right)$ , $0\leq t_1 < \cdots < t_n \leq 1$. 
-
-With the same parameter found by GCV, V-spline and its Bayes estimate return the same reconstruction. However, because of the parameter is a constant $\lambda$ rather than a piecewise constant function $\lambda(t)$, the trivial V-spline might not be the optimal solution compared with the one consisting an adaptive penalty term in Section \ref{SectionTractorSpline}. 
-
-\begin{figure}[h]
-\centering
-%\includegraphics[width=0.8\textwidth]{Chapters/03GPR/plot/sim_cov} 
-\includegraphics[width=0.8\textwidth,height=8cm]{Chapters/03GPR/plot/ggsim_cov} 
- \caption{Comparison of (trivial) V-spline and its Bayes estimate. Two methods are corresponding to each other. In this figure, black dots are the observations and the solid line is the reconstruction. The V-spline and its posterior $\E(f(t) \mid \mathbf{y}, \mathbf{v})$ of Bayes estimate give the same results. }
-\end{figure}
+%\section{A Numeric Simulation}
+%
+%Consider a length of 100 even spaced simulation data on $[0,1]$ and the model $f(t)=\sin(2\pi t)$, $f'(t)=\cos(2\pi t)$. With given parameters $\sigma^2=0.01$, $\gamma=0.02$ and covariance matrices $W$, $U$, the simulated data  is generated from  
+%\begin{align}
+%\begin{cases}
+%y_i =f(t_i)+\varepsilon_{i}^{(1)}, \\
+%v_i =f'(t_i)+\varepsilon_{i}^{(2)}, 
+%\end{cases}
+%\end{align}
+%where $\varepsilon^{(1)}\sim N\left(0,\sigma^2W^{-1}\right)$, $\varepsilon^{(2)}\sim N\left(0,\frac{\sigma^2}{\gamma}U^{-1}\right)$ , $0\leq t_1 < \cdots < t_n \leq 1$. 
+%
+%With the same parameter found by GCV, V-spline and its Bayes estimate return the same reconstruction. However, because of the parameter is a constant $\lambda$ rather than a piecewise constant function $\lambda(t)$, the trivial V-spline might not be the optimal solution compared with the one consisting an adaptive penalty term in Section \ref{SectionTractorSpline}. 
+%
+%\begin{figure}[h]
+%\centering
+%%\includegraphics[width=0.8\textwidth]{Chapters/03GPR/plot/sim_cov} 
+%\includegraphics[width=0.8\textwidth,height=8cm]{Chapters/03GPR/plot/ggsim_cov} 
+% \caption{Comparison of (trivial) V-spline and its Bayes estimate. Two methods are corresponding to each other. In this figure, black dots are the observations and the solid line is the reconstruction. The V-spline and its posterior $\E(f(t) \mid \mathbf{y}, \mathbf{v})$ of Bayes estimate give the same results. }
+%\end{figure}
 
 
 
 \section{Conclusion}
 
-In this chapter, we take a review of the work that has been done for the relationship between polynomial smoothing spline and the Bayes estimates. With improper priors, the two methods correspond to each other. In fact, the smoothing spline is a particular case of Gaussian process regression. By following the work done by \cite{gu2013smoothing}, we find the Bayes estimate for a trivial V-spline with a constant penalty parameter $\lambda$. Additionally, we give the formula of GCV for V-spline with correlated errors on $y$ and $v$. 
+%In this chapter, we take a review of the work that has been done for the relationship between polynomial smoothing spline and the Bayes estimates. With improper priors, the two methods correspond to each other. In fact, the smoothing spline is a particular case of Gaussian process regression. By following the work done by \cite{gu2013smoothing}, we find the Bayes estimate for a trivial V-spline with a constant penalty parameter $\lambda$. Additionally, we give the formula of GCV for V-spline with correlated errors on $y$ and $v$. 
+%
+%
+%In order to find the Bayes estimate for the real V-spline with a piecewise penalty term $\lambda(t)$, we conjecture that the methods discussed in this chapter can be extended using the inner product 
+%\begin{equation}
+%\langle f,g \rangle=f(0) g(0)+f'(0) g'(0)+\sum_{i=1}^{n-1}w_i^{-1}\int_{t_i}^{t_{i+1}}f''(t)g''(t)dt,
+%\end{equation}
+%on $\mathcal{C}^{(2)}_{\mbox{\scriptsize p.w.}}[0,1]$, where $\sum_i w_i=1$ and $w_i>0$. 
+%
+%Besides GCV, other methods, such as EM and UBR are worth being investigated in further research. 
 
 
-In order to find the Bayes estimate for the real V-spline with a piecewise penalty term $\lambda(t)$, we conjecture that the methods discussed in this chapter can be extended using the inner product 
-\begin{equation}
-\langle f,g \rangle=f(0) g(0)+f'(0) g'(0)+\sum_{i=1}^{n-1}w_i^{-1}\int_{t_i}^{t_{i+1}}f''(t)g''(t)dt,
-\end{equation}
-on $\mathcal{C}^{(2)}_{\mbox{\scriptsize p.w.}}[0,1]$, where $\sum_i w_i=1$ and $w_i>0$. 
-
-Besides GCV, other methods, such as EM and UBR are worth being investigated in further research. 
+In this chapter, we take a review of the work that has been done for the correspondence between polynomial smoothing spline and the Bayes estimates. With improper priors, the two methods correspond to each other. In fact, the smoothing spline is a particular case of Gaussian process regression. By following the work done by \cite{gu2013smoothing}, we find the Bayes estimate of a V-spline if the penalty parameter $\lambda(t)$ is piecewise constant. Additionally, we give the formula of GCV for V-splines with correlated errors on $y$ and $v$. 
 
 
-
-
+Compared with the V-spline, which is proposed in Chapter \ref{ChapterTS}, the advantage of its Bayes estimate is that there are numerous sampling algorithms for parameter selection. The Bayes estimate does not require to pick a bunch of basis functions and, in some way, is more robust than V-splines.
 
 
 

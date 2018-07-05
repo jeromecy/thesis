@@ -41,16 +41,16 @@ In this chapter, an adaptive smoothing spline named the V-spline is proposed tha
 
 \section{V-Spline}\label{SectionTractorSpline}
 
-In the nonparametric regression, consider $n$ paired time series points $\left\lbrace t_1,y_1,v_1\right\rbrace$, $\ldots$, $\left\lbrace t_n,y_n,v_n\right\rbrace$, such that $a \leq t_1<t_2< \cdots < t_n \leq b$, $y$ is the position information and $v$ indicates its velocity. As in \citep{silverman1985some} and \citep{donoho1995wavelet}, we use a positive penalty function $\lambda(t)$ in the following objective function. 
+In the nonparametric regression, consider $n$ paired time series points $\left\lbrace t_1,y_1,v_1\right\rbrace$, $\ldots$, $\left\lbrace t_n,y_n,v_n\right\rbrace$, such that $a =t_0< t_1<t_2< \cdots < t_n <t_{n+1} = b$, $y$ is the position information and $v$ indicates its velocity. As in \citep{silverman1985some} and \citep{donoho1995wavelet}, we use a positive penalty function $\lambda(t)$ in the following objective function. 
 
 For a function $f:[a,b]\mapsto \mathbb{R}$ and $\gamma>0$, define the objective function 
 \begin{equation}\label{tractorsplineObjective}
-J[f]= \frac{1}{n} \sum_{i=1}^{n} \left( f(t_i)-y_i \right)^2 + \frac{\gamma}{n} \sum_{i=1}^{n} \left( f'(t_i)-v_i \right)^2 +\sum_{i=1}^{n-1} \int_{t_i}^{t_{i+1}}\lambda(t)  f''^2(t)dt,
+J[f]= \frac{1}{n} \sum_{i=1}^{n} \left( f(t_i)-y_i \right)^2 + \frac{\gamma}{n} \sum_{i=1}^{n} \left( f'(t_i)-v_i \right)^2 +\sum_{i=0}^{n} \int_{t_i}^{t_{i+1}}\lambda(t)  f''^2(t)dt,
 \end{equation}
 where $\gamma$ is the parameter that weights the residuals between $\mathbf{f}'$ and $\mathbf{v}$. We make the simplifying assumption that $\lambda(t)$ is a piecewise constant and adopts a constant value $\lambda_i$ on interval $(t_i,t_{i+1})$ for $i=1,\ldots, n-1$. 
 
 \begin{theorem}\label{TractorSplineTheorem}
-For $n\geq2$, the objective function $J[f]$ is minimized by a cubic spline that is unique and linear outside the knots.
+For $n\geq2$, the objective function $J[f]$ is uniquely minimized by a cubic spline, piecewise on the intervals $[t_i,t_{i+1})$, $i=1,\ldots,n-1$,  and linear on $[a,t_1]$ and $[t_n,b]$.
 \end{theorem}
 A further minimizer of \eqref{tractorsplineObjective} is called a \textit{V-spline}, coming from the incorporation with velocity information and applications on vehicle and vessel tracking. The proof of Theorem \ref{TractorSplineTheorem} is in Appendix \ref{AppendixTractorSplineProof}. 
 
@@ -395,7 +395,7 @@ Following \cite{nason2010wavelet}, we fix $n=1024$ in the simulation. To compare
 
 In the V-spline, there are two parameters $\eta$ and $\gamma$ to optimize. To evaluate the performance of the velocity term in objective function \eqref{tractorsplineObjective} and the adjusted penalty term in \eqref{adjustedpenalty}, the parameter $\gamma$ is set as 0 in one reconstruction of V-spline, whose objective function and solution become
 \begin{equation}\label{ofgamma0}
-J[f]_{\gamma=0}= \frac{1}{n} \sum_{i=1}^{n} \left(f(t_i)-y_i\right)^2 +\sum_{i=1}^{n-1} \int_{t_i}^{t_{i+1}}\lambda(t) f''^2 dt,
+J[f]_{\gamma=0}= \frac{1}{n} \sum_{i=1}^{n} \left(f(t_i)-y_i\right)^2 +\sum_{i=0}^{n} \int_{t_i}^{t_{i+1}}\lambda(t) f''^2 dt,
 \end{equation}
 and
 \begin{equation}\label{thetahat0}
@@ -447,7 +447,7 @@ Figure \ref{num1} to \ref{num4} display the original (velocity), generated posit
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBlocksPSpline.pdf}
-    \caption{Reconstruction by P-spline  }
+    \caption{Reconstruction by P-spline \\ \mbox{  } }
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
@@ -462,7 +462,7 @@ Figure \ref{num1} to \ref{num4} display the original (velocity), generated posit
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBlocksTractor.pdf}
-    \caption{Reconstruction by the proposed V-spline\\\mbox{  } }
+    \caption{Reconstruction by the proposed V-spline }
     \end{subfigure}
 \caption{Numerical example: $\textit{Blocks}$. Comparison of different reconstruction methods with simulated data.}\label{num1}
  \end{figure}
@@ -502,7 +502,7 @@ Figure \ref{num1} to \ref{num4} display the original (velocity), generated posit
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBumpsPSpline.pdf}
-    \caption{Reconstruction by P-spline }
+    \caption{Reconstruction by P-spline \\ \mbox{  } }
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
@@ -517,7 +517,7 @@ Figure \ref{num1} to \ref{num4} display the original (velocity), generated posit
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBumpsTractor.pdf}
-    \caption{Reconstruction by the proposed V-spline \\\mbox{  } }
+    \caption{Reconstruction by the proposed V-spline}
     \end{subfigure}
 \caption{Numerical example: $\textit{Bumps}$. Comparison of different reconstruction methods with simulated data.}\label{num2}
  \end{figure}
@@ -558,7 +558,7 @@ Figure \ref{num1} to \ref{num4} display the original (velocity), generated posit
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSinePSpline.pdf}
-    \caption{Reconstruction by P-spline}
+    \caption{Reconstruction by P-spline \\ \mbox{  } }
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
@@ -573,7 +573,7 @@ Figure \ref{num1} to \ref{num4} display the original (velocity), generated posit
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSineTractor.pdf}
-    \caption{Reconstruction by the proposed V-spline \\ \mbox{  }}
+    \caption{Reconstruction by the proposed V-spline }
     \end{subfigure}
 \caption{Numerical example: $\textit{HeaviSine}$. Comparison of different reconstruction methods with simulated data.}\label{num3}
  \end{figure}
@@ -613,7 +613,7 @@ Figure \ref{num1} to \ref{num4} display the original (velocity), generated posit
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggDopplerPSpline.pdf}
-    \caption{Reconstruction by P-spline}
+    \caption{Reconstruction by P-spline \\ \mbox{  } }
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
@@ -628,7 +628,7 @@ Figure \ref{num1} to \ref{num4} display the original (velocity), generated posit
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth,height=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggDopplerTractor.pdf}
-    \caption{Reconstruction by the proposed V-spline\\\mbox{  } }
+    \caption{Reconstruction by the proposed V-spline}
     \end{subfigure}
 \caption{Numerical example: $\textit{Doppler}$. Comparison of different reconstruction methods with simulated data}\label{num4}
  \end{figure}
@@ -773,7 +773,7 @@ Table \ref{tablecompareSNR} is comparing the capability of V-spline in retrievin
 	\end{tabular}
 \end{table}
 
-Further analysis in figures \ref{tractorsplineSNR7acf} and \ref{tractorsplineSNR3acf} shows that the residuals from V-splines are independent. 
+Further analysis in Figures \ref{tractorsplineSNR7acf} and \ref{tractorsplineSNR3acf} shows that the residuals from V-splines are independent. 
 
 
 \subsection{Irregularly Sampled Time Series Data}
@@ -840,7 +840,7 @@ The reconstructions of regularly and irregularly sampled data are very competiti
 	\centering
     \caption{MSE and TMSE of reconstructions from regularly and irregularly sampled data  }\label{tablecompareSMEIreReg}
 	\begin{tabular}{|c|C{2cm}|C{2cm}|C{2cm}|C{2cm}|} \hline	
-	& \multicolumn{2}{|c|}{MSE $\times 10^{-4}$} & \multicolumn{2}{c|}{TMSE $\times 10^{-6}$} \\ \cline{2-5}
+	& \multicolumn{2}{c|}{MSE $\times 10^{-4}$} & \multicolumn{2}{c|}{TMSE $\times 10^{-6}$} \\ \cline{2-5}
 	                 & Regularly & Irregularly & Regularly & Irregularly \\ \hline
 \textit{Blocks}        &    8.0260 &  8.3358  & 3.5197 & 10.8596  \\  \hline
 \textit{Bumps}       &    2.1374  & 2.0203  & 1.6662 & 6.2586 \\  \hline
@@ -849,7 +849,7 @@ The reconstructions of regularly and irregularly sampled data are very competiti
 	\end{tabular}
 \end{table}
 
-%\clearpage 
+\clearpage 
 
 \section{Inference of Tractor Trajectories}\label{splineapplication}
 

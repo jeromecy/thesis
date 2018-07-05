@@ -4,15 +4,17 @@ The top-level auxiliary file: Final.aux
 The style file: otago.bst
 Reallocated field_info (elt_size=4) to 11003 items from 5000.
 Database file #1: thesis.bib
+Warning--string name "january" is undefined
+--line 313 of file thesis.bib
 Warning--no number and no volume in betancourt2017conceptual
 Warning--page numbers missing in betancourt2017conceptual
 Warning--no number and no volume in branson2017nonparametric
 Warning--page numbers missing in branson2017nonparametric
+Warning--can't use both author and editor fields in chen2009feedback
 Warning--no number and no volume in chopin2010particle
 Warning--page numbers missing in chopin2010particle
 Warning--can't use both author and editor fields in smcmip2011
 Warning--can't use both author and editor fields in einstein1956investigations
-Warning--empty booktitle in gloderer2010spline
 Warning--can't use both volume and number fields in gordon1993novel
 Warning--no number and no volume in graves2011automatic
 Warning--page numbers missing in graves2011automatic
@@ -31,43 +33,43 @@ Warning--no number and no volume in vieira2016online
 Warning--page numbers missing in vieira2016online
 You've used 261 entries,
             2855 wiz_defined-function locations,
-            1988 strings with 46941 characters,
-and the built_in function-call counts, 184174 in all, are:
-= -- 15588
+            1982 strings with 46678 characters,
+and the built_in function-call counts, 184191 in all, are:
+= -- 15596
 > -- 13261
-< -- 60
+< -- 62
 + -- 3997
 - -- 4559
-* -- 16431
-:= -- 33311
-add.period$ -- 822
+* -- 16452
+:= -- 33318
+add.period$ -- 824
 call.type$ -- 261
-change.case$ -- 1638
+change.case$ -- 1637
 chr.to.int$ -- 261
 cite$ -- 286
-duplicate$ -- 5158
-empty$ -- 11326
+duplicate$ -- 5152
+empty$ -- 11316
 format.name$ -- 5291
-if$ -- 34446
+if$ -- 34445
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 302
-newline$ -- 1308
+missing$ -- 301
+newline$ -- 1309
 num.names$ -- 2612
-pop$ -- 1484
+pop$ -- 1468
 preamble$ -- 1
 purify$ -- 3460
 quote$ -- 0
-skip$ -- 5407
+skip$ -- 5406
 stack$ -- 0
 substring$ -- 10150
-swap$ -- 1773
-text.length$ -- 60
+swap$ -- 1777
+text.length$ -- 62
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 4750
 warning$ -- 25
 while$ -- 2645
 width$ -- 0
-write$ -- 3500
-(There were 25 warnings)
+write$ -- 3506
+(There were 26 warnings)

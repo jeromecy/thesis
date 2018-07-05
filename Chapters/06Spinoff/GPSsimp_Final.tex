@@ -55,7 +55,7 @@ Finally, the point $p_i$ belongs to the track if Rule 1 = TRUE or Rule 2 = TRUE 
 
 \section{Evaluation}
 
-Errors are measured by Synchronized Euclidean Distance \citep{lawson2011compression}. SED measures the distances between the original and compressed trace at the same time. As shown in figure \ref{DataSimpSED}, the green points $P_{t1}, \ldots ,P_{t5}$ are original positions. After simplification, the points $P_{t2}, P_{t3}$ and $P_{t4}$ are removed. The black curve is the original trajectory and the gray dash-dot line is the simplified trajectory. The blue points $P'_{t2}$,$P'_{t3}$ and $P'_{t4}$ on simplified trajectory have the same time difference as the point $P_{t2}$, $P_{t3}$ and $P_{t4}$ on original trajectory did. For instance, the time difference between $P_{t2}$ and $P_{t3}$ is the same as that between $P'_{t2}$ and $P'_{t3}$. Further, the distances between $P_{t2}$ and $P'_{t2}$, $P_{t3}$ and $P'_{t3}$ and $P_{t4}$, $P'_{t4}$ can be calculated.
+Errors are measured by Synchronized Euclidean Distance \citep{lawson2011compression}. SED measures the distances between the original and compressed trace at the same time. As shown in Figure \ref{DataSimpSED}, the green points $P_{t1}, \ldots ,P_{t5}$ are original positions. After simplification, the points $P_{t2}, P_{t3}$ and $P_{t4}$ are removed. The black curve is the original trajectory and the gray dash-dot line is the simplified trajectory. The blue points $P'_{t2}$,$P'_{t3}$ and $P'_{t4}$ on simplified trajectory have the same time difference as the point $P_{t2}$, $P_{t3}$ and $P_{t4}$ on original trajectory did. For instance, the time difference between $P_{t2}$ and $P_{t3}$ is the same as that between $P'_{t2}$ and $P'_{t3}$. Further, the distances between $P_{t2}$ and $P'_{t2}$, $P_{t3}$ and $P'_{t3}$ and $P_{t4}$, $P'_{t4}$ can be calculated.
 
 
 \begin{figure}
@@ -97,7 +97,7 @@ Errors are measured by Synchronized Euclidean Distance \citep{lawson2011compress
 \end{figure}
 
 
-Another way to calculate the difference between a GPS trace and its compressed version is to measure the perpendicular distance. This algorithm ignores the temporal component and uses simple perpendicular distance \citep{meratnia2004spatiotemporal}. The figure \ref{DataSimpAB} expresses these differences clearly. 
+Another way to calculate the difference between a GPS trace and its compressed version is to measure the perpendicular distance. This algorithm ignores the temporal component and uses simple perpendicular distance \citep{meratnia2004spatiotemporal}. The Figure \ref{DataSimpAB} expresses these differences clearly. 
 
 \begin{figure}
 \centering
@@ -251,7 +251,7 @@ where $K_k$ is the Kalman gain matrix, $z_k$ is the observed data.
 
 The original data set contains 1\,021 rows, including latitude, longitude, velocity, bearing (heading direction) and boom status. Douglas-Peucker Algorithm, with distance threshold $0.205$m, retained 847 points. The proposed algorithm, given a predictable distance $5$m and heading direction changing threshold $\ang{30}$, returns the same amount of simplified points. Under the same circumstance, we calculated SED and other information. 
 
-Table \ref{DataSimpCompTable} describes the results after being simplified by DP algorithm and the proposed algorithm. Figure \ref{DataSimpRawTra} demonstrates the simplified raw data and figure \ref{DataSimpKFTra} is the fitted trajectories by KF. 
+Table \ref{DataSimpCompTable} describes the results after being simplified by DP algorithm and the proposed algorithm. Figure \ref{DataSimpRawTra} demonstrates the simplified raw data and Figure \ref{DataSimpKFTra} is the fitted trajectories by KF. 
 
 \begin{table}
 \centering

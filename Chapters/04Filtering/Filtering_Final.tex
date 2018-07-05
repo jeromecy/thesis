@@ -155,7 +155,7 @@ q(x_t \mid  x_{0:t-1},y_{1:t})=q(x_t \mid  x_{t-1},y_t ),
 \end{equation}
 the importance weights $w_t^{(i)}$ can be updated recursively via 
 \begin{equation}
-w_t^{(i)}\propto w_{t-1}^{(i)} \frac{ p\left(y_t \mid x_t^{(i)}\right) p\left(x_{t}^{(i)}\mid x_{t-1}^{(i)}\right) }   {q\left(x_{t}^{(i)}\mid x_{t-1}^{(i)},y_{t}\right)}.
+w_t^{(i)}\propto w_{t-1}^{(i)} \frac{ p\left(y_t \mid x_t^{(i)}\right) p\left(x_{t}^{(i)}\mid x_{t-1}^{(i)}\right) }{q\left(x_{t}^{(i)}\mid x_{t-1}^{(i)},y_{t}\right)}.
 \end{equation}
 
 The problem of SIS filter is that the distribution of importance weights becomes more and more skewed as time increases. Hence, after several iterations, only few particles have non-zero importance weights. This phenomenon is called \textit{weight degeneracy} or \textit{sample impoverishment} \citep{smcmip2011}.
@@ -726,7 +726,7 @@ Notice that the proposed sliding window MCMC algorithm requires using a few data
 \hline
      & LW & St & PL  & MCMC-100 & MCMC-300 & MCMC-vary \\ \hline
 Mean of $\hat{\phi}$ & 0.7947 &   0.7908   &  0.7918 & 0.7914 &  0.8038& 0.7922 \\ \hline
-Se of $\hat{\phi}$ ($\times 10^{-4}$) &  13.1000  & 4.8793 & 6.2877 & 1.1388 & 0.3275 & 0.27506 \\ \hline
+SE of $\hat{\phi}$ ($\times 10^{-4}$) &  13.1000  & 4.8793 & 6.2877 & 1.1388 & 0.3275 & 0.27506 \\ \hline
 $\frac{1}{n}\sum_i(\hat{x}_i-x_i)^2$ & 0.5745 & 0.5739 & 0.5737 & 0.5875&  0.5741 &  0.5740 \\ \hline
 \end{tabular}
 \caption{Box-plots comparison of all the algorithms. The proposed MCMC algorithm is more stable than other filters.} \label{FilterRiewComparesionTable}
