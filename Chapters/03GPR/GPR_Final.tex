@@ -181,7 +181,7 @@ in which the second derivative of any function $f$ is not necessarily continuous
 
 Given a sequence of paired data $\left\lbrace (t_1,y_1,v_1),\ldots, (t_n,y_n,v_n) \right\rbrace$, the the minimizer of 
 \begin{equation}\label{maineq}
-\frac{1}{n}\sum_{i=1}^{n}(y_i-f(t_i))^2+\frac{\gamma}{n}\sum_{i=1}^{n}(v_i-f'(t_i))^2+\lambda \int_{0}^{1}f''^2dt
+J[f]=\frac{1}{n}\sum_{i=1}^{n}(y_i-f(t_i))^2+\frac{\gamma}{n}\sum_{i=1}^{n}(v_i-f'(t_i))^2+\lambda \int_{0}^{1}f''^2dt
 \end{equation}
 in the space $\mathcal{C}_{\mbox{\scriptsize p.w.}}^{(2)}[0,1]$ is a V-spline. Equipped with an appropriate inner product
 \begin{equation}\label{TractorSplineInnerProduct}
@@ -238,9 +238,9 @@ f(t)=d_1+d_2t+\sum_{j=1}^{n}c_jR_1(t_j,t)+\sum_{j=1}^{n}b_j\dot{R}_1(t_j,\cdot) 
 where $\mathbf{d}=\lbrace d_1,d_2\rbrace,\mathbf{c}=\lbrace c_j\rbrace$ and $\mathbf{b}=\lbrace b_j\rbrace$, $j=1,\ldots,n$, are coefficients, and $\rho(t) \in \mathcal{H}_1 \ominus \mathcal{H}_*$. Thus, by substituting to the equation \eqref{maineq}, it can be written as 
 \begin{equation}\label{GassianProcessRawequation}
 \begin{split}
-&\frac{1}{n}\sum_{i=1}^n \left( y_i - d_1-d_2t-\sum_{j=1}^{n}c_jR_1(t_j,t_i)-\sum_{j=1}^{n}b_j\dot{R}_1(t_j,t_i)-\rho(t_i) \right) ^2\\
-+&\frac{\gamma}{n}\sum_{i=1}^n \left( v_i - d_2-\sum_{j=1}^{n}c_jR'_1(t_j,t_i)-\sum_{j=1}^{n}b_j\dot{R}'_1(t_j,t_i)-\rho'(t_i) \right) ^2\\
-+&\lambda \int_0^1 \left( \sum_{j=1}^{n}c_jR''_1(t_j,t)+\sum_{j=1}^{n}b_j\dot{R}''_1(t_j,t)+\rho''(t)\right)^2dt
+nJ[f]=&\sum_{i=1}^n \left( y_i - d_1-d_2t-\sum_{j=1}^{n}c_jR_1(t_j,t_i)-\sum_{j=1}^{n}b_j\dot{R}_1(t_j,t_i)-\rho(t_i) \right) ^2\\
++&\gamma\sum_{i=1}^n \left( v_i - d_2-\sum_{j=1}^{n}c_jR'_1(t_j,t_i)-\sum_{j=1}^{n}b_j\dot{R}'_1(t_j,t_i)-\rho'(t_i) \right) ^2\\
++&n\lambda \int_0^1 \left( \sum_{j=1}^{n}c_jR''_1(t_j,t)+\sum_{j=1}^{n}b_j\dot{R}''_1(t_j,t)+\rho''(t)\right)^2dt
 \end{split}
 \end{equation}
 Because of orthogonality, $\rho(t_i) = \langle R_1(t_i,\cdot),\rho\rangle=0$, $\rho'(t_i) = \langle\dot{R}_1(t_i,\cdot),\rho'\rangle=0$, $i=1,\ldots,n$. By denoting that 
@@ -251,7 +251,7 @@ S'&=\left\lbrace S'_{ij} \right\rbrace_{n\times 2}=\begin{bmatrix} 0 & 1 \end{bm
 and noting that $\int_0^1R''_1(t_i,t)R''_1(t_j,t)dt=R_1(t_i,t_j)$, $\int_0^1R''_1(t_i,t)\dot{R}''_1(t_j,t)dt=\int_0^{v}(t_i-t)dt=\dot{R}_1(t_j,t_i)$, and $\int_0^1\dot{R}''_1(t_i,t)\dot{R}''_1(t_j,t)dt=\int_0^{v}1dt=\dot{R}'_1(t_i,t_j)$, where $v=\mbox{min}(t_i,t_j)$, the above equation \eqref{GassianProcessRawequation} can be written as 
 \begin{equation}\label{matriteq}
 \begin{split}
-&\left(\mathbf{y}-S\mathbf{d}-Q\mathbf{c}-P\mathbf{b}\right)^\top \left(\mathbf{y}-S\mathbf{d}-Q\mathbf{c}-P\mathbf{b}\right)\\
+nJ[f]=&\left(\mathbf{y}-S\mathbf{d}-Q\mathbf{c}-P\mathbf{b}\right)^\top \left(\mathbf{y}-S\mathbf{d}-Q\mathbf{c}-P\mathbf{b}\right)\\
 +&\gamma\left(\mathbf{v}-S'\mathbf{d}-Q'\mathbf{c}-P'\mathbf{b}\right)^\top \left(\mathbf{v}-S'\mathbf{d}-Q'\mathbf{c}-P'\mathbf{b}\right)\\
 +&n\lambda \left(\mathbf{c}^\top Q\mathbf{c} + 2\mathbf{c}^\top P\mathbf{b}+ \mathbf{b}^\top P'\mathbf{b}\right)+n\lambda\left(\rho,\rho\right).
 \end{split}
@@ -260,7 +260,7 @@ Note that $\rho$ only appears in the third term and is minimized at $\rho=0$. He
 
 
 
-\subsection{Posterior of Bayes Estimates}
+\subsection{Posterior of Bayes Estimates}\label{sectionBayesEstimate}
 
 
 %Consider the independent observations $y_i\sim N\left(f(t_i),\sigma^2 \right)$ and $v_i\sim N\left(f'(t_i),\frac{\sigma^2}{\gamma} \right)$, 
@@ -375,8 +375,8 @@ Finally we obtain the following theorem:
 The smoothing V-spline of \eqref{maineq} is the posterior
 mean of $f=f_0+f_1 + \dot{f}_1$, where $f_0$ diffuses in span $\left\lbrace 1,t\right\rbrace$ and $f_1$, $\dot{f}_1$ have Gaussian process priors with mean zero and covariance functions
 \begin{align}
-\Cov \left(f_1,f_1\right)   &= R_1\left(s,t\right)   =\beta \int_{0}^{1} \left(s-u\right)_+\left(t-u\right)_+du, \\
-\Cov \left(\dot{f}_1,f_1\right)  &= \dot{R}_1\left(s,t\right) =\beta \left(t+\int_0^s\left(t-u\right)_+du \right)
+\Cov \left(f_1,f_1\right)   &= \beta R_1\left(s,t\right)   =\beta \int_{0}^{1} \left(s-u\right)_+\left(t-u\right)_+du, \\
+\Cov \left(\dot{f}_1,f_1\right)  &= \beta \dot{R}_1\left(s,t\right) =\beta \int_0^s\left(t-u\right)_+du,
 \end{align}
 for $\beta = \sigma^2/n\lambda$.
 \end{theorem}
@@ -433,7 +433,7 @@ and $\mathcal{H}_1=\oplus _{i=1}^{n-1}\mathcal{H}^{(i)}$. The inner product thro
 
 Given a sequence of paired sampling points $\lbrace s_i,y_i,v_i \rbrace, i=1,\ldots,n$ on the interval $\lbrack s_1,s_n\rbrack$, it can be transformed to $\lbrace t_i,y_i,v_i \rbrace$ on the interval $\lbrack 0,1\rbrack$, where $0=t_0<t_1<\cdots <t_n<t_{n+1}=1$. The objective function of a V-spline on $\lbrack 0,1\rbrack$ is  
 \begin{equation}\label{maineq2}
-\frac{1}{n}\sum_{i=1}^{n}\left(y_i-f(t_i)\right)^2+\frac{\gamma}{n}\sum_{i=1}^{n}\left(v_i-f'(t_i)\right)^2+\sum_{i=0}^{n}\lambda_i\int_{t_i}^{t_{i+1}}f''(t)^2dt.
+J[f]=\frac{1}{n}\sum_{i=1}^{n}\left(y_i-f(t_i)\right)^2+\frac{\gamma}{n}\sum_{i=1}^{n}\left(v_i-f'(t_i)\right)^2+\sum_{i=0}^{n}\lambda_i\int_{t_i}^{t_{i+1}}f''(t)^2dt.
 \end{equation}
 
 Any $f\in\mathcal{C}_{\mbox{\scriptsize p.w.}}^{(2)}[0,1]$ can be written as 
@@ -450,13 +450,13 @@ Thus, by substituting to the equation \eqref{maineq2}, it can be written as
 %+&\sum_{i=1}^{n-1}\lambda_i \int_{t_i}^{t_{i+1}}  \left( \sum_{j=1}^{n}c_jR''_1(t_j,t)+\sum_{j=1}^{n}b_j\dot{R}''_1(t_j,t)+\rho''(t)\right)^2dt
 %\end{split} \\
 \begin{split}
-&\frac{1}{n}\sum_{i=1}^{n} \left( y_i - d_1-d_2t_i-\sum_{j=1}^{n}c_jR_1(t_j,t_i)-\sum_{j=1}^{n}b_j\dot{R}_1(t_j,t_i)-\rho(t_i) \right) ^2\\
-+&\frac{\gamma}{n}\sum_{i=1}^{n} \left( v_i - d_2-\sum_{j=1}^{n}c_jR'_1(t_j,t_i)-\sum_{j=1}^{n}b_j\dot{R}'_1(t_j,t_i)-\rho'(t_i) \right) ^2\\
-+& \sum_{i=0}^{n}\lambda_i \int_{t_i}^{t_{i+1}}  \left( \sum_{j=1}^{n}c_jR''_1(t_j,t)+\sum_{j=1}^{n}b_j\dot{R}''_1(t_j,t)+\rho''(t)\right)^2dt. 
+nJ[f]=& \left( y_i - d_1-d_2t_i-\sum_{j=1}^{n}c_jR_1(t_j,t_i)-\sum_{j=1}^{n}b_j\dot{R}_1(t_j,t_i)-\rho(t_i) \right) ^2\\
++&\gamma\sum_{i=1}^{n} \left( v_i - d_2-\sum_{j=1}^{n}c_jR'_1(t_j,t_i)-\sum_{j=1}^{n}b_j\dot{R}'_1(t_j,t_i)-\rho'(t_i) \right) ^2\\
++&n \sum_{i=0}^{n}\lambda_i \int_{t_i}^{t_{i+1}}  \left( \sum_{j=1}^{n}c_jR''_1(t_j,t)+\sum_{j=1}^{n}b_j\dot{R}''_1(t_j,t)+\rho''(t)\right)^2dt. 
 \end{split}
 %\end{split}
 \end{align}
-Because of orthogonality, $\rho(t_i) = \left(R_1(t_i,\cdot),\rho\right)=0$, $\rho'(t_i) = \left(\dot{R}_1(t_i,\cdot),\rho'\right)=0$, $i=1,\ldots,n$. 
+Because of orthogonality, $\rho(t_i) = \langle R_1(t_i,\cdot),\rho\rangle=0$, $\rho'(t_i) = \langle \dot{R}_1(t_i,\cdot),\rho'\rangle=0$, $i=1,\ldots,n$. 
 For further use, we need to notice the property of the inner product and $R_1$ satisfy 
 %\begin{align}
 %\sum_{i=1}^{n-1}w_i\int_{t_i}^{t_{i+1}}c_kR_1''(t_k,t)c_lR_1''(t_l,t)dt =\sum_{i=1}^{n-1} w_i\int_{t_i}^{t_{i+1}}c_k w_i^{-1}(t_k-t)_+c_lw_i^{-1}(t_l-t)_+dt =c_kR_1(t_k,t_l)c_l\\
@@ -478,10 +478,10 @@ For further use, we need to notice the property of the inner product and $R_1$ s
 \end{align}
 
 
-Similarly, by denoting the matrix $\{S\}_{ij}=(t_i)^{j-1}$, $j=1,2$, $\{Q\}_{ij}=R_1(t_j,t_i)$, $\{P\}_{ij}=\dot{R}_1(t_j,t_i)$ and $\{P'\}_{ij}=\dot{R}'_1(t_j,t_i)$, the above equation \eqref{GassianProcessRawequation2} becomes the matrix form 
+By denoting the matrices $\{S\}_{ij}=(t_i)^{j-1}$, $j=1,2$, $\{Q\}_{ij}=R_1(t_j,t_i)$, $\{P\}_{ij}=\dot{R}_1(t_j,t_i)$ and $\{P'\}_{ij}=\dot{R}'_1(t_j,t_i)$, the above equation \eqref{GassianProcessRawequation2} becomes the matrix form 
 \begin{equation}\label{matriteq2}
 \begin{split}
-&\left(\mathbf{y}-S\mathbf{d}-Q\mathbf{c}-P\mathbf{b}\right)^\top \left(\mathbf{y}-S\mathbf{d}-Q\mathbf{c}-P\mathbf{b}\right)\\
+nJ[f]=&\left(\mathbf{y}-S\mathbf{d}-Q\mathbf{c}-P\mathbf{b}\right)^\top \left(\mathbf{y}-S\mathbf{d}-Q\mathbf{c}-P\mathbf{b}\right)\\
 +&\gamma\left(\mathbf{v}-S'\mathbf{d}-Q'\mathbf{c}-P'\mathbf{b}\right)^\top \left(\mathbf{v}-S'\mathbf{d}-Q'\mathbf{c}-P'\mathbf{b}\right)\\
 +&n\Lambda\left(\mathbf{c}^\top Q\mathbf{c} + 2\mathbf{c}^\top P\mathbf{b}+ \mathbf{b}^\top P'\mathbf{b}\right)+n\Lambda(\rho,\rho),
 \end{split}
@@ -490,8 +490,15 @@ where $\lambda_i=\Lambda w_i$.
 
 Thus, the solution to \eqref{maineq2} is computed via the minimization of the first three terms in \eqref{matriteq2} with respect to $\mathbf{d}$, $\mathbf{c}$ and $\mathbf{b}$.
 
-
-
+Therefore, the calculation goes through the same process in Section \ref{sectionBayesEstimate} and the following theorem is obtained. 
+\begin{theorem}
+The smoothing V-spline of \eqref{maineq2} is the posterior mean of $f=f_0+f_1 + \dot{f}_1$, where $f_0$ diffuses in span $\left\lbrace 1,t\right\rbrace$ and $f_1$, $\dot{f}_1$ have Gaussian process priors with mean zero and covariance functions
+\begin{align}
+\Cov \left(f_1,f_1\right)   &= \beta R_1\left(s,t\right)  =\beta \sum_{i=0}^n w_i^{-1} \int_{t_i}^{t_{i+1}} \left(s-u\right)_+\left(t-u\right)_+du, \\
+\Cov \left(\dot{f}_1,f_1\right)  &= \beta \dot{R}_1\left(s,t\right) =\beta \sum_{i=0}^n w_i^{-1} \int_{t_i}^{t_{i+1}} \Theta\left(s-u\right)\left(t-u\right)_+du,
+\end{align}
+for $\beta = \sigma^2/n\Lambda$, where $\lambda_i=\Lambda w_i$.
+\end{theorem}
 
 
 
