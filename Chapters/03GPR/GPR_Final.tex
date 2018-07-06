@@ -52,7 +52,7 @@ For any $f\in \mathcal{C}^{(m)}[0,1]$, its standard Taylor expansion is
 \begin{equation}
 f(t) = \sum_{\nu=0}^{m-1}\frac{t^\nu}{\nu!}f^{(\nu)}(0) + \int_{0}^{1}\frac{(t-u)_+^{m-1}}{(m-1)!}f^{(m)}(t)dt,
 \end{equation}
-where $(\cdot)_+ =\max(0, \cdot)$. With an inner product 
+where $(\cdot)_+ =\max\lbrace 0, \cdot\rbrace$. With an inner product 
 \begin{equation}
 \langle f,g \rangle = \sum_{\nu=0}^{m-1}f^{(\nu)}(0)g^{(\nu)}(0) +  \int_{0}^{1}f^{(m)}(t) g^{(m)}(t)dt,
 \end{equation}
@@ -248,7 +248,7 @@ Because of orthogonality, $\rho(t_i) = \langle R_1(t_i,\cdot),\rho\rangle=0$, $\
 S&=\left\lbrace S_{ij} \right\rbrace_{n\times 2}=\begin{bmatrix}1 & t_i \end{bmatrix} ,& Q&=\left\lbrace Q_{ij} \right\rbrace_{n\times n}= R_1(t_j,t_i), & P&=\left\lbrace P_{ij} \right\rbrace_{n\times n}= \dot{R}_1(t_j,t_i), \\
 S'&=\left\lbrace S'_{ij} \right\rbrace_{n\times 2}=\begin{bmatrix} 0 & 1 \end{bmatrix} ,& Q'&=\left\lbrace Q'_{ij} \right\rbrace_{n\times n}= R_1'(t_j,t_i), & P'&=\left\lbrace P'_{ij} \right\rbrace_{n\times n}= \dot{R}_1'(t_j,t_i). 
 \end{align*}
-and noting that $\int_0^1R''_1(t_i,t)R''_1(t_j,t)dt=R_1(t_i,t_j)$, $\int_0^1R''_1(t_i,t)\dot{R}''_1(t_j,t)dt=\int_0^{v}(t_i-t)dt=\dot{R}_1(t_j,t_i)$, and $\int_0^1\dot{R}''_1(t_i,t)\dot{R}''_1(t_j,t)dt=\int_0^{v}1dt=\dot{R}'_1(t_i,t_j)$, where $v=\mbox{min}(t_i,t_j)$, the above equation \eqref{GassianProcessRawequation} can be written as 
+and noting that $\int_0^1R''_1(t_i,t)R''_1(t_j,t)dt=R_1(t_i,t_j)$, $\int_0^1R''_1(t_i,t)\dot{R}''_1(t_j,t)dt=\int_0^{v}(t_i-t)dt=\dot{R}_1(t_j,t_i)$, and $\int_0^1\dot{R}''_1(t_i,t)\dot{R}''_1(t_j,t)dt=\int_0^{v}1dt=\dot{R}'_1(t_i,t_j)$, where $v=\mbox{min}\lbrace t_i,t_j\rbrace$, the above equation \eqref{GassianProcessRawequation} can be written as 
 \begin{equation}\label{matriteq}
 \begin{split}
 nJ[f]=&\left(\mathbf{y}-S\mathbf{d}-Q\mathbf{c}-P\mathbf{b}\right)^\top \left(\mathbf{y}-S\mathbf{d}-Q\mathbf{c}-P\mathbf{b}\right)\\
@@ -278,13 +278,14 @@ Note that $\rho$ only appears in the third term and is minimized at $\rho=0$. He
 %where $d\sim N(0,\tau^2I_{2\times 2})$. The covariance functions for $y$, $v$ and $f$, $f'$ are \small
 
 
-In a general process, we know that $p(\mathbf{y},\mathbf{v}\mid f) = N(f,\Sigma(\varepsilon))$. However, we are more interested in $f$ given measurements 
+In a general process, we know that $p(\mathbf{y},\mathbf{v}\mid f) = N(f,\Gamma)$. However, we are more interested in $f$ given measurements 
 \begin{equation}
 p(f\mid \mathbf{y},\mathbf{v}) \propto p(\mathbf{y},\mathbf{v}\mid f)p(f)
 \end{equation}
-where $f\sim GP(0,\Sigma)$ is a Gaussian process prior.
+where $f\sim GP(0,\Sigma)$ is a Gaussian process prior. In fact, the covariance matrix $\Sigma$ is associated to the inner product $R(s,t)$. 
 
-In fact, suppose the covariance functions for $y$, $v$ and $f$, $f'$ are \small
+Observing $y_i\sim N\left(f (t_i),\sigma^2\right)$ and $v_i\sim N\left(f (t_i),\frac{\sigma^2}{\gamma}\right)$, $i=1,\ldots,n$, the joint distribution of $\mathbf{y},\mathbf{v}$ and $f(t)$ is normal with mean zero and a covariance matrix can be found by the following 
+\small
 \begin{align*}
 \E\lbrack f(s)f (t)\rbrack &=\tau^2R_0(s,t)+\beta R_1(s,t) & \E \lbrack f(s)f '(t)\rbrack&=\tau^2R_0'(s,t)+\beta R_1'(s,t) \\
 \E\lbrack f '(s)f (t)\rbrack&=\tau^2\dot{R}_0(s,t)+\beta\dot{R}_1(s,t) & \E\lbrack f '(s)f '(t)\rbrack&=\tau^2\dot{R}'_0(s,t)+\beta\dot{R}'_1(s,t) \\
@@ -299,13 +300,12 @@ In fact, suppose the covariance functions for $y$, $v$ and $f$, $f'$ are \small
 \E\lbrack y_i,f(s)\rbrack&=\tau^2 R_0(s_i,s)+\beta R_1(s_i,s)  & \E\lbrack y_i,f '(s)\rbrack&=\tau^2 R'_0(s_i,s)+\beta R'_1(s_i,s)  \\
 \E\lbrack v_i,f(s)\rbrack&=\tau^2 \dot{R}_0(s_i,s)+\beta \dot{R}_1(s_i,s) & \E\lbrack v_i,f '(s)\rbrack&=\tau^2\dot{R}'_0(s_i,s)+\beta \dot{R}'_1(s_i,s)
 \end{align*}
-\normalsize where $R(s,t)$ is taken from \eqref{kerneleq} and $\beta$ is fixed. 
+\normalsize where $R_0(s,t)$ and $R_1(s,t)$ are taken from \eqref{TractorSplineKernelR0} and \eqref{TractorSplineKernelR1}. %, and $\beta$ is constant.
 
-
-Observing $y_i\sim N\left(f (t_i),\sigma^2\right)$ and $v_i\sim N\left(f (t_i),\frac{\sigma^2}{\gamma}\right)$, $i=1,\ldots,n$, the joint distribution of $\mathbf{y},\mathbf{v}$ and $f(t)$ is normal with mean zero and a covariance matrix can be found. The posterior mean of $f(t)$ is seen to be 
+Therefore, by using a standard result on multivariate normal distribution (such as Result 4.6 in \citep{johnson1992applied}), the posterior mean of $f(t)$ is seen to be 
 \begin{align}\label{GPrhoeq}\footnotesize
 \begin{split}
-\E (f \mid  \mathbf{\mathbf{y}},\mathbf{v}) & =
+\E \lbrack f \mid  \mathbf{\mathbf{y}},\mathbf{v}\rbrack & =
 \begin{bmatrix}
 \Cov (\mathbf{y},f) & \Cov (f,\mathbf{\mathbf{v}})
 \end{bmatrix}\begin{bmatrix}
@@ -435,7 +435,6 @@ Given a sequence of paired sampling points $\lbrace s_i,y_i,v_i \rbrace, i=1,\ld
 \begin{equation}\label{maineq2}
 J[f]=\frac{1}{n}\sum_{i=1}^{n}\left(y_i-f(t_i)\right)^2+\frac{\gamma}{n}\sum_{i=1}^{n}\left(v_i-f'(t_i)\right)^2+\sum_{i=0}^{n}\lambda_i\int_{t_i}^{t_{i+1}}f''(t)^2dt.
 \end{equation}
-
 Any $f\in\mathcal{C}_{\mbox{\scriptsize p.w.}}^{(2)}[0,1]$ can be written as 
 \begin{equation}\label{GaussianProcessFunctionF2}
 f(t)=d_1+d_2t+\sum_{j=1}^{n}c_jR_1(t_j,t)+\sum_{j=1}^{n}b_j\dot{R}_1(t_j,t) +\rho(t)
@@ -497,7 +496,7 @@ The smoothing V-spline of \eqref{maineq2} is the posterior mean of $f=f_0+f_1 + 
 \Cov \left(f_1,f_1\right)   &= \beta R_1\left(s,t\right)  =\beta \sum_{i=0}^n w_i^{-1} \int_{t_i}^{t_{i+1}} \left(s-u\right)_+\left(t-u\right)_+du, \\
 \Cov \left(\dot{f}_1,f_1\right)  &= \beta \dot{R}_1\left(s,t\right) =\beta \sum_{i=0}^n w_i^{-1} \int_{t_i}^{t_{i+1}} \Theta\left(s-u\right)\left(t-u\right)_+du,
 \end{align}
-for $\beta = \sigma^2/n\Lambda$, where $\lambda_i=\Lambda w_i$.
+for $\beta = \sigma^2/n\Lambda$.
 \end{theorem}
 
 
@@ -516,7 +515,7 @@ First of all, consider observations $y=f(t)+\varepsilon_1$ and $v=f'(t)+\varepsi
 \begin{equation}
 \frac{1}{n}\left(\mathbf{y}-\mathbf{f}\right)^\top W\left(\mathbf{y}-\mathbf{f}\right)+\frac{\gamma}{n}\left(\mathbf{v}-\mathbf{f}'\right)^\top U\left(\mathbf{v}-\mathbf{f}'\right)+\lambda\int_0^1\left(f''\right)^2dt.
 \end{equation}
-Because $f=\sum_{i=1}^{2n}\theta_iN_i\left(t\right)$ is a linear combination of basis functions, extended to the solution with covariance matrices, the coefficients is found by 
+Because $f=\sum_{i=1}^{2n}\theta_iN_i\left(t\right)$ is a linear combination of basis functions, extended to the solution with covariance matrices, the parameter is found by 
 \begin{equation}
 \hat{\theta}=\left(B^\top W B+ \gamma C^\top UC+n\Omega_\lambda\right)^{-1}\left(B^\top W \mathbf{y}+\gamma C^\top U\mathbf{v}\right).
 \end{equation}

@@ -1,0 +1,129 @@
+%\documentclass[a4paper,20pt]{article}  	% use "amsart" instead of "article" for AMSLaTeX format
+\documentclass[a4paper,18pt]{extarticle} 
+\usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
+\geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}                   		
+\usepackage{graphicx}					
+\usepackage{amssymb}
+\usepackage{indentfirst}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{siunitx}
+\usepackage{lscape}
+\usepackage{subcaption}
+\newtheorem{theorem}{Theorem}
+\usepackage{natbib}
+
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Corr}{\mathrm{Corr}}
+\newcommand{\tr}{\mathrm{tr}}
+\newcommand{\iid}{\textrm{i.i.d.\ }}
+
+
+\title{Amendments}
+%\author{Zhanglong Cao}
+\date{}							% Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+
+
+\section{Majors}
+
+\begin{itemize}
+	\item In the introduction, the motivation of this thesis and the usage of real GPS data are clearly written. However, there is no separate description of the data. It would be easier to engage simulation studies if there is a subsection about the data.
+	
+	Added separate descriptions in Section 1.2 on page 2.
+	
+	\item  Chapter 2. Theorem 1 describes the basic feature of the optimal V-spline but the ``linear outside knots'' feature of the optimal solution is mathematically undefined or ambiguous. 
+	
+	Define the meaning of ``linear outside knots'' in Theorem 1 on page 20.
+	Added mathematical explanation of ``adjusted penalty term'' in Section 2.2.3 on page 24.
+	
+	\item  Chapter 3. This is by far the most technical and difficult chapter to follow. Not all terms are adequately defined, for example I did not see a definition of a reproducing kernel. 
+	
+	In fact, all terms have been defined in this chapter. The conjecture has been resolved and added to Section 3.4.
+	
+	\item  Chapter 4. Improperly cited references, equations and notations have been resolved. 
+	
+	\item  Chapter 5. 
+	\begin{itemize}
+		\item Reduce unnecessary repetitions. For instance, Equations 5.9, 5.29, 5.45, and 5.59(?) seem identical. 
+		
+		Repeated equations have been removed.  
+		
+		\item  In page 92, (Section 5.2.4), does the equation 5.6 mean that a joint distribution of $x_1,\ldots,x_t,y_1,\ldots,y_t$ is a multivariate normal distribution with zero mean and covariance matrix of $\Sigma$?
+		
+		Specifically, we suppose that the forward map and the observation model are linear and homogeneous, and the noise is Gaussian. It is mentioned in Section 5.2 on page 96.
+		
+		
+		\item Alg 5.2, which is a sliding-window delayed acceptance method. Why havent the results of this chapter compared with the spline solution of Chapter 2?
+		
+		It is discussed in Section 5.6 on page 136.	
+		
+		\item Have you used the real GPS data in Chapter 5? Then can you clearly indicate which result is for the real data?
+		
+		The application to real data is demonstrated in Section 5.5.7 on page 131.
+		 
+	\end{itemize}
+	
+
+\end{itemize}
+
+\section{Minor}
+
+\begin{itemize}
+	\item In Section 1,please check the references. The first example is that in Section 1.2, the first sentence should be ”Smoothing spline ..... reconstruction. See Eubank (2004) and Durbin and Koopman (2012) for details. There are many of these in Section 1.  
+	
+	The error has been resolved. All citation errors have been resolved. 
+	
+	\item  Page 5, Algorithm 1.1 : the notation $t_{k+1}, t_{2k+1},\ldots$ is not distinguishable to $t_2, \ldots$. Please use a different notation.  
+	
+	This issue has been fixed.
+	
+	\item  Page 5, Second paragraph in Section 1.4 : Please rewrite ”For example a posterior estimation of $x_t\sim p(x_t|y_{1:t})$ ...for incorrect estimates .....”.  
+	
+	The sentence has been rewritten.
+	
+	
+	\item  Section 4.2 makes reference to a target-tracking system which is undefined.
+	
+	It is defined in Section 4.2 on page 69. 	
+	
+	\item  Final displayed equation before sec 4.2.3.
+	
+	It has been fixed. 	
+	
+	\item Page 69 onwards uses $w(i)$ for the normalized importance weight whereas equation  (4.4) uses tilde for the normalized weight.
+	
+	It uses $w$ for weight and $\tilde{w}$ for normalized weight.
+	
+ 	\item Page 81, Algorithm 4.8 : ``Draw $\theta \sim p(\theta\mid y_{1:k})$'' seems to duplicate to the previous sentence.  
+ 	
+ 	It has been removed.
+ 	
+ 	\item Page 92, Equation for $\Sigma$ : Change $B$ to $B_t$.  
+ 	
+ 	It has been fixed. 
+ 	
+ 	\item Page 120, Second sentence in Section 5.5.5 : What is ”same dataset”? Please write in  details.  
+ 	
+ 	Added an explanation: which is demonstrated in Figure 5.8.
+ 	
+ 	\item Page 129 : Figures 5.15-5.17 are not discussed in the section.  
+ 	Replaced by new figures and discussions. 
+ 	
+ 	\item  Appendix C : It is not clear how Appendix C is relevant to the main part. Please describe it in the main sections.  
+ 	
+ 	It is relevant to ``data cleaning'' method, which is mentioned in Section 2.5 on page 42.
+ 	
+
+
+\end{itemize}
+
+
+
+
+
+\end{document}

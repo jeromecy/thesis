@@ -5,7 +5,7 @@
 \contentsline {section}{\numberline {1.4}Parameter Selection}{4}
 \contentsline {section}{\numberline {1.5}Bayesian Filtering}{7}
 \contentsline {section}{\numberline {1.6}Markov Chain Monte Carlo Methods}{12}
-\contentsline {section}{\numberline {1.7}Thesis Outline}{16}
+\contentsline {section}{\numberline {1.7}Thesis Outline}{15}
 \contentsline {chapter}{\numberline {2}Adaptive Smoothing V-Spline for Trajectory Reconstruction}{17}
 \contentsline {section}{\numberline {2.1}Introduction}{17}
 \contentsline {section}{\numberline {2.2}V-Spline}{20}
@@ -14,15 +14,15 @@
 \contentsline {subsection}{\numberline {2.2.3}Adjusted Penalty Term and Parameter Function}{24}
 \contentsline {section}{\numberline {2.3}Parameter Selection and Cross-Validation}{26}
 \contentsline {section}{\numberline {2.4}Simulation Study}{28}
-\contentsline {subsection}{\numberline {2.4.1}Regularly Sampled Time Series}{29}
+\contentsline {subsection}{\numberline {2.4.1}Regularly Sampled Time Series Data}{28}
 \contentsline {subsubsection}{Numerical Examples}{29}
-\contentsline {subsubsection}{Evaluation}{34}
-\contentsline {subsubsection}{Residual Analysis}{37}
-\contentsline {subsection}{\numberline {2.4.2}Irregularly Sampled Time Series Data}{37}
+\contentsline {subsubsection}{Evaluation}{35}
+\contentsline {subsubsection}{Residual Analysis}{36}
+\contentsline {subsection}{\numberline {2.4.2}Irregularly Sampled Time Series Data}{38}
 \contentsline {section}{\numberline {2.5}Inference of Tractor Trajectories}{41}
-\contentsline {subsection}{\numberline {2.5.1}1-Dimensional Trajectory}{43}
-\contentsline {subsection}{\numberline {2.5.2}2-Dimensional Trajectory}{46}
-\contentsline {section}{\numberline {2.6}Conclusion and Discussion}{50}
+\contentsline {subsection}{\numberline {2.5.1}1-Dimensional Trajectory Reconstruction}{42}
+\contentsline {subsection}{\numberline {2.5.2}2-Dimensional Trajectory Reconstruction}{46}
+\contentsline {section}{\numberline {2.6}Conclusion and Discussion}{49}
 \contentsline {chapter}{\numberline {3}V-Spline as Bayes Estimate}{51}
 \contentsline {section}{\numberline {3.1}Introduction}{51}
 \contentsline {section}{\numberline {3.2}Polynomial Smoothing Splines on $[0, 1]$ as Bayes Estimates}{52}
@@ -88,8 +88,8 @@
 \contentsline {section}{\numberline {A.3}Proof of Corollary 1\hbox {}}{148}
 \contentsline {section}{\numberline {A.4}Proof of Lemma 2\hbox {}}{150}
 \contentsline {section}{\numberline {A.5}Proof of Theorem 2\hbox {}}{150}
-\contentsline {section}{\numberline {A.6}Reconstructions at SNR=3}{151}
-\contentsline {section}{\numberline {A.7}Residual Analysis of Simulations}{151}
+\contentsline {section}{\numberline {A.6}Reconstructions at SNR=3}{152}
+\contentsline {section}{\numberline {A.7}Residual Analysis of Simulations}{153}
 \contentsline {chapter}{\numberline {B}Calculations and Figures of Adaptive Sequential MCMC}{156}
 \contentsline {section}{\numberline {B.1}Linear Simulation Calculations}{156}
 \contentsline {section}{\numberline {B.2}OU-Process Calculation}{160}

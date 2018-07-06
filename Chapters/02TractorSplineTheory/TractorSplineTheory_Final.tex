@@ -45,7 +45,7 @@ In the nonparametric regression, consider $n$ paired time series points $\left\l
 
 For a function $f:[a,b]\mapsto \mathbb{R}$ and $\gamma>0$, define the objective function 
 \begin{equation}\label{tractorsplineObjective}
-J[f]= \frac{1}{n} \sum_{i=1}^{n} \left( f(t_i)-y_i \right)^2 + \frac{\gamma}{n} \sum_{i=1}^{n} \left( f'(t_i)-v_i \right)^2 +\sum_{i=0}^{n} \int_{t_i}^{t_{i+1}}\lambda(t)  f''^2(t)dt,
+J[f]= \frac{1}{n} \sum_{i=1}^{n} \left( f(t_i)-y_i \right)^2 + \frac{\gamma}{n} \sum_{i=1}^{n} \left( f'(t_i)-v_i \right)^2 +\sum_{i=0}^{n} \int_{t_i}^{t_{i+1}}\lambda(t)  f''(t)^2dt,
 \end{equation}
 where $\gamma$ is the parameter that weights the residuals between $\mathbf{f}'$ and $\mathbf{v}$. We make the simplifying assumption that $\lambda(t)$ is a piecewise constant and adopts a constant value $\lambda_i$ on interval $(t_i,t_{i+1})$ for $i=1,\ldots, n-1$. 
 
@@ -116,15 +116,15 @@ where $\left\lbrace \theta_k\right\rbrace_{k=1}^{2n}$ are parameters.
 
 Basis functions have been defined in the previous subsection, therefore the V-spline $f(t)$ on $[a,b]$, where $a \leq t_1 < t_2< \cdots < t_{n-1}<t_n \leq b$, can be found by minimizing the objective function \eqref{tractorsplineObjective}, which is corresponding to
 \begin{equation}\label{tractormse}
-nJ[f](\theta, \lambda,\gamma) = \left(\mathbf{y}-\mathbf{B}\theta\right)^\top \left(\mathbf{y}-\mathbf{B}\theta\right) +\gamma \left(\mathbf{v}-\mathbf{C}\theta\right)^\top \left(\mathbf{v}-\mathbf{C}\theta\right)+n \theta^\top\mathbf{\Omega}_{\lambda}\theta,
+nJ[f](\theta, \lambda,\gamma) = \left(\mathbf{y}-B \theta\right)^\top \left(\mathbf{y}-B \theta\right) +\gamma \left(\mathbf{v}- C\theta\right)^\top \left(\mathbf{v}- C\theta\right)+n \theta^\top\mathbf{\Omega}_{\lambda}\theta,
 \end{equation}
-where $\left\lbrace \mathbf{B}\right\rbrace_{ij} = N_j(t_i)$ , $\left\lbrace \mathbf{C}\right\rbrace_{ij} = N'_j(t_i)$ and $\left\lbrace \Omega_{2n}^{(i)} \right\rbrace_{jk}=\int_{a}^{b}\lambda(t) N''_j(t)N''_k(t)dt$. After substituting the series observation $t_1, \ldots, t_n$ into the basis function, one can get $N_1(t_1)=1, N_1(t_2)=0, \ldots, N_{2i-1}(t_{i})=1, N_{2i}(t_{i})=0, \ldots, N_{2n-1}(t_n)=1, N_{2n}(t_n)=0$; and into its first derivative, one will get $N'_1(t_1)=0, N_1'(t_2)=1, \ldots, N_{2i-1}'(t_{i})=0, N_{2i}'(t_{i})=1, \ldots, N_{2n-1}'(t_n)=0, N_{2n}'(t_n)=1$. That means the matrices $\mathbf{B}$ and $\mathbf{C}$ in the equation \eqref{tractormse} are $n \times 2n$ dimensional and the elements are
+where $\left\lbrace B \right\rbrace_{ij} = N_j(t_i)$ , $\left\lbrace  C\right\rbrace_{ij} = N'_j(t_i)$ and $\left\lbrace \Omega_{2n}^{(i)} \right\rbrace_{jk}=\int_{a}^{b}\lambda(t) N''_j(t)N''_k(t)dt$. After substituting the series observation $t_1, \ldots, t_n$ into the basis function, one can get $N_1(t_1)=1, N_1(t_2)=0, \ldots, N_{2i-1}(t_{i})=1, N_{2i}(t_{i})=0, \ldots, N_{2n-1}(t_n)=1, N_{2n}(t_n)=0$; and into its first derivative, one will get $N'_1(t_1)=0, N_1'(t_2)=1, \ldots, N_{2i-1}'(t_{i})=0, N_{2i}'(t_{i})=1, \ldots, N_{2n-1}'(t_n)=0, N_{2n}'(t_n)=1$. That means the matrices $B $ and $ C$ in the equation \eqref{tractormse} are $n \times 2n$ dimensional and the elements are
 \begin{align}
-\mathbf{B}&=\left\lbrace B\right\rbrace_{ij}=\begin{cases}
+B &=\left\lbrace B\right\rbrace_{ij}=\begin{cases}
 1, & j=2i-1\\
 0, & \mbox{otherwise}
 \end{cases}\\
-\mathbf{C}&=\left\lbrace C\right\rbrace_{ij}=\begin{cases}
+ C&=\left\lbrace C\right\rbrace_{ij}=\begin{cases}
 1, & j=2i\\
 0, & \mbox{otherwise}
 \end{cases}
@@ -138,41 +138,39 @@ where $i=1, \ldots, n$, $j=1,\ldots,2n$ and $k=1,\ldots,2n$. The $i$-th $\Omega^
 
 By taking derivatives of equation \eqref{tractormse} with respect to $\theta$, one can achieve 
 \begin{equation}
-\left(\mathbf{B}^\top\mathbf{B}+\gamma\mathbf{C}^\top\mathbf{C}+n\mathbf{\Omega}_{\lambda}\right)\hat{\theta}=\left(\mathbf{B}^\top\mathbf{y}+\gamma\mathbf{C}^\top\mathbf{v}\right).
+\left(B^\top B +\gamma C^\top C+n\mathbf{\Omega}_{\lambda}\right)\hat{\theta}=\left(B^\top\mathbf{y}+\gamma C^\top\mathbf{v}\right).
 \end{equation}
 Therefore, the solution is 
 \begin{equation}
-\hat{\theta}=\left(\mathbf{B}^\top\mathbf{B}+\gamma\mathbf{C}^\top\mathbf{C}+n\mathbf{\Omega}_{\lambda}\right)^{-1}\left(\mathbf{B}^\top\mathbf{y}+\gamma\mathbf{C}^\top\mathbf{v}\right)\label{thetahat}
+\hat{\theta}=\left(B^\top B+\gamma C^\top C+n\mathbf{\Omega}_{\lambda}\right)^{-1}\left( B^\top\mathbf{y}+\gamma C^\top\mathbf{v}\right)\label{thetahat}
 \end{equation}
 a generalized ridge regression. Consequently, the fitted smoothing spline is given by
 $\hat{f}(t)=\sum_{k=1}^{2n}N_k(t)\hat{\theta}_k$. 
 
-A smoothing spline with parameters $\lambda(t)$ and $\gamma$ is an example of a linear smoother \citep{esl2009}. This is because the estimated parameters in equation \eqref{thetahat} are a linear combination of $y_i$ and $v_i$. Denote by $\hat{\mathbf{f}}$ and $\hat{\mathbf{f}'}$ the $2n$ vector of fitted values $\hat{f}(t_i)$ and $\hat{f'}(t_i)$ at the training points $t_i$. Then
-\begin{equation}
+A smoothing spline with parameters $\lambda(t)$ and $\gamma$ is an example of a linear smoother \citep{esl2009}. This is because the estimated parameters in equation \eqref{thetahat} are a linear combination of $y_i$ and $v_i$. Denote by $ \mathbf{\hat{f}}$ and $ \mathbf{\hat{f}'}$ the $2n$ vector of fitted values $\hat{f}(t_i)$ and $\hat{f'}(t_i)$ at the training points $t_i$. Then
+\begin{align}\label{flinearST}
 \begin{split}
-\hat{\mathbf{f}} =&\mathbf{B}\left(\mathbf{B}^\top\mathbf{B}+\gamma\mathbf{C}^\top\mathbf{C}+n\mathbf{\Omega}_{\lambda}\right)^{-1}\left(\mathbf{B}^\top\mathbf{y}+\gamma\mathbf{C}^\top\mathbf{v}\right)\\
+ \mathbf{\hat{f}} =& B\left( B^\top B+\gamma C^\top C+n\mathbf{\Omega}_{\lambda}\right)^{-1}\left( B^\top\mathbf{y}+\gamma C^\top\mathbf{v}\right)\\
 = & \mathbf{S}_{\lambda,\gamma}\mathbf{y}+\gamma\mathbf{T}_{\lambda,\gamma}\mathbf{v} 
-\end{split}
-\end{equation}
-\begin{equation}
+\end{split}\\ \label{flinearUV}
 \begin{split}
-\hat{\mathbf{f}'}
-=&\mathbf{C}\left(\mathbf{B}^\top\mathbf{B}+\gamma\mathbf{C}^\top\mathbf{C}+n\mathbf{\Omega}_{\lambda}\right)^{-1}\left(\mathbf{B}^\top\mathbf{y}+\gamma\mathbf{C}^\top\mathbf{v}\right)\\
+ \mathbf{\hat{f}'}
+=& C\left( B^\top B+\gamma C^\top C+n\mathbf{\Omega}_{\lambda}\right)^{-1}\left( B^\top\mathbf{y}+\gamma C^\top\mathbf{v}\right)\\
 =&\mathbf{U}_{\lambda,\gamma}\mathbf{y}+\gamma\mathbf{V}_{\lambda,\gamma}\mathbf{v}
 \end{split}
-\end{equation}
-The fitted $\hat{\mathbf{f}}$ and $\hat{\mathbf{f}'}$ are linear in $\mathbf{y}$ and $\mathbf{v}$, and the finite linear operators $\mathbf{S}_{\lambda,\gamma}, \mathbf{T}_{\lambda,\gamma}, \mathbf{U}_{\lambda,\gamma}$ and $\mathbf{V}_{\lambda,\gamma}$ are known as the smoother matrices. One consequence of this linearity is that the recipe for producing $\hat{\mathbf{f}}$ and $\hat{\mathbf{f}'}$ from $\mathbf{y}$ and $\mathbf{v}$, do not depend on $\mathbf{y}$ and $\mathbf{v}$ themselves; $\mathbf{S}_{\lambda,\gamma}, \mathbf{T}_{\lambda,\gamma}, \mathbf{U}_{\lambda,\gamma}$ and $\mathbf{V}_{\lambda,\gamma}$ depend only on $t_i,\lambda(t)$ and $\gamma$.
+\end{align}
+The fitted $ \mathbf{\hat{f}}$ and $ \mathbf{\hat{f}'}$ are linear in $\mathbf{y}$ and $\mathbf{v}$, and the finite linear operators $\mathbf{S}_{\lambda,\gamma}, \mathbf{T}_{\lambda,\gamma}, \mathbf{U}_{\lambda,\gamma}$ and $\mathbf{V}_{\lambda,\gamma}$ are known as the smoother matrices. One consequence of this linearity is that the recipe for producing $ \mathbf{\hat{f}}$ and $ \mathbf{\hat{f}'}$ from $\mathbf{y}$ and $\mathbf{v}$, do not depend on $\mathbf{y}$ and $\mathbf{v}$ themselves; $\mathbf{S}_{\lambda,\gamma}, \mathbf{T}_{\lambda,\gamma}, \mathbf{U}_{\lambda,\gamma}$ and $\mathbf{V}_{\lambda,\gamma}$ depend only on $t_i,\lambda(t)$ and $\gamma$.
 
-Suppose in a traditional least squares fitting, $\mathbf{B}_\xi$ is $N \times M$ matrix of $M$ cubic-spline basis functions evaluated at the $N$ training points $x_i$, with knot sequence $\xi$ and $M \ll N$. Thus the vector of fitted spline values is given by
+Suppose in a traditional least squares fitting, $ B_\xi$ is $N \times M$ matrix of $M$ cubic-spline basis functions evaluated at the $N$ training points $x_i$, with knot sequence $\xi$ and $M \ll N$. Thus the vector of fitted spline values is given by
 \begin{align}\label{fhy}
-\hat{\mathbf{f}}=\mathbf{B}_\xi\left(\mathbf{B}^\top_\xi\mathbf{B}_\xi\right)^{-1}\mathbf{B}_\xi\mathbf{y}=\mathbf{H}_\xi\mathbf{y}
+ \mathbf{\hat{f}}= B_\xi\left( B^\top_\xi B_\xi\right)^{-1} B_\xi\mathbf{y}=\mathbf{H}_\xi\mathbf{y}
 \end{align}
 Here the linear operator $\mathbf{H}_\xi$ is a symmetric, positive semidefinite matrices, and $\mathbf{H}_\xi\mathbf{H}_\xi=\mathbf{H}_\xi$ (idempotent) \citep{esl2009}. In our case, it is easily seen that $\mathbf{S}_{\lambda,\gamma}, \mathbf{T}_{\lambda,\gamma}, \mathbf{U}_{\lambda,\gamma}$ and $\mathbf{V}_{\lambda,\gamma}$ are symmetric, positive semidefinite matrices as well. Additionally, by Cholesky decomposition
 \begin{equation}
-\left(\mathbf{B}^\top\mathbf{B}+\gamma\mathbf{C}^\top\mathbf{C}+n\mathbf{\Omega}_{\lambda}\right)^{-1}=\mathbf{R}\mathbf{R}^\top,
+\left( B^\top B+\gamma C^\top C+n\mathbf{\Omega}_{\lambda}\right)^{-1}=\mathbf{R}\mathbf{R}^\top,
 \end{equation}
-it is easy to prove that $\mathbf{T}_{\lambda,\gamma}=\mathbf{B}\mathbf{R}\mathbf{R}^\top\mathbf{C}^\top$ and $\mathbf{U}_{\lambda,\gamma}=\mathbf{C}\mathbf{R}\mathbf{R}^\top\mathbf{B}^\top$, then we will have 
- $\mathbf{T}_{\lambda,\gamma}= \mathbf{U}_{\lambda,\gamma}^\top$. When $\lambda=\gamma=0$, the matrix $\mathbf{S}_{\lambda_0,\gamma_0}=\mathbf{B}\left(\mathbf{B}^\top\mathbf{B}\right)^{-1}\mathbf{B}^\top$ is idempotent.  
+it is easy to prove that $\mathbf{T}_{\lambda,\gamma}= B\mathbf{R}\mathbf{R}^\top C^\top$ and $\mathbf{U}_{\lambda,\gamma}= C\mathbf{R}\mathbf{R}^\top B^\top$, then we will have 
+ $\mathbf{T}_{\lambda,\gamma}= \mathbf{U}_{\lambda,\gamma}^\top$. When $\lambda=\gamma=0$, the matrix $\mathbf{S}_{\lambda_0,\gamma_0}= B\left( B^\top B\right)^{-1} B^\top$ is idempotent.  
 
 
 \begin{corollary}\label{TractorsplineCorollary}
@@ -295,7 +293,7 @@ Assuming that mean of the random errors is zero, the true regression curve $f(t)
 
 Now, focus on an observation $y_i$ at point $t_i$ as being a new observation by omitting it from the set of data, which are used to estimate $\hat{f}$. Denote by $\hat{f}^{(-i)}(t,\lambda)$ the estimated function from the remaining data, where $\lambda$ is the smoothing parameter. Then $\hat{f}^{(-i)}\left(t,\lambda\right)$ is the minimizer of  
 \begin{equation}\label{originalcv}
-\frac{1}{n}\sum_{j \neq i}\left(y_j-f(t_j) \right)^2+\lambda\int (f'')^2dt,
+\frac{1}{n}\sum_{j \neq i}\left(y_j-f(t_j) \right)^2+\lambda\int (f''(t))^2dt,
 \end{equation}
 and can be quantified by the cross-validation score function
 \begin{equation}\label{cvform}
@@ -306,7 +304,7 @@ The basis idea of the cross-validation is to choose the value of $\lambda$ that 
 %An efficient way to calculate the cross-validation score is introduced by \citep{green1993nonparametric}. 
 Through the equation \eqref{fhy}, it is known that the value of the smoothing spline $\hat{f}$ depends linearly on the data $y_1,\ldots,y_n$. Define the matrix $A(\lambda)$, which is a map vector of observed values $y_i$ to predicted values $\hat{f}(t_i)$. Then we have
 \begin{equation}\label{crossvalidationmatrixA}
-\hat{\mathbf{f}}=A(\lambda)\mathbf{y}
+ \mathbf{\hat{f}}=A(\lambda)\mathbf{y}
 \end{equation}
 and the following lemma.
 \begin{lemma}\citep{green1993nonparametric}\label{cvlema}
@@ -325,18 +323,20 @@ and the cross-validation score function is
 \begin{align}
 \mbox{CV}\left(\lambda(t,\eta),\gamma\right)=\frac{1}{n}\sum_{i=1}^{n}\left( y_i-\hat{f}^{(-i)}\left(t_i,\eta,\gamma\right) \right) ^2.
 \end{align}
-Additionally, it is known that the parameter $\hat{\theta}=\left(B^\top B+\gamma C^\top C+n\Omega_\lambda\right)^{-1}\left(B^\top\mathbf{y}+\gamma C^\top\mathbf{v}\right)$ and will give us the following form \small
-\begin{equation}
-\begin{split}
- \hat{\mathbf{f}}&=B\hat{\theta}=B\left(B^\top B+\gamma C^\top C+n\Omega_\lambda\right)^{-1}B^\top\mathbf{y}+B\left(B^\top B+\gamma C^\top C+n\Omega_\lambda\right)^{-1} C^\top\mathbf{v}\\&=S\mathbf{y}+\gamma T\mathbf{v},
- \end{split}
- \end{equation}
- \begin{equation}
- \begin{split}
-\hat{\mathbf{f}}'&=C\hat{\theta}=C\left(B^\top B+\gamma C^\top C+n\Omega_\lambda\right)^{-1}B^\top\mathbf{y}+C\left(B^\top B+\gamma C^\top C+n\Omega_\lambda\right)^{-1}C^\top \mathbf{v}\\&=U\mathbf{y}+\gamma V\mathbf{v}.
- \end{split}
-\end{equation}\normalsize
-From Lemma \ref{cvlema}, we can prove the following theorem: 
+Additionally, it is known that the parameter $\hat{\theta}$ in equation \eqref{thetahat} is the solution, $\mathbf{\hat{f}}$ and $\mathbf{\hat{f}'}$ have linear forms depending on $\mathbf{y}$ and $\mathbf{v}$, shown in equations \eqref{flinearST} and \eqref{flinearUV}, 
+%$\hat{\theta}=\left(B^\top B+\gamma C^\top C+n\Omega_\lambda\right)^{-1}\left(B^\top\mathbf{y}+\gamma C^\top\mathbf{v}\right)$ 
+%with which one can obtain the following equations 
+%\small %\begin{equation}
+%\begin{split}
+%  \mathbf{\hat{f}}&=B\hat{\theta}=B\left(B^\top B+\gamma C^\top C+n\Omega_\lambda\right)^{-1}B^\top\mathbf{y}+B\left(B^\top B+\gamma C^\top C+n\Omega_\lambda\right)^{-1} C^\top\mathbf{v}\\&=S\mathbf{y}+\gamma T\mathbf{v},
+% \end{split}
+% \end{equation}
+% \begin{equation}
+% \begin{split}
+% \mathbf{\hat{f}}'&=C\hat{\theta}=C\left(B^\top B+\gamma C^\top C+n\Omega_\lambda\right)^{-1}B^\top\mathbf{y}+C\left(B^\top B+\gamma C^\top C+n\Omega_\lambda\right)^{-1}C^\top \mathbf{v}\\&=U\mathbf{y}+\gamma V\mathbf{v}.
+ %\end{split}
+%\end{equation}\normalsize
+from Lemma \ref{cvlema}, we can prove the following theorem: 
 \begin{theorem}\label{tractorsplinecvscore}
 The cross-validation score of a V-spline satisfies
 \begin{equation}\label{tractorcv}
@@ -387,7 +387,7 @@ where $\varepsilon_f\sim N(0,\sigma_f/SNR)$, $\varepsilon_g\sim N(0,\sigma_g/SNR
 
 
 
-\subsection{Regularly Sampled Time Series}
+\subsection{Regularly Sampled Time Series Data}
 
 A set of regularly sampled time series data has equal time difference between each pair of successive points. For example, denoted by $\Delta T_i = t_{i+1}-t_i$ for $i=1,\ldots,n-1$, then $\Delta T_1=\cdots = \Delta T_{n-1}$.
 
@@ -395,11 +395,11 @@ Following \cite{nason2010wavelet}, we fix $n=1024$ in the simulation. To compare
 
 In the V-spline, there are two parameters $\eta$ and $\gamma$ to optimize. To evaluate the performance of the velocity term in objective function \eqref{tractorsplineObjective} and the adjusted penalty term in \eqref{adjustedpenalty}, the parameter $\gamma$ is set as 0 in one reconstruction of V-spline, whose objective function and solution become
 \begin{equation}\label{ofgamma0}
-J[f]_{\gamma=0}= \frac{1}{n} \sum_{i=1}^{n} \left(f(t_i)-y_i\right)^2 +\sum_{i=0}^{n} \int_{t_i}^{t_{i+1}}\lambda(t) f''^2 dt,
+J[f]_{\gamma=0}= \frac{1}{n} \sum_{i=1}^{n} \left(f(t_i)-y_i\right)^2 +\sum_{i=0}^{n} \int_{t_i}^{t_{i+1}}\lambda(t) f''(t)^2 dt,
 \end{equation}
 and
 \begin{equation}\label{thetahat0}
-\hat{\theta}_{\gamma=0}=\left(\mathbf{B}^\top\mathbf{B}+n\Omega_{\lambda}\right)^{-1}\mathbf{B}^\top\mathbf{y}.
+\hat{\theta}_{\gamma=0}=\left( B^\top B+n\Omega_{\lambda}\right)^{-1} B^\top\mathbf{y}.
 \end{equation}
 In another reconstruction, the adjusted penalty term in \eqref{adjustedpenalty} is removed and the model is denoted by ``V-spline without APT''. 
 
@@ -856,46 +856,82 @@ The reconstructions of regularly and irregularly sampled data are very competiti
 
 In the real life application, the movement of vehicles or tractors has complicated features. The velocity of a moving object looks like a combination of the original bumps and blocks functions: it is a turbulent waves fluctuating around zero. In this section, we apply the proposed V-spline to real dataset, which is recorded by a GPS unit mounted on a tractor. The original dataset contains the information about time marks, longitude, latitude, velocity, bearing (in degrees,  heading to North) and boom status. The data is not regularly recorded and the time difference has a high variance. 
 
-In a two or higher $d$-dimensional curve nonparametric regression, consider the general form of a length $n$ time series data points $\left\lbrace t_1,p_1,s_1\right\rbrace, \ldots, \left\lbrace t_n,p_n,s_n\right\rbrace$, such that $a \leq t_1<t_2< \cdots < t_n \leq b$, $p_i$ and $s_i$ are $d$-dimensional vectors contain position and velocity information at time $i$ respectively. The positive piecewise constant function $\lambda(t) = \lambda_i$ on each interval $t_i \leq t<t_{i+1}, t_0=a, t_{n+1}=b$.  Then the function $f:[a,b]\mapsto\mathbb{R}^d$ with $\gamma>0$ is a V-spline in the $d$-dimensional space if it is the solution to the generic form of the objective function: 
+In a two or higher $d$-dimensional curve nonparametric regression, consider the general form of a length $n$ time series data points $\left\lbrace t_1,p_1,s_1\right\rbrace, \ldots, \left\lbrace t_n,p_n,s_n\right\rbrace$, such that $a \leq t_1<t_2< \cdots < t_n \leq b$, $p_i$ and $s_i$ are $d$-dimensional vectors contain position and velocity information at time $i$ respectively. The positive piecewise constant function $\lambda(t) = \lambda_i$ on each interval $t_i \leq t<t_{i+1}, t_0=a, t_{n+1}=b$.  Then function $f:[a,b]\mapsto\mathbb{R}^d$ with $\gamma>0$ is a V-spline in the $d$-dimensional space if it is the solution to the generic form of the objective function: 
 \begin{equation}\label{tractorsplineObjective2D}
 J[f]= \frac{1}{n} \sum_{i=1}^{n} \lVert f(t_i)-p_i\rVert_d^2 + \frac{\gamma}{n} \sum_{i=1}^{n} \lVert f'(t_i)-s_i \rVert_d^2 +\sum_{i=0}^{n} \lambda_i\int_{t_i}^{t_{i+1}} \lVert f''(t)\rVert_d^2 dt. 
 \end{equation}
 
 
-Particularly, the GPS data is recorded in a 2-dimensional form, in which scenario $d=2$. Hence, in the following application, we split the 2-dimensional function $f(x,y)$ into two sub functions $f_x(t)$ on $x$-axis and $f_y(t)$ on $y$-axis with respect to time $t$. Compared with other parameters, choosing time $t$ to be the parameter has some advantages: (i) the expressions of all the constraints are simpler \citep{zhang2013cubic}; (ii) it can be simply applied from 2-dimension to 3-dimension by adding an extra $z$-axis. Without loss of generality, a dataset in a higher dimensional space can be projected into several sub-spaces, such as $p=\left\lbrace x,y,z,\ldots \right\rbrace$ and $s=\left\lbrace u,v,w,\ldots \right\rbrace$. 
+Particularly, GPS data is recorded in two directions, easting and northing. In this situation $d=2$. Hence, in the following application, we split the 2-dimensional function $f(x,y)$ into two sub-functions $f_x(t)$ on $x$-axis (easting direction) and $f_y(t)$ on $y$-axis (northing direction) with respect to time $t$. Compared with other parameters, choosing time $t$ to be the parameter has some advantages: (i) the expressions of all the constraints are simpler \citep{zhang2013cubic}; (ii) it can be simply applied from 2-dimension to 3-dimension by adding an extra $z$-axis, such as altitude. Without loss of generality, a dataset in a higher dimensional space can be projected into several sub-spaces, such as $p=\left\lbrace x,y,z,\ldots \right\rbrace$ and $s=\left\lbrace u,v,w,\ldots \right\rbrace$. 
 
 
-Thereafter, we convert the longitude and latitude information from a 3D sphere to 2D surface first by Universal Transverse Mercator coordinate system (UTM) and then project the speed $s$ into $u$ and $v$ on $x$-axis and $y$-axis respectively by 
+Thereafter, we convert the longitude and latitude information from a 3D sphere to 2D surface first by \textit{Universal Transverse Mercator coordinate system} (UTM) and then project the speed $s$ into $u$ and $v$ on $x$-axis and $y$-axis respectively by 
 \begin{align}
 u &=s\cdot \sin \left(\omega\frac{\pi}{180}\right),\\
 v &= s\cdot \cos \left(\omega\frac{\pi}{180}\right),
 \end{align}
-where $\omega$ is the bearing in degrees. Boom status is tagged as 0 if it is not operating and 1 if it is. Time marks are transformed by subtracting the first mark, in which way the time starts from 0. Time duplicated data, caused by errors, have been removed from the dataset\footnote{In some cases, further data simplification to remove spurious or non-informative observations may be warranted. In Appendix \ref{appendSimp}, we introduce a new data simplification method for vehicle trajectories which compares favorably with Douglas-Peucker algorithm.  }. For the convenience of comparing with wavelet algorithm, we choose the first 512 out of 928 rows of data. The original measurements are plotted in Figure \ref{original512}.
+where $\omega$ is bearing in degrees. Boom status is tagged as 0 if it is not operating and 1 if it is. Time marks are transformed by subtracting the first mark, in which way the time starts from 0. Time duplicated data, caused by errors, have been removed from the dataset\footnote{In some cases, further data simplification to remove spurious or non-informative observations may be warranted. In Appendix \ref{appendSimp}, we introduce a new data simplification method for vehicle trajectories which compares favorably with Douglas-Peucker algorithm.  }. For the convenience of comparing with wavelet algorithm, we choose the first 512 out of 928 rows of data. The original measurements are plotted in Figure \ref{original512}.
 
 
 \begin{figure}
 \centering
     \begin{subfigure}{0.45\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/gg512Points.pdf}
-    \caption{Original positions}\label{gg512Points}
-    \end{subfigure}%
-    \begin{subfigure}{0.45\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/gg512Path.pdf}
-    \caption{Line-based trajectory}\label{gg512Path}
-    \end{subfigure}
-    \begin{subfigure}{0.45\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/gg512PointsX.pdf}
-    \caption{Original positions on $x$-axis}\label{gg512PointsX}
-    \end{subfigure}
-    \begin{subfigure}{0.45\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/gg512PointsY.pdf}
-    \caption{Original positions on $y$-axis}\label{gg512PointsY}
-    \end{subfigure}
-\caption{Original data points. Figure \ref{gg512Points} is th original positions recorded by GPS units. Circle points means the boom is not operating; cross points means it is operating. Figure \ref{gg512Path} is the line-based trajectory by simply connecting all points sequentially with straight lines. Figure \ref{gg512PointsX} is the original $x$ position. Figure \ref{gg512PointsY} is the original $y$ positions.}\label{original512}
+%\includegraphics[width=\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/gg512Points2.pdf}
+\begin{tikzpicture}
+\node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/gg512Points2.pdf}};
+\begin{scope}[
+x={(image.south east)},
+y={(image.north west)}
+]
+\node [black, font=\bfseries] at (0.5,-0.05) {Easting};
+\node [black, font=\bfseries,rotate=90] at (0,0.5) {Northing};
+\end{scope}
+\end{tikzpicture}\caption{Original positions}\label{gg512Points}
+\end{subfigure}%
+%================%================
+\begin{subfigure}{0.45\textwidth}
+%\includegraphics[width=\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/gg512Path2.pdf}
+\begin{tikzpicture}
+\node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/gg512Path2.pdf}};
+\begin{scope}[
+x={(image.south east)},
+y={(image.north west)}
+]
+\node [black, font=\bfseries] at (0.5,-0.05) {Easting};
+\node [black, font=\bfseries,rotate=90] at (0,0.5) {Northing};
+\end{scope}
+\end{tikzpicture}\caption{Line-based trajectory}\label{gg512Path}
+\end{subfigure}
+%================%================
+\begin{subfigure}{0.45\textwidth}
+%    \includegraphics[width=\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/gg512PointsX2.pdf}
+\begin{tikzpicture}
+\node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/gg512PointsX2.pdf}};
+\begin{scope}[
+x={(image.south east)},
+y={(image.north west)}
+]
+\node [black, font=\bfseries] at (0.5,-0.05) {$t$};
+\node [black, font=\bfseries,rotate=90] at (0,0.5) {Easting};
+\end{scope}
+\end{tikzpicture}\caption{Original positions on easting direction ($x$-axis)}\label{gg512PointsX}
+\end{subfigure}
+%================%================
+\begin{subfigure}{0.45\textwidth}
+%\includegraphics[width=\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/gg512PointsY2.pdf}
+\begin{tikzpicture}
+\node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/gg512PointsY2.pdf}};
+\begin{scope}[
+x={(image.south east)},
+y={(image.north west)}
+]
+\node [black, font=\bfseries] at (0.5,-0.05) {$t$};
+\node [black, font=\bfseries,rotate=90] at (0,0.5) {Northing};
+\end{scope}
+\end{tikzpicture}\caption{Original positions on northing direction ($y$-axis)}\label{gg512PointsY}
+\end{subfigure}
+%===============%================
+\caption{Original data points. Figure \ref{gg512Points} is the original positions recorded by GPS units. Circle points means the boom is not operating; cross points means it is operating. Figure \ref{gg512Path} is the line-based trajectory by simply connecting all points sequentially with straight lines. Figure \ref{gg512PointsX} is the original $x$ position. Figure \ref{gg512PointsY} is the original $y$ positions.}\label{original512}
  \end{figure}
 
 
@@ -903,7 +939,7 @@ In order to fit the real data, we bring the parameter $\eta_d$ to our model. The
 
 
 
-\subsection{1-Dimensional Trajectory}
+\subsection{1-Dimensional Trajectory Reconstruction}
 
 We treat $x$ and $y$ position separately and compare how the velocity information and the adjusted penalty term of equation \eqref{adjustedpenalty} work in our model. All parameters in fitted V-spline are automatically selected by cross-validation by equation \eqref{tractorcv}. Figure \ref{1dx} and Figure \ref{1dy} compare the results of fitted methods on $x$ and $y$ axes. P-spline gives over-fitting on $x$ axis reconstruction and not applicable on $y$ axis due to errors. Wavelet(sure) misses some key points at corners when a tractor tries to turn around. V-spline without adjusted penalty term presents less fitting at time gap knots, where time marks keep increasing while position stays the same and velocity is 0. If we take the last knot $p_k$ before and the first knot $p_{k+1}$ after the time gap, Hermite spline basis will use $y_k, v_k, y_{k+1}$ and $v_{k+1}$ to build up a cubic spline, even though the velocity information is not useful. That is why we got a curve rather than a straight line. Wavelet(BayesThresh), V-spline without velocity and proposed V-spline give acceptable results.
 
@@ -924,7 +960,7 @@ Table \ref{1dxymse} illustrates the MSE of all methods on both $x$ and $y$ axes.
     \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\textwidth,height=0.5\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXBayes.pdf}
-    \caption{Reconstruction by wavelet ($\textit{Bayes}$)}\label{ggRealdataXBayes}
+    \caption{Reconstruction by wavelet ($\textit{Bayes}$)\\\mbox{  }}\label{ggRealdataXBayes}
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
     \centering
@@ -1023,24 +1059,56 @@ To explain the differences more clearly, we take $\lambda(t)$ in our demonstrati
 %    \end{subfigure}
     \begin{subfigure}{\textwidth}
     \centering
-    \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXPenaltyPath2.pdf}
-    \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataYPenaltyPath2.pdf}
-    \caption{Reconstruction on $x$ and $y$}\label{penaltyxyggXYPath}
+\begin{tikzpicture}
+\node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXPenaltyPath3.pdf}};
+\begin{scope}[
+x={(image.south east)},
+y={(image.north west)}
+]
+\node [black, font=\bfseries] at (0.5,-0.05) {$t$};
+\node [black, font=\bfseries,rotate=90] at (0,0.5) {Easting};
+\end{scope}
+\end{tikzpicture} 
+\begin{tikzpicture}
+\node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataYPenaltyPath3.pdf}};
+\begin{scope}[
+x={(image.south east)},
+y={(image.north west)}
+]
+\node [black, font=\bfseries] at (0.5,-0.05) {$t$};
+\node [black, font=\bfseries,rotate=90] at (0,0.5) {Northing};
+\end{scope}
+\end{tikzpicture} 
+%    \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXPenaltyPath2.pdf}
+%    \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataYPenaltyPath2.pdf}
+    \caption{Reconstruction on easting ($x$) and northing ($y$) directions separately.}\label{penaltyxyggXYPath}
     \end{subfigure}
  %\caption{The penalty term $n\theta^\top\Omega\theta$ of V-spline on $x$ and $y$ axes. The big black dots in Figure \ref{penaltyxyggXYPath} indicate large penalty values. It can be seen that most of large penalty values occur at turnings, where the tractor likely slows down and takes breaks. }\label{penaltyxygg}
- \caption{The penalty value $\lambda(t)$ of the V-spline on $x$ and $y$ axes. Red dots are the measurements $\mathbf{y}$. The bigger red dots in Figure \ref{penaltyxyggXYPath} indicate larger penalty values. It can be seen that most of large penalty values occur at turnings, where the tractor likely slows down and takes breaks. }\label{penaltyxygg}
+ \caption{The penalty value $\lambda(t)$ of the V-spline on $x$ and $y$ axes. Red dots are the measurements $\mathbf{y}$. The bigger red dots in Figure \ref{penaltyxyggXYPath} indicate larger penalty values at the points. It can be seen that most of large penalty values occur at turnings, where the tractor likely slows down and takes breaks. }\label{penaltyxygg}
  \end{figure}
 
 The 1-dimensional reconstruction gets the best fittings $\hat{f}_x$ and $\hat{f}_y$ on $x$ and $y$ axes separately by using different penalty values, denoted as $\eta_{d,x}$, $\eta_{u,x}$, $\eta_{d,y}$, $\eta_{u,y}$, $\gamma_x$ and $\gamma_y$. The final reconstruction is the combination of  $\hat{f}_x$ and $\hat{f}_y$. It is shown in Figure \ref{1DCombinedXY}. 
-\begin{figure}
+\begin{figure}[h!]
   \centering
-    \includegraphics[width=\textwidth,height=10cm]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataCombinedXY2.pdf} 
-  \caption{Combined reconstruction on $x$ and $y$. Red dots are the measurements $\mathbf{y}$. The bigger size it is, the larger penalty value it indicates. }\label{1DCombinedXY}
+%%\includegraphics[width=\textwidth,height=10cm]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataCombinedXY3.pdf}
+\begin{tikzpicture}
+\node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=0.9\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataCombinedXY3.pdf}};
+\begin{scope}[
+x={(image.south east)},
+y={(image.north west)}
+]
+\node [black, font=\bfseries] at (0.5,-0.01) {Easting};
+\node [black, font=\bfseries,rotate=90] at (0,0.5) {Northing};
+\end{scope}
+\end{tikzpicture} 
+\caption{Combined reconstruction on easting ($x$) and northing ($y$) directions. Red dots are the measurements. The bigger size indicates larger penalty value at that point. }\label{1DCombinedXY}
 \end{figure}
 
 
 
-\subsection{2-Dimensional Trajectory}
+
+
+\subsection{2-Dimensional Trajectory Reconstruction}
 
 In a 2-dimensional trajectory reconstruction, different from combined 1-dimensional reconstruction, we use the same parameters $\lambda_d$, $\lambda_u$ and $\gamma$ for both $x$ and $y$ axes. The overall best parameters return the least cross-validation score on all axes. Explicitly, it is calculated by the following formula 
 \begin{equation}
@@ -1048,22 +1116,52 @@ In a 2-dimensional trajectory reconstruction, different from combined 1-dimensio
 \end{equation}
 In the adjusted penalty term, $\Delta d$ is the Euclidean distance $\Delta_d(p_1,p_2)=\sqrt{(\Delta x)^2+(\Delta y)^2}$ between two positions on the 2D surface. Similar to 1-dimensional reconstruction, the velocity information keeps trajectory in the right direction and the penalty term makes sure that the crazy curve will disappear between long-time-gap points. Figure \ref{completecombind2dxy} demonstrates the complete 2D reconstruction of the whole dataset.  
 
-\begin{figure}
+\begin{figure}[h!]
   \centering
  \begin{subfigure}{\textwidth}
      \centering
 %     \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYPenaltyPathofX.pdf}
 %     \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYPenaltyPathofY.pdf}
-     \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYPenaltyPathofX2.pdf}
-     \includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYPenaltyPathofY2.pdf}
-     \caption{2-dimensional reconstruction on separate $x$ and $y$}
-     \end{subfigure}
-     \begin{subfigure}{\textwidth}
+\begin{tikzpicture}
+\node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYPenaltyPathofX3.pdf}};
+\begin{scope}[
+x={(image.south east)},
+y={(image.north west)}
+]
+\node [black, font=\bfseries] at (0.5,-0.05) {$t$};
+\node [black, font=\bfseries,rotate=90] at (0,0.5) {Easting};
+\end{scope}
+\end{tikzpicture}
+\begin{tikzpicture}
+\node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYPenaltyPathofY3.pdf}};
+\begin{scope}[
+x={(image.south east)},
+y={(image.north west)}
+]
+\node [black, font=\bfseries] at (0.5,-0.05) {$t$};
+\node [black, font=\bfseries,rotate=90] at (0,0.5) {Northing};
+\end{scope}
+\end{tikzpicture}
+     %%\includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYPenaltyPathofX3.pdf}
+     %%\includegraphics[width=0.45\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYPenaltyPathofY3.pdf}
+\caption{2-dimensional reconstruction on easting ($x$) and northing ($y$) directions separately.}
+\end{subfigure}  
+\begin{subfigure}{\textwidth}
      \centering
-     \includegraphics[width=0.9\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYPenaltyPathofXY2.pdf}
-     \caption{2-dimensional reconstruction}
-     \end{subfigure}
- \caption{2-dimensional reconstruction. Larger dots indicate bigger values of penalty function $\lambda(t)$.}\label{completecombind2dxy}
+\begin{tikzpicture}
+\node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=0.9\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYPenaltyPathofXY3.pdf}};
+\begin{scope}[
+x={(image.south east)},
+y={(image.north west)}
+]
+\node [black, font=\bfseries] at (0.5,-0.02) {Easting};
+\node [black, font=\bfseries,rotate=90] at (0,0.5) {Northing};
+\end{scope}
+\end{tikzpicture}
+     %%\includegraphics[width=0.9\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYPenaltyPathofXY3.pdf}
+\caption{Combined 2-dimensional reconstruction.}
+\end{subfigure}
+\caption{2-dimensional reconstruction. Larger dots indicate bigger values of penalty function $\lambda(t)$.}\label{completecombind2dxy}
 \end{figure}
 
 The penalty function $\lambda(t)$ of a 2-dimensional reconstruction is shared by $x$ and $y$ axes and presented in Figure \ref{2dpenalty}. The complete penalty term is 
@@ -1071,7 +1169,7 @@ The penalty function $\lambda(t)$ of a 2-dimensional reconstruction is shared by
 n\theta_x^\top\Omega_{\eta_d,\eta_u}\theta_x + n\theta_y^\top\Omega_{\eta_d,\eta_u}\theta_y.
 \end{equation}
 Similarly, most of the large penalty values appear at long-time-gap knots and turning points. A histogram plot of penalty function shows that most of the values are small and only a couple of them are large. 
-\begin{figure}
+\begin{figure}[h!]
   \centering
     \includegraphics[width=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYPenaltyLine.pdf}
     \includegraphics[width=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataXYPenaltyHist.pdf} 
@@ -1081,10 +1179,21 @@ Similarly, most of the large penalty values appear at long-time-gap knots and tu
 
 The following Figure \ref{complete2DXY} is a complete reconstruction from the whole observed dataset $\left\lbrace x,u,y,v\right\rbrace$. The overall reconstruction gives a smoothing path that goes through each measurement and avoids curvatures at turning points. 
 %Instead of reconstructing on $x$ and $y$ axes separately, it chooses the penalty value with respect to the balance on both of the two directions. 
-\begin{figure}
+\begin{figure}[h!]
 \centering
-\includegraphics[width=0.9\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataCompleteXY.pdf}
-\caption{2-dimensional reconstruction. Larger dots indicate bigger values of penalty function $\lambda(t)$.}\label{complete2DXY}
+\begin{tikzpicture}
+\node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=0.9\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataCompleteXY2.pdf}};
+\begin{scope}[
+x={(image.south east)},
+y={(image.north west)}
+]
+\node [black, font=\bfseries] at (0.5,0) {Easting};
+\node [black, font=\bfseries,rotate=90] at (0,0.5) {Northing};
+\end{scope}
+\end{tikzpicture}
+%%\includegraphics[width=0.9\linewidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggRealdataCompleteXY.pdf}
+%%\caption{2-dimensional reconstruction. Larger dots indicate bigger values of penalty function $\lambda(t)$.}\label{complete2DXY}
+\caption{A complete 2-dimensional reconstruction on both easting and northing directions. Red dots are the measurements.}\label{complete2DXY}
 \end{figure}
 
 
