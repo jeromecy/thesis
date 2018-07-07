@@ -782,7 +782,7 @@ A set of irregularly sampled time series data has different time differences bet
 
 In this section, it is shown that the proposed V-spline has the ability to reconstruct the true trajectory even though the data is irregularly sampled. With the same functions that are used in the previous section, we firstly generate the simulation data of length $n=1024$. Then we draw a length of 512 subsequence with indices $1,3,\ldots,1023$ from the mother data set for regularly sampled points and another 512 random indices for irregularly sampled points. See Figure \ref{gghistIrregularTime}. 
 
-\begin{figure}[!h]
+\begin{figure}[h!]
     \centering
     \includegraphics[width=0.75\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/gghistIrregularTime.pdf}
  \caption{Histogram of $\Delta T$ for irregularly sampled data}\label{gghistIrregularTime}
@@ -791,7 +791,7 @@ In this section, it is shown that the proposed V-spline has the ability to recon
 
 The reconstructions of regularly and irregularly sampled data are very competitive. 
 
-\begin{figure}[!h]
+\begin{figure}[h!]
     \centering
     \begin{subfigure}{\textwidth}
     \centering
@@ -823,7 +823,7 @@ The reconstructions of regularly and irregularly sampled data are very competiti
 
 
 
-\begin{table}
+\begin{table}[h!]
 	\centering
     \caption{Retrieved SNR of reconstructions from regularly and irregularly sampled data  }\label{tablecompareSNRIreReg}
 	\begin{tabular}{|c|C{3cm}|C{3cm}|}
@@ -836,7 +836,7 @@ The reconstructions of regularly and irregularly sampled data are very competiti
 \end{table}
 
 
-\begin{table}
+\begin{table}[h!]
 	\centering
     \caption{MSE and TMSE of reconstructions from regularly and irregularly sampled data  }\label{tablecompareSMEIreReg}
 	\begin{tabular}{|c|C{2cm}|C{2cm}|C{2cm}|C{2cm}|} \hline	
