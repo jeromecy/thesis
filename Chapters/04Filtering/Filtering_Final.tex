@@ -6,6 +6,9 @@ With data acquisition becoming easier, cheaper and faster, the challenges of ``b
 The state-space model, which is a popular class of time series models, has found numerous of applications in fields as diverse as statistics, ecology, econometrics, engineering and environmental sciences \citep{cappe2009inference, smcmip2011, elliott1995estimation, cargnoni1997bayesian}. The state-space model allows us to establish complex linear and nonlinear Bayesian representations of time series patterns \citep{vieira2016online}. 
 
 
+In this chapter, we review state-space models and a number of filtering methods for combined state and parameter estimation that have been proposed in the literature. They are then compared to the method described and developed in Chapter \ref{ChapterMCMC}. 
+
+
 \subsection*{State-Space Model}
 
 State-space models are models that rely on the concept of state variables. If we describe a system as an operator mapping from the space of inputs to the space of outputs, then we may need the entire input-output history of the system together with the planned input in order to compute the future output values \citep{hangos2006analysis}. Alternatively, a sequential method builds on past data and the initial conditions by incorporating new information when it arrives. A generic state-space model consists of two sets of equations: state equation and output equation. The state equation describes the evolution of the true input and state variables sequentially as a function and passes the variable one after one, generally, with some noise. The output equation catches the input values and interprets it out by an algebraic equation. A general state-space model has the following form 
@@ -252,7 +255,7 @@ where $g: \mathbb{R}^+\mapsto \mathbb{R}^+$ is a monotonously increasing functio
 \subsection{Sequential Particle Filter}
 
 
-SMC method is effective for exploring the sequence of posteriors distribution  $\pi(x_t\mid\theta) = p(x_t\mid y_{1:t},\theta)$, where the static parameters are treated as known. An inference about $\pi_{t-1}$ is used to draw an inference on $\pi_t$ by SIS and resampling. Its interest is focusing on $x_t$ instead of the whole path $x_{0:t}$, that is the filtering problem. However, this algorithm evolves weighting and resampling a population of $N$ particles, $x_t^{(1)},\ldots,x_t^{(N)}$, so that at each time $t$ they are properly weighted samples from $\pi(x_t \mid \theta)$. Additionally, it is not practicable on huge size datasets, due to numerous iterations in the sampling process. 
+SMC method is effective for exploring the sequence of posteriors distribution  $\pi(x_t\mid\theta) = p(x_t\mid y_{1:t},\theta)$, where the static parameters are treated as known. An inference about $\pi_{t-1}$ is used to draw an inference on $\pi_t$ by SIS and resampling. Its interest is focusing on $x_t$ instead of the whole path $x_{0:t}$, that is the filtering problem. However, this algorithm evolves weighting and resampling a population of $N$ particles, $x_t^{(1)},\ldots,x_t^{(N)}$, so that at each time $t$ they are properly weighted samples from $\pi(x_t \mid \theta)$. Additionally, it is not practicable on huge size data sets, due to numerous iterations in the sampling process. 
 
 As a complementary solution, \textit{sequential particle filter} method was proposed by \cite{chopin2002sequential} in the first part of his doctorate thesis. Instead, sequential particle filter uses preliminary explorations of partial distribution $\pi(\theta\mid y_{1:k})$ $(k<t)$. The concept is: an inference of $\pi(\theta)$ is drawn from the first $k$ observations, named as learning phase, and it is updated through importance sampling to incorporate the following $l$ observations, named as updating phase, \citep{chopin2002sequential}.  This method is the \textit{iterated batch importance sampling} (IBIS) algorithm, which is used for the recursive exploration of the sequence of the parameter posterior distributions $\pi(\theta)$. It updates a population of $N$ particles for $\theta$, $\theta^{(1)}, \ldots, \theta^{(N)}$, so that at each time $t$ they are a properly weighted sample from $\pi(\theta)$. The algorithm includes occasional MCMC steps for rejuvenating the current population of particles of $\theta$  to prevent the number of distinct from decreasing over time. 
 
@@ -291,7 +294,7 @@ The algorithm stops at $k=t$, where the particle system targets the distribution
 
 \subsection{MCMC-Based Particle Algorithm}
 
-It is discussed that the sequential Monte Carlo approaches are powerful methodologies to cope with large data set recursively, but unfortunately, they are inefficient when apply to high dimensional problems \citep{septier2009mcmc}.  An alternative set of powerful stochastic algorithms that allow us to solve most of Bayesian computational problems is MCMC method. However, as dataset becomes larger and larger, it requires numerous computing in the process. 
+It is discussed that the sequential Monte Carlo approaches are powerful methodologies to cope with large data set recursively, but unfortunately, they are inefficient when apply to high dimensional problems \citep{septier2009mcmc}.  An alternative set of powerful stochastic algorithms that allow us to solve most of Bayesian computational problems is MCMC method. However, as data set becomes larger and larger, it requires numerous computing in the process. 
 
 A natural extension is whether there exists a sequential MCMC method to diversify the degenerate particle population thus improving the empirical approximation for multi-target tracking or high dimensional space. Luckily, sequential approaches using MCMC method is proposed by \cite{berzuini1997dynamic}, who combines MCMC with importance resampling to sequentially update the posterior distribution. 
 Other discussions, such as \citep{khan2005mcmc, golightly2006bayesian, pang2008models}, use either resampling nor importance sampling. 
@@ -427,7 +430,7 @@ The speed and accuracy of this algorithm depend on the choice of sample size $M$
 %\begin{align*}
 %K_n(x_{1:t}',\theta'\mid x_{1:t},\theta) = \delta_{x_{1:t}}(x_{1:t} ')p(\theta'\mid x_{1:t},y_{1:t}),
 %\end{align*}
-%where $p(y_{1:t}\mid\theta,x_{1:t})=p(\theta\mid s_t(x_{1:t},y_{1:t}))$ and $s_t(x_{1:t},y_{1:t})$ is a fixed-dimensional vector of sufficient statistics. MCMC can be used to maintain the diversity of the samples of $\theta$. Here the stationary distribution for the MCMC will be the full joint posterior distribution of states and parameters and apply MH or Gibbs sampling separately to $p(\theta \mid x_{1:t},y_{1:t})$ and $p(x_{1:t} \mid \theta,y_{1:t})$. However, this method is not feasible for large dataset. 
+%where $p(y_{1:t}\mid\theta,x_{1:t})=p(\theta\mid s_t(x_{1:t},y_{1:t}))$ and $s_t(x_{1:t},y_{1:t})$ is a fixed-dimensional vector of sufficient statistics. MCMC can be used to maintain the diversity of the samples of $\theta$. Here the stationary distribution for the MCMC will be the full joint posterior distribution of states and parameters and apply MH or Gibbs sampling separately to $p(\theta \mid x_{1:t},y_{1:t})$ and $p(x_{1:t} \mid \theta,y_{1:t})$. However, this method is not feasible for large data set. 
 
 
 
@@ -494,7 +497,7 @@ The Storvik filter is summarized bellow:
 %\begin{itemize}
 %\item{Step 1.} Sample $x_{t+1}^{(i)}$ from $p(x_{t+1}\mid x_{t}^{(i)},y_{1:t+1},\theta^{(i)} )$
 %\item{Step 2.} Calculate weights $w_{t+1} \propto p(y_{t+1}\mid x_{t+1}^{(i)}, \theta^{(i)})$ and normalize it by $w_{t+1}^{(i)}=\frac{ w_{t+1}^{(i)} }{ \sum w_{t+1}^{(i)}}$
-%\item{Step 3.} Re-sample $\left\lbrace  \theta_{t+1}^{(i)},x_{t+1}^{(i)},s_{t+1}^{(i)}  \right\rbrace$ according to $w_{t+1}$
+%\item{Step 3.} Resample $\left\lbrace  \theta_{t+1}^{(i)},x_{t+1}^{(i)},s_{t+1}^{(i)}  \right\rbrace$ according to $w_{t+1}$
 %\item{Step 4.} Update sufficient statistics $s_{t+1}^{(i)}=S(s_{t}^{(i)},x_{t+1},y_{t+1})$ 
 %\item{Step 5.} Sample $\theta^{(i)}$ from $p(\theta\mid s_{t+1}^{(i)})$
 %\end{itemize}
@@ -505,7 +508,7 @@ The Storvik filter is summarized bellow:
 \For{$i=1,\ldots,N$}{
 Sample $x_{k}^{(i)}$ from $p\left(x_{k}\mid x_{k-1}^{(i)},y_{1:k},\theta^{(i)} \right)$. \\
 Calculate weights $w_{k} \propto p\left(y_{k}\mid x_{k}^{(i)}, \theta^{(i)}\right)$ and normalize it by $\tilde{w}_{k}^{(i)}=\frac{ w_{k}^{(i)} }{ \sum w_{k}^{(i)}}$.\\
-Re-sample $\left\lbrace  \theta_{k}^{(i)},x_{k}^{(i)},s_{k}^{(i)}  \right\rbrace$ according to $\tilde{w}_{k}$.\\
+Resample $\left\lbrace  \theta_{k}^{(i)},x_{k}^{(i)},s_{k}^{(i)}  \right\rbrace$ according to $\tilde{w}_{k}$.\\
 Update sufficient statistics $s_{k}^{(i)}=S\left(s_{k-1}^{(i)},x_{k},y_{k}\right)$.\\
 Sample $\theta^{(i)}$ from $p\left(\theta\mid s_{k}^{(i)}\right)$.
 }
@@ -524,7 +527,7 @@ By denoting $s_t$ and $s_t^x$ the sufficient statistics for the parameter and st
 %\KwResutt{Write here the resutt }
 \For{$k=1,\ldots,t$}{
 \For{$i=1,\ldots,N$}{
-Re-sample $\tilde{z}_k^{\left(i\right)}=\left(\tilde{s}_k^{x\left(i\right)},\tilde{s}_k^{\left(i\right)},\tilde{\theta}^{\left(i\right)}\right)$ from $z_k^{(i)} = \left( s_k^x,s_k,\theta\right)^{(i)}$ with weight $w_k\propto p\left(y_{k+1}\mid z_t^{(i)} \right)$.\\
+Resample $\tilde{z}_k^{\left(i\right)}=\left(\tilde{s}_k^{x\left(i\right)},\tilde{s}_k^{\left(i\right)},\tilde{\theta}^{\left(i\right)}\right)$ from $z_k^{(i)} = \left( s_k^x,s_k,\theta\right)^{(i)}$ with weight $w_k\propto p\left(y_{k+1}\mid z_t^{(i)} \right)$.\\
 Draw $x_{k+1}^{(i)}$ from $p\left(x_{k+1}\mid \tilde{z}_t^{(i)},y_{1:k+1}\right)$. \\
 Update parameter-sufficient statistics  $s_{k+1}^{(i)}=S\left(\tilde{s}_{k}^{(i)}, x_{k+1}^{(i)},y_{k+1}\right)$. \\
 Sample $\theta^{(i)}$ from $p\left(\theta \mid  s_{k+1}^{(i)}\right)$. \\
@@ -689,7 +692,7 @@ Notice that the proposed sliding window MCMC algorithm requires using a few data
 %\end{figure}
 
 
-\begin{figure}[h]
+\begin{figure}[h!]
 \centering
   \begin{subfigure}[t]{0.46\textwidth}
 \includegraphics[width=\textwidth]{Chapters/04Filtering/plot/LWchain100.pdf}
@@ -715,11 +718,11 @@ Notice that the proposed sliding window MCMC algorithm requires using a few data
 \includegraphics[width=\textwidth]{Chapters/04Filtering/plot/MCMCchainVary.pdf}
  \caption{MCMC with varying-length}
    \end{subfigure}
-\caption{Trace plots. Repeatedly running 50 times with cutting off the first \textbf{300} data. It is apparent that all these algorithms converge to the true parameter (black horizontal line) along with time. St, PL and MCMC-vary have a narrower range. MCMC-100 has a higher variability and MCMC-vary has the least. The more data incorporated in the estimation phase the better approximation to be obtained. }\label{FilterRiewComparesion01}
+\caption{Plots of the inferred value of $\phi$ over time; median value shown for filtering methods and mean value shown for MCMC methods. Repeatedly running 50 times with cutting off the first \textbf{300} data. It is apparent that all these algorithms converge to the true parameter (black horizontal line) along with time. St, PL and MCMC-vary have a narrower range. MCMC-100 has a higher variability and MCMC-vary has the least. The more data incorporated in the estimation phase the better approximation to be obtained. }\label{FilterRiewComparesion01}
 \end{figure}
 
  
-\begin{figure}[h]
+\begin{figure}[h!]
 \centering
 \includegraphics[width=0.95\textwidth]{Chapters/04Filtering/plot/CompMCMCboxplotALL.pdf}
 \begin{tabular}{|c|c|c|c|c|c|c|}
@@ -727,16 +730,16 @@ Notice that the proposed sliding window MCMC algorithm requires using a few data
      & LW & St & PL  & MCMC-100 & MCMC-300 & MCMC-vary \\ \hline
 Mean of $\hat{\phi}$ & 0.7947 &   0.7908   &  0.7918 & 0.7914 &  0.8038& 0.7922 \\ \hline
 SE of $\hat{\phi}$ ($\times 10^{-4}$) &  13.1000  & 4.8793 & 6.2877 & 1.1388 & 0.3275 & 0.27506 \\ \hline
-$\frac{1}{n}\sum_i(\hat{x}_i-x_i)^2$ & 0.5745 & 0.5739 & 0.5737 & 0.5875&  0.5741 &  0.5740 \\ \hline
+$\frac{1}{n}\sum_t(\hat{x}_t-x_t)^2$ & 0.5745 & 0.5739 & 0.5737 & 0.5875&  0.5741 &  0.5740 \\ \hline
 \end{tabular}
 \caption{Box-plots comparison of all the algorithms. The proposed MCMC algorithm is more stable than other filters.} \label{FilterRiewComparesionTable}
 \end{figure}
 
 
-\begin{figure}[h]
+\begin{figure}[h!]
 \centering
 \includegraphics[width=\textwidth]{Chapters/04Filtering/plot/plotlyFilterCompX2.png}
-\caption{The filtering for $x_{300:897}$ is competitive. These algorithms return close estimations. } \label{FilterRiewComparesion02}
+\caption{Plot of state estimation over time; $\hat{x}_t$ is median value for filtering methods and mean value for MCMC methods. The filtering for $x_{300:897}$ is competitive. The algorithms return very similar estimates. The plots for MCMC-100 and MCMC-300 are hard to distinguish from MCMC-vary.} \label{FilterRiewComparesion02}
 \end{figure}
 
 
@@ -767,19 +770,22 @@ $\frac{1}{n}\sum_i(\hat{x}_i-x_i)^2$ & 0.5745 & 0.5739 & 0.5737 & 0.5875&  0.574
 
 From Figure \ref{FilterRiewComparesion01}, it can be seen that the former three algorithms converge to the true parameter $\phi$ at similar speeds along with the time $t$. LW filter has a larger distance to the true parameter comparing with St and PL filters. The proposed MCMC with 100 length data in estimation phase has the largest variance. By setting a longer length $L$, the proposed adaptive MCMC becomes stable. 
 
-The estimations for $x_t$ from $t=300$ to $897$ are very close and the differences are hard to tell visually. From Table \ref{FilterRiewComparesionTable}, we can see that, by repeatedly running 50 simulations, the proposed MCMC algorithm is more stable in estimating parameter $\phi$ as it has the lowest standard error (SE) among all the algorithms. The MSE of all the algorithms on estimating $x$ is on the similar level.  
+From Figure \ref{FilterRiewComparesionTable}, we can see that, by repeatedly running 50 simulations, the proposed MCMC algorithm is more precise in estimating parameter $\phi$ as it has the lowest standard error (SE) among all the algorithms. However, for the sliding window approaches, the estimate for $\phi$ shows more variability as more data is incorporated. Nevertheless, this does not affect state inference: the MSE of all the algorithms on estimating $x$ is at a similar level. 
 
+The estimates for $x_t$ from $t=300$ to $897$ are very close and the differences are hard to tell visually. See Figure \ref{FilterRiewComparesion02}. 
+
+\clearpage
 
 \section{Conclusion}
 
 In this chapter, we take an overview of existing sequential state estimation methods and combined state and parameter estimation methods. The particle filter is an efficient algorithm for state estimation, although the particles impoverishment is inevitable. Extended to this method, researchers are working on killing particles degeneracy and several accomplishments have been achieved. A new challenge is estimating the unknown parameters. In no doubt, for complex stochastic processes and dynamics, both Bayesian and Frequentist methods are working well. One refer to \citep{wakefield2013bayesian} for further discussions between Bayesian and Frequentist methods and implementation. 
 
 As a summary, most of the research issues for filtering and parameter estimation focus on 
-\begin{itemize}\itemsep0em 
+\begin{enumerate}
 \item Choices of resampling scheme to kill particles degeneracy, such as Liu and West's filter.
 \item Exploration of an efficient sampling algorithm, such as Metropolis-Hastings sampler and related sampling algorithms. 
 \item Exploration of accurate estimation with low variances in higher dimensional space. 
-\end{itemize}
+\end{enumerate}
 
 Subject to pages and time, some algorithms are not included in this chapter. For more information and interests, readers can refer to unscented Kalman filter \citep{wan2000unscented} and its related algorithms for non-linear estimation, particle MCMC \citep{andrieu2010particle} for off-line Bayesian estimation and on-line gradient approach \citep{poyiadjis2005maximum} for parameter estimation. 
 

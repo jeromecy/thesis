@@ -114,7 +114,7 @@ As discussed in the previous section, the determination of an optimal smoothing 
 
 %\subsection*{Cross-Validation}
 
-A classical parameter selection method is \textit{cross-validation} (CV). The idea behind this method can be traced back to 1930s \citep{larson1931shrinkage}. Because in most applications, only a limited amount of data is available. Thus, an idea is to split this dataset into two subgroups, one of which is used for training the model and the other one is used to evaluate its statistical performance. The sample used in evaluation is considered as ``new data'' as long as data is \iid. 
+A classical parameter selection method is \textit{cross-validation} (CV). The idea behind this method can be traced back to 1930s \citep{larson1931shrinkage}. Because in most applications, only a limited amount of data is available. Thus, an idea is to split this data set into two subgroups, one of which is used for training the model and the other one is used to evaluate its statistical performance. The sample used in evaluation is considered as ``new data'' as long as data is \iid. 
 
 A single data split yields a validation estimate of the risk and averaging over several splits yields a cross-validation estimate \citep{arlot2010survey}. Because of the assumption that data are identically distributed, and training and validation samples are independent, CV methods are widely used in parameter selection and model evaluation. 
 
@@ -123,12 +123,12 @@ For example, a $k$-fold CV splits the data into $k$ roughly equal-sized parts. F
 \begin{algorithm}[h]
 \SetAlgoLined 
 %\KwResutt{Write here the resutt }
-Initialization: Remove the first data $t_1$ and last date $t_n$ from the dataset. \\
+Initialization: Remove the first data $t_1$ and last date $t_n$ from the data set. \\
 Split the rest data $t_2,\ldots,t_{n-1}$ into $k$ groups by: for $i=1,\ldots,k$, the $i$th Group $G_i=\{t_{i+1}, t_{i+1+k}, t_{i+1+2k}, \cdots\}$.\\
 Guess a value $\lambda^*$. \\
 \While{CV score is not optimized}{
 \For{$i=1,\ldots,k$}{ \label{kfoldCV01}
-Delete the $i$th group of data. Fit a smoothing spline to the first data $(t_1,y_1)$, the rest $k-1$ groups of dataset and the last data $(t_n,y_n)$ with $\lambda^*$.\\ 
+Delete the $i$th group of data. Fit a smoothing spline to the first data $(t_1,y_1)$, the rest $k-1$ groups of data set and the last data $(t_n,y_n)$ with $\lambda^*$.\\ 
 Compute the sum of squared deviations $s_i$ of this smoothing spline from the deleted $i$th group data points. \\ 
 }\label{kfoldCV02}
 Add the sums of squared deviations from steps \ref{kfoldCV01} to \ref{kfoldCV02} and divide it by $k$ to achieve a cross-validation score of $\lambda^*$, that is $s=\frac{1}{k}\sum_{i=1}^{k}s_i$. \\ \label{kfoldCV03}
@@ -468,11 +468,19 @@ Four recommendations for the choices of $h\left(x,x'\right)$ including a scaled 
 
 
 
-\section{Thesis Outline}
+\section{Original Contributions and Thesis Outline}
+
+The original contributions presented in this thesis are:
+\begin{enumerate}
+	\item An adaptive spline-based approach to trajectory reconstruction called the V-spline. The V-spline incorporates velocity information and a piecewise constant penalty term, and has been developed to handle irregularly sampled data. 
+	\item The reconstructed trajectory can be understood as an element of a reproducing kernel Hilbert space. The approach of \citep{gu2013smoothing} is extended to allow for a piecewise constant penalty term and the V-spline is shown to be the posterior mean of a particular Gaussian process. 
+	\item A fast on-line algorithm for trajectory reconstruction, based on Markov chain Monte Carlo, is developed for simultaneous parameter and state estimation in the context of a linear state space model. This approach is simpler to implement than particle methods that rely on sufficient statistics.
+\end{enumerate}	
+
 
 In Chapter \ref{ChapterTS}, an adaptive smoothing V-spline method, which is based on \textit{Hermite spline} basis functions, is proposed to obtain a reconstruction of $f$ and $f'$ from noisy data $y_{1:n}$ and $v_{1:n}$. Instead of minimizing the residuals of $f(t_i)-y_i$ only, the residuals of $f'(t_i)-v_i$ with a new parameter $\gamma$ are consisted in the new objective function. A modified leave-one-out cross-validation algorithm is used for find the optimal parameters. Numerical simulation and real data implementation are given after theoretical methodology. 
 
-In Chapter \ref{ChapterGPR}, the Bayesian estimation form of the V-spline is given. It is proved that the Bayesian estimate is corresponding to a trivial V-spline  in the reproducing kernel Hilbert space $\mathcal{C}_{\mbox{\scriptsize p.w.}}^{(2)}[0,1]$, where the second-derivative is piecewise-continuous.  An extended GCV is used to find the optimal parameters for the Bayesian estimate. 
+In Chapter \ref{ChapterGPR}, the Bayesian estimation form of the V-spline is given. It is proved that the Bayes estimate is corresponding to a V-spline in the reproducing kernel Hilbert space $\mathcal{C}_{\mbox{\scriptsize p.w.}}^{(2)}[0,1]$, where the second-derivative is piecewise-continuous.  An extended GCV is used to find the optimal parameters for the Bayes estimate. 
 
 In Chapter \ref{ChapterFR}, a comprehensive overview of existing methods for sequential state and parameter inference is given. Basic concepts and popular algorithms of sequential state estimation are discussed in the second section. Furthermore, the algorithms for combined state and parameter estimation are brought into a separate section. A numerical comparison of different methods is given at the end of this chapter. 
 
@@ -480,7 +488,7 @@ In Chapter \ref{ChapterMCMC}, a random walk Metropolis-Hastings algorithm in the
 
 The proof of theorems, details of equation calculations, and results of simulation studies are all presented in appendices. For details, the Appendix \ref{appendTS} includes V-spline related theorems, lemmas, calculations and figures. In Appendix \ref{appendMCMC}, the proposed adaptive sequential MCMC related works and outcomes are illustrated, including details of the recursive form calculation, tables and figures of parameters comparison and so on. 
 
-A spin-off outcome is presented in Appendix \ref{appendSimp}. It is a data simplification method used for reducing the size of a dataset and saving storage costs without losing important information.
+A spin-off outcome is presented in Appendix \ref{appendSimp}. It is a data simplification method used for reducing the size of a data set and saving storage costs without losing important information.
 
 
 

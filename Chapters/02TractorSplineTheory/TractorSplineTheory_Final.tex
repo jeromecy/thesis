@@ -640,26 +640,26 @@ By comparing the results, we can see that all these methods can rebuild up the s
     \centering
     \begin{subfigure}{\textwidth}
     \centering
-    \includegraphics[width=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBlocksPenaltyBar.pdf}
-    \includegraphics[width=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBlocksPenaltyLine.pdf}
+    \includegraphics[width=0.45\textwidth,height=4.5cm]{Chapters/02TractorSplineTheory/plot/ggplot/ggBlocksPenaltyBar.pdf}
+    \includegraphics[width=0.45\textwidth,height=4.5cm]{Chapters/02TractorSplineTheory/plot/ggplot/ggBlocksPenaltyLine.pdf}
     \caption{Distribution of the penalty values in reconstructed \textit{Blocks}}
     \end{subfigure}
     \begin{subfigure}{\textwidth}
     \centering
-    \includegraphics[width=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBumpsPenaltyBar.pdf}
-    \includegraphics[width=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggBumpsPenaltyLine.pdf}
+    \includegraphics[width=0.45\textwidth,height=4.5cm]{Chapters/02TractorSplineTheory/plot/ggplot/ggBumpsPenaltyBar.pdf}
+    \includegraphics[width=0.45\textwidth,height=4.5cm]{Chapters/02TractorSplineTheory/plot/ggplot/ggBumpsPenaltyLine.pdf}
     \caption{Distribution of the penalty values in reconstructed \textit{Bumps}}
     \end{subfigure}
     \begin{subfigure}{\textwidth}
     \centering
-    \includegraphics[width=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSinePenaltyBar.pdf}
-    \includegraphics[width=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSinePenaltyLine.pdf}
+    \includegraphics[width=0.45\textwidth,height=4.5cm]{Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSinePenaltyBar.pdf}
+    \includegraphics[width=0.45\textwidth,height=4.5cm]{Chapters/02TractorSplineTheory/plot/ggplot/ggHeaviSinePenaltyLine.pdf}
     \caption{Distribution of the penalty values in reconstructed \textit{HeaviSine}}
     \end{subfigure}
     \begin{subfigure}{\textwidth}
     \centering
-    \includegraphics[width=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggDopplerPenaltyBar.pdf}
-    \includegraphics[width=0.45\textwidth]{Chapters/02TractorSplineTheory/plot/ggplot/ggDopplerPenaltyLine.pdf}
+    \includegraphics[width=0.45\textwidth,height=4.5cm]{Chapters/02TractorSplineTheory/plot/ggplot/ggDopplerPenaltyBar.pdf}
+    \includegraphics[width=0.45\textwidth,height=4.5cm]{Chapters/02TractorSplineTheory/plot/ggplot/ggDopplerPenaltyLine.pdf}
     \caption{Distribution of the penalty values in reconstructed \textit{Doppler}}
     \end{subfigure}
 \caption{Distribution of the penalty values $\lambda(t,\eta)$ in V-spline. Figures on the left side indicate the values varying in intervals. On the right side, these values are projected into reconstructions. The bigger the blacks dots present, the larger the penalty values are.}\label{numpenalty}
@@ -780,7 +780,7 @@ Further analysis in Figures \ref{tractorsplineSNR7acf} and \ref{tractorsplineSNR
 
 A set of irregularly sampled time series data has different time differences between each pair of successive points. The distribution of $\Delta T_i$ is not uniform.
 
-In this section, it is shown that the proposed V-spline has the ability to reconstruct the true trajectory even though the data is irregularly sampled. With the same functions that are used in the previous section, we firstly generate the simulation data of length $n=1024$. Then we draw a length of 512 subsequence with indices $1,3,\ldots,1023$ from the mother dataset for regularly sampled points and another 512 random indices for irregularly sampled points. See Figure \ref{gghistIrregularTime}. 
+In this section, it is shown that the proposed V-spline has the ability to reconstruct the true trajectory even though the data is irregularly sampled. With the same functions that are used in the previous section, we firstly generate the simulation data of length $n=1024$. Then we draw a length of 512 subsequence with indices $1,3,\ldots,1023$ from the mother data set for regularly sampled points and another 512 random indices for irregularly sampled points. See Figure \ref{gghistIrregularTime}. 
 
 \begin{figure}[!h]
     \centering
@@ -854,7 +854,7 @@ The reconstructions of regularly and irregularly sampled data are very competiti
 \section{Inference of Tractor Trajectories}\label{splineapplication}
 
 
-In the real life application, the movement of vehicles or tractors has complicated features. The velocity of a moving object looks like a combination of the original bumps and blocks functions: it is a turbulent waves fluctuating around zero. In this section, we apply the proposed V-spline to real dataset, which is recorded by a GPS unit mounted on a tractor. The original dataset contains the information about time marks, longitude, latitude, velocity, bearing (in degrees,  heading to North) and boom status. The data is not regularly recorded and the time difference has a high variance. 
+In the real life application, the movement of vehicles or tractors has complicated features. The velocity of a moving object looks like a combination of the original bumps and blocks functions: it is a turbulent waves fluctuating around zero. In this section, we apply the proposed V-spline to real data set, which is recorded by a GPS unit mounted on a tractor. The original data set contains the information about time marks, longitude, latitude, velocity, bearing (in degrees, heading to North) and boom status. The data is not regularly recorded and the time difference has a high variance. 
 
 In a two or higher $d$-dimensional curve nonparametric regression, consider the general form of a length $n$ time series data points $\left\lbrace t_1,p_1,s_1\right\rbrace, \ldots, \left\lbrace t_n,p_n,s_n\right\rbrace$, such that $a \leq t_1<t_2< \cdots < t_n \leq b$, $p_i$ and $s_i$ are $d$-dimensional vectors contain position and velocity information at time $i$ respectively. The positive piecewise constant function $\lambda(t) = \lambda_i$ on each interval $t_i \leq t<t_{i+1}, t_0=a, t_{n+1}=b$.  Then function $f:[a,b]\mapsto\mathbb{R}^d$ with $\gamma>0$ is a V-spline in the $d$-dimensional space if it is the solution to the generic form of the objective function: 
 \begin{equation}\label{tractorsplineObjective2D}
@@ -862,7 +862,7 @@ J[f]= \frac{1}{n} \sum_{i=1}^{n} \lVert f(t_i)-p_i\rVert_d^2 + \frac{\gamma}{n} 
 \end{equation}
 
 
-Particularly, GPS data is recorded in two directions, easting and northing. In this situation $d=2$. Hence, in the following application, we split the 2-dimensional function $f(x,y)$ into two sub-functions $f_x(t)$ on $x$-axis (easting direction) and $f_y(t)$ on $y$-axis (northing direction) with respect to time $t$. Compared with other parameters, choosing time $t$ to be the parameter has some advantages: (i) the expressions of all the constraints are simpler \citep{zhang2013cubic}; (ii) it can be simply applied from 2-dimension to 3-dimension by adding an extra $z$-axis, such as altitude. Without loss of generality, a dataset in a higher dimensional space can be projected into several sub-spaces, such as $p=\left\lbrace x,y,z,\ldots \right\rbrace$ and $s=\left\lbrace u,v,w,\ldots \right\rbrace$. 
+Particularly, GPS data is recorded in two directions, easting and northing. In this situation $d=2$. Hence, in the following application, we split the 2-dimensional function $f(x,y)$ into two sub-functions $f_x(t)$ on $x$-axis (easting direction) and $f_y(t)$ on $y$-axis (northing direction) with respect to time $t$. Compared with other parameters, choosing time $t$ to be the parameter has some advantages: (i) the expressions of all the constraints are simpler \citep{zhang2013cubic}; (ii) it can be simply applied from 2-dimension to 3-dimension by adding an extra $z$-axis, such as altitude. Without loss of generality, a data set in a higher dimensional space can be projected into several sub-spaces, such as $p=\left\lbrace x,y,z,\ldots \right\rbrace$ and $s=\left\lbrace u,v,w,\ldots \right\rbrace$. 
 
 
 Thereafter, we convert the longitude and latitude information from a 3D sphere to 2D surface first by \textit{Universal Transverse Mercator coordinate system} (UTM) and then project the speed $s$ into $u$ and $v$ on $x$-axis and $y$-axis respectively by 
@@ -870,7 +870,7 @@ Thereafter, we convert the longitude and latitude information from a 3D sphere t
 u &=s\cdot \sin \left(\omega\frac{\pi}{180}\right),\\
 v &= s\cdot \cos \left(\omega\frac{\pi}{180}\right),
 \end{align}
-where $\omega$ is bearing in degrees. Boom status is tagged as 0 if it is not operating and 1 if it is. Time marks are transformed by subtracting the first mark, in which way the time starts from 0. Time duplicated data, caused by errors, have been removed from the dataset\footnote{In some cases, further data simplification to remove spurious or non-informative observations may be warranted. In Appendix \ref{appendSimp}, we introduce a new data simplification method for vehicle trajectories which compares favorably with Douglas-Peucker algorithm.  }. For the convenience of comparing with wavelet algorithm, we choose the first 512 out of 928 rows of data. The original measurements are plotted in Figure \ref{original512}.
+where $\omega$ is bearing in degrees. Boom status is tagged as 0 if it is not operating and 1 if it is. Time marks are transformed by subtracting the first mark, in which way the time starts from 0. Time duplicated data, caused by errors, have been removed from the data set\footnote{In some cases, further data simplification to remove spurious or non-informative observations may be warranted. In Appendix \ref{appendSimp}, we introduce a new data simplification method for vehicle trajectories which compares favorably with Douglas-Peucker algorithm.  }. For the convenience of comparing with wavelet algorithm, we choose the first 512 out of 928 rows of data. The original measurements are plotted in Figure \ref{original512}.
 
 
 \begin{figure}
@@ -1018,7 +1018,7 @@ Table \ref{1dxymse} illustrates the MSE of all methods on both $x$ and $y$ axes.
 
 %\begin{sidewaystable}
 \begin{table}
-\caption{Mean squared error. V-spline returns smallest errors among all these methods. P-spline was unable to reconstruct the $y$ trajectory as the original dataset contains 0 $\Delta_y$.} \label{1dxymse}
+\caption{Mean squared error. V-spline returns smallest errors among all these methods. P-spline was unable to reconstruct the $y$ trajectory as the original data set contains 0 $\Delta_y$.} \label{1dxymse}
 % \centering
 	\setlength\tabcolsep{1.5pt}
 \begin{center}
@@ -1114,7 +1114,7 @@ In a 2-dimensional trajectory reconstruction, different from combined 1-dimensio
 \begin{equation}
 \mbox{CV}=\mbox{CV}_x+\mbox{CV}_y.
 \end{equation}
-In the adjusted penalty term, $\Delta d$ is the Euclidean distance $\Delta_d(p_1,p_2)=\sqrt{(\Delta x)^2+(\Delta y)^2}$ between two positions on the 2D surface. Similar to 1-dimensional reconstruction, the velocity information keeps trajectory in the right direction and the penalty term makes sure that the crazy curve will disappear between long-time-gap points. Figure \ref{completecombind2dxy} demonstrates the complete 2D reconstruction of the whole dataset.  
+In the adjusted penalty term, $\Delta d$ is the Euclidean distance $\Delta_d(p_1,p_2)=\sqrt{(\Delta x)^2+(\Delta y)^2}$ between two positions on the 2D surface. Similar to 1-dimensional reconstruction, the velocity information keeps trajectory in the right direction and the penalty term makes sure that the crazy curve will disappear between long-time-gap points. Figure \ref{completecombind2dxy} demonstrates the complete 2D reconstruction of the whole data set.  
 
 \begin{figure}[h!]
   \centering
@@ -1177,7 +1177,7 @@ Similarly, most of the large penalty values appear at long-time-gap knots and tu
 \end{figure}
 
 
-The following Figure \ref{complete2DXY} is a complete reconstruction from the whole observed dataset $\left\lbrace x,u,y,v\right\rbrace$. The overall reconstruction gives a smoothing path that goes through each measurement and avoids curvatures at turning points. 
+The following Figure \ref{complete2DXY} is a complete reconstruction from the whole observed data set $\left\lbrace x,u,y,v\right\rbrace$. The overall reconstruction gives a smoothing path that goes through each measurement and avoids curvatures at turning points. 
 %Instead of reconstructing on $x$ and $y$ axes separately, it chooses the penalty value with respect to the balance on both of the two directions. 
 \begin{figure}[h!]
 \centering

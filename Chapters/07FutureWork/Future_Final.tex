@@ -1,5 +1,5 @@
 
-In this thesis, two main practical algorithms are proposed: the adaptive V-spline and the adaptive sequential MCMC algorithm. The first algorithm is appropriate for batch estimation and the second for on-line estimation, and we have seen that both algorithms have good performance in practice. Nevertheless, there are a number of areas in which further improvements could be made.
+In this thesis, two main practical algorithms are proposed: the adaptive V-spline and the adaptive sequential MCMC algorithm. The first algorithm is appropriate for batch estimation and the second for on-line estimation, and we have seen that both algorithms have good performance in practice. Nevertheless, there are a number of areas in which further improvements can be made.
 
 
 \subsection*{Gradient Boosting V-Spline}
@@ -84,7 +84,7 @@ processes.
 
 In several references, Grid-based methods have been proved that it provides an optimal recursion of the filtered density $p(x_t\mid y_{1:t})$ if the state-space is discrete and consists of a finite number of states \citep{ristic2004beyond, stroud2018bayesian, arulampalam2002tutorial, hartmann2016grid}. 
 
-In the application of real time series dataset, the model is supposed as an OU-process containing five unknown parameters. With the idea of grid-based algorithm, the 5-dimension parameter space $\mathbb{R}^5$ can be initialized by spanning $\theta_0^{(i)}$ with equal weights $w_0=\left\lbrace\frac{1}{N},\frac{1}{N},\frac{1}{N},\frac{1}{N},\frac{1}{N}\right\rbrace$ at time $t=0$, where $i=1,\ldots,N$. When a new observation $Y_t=\left\lbrace y_t,v_t\right\rbrace$ comes into the system, the weights for each parameter in each subspace are updated via $w_t\propto p(Y_t\mid \theta,Y_{1:t-1})w_{t-1}$. 
+In the application of real time series data set, the model is supposed as an OU-process containing five unknown parameters. With the idea of grid-based algorithm, the 5-dimension parameter space $\mathbb{R}^5$ can be initialized by spanning $\theta_0^{(i)}$ with equal weights $w_0=\left\lbrace\frac{1}{N},\frac{1}{N},\frac{1}{N},\frac{1}{N},\frac{1}{N}\right\rbrace$ at time $t=0$, where $i=1,\ldots,N$. When a new observation $Y_t=\left\lbrace y_t,v_t\right\rbrace$ comes into the system, the weights for each parameter in each subspace are updated via $w_t\propto p(Y_t\mid \theta,Y_{1:t-1})w_{t-1}$. 
 
 However, the grid-based MCMC may not be practical for a higher $n$-dimensional space, which requires $\BigO{N^n}$ computation cost per MCMC step. 
 

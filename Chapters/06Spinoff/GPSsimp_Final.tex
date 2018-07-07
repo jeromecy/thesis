@@ -3,7 +3,7 @@
 
 GPS devices are widely used in orchard planting and maintenance. This location-based system allows orchardist to check trajectory of tractors. The trajectory is a connection by a time series successive positions recorded by GPS devices. A classical GPS device records skeleton information, including time mark, latitude, longitude, number of available satellites, etc. Recently, researchers try to enrich trajectory (called Semantic Trajectory) by adding background geographic information to discover meaningful pattern \citep{ying2011semantic}. 
 
-Normally GPS units record more data than necessary and cause more errors due to weak signals or shelter from branches. To obtain a more accurate observation dataset and to save local storage space, several data simplification methods were proposed and are focusing on simplifying data set by making either a local or global decision. 
+Normally GPS units record more data than necessary and cause more errors due to weak signals or shelter from branches. To obtain a more accurate observation data set and to save local storage space, several data simplification methods were proposed and are focusing on simplifying data set by making either a local or global decision. 
 
 A local simplification algorithm focuses on a couple of particular consecutive points. By analyzing the relationship between these points, a decision is made that which point can be deleted or retained. Distance threshold algorithm is one of these algorithms. All points, whose distance to the preceding track point is less than a predetermined threshold, are deleted. Direction changing algorithm is another one. The point is retained if the change in direction is greater than a predetermined threshold  \citep{ivanov2012real}. 
 
@@ -23,7 +23,7 @@ Particularly, a tractor working on an orchard generates two kinds of boom status
 
 To move further, here are two concepts that will be useful to understand the simplification scheme.
 \begin{itemize}
-\item $\mathbf{Segment}$ A segment is a part of the consecutive trajectory. Regarding the status of the boom, the trajectory can be simply divided into two kinds of the segment in our dataset, one is boom-operating, the other is boom-not-operating. 
+\item $\mathbf{Segment}$ A segment is a part of the consecutive trajectory. Regarding the status of the boom, the trajectory can be simply divided into two kinds of the segment in our data set, one is boom-operating, the other is boom-not-operating. 
 \item $\mathbf{Direction}$. Direction $\theta$ denotes the heading direction of a tractor at a specific point location. This parameter uses north direction as a basis, in which way $\ang{0} \leq \theta < \ang{360}$.
 \end{itemize}
 
