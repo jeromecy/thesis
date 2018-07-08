@@ -679,7 +679,7 @@ By substituting them into the equation \eqref{mixturemean} and \eqref{mixturevar
 	\includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/gglinearestXt2.pdf}
      \caption{Estimation of a single $x_t$}\label{MCMClinearsimuXt2}
 \end{subfigure}
-\caption{Linear simulation of $x_{1:t}$ and single $x_t$.In Figure \ref{MCMClinearsimuXall}, the dots is the true $x_{1:t}$ and the solid line is the estimation $\hat{x}_{1:t}$. In Figure \ref{MCMClinearsimuXt2}, the estimation $\hat{x}_t$ is very close to the true $x$. In fact, the true $x$ falls in the interval $\lbrack \hat{x}-\varepsilon,\hat{x}+\varepsilon\rbrack$.}
+\caption{Linear simulation for $x_{1:t}$ and single $x_t$. In Figure \ref{MCMClinearsimuXall}, the black dots are the true $x_{1:t}$ and the solid line is the estimation $\hat{x}_{1:t}$. In Figure \ref{MCMClinearsimuXt2}, the chain of estimation $\hat{x}_t$ is very close to the true $x$. In fact, the true $x$ falls in the interval $\lbrack \hat{x}-\varepsilon,\hat{x}+\varepsilon\rbrack$, where $\varepsilon$ is the standard deviation of the estimation for $x_t$.}
 \label{linearmarginXt}
 \end{figure}
 
@@ -852,7 +852,7 @@ Notice that the difference between equations \eqref{linearOUKreg}\eqref{linearOU
 \includegraphics[width=\textwidth]{Chapters/05MCMCOU/plots/simudataOUXt.pdf}
 \caption{Sequential method of estimating $x_t$}\label{MCMCOUallXt2}
 \end{subfigure}
-\caption{Irregular time step OU process simulation of $x_{1:t}$ and sole $x_t$. In Figure \ref{MCMCOUallX}, the dots is the true $x_{1:t}$ and the solid line is the estimation $\hat{x}_{1:t}$. In Figure \ref{MCMCOUallXt2}, the chain in solid line is the estimation $\hat{x}_t$; dotted line is the true value of $x$; dot-dash line on top is the observed value of $y$; dashed lines are the estimated error. }
+\caption{Irregular time step OU process simulation of $x_{1:t}$ and sole $x_t$. In Figure \ref{MCMCOUallX}, the dots is the true $x_{1:t}$ and the solid line is the estimation $\hat{x}_{1:t}$. In Figure \ref{MCMCOUallXt2}, the chain in solid line is the estimation $\hat{x}_t$; dotted line is the true value of $x_t$; dot-dash line on top is the observed value $y_t$; dashed lines represent the standard deviation of the estimation for $x_t$.}
 \label{simuOUxt}
 \end{figure}
 

@@ -378,7 +378,8 @@ The smoothing V-spline of \eqref{maineq} is the posterior
 mean of $f=f_0+f_1 + \dot{f}_1$, where $f_0$ diffuses in span $\left\lbrace 1,t\right\rbrace$ and $f_1$, $\dot{f}_1$ have Gaussian process priors with mean zero and covariance functions
 \begin{align}
 \Cov \left(f_1,f_1\right)   &= \beta R_1\left(s,t\right)   =\beta \int_{0}^{1} \left(s-u\right)_+\left(t-u\right)_+du, \\
-\Cov \left(\dot{f}_1,f_1\right)  &= \beta \dot{R}_1\left(s,t\right) =\beta \int_0^s\left(t-u\right)_+du,
+\Cov \left(\dot{f}_1,f_1\right)  &= \beta \dot{R}_1\left(s,t\right) =\beta \int_0^s\left(t-u\right)_+du,\\
+\Cov \left(\dot{f}_1,\dot{f}_1\right)  &= \beta \dot{R}'_1\left(s,t\right) =\beta \min\lbrace s,t\rbrace,
 \end{align}
 for $\beta = \sigma^2/n\lambda$.
 \end{theorem}
@@ -401,7 +402,7 @@ having the following properties
 \begin{align}
 R'_s(t) &= s+\sum_{i=0}^{n}w_i^{-1}\int_{t_i}^{t_{i+1}}(s-u)_+\Theta(t-u) du,\\
 \dot{R}_s(t) &= t+\sum_{i=0}^{n}w_i^{-1}\int_{t_i}^{t_{i+1}}\Theta(s-u)(t-u)_+ du,\\
-R''_s(t) & = \sum_{i=0}^{n}w_i^{-1}\int_{t_i}^{t_{i+1}}\delta(s-u)\delta(t-u)du, 
+R''_s(t) & = \sum_{i=0}^{n}w_i^{-1}\int_{t_i}^{t_{i+1}}(s-u)_+\delta(t-u)du, 
 \end{align}
 and $R_s(0)=1$, $R'_s(0)=s$. The function $\Theta(t-u)$ is the Heaviside function and $\delta(t-u)$ is the Dirac delta function. 
 
@@ -496,7 +497,8 @@ Therefore, the calculation goes through the same process in Section \ref{section
 The smoothing V-spline of \eqref{maineq2} is the posterior mean of $f=f_0+f_1 + \dot{f}_1$, where $f_0$ diffuses in span $\left\lbrace 1,t\right\rbrace$ and $f_1$, $\dot{f}_1$ have Gaussian process priors with mean zero and covariance functions
 \begin{align}
 \Cov \left(f_1,f_1\right)   &= \beta R_1\left(s,t\right)  =\beta \sum_{i=0}^n w_i^{-1} \int_{t_i}^{t_{i+1}} \left(s-u\right)_+\left(t-u\right)_+du, \\
-\Cov \left(\dot{f}_1,f_1\right)  &= \beta \dot{R}_1\left(s,t\right) =\beta \sum_{i=0}^n w_i^{-1} \int_{t_i}^{t_{i+1}} \Theta\left(s-u\right)\left(t-u\right)_+du,
+\Cov \left(\dot{f}_1,f_1\right)  &= \beta \dot{R}_1\left(s,t\right) =\beta \sum_{i=0}^n w_i^{-1} \int_{t_i}^{t_{i+1}} \Theta\left(s-u\right)\left(t-u\right)_+du,\\
+\Cov \left(\dot{f}_1,\dot{f}_1\right)  &= \beta \dot{R}'_1\left(s,t\right) =\beta \sum_{i=0}^n w_i^{-1} \int_{t_i}^{t_{i+1}} \Theta\left(s-u\right)\Theta\left(t-u\right)du,
 \end{align}
 for $\beta = \sigma^2/n\Lambda$.
 \end{theorem}
